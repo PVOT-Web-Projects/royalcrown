@@ -3,7 +3,7 @@
 
 .footer2 {
   padding: 80px 100px 30px;
-  background-color: $black1;
+  // background-color: $black1;
   @media (max-width: 1600px) {
     padding: 80px 60px 30px;
   }
@@ -147,8 +147,9 @@
             }
             .title {
               font-size: 20px;
-              font-family: "futura_bold";
+              font-family: "made_mirage_bold";
               margin: 0 0 20px;
+              color: black;
             }
             ul {
               li {
@@ -194,6 +195,7 @@
           ul {
             display: flex;
             justify-content: space-between;
+            align-items: center;
 
             li {
               @media (max-width: 767px) {
@@ -238,10 +240,15 @@
     height: auto;
     display: block;
     // width: 100%;
+    
     @media (max-width: 575px){
       padding-bottom: 2rem;
 
     }
+  }
+  .ImageBorder{
+    margin: 0 auto;
+
   }
   .copyright {
     text-align: center;

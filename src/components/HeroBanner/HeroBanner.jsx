@@ -54,10 +54,10 @@ const HeroBanner = () => {
             </motion.div>
           </div>
 
-          <p>
+          {/* <p>
             Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum
             dolor Lorem ipsum dolor Lorem ipsum dolor
-          </p>
+          </p> */}
           <div className="link">
             <Link href={"#"}>Let's Start</Link>
           </div>

@@ -6,13 +6,15 @@
   overflow: hidden;
   height: 3rem;
   padding: 0 2rem;
-  background: $yellow;
+  // background: $skin;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 5px;
   background-size: 400%;
   color: $black;
-  border: none;
+  // border: none;
   font-size: 18px;
   line-height: 16px;
-  font-family: "futura_medium";
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -40,6 +42,8 @@
   &:hover {
     &::before {
       transform: scaleX(1);
+      border-radius: inherit;
+      
     }
   }
 }

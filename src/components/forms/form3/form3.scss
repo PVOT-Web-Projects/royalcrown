@@ -7,6 +7,7 @@
   .form3_field {
     display: flex;
     flex-direction: column;
+    // font-family: "made_mirage_thin";
     label {
       font-size: 27px;
       line-height: 32px;
@@ -15,8 +16,10 @@
     }
     input {
       width: 307px;
-      background-color: $black1;
+      // background-color: $black1;
+      background-color: transparent;
       border: 1px solid $white;
+      border-radius: 5px;
       height: calc(3rem - 12px);
       padding: 5px 10px;
       font-size: 18px;
