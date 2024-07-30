@@ -1,0 +1,54 @@
+.scroll-section-outer {
+  overflow: hidden;
+  height:100vh;
+
+.padding_outer{
+    padding:2rem;
+    .the_establishment{
+        font-size:22px;
+        border-bottom: 1px solid white ;
+        
+      }
+}
+
+
+ 
+}
+
+.wrap {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.scroll-section-inner {
+  height: 50vh;
+  width: 350vw;
+  display: flex;
+  flex-direction: column;
+gap:20rem;
+  position: relative;
+  align-items: center;
+//   margin-left: 320px;
+
+
+.timeline_year_outer{
+
+.timeline_year{
+    font-size:170px
+}
+}
+
+
+
+
+}
+.aboutUs_size_outer {
+  padding: 4rem 4rem;
+}
+
+@media (min-width: 1500px) {
+  .scroll-section-inner {
+    margin-left: 0rem;
+  }
+}

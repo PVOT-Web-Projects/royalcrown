@@ -1,0 +1,38 @@
+.aboutus_divider{
+    width: 99vw;
+    display: flex;
+    gap: 80px;
+    align-items: center;
+    margin: 80px 0px 80px 0px;
+}
+
+.line{
+    width: 50%;
+    height: 1px;
+    background-color: white;
+}
+
+.divider_text{
+    width: 38%;
+    font-size: 30px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.801);
+    text-align: justify;
+}
+
+@media screen and (max-width:768px) {
+    .line{
+        width: 30%;
+        height: 1px;
+        background-color: white;
+    }
+
+    .divider_text{
+        width: 65%;
+        margin-right: 10px;
+        font-size: 20px;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.801);
+        text-align: justify;
+    }
+  }

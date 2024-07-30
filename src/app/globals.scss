@@ -1,0 +1,71 @@
+@import "./variables.scss";
+@import "../fonts/fonts.scss";
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $bg;
+  color: $white;
+  transition-property: opacity, transform, filter, background-color;
+  transition-timing-function: ease-in-out;
+  transition-duration: 800ms;
+  overflow-x: hidden;
+}
+.page_transition{
+  opacity: 0;
+  background-color: $black;
+  transform: translateY(40px);
+  filter: blur(12px);
+}
+h1 {
+  font-family: "futura_regular";
+}
+h2 {
+  font-family: "futura_regular";
+}
+h3 {
+  font-family: "futura_regular";
+}
+h4 {
+  font-family: "futura_regular";
+}
+h5 {
+  font-family: "futura_regular";
+}
+h6 {
+  font-family: "futura_regular";
+}
+a {
+  font-family: "futura_regular";
+}
+div {
+  font-family: "futura_regular";
+}
+button {
+  font-family: "futura_regular";
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: "futura_regular";
+  li {
+    font-family: "futura_regular";
+  }
+} 
+
+input {
+  font-family: "futura_regular";
+}
+textarea {
+  font-family: "futura_regular";
+}
+
+
+// ::-webkit-scrollbar {
+//   display: none; // required for explore product
+
+// }

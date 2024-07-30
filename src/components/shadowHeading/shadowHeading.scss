@@ -1,0 +1,34 @@
+@import "../../app/variables.scss";
+@import "../../fonts/fonts.scss";
+
+.shadow_heading {
+  position: relative;
+
+  .wrapper {
+    overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    position: absolute;
+    right: 33rem;
+    z-index: 8;
+    @media(min-width:1600px) and (max-width:1920px){
+      right: 40rem;
+    }
+
+    .shadow_heading_text {
+      font-family: "futura_medium";
+      // letter-spacing: 10%;
+      font-size: 48px;
+      // line-height: 100%;
+      letter-spacing: 2px;
+      &.shadow {
+        color: rgba(89, 89, 89, 0.35);
+      }
+      &.normal {
+        color: $white;
+        top: 0px;
+        left: 5px;
+        position:relative;
+      }
+    }
+  }
+}

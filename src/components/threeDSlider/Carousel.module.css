@@ -1,0 +1,56 @@
+/* components/Carousel.module.css */
+
+.carousel {
+    width: 100%;
+    height: 400px; /* Adjust height as needed */
+    position: relative;
+    perspective: 800px;
+    overflow: hidden;
+  }
+  
+  .carouselContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: transform 1s;
+  }
+  
+  .carouselItem {
+    flex: 0 0 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    border: 2px solid #333;
+    background-color: #f0f0f0;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+  }
+  
+  .carousel.backface .carouselItem {
+    backface-visibility: hidden;
+  }
+  
+  .carouselControls {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .carouselControls button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .carouselControls button:hover {
+    background-color: #0056b3;
+  }
+  

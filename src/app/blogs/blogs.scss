@@ -1,0 +1,30 @@
+// .Demo1 {
+//   background-color: black;
+// }
+// .Democlass {
+//   position: relative;
+//   z-index: -1;
+// }
+// .Demo2 {
+//   width: 100%;
+//   height: 100%;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   z-index: 9999;
+// }
+// #canvas {
+//   height: 100%;
+//   width: 100%;
+// }
+// }
+.Demo1{
+    position: relative;
+    z-index: -1;
+}
+.Demo2
+{
+    position: absolute;
+    // width: 100% !important;
+    // height: 100% !important;
+}

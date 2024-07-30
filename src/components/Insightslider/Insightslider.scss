@@ -1,0 +1,98 @@
+.mainContainer {
+  overflow-x: hidden;
+  /* padding: 500px 0; */
+}
+.InsightsTextMain {
+  padding: 0 200px;
+}
+.InsightsButton {
+  padding-top: 3rem;
+}
+.InsightsText {
+  font-size: 90px;
+}
+.innerrbutton {
+  padding: 20px 50px;
+  outline: none;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 30px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+#container {
+  height: auto;
+  /* set width based on sections */
+  width: 300%;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  /* gap: 10px; */
+  flex-wrap: nowrap;
+  /* justify-content: center; */
+  /* padding-left: 30%; */
+}
+
+.horizontal-section {
+  /* background-color: black;
+      background-size: cover; */
+  /* background-position: center; */
+  background-repeat: no-repeat;
+  height: 50vh;
+  width: 10%;
+  /* width: 100%; */
+  display: flex;
+  margin: 0 -100px;
+  flex-direction: column;
+  justify-content: end;
+  /* align-items: center; */
+  /* border-radius: 20px; */
+}
+.textSlider {
+  width: 56%;
+  margin: -50px 0;
+  /* text-align: center; */
+}
+.textSliderText {
+  padding-top: 1rem;
+  text-align: right;
+  padding-bottom: 1rem;
+}
+.textSliderText2 {
+  text-align: right;
+}
+.horizontal-section:nth-child(1) {
+  background-image: url("../../images/insightslider1.png");
+}
+.horizontal-section:nth-child(2) {
+  background-image: url("../../images/insightslider2.png");
+}
+.horizontal-section:nth-child(3) {
+  background-image: url("../../images/insightslider1.png");
+}
+.horizontal-section:nth-child(4) {
+  background-image: url("../../images/insightslider2.png");
+}
+.horizontal-section:nth-child(5) {
+  background-image: url("../../images/insightslider2.png");
+}
+.horizontal-section:nth-child(6) {
+  background-image: url("../../images/insightslider1.png");
+}
+.horizontal-section:nth-child(7) {
+  background-image: url("../../images/insightslider2.png");
+}
+.horizontal-section:nth-child(8) {
+    background-image: url("../../images/insightslider2.png");
+  }
+  .horizontal-section:nth-child(9) {
+    background-image: url("../../images/insightslider2.png");
+  }
+@media (max-width: 1440px) {
+  .textSlider {
+    width: 74%;
+    margin: -85px 0;
+  }
+}
