@@ -1,16 +1,17 @@
 "use client";
+import AboutUsHero from "@/components/aboutUsHero/aboutUsHero";
 import "./Home.scss";
-import { useEffect, useRef } from "react";
+import AboutUsEstablishment from "@/components/aboutUsEstablishment/aboutUsEstablishment";
+import AboutUsVision from "@/components/aboutUsVision/aboutUsVision";
+import AboutUsWhyUs from "@/components/aboutUsWhyUs/aboutUsWhyUs";
 const AboutUs = () => {
-  // const section1 = useRef();
-  // const section2 = useRef();
-  // const section3 = useRef();
-  // function scrollTo(section) {
-  //   section.current.scrollIntoView({ behavior: "smooth" });
-  // }
   return (
-    <div>
-    </div>
+      <div>
+        <AboutUsHero/>
+        <AboutUsEstablishment/>
+        <AboutUsVision />
+        <AboutUsWhyUs />
+      </div>
   );
 };
 export default AboutUs;
