@@ -1,0 +1,103 @@
+.whyUsContainer {
+    background-color: #ffeee2;
+    color: #5b3524;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 150px;
+    flex-direction: column;
+
+    .whyUsWrapper {
+        width: 100%;
+        max-width: 1200px;
+
+        .whyusHeader {
+            text-align: center;
+            font-size: 50px;
+            letter-spacing: 8px;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+        }
+
+        .whyUsCardWrapper {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            .cardouter_1,
+            .cardouter_3 {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                padding: 20px 40px 20px 40px;
+                position: relative;
+
+                .card_header {
+                    font-size: 60px; // Adjust header size specifically for cardouter_1 and cardouter_3
+                }
+
+                .cardSvg{
+                    color: #5b3524;
+                    position: absolute;
+                    right: 20px;
+                    top: 10px;
+                    cursor: pointer;
+                }
+
+                .card_description {
+                    font-size: 25px; // Adjust description font size
+                    padding: 5px 0px 10px 0px;
+                }
+            }
+
+            .cardouter_1 {
+                background-color: #edd7c2;
+                position: relative;
+            }
+
+            .cardouter_2 {
+                display: grid;
+                grid-template-rows: repeat(2, 1fr);
+
+                .cardinner_1,
+                .cardinner_2 {
+                    padding: 20px 40px 20px 40px;
+
+                    .card_description {
+                        font-size: 25px; // Adjust description font size
+                        padding: 5px 0px 10px 0px;
+                    }
+                }
+
+                .cardinner_1 {
+                    background-color: #d5ad86;
+                    position: relative;
+
+                    .cardSvg{
+                        color: #5b3524;
+                        position: absolute;
+                        right: 20px;
+                        top: 10px;
+                        cursor: pointer;
+                    }
+                }
+
+                .cardinner_2 {
+                    background-color: #e3c7ac;
+                }
+            }
+
+            .cardouter_3 {
+                background-color: #e1c1a1;
+
+                .card_header {
+                    font-size: 60px;
+                }
+
+                .card_description {
+                    font-size: 25px; // Adjust description font size
+                    padding: 5px 0px 10px 0px;
+                }
+            }
+        }
+    }
+}
