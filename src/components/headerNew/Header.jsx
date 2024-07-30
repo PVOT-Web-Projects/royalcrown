@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import logo from "@/images/svgLogos/header_logo.svg";
+import logo from "@/images/svgLogos/FinalHeaderLogo.svg";
 import logo1 from "@/images/svgLogos/white_logo.svg";
 import logo2 from "@/images/svgLogos/header_crown_logo.svg";
 import logo3 from "@/images/crown_white.png";
@@ -85,7 +85,7 @@ const Header = () => {
             {isHome ? (
               <Image src={logo} alt="header_logo" />
             ) : (
-              <Image src={logo1} alt="header_logo" />
+              <Image src={logo} alt="header_logo" />
             )}
           </PageTransition>
         </motion.div>

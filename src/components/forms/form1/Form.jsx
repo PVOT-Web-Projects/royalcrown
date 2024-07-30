@@ -64,8 +64,7 @@ const MyForm = () => {
     <div className="form">
       <div>
         <p className="form_header">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard
+        The Authenticity of luxury in each layer
         </p>
       </div>
       <div>

@@ -18,10 +18,28 @@
       top: 0px !important;
     }
   }
+  .RoyalCrownText{
+    margin-left: 100px;
+    display: inline-block;
+    
+   
+    .RoyalCrownTextInner{
+      font-size: 30px;
+    }
+    .RoyalCrownTextInnerFirst{
+      font-size: 40px;
+      border-bottom: 1px solid #000000;
+      width: 100%;
+      margin-right: 50px;
+      padding-bottom: 2rem;
+    }
+  }
   .MainContainer {
     display: flex;
-    flex-direction: row-reverse;
-    padding-left: 70px;
+    // flex-direction: row-reverse;
+    flex-direction: column;
+    // padding-left: 70px;
+    padding: 0 70px;
     justify-content: space-evenly;
     overflow: hidden;
     @media(max-width: 1199px){
@@ -37,10 +55,10 @@
     .abc {
       display: flex;
       position: relative;
-      flex-direction: column;
-      width: 50%;
+      // flex-direction: column;
+      width: 80%;
       &.left {
-        width: 40%;
+        width: 100%;
         @media (max-width: 767px) {
           width: 100%;
         }
@@ -48,7 +66,7 @@
       &.right {
         @media (max-width: 767px) {
           padding: 0 20px;
-          width: 95%;
+          // width: 95%;
           margin: 40px 0 0;
         }
         @media (max-width: 425px) {
@@ -61,26 +79,26 @@
       @media (max-width: 767px) {
         width: 100%;
       }
-      .LogoImg {
-        position: absolute;
-        top: 46%;
-        left: 80%;
-        @media (max-width: 1440px){
-          left: 70%;
-        }
-        @media (max-width: 1199px){
-          left: 64%;
-        }
-        @media (max-width: 768px){
-          left: 70%;
-        }
-      }
+      // .LogoImg {
+      //   position: absolute;
+      //   top: 46%;
+      //   left: 80%;
+      //   @media (max-width: 1440px){
+      //     left: 70%;
+      //   }
+      //   @media (max-width: 1199px){
+      //     left: 64%;
+      //   }
+      //   @media (max-width: 768px){
+      //     left: 70%;
+      //   }
+      // }
 
       .Rc_Text_Main {
         padding-bottom: 2rem;
 
         .Rc_Text_MainInner {
-          color: #595959;
+          color: #5B3524;
           font-size: 20px;
         }
       }
@@ -88,7 +106,7 @@
       .tenExp {
         display: flex;
         align-items: center;
-        margin-top: auto;
+        margin-top: 3rem;
         position: relative;
         @media (max-width: 375px){
           margin-bottom: 0px;
@@ -97,7 +115,7 @@
         .tenExpBorder {
           padding: 6px 10px;
           display: inline-flex;
-          border: 1px solid #ffbc37;
+          border: 1px solid #5B3524;
 
           .tenExpBorderText {
             font-size: 90px;
@@ -108,10 +126,9 @@
         }
 
         .tenExpBorderTextInner {
-          width: 50%;
+          width: 100%;
           padding: 0 20px;
           font-size: 30px;
-          // font-family: "futura_light";
           @media(max-width: 375px){
             font-size: 22px;
           }
@@ -121,7 +138,7 @@
   }
 
   .Carousel_Slider_container {
-    width: 90%;
+    width: 100%;
 
     .mySwiper {
       text-align: center;
@@ -130,7 +147,10 @@
       .third_section_image {
         width: 100%;
         display: block;
-        height: 76vh;
+        height: auto;
+        @media(min-width: 1500px){
+          height: 58vh !important;
+        }
       }
     }
   }
@@ -156,7 +176,7 @@
     position: relative;
 
     .third_section_overlay_text {
-      color: black;
+      color: #5B3524;
       text-align: center;
       font-size: 22px;
       font-style: normal;
@@ -165,7 +185,7 @@
       text-transform: uppercase;
 
       .third_section_overlay_span {
-        color: #fff;
+        color: #5B3524;
         font-family: "Dream Avenue";
         font-size: 22px;
         font-style: normal;
@@ -185,7 +205,7 @@
   .swiper-button-next,
   .swiper-button-prev {
     top: 53%;
-    color: #ffbc3780 !important;
+    color: #5B3524 !important;
     font-weight: 900;
   }
 
@@ -223,19 +243,21 @@
   .Carousel_text_maincontent {
     position: relative;
     text-align: center;
+    padding-top: 3rem;
+    width: 80%;
     @media (max-width: 767px) {
       margin: 0 0 40px;
     }
 
     .Text_InnerText {
-      color: #ffffff;
+      color: #5B3524;
       font-size: 45px;
       text-align: left;
       padding-bottom: 2rem;
     }
 
     .carousel_text_Content {
-      color: white;
+      color: #5B3524;
       text-align: left;
       font-size: 28px;
       width: 88%;

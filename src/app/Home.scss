@@ -2,7 +2,11 @@
     display: flex;
     justify-content: space-between;
     padding: 40px 30px;
-    background: #1c211e;
+    background-image: url("../images/form_bg.png");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center;
+    // background: #1c211e;
     @media(min-width: 1500px){
         // padding: 40px 252px 30px 207px;
         justify-content: center;

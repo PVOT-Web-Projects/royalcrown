@@ -306,7 +306,7 @@
   border: none;
   font-size: 18px;
   line-height: 16px;
-  font-family: "futura_medium";
+  /* font-family: "futura_medium"; */
   cursor: pointer;
   display: flex;
   align-items: center;
