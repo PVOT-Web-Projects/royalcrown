@@ -10,6 +10,13 @@
 
   .aboutVisionContainer{
     padding:0 20px;
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+
+    @media (max-width : 767px) {
+      align-items: center;
+    }
     .visionHeader{
       text-transform: uppercase;
       font-size: 50px;
@@ -17,6 +24,10 @@
       max-width: max-content;
       padding: 20px;
       margin-bottom: 2rem;
+
+      @media (max-width : 767px) {
+        text-align: center;
+      }
     }
     .visionImage{
       max-width: 100%;
@@ -33,6 +44,10 @@
       .description_left{
         font-size: 25px;
         width: 50%;
+
+        @media (max-width : 767px) {
+          width: 100%;
+        }
       }
       .description_right{
         display: flex;
@@ -40,6 +55,10 @@
         align-items: center;
         justify-content: center;
         width: 30%;
+
+        @media (max-width : 767px) {
+          width: 100%;
+        }
 
         .description_right_box{
           border: 1px solid #5B3524;
@@ -56,6 +75,11 @@
           font-size: 35px;
           font-weight: 500;
         }
+      }
+
+      @media (max-width : 767px) {
+        flex-direction: column;
+        gap: 2rem;
       }
     }
   }

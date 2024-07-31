@@ -178,7 +178,7 @@
                 }
                 &:hover {
                   transform: scale(1.1);
-                  color: rgb(254, 197, 84);
+                  color: #5b3524;;
                 }
                 img {
                   padding: 0 0 5px;
@@ -192,6 +192,7 @@
         }
         .bottom {
           margin-top: 45px;
+          color: #5b3524;
           ul {
             display: flex;
             justify-content: space-between;
