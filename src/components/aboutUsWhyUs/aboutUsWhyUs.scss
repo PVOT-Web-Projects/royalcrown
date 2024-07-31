@@ -62,7 +62,10 @@
                 position: relative;
 
                 &:hover {
-                    background-color: #ffff; /* Change background color */
+                    background: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+                    backdrop-filter: blur(10px); /* Blur effect */
+                    // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+                    border: 1px solid rgba(255, 255, 255, 0.18); /* Border to enhance glass effect */
                     transition: all 0.3s ease-in-out;
 
                 }
@@ -75,7 +78,7 @@
                 &:hover {
                     // backdrop-filter:;
                     background-color: white;
-                    backdrop-filter: blur(2px);
+                    // backdrop-filter: blur(2px);
                     transition: all 0.3s ease-in-out;
                 }
 
@@ -100,10 +103,24 @@
                         top: 10px;
                         cursor: pointer;
                     }
+
+                    &:hover {
+                        // backdrop-filter:;
+                        background-color: white;
+                        // backdrop-filter: blur(2px);
+                        transition: all 0.3s ease-in-out;
+                    }
                 }
 
                 .cardinner_2 {
                     background-color: #e3c7ac;
+
+                    &:hover {
+                        // backdrop-filter:;
+                        background-color: white;
+                        // backdrop-filter: blur(2px);
+                        transition: all 0.3s ease-in-out;
+                    }
                 }
             }
 
@@ -120,8 +137,8 @@
                 }
 
                 &:hover {
-                    background-color: #bf9d7d; /* Change background color */
-                    transition: all 0.3s ease-in-out;
+                    background-color: white;
+                     /* Change background color */
                     backdrop-filter: brightness(10px);
                 }
             }

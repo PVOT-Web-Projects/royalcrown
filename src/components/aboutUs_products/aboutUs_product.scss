@@ -1,9 +1,12 @@
-
+@import "../../app/variables.scss";
+@import "../../fonts/fonts.scss";
 #sticky_top {
   position: sticky;
   height: 60px;
   top: 0px;
   z-index: 1;
+  background: #FFEEE2;
+  color: $white;
   @media (max-width: 575px) {
     height: 45px;
   }
@@ -62,8 +65,7 @@
 
 .category-select {
   padding: 10px 10px;
-  border: 1px solid white;
-  color: rgb(255, 255, 255);
+  border: 1px solid $white;
 
   @media (max-width: 575px) {
     padding: 10px 20px;
@@ -177,7 +179,6 @@
 //   display: none;
 // }
 #sticky {
-  background-color: rgb(28, 33, 30);
   position: sticky;
   position: -webkit-sticky;
   top: 121px;

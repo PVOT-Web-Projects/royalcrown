@@ -1,3 +1,5 @@
+@import "../../app/variables.scss";
+@import "../../fonts/fonts.scss";
 .aboutUsHeroWrapper {
   padding: 100px 0;
   display: flex;
@@ -101,11 +103,24 @@
         .header_text {
           font-family: "made_mirage_thin";
           font-size: 60px;
-
-          @media (min-width : 1500px) {
+          position: relative;
+          display: inline-block;
+        
+          @media (min-width: 1500px) {
             font-size: 80px;
           }
+        
+          &::before {
+            content: "";
+            position: absolute;
+            bottom: 0; /* Align with text */
+            left: -40px; /* Start from the extreme left side */
+            width: 90%;
+            height: 1px; /* Border thickness */
+            background-color: $white; /* Border color */
+          }
         }
+        
         .image-wrapper-1 {
           position: relative;
           width: 300px;
@@ -124,6 +139,15 @@
       .text-section-content {
         display: flex;
         font-size: 21px;
+
+        .text-section-inner-footer{
+          font-family: "made_mirage_bold";
+          padding-top: 3rem;
+          font-size: 25px;
+          text-transform: uppercase;
+          border-bottom: 1px solid $white;
+          max-width: max-content;
+        }
         .image-wrapper-2{
           transform: translate(10px, -100px);
         }

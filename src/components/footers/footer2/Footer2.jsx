@@ -48,7 +48,7 @@ const Footer2 = ({ bgColor }) => {
                       borderColor={"white"}
                       fontSize={"18px"}
                       textTransform={"capitalize"}
-                      HoverBtn={"rgb(254, 197, 84)"}
+                      HoverBtn={"#5b3524"}
                     />
                   </li>
                   <li>
@@ -59,7 +59,7 @@ const Footer2 = ({ bgColor }) => {
                       borderColor={"white"}
                       fontSize={"18px"}
                       textTransform={"capitalize"}
-                      HoverBtn={"rgb(254, 197, 84)"}
+                      HoverBtn={"#5b3524"}
                     />
                   </li>
                   <li>
@@ -70,7 +70,7 @@ const Footer2 = ({ bgColor }) => {
                       borderColor={"white"}
                       fontSize={"18px"}
                       textTransform={"capitalize"}
-                      HoverBtn={"rgb(254, 197, 84)"}
+                      HoverBtn={"#5b3524"}
                     />
                   </li>
                   <li>
@@ -81,7 +81,7 @@ const Footer2 = ({ bgColor }) => {
                       borderColor={"white"}
                       fontSize={"18px"}
                       textTransform={"capitalize"}
-                      HoverBtn={"rgb(254, 197, 84)"}
+                      HoverBtn={"#5b3524"}
                     />
                   </li>
                 </ul>
@@ -97,7 +97,7 @@ const Footer2 = ({ bgColor }) => {
                       borderColor={"white"}
                       fontSize={"18px"}
                       textTransform={"capitalize"}
-                      HoverBtn={"rgb(254, 197, 84)"}
+                      HoverBtn={"#5b3524"}
                     />
                   </li>
                   <li>
@@ -108,7 +108,7 @@ const Footer2 = ({ bgColor }) => {
                       borderColor={"white"}
                       fontSize={"18px"}
                       textTransform={"capitalize"}
-                      HoverBtn={"rgb(254, 197, 84)"}
+                      HoverBtn={"#5b3524"}
                     />
                   </li>
                   <li>
@@ -119,7 +119,7 @@ const Footer2 = ({ bgColor }) => {
                       borderColor={"white"}
                       fontSize={"18px"}
                       textTransform={"capitalize"}
-                      HoverBtn={"rgb(254, 197, 84)"}
+                      HoverBtn={"#5b3524"}
                     />
                   </li>
                   <li>
@@ -130,7 +130,7 @@ const Footer2 = ({ bgColor }) => {
                       borderColor={"white"}
                       fontSize={"18px"}
                       textTransform={"capitalize"}
-                      HoverBtn={"rgb(254, 197, 84)"}
+                      HoverBtn={"#5b3524"}
                     />
                   </li>
                 </ul>
@@ -146,7 +146,7 @@ const Footer2 = ({ bgColor }) => {
                       borderColor={"white"}
                       fontSize={"18px"}
                       textTransform={"capitalize"}
-                      HoverBtn={"rgb(254, 197, 84)"}
+                      HoverBtn={"#5b3524"}
                     />
                   </li>
                   <li>
@@ -157,7 +157,7 @@ const Footer2 = ({ bgColor }) => {
                       borderColor={"white"}
                       fontSize={"18px"}
                       textTransform={"capitalize"}
-                      HoverBtn={"rgb(254, 197, 84)"}
+                      HoverBtn={"#5b3524"}
                     />
                   </li>
                   <li>
@@ -168,7 +168,7 @@ const Footer2 = ({ bgColor }) => {
                       borderColor={"white"}
                       fontSize={"18px"}
                       textTransform={"capitalize"}
-                      HoverBtn={"rgb(254, 197, 84)"}
+                      HoverBtn={"#5b3524"}
                     />
                   </li>
                 </ul>

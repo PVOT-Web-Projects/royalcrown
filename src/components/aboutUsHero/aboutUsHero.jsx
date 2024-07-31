@@ -86,6 +86,9 @@ export default function AboutUsHero() {
                 should be worth a thousand memories. However, we do have a tiny
                 tale to tell, a sneak peek to our story.
               </div>
+              <div className="text-section-inner-footer">
+                See our story
+              </div>
             </div>
             <div className="image-wrapper-2">
               <Image src={Image6} alt="Image 3" />
