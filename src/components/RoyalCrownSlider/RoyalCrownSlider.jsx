@@ -17,8 +17,6 @@ import {
   Navigation,
 } from "swiper/modules";
 import testimonial1 from "@/images/Crownsliderimg1.png";
-// import ShadowHeading from "../shadowHeading/ShadowHeading";
-// import LogoImg from "../../images/crown_light_logo.png";
 
 export default function App() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
