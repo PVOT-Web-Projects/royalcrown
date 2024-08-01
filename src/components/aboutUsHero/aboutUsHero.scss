@@ -1,77 +1,163 @@
+@import "../../app/variables.scss";
+@import "../../fonts/fonts.scss";
 .aboutUsHeroWrapper {
-    padding: 300px 0;
+  padding: 100px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .aboutUsHeroContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-  
-    .aboutUsHeroContainer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        gap: 5rem;
-      .aboutUsHeroHeader {
-        text-align: center;
-        text-transform: uppercase;
-        font-size: 80px;
-        margin-bottom: 2rem;
-  
-        .aboutUsHeroHeader1 {
-          // font-weight: ;
-  
-          @media (max-width: 575px) {
-            font-size: 60px;
-            
-          }
-        }
-  
-        .aboutUsHeroHeader2 {
-          font-family: "made_mirage_thin";
+    gap: 5rem;
+    padding: 0 0 100px 0;
+
+    .aboutUsHeroHeader {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 80px;
+      margin-bottom: 2rem;
+      margin-top: 20rem;
+
+      .aboutUsHeroHeader1 {
+        // font-weight: ;
+
+        @media (max-width: 575px) {
+          font-size: 60px;
+
         }
       }
-  
-      .aboutUsImageContainer {
+
+      .aboutUsHeroHeader2 {
+        font-family: "made_mirage_thin";
+      }
+    }
+
+    .aboutUsImageContainer {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+
+      .aboutUsImageContainerInner {
         position: relative;
         width: 100%;
-        height: 60vh;
-  
-        .aboutUsImageContainerInner {
-          position: relative;
-          width: 100%;
-          height: 100%;
-  
-          .heroImage {
-            max-width: 100%;
-            height: auto;
-            display: block;
-          }
-  
-          .aboutUsHeroImage1,
-          .aboutUsHeroImage2,
-          .aboutUsHeroImage3 {
-            position: absolute;
-          }
-  
-          .aboutUsHeroImage1 {
-            top: 5%;
-            left: 10%;
-            z-index: 3;
-          }
-  
-          .aboutUsHeroImage2 {
-            top: 12%;
-            left: 54%;
-            z-index: 2;
-          }
-  
-          .aboutUsHeroImage3 {
-            top: 45%;
-            left: 35%;
-            z-index: 1;
+        height: 100%;
+
+        .heroImage {
+          max-width: 100%;
+          height: auto;
+          display: block;
+        }
+
+        .aboutUsHeroImage1,
+        .aboutUsHeroImage2,
+        .aboutUsHeroImage3 {
+          position: absolute;
+        }
+
+        .aboutUsHeroImage1 {
+          top: 5%;
+          left: 10%;
+          z-index: 3;
+        }
+
+        .aboutUsHeroImage2 {
+          top: 12%;
+          left: 54%;
+          z-index: 2;
+        }
+
+        .aboutUsHeroImage3 {
+          top: 45%;
+          left: 35%;
+          z-index: 1;
+
+          @media (min-width : 1400px) {
+            top: 35%;
+            left: 25%;
           }
         }
       }
     }
   }
-  
+
+  .elegance-container {
+    display: flex;
+    padding: 50px 30px;
+    position: relative;
+
+    .text-section {
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+      // gap: 5rem;
+      padding: 0 50px;
+
+      .text-section-header {
+        text-transform: uppercase;
+        display: flex;
+        
+        .header_text {
+          font-family: "made_mirage_thin";
+          font-size: 60px;
+          position: relative;
+          display: inline-block;
+        
+          @media (min-width: 1500px) {
+            font-size: 80px;
+          }
+        
+          &::before {
+            content: "";
+            position: absolute;
+            bottom: 0; /* Align with text */
+            left: -40px; /* Start from the extreme left side */
+            width: 90%;
+            height: 1px; /* Border thickness */
+            background-color: $white; /* Border color */
+          }
+        }
+        
+        .image-wrapper-1 {
+          position: relative;
+          width: 300px;
+          height: auto;
+          transform: translate(10px, -210px);
+          
+          .image-1 {
+            // Uncomment if needed
+            transform: translate(10px -210px);
+            // position: absolute;
+            // bottom: 10px;
+          }
+        }
+      }
+
+      .text-section-content {
+        display: flex;
+        font-size: 21px;
+
+        .text-section-inner-footer{
+          font-family: "made_mirage_bold";
+          padding-top: 3rem;
+          font-size: 25px;
+          text-transform: uppercase;
+          border-bottom: 1px solid $white;
+          max-width: max-content;
+        }
+        .image-wrapper-2{
+          transform: translate(10px, -100px);
+        }
+      }
+    }
+
+    .image-section {
+      display: flex;
+
+    }
+  }
+
+}

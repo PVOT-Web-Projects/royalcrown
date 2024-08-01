@@ -1,14 +1,54 @@
-
+@import "../../app/variables.scss";
+@import "../../fonts/fonts.scss";
+.first_top{
+  padding: 0px 0 100px 0;
+}
 #sticky_top {
   position: sticky;
-  height: 60px;
+  // height: 60px;
   top: 0px;
   z-index: 1;
-  @media (max-width: 575px) {
-    height: 45px;
+  background: #FFEEE2;
+  color: $white;
+  text-transform: uppercase;
+  padding: 50px 30px;
+
+  @media (max-width : 575px) {
+    padding: 0 50px;
   }
-  @media only screen and (min-width: 576px) and (max-width: 1024px) {
-    height: 45px;
+
+  .products-tabs{
+    display: flex;
+    font-size: 20px;
+    justify-content: center;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4 , 1fr);
+    
+    @media (max-width : 768px) {
+      font-size: 16px;
+      grid-template-columns: repeat(2 , 1fr);
+      gap: 10px;
+    }
+
+    @media (max-width : 575px) {
+      font-size: 14px;
+      gap: 10px;
+    }
+
+    @media (max-width : 475px) {
+      font-size: 11px;
+    }
+
+    @media (max-width : 375ppx) {
+      font-size: 9px;
+    }
+    .tab-item {
+      a{
+        font-weight: bold;
+        color: $white
+      }
+    }
   }
 }
 
@@ -30,7 +70,7 @@
   .p-dropdown-items-wrapper {
     max-height: 200px;
     margin-top: 3px;
-    border: 1px solid white;
+    border: 1px solid $white;
     backdrop-filter: blur(20px);
 
     &::-webkit-scrollbar {
@@ -62,8 +102,7 @@
 
 .category-select {
   padding: 10px 10px;
-  border: 1px solid white;
-  color: rgb(255, 255, 255);
+  border: 1px solid $white;
 
   @media (max-width: 575px) {
     padding: 10px 20px;
@@ -77,8 +116,8 @@
 
 .color-select {
   padding: 10px 10px;
-  border: 1px solid white;
-  color: rgb(255, 255, 255);
+  border: 1px solid $white;
+  color : $white;
 
   @media (max-width: 575px) {
     padding: 10px 10px;
@@ -116,6 +155,7 @@
 .dropdown1 {
   display: flex;
   flex-direction: column;
+  // background-color: #FFEEE2;
   @media (max-width: 575px) {
     width: 33.33%;
   }
@@ -177,10 +217,10 @@
 //   display: none;
 // }
 #sticky {
-  background-color: rgb(28, 33, 30);
   position: sticky;
   position: -webkit-sticky;
   top: 121px;
+  background-color: #FFEEE2;
   height: 80vh;
   overflow-x: auto;
   display: flex;

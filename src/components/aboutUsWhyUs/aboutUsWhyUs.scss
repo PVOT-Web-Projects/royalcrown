@@ -23,6 +23,14 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
 
+            @media (max-width: 991px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @media (max-width: 767px) {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
             .cardouter_1,
             .cardouter_3 {
                 display: flex;
@@ -35,7 +43,7 @@
                     font-size: 60px; // Adjust header size specifically for cardouter_1 and cardouter_3
                 }
 
-                .cardSvg{
+                .cardSvg {
                     color: #5b3524;
                     position: absolute;
                     right: 20px;
@@ -44,7 +52,7 @@
                 }
 
                 .card_description {
-                    font-size: 25px; // Adjust description font size
+                    font-size: 21px; // Adjust description font size
                     padding: 5px 0px 10px 0px;
                 }
             }
@@ -52,18 +60,34 @@
             .cardouter_1 {
                 background-color: #edd7c2;
                 position: relative;
+
+                &:hover {
+                    background: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+                    backdrop-filter: blur(10px); /* Blur effect */
+                    // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+                    border: 1px solid rgba(255, 255, 255, 0.18); /* Border to enhance glass effect */
+                    transition: all 0.3s ease-in-out;
+
+                }
             }
 
             .cardouter_2 {
                 display: grid;
                 grid-template-rows: repeat(2, 1fr);
 
+                &:hover {
+                    // backdrop-filter:;
+                    background-color: white;
+                    // backdrop-filter: blur(2px);
+                    transition: all 0.3s ease-in-out;
+                }
+
                 .cardinner_1,
                 .cardinner_2 {
                     padding: 20px 40px 20px 40px;
 
                     .card_description {
-                        font-size: 25px; // Adjust description font size
+                        font-size: 21px; // Adjust description font size
                         padding: 5px 0px 10px 0px;
                     }
                 }
@@ -72,17 +96,31 @@
                     background-color: #d5ad86;
                     position: relative;
 
-                    .cardSvg{
+                    .cardSvg {
                         color: #5b3524;
                         position: absolute;
                         right: 20px;
                         top: 10px;
                         cursor: pointer;
                     }
+
+                    &:hover {
+                        // backdrop-filter:;
+                        background-color: white;
+                        // backdrop-filter: blur(2px);
+                        transition: all 0.3s ease-in-out;
+                    }
                 }
 
                 .cardinner_2 {
                     background-color: #e3c7ac;
+
+                    &:hover {
+                        // backdrop-filter:;
+                        background-color: white;
+                        // backdrop-filter: blur(2px);
+                        transition: all 0.3s ease-in-out;
+                    }
                 }
             }
 
@@ -94,8 +132,14 @@
                 }
 
                 .card_description {
-                    font-size: 25px; // Adjust description font size
+                    font-size: 21px; // Adjust description font size
                     padding: 5px 0px 10px 0px;
+                }
+
+                &:hover {
+                    background-color: white;
+                     /* Change background color */
+                    backdrop-filter: brightness(10px);
                 }
             }
         }

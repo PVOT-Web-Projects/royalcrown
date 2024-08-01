@@ -19,8 +19,8 @@ const MyForm = () => {
     useFormik({
       initialValues: initialValue,
       validationSchema: FormSchemas,
-      validateOnBlur: false, 
-      validateOnChange: true, 
+      validateOnBlur: false,
+      validateOnChange: true,
       onSubmit: (values, action) => {
         console.log("value", values);
         emailjs
@@ -63,9 +63,7 @@ const MyForm = () => {
   return (
     <div className="form">
       <div>
-        <p className="form_header">
-        The Authenticity of luxury in each layer
-        </p>
+        <p className="form_header">The Authenticity of luxury in each layer</p>
       </div>
       <div>
         <form onSubmit={handleSubmit}>
@@ -169,14 +167,21 @@ const MyForm = () => {
             </div>
           </div>
           <div className="submit-button">
-          <YellowSubmitButton btn_text={"Send"}/>
-          {/* <button type="submit" className="submit_button">
+            <YellowSubmitButton btn_text={"Send"} />
+            {/* <button type="submit" className="submit_button">
             SEND
           </button>                                                      */}
           </div>
         </form>
       </div>
-    </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+      <div className="form_footer">
+        <div>
+          We are known for providing high density laminates with unparalleled
+          services in terms of quality and reliability. We are known for
+          providing high.
+        </div>
+      </div>
+    </div>
   );
 };
 
