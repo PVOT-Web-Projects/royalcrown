@@ -3,7 +3,7 @@
 import { useFormik } from "formik";
 import { form3Schemas } from "../ValidationSchema/Schema";
 import YellowSubmitButton from "@/components/buttons/yellowSubmitButton/YellowSubmitButton";
-import "./form3.scss"
+import "./form3.scss";
 
 const Form3 = () => {
   const initialValue = {
@@ -29,10 +29,13 @@ const Form3 = () => {
           onChange={handleChange}
           value={values.email}
         />
-        <p className="error">{touched.email  && errors.email && errors.email}</p>
+        <p className="error">{touched.email && errors.email && errors.email}</p>
       </div>
       <div className="submit_btn">
-        <YellowSubmitButton btn_text={"Subscribe"} />
+        {/* <YellowSubmitButton btn_text={"Subscribe"} /> */}
+        <button type="submit" className="yello_btn">
+          <span className="button-content">Subscribe</span>
+        </button>
       </div>
     </form>
   );

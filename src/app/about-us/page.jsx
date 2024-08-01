@@ -13,7 +13,21 @@ const AboutUs = () => {
       <AboutUsHero />
       <AboutUsEstablishment />
       <AboutUsVision />
-      <AboutUsWhyUs />
+      <AboutUsWhyUs
+        heading={"Why Us"}
+        cardOneText={
+          "We are known for providing high density laminates with unparalleled services in terms of quality and reliability. We are known for providing high density laminates with unparalleled services in terms of quality and reliability."
+        }
+        cardTwoText={
+          "We are known for providing high density laminates with unparalleled services in terms of quality and reliability. We are known for providing high density laminates with unparalleled services in terms of quality and reliability."
+        }
+        cardThreeText={
+          "We are known for providing high density laminates with unparalleled services in terms of quality and reliability. We are known for providing high density laminates with unparalleled services in terms of quality and reliability."
+        }
+        cardFourText={
+          "We are known for providing high density laminates with unparalleled services in terms of quality and reliability. We are known for providing high density laminates with unparalleled services in terms of quality and reliability."
+        }
+      />
       <div className="Form_Page">
         <SocialPage socialMediaImgSrc={SocialMediaImg} />
         <Form />

@@ -1,11 +1,11 @@
 import AboutUsButton from "../buttons/aboutUsButton/aboutUsButton";
 import "./aboutUsWhyUs.scss";
-export default function AboutUsWhyUs() {
+export default function AboutUsWhyUs({heading , cardOneText , cardTwoText , cardThreeText , cardFourText}) {
   return (
     <>
       <div className="whyUsContainer">
         <div className="whyUsWrapper">
-          <div className="whyusHeader">Why us</div>
+          <div className="whyusHeader">{heading}</div>
           <div className="whyUsCardWrapper">
             <div className="cardouter_1">
               <div className="cardSvg">
@@ -26,10 +26,7 @@ export default function AboutUsWhyUs() {
               <div className="cardinner">
                 <div className="card_header">20+</div>
                 <div className="card_description">
-                  We are known for providing high density laminates with
-                  unparalleled services in terms of quality and reliability. We
-                  are known for providing high density laminates with
-                  unparalleled services in terms of quality and reliability.
+                  {cardOneText}
                 </div>
                 <div className="card-button">
                   <AboutUsButton text={"Legacy"} />
@@ -57,18 +54,13 @@ export default function AboutUsWhyUs() {
                   <AboutUsButton text={"categories"} />
                 </div>
                 <div className="card_description">
-                  We are known for providing high density laminates with
-                  unparalleled services in terms of quality and reliability. We
-                  are known for providing high density laminates with
-                  unparalleled services in terms of quality and reliability.
+                  
+                  {cardTwoText}
                 </div>
               </div>
               <div className="cardinner_2">
                 <div className="card_description">
-                  We are known for providing high density laminates with
-                  unparalleled services in terms of quality and reliability. We
-                  are known for providing high density laminates with
-                  unparalleled services in terms of quality and reliability.
+                  {cardThreeText}
                 </div>
                 <div className="card-button">
                   <AboutUsButton text={"innovation"} />
@@ -94,10 +86,7 @@ export default function AboutUsWhyUs() {
                 </div>
                 <div className="card_header">5+</div>
                 <div className="card_description">
-                  We are known for providing high density laminates with
-                  unparalleled services in terms of quality and reliability. We
-                  are known for providing high density laminates with
-                  unparalleled services in terms of quality and reliability.
+                 {cardFourText}
                 </div>
                 <div className="card-button">
                   <AboutUsButton text={"certificates"} />
