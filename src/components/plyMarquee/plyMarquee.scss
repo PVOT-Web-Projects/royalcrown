@@ -1,45 +1,32 @@
 @import "../../app/variables.scss";
 
 .ply_marquee {
-  .filter_wrapper {
-    display: flex;
-    justify-content: space-between;
-    // padding: 0 150px 0 60px;
-    padding: 0 114px 0 125px;
-    @media(max-width: 1199px){
-      padding: 0 114px 0 80px;
+  background-color: #FFF5ED;
+  padding: 100px 0;
+  .MarqueeTextFirst{
+    font-size: 45px;
+    padding: 20px 70px;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .MarqueeTextSecond{
+    font-size: 22px;
+    padding: 0px 100px;
+    font-weight: 300;
+    width: 45%;
+    @media(min-width: 1500px){
+      width: 35%;
     }
-    @media (max-width: 991px) {
-      padding: 0 60px 0 40px;
-    }
-    @media (max-width: 767px) {
-      padding: 0 40px 0 20px;
-      flex-wrap: wrap;
-    }
-    @media (max-width: 575px) {
-      padding: 0 20px 0 20px;
-    }
-    .filter {
-      width: 22%;
-      border-bottom: 1px solid $white;
-      font-size: larger;
-      @media (max-width: 767px) {
-        width: 48%;
-        margin: 0 0 40px;
-      }
-      .p-dropdown.p-component.p-inputwrapper {
-        padding: 0 0 10px;
-        justify-content: space-between;
-        width: 95%;
-      }
-    }
-
-    .r3f_marquee{
-      min-width:0 !important
+    @media(max-width: 1200px){
+      width: 55%;
     }
   }
-
-
+  .MarqueeTextSecondInner{
+    padding-top: 1rem;
+  }
+  .MarqueMainSection{
+    // padding-left: 100px;
+  }
   .ply_list {
     padding: 150px 0 100px;
     @media (max-width: 991px) {
@@ -57,14 +44,20 @@
       }
       &:hover {
         .ply_info {
-          transform: translateY(-20px);
+          transform: translateY(120px);
           opacity: 1;
         }
       }
-
       img{
         width:100%
 
+      }
+      &.top1 {
+        transform: translateY(-40px);
+      }
+
+      &.bottom1 {
+        transform: translateY(40px);
       }
 
       .ply_info {
@@ -74,11 +67,13 @@
         transform: translateY(80px);
         opacity: 0;
         transition: all 0.4s;
-        position: relative;
-        z-index: -1;
+        position: absolute;
+        margin-left: 20px;
+        // z-index: -1;
         .info_left {
-          border: 1px solid $white;
+          border: 1px solid white;
           padding: 5px 20px;
+          color: white;
           .num {
             font-size: 20px;
             text-transform: uppercase;
@@ -90,9 +85,10 @@
           }
         }
         .info_right {
-          border-left: 1px solid $white;
+          border-left: 1px solid white;
           margin-left: 12px;
           padding: 5px 0 5px 11px;
+          color: white;
           .ply_name {
             font-size: 20px;
             text-transform: uppercase;
@@ -128,7 +124,7 @@ ul.p-dropdown-items {
     }
 
     &:hover {
-      background-color: $yellow;
+      background-color: red;
     }
   }
 }
