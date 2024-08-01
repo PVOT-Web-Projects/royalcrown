@@ -1,0 +1,92 @@
+.productHeroContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 200px 200px;
+
+    @media (max-width : 1400px) {
+        padding: 200px 150px;
+    }
+
+    @media (max-width : 991px) {
+        padding: 100px 50px;
+    }
+
+    .productHeroWrapper {
+        display: flex;
+        // justify-content: space-between;
+        gap: 15rem;
+
+        @media (max-width : 991px) {
+            flex-direction: column-reverse;
+            justify-content: center;
+            align-items: center;
+            gap: 5rem;
+        }
+
+        .productHeroSection1 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            width: 50%;
+
+            @media (max-width : 991px) {
+                width: 100%;
+            }
+
+            .heroSectionHeader {
+                padding-left: 200px;
+                font-size: 80px;
+                text-transform: uppercase;
+                letter-spacing: 5px;
+
+                @media (max-width : 1400px) {
+                    padding-left: 150px;
+                }                
+                @media (max-width : 1110px) {
+                    padding-left: 100px;
+                }
+
+                @media (max-width : 991px) {
+                    padding-left: 0;
+                }
+
+                @media (max-width : 575px) {
+                    font-size: 60px;
+                }                
+                @media (max-width : 350px) {
+                    font-size: 50px;
+                }
+
+                .section1header1 {
+                    font-family: "made_mirage_thin";
+                }
+
+                .section1header2 {
+                    font-family: "made_mirage_thin";
+                    padding-left: 100px;
+
+                    @media (max-width : 991px) {
+                        padding-left: 0;
+                    }
+                }
+            }
+            .heroSectionDescription{
+                font-size: 23px;
+            }
+        }
+        .productHeroImage{
+            max-width: 100%;
+            display: block;
+            height: auto;
+            margin: 0 auto;
+        }
+    }
+    .productHeroFooter{
+        margin-top: 20px;
+        cursor: pointer;
+    }
+}

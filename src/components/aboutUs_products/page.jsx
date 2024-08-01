@@ -4,6 +4,9 @@ import "./aboutUs_product.scss";
 import Image from "next/image";
 import products from "./productData.js";
 import { Dropdown } from "primereact/dropdown";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 
 const Page = () => {
   const [selectedBrand, setSelectedBrand] = useState("all");
@@ -14,6 +17,14 @@ const Page = () => {
   const [selectedThickness, setSelectedThickness] = useState("all");
   const [selectedColor, setSelectedColor] = useState("all");
   const [isMobile, setIsMobile] = useState(0);
+  const [tabUrl, setTabUrl] = useState("");
+  // const router = useRouter();
+  const pathName = usePathname();
+
+  useEffect(() => {
+    const hash = typeof window !== "undefined" ? window.location.hash : "";
+    setTabUrl(pathName + hash);
+  }, [pathName]);
 
   const brands = [
     { label: "All Brands", value: "all" },
@@ -75,7 +86,7 @@ const Page = () => {
   ];
 
   const mappedColor = useMemo(() => {
-    return color.map((c) => ({ ...c, className: 'myOptionClassName' }));
+    return color.map((c) => ({ ...c, className: "myOptionClassName" }));
   }, [color]);
 
   const handleBrandChange = (e) => {
@@ -107,14 +118,29 @@ const Page = () => {
   };
 
   const filteredProducts = products.filter((product) => {
-    const brandMatch = selectedBrand === "all" || product.category === selectedBrand;
-    const typeMatch = selectedType === "all" || product.categoryType === selectedType;
-    const colorMatch = selectedColor === "all" || product.categoryColor === selectedColor;
-    const categoryMatch = selectedCategory === "all" || product.categoryValue === selectedCategory;
-    const finishMatch = selectedFinish === "all" || product.categoryFinish === selectedFinish;
-    const sizeMatch = selectedSize === "all" || product.categorySize === selectedSize;
-    const thicknessMatch = selectedThickness === "all" || product.categoryThickness === selectedThickness;
-    return brandMatch && typeMatch && categoryMatch && finishMatch && sizeMatch && thicknessMatch;
+    const brandMatch =
+      selectedBrand === "all" || product.category === selectedBrand;
+    const typeMatch =
+      selectedType === "all" || product.categoryType === selectedType;
+    const colorMatch =
+      selectedColor === "all" || product.categoryColor === selectedColor;
+    const categoryMatch =
+      selectedCategory === "all" || product.categoryValue === selectedCategory;
+    const finishMatch =
+      selectedFinish === "all" || product.categoryFinish === selectedFinish;
+    const sizeMatch =
+      selectedSize === "all" || product.categorySize === selectedSize;
+    const thicknessMatch =
+      selectedThickness === "all" ||
+      product.categoryThickness === selectedThickness;
+    return (
+      brandMatch &&
+      typeMatch &&
+      categoryMatch &&
+      finishMatch &&
+      sizeMatch &&
+      thicknessMatch
+    );
   });
 
   useEffect(() => {
@@ -130,7 +156,23 @@ const Page = () => {
   return (
     <>
       <div className="first_top">
-        <div id="sticky_top" className="products_name">EXPLORE PRODUCTS</div>
+        <div id="sticky_top" className="products_name">
+          <div>Explore Collection</div>
+          <div className="products-tabs" id="sticky_top">
+            <div className={`tab-item ${tabUrl === "/" ? "active" : ""}`}>
+              <Link href="/">Explore Products</Link>
+            </div>
+            <div className={`tab-item ${tabUrl === "/#tab1" ? "active" : ""}`}>
+              <Link href="/#tab1">Explore Products</Link>
+            </div>
+            <div className={`tab-item ${tabUrl === "/#tab2" ? "active" : ""}`}>
+              <Link href="/#tab2">Explore Products</Link>
+            </div>
+            <div className={`tab-item ${tabUrl === "/#tab3" ? "active" : ""}`}>
+              <Link href="/#tab3">Explore Products</Link>
+            </div>
+          </div>
+        </div>
 
         <div className="supply">
           <div id="sticky" className="one">

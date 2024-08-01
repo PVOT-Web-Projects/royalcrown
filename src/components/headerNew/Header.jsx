@@ -37,7 +37,7 @@ const Header = () => {
             }}
             viewport={{ once: true }}
           >
-            <LinkHover url={"/about-us"} text={"About Us"} fontSize={"16px"} isHomePage={isHome}/>
+            <LinkHover url={"/products"} text={"Products"} fontSize={"16px"} isHomePage={isHome}/>
           </motion.li>
           <motion.li
             initial={{
@@ -51,9 +51,9 @@ const Header = () => {
             }}
             viewport={{ once: true }}
           >
-            <LinkHover url={"/products"} text={"Products"} fontSize={"16px"} isHomePage={isHome}/>
+            <LinkHover url={"/about-us"} text={"About Us"} fontSize={"16px"} isHomePage={isHome}/>
           </motion.li>
-          <motion.li
+          {/* <motion.li
             initial={{
               opacity: 0,
             }}
@@ -66,7 +66,7 @@ const Header = () => {
             viewport={{ once: true }}
           >
             <LinkHover url={"#"} text={"What's New"} fontSize={"16px"} isHomePage={isHome}/>
-          </motion.li>
+          </motion.li> */}
         </ul>
         <motion.div
           className="logo"

@@ -6,6 +6,9 @@ import "./aboutUsHero.scss";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image4 from "../../images/image_15_small.jpg";
+import Image5 from "../../images/image 48.jpg";
+import Image6 from "../../images/laminate - about-us 6.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,7 +19,7 @@ export default function AboutUsHero() {
   // useEffect(() => {
   //   const heroSectionElement = heroSection.current;
   //   const imageSectionElement = imageSection.current;
-    
+
   //   const scrollAnimation = gsap.fromTo(
   //     imageSectionElement,
   //     {
@@ -59,6 +62,42 @@ export default function AboutUsHero() {
             <div className="aboutUsHeroImage3">
               <Image src={Image3} className="heroImage" />
             </div>
+          </div>
+        </div>
+      </div>
+      <div className="elegance-container">
+        <div className="text-section">
+          <div className="text-section-header">
+            <div className="text-section-header-inner">
+              <div className="header_text">
+                <div>Where elegance meets desire</div>
+              </div>
+            </div>
+            <div className="image-wrapper-1">
+              <Image src={Image4} alt="Image 1" className="image-1" />
+            </div>
+          </div>
+          <div className="text-section-content">
+            <div className="text-section-inner">
+              <div>
+                Customers are at the heart of our unique business model. Royal
+                Crown thrives at providing royal service to everyone. Our work
+                is all about our customers and we believe their experience
+                should be worth a thousand memories. However, we do have a tiny
+                tale to tell, a sneak peek to our story.
+              </div>
+              <div className="text-section-inner-footer">
+                See our story
+              </div>
+            </div>
+            <div className="image-wrapper-2">
+              <Image src={Image6} alt="Image 3" />
+            </div>
+          </div>
+        </div>
+        <div className="image-section">
+          <div className="image-wrapper-3">
+            <Image src={Image5} alt="Image 2" />
           </div>
         </div>
       </div>

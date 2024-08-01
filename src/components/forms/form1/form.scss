@@ -13,6 +13,10 @@
   margin-bottom: 50px;
   font-size: 50px;
   width: 78%;
+
+  @media (max-width : 575px) {
+    font-size: 40px;
+  }
 }
 
 .form_field_flex {
@@ -54,7 +58,7 @@ input:-webkit-autofill:active {
   width: 100%;
   border: none;
   color: white;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid white;
   padding: 8px 0;
   background-color: transparent;
   outline: none;
@@ -119,4 +123,9 @@ input:-webkit-autofill:active {
       background-color: #555;
     }
   }
+}
+.form_footer{
+  margin-top: 30px;
+  font-size: 21px;
+  width: 60%;
 }
