@@ -5,16 +5,15 @@ const TimelineHome = () => {
   return (
     <div className="container">
       <div className="content">
-        <div className="text">We are known for providing high density laminates with unparalleled services in terms of quality and reliability.</div>
-        <div className="circle"></div>
+        <div className="Timelinetext">We are known for providing high density laminates with unparalleled services in terms of quality and reliability. We are known for providing high density laminates with unparalleled services in terms of quality and reliability.</div>
+        <div className="Timelinecircle"></div>
       </div>
-      <div className="content">
-        <div className="circle"></div>
-        {/* <div className="text">We are known for providing high density laminates with unparalleled services in terms of quality and reliability.</div> */}
-      </div>
-      <div className="content">
-        <div className="text">We are known for providing high density laminates with unparalleled services in terms of quality and reliability.</div>
-        <div className="circle"></div>
+      <div className="content1">
+        <div className="Timelinecircle"></div>
+        </div>
+      <div className="content2">
+        <div className="Timelinetext">We are known for providing high density laminates with unparalleled services in terms of quality and reliability.</div>
+        <div className="Timelinecircle"></div>
       </div>
     </div>
   );
