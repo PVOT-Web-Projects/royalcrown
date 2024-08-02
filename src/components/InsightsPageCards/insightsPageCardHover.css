@@ -1,5 +1,5 @@
 .modalContainer {
-  height: 250px;
+  height: 320px;
   width: 300px;
   position: absolute;
   /* background-color: white; */
@@ -21,12 +21,12 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 20px;
+  /* padding: 20px; */
 }
 .hoverImage img {
-  height: auto;
+  height: 100%;
   max-width: 100%;
-  border-radius: 12px;
+  /* border-radius: 12px; */
 }
 .cursor,
 .cursorLabel {
