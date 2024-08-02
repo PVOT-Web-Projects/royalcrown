@@ -1,0 +1,73 @@
+$primary-color: #F8EDE6;
+$text-color: #593C28;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial, sans-serif';
+  background-color: $primary-color;
+  color: $text-color;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 20px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  text-align: center;
+//   justify-content: center;
+//   margin: 20px 0;
+  width: 100%;
+
+  &:nth-child(odd) {
+    .text {
+      order: 1;
+    }
+    // .circle {
+    //   order: 1;
+    // }
+  }
+
+  &:nth-child(even) {
+    .text {
+      order: 2;
+    }
+    .circle {
+      order: 1;
+    }
+  }
+}
+
+.text {
+  width: 40%;
+  padding: 20px;
+  text-align: justify;
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  border: 2px solid $text-color;
+  border-radius: 50%;
+  margin: 0 20px;
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+
+    .text,
+    .circle {
+      order: initial;
+      margin: 10px 0;
+    }
+  }
+}
