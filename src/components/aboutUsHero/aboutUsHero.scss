@@ -1,5 +1,6 @@
 @import "../../app/variables.scss";
 @import "../../fonts/fonts.scss";
+
 .aboutUsHeroWrapper {
   padding: 100px 0;
   display: flex;
@@ -23,11 +24,8 @@
       margin-top: 20rem;
 
       .aboutUsHeroHeader1 {
-        // font-weight: ;
-
         @media (max-width: 575px) {
           font-size: 60px;
-
         }
       }
 
@@ -75,7 +73,7 @@
           left: 35%;
           z-index: 1;
 
-          @media (min-width : 1400px) {
+          @media (min-width: 1400px) {
             top: 35%;
             left: 25%;
           }
@@ -89,49 +87,84 @@
     padding: 50px 30px;
     position: relative;
 
+    @media (max-width: 991px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     .text-section {
       width: 70%;
       display: flex;
       flex-direction: column;
-      // gap: 5rem;
       padding: 0 50px;
+
+      @media (max-width: 991px) {
+        gap: 7rem;
+      }
 
       .text-section-header {
         text-transform: uppercase;
         display: flex;
-        
+
+        @media (max-width: 991px) {
+          flex-direction: column;
+          gap: 5rem;
+          justify-content: center;
+          align-items: center;
+        }
+
         .header_text {
           font-family: "made_mirage_thin";
           font-size: 60px;
           position: relative;
           display: inline-block;
-        
+
           @media (min-width: 1500px) {
             font-size: 80px;
           }
-        
-          &::before {
-            content: "";
+
+          @media (max-width: 991px) {
+            text-align: center;
+          }
+
+          @media (max-width : 768px) {
+            font-size: 50px;
+          }
+
+          @media (max-width : 575px) {
+            font-size: 40px;
+          }
+
+          @media (max-width : 475px) {
+            font-size: 30px;
+          }
+
+          .animated-border {
             position: absolute;
-            bottom: 0; /* Align with text */
-            left: -40px; /* Start from the extreme left side */
-            width: 90%;
-            height: 1px; /* Border thickness */
-            background-color: $white; /* Border color */
+            bottom: -10px;
+            left: 0;
+            height: 1px;
+            background-color: $white; // Change this to the desired color
+            width: 0;
           }
         }
-        
+
         .image-wrapper-1 {
           position: relative;
           width: 300px;
           height: auto;
           transform: translate(10px, -210px);
-          
+
           .image-1 {
-            // Uncomment if needed
-            transform: translate(10px -210px);
-            // position: absolute;
-            // bottom: 10px;
+            max-width: 100%;
+            display: block;
+            height: auto;
+            margin: 0 auto;
+          }
+
+          @media (max-width: 991px) {
+            transform: translate(0px, 0px);
           }
         }
       }
@@ -140,7 +173,7 @@
         display: flex;
         font-size: 21px;
 
-        .text-section-inner-footer{
+        .text-section-inner-footer {
           font-family: "made_mirage_bold";
           padding-top: 3rem;
           font-size: 25px;
@@ -148,8 +181,13 @@
           border-bottom: 1px solid $white;
           max-width: max-content;
         }
-        .image-wrapper-2{
+
+        .image-wrapper-2 {
           transform: translate(10px, -100px);
+
+          @media (max-width: 768px) {
+            display: none;
+          }
         }
       }
     }
@@ -157,7 +195,9 @@
     .image-section {
       display: flex;
 
+      @media (max-width: 991px) {
+        display: none;
+      }
     }
   }
-
 }

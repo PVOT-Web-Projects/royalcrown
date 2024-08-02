@@ -16,7 +16,7 @@ export default function Products() {
                     <motion.div
                         className="productDescriptionBorder"
                         initial={{ width: '0%' }}
-                        animate={{ width: '60%' }} // Adjust this width to fit your design
+                        animate={{ width: '100%' }} // Adjust this width to fit your design
                         transition={{ duration: 1, ease: 'easeOut' }}
                     />
                     <div className="productDescriptionHeader">

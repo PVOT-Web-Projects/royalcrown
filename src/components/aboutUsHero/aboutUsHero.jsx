@@ -9,40 +9,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image4 from "../../images/image_15_small.jpg";
 import Image5 from "../../images/image 48.jpg";
 import Image6 from "../../images/laminate - about-us 6.jpg";
+import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutUsHero() {
-  // const heroSection = useRef(null);
-  // const imageSection = useRef(null);
-
-  // useEffect(() => {
-  //   const heroSectionElement = heroSection.current;
-  //   const imageSectionElement = imageSection.current;
-
-  //   const scrollAnimation = gsap.fromTo(
-  //     imageSectionElement,
-  //     {
-  //       yPercent: "0%",
-  //     },
-  //     {
-  //       yPercent: "-60%",
-  //       ease: "power1.out",
-  //       scrollTrigger: {
-  //         trigger: heroSectionElement,
-  //         pin: true,
-  //         scrub: true,
-  //         start: "top top",
-  //         end: "top top",
-  //         pinSpacing: false,
-  //       },
-  //     }
-  //   );
-  //   return() => {
-  //       scrollAnimation.kill()
-  //   }
-  // }, []);
-
   return (
     <div className="aboutUsHeroWrapper">
       <div className="aboutUsHeroContainer">
@@ -71,6 +42,12 @@ export default function AboutUsHero() {
             <div className="text-section-header-inner">
               <div className="header_text">
                 <div>Where elegance meets desire</div>
+                <motion.div
+                  className="animated-border"
+                  initial={{ width: 0 }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 2, ease: "easeInOut" }}
+                />
               </div>
             </div>
             <div className="image-wrapper-1">
@@ -86,9 +63,7 @@ export default function AboutUsHero() {
                 should be worth a thousand memories. However, we do have a tiny
                 tale to tell, a sneak peek to our story.
               </div>
-              <div className="text-section-inner-footer">
-                See our story
-              </div>
+              <div className="text-section-inner-footer">See our story</div>
             </div>
             <div className="image-wrapper-2">
               <Image src={Image6} alt="Image 3" />

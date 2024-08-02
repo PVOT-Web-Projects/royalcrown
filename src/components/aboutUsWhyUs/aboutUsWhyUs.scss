@@ -7,6 +7,10 @@
     padding: 100px 150px;
     flex-direction: column;
 
+    @media (max-width : 1025px) {
+        padding: 100px 50px;
+    }
+
     .whyUsWrapper {
         width: 100%;
         max-width: 1200px;
