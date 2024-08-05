@@ -14,14 +14,16 @@
     align-items: center;
     flex-direction: column;
     gap: 5rem;
-    padding: 0 0 100px 0;
 
     .aboutUsHeroHeader {
       text-align: center;
       text-transform: uppercase;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
       font-size: 80px;
-      margin-bottom: 2rem;
-      margin-top: 20rem;
+      height: 100vh;
 
       .aboutUsHeroHeader1 {
         @media (max-width: 575px) {
@@ -93,8 +95,8 @@
 
           @media (max-width : 475px) {
             top: 30%;
-            left: 50%;
-            z-index: 3;
+            left: 25%;
+            z-index: 2;
           }
         }
 
@@ -126,7 +128,7 @@
 
   .elegance-container {
     display: flex;
-    padding: 50px 30px;
+    padding: 100px 30px;
     position: relative;
 
     @media (max-width: 991px) {
@@ -196,7 +198,7 @@
           position: relative;
           width: 300px;
           height: auto;
-          transform: translate(10px, -210px);
+          transform: translate(10px, -210px) !important;
 
           .image-1 {
             max-width: 100%;
@@ -206,7 +208,7 @@
           }
 
           @media (max-width: 991px) {
-            transform: translate(0px, 0px);
+            transform: translate(0px, 0px) !important;
           }
         }
       }
@@ -225,7 +227,7 @@
         }
 
         .image-wrapper-2 {
-          transform: translate(10px, -100px);
+          transform: translate(10px, -100px) !important;
 
           @media (max-width: 768px) {
             display: none;

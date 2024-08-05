@@ -22,6 +22,11 @@
   @media (max-width : 1120px) {
     margin: 20px 0px 20px 14%;
   }
+
+  @media (max-width : 600px) {
+    display: flex !important;
+    flex-direction: column-reverse !important;
+  }
 }
 
 .content1 {
@@ -48,6 +53,13 @@
 
   @media (max-width : 1120px) {
     margin: 20px 90% 20px 0;
+  }
+
+  @media (max-width : 600px) {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+    align-items: center !important;
   }
 }
 
@@ -89,6 +101,11 @@
     height: 150px;
   }
 
+  @media (max-width : 520px) {
+    width: 100px;
+    height: 100px;
+  }
+
   &::after {
     position: absolute;
     content: "";
@@ -114,6 +131,11 @@
   @media (max-width : 1120px) {
     width: 150px;
     height: 150px;
+  }
+
+  @media (max-width : 520px) {
+    width: 100px;
+    height: 100px;
   }
 
   &::after {
@@ -150,6 +172,11 @@
   @media (max-width : 1120px) {
     width: 150px;
     height: 150px;
+  }
+
+  @media (max-width : 520px) {
+    width: 100px;
+    height: 100px;
   }
 
   &::after {
