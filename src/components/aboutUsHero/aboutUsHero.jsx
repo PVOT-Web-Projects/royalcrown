@@ -68,7 +68,7 @@ export default function AboutUsHero() {
               <Image src={Image3} className="heroImage" />
             </motion.div>
           </div>
-        </div>
+        </div> 
       </div>
       <div className="elegance-container">
         <div className="text-section">
