@@ -11,6 +11,7 @@ import ThreeSlider from "@/components/threedslider/page";
 import NewRevealText from "@/components/newRevel/page";
 import PlyMarquee from "@/components/plyMarquee/PlyMarquee";
 import ServicesPageCard from "@/components/InsightsPageCards/insightsPageCards";
+import TimelineHome from "@/components/timelinehome/page";
 
 export default function Home() {
   const paragraph =
@@ -25,6 +26,7 @@ export default function Home() {
       <RoyalCrownSlider />
       <ServicesPageCard />
       <Certification />
+      <TimelineHome />
       <div className="Form_Page">
         <SocialPage socialMediaImgSrc={SocialMediaImg} />
         <Form />

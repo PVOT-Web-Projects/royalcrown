@@ -208,7 +208,7 @@
     padding-bottom: 5rem;
   }
   .timeline_outer{
-    padding: 50px 20px 200px 20px;
+    padding: 50px 20px 280px 20px;
   }
   .line {
     position: absolute;
@@ -218,11 +218,12 @@
     width: 2px;
     top: 135px;
     bottom: -200px;
-    border-right: 2px solid #0f8a83;
+    border-right: 2px solid black;
   }
 
   .timeline_image {
     height: 100%;
+    margin-top: 3rem;
   }
 
   .bead_outer {
@@ -272,6 +273,9 @@
 }
 
 @media (max-width: 767px) {
+  .timeline_main_outer{
+    margin-top: 0;
+  }
   .line {
     position: absolute;
     z-index: 1;
@@ -280,7 +284,7 @@
     width: 2px;
     top: 63px;
     bottom: -168px;
-    border-right: 2px solid #0f8a83;
+    border-right: 2px solid black;
   }
 
   .timeline_image {
@@ -340,11 +344,17 @@
     margin-top: 0;
     align-items: center;
     min-height: 220px;
-    margin-bottom: 15rem;
+    margin-bottom: 18rem;
   }
 }
 
 @media (max-width: 575px) {
+  .establish_header{
+    font-size: 40px;
+  }
+  .timeline_outer{
+    padding: 50px 30px 200px 30px;
+  }
   .line {
     position: absolute;
     z-index: 1;
@@ -353,7 +363,8 @@
     width: 2px;
     top: 63px;
     bottom: -168px;
-    border-right: 2px solid #0f8a83;
+    // border-right: 2px solid #0f8a83;
+    border-right: 2px solid black;
   }
 
   .timeline_comment {
@@ -367,10 +378,11 @@
   .timeline_image {
     height: 100%;
     width: 65%;
+    margin-top: 5rem;
   }
 
   .bead_outer {
-    left: 5%;
+    left: 7%;
     display: flex;
     position: absolute;
     justify-content: center;
@@ -412,20 +424,35 @@
     left: 28%;
   }
 
-  .section:last-child .content {
-    top: 105%;
+  .section{
+    margin-bottom: 16rem;
   }
 
-  .section:nth-child(5) .content {
-    top: 86%;
-  }
+  // .section:last-child .content {
+  //   top: 105%;
+  // }
 
-  .section:nth-child(6) .content {
-    top: 90%;
-  }
+  // .section:nth-child(5) .content {
+  //   top: 86%;
+  // }
 
-  .section:nth-child(10) .content {
-    top: 90%;
+  // .section:nth-child(6) .content {
+  //   top: 90%;
+  // }
+
+  // .section:nth-child(10) .content {
+  //   top: 90%;
+  // }
+}
+
+@media (max-width : 475px) {
+  .bead_outer{
+    height: 30px;
+    left: 8%;
+    width: 30px;
+  }
+  .establish_header{
+    font-size: 30px;
   }
 }
 

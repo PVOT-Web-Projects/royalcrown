@@ -7,6 +7,10 @@
   padding: 100px 150px;
   flex-direction: column;
 
+  @media (max-width : 1025px) {
+    padding: 100px 50px;
+}
+
   .whyUsWrapper {
       width: 100%;
       max-width: 1200px;
@@ -63,10 +67,9 @@
               position: relative;
 
               &:hover {
-                  background: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+                  background: rgb(250, 249, 246); /* Slightly transparent background */
                   backdrop-filter: blur(10px); /* Blur effect */
                   // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
-                  border: 1px solid rgba(255, 255, 255, 0.18); /* Border to enhance glass effect */
                   transition: all 0.3s ease-in-out;
 
               }
@@ -78,7 +81,7 @@
 
               &:hover {
                   // backdrop-filter:;
-                  background-color: white;
+                  background-color: rgb(250, 249, 246);
                   // backdrop-filter: blur(2px);
                   transition: all 0.3s ease-in-out;
               }
@@ -112,7 +115,7 @@
 
                   &:hover {
                       // backdrop-filter:;
-                      background-color: white;
+                      background-color: rgb(250, 249, 246);
                       // backdrop-filter: blur(2px);
                       transition: all 0.3s ease-in-out;
                   }
@@ -123,7 +126,7 @@
 
                   &:hover {
                       // backdrop-filter:;
-                      background-color: white;
+                      background-color: rgb(250, 249, 246);
                       // backdrop-filter: blur(2px);
                       transition: all 0.3s ease-in-out;
                   }

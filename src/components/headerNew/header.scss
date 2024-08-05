@@ -16,6 +16,9 @@ header {
       display: none;
     }
     .logo {
+      @media(min-width: 1500px){
+      padding-left: 155px;
+      }
       img {
         max-width: 100%;
         display: block;
