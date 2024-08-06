@@ -25,7 +25,7 @@ export default function Home() {
       <NewRevealText paragraph={paragraph} />
       <PlyMarquee />
       <RoyalCrownSlider />
-      {/* <ServicesPageCard /> */}
+      <ServicesPageCard />
       {/* <Certification /> */}
       {/* <TimelineHome /> */}
       {/* <div className="Form_Page">
