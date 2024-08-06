@@ -2,13 +2,16 @@
 @import "../../fonts/fonts.scss";
 
 .aboutUsHeroWrapper {
-  padding: 0px 0 0px;
+  padding: 220px 0 0px;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border-bottom: 1px solid #5b3524;
+//   border-bottom: 1px solid #5b3524;
+  @media(max-width: 768px){
+    padding: 0;
+  }
 
   .elegance-container {
     display: flex;
@@ -43,7 +46,7 @@
         }
 
         .header_text {
-          font-family: "made_mirage_thin";
+          font-family: "made_mirage_thin" !important;
           font-size: 60px;
           position: relative;
           display: inline-block;
@@ -69,6 +72,11 @@
 
           @media (max-width: 475px) {
             font-size: 30px;
+          }
+          .HeaderTextInner{
+            letter-spacing: 2px;
+            font-weight: 400;
+            font-family: "made_mirage_thin";
           }
 
           .animated-border {

@@ -20,6 +20,7 @@ export default function HomeHeroSection() {
             <div className="text-section-header-inner">
               <div className="header_text">
                 <motion.div
+                className="HeaderTextInner"
                   initial={{ x: -100, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
                   transition={{ duration: 1 }}
