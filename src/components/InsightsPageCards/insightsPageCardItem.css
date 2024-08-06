@@ -93,9 +93,9 @@
   }
 }
 @media (max-width: 425px) {
-  .project{
+  /* .project{
     padding: 30px 20px;
-  }
+  } */
   .MainInsightPage {
     padding: 0 20px;
   }
@@ -105,5 +105,8 @@
   .InsightsTextInner {
     font-size: 40px !important;
     padding: 40px 20px !important;
+  }
+  .project {
+    padding: 30px 20px;
   }
 }

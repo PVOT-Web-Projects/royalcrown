@@ -49,7 +49,7 @@ const projects = [
 const ServicesPageCard = () => {
   const [hoverImage, setHoverImage] = useState({ active: false, index: 0 });
   return (
-    <div className={"servicesPageCard"}>
+    <div className={"servicesPageCard"}>        
       <div className="InsightsTextInner">
         <p>Insights</p>
       </div>

@@ -26,7 +26,7 @@ export default function Home() {
       <PlyMarquee />
       <RoyalCrownSlider />
       <ServicesPageCard />
-      {/* <Certification /> */}
+      <Certification />
       {/* <TimelineHome /> */}
       {/* <div className="Form_Page">
         <SocialPage socialMediaImgSrc={SocialMediaImg} />
