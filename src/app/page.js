@@ -12,6 +12,7 @@ import NewRevealText from "@/components/newRevel/page";
 import PlyMarquee from "@/components/plyMarquee/PlyMarquee";
 import ServicesPageCard from "@/components/InsightsPageCards/insightsPageCards";
 import TimelineHome from "@/components/timelinehome/page";
+import AboutUsEstablishment from "@/components/aboutUsEstablishment/aboutUsEstablishment";
 
 export default function Home() {
   const paragraph =
@@ -23,7 +24,7 @@ export default function Home() {
       {/* <ThreeSlider /> */}
       <NewRevealText paragraph={paragraph} />
       <PlyMarquee />
-      {/* <RoyalCrownSlider /> */}
+      <RoyalCrownSlider />
       {/* <ServicesPageCard /> */}
       {/* <Certification /> */}
       {/* <TimelineHome /> */}
