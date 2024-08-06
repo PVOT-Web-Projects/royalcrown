@@ -29,6 +29,8 @@ import {
 import "./newthreedslider.scss";
 import SliderBtn from "@/components/buttons/sliderbtn/Sliderbtn";
 
+
+
 const SwiperComponent = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
