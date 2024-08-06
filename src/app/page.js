@@ -20,17 +20,17 @@ export default function Home() {
   return (
     <main className="main">
       <HeroBanner />
-      <ThreeSlider />
+      {/* <ThreeSlider /> */}
       <NewRevealText paragraph={paragraph} />
       <PlyMarquee />
-      <RoyalCrownSlider />
-      <ServicesPageCard />
-      <Certification />
-      <TimelineHome />
-      <div className="Form_Page">
+      {/* <RoyalCrownSlider /> */}
+      {/* <ServicesPageCard /> */}
+      {/* <Certification /> */}
+      {/* <TimelineHome /> */}
+      {/* <div className="Form_Page">
         <SocialPage socialMediaImgSrc={SocialMediaImg} />
         <Form />
-      </div>
+      </div> */}
     </main>
   );
 }
