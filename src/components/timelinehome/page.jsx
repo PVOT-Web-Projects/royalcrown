@@ -9,7 +9,7 @@ const TimelineHome = () => {
   const scrollRef3 = useRef(null);
 
   return (
-    <div className="container">
+    <div className="Timelinecontainer">
       <div className="content">
         <motion.div
           className="Timelinetext1"

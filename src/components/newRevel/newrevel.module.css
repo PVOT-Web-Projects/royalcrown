@@ -59,9 +59,13 @@
 @media (min-width: 200px) and (max-width: 500px) {
   .paragraph {
     font-size: 7vw;
-    padding: 0rem 1.6rem;
+    padding: 0rem;
+    width: 80%;
   }
   .word {
     margin-right: 11px;
+  }
+  .NewContainer{
+    padding: 70px 0;
   }
 }

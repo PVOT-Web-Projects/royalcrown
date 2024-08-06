@@ -1,5 +1,6 @@
 .MainInsightPage {
   padding: 0 100px;
+  overflow: hidden;
 }
 .project {
   display: flex;
@@ -15,8 +16,8 @@
   border-bottom: 1px solid black;
 }
 
-.project:hover{
-  background-color: #FAEADE;
+.project:hover {
+  background-color: #faeade;
   border-radius: 10px;
 }
 /* .project:hover {
@@ -50,7 +51,7 @@
   font-size: 18px;
 }
 
-@media(max-width: 1300px){
+@media (max-width: 1300px) {
   .MainInsightPage {
     padding: 0 50px;
   }
@@ -73,7 +74,7 @@
 
 @media (max-width: 767px) {
   .project {
-    padding: 30px;
+    padding: 50px 20px;
     flex-direction: column;
     align-items: baseline;
   }
@@ -81,9 +82,31 @@
     width: 100%;
     margin: 0 0 20px;
     padding: 0;
-    font-size: 35px;
+    /* font-size: 35px; */
   }
   .project .InsightsDescription {
     width: 100%;
+  }
+  .InsightsTextInner{
+    font-size: 30px !important;
+    padding: 100px 50px 0 !important;
+  }
+}
+@media (max-width: 425px) {
+  /* .project{
+    padding: 30px 20px;
+  } */
+  .MainInsightPage {
+    padding: 0 20px;
+  }
+  .project .InsightsTitle{
+    font-size: 18px;
+  }
+  .InsightsTextInner {
+    font-size: 40px !important;
+    padding: 40px 10px !important;
+  }
+  .project {
+    padding: 30px 20px;
   }
 }

@@ -46,13 +46,16 @@
             .submit_btn {
               width: 100%;
               display: flex;
-              justify-content: center;
+              // justify-content: center;
             }
           }
 
           .form3_field {
             @media (max-width: 991px) {
               width: 100%;
+            }
+            @media (max-width: 575px) {
+              padding-top: 3rem;
             }
             input {
               @media (max-width: 1399px) {
@@ -147,6 +150,10 @@
               @media (max-width : 768px) {
                 display: flex;
                 gap: 3rem;
+              }
+              @media (max-width : 575px) {
+                flex-direction: column;
+                gap: 0rem;
               }
             }
             .title {
@@ -247,7 +254,7 @@
     // width: 100%;
     
     @media (max-width: 575px){
-      padding-bottom: 2rem;
+      padding-bottom: 0rem;
 
     }
   }
