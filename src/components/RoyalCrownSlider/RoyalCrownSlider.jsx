@@ -17,6 +17,7 @@ import {
   Navigation,
 } from "swiper/modules";
 import testimonial1 from "@/images/Crownsliderimg1.png";
+import { motion } from "framer-motion";
 
 export default function App() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -24,8 +25,26 @@ export default function App() {
   return (
     <div className="royal_crown_slider">
       <div className="RoyalCrownText">
-        <p className="RoyalCrownTextInner">WHY</p>
-        <p className="RoyalCrownTextInnerFirst">ROYAL CROWN</p>
+        <motion.div
+          className="RoyalCrownTextInner"
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          WHY
+        </motion.div>
+        {/* <p className="RoyalCrownTextInner">WHY</p> */}
+        <motion.div
+        className="RoyalCrownTextInnerFirst"
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          ROYAL CROWN
+        </motion.div>
+        {/* <p className="RoyalCrownTextInnerFirst">ROYAL CROWN</p> */}
       </div>
       {/* <ShadowHeading text={"WHY ROYAL CROWN"}/> */}
       <div className="MainContainer" style={{ marginTop: "50px" }}>
@@ -168,7 +187,7 @@ export default function App() {
                 <div className="Carousel_text_maincontent">
                   {/* <p className="Text_InnerText">Unparalled Services</p> */}
                   <p className="carousel_text_Content">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Exercitationem esse quaerat quisquam, cupiditate possimus
                     optio earum quibusdam. Nam aperiam voluptate iste ullam
                     laboriosam maxime asperiores, sequi quibusdam quae.

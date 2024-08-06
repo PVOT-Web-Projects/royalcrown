@@ -9,6 +9,7 @@ import img5 from "@/images/HoverImg1.png";
 import InsightsPageCardHover from "./insightsPageCardHover";
 import InsightsPageCardItem from "./insightsPageCardItem";
 import "./insightscommon.scss";
+import {motion} from "framer-motion";
 const projects = [
   {
     title: "Urban Design Trends with Royal Crown Luxury Laminates Urban Design Trends with Royal Crown Luxury Laminates",
@@ -51,7 +52,16 @@ const ServicesPageCard = () => {
   return (
     <div className={"servicesPageCard"}>        
       <div className="InsightsTextInner">
-        <p>Insights</p>
+      <motion.div
+      className="InsightsTextInner"
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          Insights
+        </motion.div>
+        {/* <p>Insights</p> */}
       </div>
       <div className={"servicesPageCard_wrapper"}>
         {projects.map((project, index) => {
