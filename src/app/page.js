@@ -13,6 +13,8 @@ import PlyMarquee from "@/components/plyMarquee/PlyMarquee";
 import ServicesPageCard from "@/components/InsightsPageCards/insightsPageCards";
 import TimelineHome from "@/components/timelinehome/page";
 import AboutUsEstablishment from "@/components/aboutUsEstablishment/aboutUsEstablishment";
+import AboutUsHero from "@/components/aboutUsHero/aboutUsHero";
+import HomeHeroSection from "@/components/homeHeroSection/page";
 
 export default function Home() {
   const paragraph =
@@ -21,6 +23,7 @@ export default function Home() {
   return (
     <main className="main">
       <HeroBanner />
+      <HomeHeroSection />
       {/* <ThreeSlider /> */}
       <NewRevealText paragraph={paragraph} />
       <PlyMarquee />
@@ -28,6 +31,7 @@ export default function Home() {
       <ServicesPageCard />
       <Certification />
       <TimelineHome />
+
       {/* <div className="Form_Page">
         <SocialPage socialMediaImgSrc={SocialMediaImg} />
         <Form />
