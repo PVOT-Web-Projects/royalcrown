@@ -5,7 +5,6 @@ import Image from "next/image";
 import products from "./productData.js";
 import { Dropdown } from "primereact/dropdown";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { usePathname } from "next/navigation";
 
 const Page = () => {
@@ -16,15 +15,44 @@ const Page = () => {
   const [selectedSize, setSelectedSize] = useState("all");
   const [selectedThickness, setSelectedThickness] = useState("all");
   const [selectedColor, setSelectedColor] = useState("all");
-  const [isMobile, setIsMobile] = useState(0);
-  const [tabUrl, setTabUrl] = useState("");
-  // const router = useRouter();
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+  const [tab, setTab] = useState("");
+  const [currentData, setCurrentData] = useState(products);
   const pathName = usePathname();
 
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
-    setTabUrl(pathName + hash);
+    const fullPath = pathName + hash;
+
+    if (fullPath === "/xylem") {
+      setCurrentData(products.filter((data) => data.category === "Xylem"));
+      setTab("/products#xylem");
+    } else if (fullPath === "/Qbiss") {
+      setCurrentData(products.filter((data) => data.category === "QBliss"));
+      setTab("/products#Qbiss");
+    } else if (fullPath === "/Crown_Xcl") {
+      setCurrentData(products.filter((data) => data.category === "Crown XCL"));
+      setTab("/products#Crown_Xcl");
+    } else if (fullPath === "/Crown") {
+      setCurrentData(
+        products.filter((data) => data.category === "Royal Crown")
+      );
+      setTab("/products#Crown");
+    } else {
+      setCurrentData(products);
+      setTab("");
+    }
   }, [pathName]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const brands = [
     { label: "All Brands", value: "all" },
@@ -117,7 +145,7 @@ const Page = () => {
     setSelectedColor(e.value);
   };
 
-  const filteredProducts = products.filter((product) => {
+  const filteredProducts = currentData.filter((product) => {
     const brandMatch =
       selectedBrand === "all" || product.category === selectedBrand;
     const typeMatch =
@@ -143,15 +171,11 @@ const Page = () => {
     );
   });
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 1024);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const handleTabChange = (newTab) => {
+    setTab(newTab);
+    // Update URL hash
+    window.history.pushState(null, "", newTab);
+  };
 
   return (
     <>
@@ -159,27 +183,46 @@ const Page = () => {
         <div id="sticky_top" className="products_name">
           <div>Explore Collection</div>
           <div className="products-tabs" id="sticky_top">
-            <div className={`tab-item ${tabUrl === "/" ? "active" : ""}`}>
-              <Link href="/">Explore Products</Link>
+            <div
+              className={`tab-item ${tab === "/xylem" ? "active" : ""}`}
+              onClick={() => handleTabChange("/xylem")}
+            >
+              <Link
+                href="/products#xylem"
+                className={tab === "/xylem" ? "active" : ""}
+              >
+                Xylem
+              </Link>
             </div>
-            <div className={`tab-item ${tabUrl === "/#tab1" ? "active" : ""}`}>
-              <Link href="/#tab1">Explore Products</Link>
+            <div
+              className={`tab-item ${tab === "/Qbiss" && "active"}`}
+              onClick={() => handleTabChange("/Qbiss")}
+            >
+              <Link href="/products#Qbiss" className={tab === "/Qbiss" ? "active" : ""}>Qbiss</Link>
             </div>
-            <div className={`tab-item ${tabUrl === "/#tab2" ? "active" : ""}`}>
-              <Link href="/#tab2">Explore Products</Link>
+            <div
+              className={`tab-item ${tab === "/Crown_Xcl" ? "active" : ""}`}
+              onClick={() => handleTabChange("/Crown_Xcl")}
+            >
+              <Link href="/products#Crown_Xcl" className={tab === "/Crown_Xcl" ? "active" : ""}>Crown Xcl</Link>
             </div>
-            <div className={`tab-item ${tabUrl === "/#tab3" ? "active" : ""}`}>
-              <Link href="/#tab3">Explore Products</Link>
+            <div
+              className={`tab-item ${tab === "/Crown" ? "active" : ""}`}
+              onClick={() => handleTabChange("/Crown")}
+            >
+              <Link href="/Products#Crown" className={tab === "/Crown" ? "active" : ""}>Crown</Link>
             </div>
           </div>
         </div>
 
         <div className="supply">
-          <div id="sticky" className="one">
+          <div id="sticky">
             <div className="dropdown1">
-              <label htmlFor="brand-select" className="dropdown-label">
-                SELECT BRAND
-              </label>
+              <div className="dropdown-label">
+                <label htmlFor="brand-select" className="dropdown-label">
+                  SELECT BRAND
+                </label>
+              </div>
               <Dropdown
                 id="brand-select"
                 options={brands}
@@ -191,9 +234,9 @@ const Page = () => {
             </div>
 
             <div className="dropdown1">
-              <label htmlFor="category-select" className="dropdown-label">
-                SELECT CATEGORY
-              </label>
+              <div className="dropdown-label">
+                <label htmlFor="category-select">SELECT CATEGORY</label>
+              </div>
               <Dropdown
                 id="category-select"
                 options={categories}
@@ -205,9 +248,9 @@ const Page = () => {
             </div>
 
             <div className="dropdown1">
-              <label htmlFor="type-select" className="dropdown-label">
-                SELECT TYPE
-              </label>
+              <div className="dropdown-label">
+                <label htmlFor="type-select">SELECT TYPE</label>
+              </div>
               <Dropdown
                 id="type-select"
                 options={types}
@@ -219,17 +262,16 @@ const Page = () => {
             </div>
 
             <div className="dropdown1">
-              <label htmlFor="color-select" className="dropdown-label">
-                SELECT COLOR
-              </label>
+              <div className="dropdown-label">
+                <label htmlFor="color-select">SELECT COLOR</label>
+              </div>
               {isMobile ? (
                 <Dropdown
-                  id="color-select"
+                  className="color-select"
                   options={mappedColor}
                   value={selectedColor}
                   onChange={handleColorChange}
                   placeholder="Select a Color"
-                  className="color-select"
                 />
               ) : (
                 <div className="color_dropdown">
@@ -246,9 +288,9 @@ const Page = () => {
             </div>
 
             <div className="dropdown1">
-              <label htmlFor="finish-select" className="dropdown-label">
-                SELECT FINISH
-              </label>
+              <div className="dropdown-label">
+                <label htmlFor="finish-select">SELECT FINISH</label>
+              </div>
               <Dropdown
                 id="finish-select"
                 options={finish}
@@ -260,9 +302,9 @@ const Page = () => {
             </div>
 
             <div className="dropdown1">
-              <label htmlFor="size-select" className="dropdown-label">
-                SELECT SIZE
-              </label>
+              <div className="dropdown-label">
+                <label htmlFor="size-select">SELECT SIZE</label>
+              </div>
               <Dropdown
                 id="size-select"
                 options={size}
@@ -274,9 +316,9 @@ const Page = () => {
             </div>
 
             <div className="dropdown1">
-              <label htmlFor="thickness-select" className="dropdown-label">
-                SELECT THICKNESS
-              </label>
+              <div className="dropdown-label">
+                <label htmlFor="thickness-select">SELECT THICKNESS</label>
+              </div>
               <Dropdown
                 id="thickness-select"
                 options={thickness}
@@ -287,7 +329,6 @@ const Page = () => {
               />
             </div>
           </div>
-
           <div className="container">
             {filteredProducts.map((product, index) => {
               const className =
