@@ -10,6 +10,9 @@
   @media (min-width : 1600px) {
     padding: 200px 200px;
   }
+  @media(max-width: 768px){
+    padding: 50px 100px;
+  }
   @media (max-width : 575px) {
     padding: 0px 20px 70px;
     height: auto;
@@ -97,9 +100,19 @@
     font-size: 21px;
     width: 75%;
   }
+  
   @media(max-width: 575px){
     margin-left: -200px;
     width: 95%;
+  }
+  .TimeTextNewinner{
+    @media(max-width: 768px){
+      margin-left: -80px;
+      width: 92%; 
+    }
+    @media(max-width: 575px){
+      margin: 0;
+    }
   }
 }
 
