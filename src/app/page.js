@@ -13,7 +13,7 @@ import PlyMarquee from "@/components/plyMarquee/PlyMarquee";
 import ServicesPageCard from "@/components/InsightsPageCards/insightsPageCards";
 import TimelineHome from "@/components/timelinehome/page";
 import HomeHeroSection from "@/components/homeHeroSection/page";
-import NewThreeDSlider from "@/components/newthreedslider/page"
+import NewThreeDSlider from "@/components/newthreedslider/page";
 
 export default function Home() {
   const paragraph =
@@ -30,8 +30,7 @@ export default function Home() {
       <RoyalCrownSlider />
       <ServicesPageCard />
       <Certification />
-      {/* <TimelineHome /> */}
-
+      <TimelineHome />
       <div className="Form_Page">
         <SocialPage socialMediaImgSrc={SocialMediaImg} />
         <Form />
