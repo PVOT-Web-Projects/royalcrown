@@ -7,10 +7,12 @@ import AboutUsWhyUs from "@/components/aboutUsWhyUs/aboutUsWhyUs";
 import Form from "@/components/forms/form1/Form";
 import SocialPage from "@/components/socialPage/socialpage";
 import SocialMediaImg from "@/images/socials-image.png";
+import AboutUsDemo from "@/components/aboutdemohero/page";
 const AboutUs = () => {
   return (
     <div>
-      <AboutUsHero />
+      <AboutUsDemo />
+      {/* <AboutUsHero /> */}
       <AboutUsEstablishment />
       <AboutUsVision />
       <AboutUsWhyUs

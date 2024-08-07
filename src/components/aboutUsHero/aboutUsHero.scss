@@ -7,6 +7,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
 
   .aboutUsHeroContainer {
     display: flex;
@@ -23,7 +24,7 @@
       align-items: center;
       flex-direction: column;
       font-size: 80px;
-      height: 100vh;
+      // height: 100vh;
 
       .aboutUsHeroHeader1 {
         @media (max-width: 575px) {
@@ -49,9 +50,9 @@
     }
 
     .aboutUsImageContainer {
-      position: relative;
-      width: 100%;
-      height: 100vh;
+      position: absolute;
+      top: 50%;
+      left: 50%;
 
       .aboutUsImageContainerInner {
         position: relative;
