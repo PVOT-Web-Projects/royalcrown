@@ -4,10 +4,6 @@ import "./timelinehome.scss";
 import { motion } from "framer-motion";
 
 const TimelineHome = () => {
-  const scrollRef1 = useRef(null);
-  const scrollRef2 = useRef(null);
-  const scrollRef3 = useRef(null);
-
   return (
     <div className="Timelinecontainer">
       <div className="content">
