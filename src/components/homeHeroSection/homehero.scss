@@ -2,7 +2,7 @@
 @import "../../fonts/fonts.scss";
 
 .aboutUsHeroWrapper {
-  padding: 220px 0 0px;
+  padding: 220px 0 0px !important;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -15,7 +15,7 @@
 
   .elegance-container {
     display: flex;
-    padding: 100px 30px;
+    padding: 100px 30px !important;
     position: relative;
 
     @media (max-width: 991px) {
@@ -24,7 +24,7 @@
       align-items: center;
     }
     @media(max-width: 575px){
-      padding: 100px 0;
+      padding: 100px 0 !important;
     }
 
     .text-section {
