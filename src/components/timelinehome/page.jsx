@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React from "react";
 import "./timelinehome.scss";
 import { motion } from "framer-motion";
 
@@ -20,7 +20,6 @@ const TimelineHome = () => {
           of quality and reliability.
         </motion.div>
         <motion.div
-          ref={scrollRef1}
           className="Timelinecircle1"
           initial={{ x: 0, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
@@ -55,7 +54,6 @@ const TimelineHome = () => {
         </motion.div>
 
         <motion.div
-          ref={scrollRef3}
           className="Timelinecircle3"
           initial={{ x: 0, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
