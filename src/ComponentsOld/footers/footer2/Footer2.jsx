@@ -22,7 +22,7 @@ const Footer2 = ({ bgColor }) => {
   console.log("path", pathname);
   return pathname === "/" || pathname === "/store" ? null : (
     <footer className="footer2" style={{ backgroundColor: bgColor }}>
-      <div className="wrapper">
+      <div className="wrapper1">
         <div className="left">
           <div className="left_wrapper">
           <PageTransition href={"/"}>

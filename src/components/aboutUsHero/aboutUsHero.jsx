@@ -15,6 +15,27 @@ import { motion } from "framer-motion";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutUsHero() {
+  const image1Ref = useRef(null);
+  const image2Ref = useRef(null);
+  const image3Ref = useRef(null);
+
+  useEffect(() => {
+    const images = [image1Ref.current, image2Ref.current, image3Ref.current];
+    images.forEach((image) => {
+      gsap.to(image, {
+        scrollTrigger: {
+          trigger: image,
+          start: "top 80%",
+          end: "top 20%",
+          scrub: true,
+          toggleActions: "play reverse play reverse",
+          // markers: true,
+        },
+        // opacity: 0,
+      });
+    });
+  }, []);
+
   return (
     <div className="aboutUsHeroWrapper">
       <div className="aboutUsHeroContainer">
@@ -47,6 +68,7 @@ export default function AboutUsHero() {
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
+              ref={image1Ref}
             >
               <Image src={Image1} alt="" className="heroImage" />
             </motion.div>
@@ -56,6 +78,7 @@ export default function AboutUsHero() {
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
+              ref={image2Ref}
             >
               <Image src={Image2} alt="" className="heroImage" />
             </motion.div>
@@ -65,6 +88,7 @@ export default function AboutUsHero() {
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
+              ref={image3Ref}
             >
               <Image src={Image3} className="heroImage" />
             </motion.div>

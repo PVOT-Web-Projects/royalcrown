@@ -13,10 +13,11 @@
   @media (max-width: 767px) {
     padding: 30px 20px 30px;
   }
-  .wrapper {
+  .wrapper1 {
     display: flex;
     justify-content: space-between;
     padding: 0 0 40px;
+    gap: 3rem;
     @media (max-width: 991px) {
       flex-direction: column;
     }

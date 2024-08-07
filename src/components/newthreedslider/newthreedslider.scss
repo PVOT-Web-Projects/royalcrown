@@ -30,11 +30,23 @@
       @media(max-width: 1024px){
         height: 60px;
       }
+      @media(max-width: 425px){
+        height: 45px;
+      }
+      @media(max-width: 375px){
+        height: 35px;
+      }
     }
   }
 
   .swiper-button-prev {
     left: 35.5%;
+    @media(max-width: 425px){
+      left: 31.5%;
+    }
+    @media(max-width: 375px){
+      left: 28.5%;
+    }
     
     .SvgBtnSlider {
       width: 500px;
@@ -42,6 +54,12 @@
       display: block;
       @media(max-width: 1024px){
         height: 60px;
+      }
+      @media(max-width: 425px){
+        height: 45px;
+      }
+      @media(max-width: 375px){
+        height: 35px;
       }
     }
   }
@@ -62,6 +80,13 @@
     @media (max-width: 768px) {
       font-size: 42px;
       width: 80%;
+    }
+    @media(max-width: 575px){
+      font-size: 30px;
+      padding-bottom: 1rem;
+    }
+    @media(max-width: 575px){
+      font-size: 25px;
     }
   }
   .ThreeTextInnerFirst {
@@ -127,6 +152,10 @@
       }
       @media(max-width: 425px){
         font-size: 18px;
+        padding: 10px 0;
+      }
+      @media(max-width: 325px){
+        padding: 10px 0;
       }
     }
     .SliderThreeImages {
@@ -162,6 +191,7 @@
       padding-bottom: 1.5rem;
       @media(max-width: 575px){
         width: 80%;
+        font-size: 18px;
       }
     }
     .carousel_text_Content {

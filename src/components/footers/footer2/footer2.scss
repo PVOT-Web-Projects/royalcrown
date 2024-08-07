@@ -17,8 +17,10 @@
     display: flex;
     justify-content: space-between;
     padding: 0 0 40px;
+    gap: 3rem;
     @media (max-width: 991px) {
       flex-direction: column;
+      gap: 0rem;
     }
     @media (max-width: 575px) {
       padding: 0 0 20px;
