@@ -30,7 +30,7 @@ export default function Home() {
       <RoyalCrownSlider />
       <ServicesPageCard />
       <Certification />
-      {/* <TimelineHome /> */}
+      <TimelineHome />
 
       <div className="Form_Page">
         <SocialPage socialMediaImgSrc={SocialMediaImg} />

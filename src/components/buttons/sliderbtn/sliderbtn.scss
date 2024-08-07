@@ -21,11 +21,17 @@
   align-items: center;
   text-decoration: none;
   width: fit-content;
+  @media(max-width: 575px){
+    padding: 0 1rem;
+  }
   .button-content {
     font-size: 25px;
     font-weight: 550;
     position: relative;
     z-index: 1;
+    @media(max-width: 575px){
+      font-size: 18px;
+    }
   }
   &::before {
     content: "";

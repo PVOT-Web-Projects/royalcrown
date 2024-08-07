@@ -63,6 +63,13 @@
       font-size: 42px;
       width: 80%;
     }
+    @media(max-width: 575px){
+      font-size: 30px;
+      padding-bottom: 1rem;
+    }
+    @media(max-width: 575px){
+      font-size: 25px;
+    }
   }
   .ThreeTextInnerFirst {
     font-size: 18px;
@@ -162,6 +169,7 @@
       padding-bottom: 1.5rem;
       @media(max-width: 575px){
         width: 80%;
+        font-size: 18px;
       }
     }
     .carousel_text_Content {

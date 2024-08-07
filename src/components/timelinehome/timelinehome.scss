@@ -10,6 +10,10 @@
   @media (min-width : 1600px) {
     padding: 200px 200px;
   }
+  @media (max-width : 575px) {
+    padding: 0px 20px 70px;
+    height: auto;
+  }
 }
 
 .content {
@@ -44,6 +48,9 @@
   @media (max-width : 1120px) {
     margin: 20px 0px 20px 25px;
   }
+  @media (max-width : 600px) {
+    margin: 0 !important;
+  }
 }
 
 .content2 {
@@ -69,11 +76,14 @@
   width: 60%;
   //   padding: 20px;
   text-align: left;
-  transform: translate(10px, 50px) !important;
+  // transform: translate(10px, 50px) !important;
   
   @media (max-width : 1120px) {
     width: 65%;
     font-size: 21px;
+  }
+  @media(max-width: 575px){
+    width: 95% !important;
   }
 }
 
@@ -81,11 +91,15 @@
   font-size: 24px;
   width: 60%;
   text-align: left;
-  transform: translate(140px, -80px) !important;
+  // transform: translate(140px, -80px) !important;
 
   @media (max-width : 1120px) {
     font-size: 21px;
     width: 75%;
+  }
+  @media(max-width: 575px){
+    margin-left: -200px;
+    width: 95%;
   }
 }
 
@@ -225,7 +239,7 @@
 
   .Timelinetext1 {
     width: 50%;
-    transform: translate(10px, 65px) !important;
+    // transform: translate(10px, 65px) !important;
   }
 
   .Timelinecircle1 {
@@ -283,7 +297,7 @@
     font-size: 24px;
     width: 55%;
     text-align: left;
-    transform: translate(140px, -80px) !important;
+    // transform: translate(140px, -80px) !important;
   }
 
   .Timelinecircle3 {
@@ -339,14 +353,17 @@
     margin: 20px 0;
   }
   .Timelinetext1{
-    transform: translate(10px, 30px) !important;
+    // transform: translate(10px, 30px) !important;
     width: 75%;
   }
   .content2{
     margin: 20px 0;
     flex-direction: row-reverse;
+    @media(max-width: 575px){
+      margin: 0 !important;
+    }
   }
   .Timelinetext2{
-    transform: translate(10px, 10px) !important;
+    // transform: translate(10px, 10px) !important;
   }
 }
