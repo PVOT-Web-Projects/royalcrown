@@ -198,41 +198,40 @@ const Page = () => {
               className={`tab-item ${tab === "/Qbiss" && "active"}`}
               onClick={() => handleTabChange("/Qbiss")}
             >
-              <Link href="/products#Qbiss" className={tab === "/Qbiss" ? "active" : ""}>Qbiss</Link>
+              <Link
+                href="/products#Qbiss"
+                className={tab === "/Qbiss" ? "active" : ""}
+              >
+                Qbiss
+              </Link>
             </div>
             <div
               className={`tab-item ${tab === "/Crown_Xcl" ? "active" : ""}`}
               onClick={() => handleTabChange("/Crown_Xcl")}
             >
-              <Link href="/products#Crown_Xcl" className={tab === "/Crown_Xcl" ? "active" : ""}>Crown Xcl</Link>
+              <Link
+                href="/products#Crown_Xcl"
+                className={tab === "/Crown_Xcl" ? "active" : ""}
+              >
+                Crown Xcl
+              </Link>
             </div>
             <div
               className={`tab-item ${tab === "/Crown" ? "active" : ""}`}
               onClick={() => handleTabChange("/Crown")}
             >
-              <Link href="/Products#Crown" className={tab === "/Crown" ? "active" : ""}>Crown</Link>
+              <Link
+                href="/Products#Crown"
+                className={tab === "/Crown" ? "active" : ""}
+              >
+                Crown
+              </Link>
             </div>
           </div>
         </div>
 
         <div className="supply">
           <div id="sticky">
-            <div className="dropdown1">
-              <div className="dropdown-label">
-                <label htmlFor="brand-select" className="dropdown-label">
-                  SELECT BRAND
-                </label>
-              </div>
-              <Dropdown
-                id="brand-select"
-                options={brands}
-                value={selectedBrand}
-                onChange={handleBrandChange}
-                placeholder="Select a Brand"
-                className="category-select"
-              />
-            </div>
-
             <div className="dropdown1">
               <div className="dropdown-label">
                 <label htmlFor="category-select">SELECT CATEGORY</label>
@@ -338,8 +337,23 @@ const Page = () => {
                   ? "tall"
                   : "";
               return (
-                <div key={index} className={className}>
+                <div key={index} className={`product ${className}`}>
                   <Image src={product.image} alt={product.name} />
+                  <div className="overlay">
+                    <span>
+                      <svg
+                        width="40"
+                        height="40"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        fill="white"
+                      >
+                        <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
+                      </svg>
+                      <div>Know More</div>
+                    </span>
+                  </div>
                 </div>
               );
             })}
