@@ -89,12 +89,12 @@
           .cardouter_1 {
               background-color: #edd7c2;
               position: relative;
+              transition: all 0.5s ease;
 
               &:hover {
                   background: rgb(250, 249, 246); /* Slightly transparent background */
                   backdrop-filter: blur(10px); /* Blur effect */
                   // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
-                  transition: all 0.3s ease-in-out;
 
               }
           }
@@ -102,12 +102,12 @@
           .cardouter_2 {
               display: grid;
               grid-template-rows: repeat(2, 1fr);
+              transition: all 0.5s ease;
 
               &:hover {
                   // backdrop-filter:;
                   background-color: rgb(250, 249, 246);
                   // backdrop-filter: blur(2px);
-                  transition: all 0.3s ease-in-out;
               }
 
               .cardinner_1,
@@ -140,6 +140,7 @@
               .cardinner_1 {
                   background-color: #d5ad86;
                   position: relative;
+                  transition: all 0.5s ease;
 
                   .cardSvg {
                       color: #5b3524;
@@ -153,24 +154,24 @@
                       // backdrop-filter:;
                       background-color: rgb(250, 249, 246);
                       // backdrop-filter: blur(2px);
-                      transition: all 0.3s ease-in-out;
                   }
               }
 
               .cardinner_2 {
                   background-color: #e3c7ac;
+                  transition: all 0.5s ease;
 
                   &:hover {
                       // backdrop-filter:;
                       background-color: rgb(250, 249, 246);
                       // backdrop-filter: blur(2px);
-                      transition: all 0.3s ease-in-out;
                   }
               }
           }
 
           .cardouter_3 {
               background-color: #e1c1a1;
+              transition: all 0.5s ease;
 
               .card_header {
                 font-size: 40px;
