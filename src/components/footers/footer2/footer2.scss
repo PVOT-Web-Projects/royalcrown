@@ -208,9 +208,23 @@
           color: #5b3524;
           ul {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
+            // gap: 1rem;
+            /* justify-content: space-between; */
             align-items: center;
-
+            // display: flex;
+            // justify-content: space-between;
+            // align-items: center;
+              @media(max-width: 1300px){
+                gap: 2rem;
+                justify-content: flex-start;
+              }
+              @media(max-width: 575px){
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                gap: 0rem;
+              }
             li {
               @media (max-width: 767px) {
                 padding: 0 10px;
