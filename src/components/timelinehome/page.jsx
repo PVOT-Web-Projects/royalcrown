@@ -7,25 +7,25 @@ const TimelineHome = () => {
   return (
     <div className="Timelinecontainer">
       <div className="Timelinecontainer1">
-        <div
+        <motion.div
           className="TimelinetextContainer1"
-          // initial={{ x: 200, opacity: 0 }}
-          // whileInView={{ x: 0, opacity: 1 }}
-          // transition={{ duration: 2 }}
-          // viewport={{ once: true }}
+          initial={{ x: 200, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 2 }}
+          viewport={{ once: true }}
         >
           We are known for providing high density laminates with unparalleled
           services in terms of quality and reliability. We are known for
           providing high density laminates with unparalleled services in terms
           of quality and reliability.
-        </div>
-        <div
+        </motion.div>
+        <motion.div
           className="Timelinecircle1"
-          // initial={{ x: 0, opacity: 0 }}
-          // whileInView={{ x: 0, opacity: 1 }}
-          // transition={{ duration: 2 }}
-          // viewport={{ once: true }}
-        ></div>
+          initial={{ x: 0, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 2 }}
+          viewport={{ once: true }}
+        ></motion.div>
       </div>
       <div className="Timelinecontainer2">
         <motion.div
