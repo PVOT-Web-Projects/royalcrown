@@ -304,9 +304,9 @@
     position: absolute;
     width: 54%;
     top: 100%;
-    right: 10px;
+    right: 10rem;
     padding-bottom: 0;
-    padding-top: 5rem;
+    padding-top: 3rem;
     opacity: 0;
   }
 
@@ -392,9 +392,9 @@
     color: #5B3524;
     position: absolute;
     top: 100%;
-    right: 10px;
+    right: 7rem;
     padding-bottom: 0;
-    padding-top: 3.5rem;
+    padding-top: 1rem;
     opacity: 0;
   }
 
@@ -453,6 +453,10 @@
   }
   .establish_header{
     font-size: 30px;
+  }
+
+  .content{
+    right: 5rem;
   }
 }
 
