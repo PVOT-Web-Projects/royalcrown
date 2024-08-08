@@ -45,14 +45,14 @@ const SwiperComponent = () => {
           transforming ordinary spaces into extraordinary masterpieces.
         </p>
       </div>
-      <div className="swiper-container-one">
+      <div className="swiperContainerOne">
         <Swiper
           modules={[FreeMode, Navigation, EffectCoverflow, Thumbs]}
           slidesPerView={3}
           loop={true}
           effect="coverflow"
           centeredSlides={true}
-          // spaceBetween={400}
+          // spaceBetween={10}
           coverflowEffect={{
             rotate: 0,
             stretch: 0,
@@ -60,6 +60,7 @@ const SwiperComponent = () => {
             modifier: 1,
             slideShadows: false,
           }}
+          freeMode= {true}
           thumbs={{ swiper: thumbsSwiper }}
           speed={1500}
           navigation={{
@@ -168,9 +169,10 @@ const SwiperComponent = () => {
             // pagination={{
             //   dynamicBullets: true,
             // }}
+            freeMode={true}
             allowTouchMove={false}
             fadeEffect={{ crossFade: true }}
-            className="mySwiper2"
+            className="mySwiperThumbs"
           >
             <SwiperSlide>
               <div className="Carousel_text_maincontent">
