@@ -172,7 +172,7 @@ const SwiperComponent = () => {
             freeMode={true}
             allowTouchMove={false}
             fadeEffect={{ crossFade: true }}
-            className="mySwiper2"
+            className="mySwiperThumbs"
           >
             <SwiperSlide>
               <div className="Carousel_text_maincontent">
