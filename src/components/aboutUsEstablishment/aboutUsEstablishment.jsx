@@ -99,114 +99,114 @@ const AboutUsEstablishment = () => {
   return (
     <>
       <div>
-        <div className="timeline_outer">
-          <div className="timeline_wrapper">
-            <div className="establish_header">
-              <div className="establish_header_1">The Royal</div>
-              <div className="header_bottom">Establishment</div>
+        <div className="Establishment_timeline_outer">
+          <div className="Establishment_timeline_wrapper">
+            <div className="Establishment_header ">
+              <div className="Establishment_header_1">The Royal</div>
+              <div className="Establishment_header_bottom">Establishment</div>
             </div>
-            <div className="timeline_main_outer">
-              <div className="timeline_width">
-                <div className="timeline" ref={container}>
-                  <div className="line"></div>
+            <div className="Establishment_timeline_main_outer">
+              <div className="Establishment_timeline_width">
+                <div className="Establishment_timeline" ref={container}>
+                  <div className="Establishment_line"></div>
 
-                  <div className="section">
-                    <div className="timeline_year triggered-section">1990</div>
-                    <p className="timeline_comment triggered-text">
+                  <div className="Establishment_section">
+                    <div className="Establishment_timeline_year triggered-section">1990</div>
+                    <p className="Establishment_timeline_comment triggered-text">
                       Customers are at the heart of our unique business model.
                       Royal Crown thrives at providing royal service to
                       everyone. Our work is all about our customers and we
                       believe their experience should be worth a thousand
                       memories.
                     </p>
-                    <div className="bead_outer">
-                      <div className="bead"></div>
+                    <div className="Establishment_bead_outer">
+                      <div className="Establishment_bead"></div>
                     </div>
-                    <div className="content triggered-element">
+                    <div className="Establishment_content triggered-element">
                       <Image
                         src={establish_image}
                         alt="Your Image"
-                        className="timeline_image"
+                        className="Establishment_timeline_image"
                       />
                     </div>
                   </div>
-                  <div className="section">
-                    <div className="timeline_year triggered-section">2005</div>
-                    <p className="timeline_comment triggered-text">
+                  <div className="Establishment_section">
+                    <div className="Establishment_timeline_year triggered-section">1990</div>
+                    <p className="Establishment_timeline_comment triggered-text">
                       Customers are at the heart of our unique business model.
                       Royal Crown thrives at providing royal service to
                       everyone. Our work is all about our customers and we
                       believe their experience should be worth a thousand
                       memories.
                     </p>
-                    <div className="bead_outer">
-                      <div className="bead"></div>
+                    <div className="Establishment_bead_outer">
+                      <div className="Establishment_bead"></div>
                     </div>
-                    <div className="content triggered-element">
+                    <div className="Establishment_content triggered-element">
                       <Image
                         src={establish_image}
                         alt="Your Image"
-                        className="timeline_image"
+                        className="Establishment_timeline_image"
                       />
                     </div>
                   </div>
-                  <div className="section">
-                    <div className="timeline_year triggered-section">2007</div>
-                    <p className="timeline_comment triggered-text">
+                  <div className="Establishment_section">
+                    <div className="Establishment_timeline_year triggered-section">1990</div>
+                    <p className="Establishment_timeline_comment triggered-text">
                       Customers are at the heart of our unique business model.
                       Royal Crown thrives at providing royal service to
                       everyone. Our work is all about our customers and we
                       believe their experience should be worth a thousand
                       memories.
                     </p>
-                    <div className="bead_outer">
-                      <div className="bead"></div>
+                    <div className="Establishment_bead_outer">
+                      <div className="Establishment_bead"></div>
                     </div>
-                    <div className="content triggered-element">
+                    <div className="Establishment_content triggered-element">
                       <Image
                         src={establish_image}
                         alt="Your Image"
-                        className="timeline_image"
+                        className="Establishment_timeline_image"
                       />
                     </div>
                   </div>
-                  <div className="section">
-                    <div className="timeline_year triggered-section">2015</div>
-                    <p className="timeline_comment triggered-text">
+                  <div className="Establishment_section">
+                    <div className="Establishment_timeline_year triggered-section">1990</div>
+                    <p className="Establishment_timeline_comment triggered-text">
                       Customers are at the heart of our unique business model.
                       Royal Crown thrives at providing royal service to
                       everyone. Our work is all about our customers and we
                       believe their experience should be worth a thousand
                       memories.
                     </p>
-                    <div className="bead_outer">
-                      <div className="bead"></div>
+                    <div className="Establishment_bead_outer">
+                      <div className="Establishment_bead"></div>
                     </div>
-                    <div className="content triggered-element">
+                    <div className="Establishment_content triggered-element">
                       <Image
                         src={establish_image}
                         alt="Your Image"
-                        className="timeline_image"
+                        className="Establishment_timeline_image"
                       />
                     </div>
                   </div>
-                  <div className="section">
-                    <div className="timeline_year triggered-section">2024</div>
-                    <p className="timeline_comment triggered-text">
+                  <div className="Establishment_section">
+                    <div className="Establishment_timeline_year triggered-section">1990</div>
+                    <p className="Establishment_timeline_comment triggered-text">
                       Customers are at the heart of our unique business model.
                       Royal Crown thrives at providing royal service to
                       everyone. Our work is all about our customers and we
                       believe their experience should be worth a thousand
                       memories.
                     </p>
-                    <div className="bead_outer">
-                      <div className="bead"></div>
+                    <div className="Establishment_bead_outer">
+                      <div className="Establishment_bead"></div>
                     </div>
-                    <div className="content triggered-element">
+                    <div className="Establishment_content triggered-element">
                       <Image
                         src={establish_image}
                         alt="Your Image"
-                        className="timeline_image"
+                        className="Establishment_timeline_image"
                       />
                     </div>
                   </div>
