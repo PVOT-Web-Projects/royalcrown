@@ -47,7 +47,7 @@ const SwiperComponent = () => {
       </div>
       <div className="swiper-container-one">
         <Swiper
-          modules={[Navigation, EffectCoverflow, Thumbs]}
+          modules={[FreeMode, Navigation, EffectCoverflow, Thumbs]}
           slidesPerView={3}
           loop={true}
           effect="coverflow"
@@ -152,7 +152,7 @@ const SwiperComponent = () => {
 
         <div className="SecondThumbsSwiper">
           <Swiper
-            modules={[Thumbs, Autoplay, EffectFade]}
+            modules={[FreeMode, Thumbs, Autoplay, EffectFade]}
             onSwiper={setThumbsSwiper}
             //   loop={true}
             // autoplay={{
