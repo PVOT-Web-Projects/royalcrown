@@ -52,7 +52,7 @@ const SwiperComponent = () => {
           loop={true}
           effect="coverflow"
           centeredSlides={true}
-          // spaceBetween={400}
+          // spaceBetween={10}
           coverflowEffect={{
             rotate: 0,
             stretch: 0,
@@ -60,6 +60,7 @@ const SwiperComponent = () => {
             modifier: 1,
             slideShadows: false,
           }}
+          freeMode= {true}
           thumbs={{ swiper: thumbsSwiper }}
           speed={1500}
           navigation={{
@@ -168,6 +169,7 @@ const SwiperComponent = () => {
             // pagination={{
             //   dynamicBullets: true,
             // }}
+            freeMode={true}
             allowTouchMove={false}
             fadeEffect={{ crossFade: true }}
             className="mySwiper2"
