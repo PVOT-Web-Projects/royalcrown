@@ -1,28 +1,28 @@
 @import "../../app/variables.scss";
 @import "../../fonts/fonts.scss";
 
-.timeline_outer {
+.Establishment_timeline_outer {
   // padding-bottom: 20rem;
   padding: 50px 0px 200px 0;
 }
 
-.establish_header {
+.Establishment_header {
   text-align: center;
   font-size: 60px;
   letter-spacing: 3px;
   text-transform: uppercase;
 
-  .establish_header_1 {
+  .Establishment_header_1 {
     // font-weight: 500;
     font-family: "made_mirage_regular";
   }
 
-  .header_bottom {
+  .Establishment_header_bottom {
     font-family: "made_mirage_thin";
   }
 }
 
-.timeline_main_outer {
+.Establishment_timeline_main_outer {
   margin: 0;
   padding: 0;
   // overflow: hidden;
@@ -31,12 +31,12 @@
   margin-top: -210px;
 }
 
-.timeline {
+.Establishment_timeline {
   position: relative;
   min-height: 150px;
 }
 
-.line {
+.Establishment_line {
   position: absolute;
   z-index: 1;
   left: 50%;
@@ -48,7 +48,7 @@
   border-right: 2px solid;
 }
 
-.section {
+.Establishment_section {
   display: flex;
   position: relative;
   justify-content: space-evenly;
@@ -58,7 +58,7 @@
   min-height: 290px;
 }
 
-.bead_outer {
+.Establishment_bead_outer {
   background: #FFEFE3;
   height: 50px;
   text-align: center;
@@ -67,7 +67,7 @@
   border: 2px solid #5B3524;
 }
 
-.timeline_comment {
+.Establishment_timeline_comment {
   font-size: 17px;
   width: 250px;
   /* margin-bottom: -13rem; */
@@ -82,17 +82,17 @@
   letter-spacing: 1px;
 }
 
-.content {
+.Establishment_content {
   color: #5B3524;
   position: absolute;
   width: 40%;
   top: 158px;
-  // right: -11rem;
+  right: -11rem;
   padding-bottom: 5rem;
   opacity: 0;
 }
 
-.bead {
+.Establishment_bead {
   color: #5B3524;
   display: table-cell;
   height: 60px;
@@ -100,7 +100,7 @@
   width: 60px;
 }
 
-.timeline_year {
+.Establishment_timeline_year {
   font-size: 65px;
   color: #5B3524;
   opacity: 0;
@@ -111,7 +111,7 @@
 }
 
 @media (min-width: 1600px) and (max-width: 1920px) {
-  .timeline_year {
+  .Establishment_timeline_year {
     font-size: 87px;
     color: #5B3524;
     opacity: 0;
@@ -120,7 +120,7 @@
     left: 36rem;
   }
 
-  .timeline_comment {
+  .Establishment_timeline_comment {
     font-size: 18px;
     width: 320px;
     margin-bottom: 1rem;
@@ -133,7 +133,7 @@
 }
 
 @media (max-width: 1440px) {
-  .timeline_year {
+  .Establishment_timeline_year {
     font-size: 65px;
     color: #5B3524;
     opacity: 0;
@@ -142,17 +142,17 @@
     left: 23rem;
   }
 
-  .content {
+  .Establishment_content {
     color: #5B3524;
     position: absolute;
     width: 43%;
     top: 158px;
-    // right: -11rem;
+    right: -11rem;
     padding-bottom: 5rem;
     opacity: 0;
   }
 
-  .timeline_comment {
+  .Establishment_timeline_comment {
     font-size: 20px;
     width: 280px;
     /* margin-bottom: -13rem; */
@@ -165,21 +165,21 @@
 }
 
 @media (max-width : 1300px) {
-  .timeline_year {
+  .Establishment_timeline_year {
     left: 26%;
   }
 }
 
 @media (max-width: 1024px) {
-  // .content {
-  //   right: -9rem;
-  // }
+  .Establishment_content {
+    right: -9rem;
+  }
 }
 
 
 
 @media (max-width: 1199px) {
-  .timeline_year {
+  .Establishment_timeline_year {
     font-size: 57px;
     color: #5B3524;
     opacity: 0;
@@ -188,7 +188,7 @@
     left: 22%;
   }
 
-  .timeline_comment {
+  .Establishment_timeline_comment {
     font-size: 17px;
     width: 250px;
     /* margin-bottom: -13rem; */
@@ -200,13 +200,13 @@
 }
 
 @media (max-width: 991px) {
-  .establish_header{
+  .Establishment_header{
     padding-bottom: 5rem;
   }
-  .timeline_outer{
+  .Establishment_timeline_outer{
     padding: 50px 20px 280px 20px;
   }
-  .line {
+  .Establishment_line {
     position: absolute;
     z-index: 1;
     left: 12%;
@@ -217,31 +217,31 @@
     border-right: 2px solid black;
   }
 
-  .timeline_image {
+  .Establishment_timeline_image {
     height: 100%;
     margin-top: 3rem;
   }
 
-  .bead_outer {
+  .Establishment_bead_outer {
     left: 9%;
     display: flex;
     position: absolute;
     justify-content: center;
   }
 
-  .content {
+  .Establishment_content {
     color: #5B3524;
     position: absolute;
     width: 68%;
     top: 210px;
     /* right: 45px; */
-    right: 15rem;
+    // right: 15rem;
     padding-bottom: 0;
-    padding-top: 2rem;
+    padding-top: 4rem;
     opacity: 0;
   }
 
-  .timeline_comment {
+  .Establishment_timeline_comment {
     font-size: 15px;
     width: 500px;
     margin-bottom: 0.5rem;
@@ -250,7 +250,7 @@
     text-align: left;
   }
 
-  .timeline_heading {
+  .Establishment_timeline_heading {
     font-size: 45px;
     margin-bottom: 0rem;
     font-weight: 400;
@@ -259,7 +259,7 @@
     text-align: center;
   }
 
-  .timeline_year {
+  .Establishment_timeline_year {
     font-size: 40px;
     color: #5B3524;
     opacity: 0;
@@ -270,10 +270,10 @@
 }
 
 @media (max-width: 767px) {
-  .timeline_main_outer{
+  .Establishment_timeline_main_outer{
     margin-top: 0;
   }
-  .line {
+  .Establishment_line {
     position: absolute;
     z-index: 1;
     left: 12%;
@@ -284,12 +284,12 @@
     border-right: 2px solid black;
   }
 
-  .timeline_image {
+  .Establishment_timeline_image {
     height: 100%;
     width: 55%;
   }
 
-  .bead_outer {
+  .Establishment_bead_outer {
     left: 9%;
     display: flex;
     position: absolute;
@@ -298,18 +298,18 @@
     width: 40px;
   }
 
-  .content {
+  .Establishment_content {
     color: #5B3524;
     position: absolute;
     width: 54%;
     top: 100%;
-    right: 10rem;
+    right: 1rem;
     padding-bottom: 0;
     padding-top: 3rem;
     opacity: 0;
   }
 
-  .timeline_comment {
+  .Establishment_timeline_comment {
     font-size: 15px;
     width: 400px;
     margin-bottom: 1rem;
@@ -317,7 +317,7 @@
     left: 28%;
   }
 
-  .timeline_heading {
+  .Establishment_timeline_heading {
     font-size: 45px;
     margin-bottom: 0rem;
     font-weight: 400;
@@ -326,7 +326,7 @@
     text-align: center;
   }
 
-  .timeline_year {
+  .Establishment_timeline_year {
     font-size: 30px;
     color: #5B3524;
     opacity: 0;
@@ -335,7 +335,7 @@
     left: 12rem;
   }
 
-  .section {
+  .Establishment_section {
     display: flex;
     position: relative;
     justify-content: space-evenly;
@@ -348,13 +348,13 @@
 }
 
 @media (max-width: 575px) {
-  .establish_header{
+  .Establishment_header{
     font-size: 40px;
   }
-  .timeline_outer{
+  .Establishment_timeline_outer{
     padding: 50px 30px 200px 30px;
   }
-  .line {
+  .Establishment_line {
     position: absolute;
     z-index: 1;
     left: 12%;
@@ -366,7 +366,7 @@
     border-right: 2px solid black;
   }
 
-  .timeline_comment {
+  .Establishment_timeline_comment {
     font-size: 14px;
     width: 400px;
     margin-bottom: 1rem;
@@ -374,30 +374,30 @@
     left: 28%;
   }
 
-  .timeline_image {
+  .Establishment_timeline_image {
     height: 100%;
     width: 65%;
     margin-top: 5rem;
   }
 
-  .bead_outer {
+  .Establishment_bead_outer {
     left: 7%;
     display: flex;
     position: absolute;
     justify-content: center;
   }
 
-  .content {
+  .Establishment_content {
     color: #5B3524;
     position: absolute;
     top: 100%;
-    right: 7rem;
+    right: 1rem;
     padding-bottom: 0;
     padding-top: 1rem;
     opacity: 0;
   }
 
-  .timeline_comment {
+  .Establishment_timeline_comment {
     font-size: 15px;
     width: 300px;
     width: 60%;
@@ -405,7 +405,7 @@
 
   }
 
-  .timeline_heading {
+  .Establishment_timeline_heading {
     font-size: 45px;
     margin-bottom: 0rem;
     font-weight: 400;
@@ -414,7 +414,7 @@
     text-align: center;
   }
 
-  .timeline_year {
+  .Establishment_timeline_year {
     font-size: 30px;
     color: #5B3524;
     opacity: 0;
@@ -423,7 +423,7 @@
     left: 28%;
   }
 
-  .section{
+  .Establishment_section{
     margin-bottom: 16rem;
   }
 
@@ -445,17 +445,17 @@
 }
 
 @media (max-width : 475px) {
-  .bead_outer{
+  .Establishment_bead_outer{
     height: 30px;
     left: 8%;
     width: 30px;
   }
-  .establish_header{
+  .Establishment_header{
     font-size: 30px;
   }
 
-  .content{
-    right: 5rem;
+  .Establishment_content{
+    padding-top: 5rem;
   }
 }
 
@@ -476,28 +476,27 @@
 }
 
 @media (max-width : 360px) {
-  .timeline_year {
+  .Establishment_timeline_year {
     left: 30%;
   }
-  .bead_outer{
+  .Establishment_bead_outer{
     left: 7%;
   }
-  .content{
-    right: 4rem;
+  .Establishment_content{
     padding-top: 3rem;
   }
 }
 
 
 @media (max-width: 320px) {
-  .timeline_comment {
+  .Establishment_timeline_comment {
     font-size: 15px;
     width: 208px;
     margin-bottom: 1rem;
   }
 
 
-  .bead_outer {
+  .Establishment_bead_outer {
     left: 5%;
     display: flex;
     position: absolute;
