@@ -47,7 +47,7 @@ const SwiperComponent = () => {
       </div>
       <div className="swiperContainerOne">
         <Swiper
-          modules={[FreeMode, Navigation, EffectCoverflow, Thumbs]}
+          modules={[ Navigation, EffectCoverflow, Thumbs]}
           slidesPerView={3}
           loop={true}
           effect="coverflow"
@@ -60,7 +60,7 @@ const SwiperComponent = () => {
             modifier: 1,
             slideShadows: false,
           }}
-          freeMode= {true}
+          // freeMode= {true}
           thumbs={{ swiper: thumbsSwiper }}
           speed={1500}
           navigation={{
@@ -153,7 +153,7 @@ const SwiperComponent = () => {
 
         <div className="SecondThumbsSwiper">
           <Swiper
-            modules={[FreeMode, Thumbs, Autoplay, EffectFade]}
+            modules={[ Thumbs, Autoplay, EffectFade]}
             onSwiper={setThumbsSwiper}
             //   loop={true}
             // autoplay={{
@@ -169,7 +169,7 @@ const SwiperComponent = () => {
             // pagination={{
             //   dynamicBullets: true,
             // }}
-            freeMode={true}
+            // freeMode={true}
             allowTouchMove={false}
             fadeEffect={{ crossFade: true }}
             className="mySwiperThumbs"
