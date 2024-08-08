@@ -26,7 +26,7 @@ import {
   EffectFade,
   EffectCoverflow,
 } from "swiper/modules";
-import "./newthreedslider.scss";
+import "@/components/newthreedslider/newthreedslider.scss";
 import SliderBtn from "@/components/buttons/sliderbtn/page";
 
 
