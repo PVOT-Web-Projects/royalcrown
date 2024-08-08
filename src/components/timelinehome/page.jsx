@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 const TimelineHome = () => {
   return (
     <div className="Timelinecontainer">
-      <div className="content">
+      <div className="Timelinecontainer1">
         <motion.div
-          className="Timelinetext1"
+          className="TimelinetextContainer1"
           initial={{ x: 200, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 2 }}
@@ -27,7 +27,7 @@ const TimelineHome = () => {
           viewport={{ once: true }}
         ></motion.div>
       </div>
-      <div className="content1">
+      <div className="Timelinecontainer2">
         <motion.div
           className="Timelinecircle2"
           initial={{ x: 0, opacity: 0 }}
@@ -36,9 +36,9 @@ const TimelineHome = () => {
           viewport={{ once: true }}
         ></motion.div>
       </div>
-      <div className="content2">
+      <div className="TimelineContainer3">
         <motion.div
-          className="Timelinetext2"
+          className="TimelinetextContainer3"
           initial={{ x: -200, opacity: 0 }}
           whileInView={{ x: 100, opacity: 1 }}
           transition={{ duration: 2, delay: 1.5 }}

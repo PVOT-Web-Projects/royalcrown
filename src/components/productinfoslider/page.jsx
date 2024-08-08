@@ -250,7 +250,7 @@ export default function ProductInfoSlider() {
                     <motion.div
                         className="productDescriptionBorder"
                         initial={{ width: '0%' }}
-                        animate={{ width: '60%' }} // Adjust this width to fit your design
+                        whileInView={{ width: '60%' }} // Adjust this width to fit your design
                         transition={{ duration: 1, ease: 'easeOut' }}
                     />
                     <div className="productDescriptionHeader">

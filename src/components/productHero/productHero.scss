@@ -13,6 +13,14 @@
         padding: 100px 50px;
     }
 
+    @media (max-width : 768px) {
+        padding: 100px 30px;
+    }
+
+    @media (max-width : 425px) {
+        padding: 100px 20px;
+    }
+
     .productHeroWrapper {
         display: flex;
         // justify-content: space-between;
@@ -76,6 +84,10 @@
             }
             .heroSectionDescription{
                 font-size: 23px;
+
+                @media (max-width : 425px) {
+                    font-size: 21px;
+                }
             }
         }
         .productHeroImage{
