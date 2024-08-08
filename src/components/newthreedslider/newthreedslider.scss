@@ -27,13 +27,13 @@
       width: 500px;
       height: 70px;
       display: block;
-      @media(max-width: 1024px){
+      @media (max-width: 1024px) {
         height: 60px;
       }
-      @media(max-width: 425px){
+      @media (max-width: 425px) {
         height: 45px;
       }
-      @media(max-width: 375px){
+      @media (max-width: 375px) {
         height: 35px;
       }
     }
@@ -41,24 +41,24 @@
 
   .swiper-button-prev {
     left: 35.5%;
-    @media(max-width: 425px){
+    @media (max-width: 425px) {
       left: 31.5%;
     }
-    @media(max-width: 375px){
+    @media (max-width: 375px) {
       left: 28.5%;
     }
-    
+
     .SvgBtnSlider {
       width: 500px;
       height: 70px;
       display: block;
-      @media(max-width: 1024px){
+      @media (max-width: 1024px) {
         height: 60px;
       }
-      @media(max-width: 425px){
+      @media (max-width: 425px) {
         height: 45px;
       }
-      @media(max-width: 375px){
+      @media (max-width: 375px) {
         height: 35px;
       }
     }
@@ -74,18 +74,18 @@
     width: 40%;
     text-transform: uppercase;
     font-weight: 400;
-    @media(max-width: 1024px){
+    @media (max-width: 1024px) {
       width: 80%;
     }
     @media (max-width: 768px) {
       font-size: 42px;
       width: 80%;
     }
-    @media(max-width: 575px){
+    @media (max-width: 575px) {
       font-size: 30px;
       padding-bottom: 1rem;
     }
-    @media(max-width: 575px){
+    @media (max-width: 575px) {
       font-size: 25px;
     }
   }
@@ -95,7 +95,7 @@
     width: 40%;
     margin: 0 auto;
     padding: 5px 0;
-    @media(max-width: 1024px){
+    @media (max-width: 1024px) {
       width: 70%;
     }
     @media (max-width: 768px) {
@@ -104,17 +104,12 @@
     }
   }
   .swiper-container-one {
-    // width: 50%;
     height: 60%;
-    // margin-left: auto;
-    // margin-right: auto;
   }
   .swiper-slide {
     text-align: center;
     font-size: 18px;
-    // background: #fff;
     height: 100%;
-    // color: #000;
     display: -webkit-box;
     display: -ms-flexbox;
     display: -webkit-flex;
@@ -141,34 +136,34 @@
       padding: 20px 0;
       text-transform: uppercase;
       font-weight: 500;
-      @media(min-width: 1550px){
+      @media (min-width: 1550px) {
         font-size: 60px;
       }
-      @media(max-width: 1024px){
-        font-size: 35px;
-      } 
-      @media(max-width: 768px){
+      @media (max-width: 1024px) {
         font-size: 35px;
       }
-      @media(max-width: 425px){
+      @media (max-width: 768px) {
+        font-size: 35px;
+      }
+      @media (max-width: 425px) {
         font-size: 18px;
         padding: 10px 0;
       }
-      @media(max-width: 325px){
+      @media (max-width: 325px) {
         padding: 10px 0;
       }
     }
     .SliderThreeImages {
-      width: 100%;
-      height: 60vh;
-      display: block;
-      @media(max-width: 1024px){
-        height: 50vh;
+      width: 100% !important;
+      height: 60vh !important;
+      display: block !important;
+      @media (max-width: 1024px) {
+        height: 50vh !important;
       }
-      @media(max-width: 575px){
-        height: 35vh;
+      @media (max-width: 575px) {
+        height: 35vh !important;
       }
-      @media(max-width: 475px){
+      @media (max-width: 475px) {
         height: 20vh;
       }
     }
@@ -189,7 +184,7 @@
       width: 50%;
       font-size: 18px;
       padding-bottom: 1.5rem;
-      @media(max-width: 575px){
+      @media (max-width: 575px) {
         width: 80%;
         font-size: 18px;
       }
