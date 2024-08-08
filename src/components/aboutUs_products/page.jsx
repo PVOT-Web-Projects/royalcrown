@@ -328,7 +328,7 @@ const Page = () => {
               />
             </div>
           </div>
-          <div className="container">
+          <div className="product_container">
             {filteredProducts.map((product, index) => {
               const className =
                 index === 9
@@ -337,7 +337,7 @@ const Page = () => {
                   ? "tall"
                   : "";
               return (
-                <div key={index} className={`product ${className}`}>
+                <div key={index} className={`AboutUs_product ${className}`}>
                   <Image src={product.image} alt={product.name} />
                   <div className="overlay">
                     <span>
