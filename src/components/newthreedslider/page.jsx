@@ -45,7 +45,7 @@ const SwiperComponent = () => {
           transforming ordinary spaces into extraordinary masterpieces.
         </p>
       </div>
-      <div className="swiper-container-one">
+      <div className="swiperContainerOne">
         <Swiper
           modules={[FreeMode, Navigation, EffectCoverflow, Thumbs]}
           slidesPerView={3}
