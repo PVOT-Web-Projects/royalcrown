@@ -2,6 +2,7 @@
 @import "../../fonts/fonts.scss";
 .first_top{
   padding: 0px 0 100px 0;
+  // overflow: hidden;
 
   @media (max-width : 991px) {
     padding: 50px 0 100px 0;
@@ -247,7 +248,7 @@
     z-index: 99;
   }
 }
-.container {
+.product_container {
   width: 70%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -268,7 +269,7 @@
     width: 100%;
   }
 
-  .product {
+  .AboutUs_product{
     position: relative;
     // overflow: hidden;
     cursor: pointer;
@@ -302,7 +303,7 @@
   }
 }
 
-.container div {
+.product_container div {
   overflow: hidden;
   @media (max-width: 575px) {
     display: flex;
@@ -343,7 +344,7 @@
 
 /* Media Query Start for Mobile phones */
 @media (min-width: 300px) {
-  .container {
+  .product_container {
     grid-template-columns: repeat(auto-fit, minmax(172px, 1fr));
     grid-auto-rows: 220px;
     grid-auto-flow: dense;
@@ -362,7 +363,7 @@
 }
 
 @media (min-width: 1600px) and (max-width: 1920px) {
-  .container {
+  .product_container {
     width: 70%;
     grid-template-columns: repeat(auto-fit, minmax(277px, 1fr));
     grid-auto-rows: 220px;
@@ -382,7 +383,7 @@
 }
 
 @media (max-width: 400px) {
-  .container {
+  .product_container {
     grid-template-columns: repeat(auto-fit, minmax(172px, 1fr));
   }
 }
