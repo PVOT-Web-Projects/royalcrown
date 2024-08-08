@@ -63,6 +63,7 @@ const SwiperComponent = () => {
           // freeMode= {true}
           thumbs={{ swiper: thumbsSwiper }}
           speed={1500}
+          allowTouchMove={false}
           navigation={{
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
