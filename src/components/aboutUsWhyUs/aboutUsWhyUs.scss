@@ -7,13 +7,22 @@
     padding: 100px 150px;
     flex-direction: column;
 
-    @media (max-width : 1025px) {
-        padding: 100px 50px;
+    @media (max-width : 1300px) {
+        padding: 100px 100px;
+      }
+    
+      @media (max-width : 1200px) {
+        padding: 100px 80px;
+      }
+    
+      @media (max-width : 1025px) {
+        padding: 100px 20px;
     }
 
     .whyUsWrapper {
         width: 100%;
         max-width: 1200px;
+        // padding: 0 0px 0px 10px;
 
         .whyusHeader {
             text-align: center;
@@ -40,11 +49,19 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-end;
-                padding: 20px 50px 30px 50px;
+                padding: 70px 40px 70px 40px;
                 position: relative;
 
+                @media (max-width : 425px) {
+                    padding: 30px 20px;
+                }
+
                 .card_header {
-                    font-size: 60px; // Adjust header size specifically for cardouter_1 and cardouter_3
+                    font-size: 60px; 
+
+                    @media (max-width : 425px) {
+                        font-size: 30px;
+                    }
                 }
 
                 .cardSvg {
@@ -58,6 +75,10 @@
                 .card_description {
                     font-size: 21px; // Adjust description font size
                     padding: 15px 0px 10px 0px;
+
+                    @media (max-width : 425px) {
+                        font-size: 18px;
+                    }
                 }
 
                 .card-button{
@@ -68,35 +89,42 @@
             .cardouter_1 {
                 background-color: #edd7c2;
                 position: relative;
+                transition: all 0.5s ease;
 
                 &:hover {
                     background: rgb(250, 249, 246); /* Slightly transparent background */
                     backdrop-filter: blur(10px); /* Blur effect */
                     // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
                     // border: 1px solid rgba(255, 255, 255, 0.18); /* Border to enhance glass effect */
-                    transition: all 0.3s ease-in-out;
-
                 }
             }
 
             .cardouter_2 {
                 display: grid;
                 grid-template-rows: repeat(2, 1fr);
+                transition: all 0.5s ease;
 
                 &:hover {
                     // backdrop-filter:;
                     background: rgb(250, 249, 246);
                     // backdrop-filter: blur(2px);
-                    transition: all 0.3s ease-in-out;
                 }
 
                 .cardinner_1,
                 .cardinner_2 {
                     padding: 20px 50px 20px 50px;
 
+                    @media (max-width : 425px) {
+                        padding: 30px 20px;
+                    }
+
                     .card_description {
                         font-size: 21px; // Adjust description font size
                         padding:40px 0;
+
+                        @media (max-width : 425px) {
+                            font-size: 18px;
+                        }
                     }
 
                 }
@@ -104,6 +132,7 @@
                 .cardinner_1 {
                     background-color: #d5ad86;
                     position: relative;
+                    transition: all 0.5s ease;
 
                     .cardSvg {
                         color: #5b3524;
@@ -115,18 +144,24 @@
 
                     .card-button{
                         margin-bottom: 15px;
+
+                        @media (max-width : 425px) {
+                            margin-bottom: 0;
+                            margin-top: 18px;
+                        }
                     }
 
                     &:hover {
                         // backdrop-filter:;
                         background: rgb(250, 249, 246);
                         // backdrop-filter: blur(2px);
-                        transition: all 0.3s ease-in-out;
+                        
                     }
                 }
 
                 .cardinner_2 {
                     background-color: #e3c7ac;
+                    transition: all 0.5s ease;
 
                     .card-button{
                         margin-top: 15px;
@@ -135,28 +170,33 @@
                     &:hover {
                         // backdrop-filter:;
                         background: rgb(250, 249, 246);
-                        // backdrop-filter: blur(2px);
-                        transition: all 0.3s ease-in-out;
                     }
                 }
             }
 
             .cardouter_3 {
                 background-color: #e1c1a1;
+                transition: all 0.5s ease;
 
                 .card_header {
                     font-size: 60px;
+
+                    @media (max-width : 425px) {
+                        font-size: 30px;
+                    }
                 }
 
                 .card_description {
                     font-size: 21px; // Adjust description font size
                     padding: 5px 0px 10px 0px;
+
+                    @media (max-width : 425px) {
+                        font-size: 18px;
+                    }
                 }
 
                 &:hover {
                     background: rgb(250, 249, 246);
-                     /* Change background color */
-                    backdrop-filter: brightness(10px);
                 }
             }
         }
