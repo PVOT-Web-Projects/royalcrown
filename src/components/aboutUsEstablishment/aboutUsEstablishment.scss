@@ -4,6 +4,7 @@
 .Establishment_timeline_outer {
   // padding-bottom: 20rem;
   padding: 50px 0px 200px 0;
+  overflow: hidden;
 }
 
 .Establishment_header {
@@ -491,7 +492,7 @@
 @media (max-width: 320px) {
   .Establishment_timeline_comment {
     font-size: 15px;
-    width: 208px;
+    width: auto;
     margin-bottom: 1rem;
   }
 

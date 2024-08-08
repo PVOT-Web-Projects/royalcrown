@@ -1,13 +1,32 @@
+import { useEffect, useRef } from "react";
 import AboutUsButton from "../buttons/aboutUsButton/aboutUsButton";
 import "./aboutUsWhyUs.scss";
+import {motion} from "framer-motion";
+import gsap from "gsap";
 export default function AboutUsWhyUs({heading , cardOneText , cardTwoText , cardThreeText , cardFourText}) {
+  const cardRefs = useRef([]);
+
+  useEffect(() => {
+    cardRefs.current.forEach(card => {
+      const svg = card.querySelector(".cardSvg svg");
+
+      card.addEventListener("mouseenter", () => {
+        gsap.to(svg, { rotation: -50, duration: 0.3 });
+      });
+
+      card.addEventListener("mouseleave", () => {
+        gsap.to(svg, { rotation: 0, duration: 0.3 });
+      });
+    });
+  }, []);
   return (
     <>
       <div className="whyUsContainer">
         <div className="whyUsWrapper">
           <div className="whyusHeader">{heading}</div>
           <div className="whyUsCardWrapper">
-            <div className="cardouter_1">
+            <div className="cardouter_1"  ref={el => cardRefs.current[0] = el} 
+            >
               <div className="cardSvg">
               <svg
                     width="40"
@@ -33,8 +52,8 @@ export default function AboutUsWhyUs({heading , cardOneText , cardTwoText , card
                 </div>
               </div>
             </div>
-            <div className="cardouter_2">
-              <div className="cardinner_1">
+            <div className="cardouter_2" >
+              <div className="cardinner_1" ref={el => cardRefs.current[1] = el}>
                 <div className="cardSvg">
                   <svg
                     width="40"
@@ -67,7 +86,7 @@ export default function AboutUsWhyUs({heading , cardOneText , cardTwoText , card
                 </div>
               </div>
             </div>
-            <div className="cardouter_3">
+            <div className="cardouter_3" ref={el => cardRefs.current[2] = el}>
               <div className="cardinner">
                 <div className="cardSvg">
                 <svg
