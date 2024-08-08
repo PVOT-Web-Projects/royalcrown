@@ -3,12 +3,12 @@
 	.swiper-slide:not(.swiper-slide-prev):not(.swiper-slide-active):not(
 		.swiper-slide-next
 	  ) {
-	  opacity: 0;
+	  opacity: 0 !important;
 	}
   
 	.swiper-slide-prev,
 	.swiper-slide-next {
-	  opacity: 0.6;
+	  opacity: 0.6 !important;
 	}
   
 	.swiper-button-next,
@@ -174,8 +174,8 @@
 	//   thums Swiper
 	.SecondThumbsSwiper {
 	  .mySwiper2 {
-		text-align: center;
-		margin: 0 auto;
+		text-align: center !important;
+		margin: 0 auto !important;
 	  }
 	  .Carousel_text_maincontent {
 		color: #672202;
