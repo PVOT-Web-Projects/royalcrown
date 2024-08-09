@@ -118,13 +118,13 @@ const Header = () => {
           >
             <LinkHover url={"#"} text={"Laminate Library"} fontSize={"16px"} isHomePage={isHome}/>
           </motion.li>
-          <div className="side_logo">
-            {isHome ? (
+          {/* <div className="side_logo"> */}
+            {/* {isHome ? (
               <Image src={logo2} alt="header_crown_logo" />
             ) : (
               <Image src={logo3} alt="header_crown_logo" />
-            )}
-          </div>
+            )} */}
+          {/* </div> */}
         </ul>
       </nav>
     </header>

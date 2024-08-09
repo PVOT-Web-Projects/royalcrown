@@ -144,6 +144,11 @@
           border-bottom: 1px solid $white;
           max-width: max-content;
           cursor: pointer;
+          transition: all .5s ease-in-out;
+          &:hover{
+            color: white;
+            border-bottom: 1px solid white;
+          }
         }
 
         .image-wrapper-2 {

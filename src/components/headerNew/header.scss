@@ -16,13 +16,15 @@ header {
       display: none;
     }
     .logo {
+      
+      padding-left: 110px;
       @media(min-width: 1500px){
-      padding-left: 155px;
+      padding-left: 90px;
       }
       img {
         max-width: 100%;
         display: block;
-        margin-left: 23px;
+        // margin-left: 23px;
         @media (max-width: 1199px) {
           width: 222px;
         }

@@ -1,8 +1,9 @@
-
+import FaqData from "@/components/faqaccordian/faqdata";
 
 const FaqPage =() =>{
     return(
         <div>
+            <FaqData />
         </div>
     )
 }
