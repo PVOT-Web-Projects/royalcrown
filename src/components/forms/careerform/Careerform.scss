@@ -12,11 +12,11 @@ input:-internal-autofill-selected {
     rgba(70, 90, 126, 0.4)
   ) !important;
 }
-$form-bg: #d9d9d9;
-$form-text: #000;
-$form-border: #000;
-$form-button-bg: #ffc107;
-$form-button-text: #000;
+$form-bg: #FFF5ED;
+$form-text: #5B3524;
+$form-border: #5B3524;
+// $form-button-bg: #ffc107;
+$form-button-text: #5B3524;
 
 .form-container {
   background-color: $form-bg;
@@ -41,7 +41,7 @@ $form-button-text: #000;
 }
 .CareerHeader {
   text-align: center;
-  color: #000;
+  // color: #000;
   margin-bottom: 2.5rem;
   font-size: 30px;
 }
@@ -65,9 +65,9 @@ $form-button-text: #000;
   &.checkbox-row {
     gap: 0.5rem;
     align-items: center;
-    color: #000;
+    // color: #000;
     font-size: 22px;
-    font-weight: 700;
+    font-weight: 500;
     @media(max-width: 375px){
       font-size: 16px;
     }
@@ -83,7 +83,7 @@ $form-button-text: #000;
   label {
     margin-bottom: 0.5rem;
     color: $form-text;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 22px;
   }
 
@@ -93,6 +93,7 @@ $form-button-text: #000;
     outline: none;
     border-left: none;
     font-size: 20px;
+    color: #5B3524;
     border-top: none;
     border-right: none;
     background-color: transparent;
@@ -102,8 +103,8 @@ $form-button-text: #000;
   }
   .career-select {
     padding: 0px 0 12px 0;
-    color: black;
-    border-bottom: 1px solid black;
+    // color: black;
+    border-bottom: 1px solid #5B3524;
 
     @media (max-width: 575px) {
       // padding: 10px 20px;
@@ -128,7 +129,7 @@ $form-button-text: #000;
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: #ffbc37; /* Scrollbar thumb color */
+      background-color: #5B3524; /* Scrollbar thumb color */
     }
 
     &::-webkit-scrollbar-track {
@@ -139,13 +140,13 @@ $form-button-text: #000;
   .p-dropdown-item {
     padding: 5px 6px;
     transition: all 0.5s ease;
-    color: black;
+    // color: black;
     font-size: 18px;
   }
 
   .p-dropdown-item:hover {
-    background-color: rgb(255, 188, 55);
-    color: black;
+    background-color: #5B3524;
+    color: white;
   }
 }
 .p-dropdown-label {
