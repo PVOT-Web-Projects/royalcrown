@@ -8,11 +8,12 @@
   padding: 0 3rem;
   // background: $skin;
   background-color: transparent;
-  border: 1px solid white;
+  border: 1px solid #5B3524;
   border-radius: 5px;
   text-transform: uppercase;
   background-size: 400%;
-  color: white;
+  // color: black;
+  color: #5B3524;
   // border: none;
   font-size: 18px;
   line-height: 16px;
@@ -26,6 +27,7 @@
     font-weight: 550;
     position: relative;
     z-index: 1;
+    transition: color 0.475s;
   }
   &::before {
     content: "";
@@ -41,6 +43,9 @@
     transition: all 0.475s;
   }
   &:hover {
+    .button-content {
+      color: white;
+    }
     &::before {
       transform: scaleX(1);
       border-radius: inherit;

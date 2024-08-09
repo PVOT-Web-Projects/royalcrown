@@ -69,7 +69,7 @@
 }
 
 .Establishment_timeline_comment {
-  font-size: 17px;
+  font-size: 18px;
   width: 250px;
   /* margin-bottom: -13rem; */
   position: absolute;
@@ -154,7 +154,7 @@
   }
 
   .Establishment_timeline_comment {
-    font-size: 20px;
+    font-size: 18px;
     width: 280px;
     /* margin-bottom: -13rem; */
     position: absolute;
@@ -190,7 +190,7 @@
   }
 
   .Establishment_timeline_comment {
-    font-size: 17px;
+    font-size: 18px;
     width: 250px;
     /* margin-bottom: -13rem; */
     position: absolute;
@@ -456,7 +456,7 @@
   }
 
   .Establishment_content{
-    padding-top: 5rem;
+    padding-top: 2rem;
   }
 }
 
@@ -474,9 +474,13 @@
     top: 8rem;
     left: 30%;
   } */
+
+  .Establishment_content{
+    padding-top: 3rem;
+  }
 }
 
-@media (max-width : 360px) {
+@media (max-width : 375px) {
   .Establishment_timeline_year {
     left: 30%;
   }
@@ -484,7 +488,12 @@
     left: 7%;
   }
   .Establishment_content{
-    padding-top: 3rem;
+    padding-top: 4rem;
+  }
+}
+@media (max-width : 345px) {
+  .Establishment_content{
+    padding-top: 5rem;
   }
 }
 
@@ -503,5 +512,6 @@
     position: absolute;
     justify-content: center;
   }
+
 
 }

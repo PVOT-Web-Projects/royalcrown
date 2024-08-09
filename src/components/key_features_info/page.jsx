@@ -1,7 +1,9 @@
+"use client";
 import React from "react";
 import "./product_info.scss";
 import Image from "next/image";
 import svg1 from "../../images/svgLogos/Group 145.svg";
+import {motion} from "framer-motion";
 // const cards = [
 //   {
 //     title: "HIGHLY RESISTANT TO CHEMICALS",
@@ -51,7 +53,10 @@ const KeyFeaturesInfo = () => (
   <>
     <div className="whyUsContainer">
       <div className="whyUsWrapper">
-        <div className="whyusHeader">Key Features</div>
+        <motion.div className="whyusHeader" initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}>Key Features</motion.div>
         <div className="whyUsCardWrapper">
           <div className="cardouter_1">
             <div className="cardinner">

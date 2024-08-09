@@ -1,5 +1,7 @@
 "use client";
 import { useEffect } from "react";
+import BlogsPage from "@/components/blogspage/page";
+import BlogsMain from "@/components/blogPosts/page";
 import "./blogs.scss";
 const Blogs = () => {
   useEffect(() => {
@@ -9,6 +11,8 @@ const Blogs = () => {
 
   return (
     <div>
+        <BlogsPage />
+        <BlogsMain />
     </div>
   );
 };
