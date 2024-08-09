@@ -1,15 +1,22 @@
+"use client";
 import Image from "next/image";
 import AboutUs_vision from "../../images/image 65.jpg";
 import "./aboutUsVision.scss";
+import {motion } from "framer-motion";
 
 export default function AboutUsVision() {
   return (
     <>
       <div className="aboutVisionWrapper">
         <div className="aboutVisionContainer">
-          <div className="visionHeader">
+          <motion.div className="visionHeader"
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          >
             <div>Vision</div>
-          </div>
+          </motion.div>
           <div>
             <Image src={AboutUs_vision} alt="" className="visionImage" />
           </div>

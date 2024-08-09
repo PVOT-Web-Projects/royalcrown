@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -6,6 +6,7 @@ import "./aboutUsEstablishment.scss";
 import establish_image from "../../images/laminate - about-us 5.jpg";
 import Image from "next/image";
 import crown from "../../images/crown11.png";
+import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -101,17 +102,25 @@ const AboutUsEstablishment = () => {
       <div>
         <div className="Establishment_timeline_outer">
           <div className="Establishment_timeline_wrapper">
-            <div className="Establishment_header ">
+            <motion.div
+              className="Establishment_header "
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+            >
               <div className="Establishment_header_1">The Royal</div>
               <div className="Establishment_header_bottom">Establishment</div>
-            </div>
+            </motion.div>
             <div className="Establishment_timeline_main_outer">
               <div className="Establishment_timeline_width">
                 <div className="Establishment_timeline" ref={container}>
                   <div className="Establishment_line"></div>
 
                   <div className="Establishment_section">
-                    <div className="Establishment_timeline_year triggered-section">1990</div>
+                    <div className="Establishment_timeline_year triggered-section">
+                      1990
+                    </div>
                     <p className="Establishment_timeline_comment triggered-text">
                       Customers are at the heart of our unique business model.
                       Royal Crown thrives at providing royal service to
@@ -131,7 +140,9 @@ const AboutUsEstablishment = () => {
                     </div>
                   </div>
                   <div className="Establishment_section">
-                    <div className="Establishment_timeline_year triggered-section">1990</div>
+                    <div className="Establishment_timeline_year triggered-section">
+                      1990
+                    </div>
                     <p className="Establishment_timeline_comment triggered-text">
                       Customers are at the heart of our unique business model.
                       Royal Crown thrives at providing royal service to
@@ -151,7 +162,9 @@ const AboutUsEstablishment = () => {
                     </div>
                   </div>
                   <div className="Establishment_section">
-                    <div className="Establishment_timeline_year triggered-section">1990</div>
+                    <div className="Establishment_timeline_year triggered-section">
+                      1990
+                    </div>
                     <p className="Establishment_timeline_comment triggered-text">
                       Customers are at the heart of our unique business model.
                       Royal Crown thrives at providing royal service to
@@ -171,7 +184,9 @@ const AboutUsEstablishment = () => {
                     </div>
                   </div>
                   <div className="Establishment_section">
-                    <div className="Establishment_timeline_year triggered-section">1990</div>
+                    <div className="Establishment_timeline_year triggered-section">
+                      1990
+                    </div>
                     <p className="Establishment_timeline_comment triggered-text">
                       Customers are at the heart of our unique business model.
                       Royal Crown thrives at providing royal service to
@@ -191,7 +206,9 @@ const AboutUsEstablishment = () => {
                     </div>
                   </div>
                   <div className="Establishment_section">
-                    <div className="Establishment_timeline_year triggered-section">1990</div>
+                    <div className="Establishment_timeline_year triggered-section">
+                      1990
+                    </div>
                     <p className="Establishment_timeline_comment triggered-text">
                       Customers are at the heart of our unique business model.
                       Royal Crown thrives at providing royal service to

@@ -6,6 +6,7 @@ import products from "./productData.js";
 import { Dropdown } from "primereact/dropdown";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import {motion} from "framer-motion";
 
 const Page = () => {
   const [selectedBrand, setSelectedBrand] = useState("all");
@@ -46,7 +47,7 @@ const Page = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 1024);
+      setIsMobile(window.innerWidth < 1025);
     };
     window.addEventListener("resize", handleResize);
     return () => {
@@ -181,7 +182,10 @@ const Page = () => {
     <>
       <div className="first_top">
         <div id="sticky_top" className="products_name">
-          <div>Explore Collection</div>
+          <motion.div   initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}>Explore Collection</motion.div>
           <div className="products-tabs" id="sticky_top">
             <div
               className={`tab-item ${tab === "/xylem" ? "active" : ""}`}
@@ -189,7 +193,6 @@ const Page = () => {
             >
               <Link
                 href="/products#xylem"
-                className={tab === "/xylem" ? "active" : ""}
               >
                 Xylem
               </Link>
@@ -200,7 +203,6 @@ const Page = () => {
             >
               <Link
                 href="/products#Qbiss"
-                className={tab === "/Qbiss" ? "active" : ""}
               >
                 Qbiss
               </Link>
@@ -211,7 +213,6 @@ const Page = () => {
             >
               <Link
                 href="/products#Crown_Xcl"
-                className={tab === "/Crown_Xcl" ? "active" : ""}
               >
                 Crown Xcl
               </Link>
@@ -222,7 +223,6 @@ const Page = () => {
             >
               <Link
                 href="/Products#Crown"
-                className={tab === "/Crown" ? "active" : ""}
               >
                 Crown
               </Link>

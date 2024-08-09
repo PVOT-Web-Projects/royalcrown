@@ -23,7 +23,10 @@ export default function AboutUsWhyUs({heading , cardOneText , cardTwoText , card
     <>
       <div className="whyUsContainer">
         <div className="whyUsWrapper">
-          <div className="whyusHeader">{heading}</div>
+          <motion.div className="whyusHeader" initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}>{heading}</motion.div>
           <div className="whyUsCardWrapper">
             <div className="cardouter_1"  ref={el => cardRefs.current[0] = el} 
             >

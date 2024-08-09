@@ -3,9 +3,16 @@ import { useState } from "react";
 import "./relatedProduct.scss";
 import Image from "next/image";
 import Img1 from "@/images/PRODUCT1.png";
-import Img2 from "@/images/Frame 58.jpg";
+import Img2 from "@/images/PRODUCT2.png";
 import Img3 from "@/images/PRODUCT3.png";
+import Img4 from "@/images/SliderImg_2.png"
 import LineHeaderText from "../lineheadertext/page";
+import { SwiperSlide, Swiper } from "swiper/react";
+import { Autoplay, FreeMode, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
+import { motion } from "framer-motion";
 
 const RelatedProductInfo = () => {
   const [liked, setLiked] = useState([false, false, false, false]);
@@ -19,18 +26,61 @@ const RelatedProductInfo = () => {
   const Images = [
     { ProductImage: Img1 },
     { ProductImage: Img2 },
+    { ProductImage: Img3 },
+    { ProductImage: Img4 },
     { ProductImage: Img1 },
     { ProductImage: Img2 },
+    { ProductImage: Img3 },
+    { ProductImage: Img4 },
   ];
 
   return (
     <div className="RelatedProductMainContainer">
-      <div>
+      <motion.div initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}>
         <LineHeaderText text={"RELATED PRODUCTS"} />
-      </div>
-      <div className="RelatedProductCards">
+      </motion.div>
+      <Swiper
+        className="RelatedProductCards"
+        slidesPerView={4}
+        spaceBetween={30}
+        freeMode={true}
+        autoplay={{
+          delay: 2500,
+        }}
+        slidesPerGroup={2}
+        loop = {true}
+        speed={1500}
+        modules={[FreeMode, Pagination , Autoplay]}
+
+        breakpoints={{
+          1600 : {
+            slidesPerView : 5,
+          },
+          1200:{
+            slidesPerView: 4
+          },
+          768 : {
+            slidesPerView: 3,
+            spaceBetween : 20,
+          },
+          575 : {
+            spaceBetween : 40,
+          },
+          475 : {
+            slidesPerView: 2,
+            spaceBetween : 20
+          },
+          300 : {
+            slidesPerView: 1,
+            spaceBetween : 20
+          }
+        }}
+      >
         {Images.map((item, index) => (
-          <div key={index} className="RelatedProductCard">
+          <SwiperSlide key={index} className="RelatedProductCard">
             <Image
               src={item.ProductImage}
               alt="Related Product"
@@ -89,9 +139,9 @@ const RelatedProductInfo = () => {
                 <p className="TextSvgInner">KNOW MORE</p>
               </div>
             </div>
-          </div>
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
     </div>
   );
 };
