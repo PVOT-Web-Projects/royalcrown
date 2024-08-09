@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import YellowSubmitButton from "../buttons/yellowSubmitButton/YellowSubmitButton";
 import "./Career_job.scss";
 import Cards from "../TwoCards/page";
+import { motion } from "framer-motion";
 const CareerJob = () => {
   const [inputValue, setInputValue] = useState("");
 
@@ -16,9 +17,15 @@ const CareerJob = () => {
 
   return (
     <div className="CareerMainContainer">
-      <div className="CareerMainContainerText">
+      <motion.div
+        className="CareerMainContainerText"
+        initial={{ y: 50, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+      >
         <p>Your Next Career Breakthrough Starts Now</p>
-      </div>
+      </motion.div>
       <div className="SearchMainContainer">
         <div className="inputContainer">
           <svg
@@ -65,11 +72,16 @@ const CareerJob = () => {
       </div>
       {/* search ends */}
       <div className="SecondTextContainer">
-        <div>
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
           <p className="SecondTextContainerInner">
             What’s It Like Working for Royal Crown ?
           </p>
-        </div>
+        </motion.div>
         <div className="SecondTextContainertext">
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
