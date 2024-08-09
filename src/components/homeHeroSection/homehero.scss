@@ -143,11 +143,12 @@
           text-transform: uppercase;
           border-bottom: 1px solid $white;
           max-width: max-content;
+          // color: #FFF5ED;
           cursor: pointer;
           transition: all .5s ease-in-out;
           &:hover{
-            color: white;
-            border-bottom: 1px solid white;
+            color: #5b3524d7;
+            border-bottom: 1px solid #5b3524d7;
           }
         }
 
