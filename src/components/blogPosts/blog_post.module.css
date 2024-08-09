@@ -1,0 +1,35 @@
+
+.gridItem {
+  /* color: white; */
+  padding: 5px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+  .ImageContainer {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover; 
+  }
+  .BlogsDate {
+    font-size: 20px;
+    margin-top: 12px;
+    font-weight: 200;
+    /* opacity: 0.7; */
+    font-family: "made_mirage_bold";
+  }
+
+  .BlogsDescription {
+    font-size: 19px;
+    margin-top: 10px;
+    flex-grow: 1; 
+  }
+  @media(max-width: 475px){
+    .BlogsDescription {
+      font-size: 17px;
+    }
+  }
+
