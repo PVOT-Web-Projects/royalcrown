@@ -1,0 +1,20 @@
+.productFeaturesWrapper{
+    padding: 100px 70px;
+
+    .productFeaturesInner{
+        .productFeaturesHeader{
+            text-align: center;
+            font-size: 35px;
+            padding: 40px 0;
+        }
+        .productFeaturesContainer{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .productFeaturesContainerInner{
+                text-align: center;
+            }
+        }
+    }
+}

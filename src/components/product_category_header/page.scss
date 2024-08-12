@@ -1,0 +1,29 @@
+.productCategoryHeader {
+    padding: 80px 0;
+    .productCategoryHeaderInner {
+        background: url("../../images/Electrostatic-Laminates_header.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        height: 80vh;
+        display: flex;
+        align-items: flex-end;
+        color: white;
+
+        .productCategoryHeaderText {
+            display: flex;
+            margin-right: auto;
+            margin-left: auto;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0px 0px 50px 0px;
+            padding: 20px 0px 20px 60px;
+            
+            .productCategoryHeaderTextInnner{
+                font-family: "made_mirage_bold";
+                font-size: 30px;
+                
+            }
+        }
+    }
+}

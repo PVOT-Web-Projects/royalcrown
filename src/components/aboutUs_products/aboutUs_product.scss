@@ -42,26 +42,44 @@
       font-size: 11px;
     }
 
-    @media (max-width : 375ppx) {
+    @media (max-width : 375px) {
       font-size: 9px;
     }
     .tab-item {
       border: 1px solid $white;
       border-radius: 10px;
       padding: 10px 50px;
-      a{
-        font-weight: bold;
-        color: $white
-      }
-      .active{
-        background-color: $white;
-        color:white;
+
+      @media (max-width : 920px) {
+        padding: 10px 45px;
       }
 
-      @media (max-width : 425px) {
-        padding: 10px 20px;
+      @media (max-width : 850px) {
+        padding: 10px 30px;
+      }
+
+      @media (max-width : 650px) {
+        padding: 10px 15px;
+      }
+      
+      a {
+        font-weight: bold;
+        color: $white;
+      }
+    
+      @media (max-width: 425px) {
+        padding: 10px 10px;
       }
     }
+  }
+}
+
+
+.products-tabs .tab-item.active {
+  background-color: $white;
+
+  a{
+    color: white !important;
   }
 }
 
@@ -219,7 +237,7 @@
   }
 
   @media (max-width : 1180px) {
-    top: 155px;
+    top: 165px;
   }
 
   @media (max-width: 575px) {
@@ -241,7 +259,7 @@
   }
 
   @media (max-width : 330px) {
-    top: 215px;
+    top: 170px;
   }
   @media only screen and (min-width: 576px) and (max-width: 1024px) {
     flex-direction: row;

@@ -1,0 +1,40 @@
+.productApplicationContainer {
+    background-color: #d5ad86;;
+    padding: 100px 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .productApplicationHeader {
+        font-size: 35px;
+    }
+
+    .productApplicationSection {
+        display: flex;
+        gap: 25rem;
+
+        .productApplicationSection1Inner_Main {
+            display: flex;
+            gap: 3rem;
+            margin: 20px 0;
+
+        }
+        
+        .productApplicationSection2Inner_Main{
+            display: grid;
+            grid-template-columns: repeat(2 , 1fr);
+            gap: 1rem;
+            margin: 20px 0;
+        }
+    }
+}
+.applicationSection1Inner {
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.productApplicationSection1Header{
+    font-family: "made_mirage_bold";
+    font-size: 21px;
+}
