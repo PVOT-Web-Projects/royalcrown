@@ -1,6 +1,8 @@
+"use client";
 import Image from "next/image";
 import Image1 from "../../images/1_LOW-ELECTRICAL-RESISTANT.svg";
 import "./productFeatures.scss";
+import { motion } from "framer-motion";
 
 export default function ProductFeatures() {
   const productFeatures = [
@@ -29,14 +31,24 @@ export default function ProductFeatures() {
   return (
     <div className="productFeaturesWrapper">
       <div className="productFeaturesInner">
-        <div className="productFeaturesHeader">
+        <motion.div
+          className="productFeaturesHeader"
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
           <div>FEATURES & ATTRIBUTES</div>
-        </div>
+        </motion.div>
         <div className="productFeaturesContainer">
           {productFeatures.map((feature, index) => (
             <div className="productFeaturesContainerInner" key={index}>
               <div className="productImage">
-                <Image src={feature.image} alt={feature.description} />
+                <Image
+                  src={feature.image}
+                  alt={feature.description}
+                  className="productFeatureImage"
+                />
               </div>
               <div className="productDescription">
                 <div>{feature.description}</div>

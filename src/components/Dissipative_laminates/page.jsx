@@ -1,3 +1,5 @@
+"use client";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import "./laminates.scss";
 import icon1 from "../../images/Icons-11-2048x2048.png";
@@ -8,9 +10,15 @@ export default function DissipativeLaminates() {
     <>
       <div className="laminatesHero">
         <div className="laminatesWrapper">
-          <div className="laminatesHeader">
+          <motion.div
+            className="laminatesHeader"
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+          >
             <div>ELECTROSTATIC DISSIPATIVE LAMINATES</div>
-          </div>
+          </motion.div>
           <div className="laminatesBody">
             <div className="laminateBodyDescription">
               <div>
