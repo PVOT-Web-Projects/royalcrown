@@ -21,6 +21,7 @@ const Page = () => {
   const [currentData, setCurrentData] = useState(products);
   const pathName = usePathname();
   const [activeTab, setActiveTab] = useState("");
+  console.log(currentData)
 
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
