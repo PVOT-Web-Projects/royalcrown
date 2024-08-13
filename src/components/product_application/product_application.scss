@@ -13,11 +13,21 @@
         display: flex;
         gap: 25rem;
 
+        @media (max-width : 1024px) {
+            gap: 0;
+            justify-content: space-between; 
+        }
+
         .productApplicationSection1Inner_Main {
             display: flex;
             gap: 3rem;
             margin: 20px 0;
 
+            @media (max-width : 768px) {
+                flex-direction: column;
+                gap: 1rem;
+                margin: 15px 0;
+            }
         }
         
         .productApplicationSection2Inner_Main{
