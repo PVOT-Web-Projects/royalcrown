@@ -1,0 +1,70 @@
+.corporateCardsWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 200px;
+
+    @media (max-width : 1300px) {
+        padding:0 150px;
+    }
+
+    @media (max-width : 1150px) {
+        padding: 0 100px;
+    }
+
+    @media (max-width : 991px) {
+        padding: 0 50px;
+    }
+
+    @media (max-width : 475px) {
+        padding: 0 30px;
+    }
+    .corporateCardsContainer{
+        display: flex;
+        justify-content: center;
+        gap: 5rem;
+
+        @media (max-width : 991px) {
+            flex-direction: column;
+        }
+
+        @media (max-width : 768px) {
+            gap: 2rem;
+        }
+        .corporateCardsImage{
+            width: 50%;
+        }
+
+        .corporateCardsImageInner{
+            max-width: 100%;
+            display: block;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        .corporateCardDescription{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1rem;
+            width: 50%;  
+            letter-spacing: 2px;
+
+            @media (max-width : 991px) {
+                width: 100%;    
+            }
+            
+            .coporateCardHeader{
+                text-transform: uppercase;
+                font-weight: bold;
+                font-size: 21px;
+            }
+
+            .coporateCardHeader2{
+                font-size: 25px;
+            }
+        }
+    }
+
+}

@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import CorporateImg from "@/components/corporateheader/page";
 import CorporateTwoCards from "@/components/corporateTwoCards/page";
+import CorporateTestimonial from "@/components/corporateTestimonial/corporateTestimonial";
 
 const CorporateSocial =() =>{
     useEffect(() => {
@@ -11,6 +12,7 @@ const CorporateSocial =() =>{
         <div>
           <CorporateImg />
           <CorporateTwoCards />
+          <CorporateTestimonial/>
         </div>
     )
 }
