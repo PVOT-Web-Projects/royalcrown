@@ -6,7 +6,7 @@ import scrollSvg from "../../images/svgLogos/mouse.svg";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { useEffect } from "react";
-export default function ProductHero() {
+export default function ProductHero({scrollTo , goToSectionRef}) {
   useEffect(() => {
     const animateLine = () => {
       gsap.fromTo(
@@ -80,6 +80,7 @@ export default function ProductHero() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 5 }}
           viewport={{ once: true }}
+          onClick={() => scrollTo(goToSectionRef)}
         >
           <svg
             height={50}
