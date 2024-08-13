@@ -1,7 +1,7 @@
 "use client"
 import { useEffect } from "react";
-import Privacy_policy from "@/components/policyData/page";
 import CorporateImg from "@/components/corporateheader/page";
+import CorporateTwoCards from "@/components/corporateTwoCards/page";
 
 const CorporateSocial =() =>{
     useEffect(() => {
@@ -10,7 +10,7 @@ const CorporateSocial =() =>{
     return(
         <div>
           <CorporateImg />
-            <Privacy_policy />
+          <CorporateTwoCards />
         </div>
     )
 }
