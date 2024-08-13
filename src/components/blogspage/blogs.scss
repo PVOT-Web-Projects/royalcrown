@@ -1,8 +1,11 @@
 .BlogsMainContainer {
-  padding-top: 8rem;
-  padding: 150px 50px;
+  // padding-top: 8rem;
+  padding: 150px 50px 90px;
   @media(max-width: 575px){
     padding: 100px 50px 75px;
+  }
+  @media(max-width: 5475px){
+    padding: 100px 25px 75px;
   }
   p {
     font-size: 55px;
