@@ -16,10 +16,13 @@ header {
       display: none;
     }
     .logo {
-      
+      // flex: 1;
       padding-left: 110px;
       @media(min-width: 1500px){
       padding-left: 90px;
+      }
+      @media(max-width: 1024px){
+        padding-left: 90px;
       }
       img {
         max-width: 100%;
@@ -31,6 +34,7 @@ header {
       }
     }
     ul {
+      // flex: 1;
       display: flex;
       align-items: center;
       gap: 40px;
