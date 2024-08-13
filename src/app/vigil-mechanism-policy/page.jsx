@@ -1,7 +1,7 @@
 import Privacy_policy from "@/components/policyData/page";
 import PrivacyPolicyImg from "@/components/privacypolicyheader/page";
 
-const PrivacyPolicy =() =>{
+const VigilMechanismPolicy =() =>{
     return(
         <div>
             <PrivacyPolicyImg />
@@ -9,4 +9,4 @@ const PrivacyPolicy =() =>{
         </div>
     )
 }
-export default PrivacyPolicy;
+export default VigilMechanismPolicy;

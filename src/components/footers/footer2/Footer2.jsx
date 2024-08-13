@@ -75,7 +75,7 @@ const Footer2 = ({ bgColor }) => {
                   </li>
                   <li>
                     <LinkHover
-                      url={"/privacy-policy"}
+                      url={"/vigil-mechanism-policy"}
                       text={"Vigil Mechanism Policy"}
                       color={"#000"}
                       borderColor={"white"}
