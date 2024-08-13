@@ -148,6 +148,9 @@
           margin-top: 0rem;
           margin-left: 0rem;
         }
+        @media (max-width: 425px) {
+          margin-top: 2rem;
+        }
       }
 
       @media (max-width: 375px) {
@@ -161,7 +164,9 @@
 
         .tenExpBorderText {
           font-size: 90px;
-
+          @media(max-width: 1440px){
+            font-size: 80px;
+          }
           @media (max-width: 575px) {
             font-size: 60px;
           }
@@ -193,7 +198,7 @@
         width: 100%;
         display: block;
         height: auto;
-        @media (max-width: 1420px) {
+        @media (max-width: 1440px) {
           height: 50vh;
         }
         @media (min-width: 1500px) {
@@ -335,7 +340,7 @@
       font-weight: normal;
       line-height: normal;
       text-transform: capitalize;
-      @media (max-width: 1400px) {
+      @media (max-width: 1440px) {
         font-size: 22px;
       }
       @media (max-width: 1199px) {
