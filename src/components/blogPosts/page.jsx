@@ -98,7 +98,7 @@ const BlogPost = ({ readMoreRoute }) => {
       </div>
 
       <div>
-        <Stack spacing={2} justifyContent="center">
+        <Stack spacing={2} justifyContent="center !important">
           <Pagination
             count={Math.ceil(Data.length / itemsPerPage)}
             color="primary"
