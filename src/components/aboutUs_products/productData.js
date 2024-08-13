@@ -19,7 +19,7 @@ const products = [
   { name:"img",  image: filterImage7, category: 'Xylem' , categoryType: "Spotless" , categoryValue:"Exterior Compacts" },
   { name:"img",  image: filterImage8, category: 'Crown XCL' , categoryType: "Spotless" , categoryValue:"Exterior Compacts" },
   { name:"img",  image: filterImage9, category: 'Royal Crown' , categoryType:"Classic Wood Grains" , categoryValue:"Decorative" },
-  { name:"img", image: filterImage10, category: 'QBliss' , categoryType:"Classic Wood Grains" , categoryValue:"Exterior Compacts" },
+  { name:"img", image: filterImage10, category: 'Xylem' , categoryType:"Classic Wood Grains" , categoryValue:"Exterior Compacts" },
 ];
 
 export default products;

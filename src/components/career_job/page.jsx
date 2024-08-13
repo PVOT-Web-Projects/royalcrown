@@ -1,11 +1,15 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import YellowSubmitButton from "../buttons/yellowSubmitButton/YellowSubmitButton";
 import "./Career_job.scss";
 import Cards from "../TwoCards/page";
 import { motion } from "framer-motion";
+import CareerData from "./careerData.js";
+import FindStoreButton from "../buttons/findstoreButton/findstoreButton";
+
 const CareerJob = () => {
   const [inputValue, setInputValue] = useState("");
+  const [job, setJob] = useState(CareerData); // Initialize with all jobs
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -13,7 +17,25 @@ const CareerJob = () => {
 
   const clearInput = () => {
     setInputValue("");
+    setJob(CareerData); // Reset the filtered jobs
   };
+
+  const handleSearch = () => {
+    if (inputValue === "") {
+      setJob(CareerData);
+    } else {
+      const filterBySearch = CareerData.filter((data) =>
+        data.title.toLowerCase().includes(inputValue.toLowerCase())
+      );
+      setJob(filterBySearch);
+    }
+    console.log("Button Clicked");
+  };
+  
+
+  useEffect(() => {
+    console.log(job); // Log job state whenever it changes
+  }, [job]);
 
   return (
     <div className="CareerMainContainer">
@@ -67,7 +89,20 @@ const CareerJob = () => {
           )}
         </div>
         <div>
-          <YellowSubmitButton btn_text={"Search"} />
+          {/* <YellowSubmitButton btn_text={"Search"} /> */}
+          <FindStoreButton btn_text={"Search"} OnClickSearch={handleSearch}/>
+        </div>
+
+        <div>
+          {job.length > 0 ? (
+            job.map((item, index) => (
+              <div key={index}>
+                <div>{item.title}</div>
+              </div>
+            ))
+          ) : (
+            <p>No jobs found.</p>
+          )}
         </div>
       </div>
       {/* search ends */}

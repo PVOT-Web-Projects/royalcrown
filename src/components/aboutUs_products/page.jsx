@@ -20,6 +20,8 @@ const Page = () => {
   const [tab, setTab] = useState("");
   const [currentData, setCurrentData] = useState(products);
   const pathName = usePathname();
+  const [activeTab, setActiveTab] = useState("");
+  console.log(currentData)
 
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
@@ -28,20 +30,25 @@ const Page = () => {
     if (fullPath === "/xylem") {
       setCurrentData(products.filter((data) => data.category === "Xylem"));
       setTab("/products#xylem");
+      setActiveTab("/xylem");
     } else if (fullPath === "/Qbiss") {
       setCurrentData(products.filter((data) => data.category === "QBliss"));
       setTab("/products#Qbiss");
+      setActiveTab("/Qbiss");
     } else if (fullPath === "/Crown_Xcl") {
       setCurrentData(products.filter((data) => data.category === "Crown XCL"));
       setTab("/products#Crown_Xcl");
+      setActiveTab("/Crown_Xcl");
     } else if (fullPath === "/Crown") {
       setCurrentData(
         products.filter((data) => data.category === "Royal Crown")
       );
       setTab("/products#Crown");
+      setActiveTab("/Crown");
     } else {
       setCurrentData(products);
       setTab("");
+      setActiveTab("");
     }
   }, [pathName]);
 
@@ -174,10 +181,10 @@ const Page = () => {
 
   const handleTabChange = (newTab) => {
     setTab(newTab);
+    setActiveTab(newTab); // Update the active tab state
     // Update URL hash
     window.history.pushState(null, "", newTab);
   };
-
   return (
     <>
       <div className="first_top">
@@ -192,28 +199,41 @@ const Page = () => {
           </motion.div>
           <div className="products-tabs" id="sticky_top">
             <div
-              className={`tab-item ${tab === "/xylem" ? "active" : ""}`}
+              className={`tab-item ${activeTab === "/xylem" ? "active" : ""}`}
               onClick={() => handleTabChange("/xylem")}
             >
-              <Link href="/products#xylem">Xylem</Link>
+              <Link href="/products#xylem" onClick={(e) => e.preventDefault()}>
+                Xylem
+              </Link>
             </div>
             <div
-              className={`tab-item ${tab === "/Qbiss" && "active"}`}
+              className={`tab-item ${activeTab === "/Qbiss" ? "active" : ""}`}
               onClick={() => handleTabChange("/Qbiss")}
             >
-              <Link href="/products#Qbiss">Qbiss</Link>
+              <Link href="/products#Qbiss" onClick={(e) => e.preventDefault()}>
+                Qbiss
+              </Link>
             </div>
             <div
-              className={`tab-item ${tab === "/Crown_Xcl" ? "active" : ""}`}
+              className={`tab-item ${
+                activeTab === "/Crown_Xcl" ? "active" : ""
+              }`}
               onClick={() => handleTabChange("/Crown_Xcl")}
             >
-              <Link href="/products#Crown_Xcl">Crown Xcl</Link>
+              <Link
+                href="/products#Crown_Xcl"
+                onClick={(e) => e.preventDefault()}
+              >
+                Crown XCL
+              </Link>
             </div>
             <div
-              className={`tab-item ${tab === "/Crown" ? "active" : ""}`}
+              className={`tab-item ${activeTab === "/Crown" ? "active" : ""}`}
               onClick={() => handleTabChange("/Crown")}
             >
-              <Link href="/Products#Crown">Crown</Link>
+              <Link href="/products#Crown" onClick={(e) => e.preventDefault()}>
+                Crown
+              </Link>
             </div>
           </div>
         </div>
@@ -318,17 +338,23 @@ const Page = () => {
           </div>
           <div className="product_container">
             {filteredProducts.map((product, index) => {
-              const className =
-                index === 9
-                  ? "big"
-                  : [0, 2, 3, 7, 8, 10].includes(index)
-                  ? "tall"
-                  : "";
+              // Determine if the tab is active
+              const isTabActive = !!activeTab;
+
+              // Only apply "big" or "tall" classNames if not in the tab view
+              const className = isTabActive
+                ? "" // Normal size for tab view
+                : index === 9
+                ? "big"
+                : [0, 2, 3, 7, 9].includes(index)
+                ? "tall"
+                : "";
+
               return (
                 <div key={index} className={`AboutUs_product ${className}`}>
                   <Image src={product.image} alt={product.name} />
                   <div className="overlay">
-                    <span>
+                    <div>
                       <svg
                         width="40"
                         height="40"
@@ -336,11 +362,12 @@ const Page = () => {
                         fill-rule="evenodd"
                         clip-rule="evenodd"
                         fill="white"
+                        className="aboutUsProductSvg"
                       >
                         <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
                       </svg>
-                      <div>Know More</div>
-                    </span>
+                    </div>
+                    <div>Know More</div>
                   </div>
                 </div>
               );
