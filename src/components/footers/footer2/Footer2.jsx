@@ -51,7 +51,7 @@ const Footer2 = ({ bgColor }) => {
                       HoverBtn={"#5b3524"}
                     />
                   </li>
-                  <li>
+                  {/* <li>
                     <LinkHover
                       url={"/"}
                       text={"Annual Return"}
@@ -61,10 +61,10 @@ const Footer2 = ({ bgColor }) => {
                       textTransform={"capitalize"}
                       HoverBtn={"#5b3524"}
                     />
-                  </li>
+                  </li> */}
                   <li>
                     <LinkHover
-                      url={"/"}
+                      url={"/privacy-policy"}
                       text={"Corporate Social Responsibility"}
                       color={"#000"}
                       borderColor={"white"}
@@ -75,7 +75,7 @@ const Footer2 = ({ bgColor }) => {
                   </li>
                   <li>
                     <LinkHover
-                      url={"/"}
+                      url={"/privacy-policy"}
                       text={"Vigil Mechanism Policy"}
                       color={"#000"}
                       borderColor={"white"}
@@ -113,7 +113,7 @@ const Footer2 = ({ bgColor }) => {
                   </li>
                   <li>
                     <LinkHover
-                      url={"/"}
+                      url={"/products"}
                       text={"Catalogue"}
                       color={"#000"}
                       borderColor={"white"}
@@ -162,7 +162,7 @@ const Footer2 = ({ bgColor }) => {
                   </li>
                   <li>
                     <LinkHover
-                      url={"/"}
+                      url={"/privacy-policy"}
                       text={"Privacy Policy"}
                       color={"#000"}
                       borderColor={"white"}
