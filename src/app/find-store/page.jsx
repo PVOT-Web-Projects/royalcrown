@@ -1,9 +1,10 @@
+import FindStore from "../../components/findStore_search/page"
 
-
-const Findstore =() =>{
+const FindStoreSearch =() =>{
     return(
         <div>
+            <FindStore />
         </div>
     )
 }
-export default Findstore;
+export default FindStoreSearch;
