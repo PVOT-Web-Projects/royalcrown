@@ -10,13 +10,13 @@ export default function ProductHero() {
   useEffect(() => {
     const animateLine = () => {
       gsap.fromTo(
-        '#scroll-line',
+        "#scroll-line",
         { y: 5 },
         {
           y: 15,
           repeat: -1,
           yoyo: true,
-          ease: 'power1.inOut',
+          ease: "power1.inOut",
           duration: 1.5,
         }
       );
@@ -74,8 +74,14 @@ export default function ProductHero() {
             </div>
           </motion.div>
         </div>
-        <div className="productHeroFooter">
-        <svg
+        <motion.div
+          className="productHeroFooter"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 5 }}
+          viewport={{ once: true }}
+        >
+          <svg
             height={50}
             width={50}
             className="nectar-scroll-icon"
@@ -99,7 +105,7 @@ export default function ProductHero() {
               strokeWidth="2"
             />
           </svg>
-        </div>
+        </motion.div>
       </div>
     </>
   );

@@ -337,17 +337,23 @@ const Page = () => {
           </div>
           <div className="product_container">
             {filteredProducts.map((product, index) => {
-              const className =
-                index === 9
-                  ? "big"
-                  : [0, 2, 3, 7, 8, 10].includes(index)
-                  ? "tall"
-                  : "";
+              // Determine if the tab is active
+              const isTabActive = !!activeTab;
+
+              // Only apply "big" or "tall" classNames if not in the tab view
+              const className = isTabActive
+                ? "" // Normal size for tab view
+                : index === 9
+                ? "big"
+                : [0, 2, 3, 7, 9].includes(index)
+                ? "tall"
+                : "";
+
               return (
                 <div key={index} className={`AboutUs_product ${className}`}>
                   <Image src={product.image} alt={product.name} />
                   <div className="overlay">
-                    <span>
+                    <div>
                       <svg
                         width="40"
                         height="40"
@@ -355,11 +361,12 @@ const Page = () => {
                         fill-rule="evenodd"
                         clip-rule="evenodd"
                         fill="white"
+                        className="aboutUsProductSvg"
                       >
                         <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
                       </svg>
-                      <div>Know More</div>
-                    </span>
+                    </div>
+                    <div>Know More</div>
                   </div>
                 </div>
               );
