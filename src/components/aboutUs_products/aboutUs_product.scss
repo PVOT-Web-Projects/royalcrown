@@ -18,50 +18,86 @@
   // padding: 50px 30px;
 
   @media (max-width : 575px) {
-    padding: 0 50px;
+    padding:  1rem;
   }
 
   .products-tabs{
     display: flex;
+    transition: all 0.5s ease;
     font-size: 20px;
-    justify-content: space-around;
-    padding:20px 0 ;
+    // justify-content: space-around;
+    padding:25px 5rem;
+    
+    @media (max-width : 1024px) {
+      padding: 25px 0;
+    }
     
     @media (max-width : 768px) {
       font-size: 16px;
-      gap: 10px;
+      // gap: 10px;
     }
-
+    
     @media (max-width : 575px) {
       font-size: 14px;
-      flex-wrap: wrap;
-      gap: 10px;
+      // flex-wrap: wrap;
+      // gap: 10px;
     }
-
+    
     @media (max-width : 475px) {
       font-size: 11px;
     }
-
-    @media (max-width : 375ppx) {
+    
+    @media (max-width : 375px) {
       font-size: 9px;
     }
     .tab-item {
+      width: 25%;
       border: 1px solid $white;
-      border-radius: 10px;
-      padding: 10px 50px;
-      a{
+      padding: 5px 0px;
+      position: relative;
+      overflow: hidden;
+    
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: $white;
+        transform: scaleX(0);
+        transform-origin: 0 50%;
+        transition: transform 0.475s ease-out;
+        z-index: 0; 
+      }
+    
+      a {
+        position: relative;
         font-weight: bold;
-        color: $white
+        color: $white;
+        transition: color 0.475s ease-out;
+        z-index: 1; 
       }
-      .active{
-        background-color: $white;
-        color:white;
-      }
-
-      @media (max-width : 425px) {
-        padding: 10px 20px;
+    
+      &:hover {
+        &::before {
+          transform: scaleX(1);
+        }
+        
+        a {
+          color: white !important
+        }
       }
     }
+  }
+}
+
+
+.products-tabs .tab-item.active {
+  background-color: $white;
+
+  a{
+    color: white !important;
   }
 }
 
@@ -205,7 +241,7 @@
   position: sticky;
   background-color: #FFEEE2;
   width: 30%;
-  top: 200px;
+  top: 165px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -219,7 +255,7 @@
   }
 
   @media (max-width : 1180px) {
-    top: 155px;
+    top: 165px;
   }
 
   @media (max-width: 575px) {
@@ -237,11 +273,11 @@
   }
 
   @media (max-width : 465px) {
-    top: 170px;
+    top: 150px;
   }
 
   @media (max-width : 330px) {
-    top: 215px;
+    top: 170px;
   }
   @media only screen and (min-width: 576px) and (max-width: 1024px) {
     flex-direction: row;
@@ -285,26 +321,110 @@
 
     .overlay {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      bottom: 10px;
+      left: 8%;
       display: flex;
-      justify-content: center;
-      align-items: center;
       text-align: center;
-      // background: rgba(0, 0, 0, 0.5);
       opacity: 0;
-      transition: opacity 0.3s ease;
+      transform: translateY(100%); /* Start off-screen (below the element) */
+      transition: opacity 0.3s ease, transform 0.3s ease;
       color: #fff;
       font-size: 1.5rem;
+      background: rgb(42 42 42 / 50%);
       cursor: pointer;
-    }
+      align-items: center;
+      padding: 10px;
 
+      @media (max-width : 1440px) {
+        left: 5%;
+      }
+
+      @media (max-width : 1245px) {
+        left: 10%;
+      }
+
+      @media (max-width : 1150px) {
+        left: 7%;
+      }
+
+      @media (max-width : 1100px) {
+        left: 4%;
+      }
+
+      @media (max-width : 1025px) {
+        left: 1%;
+      }
+
+      @media (max-width : 991px) {
+        padding: 5px;
+        left: 2%;
+      }
+      @media (max-width : 955px) {
+        left: 8%;
+      }
+
+      @media (max-width : 855px) {
+        left: 6%;
+      }
+      @media (max-width : 768px) {
+        left: 10%;
+        font-size: 18px;
+      }
+      @media (max-width : 575px) {
+        left: 20%;
+      }
+
+      @media (max-width : 475px) {
+        left: 15%;
+      }
+
+      @media (max-width : 400px) {
+        left : 8%;
+      }
+
+      @media (max-width : 320px) {
+        left: 26%;
+      }
+    }
+    
+    &.big .overlay {
+      left: 30%;
+      // bottom: 110px;
+
+      @media (max-width : 1245px) {
+        left: 10%;
+      }
+
+      @media (max-width : 1150px) {
+        left: 7%;
+      }
+
+      @media (max-width : 1100px) {
+        left: 4%;
+      }
+
+      @media (max-width : 1025px) {
+        bottom: 25%;
+        left: 28%;
+      }
+
+      @media (max-width : 575px) {
+        left: 35%;
+      }
+      @media (max-width : 320px) {
+        left: 28%;
+      }
+    }
+    
     &:hover .overlay {
       opacity: 1;
+      transform: translateY(0); /* Move to final position */
     }
+    
   }
+}
+.aboutUsProductSvg{
+  padding: 20px 0 0 0;
 }
 
 .product_container div {
@@ -323,6 +443,7 @@
 }
 .big {
   grid-column: auto;
+  overflow: hidden;
   grid-row: auto;
 
   @media (max-width : 1275px) {
@@ -344,6 +465,9 @@
     grid-column: span 2 !important;
     grid-row: span 2 !important;
   }
+  @media (max-width : 375px) {
+    grid-column: auto !important;
+  }
 }
 
 /* Media Query Start for Mobile phones */
@@ -362,7 +486,7 @@
   }
   .big {
     grid-column: span 2;
-    grid-row: span 2;
+    // grid-row: span 2;
   }
 }
 

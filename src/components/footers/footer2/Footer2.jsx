@@ -64,7 +64,7 @@ const Footer2 = ({ bgColor }) => {
                   </li> */}
                   <li>
                     <LinkHover
-                      url={"/privacy-policy"}
+                      url={"/corporate-social-responsibility"}
                       text={"Corporate Social Responsibility"}
                       color={"#000"}
                       borderColor={"white"}
@@ -75,7 +75,7 @@ const Footer2 = ({ bgColor }) => {
                   </li>
                   <li>
                     <LinkHover
-                      url={"/privacy-policy"}
+                      url={"/vigil-mechanism-policy"}
                       text={"Vigil Mechanism Policy"}
                       color={"#000"}
                       borderColor={"white"}

@@ -11,7 +11,7 @@ const TimelineHome = () => {
           className="TimelinetextContainer1"
           initial={{ x: 200, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 2 }}
+          transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
           We are known for providing high density laminates with unparalleled
@@ -23,7 +23,7 @@ const TimelineHome = () => {
           className="Timelinecircle1"
           initial={{ x: 0, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 2 }}
+          transition={{ duration: 1 }}
           viewport={{ once: true }}
         ></motion.div>
       </div>
@@ -32,7 +32,7 @@ const TimelineHome = () => {
           className="Timelinecircle2"
           initial={{ x: 0, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 2, delay: 1 }}
+          transition={{ duration: 1, delay: 1 }}
           viewport={{ once: true }}
         ></motion.div>
       </div>
@@ -41,7 +41,7 @@ const TimelineHome = () => {
           className="TimelinetextContainer3"
           initial={{ x: -200, opacity: 0 }}
           whileInView={{ x: 100, opacity: 1 }}
-          transition={{ duration: 2, delay: 1.5 }}
+          transition={{ duration: 1, delay: 1.2 }}
           viewport={{ once: true }}
         >
           <p className="TimeTextNewinner">
@@ -57,7 +57,7 @@ const TimelineHome = () => {
           className="Timelinecircle3"
           initial={{ x: 0, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 2, delay: 1.5 }}
+          transition={{ duration: 1, delay: 1.2 }}
           viewport={{ once: true }}
         ></motion.div>
       </div>

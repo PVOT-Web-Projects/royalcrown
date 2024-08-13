@@ -1,0 +1,35 @@
+.PrivacyMainHeader {
+  .PrivacyMainHeaderInner {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ClaimBannerImg {
+  }
+  .PrivacyMainHeaderInnerText {
+  
+    .PrivacyMainHeaderInnerTextinner {
+      text-align: center;
+      font-size: 80px;
+      font-weight: 500;
+      @media (max-width: 575px) {
+        font-size: 45px;
+      }
+    }
+    .TextCommitInner {
+      p {
+        text-align: center;
+        margin: 0 auto;
+        font-size: 25px;
+        font-weight: 500;
+        width: 70%;
+        margin-top: 10px;
+        @media (max-width: 575px) {
+          font-size: 18px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
