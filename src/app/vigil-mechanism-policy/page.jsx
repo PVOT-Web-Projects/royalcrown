@@ -3,9 +3,9 @@ import { useEffect } from "react";
 import Privacy_policy from "@/components/policyData/page";
 import PrivacyPolicyImg from "@/components/privacypolicyheader/page";
 
-const PrivacyPolicy =() =>{
+const VigilMechanismPolicy =() =>{
     useEffect(() => {
-        document.title = "Privacy Policy | Royal Crown";
+        document.title = "Vigil Mechanism Policy | Royal Crown";
       });
     return(
         <div>
@@ -14,4 +14,4 @@ const PrivacyPolicy =() =>{
         </div>
     )
 }
-export default PrivacyPolicy;
+export default VigilMechanismPolicy;
