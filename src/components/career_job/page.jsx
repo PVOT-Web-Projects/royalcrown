@@ -6,6 +6,7 @@ import Cards from "../TwoCards/page";
 import { motion } from "framer-motion";
 import CareerData from "./careerData.js";
 import FindStoreButton from "../buttons/findstoreButton/findstoreButton";
+import YellowButton from "../buttons/yellowButton/YellowButton";
 
 const CareerJob = () => {
   const [inputValue, setInputValue] = useState("");
@@ -31,7 +32,6 @@ const CareerJob = () => {
     }
     console.log("Button Clicked");
   };
-  
 
   useEffect(() => {
     console.log(job); // Log job state whenever it changes
@@ -90,20 +90,31 @@ const CareerJob = () => {
         </div>
         <div>
           {/* <YellowSubmitButton btn_text={"Search"} /> */}
-          <FindStoreButton btn_text={"Search"} OnClickSearch={handleSearch}/>
+          <FindStoreButton btn_text={"Search"} OnClickSearch={handleSearch} />
         </div>
-
-        <div>
-          {job.length > 0 ? (
-            job.map((item, index) => (
-              <div key={index}>
-                <div>{item.title}</div>
+      </div>
+      {/*  */}
+      <div className="JobsearchMain">
+        {job.length > 0 ? (
+          job.map((item, index) => (
+            <div key={index} className="JobmainContainer">
+              <div className="JobExpmain">
+                <div className="JobExpmainInner">
+                  <div>
+                  <p className="JobTitle">{item.title}</p>
+                  <p className="JobExpText">{item.exp}</p>
+                  <p className="JobOpenings">{item.openings}</p>
+                  </div>
+                  <div className="ApplyBtn">
+                    <YellowButton btn_text={"Apply Now"} url={item.link}/>
+                  </div>
+                </div>
               </div>
-            ))
-          ) : (
-            <p>No jobs found.</p>
-          )}
-        </div>
+            </div>
+          ))
+        ) : (
+          <p className="NoJobs">No jobs found.</p>
+        )}
       </div>
       {/* search ends */}
       <div className="SecondTextContainer">
