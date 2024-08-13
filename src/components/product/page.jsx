@@ -1,7 +1,7 @@
 "use client";
 import "./product.scss";
 import { motion } from "framer-motion";
-export default function Products() {
+export default function Products({scrollTo , goToSectionRef}) {
   return (
     <>
       <div className="productMainContainer">

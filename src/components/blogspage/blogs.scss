@@ -1,13 +1,17 @@
 .BlogsMainContainer {
   // padding-top: 8rem;
-  padding: 150px 50px 90px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // padding: 150px 50px 90px;
   @media(max-width: 575px){
-    padding: 100px 50px 75px;
+    // padding: 100px 50px 75px;
   }
   @media(max-width: 5475px){
-    padding: 100px 25px 75px;
+    // padding: 100px 25px 75px;
   }
-  p {
+  .TitleBlogs{
     font-size: 55px;
     text-align: center;
     margin: 0 auto;
@@ -20,7 +24,24 @@
       width: 100%;
       height: 100%;
       padding-top: 2rem;
-      border-bottom: 2px solid #5B3524;
+      // border-bottom: 2px solid #5B3524;
     }
+   
   }
+  .DescriptionBlogs{
+    font-size: 30px;
+    font-family: "made_mirage_thin";
+    font-weight: 500;
+    // line-height: 1.5;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem 0;
+    // border-top: 1px solid #5B3524;
+    // border-bottom: 1px solid #5B3524;
+    @media(max-width: 575px){
+      font-size: 20px;
+      padding: 0 20px;
+    }
+  } 
 }
