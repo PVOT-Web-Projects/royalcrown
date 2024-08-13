@@ -1,58 +1,56 @@
-
 .BlogsInner {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); // Always display 3 columns
-    gap: 20px;
-    // padding: 0 50px;
-    padding: 0px 50px 80px;
-    position: relative;
-    @media(max-width: 575px){
-      padding: 0px 25px 80px;
-    }
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 50px;
-      width: 94%;
-      height: 100%;
-      // padding-top: 2rem;
-      // background-color: white;
-      border-bottom: 2px solid #5B3524;
-      @media(max-width: 1199px){
-        width: 90%;
-      }
-      @media(max-width: 768px){
-        width: 86%;
-      }
-      @media(max-width: 765px){
-        width: 0%;
-      }
-    }
-    @media(max-width: 1199px){
-      grid-template-columns: repeat(2 ,1fr);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); // Always display 3 columns
+  gap: 20px;
+  // padding: 0 50px;
+  padding: 0px 50px 80px;
+  position: relative;
+  @media (max-width: 575px) {
+    padding: 0px 25px 80px;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50px;
+    width: 94%;
+    height: 100%;
+    // padding-top: 2rem;
+    // background-color: white;
+    border-bottom: 2px solid #5b3524;
+    @media (max-width: 1199px) {
+      width: 90%;
     }
     @media (max-width: 768px) {
-      grid-template-columns: 1fr; // Change to single column layout on smaller screens
+      width: 86%;
+    }
+    @media (max-width: 765px) {
+      width: 0%;
     }
   }
-  
+  @media (max-width: 1199px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; // Change to single column layout on smaller screens
+  }
+}
 
-  .css-4bhcql-MuiStack-root {
-    align-items: center !important;
-    padding: 100px 0 !important;
-    @media(max-width: 768px){
-      padding: 50px 0 100px !important;
-    }
-    @media(max-width: 575px){
-      padding: 0px 0 100px !important;
-    }
+.css-4bhcql-MuiStack-root {
+  align-items: center !important;
+  padding: 100px 0 !important;
+  @media (max-width: 768px) {
+    padding: 50px 0 100px !important;
   }
-  .css-wjh20t-MuiPagination-ul{
-    justify-content: center !important;
-    padding: 3rem 0 !important;
+  @media (max-width: 575px) {
+    padding: 0px 0 100px !important;
   }
-  .css-nhb8h9{
-    justify-content: center !important;
-    padding: 3rem 0 !important;
-  }
+}
+.css-wjh20t-MuiPagination-ul {
+  justify-content: center !important;
+  padding: 3rem 0 !important;
+}
+.css-nhb8h9 {
+  justify-content: center !important;
+  padding: 3rem 0 !important;
+}

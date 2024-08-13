@@ -90,7 +90,7 @@ const BlogPost = ({ readMoreRoute }) => {
         <div  key={index}  >
           <BlogsCards
             item={item}
-            // handleReadMoreClick={handleReadMoreClick}
+            handleReadMoreClick={handleReadMoreClick}
           />
         </div>
         

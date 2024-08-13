@@ -5,15 +5,18 @@ import styles from "@/components/blogPosts/blog_post.module.css";
 const BlogsCards = ({ item, handleReadMoreClick }) => (
   <div className={styles.gridItem}>
     <Image src={item.image} alt="grid" className={styles.ImageContainer} />
+    <div className={styles.TitleMain}>{item.title}</div>
     <div className={styles.BlogsDate}>{item.date}</div>
     <div className={styles.BlogsDescription}>{item.blogPost_text}</div>
-    {/* <button
+   <div className={styles.BlogsButton}>
+   <button
       onClick={() => handleReadMoreClick(item.readMoreRoute)}
-      className="Blogscard-link"
-      role="button"
+      className={styles.Blogscardlink}
+      type="submit"
     >
-      <span className="text">Read More</span>
-    </button> */}
+      <span className={styles.Buttontext}>Read more</span>
+    </button>
+   </div>
   </div>
 );
 
