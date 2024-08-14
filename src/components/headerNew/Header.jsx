@@ -15,6 +15,8 @@ import PageTransition from "../pageTransition/PageTransition";
 
 const Header = () => {
   const [isHome, setIsHome] = useState(true);
+  const [hoveredItem, setHoveredItem] = useState(null);
+
   const pathname = usePathname();
   console.log("url", isHome);
   useEffect(() => {
@@ -36,8 +38,34 @@ const Header = () => {
               },
             }}
             viewport={{ once: true }}
+            onMouseEnter={() => setHoveredItem("products")}
+            onMouseLeave={() => setHoveredItem(null)}
           >
-            <LinkHover url={"/products"} text={"Products"} fontSize={"16px"} isHomePage={isHome}/>
+            <LinkHover
+              url={"/products"}
+              text={"Products"}
+              fontSize={"16px"}
+              isHomePage={isHome}
+            />
+            {hoveredItem === "products" && (
+              <div className="ProductsLi">
+                <motion.ul
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                >
+                  <li>
+                    <Link href="/products/sub-item-1">Sub-item 1</Link>
+                  </li>
+                  <li>
+                    <Link href="/products/sub-item-2">Sub-item 2</Link>
+                  </li>
+                  <li>
+                    <Link href="/products/sub-item-3">Sub-item 3</Link>
+                  </li>
+                </motion.ul>
+              </div>
+            )}
           </motion.li>
           <motion.li
             initial={{
@@ -50,8 +78,34 @@ const Header = () => {
               },
             }}
             viewport={{ once: true }}
+            onMouseEnter={() => setHoveredItem("about")}
+            onMouseLeave={() => setHoveredItem(null)}
           >
-            <LinkHover url={"/about-us"} text={"About Us"} fontSize={"16px"} isHomePage={isHome}/>
+            <LinkHover
+              url={"/about-us"}
+              text={"About Us"}
+              fontSize={"16px"}
+              isHomePage={isHome}
+            />
+              {hoveredItem === "about" && (
+              <div className="ProductsLi">
+              <motion.ul
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+              >
+                <li>
+                  <Link href="/products/sub-item-1">Sub-item 1</Link>
+                </li>
+                <li>
+                  <Link href="/products/sub-item-2">Sub-item 2</Link>
+                </li>
+                <li>
+                  <Link href="/products/sub-item-3">Sub-item 3</Link>
+                </li>
+              </motion.ul>
+            </div>
+            )}
           </motion.li>
           {/* <motion.li
             initial={{
@@ -92,7 +146,7 @@ const Header = () => {
         <ul className={isHome ? "dark" : "light"}>
           <motion.li
             initial={{
-              opacity: 0, 
+              opacity: 0,
             }}
             whileInView={{
               opacity: 1,
@@ -102,7 +156,12 @@ const Header = () => {
             }}
             viewport={{ once: true }}
           >
-            <LinkHover url={"/products"} text={"Catalogue"} fontSize={"16px"} isHomePage={isHome}/>
+            <LinkHover
+              url={"/products"}
+              text={"Catalogue"}
+              fontSize={"16px"}
+              isHomePage={isHome}
+            />
           </motion.li>
           <motion.li
             initial={{
@@ -116,10 +175,15 @@ const Header = () => {
             }}
             viewport={{ once: true }}
           >
-            <LinkHover url={"#"} text={"Laminate Library"} fontSize={"16px"} isHomePage={isHome}/>
+            <LinkHover
+              url={"#"}
+              text={"Contact Us"}
+              fontSize={"16px"}
+              isHomePage={isHome}
+            />
           </motion.li>
           {/* <div className="side_logo"> */}
-            {/* {isHome ? (
+          {/* {isHome ? (
               <Image src={logo2} alt="header_crown_logo" />
             ) : (
               <Image src={logo3} alt="header_crown_logo" />
