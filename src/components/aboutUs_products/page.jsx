@@ -21,30 +21,22 @@ const Page = () => {
   const [currentData, setCurrentData] = useState(products);
   const pathName = usePathname();
   const [activeTab, setActiveTab] = useState("");
-  console.log(currentData)
+  console.log(currentData);
 
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
     const fullPath = pathName + hash;
 
-    if (fullPath === "/xylem") {
+    if (fullPath === "/products#xylem") {
       setCurrentData(products.filter((data) => data.category === "Xylem"));
-      setTab("/products#xylem");
-      setActiveTab("/xylem");
-    } else if (fullPath === "/Qbiss") {
+    } else if (fullPath === "/products#Qbiss") {
       setCurrentData(products.filter((data) => data.category === "QBliss"));
-      setTab("/products#Qbiss");
-      setActiveTab("/Qbiss");
-    } else if (fullPath === "/Crown_Xcl") {
+    } else if (fullPath === "/products#Crown_Xcl") {
       setCurrentData(products.filter((data) => data.category === "Crown XCL"));
-      setTab("/products#Crown_Xcl");
-      setActiveTab("/Crown_Xcl");
-    } else if (fullPath === "/Crown") {
+    }else if (fullPath === "/products#Crown") {
       setCurrentData(
         products.filter((data) => data.category === "Royal Crown")
       );
-      setTab("/products#Crown");
-      setActiveTab("/Crown");
     } else {
       setCurrentData(products);
       setTab("");
@@ -179,11 +171,23 @@ const Page = () => {
     );
   });
 
-  const handleTabChange = (newTab) => {
+  const handleTabClick = (newTab) => {
     setTab(newTab);
-    setActiveTab(newTab); // Update the active tab state
-    // Update URL hash
+    setActiveTab(newTab);
     window.history.pushState(null, "", newTab);
+
+    // Filter the data based on the selected tab
+    if (newTab === "/products#xylem") {
+      setCurrentData(products.filter((data) => data.category === "Xylem"));
+    } else if (newTab === "/products#Qbiss") {
+      setCurrentData(products.filter((data) => data.category === "QBliss"));
+    } else if (newTab === "/products#Crown_Xcl") {
+      setCurrentData(products.filter((data) => data.category === "Crown XCL"));
+    } else {
+      setCurrentData(
+        products.filter((data) => data.category === "Royal Crown")
+      );
+    }
   };
   return (
     <>
@@ -199,41 +203,48 @@ const Page = () => {
           </motion.div>
           <div className="products-tabs" id="sticky_top">
             <div
-              className={`tab-item ${activeTab === "/xylem" ? "active" : ""}`}
-              onClick={() => handleTabChange("/xylem")}
+              className={`tab-item ${
+                activeTab === "/products#xylem" ? "active" : ""
+              }`}
+              onClick={(e) => {
+                e.preventDefault();
+                handleTabClick("/products#xylem");
+              }}
             >
-              <Link href="/products#xylem" onClick={(e) => e.preventDefault()}>
-                Xylem
-              </Link>
-            </div>
-            <div
-              className={`tab-item ${activeTab === "/Qbiss" ? "active" : ""}`}
-              onClick={() => handleTabChange("/Qbiss")}
-            >
-              <Link href="/products#Qbiss" onClick={(e) => e.preventDefault()}>
-                Qbiss
-              </Link>
+              <div className="tab-content-inner">Xylem</div>
             </div>
             <div
               className={`tab-item ${
-                activeTab === "/Crown_Xcl" ? "active" : ""
+                activeTab === "/products#Qbiss" ? "active" : ""
               }`}
-              onClick={() => handleTabChange("/Crown_Xcl")}
+              onClick={(e) => {
+                e.preventDefault();
+                handleTabClick("/products#Qbiss");
+              }}
             >
-              <Link
-                href="/products#Crown_Xcl"
-                onClick={(e) => e.preventDefault()}
-              >
-                Crown XCL
-              </Link>
+              <div className="tab-content-inner">Qbiss</div>
             </div>
             <div
-              className={`tab-item ${activeTab === "/Crown" ? "active" : ""}`}
-              onClick={() => handleTabChange("/Crown")}
+              className={`tab-item ${
+                activeTab === "/products#Crown_Xcl" ? "active" : ""
+              }`}
+              onClick={(e) => {
+                e.preventDefault();
+                handleTabClick("/products#Crown_Xcl");
+              }}
             >
-              <Link href="/products#Crown" onClick={(e) => e.preventDefault()}>
-                Crown
-              </Link>
+              <div className="tab-content-inner">Crown Xcl</div>
+            </div>
+            <div
+              className={`tab-item ${
+                activeTab === "/products#Crown" ? "active" : ""
+              }`}
+              onClick={(e) => {
+                e.preventDefault();
+                handleTabClick("/products#Crown");
+              }}
+            >
+              <div className="tab-content-inner">Crown</div>
             </div>
           </div>
         </div>
