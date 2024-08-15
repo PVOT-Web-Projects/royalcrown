@@ -5,7 +5,7 @@ import gsap from "gsap";
 import "./privacyPolicy.scss";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
-const PrivacyPolicyImg = ({scrollTo , goToSectionRef}) => {
+const FindStoreHeader = ({scrollTo , goToSectionRef}) => {
   useEffect(() => {
     const animateLine = () => {
       gsap.fromTo(
@@ -35,13 +35,12 @@ const PrivacyPolicyImg = ({scrollTo , goToSectionRef}) => {
                   transition={{ duration: 1 }}
                   viewport={{ once: true }}
                 >
-                 Privacy Policy
+                 Store Locator
                 </motion.div>
           {/* <p >Privacy Policy</p> */}
          <div className="TextCommitInner">
          <p>
-            Our commitment is to protect your personal information and ensure
-            your data remains secure.
+         Find your nearest store with ease. Locate and visit us today!
           </p>
          </div>
         </div>
@@ -82,4 +81,4 @@ const PrivacyPolicyImg = ({scrollTo , goToSectionRef}) => {
     </div>
   );
 };
-export default PrivacyPolicyImg;
+export default FindStoreHeader;
