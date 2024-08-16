@@ -1,247 +1,135 @@
 @import "../../app/variables.scss";
 @import "../../fonts/fonts.scss";
 
+/* About Us Header Section */
 .aboutUsHeroWrapper {
-  padding: 100px 0;
+  padding: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+}
+
+/* About Us Image Container Section */
+.aboutUsImageContainerSection {
+  padding: 100px 0; /* Adjust padding as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+
+.aboutUsHeroHeaderContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  position: fixed;
+  font-size: 80px;
+  z-index: 99;
 
-  .aboutUsHeroContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 5rem;
+  @media (max-width: 768px) {
+    font-size: 70px;
+  }
 
-    .aboutUsHeroHeader {
-      text-align: center;
-      text-transform: uppercase;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      font-size: 80px;
-      // height: 100vh;
+  @media (max-width: 575px) {
+    font-size: 60px;
+  }
 
-      .aboutUsHeroHeader1 {
-        @media (max-width: 575px) {
-          font-size: 60px;
-        }
-      }
+  @media (max-width: 475px) {
+    font-size: 50px;
+  }
 
-      .aboutUsHeroHeader2 {
-        font-family: "made_mirage_thin";
-      }
-
-      @media (max-width : 768px) {
-        font-size: 70px;
-      }
-
-      @media (max-width: 575px) {
-        font-size: 60px;
-      }
-
-      @media (max-width : 475px) {
-        font-size: 50px;
-      }
-    }
-
-    .aboutUsImageContainer {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-
-      .aboutUsImageContainerInner {
-        position: relative;
-        width: 100%;
-        height: 100%;
-
-        .heroImage {
-          max-width: 100%;
-          height: auto;
-          display: block;
-        }
-
-        .aboutUsHeroImage1,
-        .aboutUsHeroImage2,
-        .aboutUsHeroImage3 {
-          position: absolute;
-        }
-
-        .aboutUsHeroImage1 {
-          top: 5%;
-          left: 10%;
-          z-index: 3;
-
-          @media (max-width : 991px) {
-            top: 5%;
-            left: 7%;
-            z-index: 3;
-          }
-
-          @media (max-width : 475px) {
-            top: 5%;
-            left: 0%;
-            z-index: 3;
-          }
-        }
-
-        .aboutUsHeroImage2 {
-          top: 12%;
-          left: 54%;
-          z-index: 2;
-
-          @media (max-width : 475px) {
-            top: 30%;
-            left: 25%;
-            z-index: 2;
-          }
-        }
-
-        .aboutUsHeroImage3 {
-          top: 45%;
-          left: 35%;
-          z-index: 1;
-
-          @media (min-width: 1400px) {
-            top: 35%;
-            left: 25%;
-          }
-
-          @media (max-width : 991px) {
-            top: 35%;
-            left: 20%;
-            z-index: 1;
-          }
-
-          @media (max-width : 475px) {
-            top: 45%;
-            left: 0%;
-            z-index: 1;
-          }
-        }
-      }
+  .aboutUsHeroHeader1 {
+    @media (max-width: 575px) {
+      font-size: 60px;
     }
   }
 
-  .elegance-container {
-    display: flex;
-    padding: 100px 30px;
+  .aboutUsHeroHeader2 {
+    font-family: "made_mirage_thin";
+  }
+}
+
+.aboutUsImageContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100vh;
+  // transform: translateY(90%);
+  z-index: 1;
+
+  .aboutUsImageContainerInner {
     position: relative;
+    display: flex;
 
-    @media (max-width: 991px) {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .heroImage {
+      max-width: 100%;
+      height: auto;
+      display: block;
     }
 
-    .text-section {
-      width: 70%;
-      display: flex;
-      flex-direction: column;
-      padding: 0 50px;
+    .aboutUsHeroImage1,
+    .aboutUsHeroImage2,
+    .aboutUsHeroImage3 {
+      // position: absolute;
+    }
+
+    .aboutUsHeroImage1 {
+      top: 0%;
+      left: 20%;
+      z-index: 3;
 
       @media (max-width: 991px) {
-        gap: 7rem;
+        top: 5%;
+        left: 7%;
+        z-index: 3;
       }
 
-      .text-section-header {
-        text-transform: uppercase;
-        display: flex;
-
-        @media (max-width: 991px) {
-          flex-direction: column;
-          gap: 5rem;
-          justify-content: center;
-          align-items: center;
-        }
-
-        .header_text {
-          font-family: "made_mirage_thin";
-          font-size: 60px;
-          position: relative;
-          display: inline-block;
-
-          @media (min-width: 1500px) {
-            font-size: 80px;
-          }
-
-          @media (max-width: 991px) {
-            text-align: center;
-          }
-
-          @media (max-width : 768px) {
-            font-size: 50px;
-          }
-
-          @media (max-width : 575px) {
-            font-size: 40px;
-          }
-
-          @media (max-width : 475px) {
-            font-size: 30px;
-          }
-
-          .animated-border {
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            height: 1px;
-            background-color: $white; // Change this to the desired color
-            width: 0;
-          }
-        }
-
-        .image-wrapper-1 {
-          position: relative;
-          width: 300px;
-          height: auto;
-          transform: translate(10px, -210px) !important;
-
-          .image-1 {
-            max-width: 100%;
-            display: block;
-            height: auto;
-            margin: 0 auto;
-          }
-
-          @media (max-width: 991px) {
-            transform: translate(0px, 0px) !important;
-          }
-        }
-      }
-
-      .text-section-content {
-        display: flex;
-        font-size: 21px;
-
-        .text-section-inner-footer {
-          font-family: "made_mirage_bold";
-          padding-top: 3rem;
-          font-size: 25px;
-          text-transform: uppercase;
-          border-bottom: 1px solid $white;
-          max-width: max-content;
-        }
-
-        .image-wrapper-2 {
-          transform: translate(10px, -100px) !important;
-
-          @media (max-width: 768px) {
-            display: none;
-          }
-        }
+      @media (max-width: 475px) {
+        top: 5%;
+        left: 0%;
+        z-index: 3;
       }
     }
 
-    .image-section {
-      display: flex;
+    .aboutUsHeroImage2 {
+      top: 12%;
+      left: 50%;
+      z-index: 2;
+
+      @media (max-width: 475px) {
+        top: 30%;
+        left: 25%;
+        z-index: 2;
+      }
+    }
+
+    .aboutUsHeroImage3 {
+      top: 35%;
+      left: 25%;
+      z-index: 1;
+
+      @media (min-width: 1400px) {
+        top: 35%;
+        left: 25%;
+      }
 
       @media (max-width: 991px) {
-        display: none;
+        top: 35%;
+        left: 20%;
+        z-index: 1;
+      }
+
+      @media (max-width: 475px) {
+        top: 45%;
+        left: 0%;
+        z-index: 1;
       }
     }
   }

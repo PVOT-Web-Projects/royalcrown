@@ -8,12 +8,13 @@ import SocialPage from "@/components/socialPage/socialpage";
 import SocialMediaImg from "@/images/socials-image.png";
 import AboutUsDemo from "@/components/aboutdemohero/page";
 import HomeHeroSection from "@/components/homeHeroSection/page";
+import AboutUsHero from "@/components/aboutUsHero/aboutUsHero";
 const AboutUs = () => {
   return (
     <div>
       {/* <AboutUsDemo /> */}
-      {/* <AboutUsHero /> */}
-      <HomeHeroSection/>
+      <AboutUsHero />
+      {/* <HomeHeroSection/> */}
       <AboutUsEstablishment />
       <AboutUsVision />
       <AboutUsWhyUs

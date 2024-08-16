@@ -38,10 +38,10 @@ export default function CorporateTestimonial() {
           </div>
           <div className="testimonialFooterDesciption">
             <div className="testimonialFooterHeader">
-              <p>Jamsetji N Tata</p>
+              <p>Jitendra Patel</p>
             </div>
             <div className="testimonialFooterDescription">
-              <p>Founder, Tata group</p>
+              <p>Chairman / Director</p>
             </div>
           </div>
         </div>

@@ -1,9 +1,11 @@
-import RecognitionImage from "../../images/recognition.png";
+import RecognitionImage1 from "../../images/Changodar P Center.jpg";
+import RecognitionImage2 from "../../images/Dholeswar School.jpg";
+import RecognitionImage3 from "../../images/IMG_20220308_132517.jpg"
 
 const CorporateRecognitionData = [
-    {image : RecognitionImage , description : "Gold award in the CSR Covid relief project category."},
-    {image : RecognitionImage , description : "5 years on the Civic 50 list, in recognition of our social impact"},
-    {image : RecognitionImage , description : "ET Awards’ Corporate Citizen of the Year TCS"},
-    {image : RecognitionImage , description : "CSR China top 100 award for our long-term, successful STEM program."},
+    {image : RecognitionImage1 , description : "Changodar P Center"},
+    {image : RecognitionImage2 , description : "Dholeswar School"},
+    {image : RecognitionImage3 , description : "School Image 3"},
+    {image : RecognitionImage1 , description : "School Image 4"},
 ]
 export default CorporateRecognitionData;
