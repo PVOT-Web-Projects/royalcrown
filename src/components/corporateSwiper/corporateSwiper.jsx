@@ -83,7 +83,7 @@ export default function CorporateSwiper() {
               slidesPerView: 3,
               spaceBetween: 30,
             },
-            575: {
+            675: {
               slidesPerView: 2,
               spaceBetween: 20,
             },

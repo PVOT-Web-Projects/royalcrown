@@ -8,12 +8,29 @@ import Image4 from "../../images/image_15_small.jpg";
 import Image5 from "../../images/image 48.jpg";
 import Image6 from "../../images/laminate - about-us 6.jpg";
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HomeHeroSection() {
+  // const eleganceContainer = useRef(null);
+
+  // useEffect(() => {
+  //   gsap.to(eleganceContainer.current, {
+  //     scale: 0.35, 
+  //     y: -300,              // Scroll down the image container
+  //     opacity: 0,          // Fade out the image container
+  //     scrollTrigger: {
+  //       trigger: eleganceContainer.current,
+  //       start: "top+=800 100%",  // Start animation when the top of the section hits the center of the viewport
+  //       end: "bottom-=10 top",    // End when the section leaves the viewport
+  //       scrub: true,          // Smooth scrolling animation
+  //       markers: true,
+  //     },
+  //   });
+  // },[])
   return (
-    <div className="aboutUsHeroWrapper">
+    <div className="elegance-Wrapper">
       <div className="elegance-container">
         <div className="text-section">
           <div className="text-section-header">

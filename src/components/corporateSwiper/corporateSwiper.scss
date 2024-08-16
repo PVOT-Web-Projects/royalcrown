@@ -87,6 +87,10 @@
               filter: brightness(0.35);
               border-radius: 10px;
               transition: all 0.9s ease-in-out;
+
+              @media (max-width : 675px) {
+                margin-left: -15px;
+              }
   
               &:hover {
                 transform: scale(1.2);
@@ -121,6 +125,10 @@
   
               @media (max-width: 768px) {
                 font-size: 18px;
+              }
+
+              @media (max-width : 675px) {
+                width: 90%;
               }
             }
           }

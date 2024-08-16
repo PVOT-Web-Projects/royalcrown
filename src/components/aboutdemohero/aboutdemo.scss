@@ -13,22 +13,22 @@
         p {
           margin: 0 auto;
           text-align: center;
-          width: 80%;
+          // width: 80%;
           font-size: 100px;
           // font-weight: 900;
-          font-family: "made_mirage_thin";
+          // font-family: "made_mirage_bold";
         }
       }
       .AbousUsTextImage {
         position: absolute;
-        top: 50%;
-        left: 50%;
+        top: 20%;
+        left: 75%;
         z-index: -1;
       }
       .AbousUsTextImage1 {
         position: absolute;
-        top: -34%;
-        left: 64%;
+        // top: -34%;
+        left: 20%;
         z-index: -1;
       }
       .AbousUsTextImage2 {
@@ -39,8 +39,8 @@
       }
       .AbousUsTextImage3 {
         position: absolute;
-        top: 81%;
-        left: 20%;
+        top: -65%;
+        left: 5%;
         z-index: -1;
       }
     }
