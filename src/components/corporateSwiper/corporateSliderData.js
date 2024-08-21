@@ -2,8 +2,8 @@
 import CardImg1 from "@/images/ChangodarImg1.jpg"
 import CardImg2 from "@/images/dholeshwarimg1.jpg"
 import CardImg3 from "@/images/schoolImg1.jpg"
-import CardImg4 from "@/images/schoolImg2.jpg"
-import CardImg5 from "@/images/schoolImg3.jpg"
+import CardImg4 from "@/images/SchoolImg2.jpg"
+import CardImg5 from "@/images/SchoolImg3.jpg"
 import CardImg6 from "@/images/schoolImg1.jpg"
 
 const CorporateSliderData = [
