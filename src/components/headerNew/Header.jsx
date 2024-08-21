@@ -54,7 +54,7 @@ const Header = () => {
   const getSubmenuImageAbout = () => {
     switch (hoveredSubmenuItem) {
       case "submenu1":
-        return HoverImg2;
+        return HoverImg1;
       case "submenu2":
         return HoverImg1;
       case "submenu3":
@@ -73,13 +73,41 @@ const Header = () => {
   const getSubSubmenuImage = () => {
     switch (hoveredSubSubmenuItem) {
       case "sub-submenu1":
+        return HoverImg1;
+      case "sub-submenu2":
+        return HoverImg4;
+      case "sub-submenu3":
+        return HoverImg3;
+      case "sub-submenu4":
+        return HoverImg2;
+      default:
+        return HoverImgDefault;
+    }
+  };
+  const getSubSubmenuImage1 = () => {
+    switch (hoveredSubSubmenuItem) {
+      case "sub-submenu1":
         return HoverImg3;
       case "sub-submenu2":
         return HoverImg4;
       case "sub-submenu3":
-        return HoverImg1;
+        return HoverImg3;
       case "sub-submenu4":
         return HoverImg2;
+      default:
+        return HoverImgDefault;
+    }
+  };
+  const getSubSubmenuImage3 = () => {
+    switch (hoveredSubSubmenuItem) {
+      case "sub-submenu1":
+        return HoverImg1;
+      case "sub-submenu2":
+        return HoverImg3;
+      case "sub-submenu3":
+        return HoverImg1;
+      case "sub-submenu4":
+        return HoverImg3;
       default:
         return HoverImgDefault;
     }
@@ -100,7 +128,11 @@ const Header = () => {
               },
             }}
             viewport={{ once: true }}
-            onMouseEnter={() => setHoveredItem("products")}
+            onMouseEnter={() =>{ 
+              setHoveredItem("products")
+              setHoveredSubmenuItem("submenu1");
+              setHoveredSubSubmenuItem("sub-submenu1");
+            }}
             onMouseLeave={() => {
               setHoveredItem(null);
               setHoveredSubmenuItem(null); // Clear submenu hover state when leaving main item
@@ -123,23 +155,20 @@ const Header = () => {
                 // className="ProductsLi"
               >
                 <motion.ul
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.5 }}
                 >
                   <li
-                    onMouseEnter={() => setHoveredSubmenuItem("submenu1")}
+                    // onMouseEnter={() => setHoveredSubmenuItem("submenu1")}
+                    
                     // onMouseLeave={() => setHoveredSubmenuItem(null)}
                   >
                     <Link href="/products/sub-item-1">Product-Item 1</Link>
                     {hoveredSubmenuItem === "submenu1" && (
                       <motion.div
                          className="ProductsLi1"
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.5 }}
+                        // initial={{ opacity: 0, y: -10 }}
+                        // animate={{ opacity: 1, y: 0 }}
+                        // exit={{ opacity: 0, y: -10 }}
+                        // transition={{ duration: 0.5 }}
                       >
                         <ul>
                           <li
@@ -185,27 +214,149 @@ const Header = () => {
                         </ul>
                         <motion.div
                           className="sub-submenu-image"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.3 }}
+                          // initial={{ opacity: 0 }}
+                          // animate={{ opacity: 1 }}
+                          // exit={{ opacity: 0 }}
+                          // transition={{ duration: 0.3 }}
                         >
-                          <Image src={getSubSubmenuImage()} alt="Submenu Image" />
+                          <Image src={getSubSubmenuImage()} alt="Submenu Image"  />
                         </motion.div>
                       </motion.div>
                     )}
                   </li>
                   <li
                     onMouseEnter={() => setHoveredSubmenuItem("submenu2")}
-                    onMouseLeave={() => setHoveredSubmenuItem(null)}
+                    // onMouseLeave={() => setHoveredSubmenuItem(null)}
                   >
                     <Link href="/products/sub-item-2">Product-Item 2</Link>
+                    {hoveredSubmenuItem === "submenu2" && (
+                      <motion.div
+                         className="ProductsLi1"
+                        // initial={{ opacity: 0, y: -10 }}
+                        // animate={{ opacity: 1, y: 0 }}
+                        // exit={{ opacity: 0, y: -10 }}
+                        // transition={{ duration: 0.5 }}
+                      >
+                        <ul>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu1")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Sub-Item 11</Link>
+                          </li>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu2")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Sub-Item 12</Link>
+                          </li>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu3")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Sub-Item 13</Link>
+                          </li>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu4")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Sub-Item 14</Link>
+                          </li>
+                        </ul>
+                        <motion.div
+                          className="sub-submenu-image"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <Image src={getSubSubmenuImage1()} alt="Submenu Image"  />
+                        </motion.div>
+                      </motion.div>
+                    )}
                   </li>
                   <li
                     onMouseEnter={() => setHoveredSubmenuItem("submenu3")}
-                    onMouseLeave={() => setHoveredSubmenuItem(null)}
+                    // onMouseLeave={() => setHoveredSubmenuItem(null)}
                   >
                     <Link href="/products/sub-item-3">Product-Item 3</Link>
+                    {hoveredSubmenuItem === "submenu3" && (
+                      <motion.div
+                         className="ProductsLi1"
+                        // initial={{ opacity: 0, y: -10 }}
+                        // animate={{ opacity: 1, y: 0 }}
+                        // exit={{ opacity: 0, y: -10 }}
+                        // transition={{ duration: 0.5 }}
+                      >
+                        <ul>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu1")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Sub-Item 21</Link>
+                          </li>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu2")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Sub-Item 22</Link>
+                          </li>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu3")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Sub-Item 23</Link>
+                          </li> 
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu4")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Sub-Item 24</Link>
+                          </li>
+                        </ul>
+                        <motion.div
+                          className="sub-submenu-image"
+                          // initial={{ opacity: 0 }}
+                          // animate={{ opacity: 1 }}
+                          // exit={{ opacity: 0 }}
+                          // transition={{ duration: 0.3 }}
+                        >
+                          <Image src={getSubSubmenuImage3()} alt="Submenu Image"  />
+                        </motion.div>
+                      </motion.div>
+                    )}
                   </li>
                   <li
                     onMouseEnter={() => setHoveredSubmenuItem("submenu4")}
@@ -270,8 +421,16 @@ const Header = () => {
               },
             }}
             viewport={{ once: true }}
-            onMouseEnter={() => setHoveredItem("about")}
-            onMouseLeave={() => setHoveredItem(null)}
+            onMouseEnter={() =>{
+              setHoveredItem("about")
+              setHoveredSubmenuItem("submenu1");
+              setHoveredSubSubmenuItem("sub-submenu1");
+            }}
+            onMouseLeave={() => {
+              setHoveredItem(null);
+              setHoveredSubmenuItem(null); // Clear submenu hover state when leaving main item
+              setHoveredSubmenuItem(null);
+            }}
           >
             <LinkHover
               url={"/about-us"}
@@ -287,27 +446,210 @@ const Header = () => {
               transition={{ duration: 0.5 }}
               >
                 <motion.ul
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
+                  // initial={{ opacity: 0, y: -10 }}
+                  // animate={{ opacity: 1, y: 0 }}
+                  // exit={{ opacity: 0, y: -10 }}
                 >
                   <li
-                    onMouseEnter={() => setHoveredSubmenuItem("submenu1")}
-                    onMouseLeave={() => setHoveredSubmenuItem(null)}
+                    // onMouseEnter={() => setHoveredSubmenuItem("submenu1")}
+                    // onMouseLeave={() => setHoveredSubmenuItem(null)}
                   >
                     <Link href="/products/sub-item-1">About-Item 1</Link>
+                    {hoveredSubmenuItem === "submenu1" && (
+                      <motion.div
+                         className="ProductsLi1"
+                        // initial={{ opacity: 0, y: -10 }}
+                        // animate={{ opacity: 1, y: 0 }}
+                        // exit={{ opacity: 0, y: -10 }}
+                        // transition={{ duration: 0.5 }}
+                      >
+                        <ul>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu1")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Sub-Item 1</Link>
+                          </li>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu2")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Sub-Item 2</Link>
+                          </li>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu3")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Sub-Item 3</Link>
+                          </li>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu4")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Sub-Item 4</Link>
+                          </li>
+                        </ul>
+                        <motion.div
+                          className="sub-submenu-image"
+                          // initial={{ opacity: 0 }}
+                          // animate={{ opacity: 1 }}
+                          // exit={{ opacity: 0 }}
+                          // transition={{ duration: 0.3 }}
+                        >
+                          <Image src={getSubSubmenuImage()} alt="Submenu Image"  />
+                        </motion.div>
+                      </motion.div>
+                    )}
                   </li>
                   <li
                     onMouseEnter={() => setHoveredSubmenuItem("submenu2")}
-                    onMouseLeave={() => setHoveredSubmenuItem(null)}
+                    // onMouseLeave={() => setHoveredSubmenuItem(null)}
                   >
                     <Link href="/products/sub-item-2">About-Item 2</Link>
+                    {hoveredSubmenuItem === "submenu2" && (
+                      <motion.div
+                         className="ProductsLi1"
+                        // initial={{ opacity: 0, y: -10 }}
+                        // animate={{ opacity: 1, y: 0 }}
+                        // exit={{ opacity: 0, y: -10 }}
+                        // transition={{ duration: 0.5 }}
+                      >
+                        <ul>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu1")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Sub-Item 11</Link>
+                          </li>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu2")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Sub-Item 12</Link>
+                          </li>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu3")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Sub-Item 13</Link>
+                          </li>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu4")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Sub-Item 14</Link>
+                          </li>
+                        </ul>
+                        <motion.div
+                          className="sub-submenu-image"
+                          // initial={{ opacity: 0 }}
+                          // animate={{ opacity: 1 }}
+                          // exit={{ opacity: 0 }}
+                          // transition={{ duration: 0.3 }}
+                        >
+                          <Image src={getSubSubmenuImage1()} alt="Submenu Image"  />
+                        </motion.div>
+                      </motion.div>
+                    )}
                   </li>
                   <li
                     onMouseEnter={() => setHoveredSubmenuItem("submenu3")}
-                    onMouseLeave={() => setHoveredSubmenuItem(null)}
+                    // onMouseLeave={() => setHoveredSubmenuItem(null)}
                   >
                     <Link href="/products/sub-item-3">About-Item 3</Link>
+                    {hoveredSubmenuItem === "submenu3" && (
+                      <motion.div
+                         className="ProductsLi1"
+                        // initial={{ opacity: 0, y: -10 }}
+                        // animate={{ opacity: 1, y: 0 }}
+                        // exit={{ opacity: 0, y: -10 }}
+                        // transition={{ duration: 0.5 }}
+                      >
+                        <ul>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu1")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Sub-Item 21</Link>
+                          </li>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu2")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Sub-Item 22</Link>
+                          </li>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu3")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Sub-Item 23</Link>
+                          </li>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu4")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Sub-Item 24</Link>
+                          </li>
+                        </ul>
+                        <motion.div
+                          className="sub-submenu-image"
+                          // initial={{ opacity: 0 }}
+                          // animate={{ opacity: 1 }}
+                          // exit={{ opacity: 0 }}
+                          // transition={{ duration: 0.3 }}
+                        >
+                          <Image src={getSubSubmenuImage3()} alt="Submenu Image"  />
+                        </motion.div>
+                      </motion.div>
+                    )}
                   </li>
                   <li
                     onMouseEnter={() => setHoveredSubmenuItem("submenu4")}

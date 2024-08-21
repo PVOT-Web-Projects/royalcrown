@@ -43,8 +43,12 @@
         .corporateCardsImageInner{
             max-width: 100%;
             display: block;
-            height: auto;
+            height: 100%;
             margin: 0 auto;
+            object-fit: cover;
+            @media(max-width: 768px){
+                height: auto;
+            }
         }
 
         .corporateCardDescription{
@@ -67,6 +71,14 @@
 
             .coporateCardHeader2{
                 font-size: 25px;
+            }
+            .CsrBorder{
+                padding: 30px 0 10px;
+                border-bottom: 1px solid #5b3524;
+                .CsrBorderOne{
+                    font-size: 22px;
+                    padding: 10px 0;
+                }
             }
         }
     }
