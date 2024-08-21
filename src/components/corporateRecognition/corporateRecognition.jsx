@@ -9,8 +9,13 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import { FreeMode, Navigation, Pagination } from "swiper/modules";
 import CorporateRecognitionData from "./coporateRecognitionData.js";
+import Link from "next/link";
 
 export default function CorporateRecognition() {
+  // const handleImageClick = (pdfUrl) => {
+  //   window.open(pdfUrl, "_blank");
+  // };
+
   return (
     <div className="corporateRecognitionWrapper">
       <div className="corporateRecognitionHeaderOuter">
@@ -21,7 +26,7 @@ export default function CorporateRecognition() {
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          <p>Activity Gallery</p>
+          <p>Recognition</p>
         </motion.div>
         <div className="corporateSwiperArrowContainer">
           {/* Custom Previous Arrow */}
@@ -91,14 +96,18 @@ export default function CorporateRecognition() {
       >
         {CorporateRecognitionData.map((cardData, index) => (
           <SwiperSlide key={index}>
-            <div className="corporateRecognitionCardContainer">
+            <div className="corporateRecognitionCardContainer"
+            // onClick={() => handleImageClick(cardData.pdf)}
+            >
               <div className="corporateRecognitionCardInner">
                 <div className="corporateRecognitionCardImage">
+                  <Link href={cardData.pdfUrl}  target="_blank">
                   <Image
                     src={cardData.image}
                     alt="Recognition Image"
                     className="corporateRecognitionCardImageInner"
                   />
+                  </Link>
                 </div>
               </div>
               <div className="corporateRecognitionCardDescription">

@@ -84,7 +84,7 @@
               height: auto;
               display: block;
               max-width: 100%;
-              filter: brightness(0.35);
+              // filter: brightness(0.35);
               border-radius: 10px;
               transition: all 0.9s ease-in-out;
 
@@ -115,22 +115,26 @@
               }
             }
   
-            .swiperCardDescriptionInner {
-              font-size: 21px;
-              width: 80%;
-  
-              @media (max-width: 991px) {
-                width: 100%;
-              }
-  
-              @media (max-width: 768px) {
-                font-size: 18px;
-              }
+           
+          }
+        }
+        .swiperCardDescriptionInner {
+          padding-top: 1rem;
+          font-size: 21px;
+          width: 100%;
+          text-align: center;
+          color: #5b3524;
 
-              @media (max-width : 675px) {
-                width: 90%;
-              }
-            }
+          @media (max-width: 991px) {
+            width: 100%;
+          }
+
+          @media (max-width: 768px) {
+            font-size: 18px;
+          }
+
+          @media (max-width : 675px) {
+            width: 90%;
           }
         }
       }

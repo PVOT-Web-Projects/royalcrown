@@ -107,17 +107,19 @@ export default function CorporateSwiper() {
                   <div className="swiperCardHeader">
                     <p className="swiperCardHeaderInner">{swiperData.header}</p>
                   </div>
-                  <div className="swiperCardDescription">
-                    <p className="swiperCardDescriptionInner">
-                      {swiperData.description}
-                    </p>
-                  </div>
+                
                   {/* <div className="swiperCardButton">
                     <p>Read More</p>
                   </div> */}
                 </div>
               </div>
+              <div className="swiperCardDescription">
+                    <p className="swiperCardDescriptionInner">
+                      {swiperData.description}
+                    </p>
+                  </div>
             </SwiperSlide>
+            
           ))}
         </Swiper>
       </div>

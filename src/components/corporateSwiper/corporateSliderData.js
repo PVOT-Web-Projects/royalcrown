@@ -1,40 +1,47 @@
-import cardImage from "../../images/swiperCard.jpeg";
+// import cardImage from "../../images/swiperCard.jpeg";
+import CardImg1 from "@/images/ChangodarImg1.jpg"
+import CardImg2 from "@/images/dholeshwarimg1.jpg"
+import CardImg3 from "@/images/schoolImg1.jpg"
+import CardImg4 from "@/images/schoolImg2.jpg"
+import CardImg5 from "@/images/schoolImg3.jpg"
+import CardImg6 from "@/images/schoolImg1.jpg"
+
 const CorporateSliderData = [
   {
-    image: cardImage,
-    header: "A year of giving",
+    image: CardImg1,
+    // header: "Changodar P Center",
     description:
-      "Purpose-led projects for volunteering focus on education,skilling, employment, and entrepreneurship.",
+      "Changodar P Center",
   },
   {
-    image: cardImage,
-    header: "Royal Crown Empowers",
+    image: CardImg2,
+    // header: "Royal Crown Empowers",
     description:
-      "Building an ecosystem for inclusive growth",
+      "Dholeswar School",
   },
   {
-    image: cardImage,
-    header: "Royal Crown goIT",
+    image: CardImg3,
+    // header: "Royal Crown goIT",
     description:
-      "Global Innovator of the year 2024 competition",
+      "School Image 3",
   },
   {
-    image: cardImage,
-    header: "Bridging the digital gap",
+    image: CardImg4,
+    // header: "Bridging the digital gap",
     description:
-      "Mentoring digital entrepreneurs from marginalized communities.",
+      "School Image 4",
   },
   {
-    image: cardImage,
-    header: "A classroom in prison",
+    image: CardImg5,
+    // header: "A classroom in prison",
     description:
-      "Royal Crown's Literacy as a Service transforms a prison into a classroom for change",
+      "School Image 5",
   },
   {
-    image: cardImage,
-    header: "Bridging the digital gap",
+    image: CardImg6,
+    // header: "Bridging the digital gap",
     description:
-      "Mentoring digital entrepreneurs from marginalized communities.",
+      "School Image 6",
   },
 ];
 export default CorporateSliderData;
