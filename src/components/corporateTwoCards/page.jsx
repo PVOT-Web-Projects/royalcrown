@@ -25,6 +25,8 @@ const CorporateTwoCards = () => {
           >
             <p>corporate social responsibility</p>
           </motion.div>
+
+          
           <div className="coporateCardHeader2">
             <p>CSR Commitee</p>
           </div>
