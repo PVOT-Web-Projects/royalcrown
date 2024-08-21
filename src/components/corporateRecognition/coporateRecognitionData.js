@@ -1,11 +1,33 @@
-import RecognitionImage1 from "../../images/Changodar P Center.jpg";
-import RecognitionImage2 from "../../images/Dholeswar School.jpg";
-import RecognitionImage3 from "../../images/IMG_20220308_132517.jpg"
+"use client";
+import RecognitionImage1 from "../../images/annualactionimg1.jpg";
+import RecognitionImage2 from "../../images/annualactionimg1.jpg";
+import RecognitionImage3 from "../../images/annualactionimg1.jpg";
+// import Pdf1 from "../../../public/ANNUAL-ACTION-PLAN-2023-2024.pdf"; // Correct PDF import
+// import Pdf2 from "../../../public/ANNUAL-ACTION-PLAN-2023-2024.pdf"; // Another PDF import example
+// import Pdf3 from "../../../public/ANNUAL-ACTION-PLAN-2023-2024.pdf"; // Another PDF import example
+// import Pdf4 from "../../../public/ANNUAL-ACTION-PLAN-2023-2024.pdf"; // Another PDF import example
 
 const CorporateRecognitionData = [
-    {image : RecognitionImage1 , description : "Changodar P Center"},
-    {image : RecognitionImage2 , description : "Dholeswar School"},
-    {image : RecognitionImage3 , description : "School Image 3"},
-    {image : RecognitionImage1 , description : "School Image 4"},
-]
+  {
+    image: RecognitionImage1,
+    description: "Annual Action Plan 2023-2024",
+    pdfUrl: "/pdfs/ANNUAL-ACTION-PLAN-2023-2024.pdf",
+  },
+  {
+    image: RecognitionImage2,
+    description: "Annual Action Plan 2022-2023",
+    pdfUrl: "/pdfs/ANNUAL-ACTION-PLAN-2023-2024.pdf",
+  },
+  {
+    image: RecognitionImage3,
+    description: "Annual Action Plan 2021-2022",
+    pdfUrl: "/pdfs/ANNUAL-ACTION-PLAN-2023-2024.pdf",
+  },
+  {
+    image: RecognitionImage1,
+    description: "Annual Action Plan 2020-2021",
+    pdfUrl: "/pdfs/ANNUAL-ACTION-PLAN-2023-2024.pdf",
+  },
+];
+
 export default CorporateRecognitionData;
