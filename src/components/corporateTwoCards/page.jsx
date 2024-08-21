@@ -25,8 +25,10 @@ const CorporateTwoCards = () => {
           >
             <p>corporate social responsibility</p>
           </motion.div>
+
+          
           <div className="coporateCardHeader2">
-            <p>In it for good</p>
+            <p>CSR Commitee</p>
           </div>
           <div className="corporateCardDescriptionInner">
             <p>
@@ -36,6 +38,22 @@ const CorporateTwoCards = () => {
               do is driven toward creating a fairer and more equitable world for
               all.{" "}
             </p>
+          </div>
+          <div className="CsrBorder">
+            <p className="CsrBorderOne">1. Jitendra Patel</p>
+            <p>Chairman / Director</p>
+          </div>
+          <div className="CsrBorder">
+            <p className="CsrBorderOne">2. Arvind Patel</p>
+            <p>Director</p>
+          </div>
+          <div className="CsrBorder">
+            <p className="CsrBorderOne">3. Manish Ghetia</p>
+            <p>Director</p>
+          </div>
+          <div className="CsrBorder">
+            <p className="CsrBorderOne">4. Shiv Patel</p>
+            <p>Director</p>
           </div>
         </div>
       </div>

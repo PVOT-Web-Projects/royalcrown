@@ -21,7 +21,7 @@ export default function CorporateRecognition() {
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          <p>Recognition</p>
+          <p>Activity Gallery</p>
         </motion.div>
         <div className="corporateSwiperArrowContainer">
           {/* Custom Previous Arrow */}
