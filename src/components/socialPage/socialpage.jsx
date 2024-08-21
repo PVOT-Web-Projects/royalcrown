@@ -9,8 +9,8 @@ import linkedinIcon from "@/images/LinkedinIcon.svg";
 import "./socialpage.scss";
 const SocialPage = ({ socialMediaImgSrc }) => {
   const icons = [
-    { src: facebookIcon, alt: "Facebook", link: "https://www.facebook.com" },
-    { src: instagramIcon, alt: "Instagram", link: "https://www.instagram.com" },
+    { src: facebookIcon, alt: "Facebook", link: "https://www.facebook.com/royalcrownlaminates/" },
+    { src: instagramIcon, alt: "Instagram", link: "https://www.instagram.com/royalcrownlaminates/" },
     { src: youtubeIcon, alt: "YouTube", link: "https://www.youtube.com" },
     
     { src: linkedinIcon, alt: "LinkedIn", link: "https://www.linkedin.com" },

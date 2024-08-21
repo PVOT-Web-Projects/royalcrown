@@ -190,12 +190,12 @@ const Footer2 = ({ bgColor }) => {
             <div className="bottom">
               <ul>
                 <li>
-                  <Link href={"https://www.facebook.com/"} target="_blank">
+                  <Link href={"https://www.facebook.com/royalcrownlaminates/"} target="_blank">
                     <Image src={fb} alt="fb" /> <span>Facebook</span>
                   </Link>
                 </li>
                 <li>
-                  <Link href={"https://www.instagram.com/"} target="_blank">
+                  <Link href={"https://www.instagram.com/royalcrownlaminates/"} target="_blank">
                     <Image src={ig} alt="ig" /> <span>Instagram</span>
                   </Link>
                 </li>
