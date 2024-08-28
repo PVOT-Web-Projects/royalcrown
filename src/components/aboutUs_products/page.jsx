@@ -26,23 +26,28 @@ const Page = () => {
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
     const fullPath = pathName + hash;
-
+  
     if (fullPath === "/products#xylem") {
       setCurrentData(products.filter((data) => data.category === "Xylem"));
+      setActiveTab("/products#xylem");
     } else if (fullPath === "/products#Qbiss") {
       setCurrentData(products.filter((data) => data.category === "QBliss"));
+      setActiveTab("/products#Qbiss");
     } else if (fullPath === "/products#Crown_Xcl") {
       setCurrentData(products.filter((data) => data.category === "Crown XCL"));
-    }else if (fullPath === "/products#Crown") {
-      setCurrentData(
-        products.filter((data) => data.category === "Royal Crown")
-      );
+      setActiveTab("/products#Crown_Xcl");
+    } else if (fullPath === "/products#Crown") {
+      setCurrentData(products.filter((data) => data.category === "Royal Crown"));
+      setActiveTab("/products#Crown");
     } else {
+      // Set default state if no specific hash is present
       setCurrentData(products);
       setTab("");
-      setActiveTab("");
+      setActiveTab(""); // No tab selected
+      window.history.replaceState(null, "", "/products"); // Reset URL hash
     }
   }, [pathName]);
+  
 
   useEffect(() => {
     const handleResize = () => {
@@ -93,6 +98,8 @@ const Page = () => {
     { label: "8 x 9", value: "8 x 9" },
     { label: "3 x 2", value: "3 x 2" },
     { label: "6 x 6", value: "6 x 6" },
+    { label: "3 x 6", value: "3 x 6" },
+    { label: "6 x 3", value: "6 x 3" },
   ];
 
   const thickness = [
@@ -136,6 +143,18 @@ const Page = () => {
   const handleSizeChange = (e) => {
     setSelectedSize(e.value);
   };
+
+  const handleSizeClick = (sizeValue) => {
+    // Set the selected size
+    setSelectedSize(sizeValue);
+  
+    // Scroll to the "Explore Collection" section
+    const exploreCollectionElement = document.querySelector("#sticky_top");
+    if (exploreCollectionElement) {
+      exploreCollectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+  
 
   const handleThicknessChange = (e) => {
     setSelectedThickness(e.value);
@@ -183,10 +202,11 @@ const Page = () => {
       setCurrentData(products.filter((data) => data.category === "QBliss"));
     } else if (newTab === "/products#Crown_Xcl") {
       setCurrentData(products.filter((data) => data.category === "Crown XCL"));
+    } else if (newTab === "/products#Crown") {
+      setCurrentData(products.filter((data) => data.category === "Royal Crown"));
     } else {
-      setCurrentData(
-        products.filter((data) => data.category === "Royal Crown")
-      );
+      // Reset to default if not a specific tab
+      setCurrentData(products);
     }
   };
   return (
@@ -323,14 +343,38 @@ const Page = () => {
               <div className="dropdown-label">
                 <label htmlFor="size-select">SELECT SIZE</label>
               </div>
-              <Dropdown
+              {isMobile ? (
+                <Dropdown
+                  id="size-select"
+                  className="color-select"
+                  options={size}
+                  value={selectedSize}
+                  onChange={handleSizeChange}
+                  placeholder="Select a Size"
+                />
+              ) : (
+                <div className="color_dropdown">
+                  {size.map((sizeOption) => (
+                    <div
+                      key={sizeOption.value}
+                      className={`SizeProduct ${
+                        selectedSize === sizeOption.value ? "selected" : ""
+                      }`}
+                      onClick={() => handleSizeClick(sizeOption.value)}
+                    >
+                      <p>{sizeOption.label}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {/* <Dropdown
                 id="size-select"
                 options={size}
                 value={selectedSize}
                 onChange={handleSizeChange}
                 placeholder="Select a Size"
                 className="category-select"
-              />
+              /> */}
             </div>
 
             <div className="dropdown1">
@@ -363,7 +407,11 @@ const Page = () => {
 
               return (
                 <div key={index} className={`AboutUs_product ${className}`}>
-                  <Image src={product.image} alt={product.name} />
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    className="ProductImage"
+                  />
                   <div className="overlay">
                     <div>
                       <svg
