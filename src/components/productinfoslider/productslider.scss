@@ -41,7 +41,7 @@
     }
 
     @media (max-width: 767px) {
-      flex-direction: column;
+      flex-direction: column-reverse;
       padding-left: 0px;
     }
 
@@ -275,11 +275,14 @@
 
     @media (max-width: 375px) {
       right: 0px;
-      top: 28%;
+      top: 26%;
     }
 
     @media (max-width: 365px) {
-      top: 27.8%;
+      top: 26.5%;
+    }
+    @media (max-width: 325px) {
+      top: 25.5%;
     }
   }
 
@@ -314,11 +317,14 @@
 
     @media (max-width: 375px) {
       right: 50px;
-      top: 28%;
+      top: 26%;
     }
 
     @media (max-width: 365px) {
-      top: 27.8%;
+      top: 26.5%;
+    }
+    @media (max-width: 325px) {
+      top: 25.5%;
     }
   }
 
@@ -378,7 +384,10 @@
         }
 
         @media (max-width: 475px) {
-          font-size: 29px;
+          font-size: 27px;
+        }
+        @media (max-width: 375px) {
+          font-size: 26px;
         }
       }
 

@@ -22,7 +22,27 @@ const products = [
   {
     name: "img",
     image: filterImage3,
-    category: "Crown XCL",
+    category: "Decorative Exterior Compacts",
+  },
+  {
+    name: "img",
+    image: filterImage1,
+    category: "Decorative Exterior Compacts",
+  },
+  {
+    name: "img",
+    image: filterImage2,
+    category: "Decorative Exterior Compacts",
+  },
+  {
+    name: "img",
+    image: filterImage4,
+    category: "Decorative Exterior Compacts",
+  },
+  {
+    name: "img",
+    image: filterImage3,
+    category: "Decorative Exterior Compacts",
   },
   {
     name: "img",

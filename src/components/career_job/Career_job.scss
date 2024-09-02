@@ -99,11 +99,21 @@ input:-webkit-autofill:active {
     max-height: 540px; /* Set your desired height */
     overflow-y: auto;
     overflow-x: hidden;
+    padding-top: 1rem;
+    @media(max-width: 575px){
+      margin-top: 2rem;
+    }
 
     .JobmainContainer {
       padding: 20px 200px;
       @media (max-width: 1024px) {
         padding: 20px 60px;
+      }
+      @media(max-width: 575px){
+        padding: 0 30px;
+      }
+      @media(max-width: 375px){
+        padding: 0 20px;
       }
       .JobExpmain {
         padding: 15px 0;
@@ -115,11 +125,15 @@ input:-webkit-autofill:active {
         align-items: center;
         @media (max-width: 575px) {
           flex-direction: column;
+          align-items: flex-start;
         }
         .JobTitle {
           padding: 10px 0;
           font-size: 40px;
           text-transform: capitalize;
+          @media(max-width: 575px){
+            font-size: 28px;
+          }
         }
         .JobExpText {
           font-size: 20px;
@@ -127,6 +141,9 @@ input:-webkit-autofill:active {
         }
         .JobOpenings {
           font-size: 20px;
+          @media(max-width: 575px){
+            padding-bottom: 1rem;
+          }
         }
         .ApplyBtn {
           border-radius: 5px;
