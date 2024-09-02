@@ -1,5 +1,6 @@
 "use client"
 import FindStoreHeader from "@/components/findstoreheader/page";
+import StoreHero from "@/components/storeHero/page";
 import FindStore from "../../components/findStore_search/page"
 import { useRef } from "react";
 
@@ -12,7 +13,7 @@ const FindStoreSearch =() =>{
     return(
         <div>
             <div ref={section1}>
-                <FindStoreHeader goToSectionRef={section2} scrollTo={scrollTo}/>
+                <StoreHero goToSectionRef={section2} scrollTo={scrollTo}/>
             </div>
             <div ref={section2}>
             <FindStore />

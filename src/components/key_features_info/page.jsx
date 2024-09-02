@@ -3,7 +3,7 @@ import React from "react";
 import "./product_info.scss";
 import Image from "next/image";
 import svg1 from "../../images/svgLogos/Group 145.svg";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 // const cards = [
 //   {
 //     title: "HIGHLY RESISTANT TO CHEMICALS",
@@ -53,10 +53,15 @@ const KeyFeaturesInfo = () => (
   <>
     <div className="whyUsContainer">
       <div className="whyUsWrapper">
-        <motion.div className="whyusHeader" initial={{ y: 50, opacity: 0 }}
+        <motion.div
+          className="whyusHeader"
+          initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 1 }}
-          viewport={{ once: true }}>Key Features</motion.div>
+          viewport={{ once: true }}
+        >
+          Key Features
+        </motion.div>
         <div className="whyUsCardWrapper">
           <div className="cardouter_1">
             <div className="cardinner">
@@ -65,7 +70,7 @@ const KeyFeaturesInfo = () => (
                   <Image src={svg1} alt="" />
                 </div>
                 <div className="header">
-                  <div>Scratch Resistant</div>
+                  <div>SCRATCH RESISTANCE</div>
                 </div>
               </div>
               <div className="card_description">
@@ -81,7 +86,7 @@ const KeyFeaturesInfo = () => (
                   <Image src={svg1} alt="" />
                 </div>
                 <div className="header">
-                  <div>Scratch Resistant</div>
+                  <div>HIGH ABRASION RESISTANCE </div>
                 </div>
               </div>
               <div className="card_description">
@@ -91,12 +96,12 @@ const KeyFeaturesInfo = () => (
               </div>
             </div>
             <div className="cardinner_2">
-            <div className="card_header">
+              <div className="card_header">
                 <div>
                   <Image src={svg1} alt="" />
                 </div>
                 <div className="header">
-                  <div>Scratch Resistant</div>
+                  <div>LOW MAINTENANCE</div>
                 </div>
               </div>
               <div className="card_description">
@@ -108,12 +113,12 @@ const KeyFeaturesInfo = () => (
           </div>
           <div className="cardouter_3">
             <div className="cardinner">
-            <div className="card_header">
+              <div className="card_header">
                 <div>
-                  <Image src={svg1} alt="" />
+                  <Image src={svg1} alt="none" />
                 </div>
                 <div className="header">
-                  <div>Scratch Resistant</div>
+                  <div>HIGHLY DURABLE</div>
                 </div>
               </div>
               <div className="card_description">

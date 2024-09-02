@@ -12,6 +12,9 @@
   @media(max-width: 768px){
     padding: 0;
   }
+  @media(max-width: 475px){
+    padding: 140px 0 0px !important;
+  }
 
   .elegance-container {
     display: flex;
