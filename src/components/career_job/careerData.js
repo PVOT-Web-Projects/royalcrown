@@ -1,36 +1,36 @@
 const CareerData = [
   {
-    title: "web developer",
+    title: "Laminates and Furniture Sales Associate",
     exp: "Req. Experience : 2 Years |  On-Site",
     openings: "Openings for 4 seats",
     link: "/careers",
   },
   {
-    title: "software developer",
+    title: "Showroom Sales Consultant",
     exp: "Req. Experience : 4 Years |  On-Site",
     openings: "Openings for 10 seats",
     link: "/careers",
   },
   {
-    title: "frontend designer",
+    title: "Interior Design Sales Advisor",
     exp: "Req. Experience : 1 Years |  On-Site",
     openings: "Openings for 5 seats",
     link: "/careers",
   },
   {
-    title: "UI/UX designers",
+    title: "Sales Executive",
     exp: "Req. Experience : 2 Years |  On-Site",
     openings: "Openings for 4 seats",
     link: "/careers",
   },
   {
-    title: ".net developer",
+    title: "Retail Associate",
     exp: "Req. Experience : 4 Years |  On-Site",
     openings: "Openings for 10 seats",
     link: "/careers",
   },
   {
-    title: "Angular designer",
+    title: "Product Specialist",
     exp: "Req. Experience : 1 Years |  On-Site",
     openings: "Openings for 5 seats",
     link: "/careers",
