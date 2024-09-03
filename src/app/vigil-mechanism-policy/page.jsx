@@ -1,7 +1,8 @@
 "use client"
 import { useEffect } from "react";
-import Privacy_policy from "@/components/policyData/page";
-import PrivacyPolicyImg from "@/components/privacypolicyheader/page";
+import Vigil_Privacy_policy from "@/components/vigilpolicyData/page";
+// import PrivacyPolicyImg from "@/components/privacypolicyheader/page";
+import VigilPrivacyPolicyImg from "@/components/vigilprivacypolicyheader/page";
 
 const VigilMechanismPolicy =() =>{
     useEffect(() => {
@@ -9,8 +10,9 @@ const VigilMechanismPolicy =() =>{
       });
     return(
         <div>
-            <PrivacyPolicyImg />
-            <Privacy_policy />
+            <VigilPrivacyPolicyImg />
+            {/* <PrivacyPolicyImg /> */}
+            <Vigil_Privacy_policy />
         </div>
     )
 }

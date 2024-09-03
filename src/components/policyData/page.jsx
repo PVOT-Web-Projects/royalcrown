@@ -4,130 +4,327 @@ const Privacy_policy = () => {
   return (
     <div>
       <div className={styles.privacyPolicySection}>
-        <div className={styles.title}>
+        {/* <div className={styles.title}>
           <p>Effective date: 27th May, 2021</p>
-        </div>
+        </div> */}
         <div className={styles.description}>
           <p>
-            We are committed to protecting the privacy of any person who visits
-            and accesses our website. The following policy apprises you, the
-            visitor, as to how we seek to protect the privacy of any visitor to
-            our website.
-          </p>
-          <p>
-            Our website does not collect personal information about a visitor
-            unless the visitor discloses the same to us voluntarily by filling
-            the contact forms provided on our website. Personal information in
-            this case means any information from which a visitor’s identity is
-            apparent and/or can be ascertained or determined easily. Personal
-            information may mean and include name, e-mail address, residence or
-            office addresses, telephone numbers. When you voluntarily provide us
-            with your personal information through the contact form provided on
-            our website, we use it only for the fulfilment of your requests
-            and/or in order to answer your enquiry. We may contact you via the
-            email address or the telephone numbers disclosed to us in the future
-            to update you about our products, unless you specifically request us
-            not to do so. Your personal information is not disclosed to a third
-            party, unless the same is necessary for the fulfilment of your
-            request.
+            www.royalcrownlaminates.com is owned by Crown decor Private Limited,
+            an Indian Company registered under the Companies Act, 2013. This
+            Policy describes how we treat user information we collect on
+            http://www.royalcrownlaminates.com and other offline sources. We
+            recognise the importance of maintaining your privacy. We value your
+            privacy and appreciate your trust in us. This Privacy Policy applies
+            to current and former visitors to our website and to our online
+            customers. By visiting and/or using our website, you agree to this
+            Privacy Policy.
           </p>
         </div>
 
         <div className={styles.title}>
-          <p>AUTOMATIC COLLECTION OF DATA AND USAGE THERE OF</p>
+          <p>Personal Information</p>
+        </div>
+        <div className={styles.description}>
+          <ul className={styles.ListDescription}>
+            <li>
+              <p>
+                <span className={styles.spancontact}>Contact information:</span>{" "}
+                Our website does not collect any personal information unless the
+                visitor discloses it voluntarily. We might collect your name,
+                email, mobile number, phone number, street, city, state, pin
+                code and country.
+              </p>
+            </li>
+            <li>
+              <p>
+                <span className={styles.spancontact}>
+                  Information you post:
+                </span>{" "}
+                We collect information you post in a public space on our website
+                or on a third-party social media site belonging to Crown décor
+                Private limited.
+              </p>
+            </li>
+            <li>
+              <p>
+                <span className={styles.spancontact}>
+                  Demographic information:
+                </span>{" "}
+                We may collect demographic information about you, events you
+                like, events you intend to participate in, tickets you buy, or
+                any other information provided by your during the use of our
+                website. We might collect this as a part of a survey also.
+              </p>
+            </li>
+            <li>
+              <p>
+                <span className={styles.spancontact}>Other information:</span>{" "}
+                If you use our website, we may collect information about your IP
+                address and the browser you're using. We might look at what site
+                you came from, duration of time spent on our website, pages
+                accessed or what site you visit when you leave us. We might also
+                collect the type of mobile device you are using, or the version
+                of the operating system your computer or device is running.
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <div className={styles.title}>
+          <p>We collect information in different ways</p>
+        </div>
+        <div className={styles.description}>
+          <ul className={styles.ListDescription}>
+            <li>
+              <p>
+                <span className={styles.spancontact}>
+                  We collect information directly from you:
+                </span>{" "}
+                We collect information directly from you when you register for
+                an event or buy tickets. We also collect information if you post
+                a comment on our websites or ask us a question through phone or
+                email.
+              </p>
+            </li>
+            <li>
+              <p>
+                <span className={styles.spancontact}>
+                  We collect information from you passively:
+                </span>{" "}
+                We use tracking tools like Google Analytics, Google Webmaster,
+                browser cookies and web beacons for collecting information about
+                your usage of our website.
+              </p>
+            </li>
+            <li>
+              <p>
+                <span className={styles.spancontact}>
+                  We get information about you from third parties:
+                </span>{" "}
+                For example, if you use an integrated social media feature on
+                our websites. The third-party social media site will give us
+                certain information about you. This could include your name and
+                email address.
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <div className={styles.title}>
+          <p>Use of your personal information</p>
+        </div>
+        <div className={styles.description}>
+          <ul className={styles.ListDescription}>
+            <li>
+              <p>
+                <span className={styles.spancontact}>
+                  We use information to contact you:
+                </span>{" "}
+                We might use the information you provide to contact you for
+                confirmation of a purchase on our website or for other
+                promotional purposes.
+              </p>
+            </li>
+            <li>
+              <p>
+                <span className={styles.spancontact}>
+                  We use information to respond to your requests or questions:
+                </span>{" "}
+                We might use your information to confirm your registration for
+                an event or contest.
+              </p>
+            </li>
+            <li>
+              <p>
+                <span className={styles.spancontact}>
+                  We use information to improve our products and services:
+                </span>{" "}
+                We might use your information to customize your experience with
+                us. This could include displaying content based upon your
+                preferences.
+              </p>
+            </li>
+            <li>
+              <p>
+                <span className={styles.spancontact}>
+                  We use information to look at site trends and customer
+                  interests:
+                </span>{" "}
+                We may use your information to make our website and products
+                better. We may combine information we get from you with
+                information about you we get from third parties.
+              </p>
+            </li>
+            <li>
+              <p>
+                <span className={styles.spancontact}>
+                  We use information for security purposes:
+                </span>{" "}
+                We may use information to protect our company, our customers, or
+                our websites.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <span className={styles.spancontact}>
+                  We use information for marketing purposes:
+                </span>{" "}
+                We might send you information about special promotions or
+                offers. We might also tell you about new features or products.
+                These might be our own offers or products, or third-party offers
+                or products we think you might find interesting. Or, for
+                example, if you buy tickets from us we'll enrol you in our
+                newsletter.
+              </p>
+            </li>
+            <li>
+              <p>
+                <span className={styles.spancontact}>
+                  We use information to send you transactional communications:
+                </span>{" "}
+                We might send you emails or SMS about your account or a laminate
+                purchase.
+              </p>
+            </li>
+            <li>
+              <p>We use information as otherwise permitted by law.</p>
+            </li>
+          </ul>
+        </div>
+
+        <div className={styles.title}>
+          <p>Sharing of information with third-parties</p>
+        </div>
+        <div className={styles.description}>
+          <ul className={styles.ListDescription}>
+            <li>
+              <p>
+                <span className={styles.spancontact}>
+                  We will share information with third parties who perform
+                  services on our behalf:
+                </span>{" "}
+                We share information with vendors who help us manage our online
+                registration process or payment processors or transactional
+                message processors. Some vendors may be located outside of
+                India.{" "}
+              </p>
+            </li>
+            <li>
+              <p>
+                <span className={styles.spancontact}>
+                  We will share information with the event organizers:
+                </span>{" "}
+                We share your information with event organizers and other
+                parties responsible for fulfilling the purchase obligation. The
+                event organizers and other parties may use the information we
+                give them as described in their privacy policies.
+              </p>
+            </li>
+            <li>
+              <p>
+                <span className={styles.spancontact}>
+                  We will share information with our business partners:
+                </span>{" "}
+                This includes a third party who provide or sponsor an event, or
+                who operates a venue where we hold events. Our partners use the
+                information we give them as described in their privacy policies.
+              </p>
+            </li>
+            <li>
+              <p>
+                <span className={styles.spancontact}>
+                  We may share information if we think we have to in order to
+                  comply with the law or to protect ourselves:
+                </span>{" "}
+                We will share information to respond to a court order or
+                subpoena. We may also share it if a government agency or
+                investigatory body requests. Or, we might also share information
+                when we are investigating potential fraud.
+              </p>
+            </li>
+            <li>
+              <p>
+                <span className={styles.spancontact}>
+                  We may share information with any successor to all or part of
+                  our business:
+                </span>{" "}
+                For example, if part of our business is sold we may give our
+                customer list as part of that transaction.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <span className={styles.spancontact}>
+                  We may share your information for reasons not described in
+                  this policy:
+                </span>{" "}
+                We will tell you before we do this.
+              </p>
+            </li>
+            <li>
+              <p>
+                <span className={styles.spancontact}>
+                  We use information to send you transactional communications:
+                </span>{" "}
+                We might send you emails or SMS about your account or a laminate
+                purchase.
+              </p>
+            </li>
+            <li>
+              <p>We use information as otherwise permitted by law.</p>
+            </li>
+          </ul>
+        </div>
+        <div className={styles.title}>
+          <p>Email Opt-Out</p>
         </div>
         <div className={styles.description}>
           <p>
-            Our website server automatically collects certain browsing data of
-            any person that visits our website to track and monitor usage of the
-            website and to enhance the performance of the website for improved
-            end user experience. Such data shall be solely for the use of
-            Olympic Decor LLP and may include: The Internet Protocol address or
-            the domain name of the Internet service provider from which our
-            website is accessed.
-          </p>
-          <p>
-            Data and time when our site was accessed. Duration of the usage.
-          </p>
-          <p>
-            The type and version of the operating system and web browser of the
-            machine from which our website is being accessed.
-          </p>
-          <p>Selection of pages or sections of the website visited.</p>
-          <p>The documents downloaded from the website.</p>
-          <p>
-            The Internet address of the website visited just prior to our
-            website.
-          </p>
-          <p>
-            The browsing and server data as aforesaid may be accessed by a third
-            party who has been appointed by us for maintenance and
-            administration of the website. However, in doing so, we do not
-            disclose any personal information or the identity of a visitor to
-            such third party. Any third party appointed by us has to comply with
-            the above data protection standards.
+            You can opt out of receiving our marketing emails. To stop receiving
+            our promotional emails, please email support@royalcrownlaminates.com
+            It may take about ten days to process your request. Even if you opt
+            out of getting marketing messages, we will still be sending you
+            transactional messages through email and SMS about your purchases.
           </p>
         </div>
 
         <div className={styles.title}>
-          <p>COLLECTION OF INFORMATION BY THIRD-PARTY SITES</p>
+          <p>Third party sites</p>
         </div>
         <div className={styles.description}>
           <p>
-            Our website may contain advertisements and/or links to other
-            websites. We do not exercise any authority or control over the
-            privacy policy of such external website. Any visitor which follows a
-            link from our website must independently confirm and be aware of the
-            privacy policy and/or security of the external site as the privacy
-            policy of such other website may be completely different from that
-            of ours. We are not liable for the privacy policy of any such
-            external websites whose links are provided on our website.
+            If you click on one of the links to third party websites, you may be
+            taken to websites we do not control. This policy does not apply to
+            the privacy practices of those websites. Read the privacy policy of
+            other websites carefully. We are not responsible for these third
+            party sites.
           </p>
         </div>
 
         <div className={styles.title}>
-          <p>COOKIES</p>
+          <p>Updates to this policy</p>
         </div>
         <div className={styles.description}>
           <p>
-            We use “cookies” on this site. However, usage of a cookie does not
-            disclose any personal information to our site. A cookie is a piece
-            of data stored on a visitor’s computer hard drive that helps improve
-            access to websites that the visitor has already visited. Cookies
-            help identify browsing information. If you visit our website,
-            information may be saved on your computer by way of these cookies
-            which enable us to identify your computer automatically during your
-            next visit of our homepage. This helps us to improve your browsing
-            experience.
-          </p>
-          <p>
-            If you do not wish our website to place cookies in your machine,
-            kindly set up your internet browser in a fashion that it deletes
-            cookies or blocks cookies or enables you to identify websites that
-            use cookies.
+            This Privacy Policy was last updated on 18.09.2017. From time to
+            time we may change our privacy practices. We will notify you of any
+            material changes to this policy as required by law. We will also
+            post an updated copy on our website. Please check our site
+            periodically for updates.
           </p>
         </div>
 
         <div className={styles.title}>
-          <p>CHANGE IN POLICY</p>
+          <p>Jurisdiction</p>
         </div>
         <div className={styles.description}>
           <p>
-            We may modify and change out Privacy Policy from time to time and
-            you are requested to peruse our privacy policy prior to browsing our
-            website.
-          </p>
-        </div>
-
-        <div className={styles.title}>
-          <p>CONFIRMATION</p>
-        </div>
-        <div className={styles.description}>
-          <p>
-            Any visitor to our website confirms that they have read and
-            understood our privacy policy in entirety and has visited our
-            website after being satisfied of the same. Browsing our website is
-            an ipso facto acceptance of our terms and conditions.
+            If you choose to visit the website, your visit and any dispute over
+            privacy is subject to this Policy and the website's terms of use. In
+            addition to the foregoing, any disputes arising under this Policy
+            shall be governed by the laws of India.
           </p>
         </div>
       </div>
