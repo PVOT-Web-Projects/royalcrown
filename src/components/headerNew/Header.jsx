@@ -157,15 +157,18 @@ const Header = () => {
                 <motion.ul
                 >
                   <li
+                  
                     // onMouseEnter={() => setHoveredSubmenuItem("submenu1")}
                     
                     // onMouseLeave={() => setHoveredSubmenuItem(null)}
                   >
-                    <Link href="/products/sub-item-1">Product-Item 1</Link>
+                     <Link href="/products/sub-item-1">HPL Laminate </Link>
+                     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M4 .755l14.374 11.245-14.374 11.219.619.781 15.381-12-15.391-12-.609.755z"/></svg>
+                   
                     {hoveredSubmenuItem === "submenu1" && (
                       <motion.div
                          className="ProductsLi1"
-                        // initial={{ opacity: 0, y: -10 }}
+                        // initial={{ opacity: 0, y: -10 }} 
                         // animate={{ opacity: 1, y: 0 }}
                         // exit={{ opacity: 0, y: -10 }}
                         // transition={{ duration: 0.5 }}
@@ -179,7 +182,7 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Sub-Item 1</Link>
+                            <Link href="#">Decorative Laminate</Link>
                           </li>
                           <li
                             onMouseEnter={() =>
@@ -189,9 +192,9 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Sub-Item 2</Link>
+                            <Link href="#">Postforming Laminate</Link>
                           </li>
-                          <li
+                          {/* <li
                             onMouseEnter={() =>
                               setHoveredSubSubmenuItem("sub-submenu3")
                             }
@@ -210,7 +213,7 @@ const Header = () => {
                             // }
                           >
                             <Link href="#">Sub-Item 4</Link>
-                          </li>
+                          </li> */}
                         </ul>
                         <motion.div
                           className="sub-submenu-image"
@@ -224,11 +227,14 @@ const Header = () => {
                       </motion.div>
                     )}
                   </li>
+                  {/*  */}
                   <li
                     onMouseEnter={() => setHoveredSubmenuItem("submenu2")}
                     // onMouseLeave={() => setHoveredSubmenuItem(null)}
                   >
-                    <Link href="/products/sub-item-2">Product-Item 2</Link>
+                    <Link href="/products/sub-item-2">Compact Laminate</Link>
+                    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M4 .755l14.374 11.245-14.374 11.219.619.781 15.381-12-15.391-12-.609.755z"/></svg>
+                   
                     {hoveredSubmenuItem === "submenu2" && (
                       <motion.div
                          className="ProductsLi1"
@@ -246,7 +252,7 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Sub-Item 11</Link>
+                            <Link href="#">Standard Grade (Qbiss)</Link>
                           </li>
                           <li
                             onMouseEnter={() =>
@@ -256,7 +262,7 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Sub-Item 12</Link>
+                            <Link href="#">Exterior Cladding (XCL)</Link>
                           </li>
                           <li
                             onMouseEnter={() =>
@@ -266,7 +272,7 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Sub-Item 13</Link>
+                            <Link href="#">Interior Cladding</Link>
                           </li>
                           <li
                             onMouseEnter={() =>
@@ -276,7 +282,17 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Sub-Item 14</Link>
+                            <Link href="#">Fire Retardant</Link>
+                          </li>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu5")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Color Core</Link>
                           </li>
                         </ul>
                         <motion.div
@@ -291,11 +307,14 @@ const Header = () => {
                       </motion.div>
                     )}
                   </li>
+                  {/*  */}
                   <li
                     onMouseEnter={() => setHoveredSubmenuItem("submenu3")}
                     // onMouseLeave={() => setHoveredSubmenuItem(null)}
                   >
-                    <Link href="/products/sub-item-3">Product-Item 3</Link>
+                    <Link href="/products/sub-item-3">Speciality Laminate</Link>
+                    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M4 .755l14.374 11.245-14.374 11.219.619.781 15.381-12-15.391-12-.609.755z"/></svg>
+                   
                     {hoveredSubmenuItem === "submenu3" && (
                       <motion.div
                          className="ProductsLi1"
@@ -313,7 +332,7 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Sub-Item 21</Link>
+                            <Link href="#">Writable Laminate</Link>
                           </li>
                           <li
                             onMouseEnter={() =>
@@ -323,7 +342,7 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Sub-Item 22</Link>
+                            <Link href="#">Antifinger Laminte (Spotless)</Link>
                           </li>
                           <li
                             onMouseEnter={() =>
@@ -333,7 +352,7 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Sub-Item 23</Link>
+                            <Link href="#">Metallic Laminate</Link>
                           </li> 
                           <li
                             onMouseEnter={() =>
@@ -343,7 +362,37 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Sub-Item 24</Link>
+                            <Link href="#">Synchro Laminate</Link>
+                          </li>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu5")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Color core Laminate</Link>
+                          </li>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu6")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Digital Laminate</Link>
+                          </li>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu7")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Flicker Laminate</Link>
                           </li>
                         </ul>
                         <motion.div
@@ -358,46 +407,67 @@ const Header = () => {
                       </motion.div>
                     )}
                   </li>
+                  {/*  */}
                   <li
                     onMouseEnter={() => setHoveredSubmenuItem("submenu4")}
-                    onMouseLeave={() => setHoveredSubmenuItem(null)}
+                    // onMouseLeave={() => setHoveredSubmenuItem(null)}
                   >
-                    <Link href="/products/sub-item-4">Product-Item 4</Link>
-                  </li>
-                  <li
-                    onMouseEnter={() => setHoveredSubmenuItem("submenu5")}
-                    onMouseLeave={() => setHoveredSubmenuItem(null)}
-                  >
-                    <Link href="/products/sub-item-5">Product-Item 5</Link>
-                  </li>
-                  <li
-                    onMouseEnter={() => setHoveredSubmenuItem("submenu6")}
-                    onMouseLeave={() => setHoveredSubmenuItem(null)}
-                  >
-                    <Link href="/products/sub-item-6">Product-Item 6</Link>
+                    <Link href="/products/sub-item-4">Technical Grade Laminate</Link>
+                    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M4 .755l14.374 11.245-14.374 11.219.619.781 15.381-12-15.391-12-.609.755z"/></svg>
+                   
+                    {hoveredSubmenuItem === "submenu4" && (
+                      <motion.div
+                         className="ProductsLi1"
+                        // initial={{ opacity: 0, y: -10 }}
+                        // animate={{ opacity: 1, y: 0 }}
+                        // exit={{ opacity: 0, y: -10 }}
+                        // transition={{ duration: 0.5 }}
+                      >
+                        <ul>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu1")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Electrostatic Dissipative</Link>
+                          </li>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu2")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Chemical Resistant</Link>
+                          </li>
+                          <li
+                            onMouseEnter={() =>
+                              setHoveredSubSubmenuItem("sub-submenu3")
+                            }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                          >
+                            <Link href="#">Fire Retardant</Link>
+                          </li> 
+                        </ul>
+                        <motion.div
+                          className="sub-submenu-image"
+                          // initial={{ opacity: 0 }}
+                          // animate={{ opacity: 1 }}
+                          // exit={{ opacity: 0 }}
+                          // transition={{ duration: 0.3 }}
+                        >
+                          <Image src={getSubSubmenuImage3()} alt="Submenu Image"  />
+                        </motion.div>
+                      </motion.div>
+                    )}
                   </li>
                 </motion.ul>
-                {/* Conditional image rendering based on hovered submenu */}
-                {/* <div className="submenu-image">
-                  {hoveredSubmenuItem === "submenu1" && (
-                    <Image src={HoverImg1} alt="Submenu 1 Image" />
-                  )}
-                  {hoveredSubmenuItem === "submenu2" && (
-                    <Image src={HoverImg2} alt="Submenu 2 Image" />
-                  )}
-                  {hoveredSubmenuItem === "submenu3" && (
-                    <Image src={HoverImg3} alt="Submenu 3 Image" />
-                  )}
-                  {hoveredSubmenuItem === "submenu4" && (
-                    <Image src={HoverImg4} alt="Submenu 3 Image" />
-                  )}
-                  {hoveredSubmenuItem === "submenu5" && (
-                    <Image src={HoverImg1} alt="Submenu 3 Image" />
-                  )}
-                  {hoveredSubmenuItem === "submenu6" && (
-                    <Image src={HoverImg2} alt="Submenu 3 Image" />
-                  )}
-                </div> */}
                 <motion.div
                   className="submenu-image"
                   initial={{ opacity: 0 }}

@@ -21,8 +21,11 @@ const Form3 = () => {
   return (
     <form onSubmit={handleSubmit} className="form3">
       <div className="form3_field">
-        <label htmlFor="email">Subscribe</label>
-        <input
+        <label htmlFor="email">Subscribe to newsletter</label>
+        <p className="FormSubscribetext">Register for free updates stay up-to-date with the latest promotions by subscribing to our Newsletter.</p>
+       <div className="form3_field2">
+        <div>
+       <input
           type="email"
           placeholder="Enter your email"
           name="email"
@@ -30,13 +33,16 @@ const Form3 = () => {
           value={values.email}
         />
         <p className="error">{touched.email && errors.email && errors.email}</p>
-      </div>
-      <div className="submit_btn">
+        </div>
+        <div className="submit_btn">
         {/* <YellowSubmitButton btn_text={"Subscribe"} /> */}
         <button type="submit" className="yello_btn">
           <span className="button-content">Subscribe</span>
         </button>
       </div>
+       </div>
+      </div>
+      
     </form>
   );
 };
