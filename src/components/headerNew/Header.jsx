@@ -133,11 +133,11 @@ const Header = () => {
               setHoveredSubmenuItem("submenu1");
               setHoveredSubSubmenuItem("sub-submenu1");
             }}
-            // onMouseLeave={() => {
-            //   setHoveredItem(null);
-            //   setHoveredSubmenuItem(null); // Clear submenu hover state when leaving main item
-            //   setHoveredSubmenuItem(null);
-            // }}
+            onMouseLeave={() => {
+              setHoveredItem(null);
+              setHoveredSubmenuItem(null); // Clear submenu hover state when leaving main item
+              setHoveredSubmenuItem(null);
+            }}
           >
             <LinkHover
               url={"/products"}
