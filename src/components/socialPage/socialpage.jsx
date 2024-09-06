@@ -13,7 +13,7 @@ const SocialPage = ({ socialMediaImgSrc }) => {
     { src: instagramIcon, alt: "Instagram", link: "https://www.instagram.com/royalcrownlaminates/" },
     { src: youtubeIcon, alt: "YouTube", link: "https://www.youtube.com" },
     
-    { src: linkedinIcon, alt: "LinkedIn", link: "https://www.linkedin.com" },
+    { src: linkedinIcon, alt: "LinkedIn", link: "https://www.linkedin.com/company/crown-laminates/" },
     { src: whatsappIcon, alt: "WhatsApp", link: "https://www.whatsapp.com" },
   ];
   return (
