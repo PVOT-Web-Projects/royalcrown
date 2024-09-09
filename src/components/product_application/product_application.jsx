@@ -1,20 +1,25 @@
 "use client";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 import "./product_application.scss";
 export default function ProductApplication() {
   return (
     <>
       <div className="productApplicationContainer">
-        <motion.div className="productApplicationHeader" initial={{ y: 50, opacity: 0 }}
+        <motion.div
+          className="productApplicationHeader"
+          initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 1 }}
-          viewport={{ once: true }}>
+          viewport={{ once: true }}
+        >
           <div>APPLICATIONS</div>
         </motion.div>
         <div className="productApplicationSection">
           <div>
             <div className="productApplicationSection1Header">
-              <div className="productApplicationSection1Header">ALIGNMENT & ORIENTATION:</div>
+              <div className="productApplicationSection1Header">
+                ALIGNMENT & ORIENTATION:
+              </div>
             </div>
             <div className="productApplicationSection1Inner_Main">
               <div className="applicationSection1Inner">
@@ -47,7 +52,9 @@ export default function ProductApplication() {
           </div>
           <div className="">
             <div className="productApplicationSection1Header">
-              <div className="productApplicationSection1Header">SUITABLE & IDEAL FOR:</div>
+              <div className="productApplicationSection1Header">
+                SUITABLE & IDEAL FOR:
+              </div>
             </div>
             <div className="productApplicationSection2Inner_Main">
               <div className="applicationSection1Inner">

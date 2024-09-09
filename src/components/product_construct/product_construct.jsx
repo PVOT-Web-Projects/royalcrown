@@ -14,7 +14,7 @@ export default function ProductConstruct() {
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          <div>PRODUCT CONSTRUCT</div>
+          <p>PRODUCT CONSTRUCT</p>
         </motion.div>
         <div>
           <Image src={Image1} alt="" className="product_construct_image" />

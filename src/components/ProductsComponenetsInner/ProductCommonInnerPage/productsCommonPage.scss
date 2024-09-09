@@ -1,0 +1,267 @@
+// HEADER
+.productCategoryHeader {
+  padding: 80px 0;
+  .productCategoryHeaderInner {
+    background: url("../../../images/utkarsh-bhai\ \(1\).jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 80vh;
+    display: flex;
+    align-items: flex-end;
+    background-size: cover;
+    color: white;
+
+    .productCategoryHeaderText {
+      display: flex;
+      margin-right: auto;
+      margin-left: auto;
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin: 0px 0px 50px 0px;
+      padding: 20px 0px 20px 60px;
+
+      @media (max-width: 375px) {
+        padding: 20px 0 20px 40px;
+      }
+
+      .productCategoryHeaderTextInnner {
+        font-family: "made_mirage_bold";
+        font-size: 30px;
+      }
+    }
+  }
+}
+// eLECTORSTATIC TO THCIKNESS
+.laminatesHero {
+  display: flex;
+  // justify-content: center;
+  // align-items: center;
+  // flex-direction: column;
+  padding: 40px 70px;
+  overflow: hidden;
+
+  @media (max-width: 575px) {
+    padding: 40px 30px;
+  }
+
+  @media (max-width: 375px) {
+    padding: 80px 20px;
+  }
+
+  .laminatesWrapper {
+    .laminatesHeader {
+      text-transform: uppercase;
+      font-size: 35px;
+      // font-family: "made_mirage_bold";
+    }
+
+    .laminatesBody {
+      .laminateBodyDescription {
+        margin: 30px 0;
+        font-size: 21px;
+      }
+
+      .laminatesBoxOuter {
+        .laminatesBoxInner {
+          display: flex;
+          justify-content: space-evenly;
+
+          @media (max-width: 991px) {
+            flex-direction: column;
+            gap: 2rem;
+          }
+
+          .laminatesBox1 {
+            background-color: #edd7c2;
+            padding: 25px 80px 25px 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-direction: column;
+          }
+        }
+      }
+    }
+  }
+}
+
+.laminateIconImage {
+  height: 50px;
+  width: 50px;
+}
+
+.laminatesBoxHeader {
+  font-size: 21px;
+}
+// Construct Images
+.product_construct_wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 0 70px;
+
+  @media (max-width: 575px) {
+    padding: 0 30px;
+  }
+
+  @media (max-width: 375px) {
+    padding: 80px 20px;
+  }
+
+  .product_construct_header {
+    font-size: 35px;
+    margin: 30px 0;
+  }
+
+  .product_construct_image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+}
+// features
+.productFeaturesWrapper {
+  padding: 100px 70px;
+
+  @media (max-width: 575px) {
+    padding: 80px 30px;
+  }
+
+  @media (max-width: 375px) {
+    padding: 80px 20px;
+  }
+
+  .productFeaturesInner {
+    .productFeaturesHeader {
+      text-align: center;
+      font-size: 35px;
+      padding: 40px 0;
+    }
+
+    .productFeaturesContainer {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      justify-content: space-between;
+      align-items: center;
+      row-gap: 40px;
+
+      @media (max-width: 991px) {
+        flex-direction: column;
+        align-items: center; // Center items when in column layout
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+
+      @media (max-width: 575px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media (max-width: 475px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      .productFeaturesContainerInner {
+       
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center; // Center items horizontally
+        text-align: center;
+        gap: 1rem;
+        width: 100%; // Ensure the container uses full width for better centering
+
+        .productImage {
+          display: flex;
+          justify-content: center; // Center image horizontally
+          align-items: center; // Center image vertically if needed
+          width: 100%; // Ensure it takes full width of the container
+        }
+
+        .productFeatureImage {
+          max-width: 100%;
+          height: auto;
+          transition: all 0.5s ease;
+          &:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+          }
+        }
+
+        .productDescription {
+          display: flex;
+          justify-content: center; // Center description horizontally
+        }
+      }
+    }
+  }
+}
+//   application
+.productApplicationContainer {
+  background-color: #d5ad86;
+  padding: 80px 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  @media (max-width: 575px) {
+    padding: 50px 30px;
+  }
+
+  @media (max-width: 375px) {
+    padding: 80px 20px;
+  }
+
+  .productApplicationHeader {
+    font-size: 35px;
+  }
+
+  .productApplicationSection {
+    display: flex;
+    gap: 25rem;
+
+    @media (max-width: 1024px) {
+      gap: 0;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .productApplicationSection1Inner_Main {
+      display: flex;
+      gap: 3rem;
+      margin: 20px 0;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 1rem;
+        margin: 15px 0;
+      }
+    }
+
+    .productApplicationSection2Inner_Main {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin: 20px 0;
+
+      @media (max-width: 375px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+  }
+}
+
+.applicationSection1Inner {
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.productApplicationSection1Header {
+  font-family: "made_mirage_bold";
+  font-size: 21px;
+}

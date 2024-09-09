@@ -182,7 +182,7 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Decorative Laminate</Link>
+                            <Link href="/decorative-laminates">Decorative Laminate</Link>
                           </li>
                           <li
                             onMouseEnter={() =>
