@@ -27,9 +27,12 @@ const PlyMarquee = () => {
       </div>
       <div className="MarqueeTextSecond">
         <p>
-          It's a modern minimalist aesthetic look, our luxury laminates cater to
+          Experience the epitome of modern minimalist aesthetic with our luxury
+          laminates, tailored to ful-fill every desire, ensuring your interiors
+          exude a sophisticated charm that captivates and endures.
+          {/* It's a modern minimalist aesthetic look, our luxury laminates cater to
           every desire, ensuring your interiors exude a refined charm that
-          captivates and endures.
+          captivates and endures. */}
         </p>
         <p className="MarqueeTextSecondInner">
           Elevate your space with the ultimate expression of luxury and grace.

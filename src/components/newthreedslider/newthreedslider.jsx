@@ -29,8 +29,6 @@ import {
 import "@/components/newthreedslider/newthreedslider.scss";
 import SliderBtn from "@/components/buttons/sliderbtn/page";
 
-
-
 const SwiperComponent = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
@@ -39,15 +37,19 @@ const SwiperComponent = () => {
       <div className="ThreeText">
         <p className="ThreeTextInner">The Pinnacle of Luxury Laminates</p>
         <p className="ThreeTextInnerFirst">
-          Discover the epitome of sophistication with our premium range of
+          {/* Discover the epitome of sophistication with our premium range of
           luxury laminates. Designed for those with discerning taste, our
           laminates offer a perfect blend of elegance and durability,
-          transforming ordinary spaces into extraordinary masterpieces.
+          transforming ordinary spaces into extraordinary masterpieces. */}
+          Experience true sophistication with our exquisite range of luxury
+          laminates and compacts. Designed for those with discerning taste, our
+          premium products offer an impeccable fusion of elegance and
+          durability, elevating ordinary spaces into extraordinary masterpieces.
         </p>
       </div>
       <div className="swiperContainerOne">
         <Swiper
-          modules={[ Navigation, EffectCoverflow, Thumbs]}
+          modules={[Navigation, EffectCoverflow, Thumbs]}
           slidesPerView={3}
           loop={true}
           effect="coverflow"
@@ -154,7 +156,7 @@ const SwiperComponent = () => {
 
         <div className="SecondThumbsSwiper">
           <Swiper
-            modules={[ Thumbs, Autoplay, EffectFade]}
+            modules={[Thumbs, Autoplay, EffectFade]}
             onSwiper={setThumbsSwiper}
             //   loop={true}
             // autoplay={{
@@ -187,12 +189,12 @@ const SwiperComponent = () => {
                   grace.
                 </p>
                 <div className="SliderBtnOuter">
-                   <SliderBtn url={"/"} btn_text={"GO TO DECORATIVE"}/>
+                  <SliderBtn url={"/"} btn_text={"GO TO DECORATIVE"} />
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-            <div className="Carousel_text_maincontent">
+              <div className="Carousel_text_maincontent">
                 <p className="Text_InnerText">
                   It's a modern minimalist aesthetic look, our luxury laminates
                   cater to every desire, ensuring your interiors exude a refined
@@ -203,12 +205,12 @@ const SwiperComponent = () => {
                   grace.
                 </p>
                 <div className="SliderBtnOuter">
-                   <SliderBtn url={"/"} btn_text={"GO TO XYLEM"}/>
+                  <SliderBtn url={"/"} btn_text={"GO TO XYLEM"} />
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-            <div className="Carousel_text_maincontent">
+              <div className="Carousel_text_maincontent">
                 <p className="Text_InnerText">
                   It's a modern minimalist aesthetic look, our luxury laminates
                   cater to every desire, ensuring your interiors exude a refined
@@ -219,12 +221,12 @@ const SwiperComponent = () => {
                   grace.
                 </p>
                 <div className="SliderBtnOuter">
-                   <SliderBtn url={"/"} btn_text={"GO TO COMPACT"}/>
+                  <SliderBtn url={"/"} btn_text={"GO TO COMPACT"} />
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-            <div className="Carousel_text_maincontent">
+              <div className="Carousel_text_maincontent">
                 <p className="Text_InnerText">
                   It's a modern minimalist aesthetic look, our luxury laminates
                   cater to every desire, ensuring your interiors exude a refined
@@ -235,12 +237,12 @@ const SwiperComponent = () => {
                   grace.
                 </p>
                 <div className="SliderBtnOuter">
-                   <SliderBtn url={"/"} btn_text={"GO TO DECORATIVE"}/>
+                  <SliderBtn url={"/"} btn_text={"GO TO DECORATIVE"} />
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-            <div className="Carousel_text_maincontent">
+              <div className="Carousel_text_maincontent">
                 <p className="Text_InnerText">
                   It's a modern minimalist aesthetic look, our luxury laminates
                   cater to every desire, ensuring your interiors exude a refined
@@ -251,12 +253,12 @@ const SwiperComponent = () => {
                   grace.
                 </p>
                 <div className="SliderBtnOuter">
-                   <SliderBtn url={"/"} btn_text={"GO TO XYLEM"}/>
+                  <SliderBtn url={"/"} btn_text={"GO TO XYLEM"} />
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-            <div className="Carousel_text_maincontent">
+              <div className="Carousel_text_maincontent">
                 <p className="Text_InnerText">
                   It's a modern minimalist aesthetic look, our luxury laminates
                   cater to every desire, ensuring your interiors exude a refined
@@ -267,7 +269,7 @@ const SwiperComponent = () => {
                   grace.
                 </p>
                 <div className="SliderBtnOuter">
-                   <SliderBtn url={"/"} btn_text={"GO TO COMPACT"}/>
+                  <SliderBtn url={"/"} btn_text={"GO TO COMPACT"} />
                 </div>
               </div>
             </SwiperSlide>
