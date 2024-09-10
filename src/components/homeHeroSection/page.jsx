@@ -17,7 +17,7 @@ export default function HomeHeroSection() {
 
   // useEffect(() => {
   //   gsap.to(eleganceContainer.current, {
-  //     scale: 0.35, 
+  //     scale: 0.35,
   //     y: -300,              // Scroll down the image container
   //     opacity: 0,          // Fade out the image container
   //     scrollTrigger: {
@@ -37,7 +37,7 @@ export default function HomeHeroSection() {
             <div className="text-section-header-inner">
               <div className="header_text">
                 <motion.div
-                className="HeaderTextInner"
+                  className="HeaderTextInner"
                   initial={{ x: -100, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
                   transition={{ duration: 1 }}
@@ -67,11 +67,19 @@ export default function HomeHeroSection() {
           <div className="text-section-content">
             <div className="text-section-inner">
               <div className="TextSectionInnerFirst">
-                Customers are at the heart of our unique business model. Royal
+                At Royal Crown, customers are the cornerstone of our unique
+                business model. We are dedicated to providing every individual
+                with an unparalleled royal service, ensuring that their
+                experience is etched into their memories forever. Our story
+                began on a scorching Indian summer day, where the golden grasses
+                and swaying flowers painted a picture of tranquility. It was on
+                this day that a visionary businessmen's dream was transformed
+                into the reality we now know as Royal Crown.
+                {/* Customers are at the heart of our unique business model. Royal
                 Crown thrives at providing royal service to everyone. Our work
                 is all about our customers and we believe their experience
                 should be worth a thousand memories. However, we do have a tiny
-                tale to tell, a sneak peek to our story.
+                tale to tell, a sneak peek to our story. */}
               </div>
               <div className="text-section-inner-footer">See our story</div>
             </div>

@@ -36,7 +36,7 @@ export default function App() {
         </motion.div>
         {/* <p className="RoyalCrownTextInner">WHY</p> */}
         <motion.div
-        className="RoyalCrownTextInnerFirst"
+          className="RoyalCrownTextInnerFirst"
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 1 }}
@@ -153,10 +153,18 @@ export default function App() {
                 <div className="Carousel_text_maincontent">
                   {/* <p className="Text_InnerText">Unparalled Services</p> */}
                   <p className="carousel_text_Content">
-                    We are known for providing high density laminates with
+                    Royal Crown Laminates’ are renowned for providing
+                    high-density laminates with unrivaled quality and
+                    reliability. To guarantee topnotch products, we have
+                    implemented stringent quality checks and procedures in our
+                    manufacturing process, along with the use of highly accurate
+                    and calibrated testing equipment. Our product range includes
+                    sizes of 8x4, 10x4, 10x4.25, 12x6, and 14x6 feet, with
+                    thickness ranging from 0.8mm to 25mm.
+                    {/* We are known for providing high density laminates with
                     unparalleled services in terms of quality and reliability.
                     We are known for providing high density laminates with
-                    unparalleled services in terms of quality and reliability.
+                    unparalleled services in terms of quality and reliability. */}
                   </p>
                 </div>
               </SwiperSlide>
