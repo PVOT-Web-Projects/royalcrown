@@ -12,7 +12,7 @@ import Productimg1 from "../../../images/5-2048x749.png";
 // import callCentresIcon from "../../images/call-centres-icon.svg";
 
 const FlickerLaminatesData = {
-  header: "Post-forming Laminates",
+  header: "Flicker Laminates",
   description: `Royal Crown Post-Form Laminates offer an unparalleled level of sophistication and style to
 your furniture. thoroughly designed to create a seamless finish, these specialty-grade high pressure laminates are crafted using a unique "postforming" process, allowing them to
 gracefully bend and conform to any curve. Whether used vertically or horizontally, they
@@ -56,6 +56,7 @@ any design.
       image1: Image1,
       description: "Heat Retardant",
     },
+
     {
       image1: Image1,
       description: "Fire Retardant",
