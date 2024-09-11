@@ -192,7 +192,7 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Postforming Laminate</Link>
+                            <Link href="/postforming-laminates">Postforming Laminate</Link>
                           </li>
                           {/* <li
                             onMouseEnter={() =>
@@ -252,7 +252,7 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Standard Grade (Qbiss)</Link>
+                            <Link href="/standard-grade-laminates">Standard Grade (Qbiss)</Link>
                           </li>
                           <li
                             onMouseEnter={() =>
@@ -262,7 +262,7 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Exterior Cladding (XCL)</Link>
+                            <Link href="/exterior-cladding-laminates">Exterior Cladding (XCL)</Link>
                           </li>
                           <li
                             onMouseEnter={() =>
@@ -272,7 +272,7 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Interior Cladding</Link>
+                            <Link href="/interior-cladding-laminates">Interior Cladding</Link>
                           </li>
                           <li
                             onMouseEnter={() =>
@@ -282,7 +282,7 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Fire Retardant</Link>
+                            <Link href="/fire-retardant-laminates">Fire Retardant</Link>
                           </li>
                           <li
                             onMouseEnter={() =>
@@ -292,7 +292,7 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Color Core</Link>
+                            <Link href="/color-core-laminates">Color Core</Link>
                           </li>
                         </ul>
                         <motion.div
@@ -332,7 +332,7 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Writable Laminate</Link>
+                            <Link href="/writable-laminates">Writable Laminate</Link>
                           </li>
                           <li
                             onMouseEnter={() =>
@@ -342,7 +342,7 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Antifinger Laminte (Spotless)</Link>
+                            <Link href="/antifinger-laminates">Antifinger Laminate (Spotless)</Link>
                           </li>
                           <li
                             onMouseEnter={() =>
@@ -352,7 +352,7 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Metallic Laminate</Link>
+                            <Link href="/metallic-laminates">Metallic Laminate</Link>
                           </li> 
                           <li
                             onMouseEnter={() =>
@@ -362,7 +362,7 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Synchro Laminate</Link>
+                            <Link href="/synchro-laminates">Synchro Laminate</Link>
                           </li>
                           <li
                             onMouseEnter={() =>
@@ -392,7 +392,7 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Flicker Laminate</Link>
+                            <Link href="/flicker-laminates">Flicker Laminate</Link>
                           </li>
                         </ul>
                         <motion.div
