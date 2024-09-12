@@ -268,11 +268,11 @@ const Page = () => {
             </div>
             <div
               className={`tab-item ${
-                activeTab === "/products#Crown" ? "active" : ""
+                activeTab === "/products#Crownxcl" ? "active" : ""
               }`}
               onClick={(e) => {
                 e.preventDefault();
-                handleTabClick("/products#Crown");
+                handleTabClick("/products#Crownxcl");
               }}
             >
               <div className="tab-content-inner">Crown XCL</div>
