@@ -9,6 +9,7 @@
   display: flex;
   gap: 2rem;
   padding-bottom: 2rem;
+  flex-wrap: wrap;
 }
 .Map_section {
   padding-top: 9rem;

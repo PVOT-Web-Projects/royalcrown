@@ -68,14 +68,14 @@ const Page = () => {
   ];
 
   const categories = [
-    { label: "All Categories", value: "all" },
+    // { label: "Select Categories", value: "all" },
     { label: "Decorative", value: "Decorative" },
     { label: "Interior Compacts", value: "Decorative Interior Compacts" },
     { label: "Exterior Compacts", value: "Decorative Exterior Compacts" },
   ];
 
   const types = [
-    { label: "All Types", value: "all" },
+    // { label: "Select Types", value: "all" },
     { label: "Spotless", value: "Spotless" },
     { label: "Exotic Urbane", value: "Exotic Urbane" },
     { label: "Classic Wood Grains", value: "Classic Wood Grains" },
@@ -231,7 +231,7 @@ const Page = () => {
                 handleTabClick("/products#xylem");
               }}
             >
-              <div className="tab-content-inner">Xylem</div>
+              <div className="tab-content-inner">Royal Crown</div>
             </div>
             <div
               className={`tab-item ${
@@ -242,7 +242,7 @@ const Page = () => {
                 handleTabClick("/products#Qbiss");
               }}
             >
-              <div className="tab-content-inner">Qbiss</div>
+              <div className="tab-content-inner">crown</div>
             </div>
             <div
               className={`tab-item ${
@@ -253,7 +253,7 @@ const Page = () => {
                 handleTabClick("/products#Crown_Xcl");
               }}
             >
-              <div className="tab-content-inner">Crown Xcl</div>
+              <div className="tab-content-inner">Xylem</div>
             </div>
             <div
               className={`tab-item ${
@@ -264,7 +264,18 @@ const Page = () => {
                 handleTabClick("/products#Crown");
               }}
             >
-              <div className="tab-content-inner">Crown</div>
+              <div className="tab-content-inner">Qbiss</div>
+            </div>
+            <div
+              className={`tab-item ${
+                activeTab === "/products#Crownxcl" ? "active" : ""
+              }`}
+              onClick={(e) => {
+                e.preventDefault();
+                handleTabClick("/products#Crownxcl");
+              }}
+            >
+              <div className="tab-content-inner">Crown XCL</div>
             </div>
           </div>
         </div>
@@ -273,35 +284,35 @@ const Page = () => {
           <div id="sticky">
             <div className="dropdown1">
               <div className="dropdown-label">
-                <label htmlFor="category-select">SELECT CATEGORY</label>
+                {/* <label htmlFor="category-select">SELECT CATEGORY</label> */}
               </div>
               <Dropdown
                 id="category-select"
                 options={categories}
                 value={selectedCategory}
                 onChange={handleCategoryChange}
-                placeholder="Select a Category"
+                placeholder="Select Category"
                 className="category-select"
               />
             </div>
 
             <div className="dropdown1">
               <div className="dropdown-label">
-                <label htmlFor="type-select">SELECT TYPE</label>
+                {/* <label htmlFor="type-select">SELECT TYPE</label> */}
               </div>
               <Dropdown
                 id="type-select"
                 options={types}
                 value={selectedType}
                 onChange={handleTypeChange}
-                placeholder="Select a Type"
+                placeholder="Select Type"
                 className="category-select"
               />
             </div>
 
             <div className="dropdown1">
               <div className="dropdown-label">
-                <label htmlFor="color-select">SELECT COLOR</label>
+                <label htmlFor="color-select" className="colorSelectDropdown">SELECT COLOR</label>
               </div>
               {isMobile ? (
                 <Dropdown
@@ -309,7 +320,7 @@ const Page = () => {
                   options={mappedColor}
                   value={selectedColor}
                   onChange={handleColorChange}
-                  placeholder="Select a Color"
+                  placeholder="Select Color"
                 />
               ) : (
                 <div className="color_dropdown">
@@ -327,21 +338,21 @@ const Page = () => {
 
             <div className="dropdown1">
               <div className="dropdown-label">
-                <label htmlFor="finish-select">SELECT FINISH</label>
+                {/* <label htmlFor="finish-select">SELECT FINISH</label> */}
               </div>
               <Dropdown
                 id="finish-select"
                 options={finish}
                 value={selectedFinish}
                 onChange={handleFinishChange}
-                placeholder="Select a Finish"
+                placeholder="Select Finish"
                 className="category-select"
               />
             </div>
 
             <div className="dropdown1">
               <div className="dropdown-label">
-                <label htmlFor="size-select">SELECT SIZE</label>
+                <label htmlFor="size-select" className="colorSelectDropdown">SELECT SIZE</label>
               </div>
               {isMobile ? (
                 <Dropdown
@@ -379,14 +390,14 @@ const Page = () => {
 
             <div className="dropdown1">
               <div className="dropdown-label">
-                <label htmlFor="thickness-select">SELECT THICKNESS</label>
+                {/* <label htmlFor="thickness-select">SELECT THICKNESS</label> */}
               </div>
               <Dropdown
                 id="thickness-select"
                 options={thickness}
                 value={selectedThickness}
                 onChange={handleThicknessChange}
-                placeholder="Select a Thickness"
+                placeholder="Select Thickness"
                 className="category-select"
               />
             </div>
