@@ -43,15 +43,23 @@ compact laminate as the top choice for creating enduring and stylish interior su
   features: [
     {
       image1: Image1,
-      description: "Aesthetically Beautiful",
-    },
-    {
-      image1: Image1,
       description: "Scratch Resistant",
     },
     {
       image1: Image1,
-      description: "Solvent Resistant",
+      description: "Graffiti Resistant",
+    },
+    {
+      image1: Image1,
+      description: "Termite Resistant",
+    },
+    {
+      image1: Image1,
+      description: "Water Resistant",
+    },
+    {
+      image1: Image1,
+      description: "Easy to clean",
     },
     {
       image1: Image1,
@@ -59,20 +67,42 @@ compact laminate as the top choice for creating enduring and stylish interior su
     },
     {
       image1: Image1,
-      description: "Heat Retardant",
+      description: "Anti-Bacterial",
     },
     {
       image1: Image1,
-      description: "Fire Retardant",
+      description: "Cigarette Burn Resistant",
     },
     {
       image1: Image1,
-      description: "Easy to clean & maintain",
+      description: "Fire Resistant",
     },
     {
       image1: Image1,
-      description: "Sustainable",
+      description: "Abrasion Resistant",
     },
+    {
+      image1: Image1,
+      description: "Wide Choice of Colours",
+    },
+    {
+      image1: Image1,
+      description: "Chemical Resistant",
+    },
+    {
+      image1: Image1,
+      description: "Flexibility of Design and Space Saving",
+    },
+    {
+      image1: Image1,
+      description: "Fast Colours and Durable",
+    },
+    {
+      image1: Image1,
+      description: "less Volatile Organic Compounds[VOC] Emission",
+    },
+
+
   ],
   products: [
     {
