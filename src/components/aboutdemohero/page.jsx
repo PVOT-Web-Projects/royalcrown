@@ -11,6 +11,9 @@ import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
+
+
+
 export default function AboutUsDemo() {
   const sectionRef = useRef(null);
 
