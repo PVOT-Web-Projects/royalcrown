@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import "./productsCommonPage.scss";
+import Link from "next/link";
 
 export default function ProductsCommonInnerPage({ data }) {
   return (
@@ -83,11 +84,50 @@ export default function ProductsCommonInnerPage({ data }) {
           <p>PRODUCT CONSTRUCT</p>
         </motion.div>
         {data.products.map((item, index) => (
-        <div key={index}>
-          <Image src={item.ProductImg} alt="" className="product_construct_image" />
-        </div>
+          <div key={index}>
+            <Image
+              src={item.ProductImg}
+              alt=""
+              className="product_construct_image"
+            />
+          </div>
         ))}
       </div>
+
+      {/* technical specs */}
+      {/* <div className="product_construct_wrapper1">
+        <motion.div
+          className="product_construct_header1"
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          <p>TECHNICAL SPECIFICATION</p>
+        </motion.div>
+        {data.specs.map((item, index) => (
+          <div>
+            <div className="corporateRecognitionCardImage" key={index}>
+              <div>
+                <Link
+                  href={item.pdfLink}
+                  target="_blank"
+                  className="corporateRecognitionCardImageInner"
+                >
+                  <Image
+                    src={item.PdfImage}
+                    alt="Recognition Image"
+                    className="corporateRecognitionCardImg"
+                  />
+                  <div>
+                    <p>{item.pdfDescription}</p>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div> */}
 
       {/* Product Features */}
       <div className="productFeaturesWrapper">
