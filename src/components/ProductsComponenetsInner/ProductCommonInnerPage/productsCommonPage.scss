@@ -120,6 +120,47 @@
     height: auto;
   }
 }
+// specs
+.product_construct_wrapper1 {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 70px 0;
+
+  @media (max-width: 575px) {
+    padding: 0 30px;
+  }
+
+  @media (max-width: 375px) {
+    padding: 80px 20px;
+  }
+
+  .product_construct_header1 {
+    font-size: 35px;
+    margin: 30px 0;
+  }
+  .corporateRecognitionCardImageInner{
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    color: #5B3524;
+    font-size: 20px;
+    gap: 5px;
+    .corporateRecognitionCardImg{
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    p{
+      color: #5B3524;
+    }
+  }
+
+  .product_construct_image1 {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+}
 // features
 .productFeaturesWrapper {
   padding: 100px 70px;
