@@ -14,23 +14,23 @@ function FindStoreSearch() {
   const defaultCityData = [
     {
       content1:
-        "Royale Touche Laminates, Plywood and Wooden Floors-Ahmedabad, DEVDEEP DÉCOR LLP",
-      supplierName: "MR. MANDEEP PATEL",
-      mapLocation: "AHMEDABAD, GUJARAT",
-      phone: "+919624045453",
+        "HEAD OFFICE",
+      supplierName: " ",
+      mapLocation: "Ahmedabad, Gujarat",
+      phone: "+91 (79) 4001 7979",
       Address:
-        "GROUND FLOOR 4-5-6, SOHAM PRISTINE, NR SHALIGRAM-2, NR. SHAJANAND BUNGLOW, SINDHUBHAVAN,  THALTEJ",
+        "One 42, 401 North Tower, Near Jayantilal Park BRTS, Ambli Bopal Road",
       // extraPhone: "fdfdfdfdfd",
       emailId: "marketing@royalcrown.com",
     },
     {
-      content1: "SWAMI MARKETING",
-      supplierName: "MR. RADHAKISHAN J. GALANI",
-      mapLocation: "AHMEDABAD, GUJARAT",
-      phone: "+919825312223",
+      content1: "FACTORY ADDRESS",
+      supplierName: " ",
+      mapLocation: "Ahmedabad, Gujarat",
+      phone: " +91 9537949494",
       Address:
-        "JUDGES BUNGLOW, 29 30, AKASH TOWER, OPP PREMCHAND NAGAR, BODAKDEV",
-      // extraPhone: "fdfdfdfdfd",
+        "Crown Decor Pvt. Ltd. Survey no. 419/1,Radhe Industrial Estate,Tajpur Road, Changodar-382 213",
+      extraPhone: "+91 7878252343",
       emailId: "marketing@royalcrown.com",
     },
     // {
