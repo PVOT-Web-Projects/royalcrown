@@ -18,8 +18,7 @@ function FindStoreSearch() {
       supplierName: " ",
       mapLocation: "Ahmedabad, Gujarat",
       phone: "+91 (79) 4001 7979",
-      Address:
-        "One 42, 401 North Tower, Near Jayantilal Park BRTS, Ambli Bopal Road",
+      Address: "One 42, 401 North Tower, Near Jayantilal Park BRTS, Ambli Bopal Road",
       // extraPhone: "fdfdfdfdfd",
       emailId: "marketing@royalcrown.com",
     },
@@ -28,8 +27,7 @@ function FindStoreSearch() {
       supplierName: " ",
       mapLocation: "Ahmedabad, Gujarat",
       phone: " +91 9537949494",
-      Address:
-        "Crown Decor Pvt. Ltd. Survey no. 419/1,Radhe Industrial Estate,Tajpur Road, Changodar-382 213",
+      Address: "Crown Decor Pvt. Ltd. Survey no. 419/1,Radhe Industrial Estate,Tajpur Road, Changodar-382 213",
       extraPhone: "+91 7878252343",
       emailId: "marketing@royalcrown.com",
     },
@@ -477,14 +475,15 @@ function FindStoreSearch() {
                           </div>
                           <div className={styles.content1}>
                             <div className={styles.address}>
-                              {location.phone}
+                            <Link href={`tel:${location.phone}`}>{location.phone}</Link>
+                              {/* {location.phone} */}
                             </div>
                           </div>
                           {/* extra mobile number if required */}
                           {location.extraPhone && (
                             <div className={styles.content}>
                               <div className={styles.address}>
-                                {location.extraPhone}
+                                <Link href={`tel:${location.extraPhone}`}>{location.extraPhone}</Link>
                               </div>
                             </div>
                           )}
