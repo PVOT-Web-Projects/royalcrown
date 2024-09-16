@@ -110,6 +110,12 @@ decorative side is uniformly sanded using cutting-edge machinery to ensure optim
       { label: "IT Offices", description: "IT Offices description here." },
       { label: "Call Centres", description: "Call Centres description here." },
     ],
+    pdfLink: [
+      {
+        pdfUrl: "/",
+        pdfDesc: "Download",
+      },
+    ]
   },
 };
 

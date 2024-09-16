@@ -220,6 +220,31 @@ export default function ProductsCommonInnerPage({ data }) {
               ))}
             </div>
           </div>
+          <div className="TechnicalSpecsHeader">
+            <div className="productApplicationSection1Header">
+              <div className="productApplicationSection1Header">
+                TECHNICAL SPECIFICATION:
+              </div>
+            </div>
+            <div className="productApplicationSection2Inner_Main">
+              {data.application.pdfLink.map((item, index) => (
+                <div className="applicationSection1InnerPdf" key={index}>
+                  <div>
+                    <svg
+                      width="24"
+                      height="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path d="M8 11h-6v10h20v-10h-6v-2h8v14h-24v-14h8v2zm5 2h4l-5 6-5-6h4v-12h2v12z" />
+                    </svg>
+                  </div>
+                  <Link href={item.pdfUrl} target="_blank" className="applicationSection1InnerPdfInner">{item.pdfDesc}</Link>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </>

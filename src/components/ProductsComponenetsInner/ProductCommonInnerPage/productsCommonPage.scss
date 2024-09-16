@@ -1,11 +1,11 @@
 // HEADER
 .productCategoryHeader {
-  padding: 80px 0;
+  padding: 0px 0;
   .productCategoryHeaderInner {
-    background: url("../../../images/utkarsh-bhai\ \(1\).jpg");
+    background: url("../../../images/dwg_room1.jpg");
     background-position: center center;
     background-repeat: no-repeat;
-    height: 80vh;
+    height: 90vh;
     display: flex;
     align-items: flex-end;
     background-size: cover;
@@ -16,7 +16,7 @@
       margin-right: auto;
       margin-left: auto;
       position: relative;
-      text-transform: uppercase;
+      text-transform: uppercase;  
       letter-spacing: 2px;
       margin: 0px 0px 50px 0px;
       padding: 20px 0px 20px 60px;
@@ -258,7 +258,11 @@
 
   .productApplicationSection {
     display: flex;
-    gap: 25rem;
+    flex-wrap: wrap;
+    gap: 10rem;
+    @media(max-width: 1400px){
+      gap: 10rem;
+    }
 
     @media (max-width: 1024px) {
       gap: 0;
@@ -297,11 +301,27 @@
 
 .applicationSection1Inner {
   display: flex;
-  // justify-content: center;
   align-items: center;
   gap: 10px;
 }
-
+.applicationSection1InnerPdf{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.applicationSection1InnerPdfInner{
+  // font-weight: 800;
+  font-size: 18px;
+  color: #5B3524;
+}
+.TechnicalSpecsHeader{
+  margin-top: -70px;
+  font-size: 35px;
+  @media(max-width: 800px){
+    margin: 0;
+  }
+}
 .productApplicationSection1Header {
   font-family: "made_mirage_bold";
   font-size: 21px;

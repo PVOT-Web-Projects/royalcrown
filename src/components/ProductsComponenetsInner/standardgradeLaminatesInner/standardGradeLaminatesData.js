@@ -127,6 +127,12 @@ over 6mm. Choose Qbiss for a sophisticated and enduring interior solution.`,
       { label: "IT Offices", description: "IT Offices description here." },
       { label: "Call Centres", description: "Call Centres description here." },
     ],
+    pdfLink: [
+      {
+        pdfUrl: "/",
+        pdfDesc: "Download",
+      },
+    ],
   },
 };
 
