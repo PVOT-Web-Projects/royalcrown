@@ -16,17 +16,17 @@ function FindStoreSearch() {
       content1:
         "HEAD OFFICE",
       supplierName: " ",
-      mapLocation: "AHMEDABAD, GUJARAT",
+      mapLocation: "Ahmedabad, Gujarat",
       phone: "+91 (79) 4001 7979",
       Address:
-        "One 42, 401 North Tower, Near Jayantilal Park BRTS, Ambli Bopal Road, Ahmedabad 380054. Gujarat, India.",
+        "One 42, 401 North Tower, Near Jayantilal Park BRTS, Ambli Bopal Road",
       // extraPhone: "fdfdfdfdfd",
       emailId: "marketing@royalcrown.com",
     },
     {
       content1: "FACTORY ADDRESS",
       supplierName: " ",
-      mapLocation: "AHMEDABAD, GUJARAT",
+      mapLocation: "Ahmedabad, Gujarat",
       phone: " +91 9537949494",
       Address:
         "Crown Decor Pvt. Ltd. Survey no. 419/1,Radhe Industrial Estate,Tajpur Road, Changodar-382 213",
