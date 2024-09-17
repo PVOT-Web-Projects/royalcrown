@@ -1,26 +1,30 @@
 @import "../../../app/variables.scss";
 @import "../../../fonts/fonts.scss";
 
-.yello_btn {
+.yello_btn1 {
   position: relative;
   overflow: hidden;
-  height: 3rem;
-  padding: 0 2rem;
-  background: $white;
+  height: 3.2rem;
+  padding: 0 3rem;
+  background-color: transparent;
+  border: 1px solid #5B3524;
+  // border-radius: 0px;
+  text-transform: capitalize;
   background-size: 400%;
-  color: $black;
-  border: none;
+  color: #5B3524;
   font-size: 18px;
   line-height: 16px;
-  // font-family: "futura_medium";
   cursor: pointer;
   display: flex;
   align-items: center;
   text-decoration: none;
   width: fit-content;
   .button-content {
+    font-size: 25px;
+    font-weight: 550;
     position: relative;
     z-index: 1;
+    transition: color 0.475s;
   }
   &::before {
     content: "";
@@ -31,13 +35,18 @@
     transform-origin: 0 50%;
     width: 100%;
     height: inherit;
-    border-radius: inherit;
-    background: red;
+    // border-radius: inherit;
+    background: $white;
     transition: all 0.475s;
   }
   &:hover {
+    .button-content {
+      color: white;
+    }
     &::before {
       transform: scaleX(1);
+    //   border-radius: inherit;
+      
     }
   }
 }
