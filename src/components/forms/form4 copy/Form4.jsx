@@ -28,7 +28,7 @@ const Form4 = () => {
   return (
     <div className="form4">
       <div className="form4_inner">
-        <div className="wrapper">
+        <div className={`wrapper ${showForm ? "show" : "hide"}`}>
           <div className="image">
             <Image src={image} alt="get in touch" />
           </div>
@@ -37,7 +37,7 @@ const Form4 = () => {
             <div className="form4_wrap_inner">
               <h2>Let’s Get In Touch.</h2>
               <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
+                Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard
               </p>
               <form onSubmit={handleSubmit}>
@@ -113,9 +113,20 @@ const Form4 = () => {
                 <div className="SubmitBtnOuter">
                   <YellowSubmitButton btn_text={"Submit"} type="submit" />
                 </div>
+                {/* <button type="submit">Submit</button> */}
+                {/* </div> */}
               </form>
             </div>
           </div>
+          <div className="btn">
+            <ClickHandler
+              btn_text={"Let’s Get In Touch."}
+              handleClick={handleClick}
+            />
+          </div>
+        </div>
+        <div className="right_image">
+          <Image src={image} alt="get in touch" />
         </div>
       </div>
     </div>

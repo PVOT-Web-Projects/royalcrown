@@ -6,13 +6,12 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px #d9d9d9 inset !important;
 }
 .form4 {
-  overflow-x: hidden;
-  padding: 100px 0 0;
+  padding: 200px 0 0;
   .form4_inner {
     display: flex;
     .wrapper {
       display: flex;
-      width: 100%;
+      width: 70%;
       position: relative;
       padding: 20px 20px 20px 0;
       background-color: rgba(217, 217, 217, 0.2);
@@ -22,12 +21,30 @@ input:-webkit-autofill:active {
       @media(max-width: 767px){
         flex-direction: column;
       }
-     
-      .image {
-        width: 50%;
-        @media(max-width: 768px){
+      &.show {
+        .form4_wrap {
           width: 100%;
+          opacity: 1;
+          height: auto;
+          transform: translateX(0);
+          // padding: 50px 95px 50px 45px;
+          padding: 30px 45px 40px 45px;
+          @media (max-width: 767px){
+            width: 90%;
+            padding: 30px 45px 40px 25px;
+          }
+          @media(max-width: 575px){
+            padding: 0px 45px 40px 25px;
+          }
         }
+        
+        .btn {
+          display: none;
+          background: transparent;
+        }
+      }
+      .image {
+        width: 100%;
         img {
           display: block;
           width: 100%;
@@ -39,16 +56,16 @@ input:-webkit-autofill:active {
         }
       }
       .form4_wrap {
-        width: 50%;
-        padding: 20px 30px;
-        // background-color: #d9d9d9;
-        @media(max-width: 768px){
-          width: 93%;
-        }
-        @media(max-width: 475px){
-          width: 90%;
-          padding: 20px 20px;
-        }
+        width: 0;
+        opacity: 0;
+        height: 0;
+        transform: translateX(500px);
+        transition: all 1s;
+        background-color: #d9d9d9;
+        color: $black;
+        // @media(max-width: 767px){
+        //   width: 90%;
+        // }
 
         .form4_wrap_inner {
           h2 {
@@ -59,18 +76,12 @@ input:-webkit-autofill:active {
             @media (max-width: 575px){
               font-size: 38px;
             }
-            @media(max-width: 425px){
-              font-size: 30px;
-            }
           }
           p {
             color: #5b3524;
             font-size: 18px;
             line-height: 20px;
             padding: 15px 0 20px;
-            @media(min-width: 1500px){
-              width: 65%;
-            }
           }
           form {
             .field {
@@ -84,16 +95,11 @@ input:-webkit-autofill:active {
               }
               input {
                 width: -webkit-fill-available;
-                border-bottom: 1px solid #5b3524;
-                outline: none;
-                border-top: none;
-                border-left: none;
-                border-right: none;
+                border: 1px solid #5b3524;
                 height: 35px;
                 font-size: 18px;
-                color: #5b3524;
-                // padding: 0px 8px 0px;
-                background: transparent;
+                padding: 0px 8px 0px;
+                background: #d9d9d9;
                 &:focus {
                   outline: none;
                 }
@@ -103,15 +109,10 @@ input:-webkit-autofill:active {
               }
               textarea {
                 width: -webkit-fill-available;
-                border-bottom: 1px solid #5b3524;
-                outline: none;
-                border-top: none;
-                border-left: none;
-                border-right: none;
+                border: 1px solid #5b3524;
                 font-size: 18px;
-                color: #5b3524;
-                // padding: 2px 8px 0px;
-                background: transparent;
+                padding: 2px 8px 0px;
+                background: #d9d9d9;
                 &:focus {
                   outline: none;
                 }
@@ -124,10 +125,6 @@ input:-webkit-autofill:active {
               display: flex;
               justify-content: space-between;
               gap: 20px;
-              @media(max-width: 991px){
-                flex-wrap: wrap;
-                gap: 0rem;
-              }
               @media(max-width: 575px){
                 flex-direction: column;
                 gap: 0;

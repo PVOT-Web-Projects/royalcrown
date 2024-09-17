@@ -578,7 +578,7 @@ const Header = () => {
             viewport={{ once: true }}
           >
             <LinkHover
-              url={"#"}
+              url={"/contact-us"}
               text={"Contact Us"}
               fontSize={"16px"}
               isHomePage={isHome}

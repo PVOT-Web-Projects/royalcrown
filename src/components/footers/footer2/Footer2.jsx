@@ -91,8 +91,8 @@ const Footer2 = ({ bgColor }) => {
                 <ul>
                   <li>
                     <LinkHover
-                      url={"/"}
-                      text={"Gallery"}
+                      url={"/contact-us"}
+                      text={"Contact Us"}
                       color={"#000"}
                       borderColor={"white"}
                       fontSize={"18px"}
