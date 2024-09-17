@@ -8,6 +8,7 @@ import ClickHandler from "@/components/buttons/clickHandler/ClickHandler";
 import { useFormik } from "formik";
 import { form4Schemas } from "../ValidationSchema/Schema";
 import YellowSubmitButton from "@/components/buttons/yellowSubmitButton/YellowSubmitButton";
+import YellowSubmitButtonForm from "@/components/buttons/yellowSubmitButtonForm/YellowSubmitButtonForm";
 
 const Form4 = () => {
   const [showForm, setShowForm] = useState(false);
@@ -111,7 +112,7 @@ const Form4 = () => {
                 </div>
                 {/* <div className="field"> */}
                 <div className="SubmitBtnOuter">
-                  <YellowSubmitButton btn_text={"Submit"} type="submit" />
+                  <YellowSubmitButtonForm btn_text={"Submit"} type="submit" />
                 </div>
               </form>
             </div>
