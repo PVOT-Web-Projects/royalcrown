@@ -13,15 +13,17 @@ import Productimg1 from "../../../images/5-2048x749.png";
 
 const MetallicLaminatesData = {
   header: "Metallic Laminates",
-  description: `Royal Crown Post-Form Laminates offer an unparalleled level of sophistication and style to
-your furniture. thoroughly designed to create a seamless finish, these specialty-grade high pressure laminates are crafted using a unique "postforming" process, allowing them to
-gracefully bend and conform to any curve. Whether used vertically or horizontally, they
-provide a sleek, edge-free look that enhances the overall aesthetic of any space. Elevate your
-furniture to new heights with Royal Crown Post-Form Laminates.
-`,
-  description1: `They are designed to impress with their striking patterns, cutting-edge technology, easy-touse features, and high-quality materials. These laminates can be effortlessly moulded into
-sleek cylindrical inward or outward curves, delivering a modern and sophisticated touch to
-any design.
+  description: `Experience the allure of Royal Crown’s metallic laminate, a revolutionary decorative material
+that effortlessly emulates the striking beauty of metal surfaces, including brushed aluminium,
+stainless steel, and copper. Crafted with careful attention to detail, this laminate infuses spaces
+with a heightened sense of luxury and modern sophistication, perfect for elevating any interior.
+Unleash your creativity with the versatile design potential of our metallic laminates, which are
+the preferred choice for high-end cabinetry, wall panels, furniture, and countertops. These
+laminates are not just visually captivating but also boast remarkable durability, resisting
+scratches, stains, and moisture. The easy maintenance and cleaning of metallic laminates
+ensures a lasting impression for years to come. Available in a stunning array of matte to highgloss finishes and a variety of captivating metal effects, these laminates offer unparalleled
+flexibility to bring your design vision to life. Treat your space to the opulence of metallic
+laminate and redefine the essence of luxury in your interior design.
 `,
   boxes: [
     {

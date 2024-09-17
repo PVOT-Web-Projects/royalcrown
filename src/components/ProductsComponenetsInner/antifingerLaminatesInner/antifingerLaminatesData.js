@@ -12,16 +12,19 @@ import Productimg1 from "../../../images/5-2048x749.png";
 // import callCentresIcon from "../../images/call-centres-icon.svg";
 
 const AntifingerLaminatesData = {
-  header: "Post-forming Laminates",
-  description: `Royal Crown Post-Form Laminates offer an unparalleled level of sophistication and style to
-your furniture. thoroughly designed to create a seamless finish, these specialty-grade high pressure laminates are crafted using a unique "postforming" process, allowing them to
-gracefully bend and conform to any curve. Whether used vertically or horizontally, they
-provide a sleek, edge-free look that enhances the overall aesthetic of any space. Elevate your
-furniture to new heights with Royal Crown Post-Form Laminates.
-`,
-  description1: `They are designed to impress with their striking patterns, cutting-edge technology, easy-touse features, and high-quality materials. These laminates can be effortlessly moulded into
-sleek cylindrical inward or outward curves, delivering a modern and sophisticated touch to
-any design.
+  header: "Anti-finger Laminates (Spotless)",
+  description: `Discover the incredible benefits of Royal Crown’s Spotless – a revolutionary decorative laminate
+engineered to defy fingerprints, smudges, and marks, ensuring a spotless, low-maintenance
+surface. Boasting a specialized matte or low-gloss finish with cutting-edge coating technology,
+this laminate not only repels oils and moisture from fingerprints but also delivers heightened
+resistance to scratches and abrasions. Designed for high-touch surfaces like kitchen cabinets,
+countertops, doors, and office furniture, spotless laminates are a game-changer in maintaining
+a pristine appearance with their luxurious, velvety texture. With minimal cleaning requirements,
+these laminates are perfect for residential or commercial spaces. Available in a range of
+modern colors and designs, they add a sleek, contemporary flair to any interior. Beyond their
+aesthetic appeal, they are exceptionally durable, effortless to clean, and impervious to
+moisture, heat, and stains, ensuring enduring performance. Experience the perfect fusion of
+functionality and beauty with our anti-finger laminate.
 `,
   boxes: [
     {

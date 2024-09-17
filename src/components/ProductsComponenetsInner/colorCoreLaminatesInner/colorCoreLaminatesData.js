@@ -12,16 +12,20 @@ import Productimg1 from "../../../images/5-2048x749.png";
 // import callCentresIcon from "../../images/call-centres-icon.svg";
 
 const colorCoreLaminatesData = {
-  header: "Post-forming Laminates",
-  description: `Royal Crown Post-Form Laminates offer an unparalleled level of sophistication and style to
-your furniture. thoroughly designed to create a seamless finish, these specialty-grade high pressure laminates are crafted using a unique "postforming" process, allowing them to
-gracefully bend and conform to any curve. Whether used vertically or horizontally, they
-provide a sleek, edge-free look that enhances the overall aesthetic of any space. Elevate your
-furniture to new heights with Royal Crown Post-Form Laminates.
-`,
-  description1: `They are designed to impress with their striking patterns, cutting-edge technology, easy-touse features, and high-quality materials. These laminates can be effortlessly moulded into
-sleek cylindrical inward or outward curves, delivering a modern and sophisticated touch to
-any design.
+  header: " Color Core Laminates",
+  description: `Royal Crown’s Color core laminate is a bold and innovative decorative laminate that redefines
+the concept of seamless design. Unlike traditional laminates, its consistent color throughout the
+entire thickness ensures a flawless, uninterrupted look, eliminating visible edges or seams.
+Imagine the possibilities – from countertops to tabletops, cabinetry, doors, and retail fixtures,
+this revolutionary laminate opens the door to limitless design options. It empowers intricate
+edge detailing, engraving, and curved surfaces without any distracting contrasts, making it the
+epitome of sophisticated elegance. Not only does color core laminate deliver impeccable
+aesthetics, but its exceptional durability means it can effortlessly withstand wear, scratches,
+moisture, and stains, making it the ideal choice for high-traffic areas. With an extensive range of
+colors and finishes, including matte, gloss, and textured options, it gives designers the freedom
+to create spaces that are both visually stunning and resilient. In residential and commercial
+applications alike, color core laminate stands as a testament to uncompromising quality and
+style, setting a new standard in interior design.
 `,
   boxes: [
     {

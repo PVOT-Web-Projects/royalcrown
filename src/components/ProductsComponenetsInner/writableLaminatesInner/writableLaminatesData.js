@@ -13,15 +13,22 @@ import Productimg1 from "../../../images/5-2048x749.png";
 
 const WritableLaminatesData = {
   header: "Writable Laminates",
-  description: `Royal Crown Post-Form Laminates offer an unparalleled level of sophistication and style to
-your furniture. thoroughly designed to create a seamless finish, these specialty-grade high pressure laminates are crafted using a unique "postforming" process, allowing them to
-gracefully bend and conform to any curve. Whether used vertically or horizontally, they
-provide a sleek, edge-free look that enhances the overall aesthetic of any space. Elevate your
-furniture to new heights with Royal Crown Post-Form Laminates.
-`,
-  description1: `They are designed to impress with their striking patterns, cutting-edge technology, easy-touse features, and high-quality materials. These laminates can be effortlessly moulded into
-sleek cylindrical inward or outward curves, delivering a modern and sophisticated touch to
-any design.
+  description: `Royal Crown’s writable laminate is a specialised form of decorative laminate designed to serve
+as a surface suitable for writing and erasing, akin to a whiteboard or chalkboard. The top layer
+of this laminate is characterised by a smooth, non-porous finish that facilitates the use of dryerase markers or chalk, depending on the specific type of laminate, allowing for effortless
+writing and erasing without leaving behind stains or residual marks. This type of laminate is
+commonly employed in environments where effective communication and collaborative
+activities are paramount, such as educational institutions, professional workspaces, meeting
+rooms, and residential settings. It can be applied to a variety of surfaces including walls,
+tabletops, desks, or any other area where a writable surface is required, providing a practical
+yet aesthetically pleasing solution for activities such as brainstorming, instructional use, or the
+taking of notes. It is available in a range of colors, encompassing classic white for dry-erase
+applications and darker tones such as black or green for chalkboard functionality. Its durability
+and resistance to scratches, stains, and moisture ensure the creation of a long-lasting surface
+that remains easy to maintain and clean over time. The combination of functionality and visual
+appeal positions writable laminate as a versatile choice for the development of interactive and
+adaptable spaces.
+
 `,
   boxes: [
     {

@@ -12,16 +12,25 @@ import Productimg1 from "../../../images/5-2048x749.png";
 // import callCentresIcon from "../../images/call-centres-icon.svg";
 
 const FireRetardantLaminatesData = {
-  header: "Fire Retardant Laminates",
-  description: `Royal Crown Post-Form Laminates offer an unparalleled level of sophistication and style to
-your furniture. thoroughly designed to create a seamless finish, these specialty-grade high pressure laminates are crafted using a unique "postforming" process, allowing them to
-gracefully bend and conform to any curve. Whether used vertically or horizontally, they
-provide a sleek, edge-free look that enhances the overall aesthetic of any space. Elevate your
-furniture to new heights with Royal Crown Post-Form Laminates.
+  header: "Fire Retardant Compacts",
+  description: `Crown Decor’s Fire retardant compact laminate stands as a testament to uncompromising fire
+resistance, unmatched durability, and timeless style. Consistently crafted by compressing layers
+of kraft paper infused with fire-retardant phenolic resin and finished with a protective overlay,
+this material sets the new standard for safety and performance. Elevate your projects with the
+assurance of meeting the most rigorous fire safety regulations while delivering enduring
+strength and captivating aesthetics.
+
 `,
-  description1: `They are designed to impress with their striking patterns, cutting-edge technology, easy-touse features, and high-quality materials. These laminates can be effortlessly moulded into
-sleek cylindrical inward or outward curves, delivering a modern and sophisticated touch to
-any design.
+  description1: `They are engineered to decisively curb the advancement of flames, curtail smoke emissions,
+and thwart the release of hazardous fumes in the event of a fire. A staple in critical
+environments such as public buildings, transport hubs, healthcare facilities, schools, and highrise structures, it offers not only unmatched fire resistance but also exceptional resilience
+against impact, moisture, and wear. With a diverse array of colors, patterns, and finishes, fire
+retardant compact laminate emerges as the quintessential choice for interior cladding,
+partitions, doors, and other applications where safety and design converge. Its unparalleled
+fusion of fire safety, durability, and aesthetic adaptability positions it as the ultimate solution
+for projects that demand unwavering fire performance standards while refusing to compromise
+on style.
+
 `,
   boxes: [
     {

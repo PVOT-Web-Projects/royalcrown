@@ -13,15 +13,19 @@ import Productimg1 from "../../../images/5-2048x749.png";
 
 const FlickerLaminatesData = {
   header: "Flicker Laminates",
-  description: `Royal Crown Post-Form Laminates offer an unparalleled level of sophistication and style to
-your furniture. thoroughly designed to create a seamless finish, these specialty-grade high pressure laminates are crafted using a unique "postforming" process, allowing them to
-gracefully bend and conform to any curve. Whether used vertically or horizontally, they
-provide a sleek, edge-free look that enhances the overall aesthetic of any space. Elevate your
-furniture to new heights with Royal Crown Post-Form Laminates.
-`,
-  description1: `They are designed to impress with their striking patterns, cutting-edge technology, easy-touse features, and high-quality materials. These laminates can be effortlessly moulded into
-sleek cylindrical inward or outward curves, delivering a modern and sophisticated touch to
-any design.
+  description: `Royal Crown’s Flicker laminate is the epitome of luxury and sophistication, renowned for its
+captivating, ever-changing surface that plays with light and perspective. This exquisite laminate
+boasts a metallic or iridescent finish, creating a mesmerising flickering effect as light dances
+across its surface. Its stunning visual allure makes it a sought-after choice for high-end interior
+design, gracing wall panels, furniture, cabinetry, and various surfaces with its dynamic
+presence. The interplay of shifting light reflections imbues spaces with a modern, sophisticated
+ambiance and a touch of futuristic elegance, making it a popular option for prestigious
+commercial settings like hotels, retail stores, and offices, as well as exclusive residential
+projects. Beyond its aesthetic appeal, our flicker laminate upholds the practical advantages of
+traditional laminates, offering durability, scratch and stain resistance, and easy maintenance.
+With a range of captivating colors and patterns, designers can effortlessly incorporate this
+dynamic effect into diverse styles and settings, ensuring a truly remarkable visual experience.
+
 `,
   boxes: [
     {

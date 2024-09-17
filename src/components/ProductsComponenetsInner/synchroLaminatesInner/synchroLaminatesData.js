@@ -13,15 +13,18 @@ import Productimg1 from "../../../images/5-2048x749.png";
 
 const SynchroLaminatesData = {
   header: "Synchro Laminates",
-  description: `Royal Crown Post-Form Laminates offer an unparalleled level of sophistication and style to
-your furniture. thoroughly designed to create a seamless finish, these specialty-grade high pressure laminates are crafted using a unique "postforming" process, allowing them to
-gracefully bend and conform to any curve. Whether used vertically or horizontally, they
-provide a sleek, edge-free look that enhances the overall aesthetic of any space. Elevate your
-furniture to new heights with Royal Crown Post-Form Laminates.
-`,
-  description1: `They are designed to impress with their striking patterns, cutting-edge technology, easy-touse features, and high-quality materials. These laminates can be effortlessly moulded into
-sleek cylindrical inward or outward curves, delivering a modern and sophisticated touch to
-any design.
+  description: `Royal Crown’s Synchro laminate is a game-changing decorative laminate that brings a whole
+new level of realism to surfaces. By perfectly aligning the visual design with a synchronized
+texture, this innovative laminate creates an unparalleled sensory experience. Imagine the
+natural feel of wood grain or the authentic texture of stone, now brought to life in your interior
+spaces. Crafted through a meticulous embossing process, synchro laminate ensures that what
+you see is what you feel. The result is a breathtakingly realistic appearance and a tactile
+sensation that is second to none. From the visual depth to the intricate texture, every detail is
+thoughtfully replicated to elevate your environment. Whether it's furniture, cabinetry, wall
+panels, or flooring, synchro laminates bring the allure of natural materials without
+compromising on durability, maintenance, or affordability. With its unmatched attention to
+detail, this laminate is designed to elevate interior designs to a whole new level of
+sophistication and modernity.
 `,
   boxes: [
     {
