@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import "./productsCommonPage.scss";
+import Link from "next/link";
 
 export default function ProductsCommonInnerPage({ data }) {
   return (
@@ -83,11 +84,50 @@ export default function ProductsCommonInnerPage({ data }) {
           <p>PRODUCT CONSTRUCT</p>
         </motion.div>
         {data.products.map((item, index) => (
-        <div key={index}>
-          <Image src={item.ProductImg} alt="" className="product_construct_image" />
-        </div>
+          <div key={index}>
+            <Image
+              src={item.ProductImg}
+              alt=""
+              className="product_construct_image"
+            />
+          </div>
         ))}
       </div>
+
+      {/* technical specs */}
+      {/* <div className="product_construct_wrapper1">
+        <motion.div
+          className="product_construct_header1"
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          <p>TECHNICAL SPECIFICATION</p>
+        </motion.div>
+        {data.specs.map((item, index) => (
+          <div>
+            <div className="corporateRecognitionCardImage" key={index}>
+              <div>
+                <Link
+                  href={item.pdfLink}
+                  target="_blank"
+                  className="corporateRecognitionCardImageInner"
+                >
+                  <Image
+                    src={item.PdfImage}
+                    alt="Recognition Image"
+                    className="corporateRecognitionCardImg"
+                  />
+                  <div>
+                    <p>{item.pdfDescription}</p>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div> */}
 
       {/* Product Features */}
       <div className="productFeaturesWrapper">
@@ -176,6 +216,31 @@ export default function ProductsCommonInnerPage({ data }) {
                     </svg>
                   </div>
                   <div>{item.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="TechnicalSpecsHeader">
+            <div className="productApplicationSection1Header">
+              <div className="productApplicationSection1Header">
+                TECHNICAL SPECIFICATION:
+              </div>
+            </div>
+            <div className="productApplicationSection2Inner_Main">
+              {data.application.pdfLink.map((item, index) => (
+                <div className="applicationSection1InnerPdf" key={index}>
+                  <div>
+                    <svg
+                      width="24"
+                      height="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    >
+                      <path d="M8 11h-6v10h20v-10h-6v-2h8v14h-24v-14h8v2zm5 2h4l-5 6-5-6h4v-12h2v12z" />
+                    </svg>
+                  </div>
+                  <Link href={item.pdfUrl} target="_blank" className="applicationSection1InnerPdfInner">{item.pdfDesc}</Link>
                 </div>
               ))}
             </div>

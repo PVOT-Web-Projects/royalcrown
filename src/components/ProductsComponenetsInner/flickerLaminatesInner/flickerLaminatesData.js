@@ -103,6 +103,12 @@ dynamic effect into diverse styles and settings, ensuring a truly remarkable vis
       { label: "IT Offices", description: "IT Offices description here." },
       { label: "Call Centres", description: "Call Centres description here." },
     ],
+    pdfLink: [
+      {
+        pdfUrl: "/",
+        pdfDesc: "Download",
+      },
+    ]
   },
 };
 

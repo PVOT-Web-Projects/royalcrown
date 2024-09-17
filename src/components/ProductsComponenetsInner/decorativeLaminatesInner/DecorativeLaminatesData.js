@@ -2,6 +2,7 @@ import icon1 from "../../../images/Icons-11-2048x2048.png";
 import icon2 from "../../../images/Icons-12.png";
 import Image1 from "../../../images/1_LOW-ELECTRICAL-RESISTANT.svg";
 import Productimg1 from "../../../images/5-2048x749.png";
+// import PdfImg1 from "@/images/annualactionimg1.jpg";
 // import verticalIcon from "../../images/vertical-icon.svg";
 // import horizontalIcon from "../../images/horizontal-icon.svg";
 // import laboratoriesIcon from "../../images/laboratories-icon.svg";
@@ -44,6 +45,13 @@ decorative side is uniformly sanded using cutting-edge machinery to ensure optim
       ProductImg: Productimg1,
     }
   ],
+  // specs:[
+  //   {
+  //     PdfImage: PdfImg1,
+  //     pdfLink: "/pdfs/ANNUAL-ACTION-PLAN-2023-2024.pdf",
+  //     pdfDescription: "Decorative Technical Specification"
+  //   }
+  // ],
   features: [
     {
       image1: Image1,
@@ -102,6 +110,12 @@ decorative side is uniformly sanded using cutting-edge machinery to ensure optim
       { label: "IT Offices", description: "IT Offices description here." },
       { label: "Call Centres", description: "Call Centres description here." },
     ],
+    pdfLink: [
+      {
+        pdfUrl: "/",
+        pdfDesc: "Download",
+      },
+    ]
   },
 };
 

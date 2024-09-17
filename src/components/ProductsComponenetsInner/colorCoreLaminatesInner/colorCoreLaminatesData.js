@@ -102,6 +102,12 @@ style, setting a new standard in interior design.
       { label: "IT Offices", description: "IT Offices description here." },
       { label: "Call Centres", description: "Call Centres description here." },
     ],
+    pdfLink: [
+      {
+        pdfUrl: "/",
+        pdfDesc: "Download",
+      },
+    ]
   },
 };
 

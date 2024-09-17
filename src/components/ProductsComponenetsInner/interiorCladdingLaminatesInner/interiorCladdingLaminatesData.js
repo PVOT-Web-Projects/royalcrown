@@ -133,6 +133,12 @@ compact laminate as the top choice for creating enduring and stylish interior su
       { label: "IT Offices", description: "IT Offices description here." },
       { label: "Call Centres", description: "Call Centres description here." },
     ],
+    pdfLink: [
+      {
+        pdfUrl: "/",
+        pdfDesc: "Download",
+      },
+    ]
   },
 };
 
