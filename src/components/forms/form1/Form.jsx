@@ -1,44 +1,67 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { FormSchemas } from "@/components/forms/ValidationSchema/Schema";
 import "./form.scss";
-import YellowButton from "@/components/buttons/yellowButton/YellowButton";
-import YellowSubmitButton from "@/components/buttons/yellowSubmitButton/YellowSubmitButton";
+import { Slide, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+// import YellowButton from "@/components/buttons/yellowButton/YellowButton";
+// import YellowSubmitButton from "@/components/buttons/yellowSubmitButton/YellowSubmitButton";
+import YellowSubmitButtonForm from "@/components/buttons/yellowSubmitButtonForm/YellowSubmitButtonForm";
 
 const MyForm = () => {
-  const initialValue = {
-    fullName: "",
-    lastName: "",
-    email: "",
-    PhoneNo: "",
-    message: "",
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const submitMessage = () => {
+    toast.success("Form Submitted Successfully...");
   };
+  const formik = useFormik({
+    initialValues: {
+      fullName: "",
+      lastName: "",
+      email: "",
+      PhoneNo: "",
+      message: "",
+    },
+    validationSchema: FormSchemas,
+    validateOnChange: true,
+    onSubmit: async (values, { resetForm }) => {
+      setIsSubmitting(true); // Disable the button during submission
+
+      try {
+        const response = await fetch("/api/sendEmail", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            fullName: values.fullName,
+            LastName: values.lastName,
+            Emaildata: values.email,
+            Phonedata: values.PhoneNo,
+            Descriptiondata: values.message,
+          }),
+          
+        });
+        
+        console.log("Form Data Submitted:", values);
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        submitMessage();
+        console.log(await response.json());
+        resetForm(); // Reset form fields after submission
+      } catch (error) {
+        toast.error("Error Submitting Form");
+        console.error("Error:", error);
+      } finally {
+        setIsSubmitting(false); // Enable the button after submission
+      }
+    },
+  });
 
   const { values, errors, touched, handleChange, handleBlur, handleSubmit } =
-    useFormik({
-      initialValues: initialValue,
-      validationSchema: FormSchemas,
-      validateOnBlur: false,
-      validateOnChange: true,
-      onSubmit: (values, action) => {
-        console.log("value", values);
-        emailjs
-          .send(
-            "service_en5qoij",
-            "template_ycgs2m9",
-            values,
-            "fobUr4FlhTii3NWuL"
-          )
-          .then((response) => {
-            console.log("Email sent successfully:", response);
-          })
-          .catch((error) => {
-            console.error("Email send error:", error);
-          });
-        action.resetForm();
-      },
-    });
+    formik;
 
   useEffect(() => {
     const inputs = document.querySelectorAll(
@@ -167,10 +190,25 @@ const MyForm = () => {
             </div>
           </div>
           <div className="submit-button">
-            <YellowSubmitButton btn_text={"Send"} />
-            {/* <button type="submit" className="submit_button">
-            SEND
-          </button>                                                      */}
+            <YellowSubmitButtonForm
+              btn_text={isSubmitting ? "Submitting..." : "Submit"}
+              disabled={isSubmitting}
+              type="submit"
+            />
+            <ToastContainer
+              position="top-right"
+              autoClose={3000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick={true}
+              rtl={false}
+              pauseOnFocusLoss={false}
+              draggable={false}
+              pauseOnHover={true}
+              theme="light"
+              transition={Slide}
+              className={"contactFormNotification"}
+            />
           </div>
         </form>
       </div>
