@@ -75,8 +75,9 @@ const Form4 = () => {
             <div className="form4_wrap_inner">
               <h2>Let’s Get In Touch.</h2>
               <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard
+                Our helpline is always open to receive any inquiry or feedback.
+                Please feel free to drop us an email from the form below and we
+                will get back to you as soon as we can.
               </p>
               <form onSubmit={handleSubmit}>
                 <div className="field_wrap">
