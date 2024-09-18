@@ -17,11 +17,8 @@ const ContactUs = () => {
       </div>
       <div ref={section2}>
       <Form4 />
-        
       </div>
-      {/* <ContactUsHero /> */}
       <ContactUsHear />
-      {/* <Form4 /> */}
     </div>
   );
 };

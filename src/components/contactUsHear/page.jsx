@@ -41,7 +41,7 @@ const ContactUsHear = () => {
             <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.507 19l-1.507-6-6-1.5 12-4.5-4.493 12z" />
           </svg>
           <p className="BoldTextInner">Office</p>
-          <p>Come say hello at our office HQ.</p>
+          <p>Crown Decor Pvt. Ltd.</p>
           <Link
             href={"https://maps.app.goo.gl/kMbjwniPJ4jZ7cW88"}
             target="_blank"
@@ -72,12 +72,19 @@ const ContactUsHear = () => {
       </div>
       <div>
         <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7343.565444953944!2d72.46514944495584!3d23.03174869031674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b9e585cfc57%3A0x833b59aeb8ec9afe!2sCrown%20Decor%20Private%20Limited!5e0!3m2!1sen!2sin!4v1726645230117!5m2!1sen!2sin"
+          className="MapFrame"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+        {/* <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3673.0581432308504!2d72.49073037591127!3d22.98488931773235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9aeb23c7e7e7%3A0xd34044573492f3c0!2sRoyal%20Art%20Laminates!5e0!3m2!1sen!2sin!4v1726573533512!5m2!1sen!2sin"
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           className="MapFrame"
-        ></iframe>
+        ></iframe> */}
       </div>
     </div>
   );
