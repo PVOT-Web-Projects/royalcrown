@@ -3,7 +3,7 @@
 import Image from "next/image";
 import image from "@/images/getInTouchImage.png";
 import "./form4.scss";
-import { useState } from "react";
+// import { useState } from "react";
 // import ClickHandler from "@/components/buttons/clickHandler/ClickHandler";
 import { useFormik } from "formik";
 import { form4Schemas } from "../ValidationSchema/Schema";
@@ -11,10 +11,10 @@ import { form4Schemas } from "../ValidationSchema/Schema";
 import YellowSubmitButtonForm from "@/components/buttons/yellowSubmitButtonForm/YellowSubmitButtonForm";
 
 const Form4 = () => {
-  const [showForm, setShowForm] = useState(false);
-  const handleClick = () => {
-    setShowForm(true);
-  };
+  // const [showForm, setShowForm] = useState(false);
+  // const handleClick = () => {
+  //   setShowForm(true);
+  // };
   const initialValue = {
     fName: "",
     lName: "",
