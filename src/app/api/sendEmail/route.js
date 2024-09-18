@@ -3,8 +3,24 @@ import nodemailer from "nodemailer";
 import path from "path";
 export async function POST(request) {
   try {
-    const { fullName, LastName, Emaildata, Phonedata, Descriptiondata } =
-      await request.json();
+    const {
+      fullName,
+      LastName,
+      Emaildata,
+      Phonedata,
+      Descriptiondata,
+      formType,
+    } = await request.json();
+
+    const subject =
+      formType === "getInTouch"
+        ? "New Inquiry From Contact Us of the Royal Crown Website"
+        : "New Inquiry From Royal Crown Website";
+
+    const formMessage =
+      formType === "getInTouch"
+        ? "New Inquiry Form from the Contact Us section of the Royal Crown Website"
+        : "New Inquiry Form from the Royal Crown Website";
 
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
@@ -22,11 +38,11 @@ export async function POST(request) {
     const mailOption = {
       from: "jaykalariya.humbee@gmail.com",
       to: "jaykalariya.humbee@gmail.com",
-      subject: "New Inquiry From Royal Crown Website",
+      subject: subject, // Use the dynamic subject based on the form type
       html: `
       <div style="border: 1px dashed #ccc; padding: 20px;">
       <img src="cid:logo" alt="Logo" style="max-width: 100%;" />
-      <p>New Inquiry Form from this site </p>
+      <p>${formMessage}</p>
       <div style="border: 1px dashed black; padding: 20px;">
         <ul style="list-style-type: none; padding: 0; margin: 0;">
         <li><strong>First Name:</strong> ${fullName}</li><br /><br />

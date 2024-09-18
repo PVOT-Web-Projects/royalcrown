@@ -42,12 +42,15 @@ input:-webkit-autofill:active {
         width: 50%;
         padding: 20px 30px;
         // background-color: #d9d9d9;
+        @media(max-width: 1199px){
+          padding: 10px 20px;
+        }
         @media(max-width: 768px){
           width: 93%;
         }
         @media(max-width: 475px){
           width: 90%;
-          padding: 20px 20px;
+          padding: 10px 20px;
         }
 
         .form4_wrap_inner {
@@ -56,6 +59,9 @@ input:-webkit-autofill:active {
             color: #5b3524;
             padding: 10px 0 0;
             font-family: "made_mirage_bold";
+            @media(max-width: 1199px){
+              font-size: 39px;
+            }
             @media (max-width: 575px){
               font-size: 38px;
             }
@@ -109,6 +115,7 @@ input:-webkit-autofill:active {
                 border-left: none;
                 border-right: none;
                 font-size: 18px;
+                resize: none;
                 color: #5b3524;
                 // padding: 2px 8px 0px;
                 background: transparent;

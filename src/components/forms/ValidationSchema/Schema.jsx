@@ -22,13 +22,13 @@ export const form3Schemas = Yup.object({
   email: Yup.string().email("Invalid email address").required("Email is required"),
 })
 export const form4Schemas = Yup.object({
-  fName: Yup.string().required("First Name is required"),
-  lName: Yup.string().required("Last Name is required"),
-  email: Yup.string().email("Invalid email address").required("Email is required"),
-  phone: Yup.string()
+  ContactFName: Yup.string().required("First Name is required"),
+  ContactLName: Yup.string().required("Last Name is required"),
+  contactEmail: Yup.string().email("Invalid email address").required("Email is required"),
+  ContactPhone: Yup.string()
     .matches(/^[0-9]{10}$/, "Phone number must be 10 digits")
     .required("Phone number is required"),
-  message: Yup.string().required("Message is required"),
+    ContactMessage: Yup.string().required("Message is required"),
 });
 export const careerFormSchemas = Yup.object({
   firstName: Yup.string().required("First Name is required"),
