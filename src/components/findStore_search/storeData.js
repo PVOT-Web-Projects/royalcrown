@@ -111,7 +111,7 @@ export const locationsData = {
 
     },
 
-    "MADHYA PRADESH": {
+    MADHYAPRADESH: {
       BHOPAL: [
         {
           content1:
@@ -136,7 +136,7 @@ export const locationsData = {
       ],
     },
 
-    "WEST BENGAL": {
+    WESTBENGAL: {
       KOLKATA: [
         {
           content1:
