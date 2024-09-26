@@ -5,10 +5,20 @@
 // import ProductConstruct from "@/components/product_construct/product_construct";
 // import ProductFeatures from "@/components/productFeatures/productFeatures";
 // import ProductApplication from "@/components/product_application/product_application";
+import SocialPage from "@/components/socialPage/socialpage";
+import Form from "@/components/forms/form1/Form";
+import SocialMediaImg from "@/images/socials-image.png";
+import CategoryLeftRight from "@/components/categoryLeftRight/CategoryLeftRight";
+import "./category.scss"
 // import ProductsInner from "@/components/ProductsComponenetsInner/decorativeLaminatesInner/page";
 const Category = () => {
   return (
     <>
+    <CategoryLeftRight />
+    <div className="Form_Page">
+        <SocialPage socialMediaImgSrc={SocialMediaImg} />
+        <Form />
+      </div>
     {/* <ProductsInner /> */}
       {/* <ProductCategoryHeader />
       <DissipativeLaminates data={laminatesData}/>
