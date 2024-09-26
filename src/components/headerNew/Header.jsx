@@ -185,7 +185,13 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="/decorative-laminates">
+                            <Link href="/decorative-laminates"
+                            onClick={() => {
+                              setHoveredItem(null); // Close the main menu
+                              setHoveredSubmenuItem(null); // Close the submenu
+                              setHoveredSubSubmenuItem(null); // Close the sub-submenu
+                            }}
+                            >
                               Decorative Laminate
                             </Link>
                           </li>
