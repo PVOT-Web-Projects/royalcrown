@@ -136,7 +136,7 @@ const Header = () => {
             onMouseLeave={() => {
               setHoveredItem(null);
               setHoveredSubmenuItem(null); // Clear submenu hover state when leaving main item
-              setHoveredSubmenuItem(null);
+              // setHoveredSubmenuItem(null);
             }}
           >
             <LinkHover
@@ -158,7 +158,7 @@ const Header = () => {
                 >
                   <li
                   
-                    // onMouseEnter={() => setHoveredSubmenuItem("submenu1")}
+                    onMouseEnter={() => setHoveredSubmenuItem("submenu1")}
                     
                     // onMouseLeave={() => setHoveredSubmenuItem(null)}
                   >
