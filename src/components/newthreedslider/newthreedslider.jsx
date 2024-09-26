@@ -192,7 +192,7 @@ const SwiperComponent = () => {
                   grace.
                 </p> */}
                 <div className="SliderBtnOuter">
-                  <SliderBtn url={"/"} btn_text={"GO TO ROYAL CROWN"} />
+                  <SliderBtn url={"/products#royal-crown"} btn_text={"GO TO ROYAL CROWN"} />
                 </div>
               </div>
             </SwiperSlide>
@@ -210,7 +210,7 @@ const SwiperComponent = () => {
                   grace.
                 </p> */}
                 <div className="SliderBtnOuter">
-                  <SliderBtn url={"/"} btn_text={"GO TO CROWN"} />
+                  <SliderBtn url={"/products#crown"} btn_text={"GO TO CROWN"} />
                 </div>
               </div>
             </SwiperSlide>
@@ -230,7 +230,7 @@ const SwiperComponent = () => {
                   grace.
                 </p> */}
                 <div className="SliderBtnOuter">
-                  <SliderBtn url={"/"} btn_text={"GO TO XYLEM"} />
+                  <SliderBtn url={"/products#xylem"} btn_text={"GO TO XYLEM"} />
                 </div>
               </div>
             </SwiperSlide>
@@ -251,7 +251,7 @@ const SwiperComponent = () => {
                   grace.
                 </p> */}
                 <div className="SliderBtnOuter">
-                  <SliderBtn url={"/"} btn_text={"GO TO QBISS"} />
+                  <SliderBtn url={"/products#Qbiss"} btn_text={"GO TO QBISS"} />
                 </div>
               </div>
             </SwiperSlide>
@@ -273,7 +273,7 @@ const SwiperComponent = () => {
                   grace.
                 </p> */}
                 <div className="SliderBtnOuter">
-                  <SliderBtn url={"/"} btn_text={"GO TO CROWN XCL"} />
+                  <SliderBtn url={"/products#Crown_Xcl"} btn_text={"GO TO CROWN XCL"} />
                 </div>
               </div>
             </SwiperSlide>
