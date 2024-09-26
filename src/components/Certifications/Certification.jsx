@@ -13,7 +13,7 @@ import nemaLogo from "@/images/nema-Logo.png"
 import BisLogo from "@/images/bismarkLogo.png"
 import IgbcLogo from "@/images/igbcLogo.svg"
 import GreenlandLogo from "@/images/greenlandLogo.png"
-import IndianPowerLogo from "@/images/indianPowerLogo.png"
+import IndianPowerLogo from "@/images/indianpowerLogo.png"
 import {motion} from "framer-motion"
 const Certification = () => {
   return (
