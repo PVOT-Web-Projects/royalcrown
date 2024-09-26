@@ -23,6 +23,14 @@
   }
   .certificate_marqee {
     padding: 50px 0px;
+    display: flex; // Ensures images are in a row
+    align-items: center; // Aligns images vertically in the center
+    
+    img {
+      width: 180px; // Set a consistent width
+      height: 180px; // Set a consistent height
+      object-fit: contain; // Ensures images maintain their aspect ratio
+    }
     .logocertificate {
       margin: 1rem;
       @media (max-width: 767px) {
