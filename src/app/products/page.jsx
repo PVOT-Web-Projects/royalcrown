@@ -15,14 +15,14 @@ const AboutUs = () => {
   }
   return (
     <div>
-      <div ref={section1}
-      >
-        <ProductHero goToSectionRef={section2} scrollTo={scrollTo}/>
+      <div ref={section1}>
+        <ProductHero goToSectionRef={section2} scrollTo={scrollTo} />
       </div>
       <div ref={section2}>
-        <Products />
+        <AboutUs_products />
+        {/* <Products /> */}
       </div>
-      <AboutUs_products />
+
       <div className="Form_Page">
         <SocialPage socialMediaImgSrc={SocialMediaImg} />
         <Form />
