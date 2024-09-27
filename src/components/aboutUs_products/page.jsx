@@ -450,6 +450,7 @@ const Page = () => {
 
               return (
                 <div key={index} className={`AboutUs_product ${className}`}>
+                  <Link href={"/product-information"}>
                   <Image
                     src={product.image}
                     alt={product.name}
@@ -470,9 +471,10 @@ const Page = () => {
                       </svg>
                     </div>
                    <div className="AnchorTag">
-                   <Link href={"/product-information"}>Know More</Link>
+                   Know More
                    </div>
                   </div>
+                  </Link>
                 </div>
               );
             })}

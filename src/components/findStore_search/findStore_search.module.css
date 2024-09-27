@@ -264,6 +264,8 @@
   padding-bottom: 10px;
 }
 .content1 {
+  display: flex;
+  flex-wrap: wrap;
 }
 .use_my_location {
   cursor: pointer;
