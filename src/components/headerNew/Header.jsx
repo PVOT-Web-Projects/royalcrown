@@ -203,7 +203,13 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="/postforming-laminates">
+                            <Link href="/postforming-laminates"
+                            onClick={() => {
+                              setHoveredItem(null); // Close the main menu
+                              setHoveredSubmenuItem(null); // Close the submenu
+                              setHoveredSubSubmenuItem(null); // Close the sub-submenu
+                            }}
+                            >
                               Postforming Laminate
                             </Link>
                           </li>
@@ -256,7 +262,13 @@ const Header = () => {
                               setHoveredSubSubmenuItem(null)
                             }
                           >
-                            <Link href="/standard-grade-laminates">
+                            <Link href="/standard-grade-laminates"
+                            onClick={() => {
+                              setHoveredItem(null); // Close the main menu
+                              setHoveredSubmenuItem(null); // Close the submenu
+                              setHoveredSubSubmenuItem(null); // Close the sub-submenu
+                            }}
+                            >
                               Standard Grade (Qbiss)
                             </Link>
                           </li>
@@ -268,7 +280,12 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="/exterior-cladding-laminates">
+                            <Link href="/exterior-cladding-laminates"
+                            onClick={() => {
+                              setHoveredItem(null); // Close the main menu
+                              setHoveredSubmenuItem(null); // Close the submenu
+                              setHoveredSubSubmenuItem(null); // Close the sub-submenu
+                            }}>
                               Exterior Cladding (XCL)
                             </Link>
                           </li>
@@ -280,7 +297,12 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="/interior-cladding-laminates">
+                            <Link href="/interior-cladding-laminates" 
+                            onClick={() => {
+                              setHoveredItem(null); // Close the main menu
+                              setHoveredSubmenuItem(null); // Close the submenu
+                              setHoveredSubSubmenuItem(null); // Close the sub-submenu
+                            }}>
                               Interior Cladding
                             </Link>
                           </li>
@@ -292,7 +314,13 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="/fire-retardant-laminates">
+                            <Link href="/fire-retardant-laminates"
+                             onClick={() => {
+                              setHoveredItem(null); // Close the main menu
+                              setHoveredSubmenuItem(null); // Close the submenu
+                              setHoveredSubSubmenuItem(null); // Close the sub-submenu
+                            }}
+                            >
                               Fire Retardant
                             </Link>
                           </li>
@@ -304,7 +332,12 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="/color-core-laminates">Color Core</Link>
+                            <Link href="/color-core-laminates"
+                             onClick={() => {
+                              setHoveredItem(null); // Close the main menu
+                              setHoveredSubmenuItem(null); // Close the submenu
+                              setHoveredSubSubmenuItem(null); // Close the sub-submenu
+                            }}>Color Core</Link>
                           </li>
                         </ul>
                         <motion.div
@@ -355,7 +388,12 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="/writable-laminates">
+                            <Link href="/writable-laminates" 
+                            onClick={() => {
+                              setHoveredItem(null); // Close the main menu
+                              setHoveredSubmenuItem(null); // Close the submenu
+                              setHoveredSubSubmenuItem(null); // Close the sub-submenu
+                            }}>
                               Writable Laminate
                             </Link>
                           </li>
@@ -367,7 +405,13 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="/antifinger-laminates">
+                            <Link href="/antifinger-laminates" 
+                            onClick={() => {
+                              setHoveredItem(null); // Close the main menu
+                              setHoveredSubmenuItem(null); // Close the submenu
+                              setHoveredSubSubmenuItem(null); // Close the sub-submenu
+                            }}
+                            >
                               Antifinger Laminate (Spotless)
                             </Link>
                           </li>
@@ -379,7 +423,13 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="/metallic-laminates">
+                            <Link href="/metallic-laminates" 
+                            onClick={() => {
+                              setHoveredItem(null); // Close the main menu
+                              setHoveredSubmenuItem(null); // Close the submenu
+                              setHoveredSubSubmenuItem(null); // Close the sub-submenu
+                            }}
+                            >
                               Metallic Laminate
                             </Link>
                           </li>
@@ -391,7 +441,12 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="/synchro-laminates">
+                            <Link href="/synchro-laminates"  
+                            onClick={() => {
+                              setHoveredItem(null); // Close the main menu
+                              setHoveredSubmenuItem(null); // Close the submenu
+                              setHoveredSubSubmenuItem(null); // Close the sub-submenu
+                            }}>
                               Synchro Laminate
                             </Link>
                           </li>
@@ -403,7 +458,12 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Color core Laminate</Link>
+                            <Link href="#"
+                             onClick={() => {
+                              setHoveredItem(null); // Close the main menu
+                              setHoveredSubmenuItem(null); // Close the submenu
+                              setHoveredSubSubmenuItem(null); // Close the sub-submenu
+                            }}>Color core Laminate</Link>
                           </li>
                           <li
                             // onMouseEnter={() =>
@@ -413,7 +473,12 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Digital Laminate</Link>
+                            <Link href="#" 
+                            onClick={() => {
+                              setHoveredItem(null); // Close the main menu
+                              setHoveredSubmenuItem(null); // Close the submenu
+                              setHoveredSubSubmenuItem(null); // Close the sub-submenu
+                            }}>Digital Laminate</Link>
                           </li>
                           <li
                             // onMouseEnter={() =>
@@ -423,7 +488,12 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="/flicker-laminates">
+                            <Link href="/flicker-laminates"
+                             onClick={() => {
+                              setHoveredItem(null); // Close the main menu
+                              setHoveredSubmenuItem(null); // Close the submenu
+                              setHoveredSubSubmenuItem(null); // Close the sub-submenu
+                            }}>
                               Flicker Laminate
                             </Link>
                           </li>
@@ -478,7 +548,12 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Electrostatic Dissipative</Link>
+                            <Link href="#"
+                             onClick={() => {
+                              setHoveredItem(null); // Close the main menu
+                              setHoveredSubmenuItem(null); // Close the submenu
+                              setHoveredSubSubmenuItem(null); // Close the sub-submenu
+                            }}>Electrostatic Dissipative</Link>
                           </li>
                           <li
                             // onMouseEnter={() =>
@@ -488,7 +563,12 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Chemical Resistant</Link>
+                            <Link href="#" 
+                            onClick={() => {
+                              setHoveredItem(null); // Close the main menu
+                              setHoveredSubmenuItem(null); // Close the submenu
+                              setHoveredSubSubmenuItem(null); // Close the sub-submenu
+                            }}>Chemical Resistant</Link>
                           </li>
                           <li
                             // onMouseEnter={() =>
@@ -498,7 +578,12 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#">Fire Retardant</Link>
+                            <Link href="#" 
+                            onClick={() => {
+                              setHoveredItem(null); // Close the main menu
+                              setHoveredSubmenuItem(null); // Close the submenu
+                              setHoveredSubSubmenuItem(null); // Close the sub-submenu
+                            }}>Fire Retardant</Link>
                           </li>
                         </ul>
                         <motion.div
