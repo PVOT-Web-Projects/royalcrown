@@ -113,7 +113,7 @@ const Footer2 = ({ bgColor }) => {
                   </li>
                   <li>
                     <LinkHover
-                      url={"/products"}
+                      url={"/category"}
                       text={"Catalogue"}
                       color={"#000"}
                       borderColor={"white"}
