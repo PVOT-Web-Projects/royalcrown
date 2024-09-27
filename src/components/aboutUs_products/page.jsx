@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 const Page = () => {
   const [selectedBrand, setSelectedBrand] = useState("all");
   const [selectedType, setSelectedType] = useState("all");
-  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedCategory, setSelectedCategory] = useState([]);
   const [selectedFinish, setSelectedFinish] = useState("all");
   const [selectedSize, setSelectedSize] = useState("all");
   const [selectedThickness, setSelectedThickness] = useState("all");
@@ -134,7 +134,18 @@ const Page = () => {
   };
 
   const handleCategoryChange = (e) => {
-    setSelectedCategory(e.value);
+    const value = e.target.value;
+    const checked = e.target.checked;
+
+    if (checked) {
+      // Add the selected category to the array
+      setSelectedCategory((prev) => [...prev, value]);
+    } else {
+      // Remove the unselected category from the array
+      setSelectedCategory((prev) =>
+        prev.filter((category) => category !== value)
+      );
+    }
   };
 
   const handleFinishChange = (e) => {
@@ -175,7 +186,8 @@ const Page = () => {
     const colorMatch =
       selectedColor === "all" || product.categoryColor === selectedColor;
     const categoryMatch =
-      selectedCategory === "all" || product.categoryValue === selectedCategory;
+      selectedCategory.length === 0 ||
+      selectedCategory.includes(product.categoryValue); // Multi-select logic
     const finishMatch =
       selectedFinish === "all" || product.categoryFinish === selectedFinish;
     const sizeMatch =
@@ -224,7 +236,7 @@ const Page = () => {
                 <div className="tab-content-inner">Royal Crown</div>
               </Link>
             )}
-             {activeTab === "/products#crown" && (
+            {activeTab === "/products#crown" && (
               <Link
                 href="/products#crown"
                 scroll={false}
@@ -236,7 +248,7 @@ const Page = () => {
                 <div className="tab-content-inner">CROWN</div>
               </Link>
             )}
-             {activeTab === "/products#Qbiss" && (
+            {activeTab === "/products#Qbiss" && (
               <Link
                 href="/products#Qbiss"
                 scroll={false}
@@ -249,7 +261,7 @@ const Page = () => {
               </Link>
             )}
 
-{activeTab === "/products#Crown_Xcl" && (
+            {activeTab === "/products#Crown_Xcl" && (
               <Link
                 href="/products#Crown_Xcl"
                 scroll={false}
@@ -294,16 +306,20 @@ const Page = () => {
           <div id="sticky">
             <div className="dropdown1">
               <div className="dropdown-label">
-                {/* <label htmlFor="category-select">SELECT CATEGORY</label> */}
+                <label htmlFor="category-select">SELECT CATEGORY</label>
               </div>
-              <Dropdown
-                id="category-select"
-                options={categories}
-                value={selectedCategory}
-                onChange={handleCategoryChange}
-                placeholder="Select Category"
-                className="category-select"
-              />
+              {categories.map((category) => (
+                <div key={category.value} className="checkbox-item">
+                  <input
+                    type="checkbox"
+                    id={category.value}
+                    value={category.value}
+                    checked={selectedCategory.includes(category.value)}
+                    onChange={handleCategoryChange}
+                  />
+                  <label htmlFor={category.value}>{category.label}</label>
+                </div>
+              ))}
             </div>
 
             <div className="dropdown1">
