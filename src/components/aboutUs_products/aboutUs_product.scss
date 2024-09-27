@@ -2,7 +2,7 @@
 @import "../../fonts/fonts.scss";
 .first_top {
   // padding: 0px 0 100px 0;
-  padding: 0px 50px 100px 50px;
+  padding: 150px 50px 100px 50px;
   // overflow: hidden;
 
   @media (max-width: 991px) {
@@ -59,6 +59,9 @@
       overflow: hidden;
       color: $white;
       z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       .tab-content-inner {
         position: relative;
