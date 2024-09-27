@@ -2,7 +2,7 @@
 @import "../../fonts/fonts.scss";
 .first_top {
   // padding: 0px 0 100px 0;
-  padding: 0px 50px 100px 50px;
+  padding: 150px 50px 100px 50px;
   // overflow: hidden;
 
   @media (max-width: 991px) {
@@ -26,6 +26,7 @@
     display: flex;
     transition: all 0.5s ease;
     font-size: 20px;
+    justify-content: center;
     // justify-content: space-around;
     padding: 25px 0rem;
 
@@ -59,6 +60,9 @@
       overflow: hidden;
       color: $white;
       z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       .tab-content-inner {
         position: relative;
@@ -123,6 +127,71 @@
       display: none;
     }
   }
+}
+.checkbox-container {
+  display: inline-block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 13px;
+  cursor: pointer;
+  font-size: 18px;
+  user-select: none;
+}
+
+.custom-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border: 1px solid #5b3524;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 7px;
+  top: 2px;
+  width: 4px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg);
+}
+
+.custom-checkbox:checked ~ .checkmark {
+  background-color: #5b3524;
+  // box-shadow: 0 3px 7px rgb(91, 53, 36);
+}
+
+.custom-checkbox:checked ~ .checkmark:after {
+  display: block;
+}
+
+@keyframes checkAnim {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 10px;
+  }
+}
+
+.custom-checkbox:checked ~ .checkmark:after {
+  animation: checkAnim 0.2s forwards;
 }
 
 .p-dropdown-panel {
@@ -522,7 +591,7 @@
   }
   .big {
     grid-column: span 2;
-    // grid-row: span 2;
+    grid-row: span 2;
   }
 }
 
@@ -574,11 +643,11 @@
 .color6,
 .color7,
 .color8 {
-  width: 60px;
-  height: 40px;
+  width: 50px;
+  height: 35px;
   cursor: pointer;
   @media (min-width: 1600px) and (max-width: 1920px) {
-    width: 80px;
+    width: 60px;
     height: 40px;
   }
 }
