@@ -35,11 +35,8 @@ const Page = () => {
         products.filter((data) => data.category === "Royal Crown")
       );
       setActiveTab("/products#royal-crown");
-    }
-    else if (fullPath === "/products#crown") {
-      setCurrentData(
-        products.filter((data) => data.category === "Crown XCL")
-      );
+    } else if (fullPath === "/products#crown") {
+      setCurrentData(products.filter((data) => data.category === "Crown XCL"));
       setActiveTab("/products#crown");
     } else if (fullPath === "/products#Qbiss") {
       setCurrentData(products.filter((data) => data.category === "QBliss"));
@@ -213,60 +210,72 @@ const Page = () => {
             Explore Collection
           </motion.div>
           <div className="products-tabs" id="sticky_top">
-            <Link
-              href="/products#royal-crown"
-              scroll={false}
-              className={`tab-item ${
-                activeTab === "/products#royal-crown" ? "active" : ""
-              }`}
-              onClick={() =>
-                handleTabClick("/products#royal-crown", "Royal Crown")
-              }
-            >
-             <div className="tab-content-inner">Royal Crown</div>
-            </Link>
-            <Link
-              href="/products#crown"
-              scroll={false}
-              className={`tab-item ${
-                activeTab === "/products#crown" ? "active" : ""
-              }`}
-              onClick={() => handleTabClick("/products#crown", "Crown XCL")}
-            >
-              <div className="tab-content-inner">CROWN</div>
-            </Link>
-            <Link
-              href="/products#Qbiss"
-              scroll={false}
-              className={`tab-item ${
-                activeTab === "/products#Qbiss" ? "active" : ""
-              }`}
-              onClick={() => handleTabClick("/products#Qbiss", "QBliss")}
-            >
-              <div className="tab-content-inner">Qbiss</div>
-            </Link>
-          
-            <Link
-              href="/products#Crown_Xcl"
-              scroll={false}
-              className={`tab-item ${
-                activeTab === "/products#Crown_Xcl" ? "active" : ""
-              }`}
-              onClick={() => handleTabClick("/products#Crown_Xcl", "Crown XCL")}
-            >
-              <div className="tab-content-inner">Crown XCL</div>
-            </Link>
+            {activeTab === "/products#royal-crown" && (
+              <Link
+                href="/products#royal-crown"
+                scroll={false}
+                className={`tab-item ${
+                  activeTab === "/products#royal-crown" ? "active" : ""
+                }`}
+                onClick={() =>
+                  handleTabClick("/products#royal-crown", "Royal Crown")
+                }
+              >
+                <div className="tab-content-inner">Royal Crown</div>
+              </Link>
+            )}
+             {activeTab === "/products#crown" && (
+              <Link
+                href="/products#crown"
+                scroll={false}
+                className={`tab-item ${
+                  activeTab === "/products#crown" ? "active" : ""
+                }`}
+                onClick={() => handleTabClick("/products#crown", "Crown XCL")}
+              >
+                <div className="tab-content-inner">CROWN</div>
+              </Link>
+            )}
+             {activeTab === "/products#Qbiss" && (
+              <Link
+                href="/products#Qbiss"
+                scroll={false}
+                className={`tab-item ${
+                  activeTab === "/products#Qbiss" ? "active" : ""
+                }`}
+                onClick={() => handleTabClick("/products#Qbiss", "QBliss")}
+              >
+                <div className="tab-content-inner">Qbiss</div>
+              </Link>
+            )}
 
-            <Link
-              href="/products#xylem"
-              scroll={false}
-              className={`tab-item ${
-                activeTab === "/products#xylem" ? "active" : ""
-              }`}
-              onClick={() => handleTabClick("/products#xylem", "Xylem")}
-            >
-              <div className="tab-content-inner">Xylem</div>
-            </Link>
+{activeTab === "/products#Crown_Xcl" && (
+              <Link
+                href="/products#Crown_Xcl"
+                scroll={false}
+                className={`tab-item ${
+                  activeTab === "/products#Crown_Xcl" ? "active" : ""
+                }`}
+                onClick={() =>
+                  handleTabClick("/products#Crown_Xcl", "Crown XCL")
+                }
+              >
+                <div className="tab-content-inner">Crown XCL</div>
+              </Link>
+            )}
+
+            {activeTab === "/products#xylem" && (
+              <Link
+                href="/products#xylem"
+                scroll={false}
+                className={`tab-item ${
+                  activeTab === "/products#xylem" ? "active" : ""
+                }`}
+                onClick={() => handleTabClick("/products#xylem", "Xylem")}
+              >
+                <div className="tab-content-inner">Xylem</div>
+              </Link>
+            )}
             {/* <div
               className={`tab-item ${
                 activeTab === "/products#Crownxcl" ? "active" : ""
