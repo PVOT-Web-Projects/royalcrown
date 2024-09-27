@@ -694,7 +694,7 @@ const Header = () => {
           >
             <LinkHover
               url={"/category"}
-              text={"Catalogue"}
+              text={"Category"}
               fontSize={"16px"}
               isHomePage={isHome}
             />
