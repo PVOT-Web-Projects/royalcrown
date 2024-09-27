@@ -306,19 +306,21 @@ const Page = () => {
           <div id="sticky">
             <div className="dropdown1">
               <div className="dropdown-label">
-                <label htmlFor="category-select">SELECT CATEGORY</label>
+                <label>SELECT CATEGORY</label>
               </div>
               {categories.map((category) => (
-                <div key={category.value} className="checkbox-item">
+                <label key={category.value} className="checkbox-container">
                   <input
                     type="checkbox"
+                    className="custom-checkbox"
                     id={category.value}
                     value={category.value}
                     checked={selectedCategory.includes(category.value)}
                     onChange={handleCategoryChange}
                   />
-                  <label htmlFor={category.value}>{category.label}</label>
-                </div>
+                  <span class="checkmark"></span>
+                  {category.label}
+                </label>
               ))}
             </div>
 
