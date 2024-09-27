@@ -444,7 +444,7 @@ const Page = () => {
                 ? "" // Normal size for tab view
                 : index === 9
                 ? "big"
-                : [0, 2, 3, 7, 9].includes(index)
+                : [0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 22, 23, 25].includes(index)
                 ? "tall"
                 : "";
 
