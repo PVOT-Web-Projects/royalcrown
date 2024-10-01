@@ -75,6 +75,8 @@ export default function ProductsCommonInnerPage({ data }) {
                 TECHNICAL SPECIFICATION:
               </div>
             </div> */}
+
+            
                     <div className="productApplicationSection2Inner_Main">
                       {data.application.pdfLink.map((item, index) => (
                         <div
