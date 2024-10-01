@@ -36,36 +36,74 @@ export default function ProductsCommonInnerPage({ data }) {
           </motion.div>
           <div className="laminatesBody">
             <div className="laminateBodyDescription">
-              <p>{data.description}</p>
-              <p>{data.description1}</p>
-            </div>
-            <div className="laminatesBoxOuter">
-              <div className="laminatesBoxInner">
-                {data.boxes.map((box, index) => (
-                  <div className="laminatesBox1" key={index}>
-                    <div>
-                      <Image
-                        src={box.icon}
-                        alt="none"
-                        className="laminateIconImage"
-                      />
+              <div className="laminateBodyDescriptionOuter">
+                <p>{data.description}</p>
+                <p className="laminateBodyDescriptionOne">
+                  {data.description1}
+                </p>
+              </div>
+              <div className="laminatesBoxOuter">
+                <div className="laminatesBoxInner">
+                  {data.boxes.map((box, index) => (
+                    <div className="laminatesBox1" key={index}>
+                      <div>
+                        <Image
+                          src={box.icon}
+                          alt="none"
+                          className="laminateIconImage"
+                        />
+                      </div>
+                      <div>
+                        <p className="laminatesBoxHeader">{box.title}</p>
+                      </div>
+                      <div>
+                        {Array.isArray(box.details) ? (
+                          <ul>
+                            {box.details.map((item, i) => (
+                              <li key={i}>{item}</li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <p>{box.details}</p>
+                        )}
+                      </div>
                     </div>
-                    <div>
-                      <p className="laminatesBoxHeader">{box.title}</p>
-                    </div>
-                    <div>
-                      {Array.isArray(box.details) ? (
-                        <ul>
-                          {box.details.map((item, i) => (
-                            <li key={i}>{item}</li>
-                          ))}
-                        </ul>
-                      ) : (
-                        <p>{box.details}</p>
-                      )}
+                  ))}
+                  <div className="TechnicalSpecsHeader">
+                    {/* <div className="productApplicationSection1Header">
+              <div className="productApplicationSection1Header">
+                TECHNICAL SPECIFICATION:
+              </div>
+            </div> */}
+                    <div className="productApplicationSection2Inner_Main">
+                      {data.application.pdfLink.map((item, index) => (
+                        <div
+                          className="applicationSection1InnerPdf"
+                          key={index}
+                        >
+                          <div>
+                            <svg
+                              width="24"
+                              height="24"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                            >
+                              <path d="M8 11h-6v10h20v-10h-6v-2h8v14h-24v-14h8v2zm5 2h4l-5 6-5-6h4v-12h2v12z" />
+                            </svg>
+                          </div>
+                          <Link
+                            href={item.pdfUrl}
+                            target="_blank"
+                            className="applicationSection1InnerPdfInner"
+                          >
+                            {item.pdfDesc}
+                          </Link>
+                        </div>
+                      ))}
                     </div>
                   </div>
-                ))}
+                </div>
               </div>
             </div>
           </div>
@@ -240,7 +278,13 @@ export default function ProductsCommonInnerPage({ data }) {
                       <path d="M8 11h-6v10h20v-10h-6v-2h8v14h-24v-14h8v2zm5 2h4l-5 6-5-6h4v-12h2v12z" />
                     </svg>
                   </div>
-                  <Link href={item.pdfUrl} target="_blank" className="applicationSection1InnerPdfInner">{item.pdfDesc}</Link>
+                  <Link
+                    href={item.pdfUrl}
+                    target="_blank"
+                    className="applicationSection1InnerPdfInner"
+                  >
+                    {item.pdfDesc}
+                  </Link>
                 </div>
               ))}
             </div>
