@@ -60,16 +60,39 @@
       .laminateBodyDescription {
         margin: 30px 0;
         font-size: 21px;
+        display: flex;
+        // width: 50%;
+        @media(max-width: 991px){
+          gap: 1rem;
+          flex-direction: column;
+        }
       }
+      .laminateBodyDescriptionOuter{
+        width: 70%;
+        p{
+          width: 85%;
+          @media(max-width: 991px){
+            width: 100%;
+          }
+        }
+        @media(max-width: 991px){
+          width: 100%;
+        }
+        .laminateBodyDescriptionOne{
+          padding-top: 15px;
+        }
+      }
+     
 
       .laminatesBoxOuter {
         .laminatesBoxInner {
           display: flex;
+          flex-direction: column;
           justify-content: space-evenly;
 
           @media (max-width: 991px) {
             flex-direction: column;
-            gap: 2rem;
+            gap: 0rem;
           }
 
           .laminatesBox1 {
@@ -77,9 +100,13 @@
             padding: 25px 80px 25px 80px;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             gap: 1rem;
             flex-direction: column;
+            margin-bottom: 15px;
+            @media(max-width: 768px){
+              padding: 25px 50px 25px 50px;
+            }
           }
         }
       }
@@ -307,6 +334,7 @@
 .applicationSection1InnerPdf{
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   cursor: pointer;
 }
@@ -316,7 +344,10 @@
   color: #5B3524;
 }
 .TechnicalSpecsHeader{
-  margin-top: -70px;
+  // margin-top: -70px;
+  background-color: #edd7c2;
+  text-align: center;
+  // margin: 0 auto;
   font-size: 35px;
   @media(max-width: 800px){
     margin: 0;

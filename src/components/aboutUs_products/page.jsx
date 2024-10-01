@@ -70,9 +70,17 @@ const Page = () => {
 
   const categories = [
     // { label: "Select Categories", value: "all" },
-    { label: "Decorative", value: "Decorative" },
-    { label: "Interior Compacts", value: "Decorative Interior Compacts" },
-    { label: "Exterior Compacts", value: "Decorative Exterior Compacts" },
+    // { label: "Decorative", value: "Decorative" },
+    // { label: "Interior Compacts", value: "Decorative Interior Compacts" },
+    // { label: "Exterior Compacts", value: "Decorative Exterior Compacts" },
+    { label: "Spotless", value: "Spotless" },
+    { label: "Exotic Urbane", value: "Exotic Urbane" },
+    { label: "Classic Wood Grains", value: "Classic Wood Grains" },
+    { label: "Stones", value: "Stones" },
+    { label: "Solid Colors", value: "Solid Colors" },
+    { label: "Textiles", value: "Textiles" },
+    { label: "Mirrors", value: "Mirrors" },
+    { label: "Woodgrains", value: "Woodgrains" },
   ];
 
   const types = [
@@ -306,27 +314,39 @@ const Page = () => {
           <div id="sticky">
             <div className="dropdown1">
               <div className="dropdown-label">
-                <label>SELECT CATEGORY</label>
+                <label className="colorSelectDropdown" htmlFor="type-select">SELECT TYPE</label>
               </div>
-              {categories.map((category) => (
-                <label key={category.value} className="checkbox-container">
-                  <input
-                    type="checkbox"
-                    className="custom-checkbox"
-                    id={category.value}
-                    value={category.value}
-                    checked={selectedCategory.includes(category.value)}
-                    onChange={handleCategoryChange}
-                  />
-                  <span class="checkmark"></span>
-                  {category.label}
-                </label>
-              ))}
+              {isMobile ? (
+                 <Dropdown
+                 id="type-select"
+                 options={types}
+                 value={selectedType}
+                 onChange={handleTypeChange}
+                 placeholder="Select Type"
+                 className="category-select"
+               />
+              ) : (
+                <div className="dropdown-label">
+                  {categories.map((category) => (
+                    <label key={category.value} className="checkbox-container">
+                      <input
+                        type="checkbox"
+                        className="custom-checkbox"
+                        id={category.value}
+                        value={category.value}
+                        checked={selectedCategory.includes(category.value)}
+                        onChange={handleCategoryChange}
+                      />
+                      <span class="checkmark"></span>
+                      {category.label}
+                    </label>
+                  ))}
+                </div>
+              )}
             </div>
 
-            <div className="dropdown1">
+            {/* <div className="dropdown1">
               <div className="dropdown-label">
-                {/* <label htmlFor="type-select">SELECT TYPE</label> */}
               </div>
               <Dropdown
                 id="type-select"
@@ -336,7 +356,7 @@ const Page = () => {
                 placeholder="Select Type"
                 className="category-select"
               />
-            </div>
+            </div> */}
 
             <div className="dropdown1">
               <div className="dropdown-label">
@@ -422,16 +442,41 @@ const Page = () => {
 
             <div className="dropdown1">
               <div className="dropdown-label">
-                {/* <label htmlFor="thickness-select">SELECT THICKNESS</label> */}
+                <label
+                  htmlFor="thickness-select"
+                  className="colorSelectDropdown"
+                >
+                  SELECT THICKNESS
+                </label>
               </div>
-              <Dropdown
-                id="thickness-select"
-                options={thickness}
-                value={selectedThickness}
-                onChange={handleThicknessChange}
-                placeholder="Select Thickness"
-                className="category-select"
-              />
+              {isMobile ? (
+                <Dropdown
+                  id="thickness-select"
+                  className="color-select"
+                  options={thickness}
+                  value={selectedThickness}
+                  onChange={handleThicknessChange}
+                  placeholder="Select Thickness"
+                />
+              ) : (
+                <div className="color_dropdown">
+                  {thickness.map((thicknessOption) => (
+                    <div
+                      key={thicknessOption.value}
+                      className={`ThicknessProduct ${
+                        selectedThickness === thicknessOption.value
+                          ? "selected"
+                          : ""
+                      }`}
+                      onClick={() =>
+                        setSelectedThickness(thicknessOption.value)
+                      }
+                    >
+                      <p>{thicknessOption.label}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
           <div className="product_container">
@@ -444,36 +489,36 @@ const Page = () => {
                 ? "" // Normal size for tab view
                 : index === 9
                 ? "big"
-                : [0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 22, 23, 25].includes(index)
+                : [
+                    0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 22, 23, 25,
+                  ].includes(index)
                 ? "tall"
                 : "";
 
               return (
                 <div key={index} className={`AboutUs_product ${className}`}>
                   <Link href={"/product-information"}>
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    className="ProductImage"
-                  />
-                  <div className="overlay">
-                    <div>
-                      <svg
-                        width="40"
-                        height="40"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        fill="white"
-                        className="aboutUsProductSvg"
-                      >
-                        <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
-                      </svg>
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      className="ProductImage"
+                    />
+                    <div className="overlay">
+                      <div>
+                        <svg
+                          width="40"
+                          height="40"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          fill="white"
+                          className="aboutUsProductSvg"
+                        >
+                          <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
+                        </svg>
+                      </div>
+                      <div className="AnchorTag">Know More</div>
                     </div>
-                   <div className="AnchorTag">
-                   Know More
-                   </div>
-                  </div>
                   </Link>
                 </div>
               );
