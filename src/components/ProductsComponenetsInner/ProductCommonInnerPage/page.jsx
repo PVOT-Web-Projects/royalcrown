@@ -260,7 +260,7 @@ export default function ProductsCommonInnerPage({ data }) {
               ))}
             </div>
           </div>
-          <div className="TechnicalSpecsHeader">
+          {/* <div className="TechnicalSpecsHeader">
             <div className="productApplicationSection1Header">
               <div className="productApplicationSection1Header">
                 TECHNICAL SPECIFICATION:
@@ -290,7 +290,7 @@ export default function ProductsCommonInnerPage({ data }) {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
