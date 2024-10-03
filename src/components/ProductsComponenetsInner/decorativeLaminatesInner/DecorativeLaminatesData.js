@@ -2,6 +2,10 @@ import icon1 from "../../../images/Icons-11-2048x2048.png";
 import icon2 from "../../../images/Icons-12.png";
 import Image1 from "../../../images/1_LOW-ELECTRICAL-RESISTANT.svg";
 import Productimg1 from "../../../images/5-2048x749.png";
+import AesthaticImg from "@/images/SvgsLogo/aesb.svg"
+import scratchr from "@/images/SvgsLogo/SCRATCH-RESISTANT.svg"
+import scratchImg from "@/images/SvgsLogo/chemical-resistant.svg"
+import ImpactImg from "@/images/SvgsLogo/IMPACT-RESISTANT.svg"
 // import PdfImg1 from "@/images/annualactionimg1.jpg";
 // import verticalIcon from "../../images/vertical-icon.svg";
 // import horizontalIcon from "../../images/horizontal-icon.svg";
@@ -54,19 +58,19 @@ decorative side is uniformly sanded using cutting-edge machinery to ensure optim
   // ],
   features: [
     {
-      image1: Image1,
+      image1: AesthaticImg,
       description: "Aesthetically Beautiful",
     },
     {
-      image1: Image1,
+      image1: scratchr,
       description: "Scratch Resistant",
     },
     {
-      image1: Image1,
+      image1: scratchImg,
       description: "Solvent Resistant",
     },
     {
-      image1: Image1,
+      image1: ImpactImg,
       description: "Impact Resistant",
     },
     {
