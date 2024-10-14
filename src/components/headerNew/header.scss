@@ -84,6 +84,10 @@ header {
           }
         }
       }
+      #ProductsOne{
+        border-right: 1px solid #5b352434;
+        padding-right: 1rem;
+      }
       .ProductsLi {
         position: absolute;
         background-color: #fff5ed;
@@ -111,6 +115,7 @@ header {
           left: 35%;
           top: 4%;
         }
+        
         ul {
           display: flex;
           flex-direction: column;
@@ -119,6 +124,7 @@ header {
           height: 100%;
           gap: 30px;
           padding-top: 1rem;
+         
           li {
             width: 100%;
             display: flex;
