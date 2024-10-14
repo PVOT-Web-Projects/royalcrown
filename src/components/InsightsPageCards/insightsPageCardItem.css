@@ -37,16 +37,18 @@
   margin: 0px;
   font-weight: 600;
   /* transition: all 0.4s; */
-  color: black;
+  color: #5b3524;
   width: 40%;
-  font-family: "made_mirage_thin";
+  font-family: "futura_regular";
+  /* font-family: "made_mirage_thin"; */
   /* padding-right: 100px; */
 }
 
 .project .InsightsDescription {
   transition: all 0.4s;
   font-weight: 300;
-  color: black;
+  color: #5b3524;
+  font-family: "futura_regular";
   /* width: 40%; */
   font-size: 18px;
 }

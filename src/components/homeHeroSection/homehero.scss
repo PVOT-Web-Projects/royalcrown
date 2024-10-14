@@ -130,6 +130,7 @@
         display: flex;
         font-size: 21px;
         .TextSectionInnerFirst{
+          font-family: "futura_regular";
             width: 80%;
             @media(min-width: 1500px){
                 width: 75%;
@@ -140,7 +141,8 @@
         }
 
         .text-section-inner-footer {
-          font-family: "made_mirage_bold";
+          font-family: "futura_bold";
+          // font-family: "made_mirage_bold";
           padding-top: 3rem;
           font-size: 25px;
           text-transform: uppercase;
