@@ -78,6 +78,7 @@ header {
             transform: scale(0);
             transition: all 0.4s;
           }
+          
           &:hover::before {
             transform: scale(1);
           }
@@ -137,6 +138,12 @@ header {
             font-size: 17px;
             color: #5b3524;
             width: 200px;
+            transition: all 0.5 ease;
+            &:hover{
+              transition: all 0.5 ease;
+             font-weight: 900;
+              // font-family: "made_mirage_bold";
+            }
           }
         
         }
