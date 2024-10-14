@@ -158,7 +158,7 @@ const Header = () => {
                     onMouseEnter={() => setHoveredSubmenuItem("submenu1")}
                     // onMouseLeave={() => setHoveredSubmenuItem(null)}
                   >
-                    <Link href="/products/sub-item-1">HPL Laminate</Link>
+                    <Link href="/products/sub-item-1">HPL LAMINATE</Link>
                     {/* <svg
                       width="24"
                       height="24"
@@ -186,7 +186,7 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="/decorative-laminates"
+                            <Link href="/decorative-laminates" 
                             onClick={() => {
                               setHoveredItem(null); // Close the main menu
                               setHoveredSubmenuItem(null); // Close the submenu
@@ -235,7 +235,7 @@ const Header = () => {
                     onMouseEnter={() => setHoveredSubmenuItem("submenu2")}
                     // onMouseLeave={() => setHoveredSubmenuItem(null)}
                   >
-                    <Link href="/products/sub-item-2">Compact Laminate</Link>
+                    <Link href="/products/sub-item-2">COMPACT LAMINATE</Link>
                     {/* <svg
                       width="24"
                       height="24"
@@ -361,7 +361,7 @@ const Header = () => {
                     onMouseEnter={() => setHoveredSubmenuItem("submenu3")}
                     // onMouseLeave={() => setHoveredSubmenuItem(null)}
                   >
-                    <Link href="/products/sub-item-3">Speciality Laminate</Link>
+                    <Link href="/products/sub-item-3">SPECIALITY LAMINATE</Link>
                     {/* <svg
                       width="24"
                       height="24"
@@ -520,7 +520,7 @@ const Header = () => {
                     // onMouseLeave={() => setHoveredSubmenuItem(null)}
                   >
                     <Link href="/products/sub-item-4">
-                      Technical Grade Laminate
+                      TECHNICAL GRADE LAMINATE
                     </Link>
                     {/* <svg
                       width="24"

@@ -64,7 +64,7 @@ header {
         width: 100px;
         a {
           text-decoration: none;
-          text-transform: uppercase;
+          // text-transform: uppercase;
           position: relative;
           transition: all 0.4s;
           display: inline-flex;
@@ -84,9 +84,7 @@ header {
             width: 5px;
             height: 5px;
             border-radius: 100%;
-            
-            // left:calc(50% - 8px);
-          }
+            }
           
           &:hover::before {
             transform: scale(1);
@@ -141,6 +139,9 @@ header {
             display: flex;
             align-items: center;
             // gap: 1rem;
+            .Laminates{
+              // text-transform: capitalize;
+            }
             svg {
               opacity: 0; // Initially hidden
               transition: opacity 0.3s ease-in-out;
@@ -150,13 +151,19 @@ header {
               opacity: 1; // Show SVG on hover
             }
           }
+          .Laminates{
+            // text-transform: capitalize;
+          }
           a {
             // margin-left: 7px;
             font-size: 17px;
+            text-transform: capitalize;
             color: #5b3524;
             width: 200px;
             transition: all 0.5 ease;
+            
             &:hover{
+              
               // padding: 0 2px;
               // color: white;
               // background-color: #5b3524;
