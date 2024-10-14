@@ -158,7 +158,7 @@ const Header = () => {
                     // onMouseLeave={() => setHoveredSubmenuItem(null)}
                   >
                     <Link href="/products/sub-item-1">HPL Laminate</Link>
-                    <svg
+                    {/* <svg
                       width="24"
                       height="24"
                       xmlns="http://www.w3.org/2000/svg"
@@ -166,7 +166,7 @@ const Header = () => {
                       clip-rule="evenodd"
                     >
                       <path d="M4 .755l14.374 11.245-14.374 11.219.619.781 15.381-12-15.391-12-.609.755z" />
-                    </svg>
+                    </svg> */}
 
                     {hoveredSubmenuItem === "submenu1" && (
                       <motion.div
@@ -235,7 +235,7 @@ const Header = () => {
                     // onMouseLeave={() => setHoveredSubmenuItem(null)}
                   >
                     <Link href="/products/sub-item-2">Compact Laminate</Link>
-                    <svg
+                    {/* <svg
                       width="24"
                       height="24"
                       xmlns="http://www.w3.org/2000/svg"
@@ -243,7 +243,7 @@ const Header = () => {
                       clip-rule="evenodd"
                     >
                       <path d="M4 .755l14.374 11.245-14.374 11.219.619.781 15.381-12-15.391-12-.609.755z" />
-                    </svg>
+                    </svg> */}
 
                     {hoveredSubmenuItem === "submenu2" && (
                       <motion.div
@@ -361,7 +361,7 @@ const Header = () => {
                     // onMouseLeave={() => setHoveredSubmenuItem(null)}
                   >
                     <Link href="/products/sub-item-3">Speciality Laminate</Link>
-                    <svg
+                    {/* <svg
                       width="24"
                       height="24"
                       xmlns="http://www.w3.org/2000/svg"
@@ -369,7 +369,7 @@ const Header = () => {
                       clip-rule="evenodd"
                     >
                       <path d="M4 .755l14.374 11.245-14.374 11.219.619.781 15.381-12-15.391-12-.609.755z" />
-                    </svg>
+                    </svg> */}
 
                     {hoveredSubmenuItem === "submenu3" && (
                       <motion.div
@@ -521,7 +521,7 @@ const Header = () => {
                     <Link href="/products/sub-item-4">
                       Technical Grade Laminate
                     </Link>
-                    <svg
+                    {/* <svg
                       width="24"
                       height="24"
                       xmlns="http://www.w3.org/2000/svg"
@@ -529,7 +529,7 @@ const Header = () => {
                       clip-rule="evenodd"
                     >
                       <path d="M4 .755l14.374 11.245-14.374 11.219.619.781 15.381-12-15.391-12-.609.755z" />
-                    </svg>
+                    </svg> */}
 
                     {hoveredSubmenuItem === "submenu4" && (
                       <motion.div
