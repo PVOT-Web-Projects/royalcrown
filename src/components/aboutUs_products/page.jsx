@@ -326,7 +326,7 @@ const Page = () => {
                  className="category-select"
                />
               ) : (
-                <div className="dropdown-label">
+                <div className="dropdown-label" id="dropdownLabel">
                   {categories.map((category) => (
                     <label key={category.value} className="checkbox-container">
                       <input
