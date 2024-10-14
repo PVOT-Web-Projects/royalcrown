@@ -114,11 +114,11 @@
 
 .dropdown-label {
   margin-bottom: 5px;
-  display: grid;
+  // display: grid;
     /* flex-direction: column; */
     flex-wrap: wrap;
-    grid-template-columns: minmax(150px, auto) 1fr;
-    column-gap: 1rem;
+    // grid-template-columns: minmax(150px, auto) 1fr;
+    // column-gap: 1rem;
   @media (max-width: 575px) {
     font-size: 15px;
     width: 15%;
@@ -265,7 +265,7 @@
   border: 1px solid #5b3524;
   color: #5b3524;
   display: inline-block;
-  padding: 10px 20px;
+  padding: 7px 15px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
   &.selected {
@@ -278,7 +278,7 @@
   border: 1px solid #5b3524;
   color: #5b3524;
   display: inline-block;
-  padding: 8px 15px;
+  padding: 7px 10px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
   &.selected {
@@ -662,12 +662,12 @@
 .color6,
 .color7,
 .color8 {
-  width: 50px;
-  height: 35px;
+  width: 30px;
+  height: 25px;
   cursor: pointer;
   @media (min-width: 1600px) and (max-width: 1920px) {
-    width: 60px;
-    height: 40px;
+    width: 50px;
+    height: 30px;
   }
 }
 
