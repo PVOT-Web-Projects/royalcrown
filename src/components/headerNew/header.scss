@@ -81,6 +81,7 @@ header {
           
           &:hover::before {
             transform: scale(1);
+            // background-color: red;
           }
         }
       }
@@ -146,6 +147,9 @@ header {
             width: 200px;
             transition: all 0.5 ease;
             &:hover{
+              // padding: 0 2px;
+              color: white;
+              background-color: #5b3524;
               transition: all 0.5 ease;
              font-weight: 900;
               // font-family: "made_mirage_bold";
