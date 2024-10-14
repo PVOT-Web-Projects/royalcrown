@@ -229,7 +229,7 @@ const Page = () => {
           >
             Explore Collection
           </motion.div>
-          <div className="products-tabs" id="sticky_top">
+          {/* <div className="products-tabs" id="sticky_top">
             {activeTab === "/products#royal-crown" && (
               <Link
                 href="/products#royal-crown"
@@ -296,17 +296,138 @@ const Page = () => {
                 <div className="tab-content-inner">Xylem</div>
               </Link>
             )}
-            {/* <div
-              className={`tab-item ${
-                activeTab === "/products#Crownxcl" ? "active" : ""
-              }`}
-              onClick={(e) => {
-                e.preventDefault();
-                handleTabClick("/products#Crownxcl");
-              }}
-            >
-              <div className="tab-content-inner">Crown XCL</div>
-            </div> */}
+           
+          </div> */}
+          <div className="products-tabs" id="sticky_top">
+            {activeTab === "" && (
+              <>
+                <Link
+                  href="/products#royal-crown"
+                  scroll={false}
+                  className={`tab-item ${
+                    activeTab === "/products#royal-crown" ? "active" : ""
+                  }`}
+                  onClick={() =>
+                    handleTabClick("/products#royal-crown", "Royal Crown")
+                  }
+                >
+                  <div className="tab-content-inner">Royal Crown</div>
+                </Link>
+                <Link
+                  href="/products#crown"
+                  scroll={false}
+                  className={`tab-item ${
+                    activeTab === "/products#crown" ? "active" : ""
+                  }`}
+                  onClick={() => handleTabClick("/products#crown", "Crown XCL")}
+                >
+                  <div className="tab-content-inner">CROWN</div>
+                </Link>
+                <Link
+                  href="/products#Qbiss"
+                  scroll={false}
+                  className={`tab-item ${
+                    activeTab === "/products#Qbiss" ? "active" : ""
+                  }`}
+                  onClick={() => handleTabClick("/products#Qbiss", "QBliss")}
+                >
+                  <div className="tab-content-inner">Qbiss</div>
+                </Link>
+                <Link
+                  href="/products#xylem"
+                  scroll={false}
+                  className={`tab-item ${
+                    activeTab === "/products#xylem" ? "active" : ""
+                  }`}
+                  onClick={() => handleTabClick("/products#xylem", "Xylem")}
+                >
+                  <div className="tab-content-inner">Xylem</div>
+                </Link>
+                <Link
+                href="/products#Crown_Xcl"
+                scroll={false}
+                className={`tab-item ${
+                  activeTab === "/products#Crown_Xcl" ? "active" : ""
+                }`}
+                onClick={() =>
+                  handleTabClick("/products#Crown_Xcl", "Crown XCL")
+                }
+              >
+                <div className="tab-content-inner">Crown XCL</div>
+              </Link>
+              </>
+            )}
+
+            {activeTab !== "" && (
+              <>
+                {activeTab === "/products#royal-crown" && (
+                  <Link
+                    href="/products#royal-crown"
+                    scroll={false}
+                    className={`tab-item ${
+                      activeTab === "/products#royal-crown" ? "active" : ""
+                    }`}
+                    onClick={() =>
+                      handleTabClick("/products#royal-crown", "Royal Crown")
+                    }
+                  >
+                    <div className="tab-content-inner">Royal Crown</div>
+                  </Link>
+                )}
+                {activeTab === "/products#crown" && (
+                  <Link
+                    href="/products#crown"
+                    scroll={false}
+                    className={`tab-item ${
+                      activeTab === "/products#crown" ? "active" : ""
+                    }`}
+                    onClick={() =>
+                      handleTabClick("/products#crown", "Crown XCL")
+                    }
+                  >
+                    <div className="tab-content-inner">CROWN</div>
+                  </Link>
+                )}
+                {activeTab === "/products#Qbiss" && (
+                  <Link
+                    href="/products#Qbiss"
+                    scroll={false}
+                    className={`tab-item ${
+                      activeTab === "/products#Qbiss" ? "active" : ""
+                    }`}
+                    onClick={() => handleTabClick("/products#Qbiss", "QBliss")}
+                  >
+                    <div className="tab-content-inner">Qbiss</div>
+                  </Link>
+                )}
+                {activeTab === "/products#xylem" && (
+                  <Link
+                    href="/products#xylem"
+                    scroll={false}
+                    className={`tab-item ${
+                      activeTab === "/products#xylem" ? "active" : ""
+                    }`}
+                    onClick={() => handleTabClick("/products#xylem", "Xylem")}
+                  >
+                    <div className="tab-content-inner">Xylem</div>
+                  </Link>
+                )}
+                 {activeTab === "/products#Crown_Xcl" && (
+                 <Link
+                href="/products#Crown_Xcl"
+                scroll={false}
+                className={`tab-item ${
+                  activeTab === "/products#Crown_Xcl" ? "active" : ""
+                }`}
+                onClick={() =>
+                  handleTabClick("/products#Crown_Xcl", "Crown XCL")
+                }
+              >
+                <div className="tab-content-inner">Crown XCL</div>
+              </Link>
+                )}
+              </>
+            )}
           </div>
         </div>
 
@@ -314,17 +435,19 @@ const Page = () => {
           <div id="sticky">
             <div className="dropdown1">
               <div className="dropdown-label">
-                <label className="colorSelectDropdown" htmlFor="type-select">SELECT TYPE</label>
+                <label className="colorSelectDropdown" htmlFor="type-select">
+                  SELECT TYPE
+                </label>
               </div>
               {isMobile ? (
-                 <Dropdown
-                 id="type-select"
-                 options={types}
-                 value={selectedType}
-                 onChange={handleTypeChange}
-                 placeholder="Select Type"
-                 className="category-select"
-               />
+                <Dropdown
+                  id="type-select"
+                  options={types}
+                  value={selectedType}
+                  onChange={handleTypeChange}
+                  placeholder="Select Type"
+                  className="category-select"
+                />
               ) : (
                 <div className="dropdown-label" id="dropdownLabel">
                   {categories.map((category) => (
