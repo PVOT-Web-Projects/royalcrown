@@ -693,7 +693,7 @@ const Header = () => {
             viewport={{ once: true }}
           >
             <LinkHover
-              url={"/category"}
+              url={"/product"}
               text={"Products"}
               fontSize={"16px"}
               isHomePage={isHome}
