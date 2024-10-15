@@ -143,7 +143,7 @@ const Header = () => {
               fontSize={"16px"}
               isHomePage={isHome}
             />
-            {/* {hoveredItem === "products" && ( */}
+            {hoveredItem === "products" && (
               <motion.div
                 className="ProductsLi"
                 
@@ -630,7 +630,7 @@ const Header = () => {
                   <Image src={getSubmenuImage()} alt="Submenu Image" />
                 </motion.div>
               </motion.div>
-            {/* )} */}
+           )}
           </motion.li>
           <motion.li
             initial={{
