@@ -143,7 +143,7 @@ const Header = () => {
               fontSize={"16px"}
               isHomePage={isHome}
             />
-            {hoveredItem === "products" && (
+            {/* {hoveredItem === "products" && ( */}
               <motion.div
                 className="ProductsLi"
                 
@@ -187,6 +187,7 @@ const Header = () => {
                             // }
                           >
                             <Link href="/decorative-laminates" 
+                            className="SubmenuClass"
                             onClick={() => {
                               setHoveredItem(null); // Close the main menu
                               setHoveredSubmenuItem(null); // Close the submenu
@@ -205,6 +206,7 @@ const Header = () => {
                             // }
                           >
                             <Link href="/postforming-laminates"
+                            className="SubmenuClass"
                             onClick={() => {
                               setHoveredItem(null); // Close the main menu
                               setHoveredSubmenuItem(null); // Close the submenu
@@ -228,7 +230,7 @@ const Header = () => {
                           />
                         </motion.div>
                       </motion.div>
-                    )}
+                    )} 
                   </li>
                   {/*  */}
                   <li
@@ -264,6 +266,7 @@ const Header = () => {
                             }
                           >
                             <Link href="/standard-grade-laminates"
+                            className="SubmenuClass"
                             onClick={() => {
                               setHoveredItem(null); // Close the main menu
                               setHoveredSubmenuItem(null); // Close the submenu
@@ -282,6 +285,7 @@ const Header = () => {
                             // }
                           >
                             <Link href="/exterior-cladding-laminates"
+                            className="SubmenuClass"
                             onClick={() => {
                               setHoveredItem(null); // Close the main menu
                               setHoveredSubmenuItem(null); // Close the submenu
@@ -299,6 +303,7 @@ const Header = () => {
                             // }
                           >
                             <Link href="/interior-cladding-laminates" 
+                            className="SubmenuClass"
                             onClick={() => {
                               setHoveredItem(null); // Close the main menu
                               setHoveredSubmenuItem(null); // Close the submenu
@@ -316,6 +321,7 @@ const Header = () => {
                             // }
                           >
                             <Link href="/fire-retardant-laminates"
+                            className="SubmenuClass"
                              onClick={() => {
                               setHoveredItem(null); // Close the main menu
                               setHoveredSubmenuItem(null); // Close the submenu
@@ -334,6 +340,7 @@ const Header = () => {
                             // }
                           >
                             <Link href="/color-core-laminates"
+                            className="SubmenuClass"
                              onClick={() => {
                               setHoveredItem(null); // Close the main menu
                               setHoveredSubmenuItem(null); // Close the submenu
@@ -390,6 +397,7 @@ const Header = () => {
                             // }
                           >
                             <Link href="/writable-laminates" 
+                            className="SubmenuClass"
                             onClick={() => {
                               setHoveredItem(null); // Close the main menu
                               setHoveredSubmenuItem(null); // Close the submenu
@@ -407,6 +415,7 @@ const Header = () => {
                             // }
                           >
                             <Link href="/antifinger-laminates" 
+                            className="SubmenuClass"
                             onClick={() => {
                               setHoveredItem(null); // Close the main menu
                               setHoveredSubmenuItem(null); // Close the submenu
@@ -425,6 +434,7 @@ const Header = () => {
                             // }
                           >
                             <Link href="/metallic-laminates" 
+                            className="SubmenuClass"
                             onClick={() => {
                               setHoveredItem(null); // Close the main menu
                               setHoveredSubmenuItem(null); // Close the submenu
@@ -443,6 +453,7 @@ const Header = () => {
                             // }
                           >
                             <Link href="/synchro-laminates"  
+                            className="SubmenuClass"
                             onClick={() => {
                               setHoveredItem(null); // Close the main menu
                               setHoveredSubmenuItem(null); // Close the submenu
@@ -460,6 +471,7 @@ const Header = () => {
                             // }
                           >
                             <Link href="#"
+                            className="SubmenuClass"
                              onClick={() => {
                               setHoveredItem(null); // Close the main menu
                               setHoveredSubmenuItem(null); // Close the submenu
@@ -475,6 +487,7 @@ const Header = () => {
                             // }
                           >
                             <Link href="#" 
+                            className="SubmenuClass"
                             onClick={() => {
                               setHoveredItem(null); // Close the main menu
                               setHoveredSubmenuItem(null); // Close the submenu
@@ -490,6 +503,7 @@ const Header = () => {
                             // }
                           >
                             <Link href="/flicker-laminates"
+                            className="SubmenuClass"
                              onClick={() => {
                               setHoveredItem(null); // Close the main menu
                               setHoveredSubmenuItem(null); // Close the submenu
@@ -550,6 +564,7 @@ const Header = () => {
                             // }
                           >
                             <Link href="#"
+                            className="SubmenuClass"
                              onClick={() => {
                               setHoveredItem(null); // Close the main menu
                               setHoveredSubmenuItem(null); // Close the submenu
@@ -565,6 +580,7 @@ const Header = () => {
                             // }
                           >
                             <Link href="#" 
+                            className="SubmenuClass"
                             onClick={() => {
                               setHoveredItem(null); // Close the main menu
                               setHoveredSubmenuItem(null); // Close the submenu
@@ -580,6 +596,7 @@ const Header = () => {
                             // }
                           >
                             <Link href="#" 
+                            className="SubmenuClass"
                             onClick={() => {
                               setHoveredItem(null); // Close the main menu
                               setHoveredSubmenuItem(null); // Close the submenu
@@ -613,7 +630,7 @@ const Header = () => {
                   <Image src={getSubmenuImage()} alt="Submenu Image" />
                 </motion.div>
               </motion.div>
-            )}
+            {/* )} */}
           </motion.li>
           <motion.li
             initial={{
