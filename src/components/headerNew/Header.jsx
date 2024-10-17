@@ -138,10 +138,11 @@ const Header = () => {
             }}
           >
             <LinkHover
-              url={"/products"}
+              url={"#"}
               text={"Category"}
               fontSize={"16px"}
               isHomePage={isHome}
+              onClick={(e) => e.preventDefault()} // Disable link behavior for "Category"
             />
             {hoveredItem === "products" && (
               <motion.div
@@ -158,7 +159,7 @@ const Header = () => {
                     onMouseEnter={() => setHoveredSubmenuItem("submenu1")}
                     // onMouseLeave={() => setHoveredSubmenuItem(null)}
                   >
-                    <Link href="/products/sub-item-1">HPL LAMINATE</Link>
+                    <Link href="#"  onClick={(e) => e.preventDefault()}>HPL LAMINATE</Link>
                     {/* <svg
                       width="24"
                       height="24"
@@ -237,7 +238,7 @@ const Header = () => {
                     onMouseEnter={() => setHoveredSubmenuItem("submenu2")}
                     // onMouseLeave={() => setHoveredSubmenuItem(null)}
                   >
-                    <Link href="/products/sub-item-2">COMPACT LAMINATE</Link>
+                    <Link href="#"  onClick={(e) => e.preventDefault()}>COMPACT LAMINATE</Link>
                     {/* <svg
                       width="24"
                       height="24"
@@ -368,7 +369,7 @@ const Header = () => {
                     onMouseEnter={() => setHoveredSubmenuItem("submenu3")}
                     // onMouseLeave={() => setHoveredSubmenuItem(null)}
                   >
-                    <Link href="/products/sub-item-3">SPECIALITY LAMINATE</Link>
+                    <Link href="#"  onClick={(e) => e.preventDefault()}>SPECIALITY LAMINATE</Link>
                     {/* <svg
                       width="24"
                       height="24"
@@ -533,7 +534,7 @@ const Header = () => {
                     onMouseEnter={() => setHoveredSubmenuItem("submenu4")}
                     // onMouseLeave={() => setHoveredSubmenuItem(null)}
                   >
-                    <Link href="/products/sub-item-4">
+                    <Link href="#"  onClick={(e) => e.preventDefault()}>
                       TECHNICAL GRADE LAMINATE
                     </Link>
                     {/* <svg
