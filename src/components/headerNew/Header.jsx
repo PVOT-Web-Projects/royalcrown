@@ -340,7 +340,7 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="/color-core-laminates"
+                            <Link href="#"
                             className="SubmenuClass"
                              onClick={() => {
                               setHoveredItem(null); // Close the main menu
@@ -471,7 +471,7 @@ const Header = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                           >
-                            <Link href="#"
+                            <Link href="/color-core-laminates"
                             className="SubmenuClass"
                              onClick={() => {
                               setHoveredItem(null); // Close the main menu
