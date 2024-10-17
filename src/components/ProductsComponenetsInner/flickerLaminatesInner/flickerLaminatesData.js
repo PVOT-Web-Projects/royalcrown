@@ -1,7 +1,7 @@
 import icon1 from "../../../images/Icons-11-2048x2048.png";
 import icon2 from "../../../images/Icons-12.png";
 import Image1 from "../../../images/1_LOW-ELECTRICAL-RESISTANT.svg";
-import Productimg1 from "../../../images/5-2048x749.png";
+import Productimg1 from "../../../images/flickerLaminates.png";
 // import products from "@/components/aboutUs_products/productData";
 // import verticalIcon from "../../images/vertical-icon.svg";
 // import horizontalIcon from "../../images/horizontal-icon.svg";
@@ -24,9 +24,7 @@ commercial settings like hotels, retail stores, and offices, as well as exclusiv
 projects. Beyond its aesthetic appeal, our flicker laminate upholds the practical advantages of
 traditional laminates, offering durability, scratch and stain resistance, and easy maintenance.
 With a range of captivating colors and patterns, designers can effortlessly incorporate this
-dynamic effect into diverse styles and settings, ensuring a truly remarkable visual experience.
-
-`,
+dynamic effect into diverse styles and settings, ensuring a truly remarkable visual experience.`,
   boxes: [
     {
       icon: icon1,
