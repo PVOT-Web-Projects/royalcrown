@@ -100,7 +100,7 @@ any design.
     ],
     pdfLink: [
       {
-        pdfUrl: "/",
+        pdfUrl: "/pdfs/post-forming.pdf",
         pdfDesc: "Download",
       },
     ],

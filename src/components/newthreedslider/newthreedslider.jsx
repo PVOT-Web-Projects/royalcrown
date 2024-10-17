@@ -12,9 +12,11 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import Image from "next/image";
-import Img1 from "@/images/SliderImg1.png";
-import Img2 from "@/images/SliderImg2.png";
-import Img3 from "@/images/SliderImg3.png";
+import Img1 from "@/images/RoyalCrownNew.png";
+import Img2 from "@/images/CrownNew.png";
+import Img3 from "@/images/XylemNew.png";
+import Img4 from "@/images/QbissNew.png";
+import Img5 from "@/images/CrownXCLNew.png";
 import SvgBtn from "@/images/svgLogos/sliderBtn.svg";
 import SvgBtnNext from "@/images/svgLogos/sliderBtnPrev.svg";
 
@@ -113,7 +115,7 @@ const SwiperComponent = () => {
                 <p className="SliderThreeContentTEXTInner">Qbiss</p>
               </div>
               <Image
-                src={Img1}
+                src={Img4}
                 alt="carousel_image"
                 className="SliderThreeImages"
               />
@@ -125,7 +127,7 @@ const SwiperComponent = () => {
                 <p className="SliderThreeContentTEXTInner">Crown xcl</p>
               </div>
               <Image
-                src={Img2}
+                src={Img5}
                 alt="carousel_image"
                 className="SliderThreeImages"
               />

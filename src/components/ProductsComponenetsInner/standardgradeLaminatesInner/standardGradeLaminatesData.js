@@ -129,7 +129,7 @@ over 6mm. Choose Qbiss for a sophisticated and enduring interior solution.`,
     ],
     pdfLink: [
       {
-        pdfUrl: "/",
+        pdfUrl: "/pdfs/standard-grade.pdf",
         pdfDesc: "Download",
       },
     ],
