@@ -136,7 +136,7 @@ unparalleled durability and aesthetic appeal of Crown Decor’s XCL - Exterior C
     ],
     pdfLink: [
       {
-        pdfUrl: "/",
+        pdfUrl: "/pdfs/exteriorgrade.pdf",
         pdfDesc: "Download",
       },
     ]

@@ -103,7 +103,7 @@ functionality and beauty with our anti-finger laminate.
     ],
     pdfLink: [
       {
-        pdfUrl: "/",
+        pdfUrl: "/pdfs/antifinger.pdf",
         pdfDesc: "Download",
       },
     ]
