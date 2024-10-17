@@ -103,7 +103,7 @@ dynamic effect into diverse styles and settings, ensuring a truly remarkable vis
     ],
     pdfLink: [
       {
-        pdfUrl: "/",
+        pdfUrl: "/pdfs/exteriorgrade.pdf",
         pdfDesc: "Download",
       },
     ]

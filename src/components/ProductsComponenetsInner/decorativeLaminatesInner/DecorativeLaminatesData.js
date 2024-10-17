@@ -116,7 +116,7 @@ decorative side is uniformly sanded using cutting-edge machinery to ensure optim
     ],
     pdfLink: [
       {
-        pdfUrl: "/",
+        pdfUrl: "/pdfs/hpl.pdf",
         pdfDesc: "Download",
       },
     ]
