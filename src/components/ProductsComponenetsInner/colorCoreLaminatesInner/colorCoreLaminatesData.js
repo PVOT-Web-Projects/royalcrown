@@ -104,7 +104,7 @@ style, setting a new standard in interior design.
     ],
     pdfLink: [
       {
-        pdfUrl: "/",
+        pdfUrl: "/pdfs/exteriorgrade.pdf",
         pdfDesc: "Download",
       },
     ]

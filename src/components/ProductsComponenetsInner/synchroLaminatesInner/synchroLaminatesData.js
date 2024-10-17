@@ -103,7 +103,7 @@ sophistication and modernity.
     ],
     pdfLink: [
       {
-        pdfUrl: "/",
+        pdfUrl: "/pdfs/exteriorgrade.pdf",
         pdfDesc: "Download",
       },
     ],

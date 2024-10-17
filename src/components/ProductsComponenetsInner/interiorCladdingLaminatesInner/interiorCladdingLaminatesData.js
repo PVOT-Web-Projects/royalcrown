@@ -135,7 +135,7 @@ compact laminate as the top choice for creating enduring and stylish interior su
     ],
     pdfLink: [
       {
-        pdfUrl: "/",
+        pdfUrl: "/pdfs/standard-grade.pdf",
         pdfDesc: "Download",
       },
     ]

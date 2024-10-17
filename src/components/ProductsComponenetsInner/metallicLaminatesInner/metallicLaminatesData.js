@@ -102,7 +102,7 @@ laminate and redefine the essence of luxury in your interior design.
     ],
     pdfLink: [
       {
-        pdfUrl: "/",
+        pdfUrl: "/pdfs/exteriorgrade.pdf",
         pdfDesc: "Download",
       },
     ]
