@@ -79,11 +79,17 @@ export default function ProductsCommonInnerPage({ data }) {
             
                     <div className="productApplicationSection2Inner_Main">
                       {data.application.pdfLink.map((item, index) => (
-                        <div
+                        
+                          <Link
+                            href={item.pdfUrl}
+                            target="_blank"
+                            className="applicationSection1InnerPdfInner"
+                          >
+                            <div
                           className="applicationSection1InnerPdf"
                           key={index}
                         >
-                          <div>
+                             <div>
                             <svg
                               width="24"
                               height="24"
@@ -94,14 +100,10 @@ export default function ProductsCommonInnerPage({ data }) {
                               <path d="M8 11h-6v10h20v-10h-6v-2h8v14h-24v-14h8v2zm5 2h4l-5 6-5-6h4v-12h2v12z" />
                             </svg>
                           </div>
-                          <Link
-                            href={item.pdfUrl}
-                            target="_blank"
-                            className="applicationSection1InnerPdfInner"
-                          >
                             {item.pdfDesc}
+                            </div>
                           </Link>
-                        </div>
+                        
                       ))}
                     </div>
                   </div>
