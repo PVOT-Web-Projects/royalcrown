@@ -2,6 +2,15 @@ import icon1 from "../../../images/Icons-11-2048x2048.png";
 import icon2 from "../../../images/Icons-12.png";
 import Image1 from "../../../images/1_LOW-ELECTRICAL-RESISTANT.svg";
 import Productimg1 from "../../../images/synchroLaminates.png";
+import Ab1 from "../../../images/svglogo/AestheticallyBeautiful.png";
+import Scr1 from "../../../images/svglogo/Scratchresistant.png";
+import Hr1 from "../../../images/svglogo/HeatRetardant.png";
+import Fr1 from "../../../images/svglogo/FireResistant.png";
+import Es1 from "../../../images/svglogo/EasytoClean.png";
+import Sus1 from "../../../images/svglogo/Sustainability.png";
+import Imp1 from "../../../images/svglogo/IMPACT-RESISTANT.svg";
+import Sr1 from "../../../images/svglogo/ChemicalResistant.png";
+
 // import products from "@/components/aboutUs_products/productData";
 // import verticalIcon from "../../images/vertical-icon.svg";
 // import horizontalIcon from "../../images/horizontal-icon.svg";
@@ -40,35 +49,35 @@ sophistication and modernity.
   ],
   features: [
     {
-      image1: Image1,
+      image1: Ab1,
       description: "Aesthetically Beautiful",
     },
     {
-      image1: Image1,
+      image1: Scr1,
       description: "Scratch Resistant",
     },
     {
-      image1: Image1,
+      image1: Sr1,
       description: "Solvent Resistant",
     },
     {
-      image1: Image1,
+      image1: Imp1,
       description: "Impact Resistant",
     },
     {
-      image1: Image1,
+      image1: Hr1,
       description: "Heat Retardant",
     },
     {
-      image1: Image1,
+      image1: Fr1,
       description: "Fire Retardant",
     },
     {
-      image1: Image1,
+      image1: Es1,
       description: "Easy to clean & maintain",
     },
     {
-      image1: Image1,
+      image1: Sus1,
       description: "Sustainable",
     },
   ],

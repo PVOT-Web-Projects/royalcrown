@@ -2,6 +2,22 @@ import icon1 from "../../../images/Icons-11-2048x2048.png";
 import icon2 from "../../../images/Icons-12.png";
 import Image1 from "../../../images/1_LOW-ELECTRICAL-RESISTANT.svg";
 import Productimg1 from "../../../images/InteriorCladding.png";
+import Ab1 from "../../../images/svglogo/AestheticallyBeautiful.png";
+import Scr1 from "../../../images/svglogo/Scratchresistant.png";
+import Hr1 from "../../../images/svglogo/HeatRetardant.png";
+import Fr1 from "../../../images/svglogo/FireResistant.png";
+import Es1 from "../../../images/svglogo/EasytoClean.png";
+import Sus1 from "../../../images/svglogo/Sustainability.png";
+import Imp1 from "../../../images/svglogo/IMPACT-RESISTANT.svg"
+import Sr1 from "../../../images/svglogo/ChemicalResistant.png";
+import Wr1 from "../../../images/svglogo/WaterResistant.png";
+import Cg1 from "../../../images/svglogo/CigratteBurnResistant.png";
+import St1 from "../../../images/svglogo/Stainresistant.png";
+import Gr1 from "../../../images/svglogo/GraffitiResistant.png";
+import Tr1 from "../../../images/svglogo/Termiteresistant.png";
+import Anti1 from "../../../images/svglogo/AntiBacterial.png";
+import Abra1 from "../../../images/svglogo/AbrasionResistant.png"
+import Cr1 from "../../../images/svglogo/ChemicalResistant.png";
 // import products from "@/components/aboutUs_products/productData";
 // import verticalIcon from "../../images/vertical-icon.svg";
 // import horizontalIcon from "../../images/horizontal-icon.svg";
@@ -42,43 +58,43 @@ compact laminate as the top choice for creating enduring and stylish interior su
   ],
   features: [
     {
-      image1: Image1,
+      image1: Scr1,
       description: "Scratch Resistant",
     },
     {
-      image1: Image1,
+      image1: Gr1,
       description: "Graffiti Resistant",
     },
     {
-      image1: Image1,
+      image1: Tr1,
       description: "Termite Resistant",
     },
     {
-      image1: Image1,
+      image1: Wr1,
       description: "Water Resistant",
     },
     {
-      image1: Image1,
+      image1: Es1,
       description: "Easy to clean",
     },
     {
-      image1: Image1,
+      image1: Imp1,
       description: "Impact Resistant",
     },
     {
-      image1: Image1,
+      image1: Anti1,
       description: "Anti-Bacterial",
     },
     {
-      image1: Image1,
+      image1: Cg1,
       description: "Cigarette Burn Resistant",
     },
     {
-      image1: Image1,
+      image1: Fr1,
       description: "Fire Resistant",
     },
     {
-      image1: Image1,
+      image1: Abra1,
       description: "Abrasion Resistant",
     },
     {
@@ -86,7 +102,7 @@ compact laminate as the top choice for creating enduring and stylish interior su
       description: "Wide Choice of Colours",
     },
     {
-      image1: Image1,
+      image1: Cr1,
       description: "Chemical Resistant",
     },
     {
