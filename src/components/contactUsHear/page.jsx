@@ -46,7 +46,7 @@ const ContactUsHear = () => {
             href={"https://maps.app.goo.gl/kMbjwniPJ4jZ7cW88"}
             target="_blank"
           >
-            <p>
+            <p className="ContactusAddress">
               One 42, 401 North Tower,
               <br /> Ambli Bopal Road,
               <br />
