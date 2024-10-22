@@ -104,7 +104,8 @@ header {
         border-radius: 5px;
         width: 100vw;
         height: auto;
-        max-width: 800px;
+        // max-width: 800px;
+        max-width: 500px;
         display: flex;
         justify-content: space-between;
         // align-items: center;
@@ -121,8 +122,10 @@ header {
           display: flex;
           position: absolute;
           // width: 100vw;
-          left: 35%;
-          top: 4%;
+          // left: 35%;
+          // top: 4%;
+          left: 55%;
+    top: 4%;
         }
         
         ul {

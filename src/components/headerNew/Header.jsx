@@ -225,10 +225,10 @@ const Header = () => {
                           // exit={{ opacity: 0 }}
                           // transition={{ duration: 0.3 }}
                         >
-                          <Image
+                          {/* <Image
                             src={getSubSubmenuImage()}
                             alt="Submenu Image"
-                          />
+                          /> */}
                         </motion.div>
                       </motion.div>
                     )} 
@@ -356,10 +356,10 @@ const Header = () => {
                           exit={{ opacity: 0 }}
                           transition={{ duration: 0.3 }}
                         >
-                          <Image
+                          {/* <Image
                             src={getSubSubmenuImage1()}
                             alt="Submenu Image"
-                          />
+                          /> */}
                         </motion.div>
                       </motion.div>
                     )}
@@ -521,10 +521,10 @@ const Header = () => {
                           // exit={{ opacity: 0 }}
                           // transition={{ duration: 0.3 }}
                         >
-                          <Image
+                          {/* <Image
                             src={getSubSubmenuImage3()}
                             alt="Submenu Image"
-                          />
+                          /> */}
                         </motion.div>
                       </motion.div>
                     )}
@@ -612,10 +612,10 @@ const Header = () => {
                           // exit={{ opacity: 0 }}
                           // transition={{ duration: 0.3 }}
                         >
-                          <Image
+                          {/* <Image
                             src={getSubSubmenuImage3()}
                             alt="Submenu Image"
-                          />
+                          /> */}
                         </motion.div>
                       </motion.div>
                     )}
@@ -628,10 +628,10 @@ const Header = () => {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <Image src={getSubmenuImage()} alt="Submenu Image" />
+                  {/* <Image src={getSubmenuImage()} alt="Submenu Image" /> */}
                 </motion.div>
               </motion.div>
-           )}
+           )} 
           </motion.li>
           <motion.li
             initial={{

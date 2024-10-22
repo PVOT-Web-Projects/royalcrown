@@ -33,12 +33,12 @@
 } */
 
 .project .InsightsTitle {
-  font-size: 18px;
+  font-size: 21px;
   margin: 0px;
-  font-weight: 600;
+  font-weight: 400;
   /* transition: all 0.4s; */
   color: #5b3524;
-  width: 40%;
+  width: 45%;
   font-family: "futura_regular";
   /* font-family: "made_mirage_thin"; */
   /* padding-right: 100px; */
