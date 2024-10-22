@@ -10,7 +10,7 @@ const ProductInformation = () => {
     <div>
       <ProductInfoSlider />
       {/* Need to change */}
-      <KeyFeaturesInfo />
+      {/* <KeyFeaturesInfo /> */}
       <RelatedProductInfo />
       <div className="Form_Page">
         <SocialPage socialMediaImgSrc={SocialMediaImg} />

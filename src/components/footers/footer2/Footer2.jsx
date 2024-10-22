@@ -185,34 +185,64 @@ const Footer2 = ({ bgColor }) => {
                     <span>info@royalcrown.com</span>
                   </Link>
                 </div>
+                {/* <div className="box"> */}
+                {/* <div className="bottom">
+              <ul>
+                <li>
+                  <Link href={"https://www.facebook.com/royalcrownlaminates/"} target="_blank">
+                    <Image src={fb} alt="fb" />
+                  </Link>
+                </li>
+                <li>
+                  <Link href={"https://www.instagram.com/royalcrownlaminates/"} target="_blank">
+                    <Image src={ig} alt="ig" />
+                  </Link>
+                </li>
+                <li>
+                  <Link href={"https://www.youtube.com/"} target="_blank">
+                    <Image src={yt} alt="yt" /> 
+                  </Link>
+                </li>
+                <li>
+                  <Link href={"https://in.linkedin.com/"} target="_blank">
+                    <Image src={li} alt="li" />
+                     </Link>
+                </li>
+                <li>
+                  <Link href={"https://www.whatsapp.com/"} target="_blank">
+                    <Image src={wa} alt="wa"/> 
+                  </Link>
+                </li>
+              </ul>
+            </div> */}
+                {/* </div> */}
               </div>
             </div>
             <div className="bottom">
               <ul>
                 <li>
                   <Link href={"https://www.facebook.com/royalcrownlaminates/"} target="_blank">
-                    <Image src={fb} alt="fb" /> <span>Facebook</span>
+                    <Image src={fb} alt="fb" />
                   </Link>
                 </li>
                 <li>
                   <Link href={"https://www.instagram.com/royalcrownlaminates/"} target="_blank">
-                    <Image src={ig} alt="ig" /> <span>Instagram</span>
+                    <Image src={ig} alt="ig" />
                   </Link>
                 </li>
                 <li>
                   <Link href={"https://www.youtube.com/"} target="_blank">
-                    <Image src={yt} alt="yt" /> <span>Youtube</span>
+                    <Image src={yt} alt="yt" /> 
                   </Link>
                 </li>
                 <li>
                   <Link href={"https://in.linkedin.com/"} target="_blank">
-                    <Image src={li} alt="li" /> <span>Linkedin</span>
-                    {/* <LinkHover url={"https://in.linkedin.com/"} text={"Linkedin"} fontSize={"16"} color={"white"} textTransform={"capitalize"} /> */}
-                  </Link>
+                    <Image src={li} alt="li" />
+                     </Link>
                 </li>
                 <li>
                   <Link href={"https://www.whatsapp.com/"} target="_blank">
-                    <Image src={wa} alt="wa"/> <span>WhatsApp</span>
+                    <Image src={wa} alt="wa"/> 
                   </Link>
                 </li>
               </ul>

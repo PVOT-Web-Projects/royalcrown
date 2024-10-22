@@ -43,7 +43,7 @@ const SlidesContent = ({
   <div className="Carousel_text_maincontent">
     <div className="FirstSSliderText">
       <p className="Text_InnerText">{mainText}</p>
-      <p className="TextInner1">{subText}</p>
+      {/* <p className="TextInner1">{subText}</p> */}
       <div className="TextButtonoUTER">
         <p className="TextInnerCollection">{collection}</p>
         <div className="submit_btn">
@@ -57,7 +57,7 @@ const SlidesContent = ({
     <div className="SecondSliderText">
       <div className="SecondSliderTextInner">
         <div className="ProductCategoryText">
-          <p className="ProductCategoryText1">PRODUCT CATEGORY</p>
+          <p className="ProductCategoryText1">product category</p>
           <p className="ProductCategoryText2">{category}</p>
         </div>
       </div>
@@ -129,19 +129,23 @@ export default function ProductInfoSlider() {
               className="mySwiper"
               modules={[FreeMode, Thumbs, Navigation, EffectFade]}
               slidesPerView={1}
+              allowTouchMove={false}
+              autoplay={false}
+              loop={false}
+              navigation={false}
               // autoplay={{
               //   delay: 2500,
               // }}
               // loop={true}
               // navigation={true}
-              effect="fade"
-              navigation={{
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-              }}
-              speed={1500}
+              // effect="fade"
+              // navigation={{
+              //   nextEl: ".swiper-button-next",
+              //   prevEl: ".swiper-button-prev",
+              // }}
+              // speed={1500}
               thumbs={{ swiper: thumbsSwiper }}
-              fadeEffect={{ crossFade: true }}
+              // fadeEffect={{ crossFade: true }}
             >
               {slidesData.map((slide, index) => (
                 <SwiperSlide key={index}>
@@ -149,8 +153,8 @@ export default function ProductInfoSlider() {
                 </SwiperSlide>
               ))}
             </Swiper>
-            <div className="swiper-button-next"></div>
-            <div className="swiper-button-prev"></div>
+            {/* <div className="swiper-button-next"></div>
+            <div className="swiper-button-prev"></div> */}
             {/* <div className="swiper-button-next"></div>
             <div className="swiper-button-prev"></div> */}
           </div>
@@ -171,6 +175,10 @@ export default function ProductInfoSlider() {
               // navigation={true}
               slidesPerView={1}
               speed={1500}
+              allowTouchMove={false}
+              autoplay={false}
+              loop={false}
+              navigation={false}
               // navigation={{
               //   nextEl: ".swiper-button-next",
               //   prevEl: ".swiper-button-prev",
@@ -178,7 +186,6 @@ export default function ProductInfoSlider() {
               // pagination={{
               //   dynamicBullets: true,
               // }}
-              allowTouchMove={false}
               className="mySwiper2"
             >
               <SwiperSlide>
@@ -241,7 +248,7 @@ export default function ProductInfoSlider() {
           </div>
         </div>
       </div>
-      <div className="productMainContainer">
+      {/* <div className="productMainContainer">
             <div className="productMain">
                 <div className="productNumber">
                     <p>03</p>
@@ -263,7 +270,7 @@ export default function ProductInfoSlider() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> */}
     </div>
   );
 }

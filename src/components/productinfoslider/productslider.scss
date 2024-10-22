@@ -461,7 +461,7 @@
               height: inherit;
               // border-radius: inherit;
               border: none;
-              background-color: #D4A373;
+              background-color: #5B3524;
               ;
               transition: all 0.475s;
             }
@@ -472,7 +472,7 @@
               }
 
               &::before {
-                background-color: #D4A373;
+                background-color: #5B3524;
                 transform: scaleX(1);
               }
             }
@@ -503,7 +503,7 @@
 
       .ProductCategoryText1 {
         font-size: 22px;
-        text-transform: uppercase;
+        text-transform: capitalize;
         font-weight: normal;
 
         @media (max-width: 1024px) {

@@ -7,7 +7,7 @@ const slidesData = [
     designNumber: "123",
     designName: "Terracotta",
     finishName: "Suede",
-    finishCode: "123",
+    finishCode: "123",  
     Thickness: "3mm to 25mm",
     DimensionsMm: "1220x2440 | 1525x3660 | 1830x3660",
     DimensionsFt: "4'x8' | 5'x12' | 6'x12'",
