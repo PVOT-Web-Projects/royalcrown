@@ -20,8 +20,8 @@ const AboutUs = () => {
       </div> */}
       {/* <div ref={section2}> */}
       {/* <Products /> */}
-        <AboutUs_products />
-        
+      <AboutUs_products />
+
       {/* </div> */}
 
       <div className="Form_Page">
