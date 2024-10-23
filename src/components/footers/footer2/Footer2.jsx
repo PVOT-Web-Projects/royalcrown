@@ -89,6 +89,28 @@ const Footer2 = ({ bgColor }) => {
               <div className="col col2">
                 <div className="title">Resources</div>
                 <ul>
+                <li>
+                    <LinkHover
+                      url={"/category"}
+                      text={"Category"}
+                      color={"#000"}
+                      borderColor={"white"}
+                      fontSize={"18px"}
+                      textTransform={"capitalize"}
+                      HoverBtn={"#5b3524"}
+                    />
+                  </li>
+                  <li>
+                    <LinkHover
+                      url={"/product"}
+                      text={"Products"}
+                      color={"#000"}
+                      borderColor={"white"}
+                      fontSize={"18px"}
+                      textTransform={"capitalize"}
+                      HoverBtn={"#5b3524"}
+                    />
+                  </li>
                   <li>
                     <LinkHover
                       url={"/contact-us"}
@@ -111,18 +133,14 @@ const Footer2 = ({ bgColor }) => {
                       HoverBtn={"#5b3524"}
                     />
                   </li>
-                  <li>
-                    <LinkHover
-                      url={"/category"}
-                      text={"Category"}
-                      color={"#000"}
-                      borderColor={"white"}
-                      fontSize={"18px"}
-                      textTransform={"capitalize"}
-                      HoverBtn={"#5b3524"}
-                    />
-                  </li>
-                  <li>
+                  
+                 
+                </ul>
+              </div>
+              <div className="col col3">
+                <div className="title">Use cases </div>
+                <ul>
+                <li>
                     <LinkHover
                       url={"/blogs"}
                       text={"Blogs"}
@@ -133,11 +151,6 @@ const Footer2 = ({ bgColor }) => {
                       HoverBtn={"#5b3524"}
                     />
                   </li>
-                </ul>
-              </div>
-              <div className="col col3">
-                <div className="title">Use cases </div>
-                <ul>
                   <li>
                     <LinkHover
                       url={"/faqs"}

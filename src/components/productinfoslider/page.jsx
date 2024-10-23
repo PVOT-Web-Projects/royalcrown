@@ -105,7 +105,7 @@ const SlidesContent = ({
       </div>
       <div className="SecondSliderTextInner">
         <div className="ProductCategoryText">
-          <p className="ProductCategoryText1">PF / NPF</p>
+          <p className="ProductCategoryText1">Theme / mood</p>
           <p className="ProductCategoryText2">{PfnPF}</p>
         </div>
       </div>
