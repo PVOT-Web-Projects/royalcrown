@@ -32,7 +32,7 @@ export default function ProductsCommonInnerPage({ data }) {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            <p>{data.header}</p>
+            {/* <p>{data.header}</p> */}
           </motion.div>
           <div className="laminatesBody">
             <div className="laminateBodyDescription">
