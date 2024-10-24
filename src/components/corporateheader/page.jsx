@@ -16,7 +16,7 @@ const CorporateImg = () => {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            Corporate social responsibility
+            CORPORATE SOCIAL RESPONSIBILITY
           </motion.div>
           {/* <p >Privacy Policy</p> */}
           <div className="TextCommitInner">

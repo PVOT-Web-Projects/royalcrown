@@ -35,7 +35,7 @@ const PrivacyPolicyImg = ({scrollTo , goToSectionRef}) => {
                   transition={{ duration: 1 }}
                   viewport={{ once: true }}
                 >
-                 Privacy Policy
+                 PRIVACY POLICY
                 </motion.div>
           {/* <p >Privacy Policy</p> */}
          <div className="TextCommitInner">

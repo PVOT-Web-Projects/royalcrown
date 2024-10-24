@@ -59,7 +59,7 @@ const Blogs = () => {
         viewport={{ once: true }}
       >
         <BlogsPage
-          text="Blogs"
+          text="BLOGS"
           description="Our furniture collections are meticulously designed to elevate your living spaces."
         />
       </motion.div>

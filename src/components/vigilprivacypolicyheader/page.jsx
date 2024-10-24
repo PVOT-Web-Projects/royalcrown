@@ -35,7 +35,7 @@ const VigilPrivacyPolicyImg = ({ scrollTo, goToSectionRef }) => {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            Vigil Mechanism Policy
+            VIGIL MECHANISM POLICY
           </motion.div>
           <div className="TextCommitInner">
             <p>
