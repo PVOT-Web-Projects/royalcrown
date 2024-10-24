@@ -49,6 +49,7 @@
 
       .description_left{
         font-size: 21px;
+        font-family: "futura_thin";
         width: 50%;
 
         @media (max-width : 767px) {
@@ -82,7 +83,7 @@
           
           .right_box_number{
             font-size: 80px;
-            font-family: "made_mirage_bold";
+            font-family: "made_mirage_regular";
 
             @media (max-width : 425px) {
               font-size: 65px;
@@ -91,6 +92,7 @@
         }
         .description_right_text{
           font-size: 35px;
+          font-family: "futura_thin";
           font-weight: 500;
 
           @media (max-width : 425px) {
