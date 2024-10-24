@@ -1,4 +1,5 @@
 "use client";
+import { useEffect } from "react";
 import ProductHero from "@/components/productHero/page";
 import "./product.scss";
 import Products from "@/components/product/page";
@@ -9,6 +10,9 @@ import SocialPage from "@/components/socialPage/socialpage";
 import SocialMediaImg from "@/images/socials-image.png";
 import { useRef } from "react";
 const AboutUs = () => {
+  useEffect(() => {
+    document.title = "Products | Royal Crown";
+  });
   const section1 = useRef();
   const section2 = useRef();
   function scrollTo(section) {
