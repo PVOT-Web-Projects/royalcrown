@@ -72,7 +72,7 @@ const FaqData = () => {
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}>
-            <p className={styles.FaqsInner}>Frequently Asked Questions</p>
+            <p className={styles.FaqsInner}>FREQUENTLY ASKED QUESTIONS</p>
           </motion.div>
           <div className={styles.FaqsTextOuterText}>
             <p className={styles.FaqsTextInner}>
