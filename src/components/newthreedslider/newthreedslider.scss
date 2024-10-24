@@ -71,15 +71,16 @@
 	  font-size: 60px;
 	  text-align: center;
 	  margin: 0 auto;
-	  width: 40%;
+	//   width: 40%;
 	  text-transform: uppercase;
+	  padding: 20px 0 10px;
 	  font-weight: 400;
 	  @media (max-width: 1024px) {
-		width: 80%;
+		// width: 80%;
 	  }
 	  @media (max-width: 768px) {
 		font-size: 42px;
-		width: 80%;
+		// width: 80%;
 	  }
 	  @media (max-width: 575px) {
 		font-size: 30px;
@@ -90,13 +91,13 @@
 	  }
 	}
 	.ThreeTextInnerFirst {
-		font-family: "futura_regular";
+		font-family: "futura_thin";
 		font-weight: 400;
 	  font-size: 21px;
 	  text-align: center;
 	  width: 60%;
 	  margin: 0 auto;
-	  padding: 5px 0;
+	  padding: 0px 0 50px;
 	  @media (max-width: 1024px) {
 		width: 70%;
 	  }
@@ -141,7 +142,8 @@
 		text-align: center;
 		padding: 20px 0;
 		text-transform: uppercase;
-		font-weight: 500;
+		font-weight: 100;
+		font-family: "made_mirage_regular";
 		@media (min-width: 1550px) {
 		  font-size: 60px;
 		}
@@ -184,8 +186,8 @@
 		color: #5b3524;
 	  }
 	  .Text_InnerText {
-		font-family: "futura_regular";
-		padding-top: 1rem;
+		font-family: "futura_thin";
+		padding-top: 2rem;
 		text-align: center;
 		margin: 0 auto;
 		width: 60%;

@@ -94,7 +94,7 @@
           .HeaderTextInner{
             letter-spacing: 2px;
             font-weight: 550;
-            font-family: "made_mirage_thin";
+            font-family: "made_mirage_regular";
           }
 
           .animated-border {
@@ -130,7 +130,8 @@
         display: flex;
         font-size: 21px;
         .TextSectionInnerFirst{
-          font-family: "futura_regular";
+          font-family: "futura_thin";
+          font-weight: 550;
             width: 80%;
             @media(min-width: 1500px){
                 width: 75%;
@@ -141,7 +142,8 @@
         }
 
         .text-section-inner-footer {
-          font-family: "futura_regular";
+          font-family: "futura_thin";
+          font-weight: 550;
           // font-family: "made_mirage_bold";
           padding-top: 3rem;
           font-size: 25px;
