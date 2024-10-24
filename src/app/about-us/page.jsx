@@ -1,4 +1,5 @@
 "use client";
+import { useEffect } from "react";
 import "./Home.scss";
 import AboutUsEstablishment from "@/components/aboutUsEstablishment/aboutUsEstablishment";
 import AboutUsVision from "@/components/aboutUsVision/aboutUsVision";
@@ -10,6 +11,9 @@ import AboutUsDemo from "@/components/aboutdemohero/page";
 import HomeHeroSection from "@/components/homeHeroSection/page";
 import AboutUsHero from "@/components/aboutUsHero/aboutUsHero";
 const AboutUs = () => {
+  useEffect(() => {
+    document.title = "About Us | Royal Crown";
+  });
   return (
     <div>
       {/* <AboutUsDemo /> */}

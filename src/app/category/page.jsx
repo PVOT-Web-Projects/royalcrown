@@ -5,6 +5,8 @@
 // import ProductConstruct from "@/components/product_construct/product_construct";
 // import ProductFeatures from "@/components/productFeatures/productFeatures";
 // import ProductApplication from "@/components/product_application/product_application";
+"use client"
+import { useEffect } from "react";
 import SocialPage from "@/components/socialPage/socialpage";
 import Form from "@/components/forms/form1/Form";
 import SocialMediaImg from "@/images/socials-image.png";
@@ -12,6 +14,9 @@ import CategoryLeftRight from "@/components/categoryLeftRight/CategoryLeftRight"
 import "./category.scss"
 // import ProductsInner from "@/components/ProductsComponenetsInner/decorativeLaminatesInner/page";
 const Category = () => {
+  useEffect(() => {
+    document.title = "Category | Royal Crown";
+  });
   return (
     <>
     <CategoryLeftRight />
