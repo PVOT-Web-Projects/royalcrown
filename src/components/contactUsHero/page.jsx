@@ -35,7 +35,7 @@ const ContactUsHero = ({ scrollTo, goToSectionRef }) => {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            Contact Us
+            CONTACT US
           </motion.div>
           {/* <p >Privacy Policy</p> */}
           <div className="TextCommitInner">
