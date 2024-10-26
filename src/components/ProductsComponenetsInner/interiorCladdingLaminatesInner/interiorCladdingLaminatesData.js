@@ -14,7 +14,7 @@ import Wr1 from "../../../images/svglogo/WaterResistant.jpg";
 import Cg1 from "../../../images/svglogo/CigratteBurnResistant.jpg";
 import St1 from "../../../images/svglogo/Stainresistant.jpg";
 import Gr1 from "../../../images/svglogo/GraffitiResistant.jpg";
-import Tr1 from "../../../images/svglogo/Termiteresistant.png";
+import Tr1 from "../../../images/svglogo/Termiteresistant.jpg";
 import Anti1 from "../../../images/svglogo/AntiBacterial.jpg";
 import Abra1 from "../../../images/svglogo/AbrasionResistant.jpg"
 import Cr1 from "../../../images/svglogo/ChemicalResistant.jpg";
