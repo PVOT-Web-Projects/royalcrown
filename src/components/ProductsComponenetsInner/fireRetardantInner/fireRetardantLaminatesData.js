@@ -2,14 +2,14 @@ import icon1 from "../../../images/Icons-11-2048x2048.png";
 import icon2 from "../../../images/Icons-12.png";
 import Image1 from "../../../images/1_LOW-ELECTRICAL-RESISTANT.svg";
 import Productimg1 from "../../../images/FireRetardant.png";
-import Ab1 from "../../../images/svglogo/AestheticallyBeautiful.png";
-import Scr1 from "../../../images/svglogo/Scratchresistant.png";
-import Hr1 from "../../../images/svglogo/HeatRetardant.png";
-import Fr1 from "../../../images/svglogo/FireResistant.png";
-import Es1 from "../../../images/svglogo/EasytoClean.png";
-import Sus1 from "../../../images/svglogo/Sustainability.png";
-import Imp1 from "../../../images/svglogo/IMPACT-RESISTANT.svg"
-import Sr1 from "../../../images/svglogo/ChemicalResistant.png";
+import Ab1 from "../../../images/svglogo/AestheticallyBeautiful.jpg";
+import Scr1 from "../../../images/svglogo/Scratchresistant.jpg";
+import Hr1 from "../../../images/svglogo/HeatRetardant.jpg";
+import Fr1 from "../../../images/svglogo/FireResistant.jpg";
+import Es1 from "../../../images/svglogo/EasytoClean.jpg";
+import Sus1 from "../../../images/svglogo/Sustainability.jpg";
+import Imp1 from "../../../images/svglogo/ImpactResistant.jpg"
+import Sr1 from "../../../images/svglogo/ChemicalResistant.jpg";
 
 // import products from "@/components/aboutUs_products/productData";
 // import verticalIcon from "../../images/vertical-icon.svg";

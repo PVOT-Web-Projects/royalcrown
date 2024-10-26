@@ -8,7 +8,7 @@ import Hr1 from "../../../images/svglogo/HeatRetardant.png";
 import Fr1 from "../../../images/svglogo/FireResistant.png";
 import Es1 from "../../../images/svglogo/EasytoClean.png";
 import Sus1 from "../../../images/svglogo/Sustainability.png";
-import Imp1 from "../../../images/svglogo/IMPACT-RESISTANT.svg";
+import Imp1 from "../../../images/svglogo/.svg";
 import Sr1 from "../../../images/svglogo/ChemicalResistant.png";
 
 // import products from "@/components/aboutUs_products/productData";
