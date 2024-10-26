@@ -3,21 +3,21 @@ import icon2 from "../../../images/Icons-12.png";
 import Image1 from "../../../images/1_LOW-ELECTRICAL-RESISTANT.svg";
 import Productimg1 from "../../../images/InteriorCladding.png";
 import Ab1 from "../../../images/svglogo/AestheticallyBeautiful.png";
-import Scr1 from "../../../images/svglogo/Scratchresistant.png";
+import Scr1 from "../../../images/svglogo/Scratchresistant.jpg";
 import Hr1 from "../../../images/svglogo/HeatRetardant.png";
-import Fr1 from "../../../images/svglogo/FireResistant.png";
-import Es1 from "../../../images/svglogo/EasytoClean.png";
+import Fr1 from "../../../images/svglogo/FireResistant.jpg";
+import Es1 from "../../../images/svglogo/EasytoClean.jpg";
 import Sus1 from "../../../images/svglogo/Sustainability.png";
-import Imp1 from "../../../images/svglogo/IMPACT-RESISTANT.svg"
+import Imp1 from "../../../images/svglogo/ImpactResistant.jpg"
 import Sr1 from "../../../images/svglogo/ChemicalResistant.png";
-import Wr1 from "../../../images/svglogo/WaterResistant.png";
-import Cg1 from "../../../images/svglogo/CigratteBurnResistant.png";
+import Wr1 from "../../../images/svglogo/WaterResistant.jpg";
+import Cg1 from "../../../images/svglogo/CigratteBurnResistant.jpg";
 import St1 from "../../../images/svglogo/Stainresistant.png";
-import Gr1 from "../../../images/svglogo/GraffitiResistant.png";
+import Gr1 from "../../../images/svglogo/GraffitiResistant.jpg";
 import Tr1 from "../../../images/svglogo/Termiteresistant.png";
-import Anti1 from "../../../images/svglogo/AntiBacterial.png";
-import Abra1 from "../../../images/svglogo/AbrasionResistant.png"
-import Cr1 from "../../../images/svglogo/ChemicalResistant.png";
+import Anti1 from "../../../images/svglogo/AntiBacterial.jpg";
+import Abra1 from "../../../images/svglogo/AbrasionResistant.jpg"
+import Cr1 from "../../../images/svglogo/ChemicalResistant.jpg";
 // import products from "@/components/aboutUs_products/productData";
 // import verticalIcon from "../../images/vertical-icon.svg";
 // import horizontalIcon from "../../images/horizontal-icon.svg";
