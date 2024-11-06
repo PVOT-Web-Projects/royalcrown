@@ -285,6 +285,9 @@
 
   .productApplicationHeader {
     font-size: 35px;
+    div{
+      font-family: "made_mirage_regular";
+    }
   }
 
   .productApplicationSection {
@@ -359,6 +362,6 @@
   }
 }
 .productApplicationSection1Header {
-  font-family: "made_mirage_bold";
+  font-family: "made_mirage_regular";
   font-size: 21px;
 }
