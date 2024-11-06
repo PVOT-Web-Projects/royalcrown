@@ -224,9 +224,9 @@
       @media (max-width: 575px) {
         grid-template-columns: repeat(2, 1fr);
       }
-      @media (max-width: 475px) {
-        grid-template-columns: repeat(1, 1fr);
-      }
+      // @media (max-width: 475px) {
+      //   grid-template-columns: repeat(1, 1fr);
+      // }
 
       .productFeaturesContainerInner {
        
@@ -236,6 +236,7 @@
         align-items: center; // Center items horizontally
         text-align: center;
         gap: 1rem;
+        height: -webkit-fill-available;
         width: 100%; // Ensure the container uses full width for better centering
 
         .productImage {

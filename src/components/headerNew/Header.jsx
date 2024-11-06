@@ -896,7 +896,7 @@ const Header = () => {
             >
               <ul 
               id="MainMobile"
-               className={isHome ? "dark" : "light"}>
+               className={isHome ? "dark" : "ligh t"}>
                 <div className="ToggleMainName">
                 <motion.li
                   initial={{ opacity: 0 }}
