@@ -250,7 +250,7 @@ header {
     }
     .mobile-menu {
       display: none !important;
-      position: absolute;
+      position: fixed;
       top: 0px; /* Position below the header */
       left: 0;
       right: 0;
