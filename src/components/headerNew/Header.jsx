@@ -954,9 +954,9 @@ const Header = () => {
                   </div> */}
                   <div
                     className="CategoryToggleInner"
-                    onClick={toggleCategoryMenu}
+                    // onClick={toggleCategoryMenu}
                   >
-                    <Link className="CategorySubClass" href={"/"} onClick={(e) => e.preventDefault()}  >
+                    <Link className="CategorySubClass" href={"/"} onClick={(e) => e.preventDefault()}>
                       Category
                     </Link>
                     {/* Downward pointing triangle */}
