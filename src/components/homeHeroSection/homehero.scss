@@ -130,6 +130,9 @@
         display: flex;
         font-size: 21px;
         margin-top: -80px;
+        @media(max-width: 768px){
+          margin-top: 0px;
+        }
         .TextSectionInnerFirst{
           font-family: "futura_thin";
           font-weight: 550;
@@ -140,6 +143,7 @@
             @media(max-width: 991px){
                 width: 100%;
             }
+            
         }
 
         .text-section-inner-footer {
