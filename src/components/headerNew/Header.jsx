@@ -956,7 +956,7 @@ const Header = () => {
                     className="CategoryToggleInner"
                     onClick={toggleCategoryMenu}
                   >
-                    <Link className="CategorySubClass" href={"/"}>
+                    <Link className="CategorySubClass" href={"/"} onClick={(e) => e.preventDefault()}  >
                       Category
                     </Link>
                     {/* Downward pointing triangle */}
@@ -982,9 +982,13 @@ const Header = () => {
                             <Link
                               className="SubcategoryName"
                               href="#"
-                              onClick={() =>
-                                toggleSubCategoryMenu(categoryIndex)
-                              }
+                              onClick={(e) => {
+                                e.preventDefault(); // Prevent the link from navigating to #
+                                toggleSubCategoryMenu(categoryIndex); // Call your function to toggle subcategory
+                              }}
+                              // onClick={() =>
+                              //   toggleSubCategoryMenu(categoryIndex)
+                              // }
                             >
                               {category.name}
                             </Link>
