@@ -32,7 +32,8 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State to toggle the menu
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState(null);
-
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true); // State to control navbar visibility
+ 
   // Data for each subcategory and its items
   const categoryData = [
     {
@@ -98,6 +99,29 @@ const Header = () => {
   // const closeMobileMenu = () => {
   //   setIsMobileMenuOpen(false);
   // };
+  useEffect(() => {
+    // Set the initial value of isHome based on the current pathname
+    const pathname = window.location.pathname;
+    setIsHome(pathname === "/");
+
+    // Define the scroll handler function
+    const handleScroll = () => {
+      if (!isMenuOpen && window.scrollY > window.innerHeight * 1.2) {
+        setIsNavbarVisible(false); // Hide navbar after 120vh
+      } else {
+        setIsNavbarVisible(true); // Show navbar when scrolling back up
+      }
+    };
+
+    // Attach the scroll event listener
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isMenuOpen]);
+
   const getSubmenuImage = () => {
     switch (hoveredSubmenuItem) {
       case "submenu1":
@@ -179,7 +203,7 @@ const Header = () => {
   };
 
   return (
-    <header>
+    <header className={isNavbarVisible ? "navbar-visible" : "navbar-hidden"}>
       <nav>
         <ul className={isHome ? "dark" : "light"}>
           <motion.li
