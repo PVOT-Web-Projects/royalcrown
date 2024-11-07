@@ -13,6 +13,9 @@
   @media (min-width : 991px) and (max-width : 1900px) {
       overflow-x: hidden;
   }
+  @media(max-width: 991px){
+    margin-bottom: 0rem;
+  }
 
   // @media (max-width : 991px) {
   //     margin: 0;
@@ -37,6 +40,9 @@
       @media (max-width: 575px) {
           font-size: 50px;
       }
+      @media (max-width: 475px) {
+        font-size: 45px;
+    }
   }
 
   .productNumber {
@@ -85,6 +91,7 @@
 
           @media (max-width: 991px) {
               padding: 20px;
+              font-size: 26px;
           }
       }
 
@@ -120,6 +127,15 @@
   @media (max-width: 575px) {
     padding: 1rem;
   }
+  @media(max-width: 475px){
+    top: -45px !important;
+  }
+  @media(max-width: 395px){
+    top: -85px !important;
+  }
+  @media(max-width: 325px){
+    top: -70px !important;
+  }
 
   .products-tabs {
     display: flex;
@@ -145,11 +161,16 @@
     }
 
     @media (max-width: 475px) {
-      font-size: 11px;
+      font-size: 15px;
+      flex-wrap: wrap;
+      gap: 15px;
     }
 
     @media (max-width: 375px) {
-      font-size: 9px;
+      font-size: 15px;
+    }
+    @media (max-width: 330px) {
+      font-size: 12px;
     }
     .tab-item {
       width: 25%;
@@ -162,6 +183,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      @media(max-width: 475px){
+        width: 28%;
+      }
+      @media(max-width: 375px){
+        padding: 5px 0px;
+      }
 
       .tab-content-inner {
         position: relative;
@@ -559,7 +586,7 @@
       object-fit: cover;
     }
     @media (max-width: 575px) {
-      display: flex;
+      display: block;
       justify-content: center;
     }
 
