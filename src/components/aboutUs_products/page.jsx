@@ -506,7 +506,7 @@ const Page = () => {
                 <label htmlFor="color-select" className="colorSelectDropdown">
                   SELECT COLOR
                 </label>
-              </div>A
+              </div>
               {isMobile ? (
                 <Dropdown
                   className="color-select"
