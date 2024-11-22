@@ -1,12 +1,14 @@
 "use client";
 import React, { useState, useMemo, useEffect } from "react";
 import "./aboutUs_product.scss";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
-import products from "./productData.js";
+// import products from "./productData.js";
 import { Dropdown } from "primereact/dropdown";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
+
 
 const Page = () => {
   const [selectedBrand, setSelectedBrand] = useState("all");
@@ -18,13 +20,28 @@ const Page = () => {
   const [selectedColor, setSelectedColor] = useState("all");
   const [isMobile, setIsMobile] = useState(0);
   const [tab, setTab] = useState("");
-  const [currentData, setCurrentData] = useState(products);
+  const [currentData, setCurrentData] = useState([]);
   const pathName = usePathname();
   const [shortTitle, setShortTitle] = useState("");
   const [shortNumber, setShortNumber] = useState("");
   const [shortDescription, setShortDescription] = useState("");
   const [activeTab, setActiveTab] = useState("");
+  const [products, setProducts] = useState([]);
+  const router = useRouter();
   console.log(currentData);
+  useEffect(() => {
+    fetch(
+      "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=30"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data); // Log the fetched data to verify the structure
+        setProducts(data);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch data:", error);
+      });
+  }, []);
 
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
@@ -32,7 +49,9 @@ const Page = () => {
 
     const category = categoryMap[fullPath] || "all";
     setCurrentData(
-      category === "all" ? products : products.filter((data) => data.category === category)
+      category === "all"
+        ? products
+        : products.filter((data) => data.category === category)
     );
     setActiveTab(fullPath);
     const { title, number, description } = getShortDescription(category);
@@ -61,10 +80,6 @@ const Page = () => {
   ];
 
   const categories = [
-    // { label: "Select Categories", value: "all" },
-    // { label: "Decorative", value: "Decorative" },
-    // { label: "Interior Compacts", value: "Decorative Interior Compacts" },
-    // { label: "Exterior Compacts", value: "Decorative Exterior Compacts" },
     { label: "Spotless", value: "Spotless" },
     { label: "Exotic Urbane", value: "Exotic Urbane" },
     { label: "Classic Wood Grains", value: "Classic Wood Grains" },
@@ -76,7 +91,6 @@ const Page = () => {
   ];
 
   const types = [
-    // { label: "Select Types", value: "all" },
     { label: "Spotless", value: "Spotless" },
     { label: "Exotic Urbane", value: "Exotic Urbane" },
     { label: "Classic Wood Grains", value: "Classic Wood Grains" },
@@ -124,11 +138,9 @@ const Page = () => {
   const mappedColor = useMemo(() => {
     return color.map((c) => ({ ...c, className: "myOptionClassName" }));
   }, [color]);
-
   const handleBrandChange = (e) => {
     setSelectedBrand(e.value);
   };
-
   const handleTypeChange = (e) => {
     setSelectedType(e.value);
   };
@@ -136,31 +148,22 @@ const Page = () => {
   const handleCategoryChange = (e) => {
     const value = e.target.value;
     const checked = e.target.checked;
-
     if (checked) {
-      // Add the selected category to the array
       setSelectedCategory((prev) => [...prev, value]);
     } else {
-      // Remove the unselected category from the array
       setSelectedCategory((prev) =>
         prev.filter((category) => category !== value)
       );
     }
   };
-
   const handleFinishChange = (e) => {
     setSelectedFinish(e.value);
   };
-
   const handleSizeChange = (e) => {
     setSelectedSize(e.value);
   };
-
   const handleSizeClick = (sizeValue) => {
-    // Set the selected size
     setSelectedSize(sizeValue);
-
-    // Scroll to the "Explore Collection" section
     const exploreCollectionElement = document.querySelector("#sticky_top");
     if (exploreCollectionElement) {
       exploreCollectionElement.scrollIntoView({
@@ -169,9 +172,6 @@ const Page = () => {
       });
     }
   };
-
-
-  
   const handleThicknessChange = (e) => {
     setSelectedThickness(e.value);
   };
@@ -180,32 +180,42 @@ const Page = () => {
     setSelectedColor(e.value);
   };
 
-  const filteredProducts = currentData.filter((product) => {
-    const brandMatch =
-      selectedBrand === "all" || product.category === selectedBrand;
-    const typeMatch =
-      selectedType === "all" || product.categoryType === selectedType;
-    const colorMatch =
-      selectedColor === "all" || product.categoryColor === selectedColor;
-    const categoryMatch =
-      selectedCategory.length === 0 ||
-      selectedCategory.includes(product.categoryValue); // Multi-select logic
-    const finishMatch =
-      selectedFinish === "all" || product.categoryFinish === selectedFinish;
-    const sizeMatch =
-      selectedSize === "all" || product.categorySize === selectedSize;
-    const thicknessMatch =
-      selectedThickness === "all" ||
-      product.categoryThickness === selectedThickness;
-    return (
-      brandMatch &&
-      typeMatch &&
-      categoryMatch &&
-      finishMatch &&
-      sizeMatch &&
-      thicknessMatch
-    );
-  });
+  const filteredProducts = useMemo(() => {
+    return products.filter((product) => {
+      const brandMatch =
+        selectedBrand === "all" || product.category === selectedBrand;
+      const categoryMatch =
+        selectedCategory.length === 0 ||
+        selectedCategory.includes(product.categoryValue);
+      const finishMatch =
+        selectedFinish === "all" || product.categoryFinish === selectedFinish;
+      const sizeMatch =
+        selectedSize === "all" || product.categorySize === selectedSize;
+      const thicknessMatch =
+        selectedThickness === "all" ||
+        product.categoryThickness === selectedThickness;
+      const colorMatch =
+        selectedColor === "all" || product.categoryColor === selectedColor;
+
+      return (
+        brandMatch &&
+        categoryMatch &&
+        finishMatch &&
+        sizeMatch &&
+        thicknessMatch &&
+        colorMatch
+      );
+    });
+  }, [
+    products,
+    selectedBrand,
+    selectedCategory,
+    selectedFinish,
+    selectedSize,
+    selectedThickness,
+    selectedColor,
+  ]);
+
   const categoryMap = {
     "/products#xylem": "Xylem",
     "/products#royal-crown": "Royal Crown",
@@ -213,52 +223,53 @@ const Page = () => {
     "/products#Qbiss": "QBliss",
     "/products#Crown_Xcl": "Crown XCL",
   };
-  
-  
   const handleTabClick = (newTab, category) => {
     setActiveTab(newTab);
     const filteredData = products.filter((data) => data.category === category);
     setCurrentData(filteredData);
-  
+
     const { number, title, description } = getShortDescription(category);
     setShortNumber(number);
     setShortTitle(title);
     setShortDescription(description);
   };
-  
   const getShortDescription = (category) => {
     switch (category) {
       case "Royal Crown":
         return {
           number: "03",
           title: "Royal Crown",
-          description: "Royal Crown Laminates takes pride in its rich legacy of innovation, cutting-edge technology, and expertise, offering over 450 trendsetting surface designs. Our collection of modern laminates boasts a wide range of finishes and textures in 1mm thickness, empowering you to effortlessly realize your dream decor."
+          description:
+            "Royal Crown Laminates takes pride in its rich legacy of innovation, cutting-edge technology, and expertise, offering over 450 trendsetting surface designs. Our collection of modern laminates boasts a wide range of finishes and textures in 1mm thickness, empowering you to effortlessly realize your dream decor.",
         };
       case "Xylem":
         return {
           number: "02",
           title: "Xylem",
-          description: "Step into the world of Xylem, where innovation is at the heart of everything we do. Xylem represents our premium-grade decorative laminates, meticulously crafted to elevate your surroundings."
+          description:
+            "Step into the world of Xylem, where innovation is at the heart of everything we do. Xylem represents our premium-grade decorative laminates, meticulously crafted to elevate your surroundings.",
         };
-        case "QBliss":
-          return {
-            number: "05",
-            title: "Xylem",
-            description: "Qbiss is a high-pressure structural laminate made from multiple layers of kraft papers, with a thickness range from 2mm to 25mm. Its decorative face on both sides makes it suitable for interior applications like washroom cubicles, locker doors, wall panels, and laboratory furniture. With a density of 1.45gm/cm3, our compacts are exceptionally resilient and require no substrate support in thicknesses over 6mm."
-          };
-          case "Crown":
-            return {
-              number: "05",
-              title: "crown",
-              description: "Crown's Lean Line offers an exquisite and cost-effective range of laminates in a variety of designs, colors, and textures, all in 0.8mm thickness. Manufactured at our highly advanced production facility, the Lean Line guarantees a consistent and exceptional level of quality."
-            };
-            case "Crown XCL":
-              return {
-                number: "06",
-                title: "Crown XCL",
-                description: "XCL- Exterior Compact Laminate is a high pressure laminate, built up from multiple papers of kraft papers to produce laminate in thickness ranging from 2mm to 25mm."
-              };
-         
+      case "QBliss":
+        return {
+          number: "05",
+          title: "Xylem",
+          description:
+            "Qbiss is a high-pressure structural laminate made from multiple layers of kraft papers, with a thickness range from 2mm to 25mm. Its decorative face on both sides makes it suitable for interior applications like washroom cubicles, locker doors, wall panels, and laboratory furniture. With a density of 1.45gm/cm3, our compacts are exceptionally resilient and require no substrate support in thicknesses over 6mm.",
+        };
+      case "Crown":
+        return {
+          number: "05",
+          title: "crown",
+          description:
+            "Crown's Lean Line offers an exquisite and cost-effective range of laminates in a variety of designs, colors, and textures, all in 0.8mm thickness. Manufactured at our highly advanced production facility, the Lean Line guarantees a consistent and exceptional level of quality.",
+        };
+      case "Crown XCL":
+        return {
+          number: "06",
+          title: "Crown XCL",
+          description:
+            "XCL- Exterior Compact Laminate is a high pressure laminate, built up from multiple papers of kraft papers to produce laminate in thickness ranging from 2mm to 25mm.",
+        };
       default:
         return {
           number: "",
@@ -267,27 +278,22 @@ const Page = () => {
         };
     }
   };
-  
-  const visibleTabs = ["Royal Crown", "Crown XCL", "QBliss", "Xylem" , "crown"].filter(
-    (category) => activeTab === "" || activeTab === `/products#${category.replace(" ", "-").toLowerCase()}`
+
+  const visibleTabs = [
+    "Royal Crown",
+    "Crown XCL",
+    "QBliss",
+    "Xylem",
+    "crown",
+  ].filter(
+    (category) =>
+      activeTab === "" ||
+      activeTab === `/products#${category.replace(" ", "-").toLowerCase()}`
   );
-
-
   return (
     <>
-     <div className="productMainContainer">
+      <div className="productMainContainer">
         <div className="productMain">
-          {/* <div className="productHeader">
-            <motion.div
-              className="productHeaderInner"
-              initial={{ y: 100, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
-            >
-              Products
-            </motion.div>
-          </div> */}
           <div className="productNumber">
             <p>{shortNumber}</p>
           </div>
@@ -297,15 +303,11 @@ const Page = () => {
               initial={{ width: "0%" }}
               whileInView={{ width: "100%" }} // Adjust this width to fit your design
               transition={{ duration: 1, ease: "easeOut" }}
-              viewport={{once : true}}
+              viewport={{ once: true }}
             />
-            <div className="productDescriptionHeader">
-              {shortTitle}
-            </div>
+            <div className="productDescriptionHeader">{shortTitle}</div>
             <div className="productDescriptionContent">
-              <p>
-                {shortDescription}
-              </p>
+              <p>{shortDescription}</p>
             </div>
           </div>
         </div>
@@ -322,146 +324,27 @@ const Page = () => {
             Explore Collection
           </motion.div>
           <div className="products-tabs" id="sticky_top">
-          {visibleTabs.map((label) => (
+            {visibleTabs.map((label) => (
               <Link
                 key={label}
                 href={`/products#${label.replace(" ", "-").toLowerCase()}`}
                 scroll={false}
-                className={`tab-item ${activeTab === `/products#${label.replace(" ", "-").toLowerCase()}` ? "active" : ""}`}
-                onClick={() => handleTabClick(`/products#${label.replace(" ", "-").toLowerCase()}`, label)}
+                className={`tab-item ${
+                  activeTab ===
+                  `/products#${label.replace(" ", "-").toLowerCase()}`
+                    ? "active"
+                    : ""
+                }`}
+                onClick={() =>
+                  handleTabClick(
+                    `/products#${label.replace(" ", "-").toLowerCase()}`,
+                    label
+                  )
+                }
               >
                 <div className="tab-content-inner">{label}</div>
               </Link>
             ))}
-            {/* {activeTab === "" && (
-              <>
-                <Link
-                  href="/products#royal-crown"
-                  scroll={false}
-                  className={`tab-item ${
-                    activeTab === "/products#royal-crown" ? "active" : ""
-                  }`}
-                  onClick={() =>
-                    handleTabClick("/products#royal-crown", "Royal Crown")
-                  }
-                >
-                  <div className="tab-content-inner">Royal Crown</div>
-                </Link>
-                <Link
-                  href="/products#crown"
-                  scroll={false}
-                  className={`tab-item ${
-                    activeTab === "/products#crown" ? "active" : ""
-                  }`}
-                  onClick={() => handleTabClick("/products#crown", "Crown XCL")}
-                >
-                  <div className="tab-content-inner">CROWN</div>
-                </Link>
-                <Link
-                  href="/products#Qbiss"
-                  scroll={false}
-                  className={`tab-item ${
-                    activeTab === "/products#Qbiss" ? "active" : ""
-                  }`}
-                  onClick={() => handleTabClick("/products#Qbiss", "QBliss")}
-                >
-                  <div className="tab-content-inner">Qbiss</div>
-                </Link>
-                <Link
-                  href="/products#xylem"
-                  scroll={false}
-                  className={`tab-item ${
-                    activeTab === "/products#xylem" ? "active" : ""
-                  }`}
-                  onClick={() => handleTabClick("/products#xylem", "Xylem")}
-                >
-                  <div className="tab-content-inner">Xylem</div>
-                </Link>
-                <Link
-                href="/products#Crown_Xcl"
-                scroll={false}
-                className={`tab-item ${
-                  activeTab === "/products#Crown_Xcl" ? "active" : ""
-                }`}
-                onClick={() =>
-                  handleTabClick("/products#Crown_Xcl", "Crown XCL")
-                }
-              >
-                <div className="tab-content-inner">Crown XCL</div>
-              </Link>
-              </>
-            )}
-
-            {activeTab !== "" && (
-              <>
-                {activeTab === "/products#royal-crown" && (
-                  <Link
-                    href="/products#royal-crown"
-                    scroll={false}
-                    className={`tab-item ${
-                      activeTab === "/products#royal-crown" ? "active" : ""
-                    }`}
-                    onClick={() =>
-                      handleTabClick("/products#royal-crown", "Royal Crown")
-                    }
-                  >
-                    <div className="tab-content-inner">Royal Crown</div>
-                  </Link>
-                )}
-                {activeTab === "/products#crown" && (
-                  <Link
-                    href="/products#crown"
-                    scroll={false}
-                    className={`tab-item ${
-                      activeTab === "/products#crown" ? "active" : ""
-                    }`}
-                    onClick={() =>
-                      handleTabClick("/products#crown", "Crown XCL")
-                    }
-                  >
-                    <div className="tab-content-inner">CROWN</div>
-                  </Link>
-                )}
-                {activeTab === "/products#Qbiss" && (
-                  <Link
-                    href="/products#Qbiss"
-                    scroll={false}
-                    className={`tab-item ${
-                      activeTab === "/products#Qbiss" ? "active" : ""
-                    }`}
-                    onClick={() => handleTabClick("/products#Qbiss", "QBliss")}
-                  >
-                    <div className="tab-content-inner">Qbiss</div>
-                  </Link>
-                )}
-                {activeTab === "/products#xylem" && (
-                  <Link
-                    href="/products#xylem"
-                    scroll={false}
-                    className={`tab-item ${
-                      activeTab === "/products#xylem" ? "active" : ""
-                    }`}
-                    onClick={() => handleTabClick("/products#xylem", "Xylem")}
-                  >
-                    <div className="tab-content-inner">Xylem</div>
-                  </Link>
-                )}
-                 {activeTab === "/products#Crown_Xcl" && (
-                 <Link
-                href="/products#Crown_Xcl"
-                scroll={false}
-                className={`tab-item ${
-                  activeTab === "/products#Crown_Xcl" ? "active" : ""
-                }`}
-                onClick={() =>
-                  handleTabClick("/products#Crown_Xcl", "Crown XCL")
-                }
-              >
-                <div className="tab-content-inner">Crown XCL</div>
-              </Link>
-                )}
-              </>
-            )} */}
           </div>
         </div>
 
@@ -530,8 +413,7 @@ const Page = () => {
             </div>
 
             <div className="dropdown1">
-              <div className="dropdown-label">
-              </div>
+              <div className="dropdown-label"></div>
               <Dropdown
                 id="finish-select"
                 options={finish}
@@ -615,10 +497,7 @@ const Page = () => {
           </div>
           <div className="product_container">
             {filteredProducts.map((product, index) => {
-              // Determine if the tab is active
               const isTabActive = !!activeTab;
-
-              // Only apply "big" or "tall" classNames if not in the tab view
               const className = isTabActive
                 ? "" // Normal size for tab view
                 : index === 9
@@ -631,29 +510,41 @@ const Page = () => {
 
               return (
                 <div key={index} className={`AboutUs_product ${className}`}>
-                  <Link href={"/product-information"}>
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      className="ProductImage"
-                    />
-                    <div className="overlay">
-                      <div>
-                        <svg
-                          width="40"
-                          height="40"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          fill="white"
-                          className="aboutUsProductSvg"
-                        >
-                          <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
-                        </svg>
-                      </div>
-                      <div className="AnchorTag">Know More</div>
+                  <Image
+                    src={product.images[0].src}
+                    alt={product.name}
+                    className="ProductImage"
+                    width={500}
+                    height={600}
+                  />
+                  <div className="overlay">
+                    <div>
+                      <svg
+                        width="40"
+                        height="40"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        fill="white"
+                        className="aboutUsProductSvg"
+                      >
+                        <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
+                      </svg>
                     </div>
-                  </Link>
+                    {/* <div className="AnchorTag" onClick={() =>
+                         router.push(`/product-information?id=${product.id}`)}>Know More</div> */}
+                    <div
+                      className="AnchorTag"
+                      onClick={() => {
+                        console.log("Product ID:", product.id);
+                        router.push(`/product-information#${product.id}`);
+                        // onClick={() => router.push(`/Single_Project_Layout#${data.id}`)}
+                      }}
+                    >
+                      Know More
+                    </div>
+                  </div>
+                  {/* </Link> */}
                 </div>
               );
             })}
@@ -663,5 +554,4 @@ const Page = () => {
     </>
   );
 };
-
 export default Page;

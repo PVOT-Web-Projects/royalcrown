@@ -188,9 +188,16 @@
       max-width: 100%;
       height: auto;
       display: block;
-
+      @media(min-width: 1500px){
+        height: 75vh;
+        width: 100%;
+        object-fit: cover;
+      }
       @media (max-width: 1440px) {
+        // height: 83vh;
         height: 83vh;
+        width: 100%;
+        object-fit: cover;
       }
 
       @media (max-width: 1024px) {

@@ -3,6 +3,7 @@ import Footer2 from "@/components/footers/footer2/Footer2";
 import Header from "../components/headerNew/Header";
 // import Header1 from "@/components/headers/index"
 import "./globals.scss";
+import Script from 'next/script'
 // import Footer from "@/components/footers/footer/Footer";
 
 export const metadata = {
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
         {children}
         {/* <Footer /> */}
         <Footer2 />
+        <Script src="http://localhost/humbeeassets/js/style.js" strategy="lazyOnload" />
       </body>
     </html>
   );

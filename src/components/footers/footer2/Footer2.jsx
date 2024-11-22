@@ -264,7 +264,8 @@ const Footer2 = ({ bgColor }) => {
         </div>
       </div>
       <Image src={border} alt="border" className="ImageBorder"/>
-      <div className="copyright">© 2024 All Rights Reserved</div>
+      <div className="copyright">© 2024 All Rights Reserved <span id="imageContainer"></span></div>
+      {/* <div className="devComp" id="image1"></div> */}
     </footer>
   );
 };
