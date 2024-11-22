@@ -31,7 +31,7 @@ const Page = () => {
   console.log(currentData);
   useEffect(() => {
     fetch(
-      "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=30"
+      // "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=30"
     )
       .then((res) => res.json())
       .then((data) => {
