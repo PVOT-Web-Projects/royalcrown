@@ -14,7 +14,7 @@ import ServicesPageCard from "@/components/InsightsPageCards/insightsPageCards";
 import TimelineHome from "@/components/timelinehome/page";
 import HomeHeroSection from "@/components/homeHeroSection/page";
 import NewThreeDSlider from "@/components/newthreedslider/newthreedslider";
-
+import CategoryLeftRightInsights from "@/components/categoryLeftRightInsights/CategoryLeftRightInsights";
 export default function Home() {
   const paragraph =
     "Sturdily beautiful. Warm, bright. Naturally comforting. Timelessly modern.";
@@ -28,7 +28,8 @@ export default function Home() {
       <NewRevealText paragraph={paragraph} />
       <PlyMarquee />
       <RoyalCrownSlider />
-      <ServicesPageCard />
+      <CategoryLeftRightInsights />
+      {/* <ServicesPageCard /> */}
       <Certification />
       <TimelineHome />
       <div className="Form_Page">
