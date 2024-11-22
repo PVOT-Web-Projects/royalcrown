@@ -1,8 +1,7 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import Image from "next/image";
 import "./productslider.scss";
-import { motion, useAnimation } from "framer-motion";
 import { usePathname, useSearchParams } from "next/navigation";
 
 const SlidesContent = ({ slide }) => (
@@ -105,6 +104,7 @@ export default function ProductInfoSlider() {
 
   
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <div className="ProductInfoSliderMain">
       <div className="MainContainer" style={{ marginTop: "50px" }}>
         <div className="abc left">
@@ -154,6 +154,7 @@ export default function ProductInfoSlider() {
         </div>
       </div>
     </div>
+    </Suspense>
   );
 }
 
