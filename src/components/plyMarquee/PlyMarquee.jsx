@@ -44,8 +44,8 @@ const PlyMarquee = () => {
             <div className="ply_item top1">
               <div className="ply_info">
                 <div className="info_left">
-                  <div className="num">6038</div>
-                  <div className="text">tw</div>
+                  <p className="num">6038</p>
+                  <p className="text">tw</p>
                 </div>
                 <div className="info_right">
                   <div className="ply_name">Mauri</div>
@@ -57,12 +57,12 @@ const PlyMarquee = () => {
             <div className="ply_item bottom1">
               <div className="ply_info">
                 <div className="info_left">
-                  <div className="num">6038</div>
-                  <div className="text">tw</div>
+                  <p className="num">6038</p>
+                  <p className="text">tw</p>
                 </div>
                 <div className="info_right">
-                  <div className="ply_name">Mauri</div>
-                  <div className="ply_wood">true wood</div>
+                  <p className="ply_name">Mauri</p>
+                  <p className="ply_wood">true wood</p>
                 </div>
               </div>
               <Image src={img2} alt="ply" />
@@ -70,8 +70,8 @@ const PlyMarquee = () => {
             <div className="ply_item top1">
               <div className="ply_info">
                 <div className="info_left">
-                  <div className="num">6038</div>
-                  <div className="text">tw</div>
+                  <p className="num">6038</p>
+                  <p className="text">tw</p>
                 </div>
                 <div className="info_right">
                   <div className="ply_name">Mauri</div>
@@ -83,8 +83,8 @@ const PlyMarquee = () => {
             <div className="ply_item bottom1">
               <div className="ply_info">
                 <div className="info_left">
-                  <div className="num">6038</div>
-                  <div className="text">tw</div>
+                  <p className="num">6038</p>
+                  <p className="text">tw</p>
                 </div>
                 <div className="info_right">
                   <div className="ply_name">Mauri</div>
@@ -96,12 +96,12 @@ const PlyMarquee = () => {
             <div className="ply_item top1">
               <div className="ply_info">
                 <div className="info_left">
-                  <div className="num">6038</div>
-                  <div className="text">tw</div>
+                  <p className="num">6038</p>
+                  <p className="text">tw</p>
                 </div>
                 <div className="info_right">
-                  <div className="ply_name">Mauri</div>
-                  <div className="ply_wood">true wood</div>
+                  <p className="ply_name">Mauri</p>
+                  <p className="ply_wood">true wood</p>
                 </div>
               </div>
               <Image src={img5} alt="ply" />
@@ -109,8 +109,8 @@ const PlyMarquee = () => {
             <div className="ply_item bottom1">
               <div className="ply_info">
                 <div className="info_left">
-                  <div className="num">6038</div>
-                  <div className="text">tw</div>
+                  <p className="num">6038</p>
+                  <p className="text">tw</p>
                 </div>
                 <div className="info_right">
                   <div className="ply_name">Mauri</div>
@@ -122,8 +122,8 @@ const PlyMarquee = () => {
             <div className="ply_item top1">
               <div className="ply_info">
                 <div className="info_left">
-                  <div className="num">6038</div>
-                  <div className="text">tw</div>
+                  <p className="num">6038</p>
+                  <p className="text">tw</p>
                 </div>
                 <div className="info_right">
                   <div className="ply_name">Mauri</div>
@@ -135,8 +135,8 @@ const PlyMarquee = () => {
             <div className="ply_item bottom1">
               <div className="ply_info">
                 <div className="info_left">
-                  <div className="num">6038</div>
-                  <div className="text">tw</div>
+                  <p className="num">6038</p>
+                  <p className="text">tw</p>
                 </div>
                 <div className="info_right">
                   <div className="ply_name">Mauri</div>
