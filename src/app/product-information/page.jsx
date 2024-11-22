@@ -1,4 +1,5 @@
 // import KeyFeaturesInfo from "@/components/key_features_info/page";
+"use client"
 import ProductInfoSlider from "@/components/productinfoslider/page";
 import RelatedProductInfo from "@/components/related_products_info/page";
 import SocialPage from "@/components/socialPage/socialpage";
