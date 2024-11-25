@@ -22,7 +22,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import PageTransition from "../pageTransition/PageTransition";
-import { Button } from "@mui/material";
 
 const Header = () => {
   const [isHome, setIsHome] = useState(true);
@@ -33,7 +32,8 @@ const Header = () => {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState(null);
   const [isNavbarVisible, setIsNavbarVisible] = useState(true); // State to control navbar visibility
- 
+  const [lastScrollY, setLastScrollY] = useState(0); // Track last scroll position
+  
   // Data for each subcategory and its items
   const categoryData = [
     {
@@ -99,28 +99,70 @@ const Header = () => {
   // const closeMobileMenu = () => {
   //   setIsMobileMenuOpen(false);
   // };
+  // useEffect(() => {
+  //   // Set the initial value of isHome based on the current pathname
+  //   const pathname = window.location.pathname;
+  //   setIsHome(pathname === "/");
+
+  //   // Define the scroll handler function
+  //   const handleScroll = () => {
+  //     if (!isMenuOpen && window.scrollY > window.innerHeight * 1.2) {
+  //       setIsNavbarVisible(false); // Hide navbar after 120vh
+  //     } else {
+  //       setIsNavbarVisible(true); // Show navbar when scrolling back up
+  //     }
+  //   };
+
+  //   // Attach the scroll event listener
+  //   window.addEventListener("scroll", handleScroll);
+
+  //   // Cleanup on component unmount
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, [isMenuOpen]);
+  
   useEffect(() => {
     // Set the initial value of isHome based on the current pathname
     const pathname = window.location.pathname;
     setIsHome(pathname === "/");
-
+  
+    // let lastScrollY = window.scrollY; // Track the last scroll position
+  
     // Define the scroll handler function
-    const handleScroll = () => {
-      if (!isMenuOpen && window.scrollY > window.innerHeight * 1.2) {
-        setIsNavbarVisible(false); // Hide navbar after 120vh
-      } else {
-        setIsNavbarVisible(true); // Show navbar when scrolling back up
-      }
-    };
-
+      // Define the scroll handler function
+      const handleScroll = () => {
+        const scrollY = window.scrollY;
+        const isScrolledBeyond40vh = scrollY > window.innerHeight * 0.2; // 40% of viewport height
+  
+        if (!isScrolledBeyond40vh) {
+          // If we are within the first 40vh, the navbar must remain visible
+          setIsNavbarVisible(true);
+        } else {
+          // Otherwise, toggle visibility based on scroll direction
+          if (scrollY > lastScrollY) {
+            // Scrolling down, hide the navbar
+            setIsNavbarVisible(false);
+          } else if (scrollY < lastScrollY) {
+            // Scrolling up, show the navbar
+            setIsNavbarVisible(true);
+          }
+        }
+  
+        // Update the last scroll position to detect scroll direction
+        setLastScrollY(scrollY);
+      };
+  
     // Attach the scroll event listener
     window.addEventListener("scroll", handleScroll);
-
+  
     // Cleanup on component unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [isMenuOpen]);
+  }, [lastScrollY, isMenuOpen]);
+  
+
 
   const getSubmenuImage = () => {
     switch (hoveredSubmenuItem) {
