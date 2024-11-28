@@ -54,10 +54,10 @@ export default function Home() {
   return (
     <>
 
-      {/* <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait">
         {isLoading && <Preloader counter={isCounter} />}
-      </AnimatePresence>  */}
-      {/* {width && (
+      </AnimatePresence> 
+      {width && (
         <>
           {width > 575 ? (
             <HomeBanner loadImage={handleLoad} counter={handleCounter} />
@@ -65,10 +65,10 @@ export default function Home() {
             <HomeBanner1 loadImage={handleLoad} counter={handleCounter} />
           )}
         </>
-      )} */}
+      )}
       {/* FRAMES ENDED */}
       <main className="main">
-        <HeroBanner />
+        {/* <HeroBanner /> */}
         <HomeHeroSection />
         <NewThreeDSlider />
         {/* <ThreeSlider /> */}

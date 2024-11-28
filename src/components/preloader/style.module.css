@@ -3,7 +3,7 @@
   width: 100vw;
   position: fixed;
   z-index: 99999;
-  background-color: #D5CBA3;
+  background-color: #FFEEE2;
 }
 
 .logoImageOuter{
@@ -26,7 +26,13 @@
 .border{
   width:auto !important;
 }
-
+.LoaderText{
+  display: flex;
+  justify-content: left;
+  padding: 0 50px;
+  align-items: end;
+  
+}
 
 .circle {
  
@@ -82,7 +88,11 @@
   right: 0;
   margin: auto;
   border-radius: 50%;
-  box-shadow: rgb(255 255 255 / 28%) 0px 2px 4px, rgb(255 255 255 / 46%) 0px 7px 13px -3px, rgb(255 255 255 / 41%) 0px -3px 0px inset;
+  /* box-shadow: rgb(255 255 255 / 28%) 0px 2px 4px, rgb(255 255 255 / 46%) 0px 7px 13px -3px, rgb(255 255 255 / 41%) 0px -3px 0px inset; */
+  box-shadow: rgba(91, 53, 36, 0.28) 0px 2px 4px, 
+            rgba(91, 53, 36, 0.46) 0px 7px 13px -3px, 
+            rgba(91, 53, 36, 0.41) 0px -3px 0px inset;
+
   animation: rotate 2.0s infinite linear;
 }
 

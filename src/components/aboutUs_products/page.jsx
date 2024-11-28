@@ -1,5 +1,7 @@
 "use client";
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 import "./aboutUs_product.scss";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -9,8 +11,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
-
 const Page = () => {
+  const itemsPerPage = 25;
+  const [pageNumber, setPageNumber] = useState(1);
   const [selectedBrand, setSelectedBrand] = useState("all");
   const [selectedType, setSelectedType] = useState("all");
   const [selectedCategory, setSelectedCategory] = useState([]);
@@ -20,45 +23,78 @@ const Page = () => {
   const [selectedColor, setSelectedColor] = useState("all");
   const [isMobile, setIsMobile] = useState(0);
   const [tab, setTab] = useState("");
-  const [currentData, setCurrentData] = useState([]);
   const pathName = usePathname();
   const [shortTitle, setShortTitle] = useState("");
+  const [selectedTag, setSelectedTag] = useState("all"); // Initially no tag selected
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [shortNumber, setShortNumber] = useState("");
   const [shortDescription, setShortDescription] = useState("");
   const [activeTab, setActiveTab] = useState("");
   const [products, setProducts] = useState([]);
+  const [currentData, setCurrentData] = useState([]);
   const router = useRouter();
+    // Create a ref to the element you want to scroll to
+    const projectsRef = useRef(null);
   console.log(currentData);
   useEffect(() => {
     fetch(
-      // "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=30"
+      // "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/"
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data); // Log the fetched data to verify the structure
+        console.log("API Response:", data); // Log the response for debugging
         setProducts(data);
+        setFilteredProducts(data); // Initially show all products
       })
       .catch((error) => {
         console.error("Failed to fetch data:", error);
       });
   }, []);
 
-  useEffect(() => {
-    const hash = typeof window !== "undefined" ? window.location.hash : "";
-    const fullPath = pathName + hash;
+  // useEffect(() => {
+  //   const hash = typeof window !== "undefined" ? window.location.hash : "";
+  //   const fullPath = pathName + hash;
 
-    const category = categoryMap[fullPath] || "all";
-    setCurrentData(
-      category === "all"
-        ? products
-        : products.filter((data) => data.category === category)
-    );
-    setActiveTab(fullPath);
-    const { title, number, description } = getShortDescription(category);
-    setShortTitle(title);
-    setShortNumber(number);
-    setShortDescription(description);
-  }, [pathName]);
+  //   const category = categoryMap[fullPath] || "all";
+  //   setCurrentData(
+  //     category === "all"
+  //       ? products
+  //       : products.filter((data) => data.category === category)
+  //   );
+  //   setActiveTab(fullPath);
+  //   const { title, number, description } = getShortDescription(category);
+  //   setShortTitle(title);
+  //   setShortNumber(number);
+  //   setPageNumber(1);
+  //   setShortDescription(description);
+  // }, [pathName]);
+    // Handle path changes and category filtering
+    // Handle path changes and category filtering
+    useEffect(() => {
+      const hash = typeof window !== "undefined" ? window.location.hash : "";
+      const categorySlug = hash ? hash.replace("#", "") : ""; // Get category slug from the URL hash
+      console.log("Selected Category from URL Hash:", categorySlug);
+      if (categorySlug) {
+        const filteredData = products.filter((product) =>
+          product.categories.some((category) =>
+            category.slug.toLowerCase() === categorySlug.toLowerCase()
+          )
+        );
+        // Log what products are being selected
+        console.log("Filtered Data Based on Category:", filteredData); 
+    
+        setCurrentData(filteredData);
+      } else {
+        setCurrentData(products);
+      }
+    }, [pathName, products]);
+    
+  const handlePageChange = (event, value) => {
+    setPageNumber(value);
+    projectsRef.current.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -71,13 +107,9 @@ const Page = () => {
     };
   }, []);
 
-  const brands = [
-    { label: "All Brands", value: "all" },
-    { label: "Xylem", value: "Xylem" },
-    { label: "Royal Crown", value: "Royal Crown" },
-    { label: "QBliss", value: "QBliss" },
-    { label: "Crown XCL", value: "Crown XCL" },
-  ];
+  const lastIndex = pageNumber * itemsPerPage;
+  const firstIndex = lastIndex - itemsPerPage;
+  const displayedData = currentData.slice(firstIndex, lastIndex);
 
   const categories = [
     { label: "Spotless", value: "Spotless" },
@@ -118,7 +150,7 @@ const Page = () => {
   ];
 
   const thickness = [
-    { label: "0.9 MM", value: "0.9 MM" },
+    { label: "0.8 mm", value: "0.8 mm" },
     { label: "0.4 MM", value: "0.4 MM" },
     { label: "1.2 MM", value: "1.2 MM" },
     { label: "2.5 MM", value: "2.5 MM" },
@@ -138,9 +170,6 @@ const Page = () => {
   const mappedColor = useMemo(() => {
     return color.map((c) => ({ ...c, className: "myOptionClassName" }));
   }, [color]);
-  const handleBrandChange = (e) => {
-    setSelectedBrand(e.value);
-  };
   const handleTypeChange = (e) => {
     setSelectedType(e.value);
   };
@@ -149,6 +178,7 @@ const Page = () => {
     const value = e.target.value;
     const checked = e.target.checked;
     if (checked) {
+      console.log("Category Selected:", value); // Log the selected category
       setSelectedCategory((prev) => [...prev, value]);
     } else {
       setSelectedCategory((prev) =>
@@ -180,7 +210,7 @@ const Page = () => {
     setSelectedColor(e.value);
   };
 
-  const filteredProducts = useMemo(() => {
+  const filteredProducts1 = useMemo(() => {
     return products.filter((product) => {
       const brandMatch =
         selectedBrand === "all" || product.category === selectedBrand;
@@ -193,17 +223,22 @@ const Page = () => {
         selectedSize === "all" || product.categorySize === selectedSize;
       const thicknessMatch =
         selectedThickness === "all" ||
-        product.categoryThickness === selectedThickness;
+        // slide.attributes[2].terms[0].name
+        product.attributes[2].terms[0].name === selectedThickness;
       const colorMatch =
         selectedColor === "all" || product.categoryColor === selectedColor;
-
+        const typeMatch = selectedType === "all" || product.categoryType === selectedType;
+        console.log("Checking Product:", product); // Log each product being checked
+        console.log("Matches Filters:", brandMatch, categoryMatch, finishMatch, sizeMatch, thicknessMatch, colorMatch, typeMatch); // Log filter match status
+    
       return (
         brandMatch &&
         categoryMatch &&
         finishMatch &&
         sizeMatch &&
         thicknessMatch &&
-        colorMatch
+        colorMatch && 
+        typeMatch
       );
     });
   }, [
@@ -214,6 +249,7 @@ const Page = () => {
     selectedSize,
     selectedThickness,
     selectedColor,
+    selectedType, // Added selectedType to the dependencies of useMemo
   ]);
 
   const categoryMap = {
@@ -278,7 +314,6 @@ const Page = () => {
         };
     }
   };
-
   const visibleTabs = [
     "Royal Crown",
     "Crown XCL",
@@ -290,6 +325,27 @@ const Page = () => {
       activeTab === "" ||
       activeTab === `/products#${category.replace(" ", "-").toLowerCase()}`
   );
+   // Handle when user selects a tag from dropdown
+   const handleTagChange = (e) => {
+    setSelectedTag(e.value);
+  };
+
+  useEffect(() => {
+    if (selectedTag === "all") {
+      setFilteredProducts(products);
+    } else {
+      const filtered = products.filter((product) => {
+        console.log('Checking product:', product); // Log each product
+        return product.type && product.type.some(tag => {
+          console.log('Checking tag:', tag.slug, selectedTag); // Log each tag
+          return tag.slug === selectedTag;
+        });
+      });
+      console.log('Filtered Products:', filtered); // Log the filtered result
+      setFilteredProducts(filtered);
+    }
+  }, [selectedTag, products]);
+  
   return (
     <>
       <div className="productMainContainer">
@@ -312,7 +368,6 @@ const Page = () => {
           </div>
         </div>
       </div>
-
       <div className="first_top">
         <div id="sticky_top" className="products_name">
           <motion.div
@@ -358,8 +413,8 @@ const Page = () => {
               </div>
               {isMobile ? (
                 <Dropdown
-                  id="type-select"
-                  options={types}
+                  id="tag-select"
+                  options={categories}
                   value={selectedType}
                   onChange={handleTypeChange}
                   placeholder="Select Type"
@@ -411,7 +466,6 @@ const Page = () => {
                 </div>
               )}
             </div>
-
             <div className="dropdown1">
               <div className="dropdown-label"></div>
               <Dropdown
@@ -423,7 +477,6 @@ const Page = () => {
                 className="category-select"
               />
             </div>
-
             <div className="dropdown1">
               <div className="dropdown-label">
                 <label htmlFor="size-select" className="colorSelectDropdown">
@@ -495,61 +548,114 @@ const Page = () => {
               )}
             </div>
           </div>
-          <div className="product_container">
-            {filteredProducts.map((product, index) => {
-              const isTabActive = !!activeTab;
-              const className = isTabActive
-                ? "" // Normal size for tab view
-                : index === 9
-                ? "big"
-                : [
-                    0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 22, 23, 25,
-                  ].includes(index)
-                ? "tall"
-                : "";
-
-              return (
-                <div key={index} className={`AboutUs_product ${className}`}>
-                  <Image
-                    src={product.images[0].src}
-                    alt={product.name}
-                    className="ProductImage"
-                    width={500}
-                    height={600}
-                  />
-                  <div className="overlay">
-                    <div>
-                      <svg
-                        width="40"
-                        height="40"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        fill="white"
-                        className="aboutUsProductSvg"
-                      >
-                        <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
-                      </svg>
-                    </div>
-                    {/* <div className="AnchorTag" onClick={() =>
-                         router.push(`/product-information?id=${product.id}`)}>Know More</div> */}
-                    <div
-                      className="AnchorTag"
-                      onClick={() => {
-                        console.log("Product ID:", product.id);
-                        router.push(`/product-information#${product.id}`);
-                        // onClick={() => router.push(`/Single_Project_Layout#${data.id}`)}
-                      }}
+          <div className="product_container" ref={projectsRef}>
+            {/* {filteredProducts.map((product, index) => ( */}
+            {displayedData.map((product, index) => (
+              <div key={index} className={`AboutUs_product`}>
+                <Image
+                  src={product.images[0].src}
+                  alt={product.name}
+                  className="ProductImage"
+                  width={500}
+                  height={600}
+                />
+                <div className="overlay">
+                  <div>
+                    <svg
+                      width="40"
+                      height="40"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      fill="white"
+                      className="aboutUsProductSvg"
                     >
-                      Know More
-                    </div>
+                      <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
+                    </svg>
                   </div>
-                  {/* </Link> */}
+                  <div
+                    className="AnchorTag"
+                    onClick={() => {
+                      console.log("Product ID:", product.id);
+                      router.push(`/product-information#${product.id}`);
+                    }}
+                  >
+                    Know More
+                  </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
+          
         </div>
+        {currentData.length > 0 && (
+            <div>
+              <Stack spacing={2} justifyContent="center">
+                <Pagination
+                  count={Math.ceil(currentData.length / itemsPerPage)}
+                  color="primary"
+                  shape="rounded"
+                  page={pageNumber}
+                  size="small"
+                  variant="outlined"
+                  onChange={handlePageChange}
+                  hidePrevButton
+                  hideNextButton
+                  sx={{
+                    "& .MuiPaginationItem-root": {
+                      backgroundColor: "transparent",
+                      border: "1px solid #5b3524",
+                      color: "#5b3524",
+                      margin: "0 10px",
+                      padding: "18px 13px",
+                      fontSize: "20px",
+                      borderRadius: "0px",
+                      transition: "background-color 0.3s, color 0.3s",
+
+                      "@media (max-width: 768px)": {
+                        margin: "0 9px",
+                        padding: "12px 8px",
+                        fontSize: "15px",
+                      },
+
+                      "@media (max-width: 425px)": {
+                        margin: "0 8px",
+                        padding: "12px 8px",
+                        fontSize: "12px",
+                      },
+
+                      "&.Mui-selected": {
+                        backgroundColor: "#5b3524",
+                        margin: "0 10px",
+                        padding: "18px 13px",
+                        fontSize: "20px",
+                        color: "white",
+                        border: "none",
+
+                        "@media (max-width: 768px)": {
+                          margin: "0 9px",
+                          padding: "12px 10px",
+                          fontSize: "15px",
+                        },
+
+                        "@media (max-width: 425px)": {
+                          margin: "0 8px",
+                          padding: "12px 10px",
+                          fontSize: "12px",
+                        },
+                      },
+
+                      "&.Mui-selected:hover": {
+                        backgroundColor: "#c1c0c0",
+                        color: "black",
+                        border: "none",
+                      },
+                    },
+                  }}
+                />
+              </Stack>
+            </div>
+          )}
       </div>
     </>
   );
