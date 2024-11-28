@@ -91,7 +91,7 @@ export default function ProductInfoSlider() {
   const handleSingleProject = async (hashUrl) => {
     try {
       const response = await fetch(
-        // `https://vanras.humbeestudio.xyz/wp-json/wc/store/products/${hashUrl}/`
+        `https://vanras.humbeestudio.xyz/wp-json/wc/store/products/${hashUrl}/`
       );
       const data = await response.json();
       setSlidesData(Array.isArray(data) ? data : [data]); // Ensure `slidesData` is always an array

@@ -33,12 +33,12 @@ const Page = () => {
   const [products, setProducts] = useState([]);
   const [currentData, setCurrentData] = useState([]);
   const router = useRouter();
-    // Create a ref to the element you want to scroll to
-    const projectsRef = useRef(null);
+  // Create a ref to the element you want to scroll to
+  const projectsRef = useRef(null);
   console.log(currentData);
   useEffect(() => {
     fetch(
-      // "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/"
+      "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100"
     )
       .then((res) => res.json())
       .then((data) => {
@@ -68,27 +68,28 @@ const Page = () => {
   //   setPageNumber(1);
   //   setShortDescription(description);
   // }, [pathName]);
-    // Handle path changes and category filtering
-    // Handle path changes and category filtering
-    useEffect(() => {
-      const hash = typeof window !== "undefined" ? window.location.hash : "";
-      const categorySlug = hash ? hash.replace("#", "") : ""; // Get category slug from the URL hash
-      console.log("Selected Category from URL Hash:", categorySlug);
-      if (categorySlug) {
-        const filteredData = products.filter((product) =>
-          product.categories.some((category) =>
+  // Handle path changes and category filtering
+  // Handle path changes and category filtering
+  useEffect(() => {
+    const hash = typeof window !== "undefined" ? window.location.hash : "";
+    const categorySlug = hash ? hash.replace("#", "") : ""; // Get category slug from the URL hash
+    console.log("Selected Category from URL Hash:", categorySlug);
+    if (categorySlug) {
+      const filteredData = products.filter((product) =>
+        product.categories.some(
+          (category) =>
             category.slug.toLowerCase() === categorySlug.toLowerCase()
-          )
-        );
-        // Log what products are being selected
-        console.log("Filtered Data Based on Category:", filteredData); 
-    
-        setCurrentData(filteredData);
-      } else {
-        setCurrentData(products);
-      }
-    }, [pathName, products]);
-    
+        )
+      );
+      // Log what products are being selected
+      console.log("Filtered Data Based on Category:", filteredData);
+
+      setCurrentData(filteredData);
+    } else {
+      setCurrentData(products);
+    }
+  }, [pathName, products]);
+
   const handlePageChange = (event, value) => {
     setPageNumber(value);
     projectsRef.current.scrollIntoView({
@@ -227,17 +228,27 @@ const Page = () => {
         product.attributes[2].terms[0].name === selectedThickness;
       const colorMatch =
         selectedColor === "all" || product.categoryColor === selectedColor;
-        const typeMatch = selectedType === "all" || product.categoryType === selectedType;
-        console.log("Checking Product:", product); // Log each product being checked
-        console.log("Matches Filters:", brandMatch, categoryMatch, finishMatch, sizeMatch, thicknessMatch, colorMatch, typeMatch); // Log filter match status
-    
+      const typeMatch =
+        selectedType === "all" || product.categoryType === selectedType;
+      console.log("Checking Product:", product); // Log each product being checked
+      console.log(
+        "Matches Filters:",
+        brandMatch,
+        categoryMatch,
+        finishMatch,
+        sizeMatch,
+        thicknessMatch,
+        colorMatch,
+        typeMatch
+      ); // Log filter match status
+
       return (
         brandMatch &&
         categoryMatch &&
         finishMatch &&
         sizeMatch &&
         thicknessMatch &&
-        colorMatch && 
+        colorMatch &&
         typeMatch
       );
     });
@@ -325,8 +336,8 @@ const Page = () => {
       activeTab === "" ||
       activeTab === `/products#${category.replace(" ", "-").toLowerCase()}`
   );
-   // Handle when user selects a tag from dropdown
-   const handleTagChange = (e) => {
+  // Handle when user selects a tag from dropdown
+  const handleTagChange = (e) => {
     setSelectedTag(e.value);
   };
 
@@ -335,17 +346,20 @@ const Page = () => {
       setFilteredProducts(products);
     } else {
       const filtered = products.filter((product) => {
-        console.log('Checking product:', product); // Log each product
-        return product.type && product.type.some(tag => {
-          console.log('Checking tag:', tag.slug, selectedTag); // Log each tag
-          return tag.slug === selectedTag;
-        });
+        console.log("Checking product:", product); // Log each product
+        return (
+          product.type &&
+          product.type.some((tag) => {
+            console.log("Checking tag:", tag.slug, selectedTag); // Log each tag
+            return tag.slug === selectedTag;
+          })
+        );
       });
-      console.log('Filtered Products:', filtered); // Log the filtered result
+      console.log("Filtered Products:", filtered); // Log the filtered result
       setFilteredProducts(filtered);
     }
   }, [selectedTag, products]);
-  
+  // const randomHeight = Math.floor(Math.random() * (500 - 300 + 1)) + 300; // Random height between 300px and 500px
   return (
     <>
       <div className="productMainContainer">
@@ -550,112 +564,128 @@ const Page = () => {
           </div>
           <div className="product_container" ref={projectsRef}>
             {/* {filteredProducts.map((product, index) => ( */}
-            {displayedData.map((product, index) => (
-              <div key={index} className={`AboutUs_product`}>
-                <Image
-                  src={product.images[0].src}
-                  alt={product.name}
-                  className="ProductImage"
-                  width={500}
-                  height={600}
-                />
-                <div className="overlay">
-                  <div>
-                    <svg
-                      width="40"
-                      height="40"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      fill="white"
-                      className="aboutUsProductSvg"
+            {displayedData.map((product, index) => {
+              const isTabActive = !!activeTab;
+
+              // Only apply "big" or "tall" classNames if not in the tab view
+              const className = isTabActive
+                ? "" // Normal size for tab view
+                : index === 9
+                ? "big"
+                : [
+                    0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20,21
+                  ].includes(index)
+                ? "tall"
+                : "";
+
+              return (
+                <div key={index} className={`AboutUs_product ${className}`}>
+                  <Image
+                    src={product.images[0].src}
+                    alt={product.name}
+                    className="ProductImage"
+                    width={500}
+                    height={600}
+                    // height={randomHeight} // Apply dynamic height
+                    // style={{ height: `${randomHeight}px` }} // Inline style for random height
+                  />
+                  <div className="overlay">
+                    <div>
+                      <svg
+                        width="40"
+                        height="40"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        fill="white"
+                        className="aboutUsProductSvg"
+                      >
+                        <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
+                      </svg>
+                    </div>
+                    <div
+                      className="AnchorTag"
+                      onClick={() => {
+                        console.log("Product ID:", product.id);
+                        router.push(`/product-information#${product.id}`);
+                      }}
                     >
-                      <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
-                    </svg>
-                  </div>
-                  <div
-                    className="AnchorTag"
-                    onClick={() => {
-                      console.log("Product ID:", product.id);
-                      router.push(`/product-information#${product.id}`);
-                    }}
-                  >
-                    Know More
+                      Know More
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
-          
         </div>
         {currentData.length > 0 && (
-            <div>
-              <Stack spacing={2} justifyContent="center">
-                <Pagination
-                  count={Math.ceil(currentData.length / itemsPerPage)}
-                  color="primary"
-                  shape="rounded"
-                  page={pageNumber}
-                  size="small"
-                  variant="outlined"
-                  onChange={handlePageChange}
-                  hidePrevButton
-                  hideNextButton
-                  sx={{
-                    "& .MuiPaginationItem-root": {
-                      backgroundColor: "transparent",
-                      border: "1px solid #5b3524",
-                      color: "#5b3524",
+          <div>
+            <Stack spacing={2} justifyContent="center">
+              <Pagination
+                count={Math.ceil(currentData.length / itemsPerPage)}
+                color="primary"
+                shape="rounded"
+                page={pageNumber}
+                size="small"
+                variant="outlined"
+                onChange={handlePageChange}
+                hidePrevButton
+                hideNextButton
+                sx={{
+                  "& .MuiPaginationItem-root": {
+                    backgroundColor: "transparent",
+                    border: "1px solid #5b3524",
+                    color: "#5b3524",
+                    margin: "0 10px",
+                    padding: "18px 13px",
+                    fontSize: "20px",
+                    borderRadius: "0px",
+                    transition: "background-color 0.3s, color 0.3s",
+
+                    "@media (max-width: 768px)": {
+                      margin: "0 9px",
+                      padding: "12px 8px",
+                      fontSize: "15px",
+                    },
+
+                    "@media (max-width: 425px)": {
+                      margin: "0 8px",
+                      padding: "12px 8px",
+                      fontSize: "12px",
+                    },
+
+                    "&.Mui-selected": {
+                      backgroundColor: "#5b3524",
                       margin: "0 10px",
                       padding: "18px 13px",
                       fontSize: "20px",
-                      borderRadius: "0px",
-                      transition: "background-color 0.3s, color 0.3s",
+                      color: "white",
+                      border: "none",
 
                       "@media (max-width: 768px)": {
                         margin: "0 9px",
-                        padding: "12px 8px",
+                        padding: "12px 10px",
                         fontSize: "15px",
                       },
 
                       "@media (max-width: 425px)": {
                         margin: "0 8px",
-                        padding: "12px 8px",
+                        padding: "12px 10px",
                         fontSize: "12px",
                       },
-
-                      "&.Mui-selected": {
-                        backgroundColor: "#5b3524",
-                        margin: "0 10px",
-                        padding: "18px 13px",
-                        fontSize: "20px",
-                        color: "white",
-                        border: "none",
-
-                        "@media (max-width: 768px)": {
-                          margin: "0 9px",
-                          padding: "12px 10px",
-                          fontSize: "15px",
-                        },
-
-                        "@media (max-width: 425px)": {
-                          margin: "0 8px",
-                          padding: "12px 10px",
-                          fontSize: "12px",
-                        },
-                      },
-
-                      "&.Mui-selected:hover": {
-                        backgroundColor: "#c1c0c0",
-                        color: "black",
-                        border: "none",
-                      },
                     },
-                  }}
-                />
-              </Stack>
-            </div>
-          )}
+
+                    "&.Mui-selected:hover": {
+                      backgroundColor: "#c1c0c0",
+                      color: "black",
+                      border: "none",
+                    },
+                  },
+                }}
+              />
+            </Stack>
+          </div>
+        )}
       </div>
     </>
   );
