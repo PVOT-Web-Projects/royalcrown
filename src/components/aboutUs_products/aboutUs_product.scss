@@ -877,7 +877,11 @@
   // border: 2px solid rgb(255, 255, 255);
   filter: brightness(80%);
 }
-
+.css-wjh20t-MuiPagination-ul {
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 50px 0 !important;
+  }
 .AnchorTag{
   a{
     color: white;

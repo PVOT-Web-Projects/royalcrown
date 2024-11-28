@@ -53,13 +53,13 @@ const Animation = ({ loadImage, counter }) => {
     setCanvasSize();
     window.addEventListener("resize", setCanvasSize);
     // https://interiormaataassets.humbeestudio.xyz/mainsiteassets/mobile/0001.webp
-    const frameCount = 290;
+    const frameCount = 1199;
     const currentFrame = (index) =>
-      `https://interiormaataassets.humbeestudio.xyz/mainsiteassets/mobile/${(
+      `https://interiormaataassets.humbeestudio.xyz/mainsiteassets/RcFrames/${(
         index + 1
       )
         .toString()
-        .padStart(4, "0")}.webp`;
+        .padStart(4, "0")}.jpg`;
 
     let imgL = [];
     for (let i = 0; i < frameCount; i++) {
@@ -68,6 +68,7 @@ const Animation = ({ loadImage, counter }) => {
       imagesRef.current.push(img);
       imgL.push(img.src);
     }
+
 
     const loadImages = async () => {
       try {

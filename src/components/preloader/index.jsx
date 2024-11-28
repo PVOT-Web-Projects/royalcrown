@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { opacity, slideUp } from "./anime";
-import Image from "next/image";
-import logo from "@/images/svgLogos/header_logo.svg";
+// import Image from "next/image";
+// import logo from "@/images/svgLogos/header_logo.svg";
 import styles from "./style.module.css";
 
 
@@ -18,7 +18,12 @@ export default function Preloader({ counter }) {
     // Update loadedFrames when counter changes
     setLoadedFrames(counter);
   }, [counter]);
-  
+  useEffect(() => {
+    // Once the loadedFrames reaches 100, the loading is complete
+    if (loadedFrames === 100) {
+      setLoadingCompleted(true);
+    }
+  }, [loadedFrames]);
 
   const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${
     dimension.height
@@ -41,7 +46,8 @@ export default function Preloader({ counter }) {
   };
 
   const circleStrokeLength = 2 * Math.PI * 95; // Circumference of the circle
-
+// Calculate the progress based on loadedFrames
+const strokeDashoffset = circleStrokeLength * (1 - loadedFrames / 100);
   return (
     <motion.div
       variants={slideUp}
@@ -55,7 +61,7 @@ export default function Preloader({ counter }) {
           {/* <Image className={styles.logoImage} src={logo} alt="image" /> */}
         {/* </div> */}
         
-        <div className={styles.loadingCounter}>{loadedFrames}</div>
+        {/* <div className={styles.loadingCounter}>{loadedFrames}</div> */}
       </motion.div>
 
       <div className={styles.circleCenter}>
@@ -65,14 +71,21 @@ export default function Preloader({ counter }) {
             cx="100"
             cy="100"
             r="95"
-            stroke="white"
+            stroke="#5b3524"
             strokeWidth="3"
             fillOpacity="0"
             strokeDasharray={circleStrokeLength}
-            strokeDashoffset={circleStrokeLength * (loadedFrames / 100)}
+            strokeDashoffset={strokeDashoffset} // This makes the circle progress
+            transform="rotate(-90deg)" // Rotate the circle to start from the top
+            // strokeDashoffset={circleStrokeLength * (loadedFrames / 100)}
           />
         </svg>
       </div>
+      {/* <div className={styles.LoaderText}>
+        <div>
+          <p>loader</p>
+        </div>
+      </div> */}
       <div>
         <motion.path
           variants={curve}

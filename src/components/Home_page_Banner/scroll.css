@@ -28,7 +28,7 @@
     width:49px;
     background-color: transparent !important;
     height:49px;
-    color:#fff!important;
+    /* color:#fff!important; */
     border:2px solid #fff;
     text-align:center;
     /* line-height:50px; */
@@ -83,7 +83,7 @@
     width:30px;
     height:45px;
     margin-left:-15px;
-    border:2px solid rgba(255,255,255,0.5);
+    border:2px solid #5b3524;
     border-radius:30px;
     -webkit-box-sizing:border-box;
     -moz-box-sizing:border-box;
@@ -121,7 +121,7 @@
     left:50%;
     margin-left:-1px;
     top:22px;
-    background-color:rgba(255,255,255,0.5);
+    background-color:#5b3524;
     width:2px;
     height:6px;
     border-radius:10px;

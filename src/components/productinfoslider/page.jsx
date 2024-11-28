@@ -8,9 +8,9 @@ const SlidesContent = ({ slide }) => (
   <div className="Carousel_text_maincontent">
     <div className="FirstSSliderText">
       <p className="Text_InnerText">{slide.name}</p>
-      <p className="TextInner1">{slide.categories[0].name}</p>
+      <p className="TextInner1">{slide.categories[0].name} / {slide.categories[1].name}</p>
       <div className="TextButtonoUTER">
-        <p className="TextInnerCollection">{slide.type}</p>
+        <p className="TextInnerCollection">{slide.attributes[3].terms[0].name}</p>
         <div className="submit_btn">
           <button type="submit" className="yello_btn">
             <span className="button-content">Enquire Now</span>
@@ -21,56 +21,56 @@ const SlidesContent = ({ slide }) => (
     <div className="SecondSliderText">
       <div className="SecondSliderTextInner">
         <div className="ProductCategoryText">
-          <p className="ProductCategoryText1">product category</p>
-          <p className="ProductCategoryText2">{slide.tags[0].name}</p>
+          <p className="ProductCategoryText1">product name</p>
+          <p className="ProductCategoryText2">{slide.attributes[7].terms[0].name}</p>
         </div>
       </div>
       <div className="SecondSliderTextInner">
         <div className="ProductCategoryText">
-          <p className="ProductCategoryText1">design number</p>
-          <p className="ProductCategoryText2">{slide.attributes[4].terms[0].name}</p>
-        </div>
-      </div>
-      <div className="SecondSliderTextInner">
-        <div className="ProductCategoryText">
-          <p className="ProductCategoryText1">Design Name</p>
-          <p className="ProductCategoryText2">{slide.name}</p>
-        </div>
-      </div>
-      <div className="SecondSliderTextInner">
-        <div className="ProductCategoryText">
-          <p className="ProductCategoryText1">Product Size</p>
+          <p className="ProductCategoryText1">product code</p>
           <p className="ProductCategoryText2">{slide.attributes[0].terms[0].name}</p>
         </div>
       </div>
       <div className="SecondSliderTextInner">
         <div className="ProductCategoryText">
-          <p className="ProductCategoryText1">finish code</p>
-          <p className="ProductCategoryText2">{slide.tags[2].name}</p>
+          <p className="ProductCategoryText1">product category</p>
+          <p className="ProductCategoryText2">{slide.attributes[5].terms[0].name}</p>
         </div>
       </div>
       <div className="SecondSliderTextInner">
         <div className="ProductCategoryText">
-          <p className="ProductCategoryText1">Thickness (MM)</p>
+          <p className="ProductCategoryText1">Product Size</p>
           <p className="ProductCategoryText2">{slide.attributes[1].terms[0].name}</p>
         </div>
       </div>
       <div className="SecondSliderTextInner">
         <div className="ProductCategoryText">
-          <p className="ProductCategoryText1">Color</p>
+          <p className="ProductCategoryText1">product type</p>
           <p className="ProductCategoryText2">{slide.attributes[3].terms[0].name}</p>
         </div>
       </div>
       <div className="SecondSliderTextInner">
         <div className="ProductCategoryText">
-          <p className="ProductCategoryText1">Product Type</p>
+          <p className="ProductCategoryText1">Thickness (MM)</p>
           <p className="ProductCategoryText2">{slide.attributes[2].terms[0].name}</p>
         </div>
       </div>
       <div className="SecondSliderTextInner">
         <div className="ProductCategoryText">
+          <p className="ProductCategoryText1">Color</p>
+          <p className="ProductCategoryText2">{slide.attributes[4].terms[0].name}</p>
+        </div>
+      </div>
+      <div className="SecondSliderTextInner">
+        <div className="ProductCategoryText">
+          <p className="ProductCategoryText1">Decor Type</p>
+          <p className="ProductCategoryText2">{slide.categories[0].name}</p>
+        </div>
+      </div>
+      <div className="SecondSliderTextInner">
+        <div className="ProductCategoryText">
           <p className="ProductCategoryText1">Theme / mood</p>
-          <p className="ProductCategoryText2">{slide.tags[0].name}</p>
+          <p className="ProductCategoryText2">{slide.attributes[6].terms[0].name}</p>
         </div>
 </div>
     </div>
