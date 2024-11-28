@@ -19,6 +19,7 @@ import Img4 from "@/images/QbissNew.png";
 import Img5 from "@/images/CrownXCLNew.png";
 import SvgBtn from "@/images/svgLogos/sliderBtn.svg";
 import SvgBtnNext from "@/images/svgLogos/sliderBtnPrev.svg";
+import {motion} from "framer-motion";
 
 import {
   FreeMode,
@@ -37,7 +38,22 @@ const SwiperComponent = () => {
   return (
     <div className="MainSwiperthreedContainer">
       <div className="ThreeText">
-        <p className="ThreeTextInner">The Pinnacle of Luxury Laminates</p>
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 80,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+            transition: {
+              duration: 1,
+            },
+          }}
+          viewport={{ once: true }}
+        >
+          <p className="ThreeTextInner">The Pinnacle of Luxury Laminates</p>
+        </motion.div>
         <p className="ThreeTextInnerFirst">
           {/* Discover the epitome of sophistication with our premium range of
           luxury laminates. Designed for those with discerning taste, our

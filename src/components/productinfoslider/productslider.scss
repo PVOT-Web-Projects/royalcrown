@@ -377,6 +377,7 @@
         font-weight: 600;
         text-align: left;
         padding-bottom: 1rem;
+        font-family: "made_mirage_bold";
 
         @media (max-width: 1018px) {
           width: 70%;
@@ -510,8 +511,9 @@
 
       .ProductCategoryText1 {
         font-size: 22px;
-        text-transform: capitalize;
-        font-weight: normal;
+        text-transform: capitalize !important;
+        // font-weight: 600;
+        font-family: "made_mirage_bold";
 
         @media (max-width: 1024px) {
           font-size: 20px;
