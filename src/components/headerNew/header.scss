@@ -157,7 +157,7 @@ header {
           transition: all 0.4s;
           display: inline-flex;
           &::before {
-            content: "";
+            // content: "";
             position: absolute;
             // bottom: -5px;
             // width: 100%;
@@ -184,6 +184,16 @@ header {
       #ProductsOne {
         border-right: 1px solid #5b352434;
         padding-right: 2rem;
+      }
+      .arrow {
+        margin-left: 10px;
+        width: 0;
+        transform: rotate(270deg);
+        height: 0;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 6px solid #5b3524;
+        transition: transform 0.3s ease;
       }
       .ProductsLi {
         position: absolute;
@@ -246,25 +256,44 @@ header {
             // text-transform: capitalize;
           }
           .SubmenuClass {
-            font-size: 19px;
+            font-size: 20px;
           }
           a {
             // margin-left: 7px;
-            font-size: 17px;
+            font-size: 18px;
             text-transform: capitalize;
             color: #5b3524;
             width: 200px;
             transition: all 0.5 ease;
+            display: inline-block;
 
-            &:hover {
-              transform: translateX(8px);
+            // &:hover {
+              // transform: translateX(8px);
               // padding: 0 2px;
               // color: white;
               // background-color: #5b3524;
-              transition: all 0.5 ease;
-              font-weight: 900;
+              // transition: all 0.5 ease;
+              // font-weight: 900;
               // font-family: "made_mirage_bold";
-            }
+              // border-bottom: 1px solid #5b3524;
+              &::after{
+                content: "";
+                position: absolute;
+                width: 100%;
+                transform: scaleX(0);
+                border-radius: 5px;
+                height: 0.05rem;
+                bottom: 0;
+                left: 0;
+                background: currentColor;
+                transform-origin: bottom right;
+                transition: transform 0.25s ease-out;
+              }
+              &:hover::after {
+                transform: scaleX(1);
+                transform-origin: bottom left;
+              }
+            // }
           }
         }
         .sub-submenu-image {

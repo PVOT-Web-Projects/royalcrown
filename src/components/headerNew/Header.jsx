@@ -33,7 +33,7 @@ const Header = () => {
   const [activeCategory, setActiveCategory] = useState(null);
   const [isNavbarVisible, setIsNavbarVisible] = useState(true); // State to control navbar visibility
   const [lastScrollY, setLastScrollY] = useState(0); // Track last scroll position
-  
+  const [isOpen, setIsOpen] =useState(false);
   // Data for each subcategory and its items
   const categoryData = [
     {
@@ -294,6 +294,7 @@ const Header = () => {
                     <Link href="#" onClick={(e) => e.preventDefault()}>
                       HPL LAMINATE
                     </Link>
+                    <span className={`arrow ${isOpen ? "up" : "down"}`}></span>
                     {/* <svg
                       width="24"
                       height="24"
@@ -377,6 +378,7 @@ const Header = () => {
                     <Link href="#" onClick={(e) => e.preventDefault()}>
                       COMPACT LAMINATE
                     </Link>
+                    <span className={`arrow ${isOpen ? "up" : "down"}`}></span>
                     {/* <svg
                       width="24"
                       height="24"
@@ -518,6 +520,7 @@ const Header = () => {
                     <Link href="#" onClick={(e) => e.preventDefault()}>
                       SPECIALITY LAMINATE
                     </Link>
+                    <span className={`arrow ${isOpen ? "up" : "down"}`}></span>
                     {/* <svg
                       width="24"
                       height="24"
@@ -701,6 +704,7 @@ const Header = () => {
                     <Link href="#" onClick={(e) => e.preventDefault()}>
                       TECHNICAL GRADE LAMINATE
                     </Link>
+                    <span className={`arrow ${isOpen ? "up" : "down"}`}></span>
                     {/* <svg
                       width="24"
                       height="24"
@@ -807,7 +811,7 @@ const Header = () => {
                   {/* <Image src={getSubmenuImage()} alt="Submenu Image" /> */}
                 </motion.div>
               </motion.div>
-            )}
+            )} 
           </motion.li>
           <motion.li
             initial={{

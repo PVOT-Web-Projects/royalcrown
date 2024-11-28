@@ -299,7 +299,7 @@ const Page = () => {
       case "QBliss":
         return {
           number: "05",
-          title: "Xylem",
+          title: "Qbiss",
           description:
             "Qbiss is a high-pressure structural laminate made from multiple layers of kraft papers, with a thickness range from 2mm to 25mm. Its decorative face on both sides makes it suitable for interior applications like washroom cubicles, locker doors, wall panels, and laboratory furniture. With a density of 1.45gm/cm3, our compacts are exceptionally resilient and require no substrate support in thicknesses over 6mm.",
         };

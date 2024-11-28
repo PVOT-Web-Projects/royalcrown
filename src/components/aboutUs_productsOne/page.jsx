@@ -1,14 +1,19 @@
 "use client";
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 import "./aboutUs_product.scss";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
-import products from "./productData.js";
+// import products from "./productData.js";
 import { Dropdown } from "primereact/dropdown";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
 const Page = () => {
+  const itemsPerPage = 25;
+  const [pageNumber, setPageNumber] = useState(1);
   const [selectedBrand, setSelectedBrand] = useState("all");
   const [selectedType, setSelectedType] = useState("all");
   const [selectedCategory, setSelectedCategory] = useState([]);
@@ -18,61 +23,96 @@ const Page = () => {
   const [selectedColor, setSelectedColor] = useState("all");
   const [isMobile, setIsMobile] = useState(0);
   const [tab, setTab] = useState("");
-  const [currentData, setCurrentData] = useState(products);
   const pathName = usePathname();
+  const [shortTitle, setShortTitle] = useState("");
+  const [selectedTag, setSelectedTag] = useState("all"); // Initially no tag selected
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [shortNumber, setShortNumber] = useState("");
+  const [shortDescription, setShortDescription] = useState("");
   const [activeTab, setActiveTab] = useState("");
+  const [products, setProducts] = useState([]);
+  const [currentData, setCurrentData] = useState([]);
+  const router = useRouter();
+  // Create a ref to the element you want to scroll to
+  const projectsRef = useRef(null);
   console.log(currentData);
+  useEffect(() => {
+    fetch(
+      "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("API Response:", data); // Log the response for debugging
+        setProducts(data);
+        setFilteredProducts(data); // Initially show all products
+      })
+      .catch((error) => {
+        console.error("Failed to fetch data:", error);
+      });
+  }, []);
 
+  // useEffect(() => {
+  //   const hash = typeof window !== "undefined" ? window.location.hash : "";
+  //   const fullPath = pathName + hash;
+
+  //   const category = categoryMap[fullPath] || "all";
+  //   setCurrentData(
+  //     category === "all"
+  //       ? products
+  //       : products.filter((data) => data.category === category)
+  //   );
+  //   setActiveTab(fullPath);
+  //   const { title, number, description } = getShortDescription(category);
+  //   setShortTitle(title);
+  //   setShortNumber(number);
+  //   setPageNumber(1);
+  //   setShortDescription(description);
+  // }, [pathName]);
+  // Handle path changes and category filtering
+  // Handle path changes and category filtering
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
-    const fullPath = pathName + hash;
-
-    if (fullPath === "/products#xylem") {
-      setCurrentData(products.filter((data) => data.category === "Xylem"));
-      setActiveTab("/products#xylem");
-    } else if (fullPath === "/products#royal-crown") {
-      setCurrentData(
-        products.filter((data) => data.category === "Royal Crown")
+    const categorySlug = hash ? hash.replace("#", "") : ""; // Get category slug from the URL hash
+    console.log("Selected Category from URL Hash:", categorySlug);
+    if (categorySlug) {
+      const filteredData = products.filter((product) =>
+        product.categories.some(
+          (category) =>
+            category.slug.toLowerCase() === categorySlug.toLowerCase()
+        )
       );
-      setActiveTab("/products#royal-crown");
-    } else if (fullPath === "/products#crown") {
-      setCurrentData(products.filter((data) => data.category === "Crown XCL"));
-      setActiveTab("/products#crown");
-    } else if (fullPath === "/products#Qbiss") {
-      setCurrentData(products.filter((data) => data.category === "QBliss"));
-      setActiveTab("/products#Qbiss");
-    } else if (fullPath === "/products#Crown_Xcl") {
-      setCurrentData(products.filter((data) => data.category === "Crown XCL"));
-      setActiveTab("/products#Crown_Xcl");
+      // Log what products are being selected
+      console.log("Filtered Data Based on Category:", filteredData);
+
+      setCurrentData(filteredData);
     } else {
       setCurrentData(products);
-      setActiveTab("");
     }
-  }, [pathName]);
+  }, [pathName, products]);
+
+  const handlePageChange = (event, value) => {
+    setPageNumber(value);
+    projectsRef.current.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 1025);
     };
     window.addEventListener("resize", handleResize);
+    handleResize(); // Check initial size
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
 
-  const brands = [
-    { label: "All Brands", value: "all" },
-    { label: "Xylem", value: "Xylem" },
-    { label: "Royal Crown", value: "Royal Crown" },
-    { label: "QBliss", value: "QBliss" },
-    { label: "Crown XCL", value: "Crown XCL" },
-  ];
+  const lastIndex = pageNumber * itemsPerPage;
+  const firstIndex = lastIndex - itemsPerPage;
+  const displayedData = currentData.slice(firstIndex, lastIndex);
 
   const categories = [
-    // { label: "Select Categories", value: "all" },
-    // { label: "Decorative", value: "Decorative" },
-    // { label: "Interior Compacts", value: "Decorative Interior Compacts" },
-    // { label: "Exterior Compacts", value: "Decorative Exterior Compacts" },
     { label: "Spotless", value: "Spotless" },
     { label: "Exotic Urbane", value: "Exotic Urbane" },
     { label: "Classic Wood Grains", value: "Classic Wood Grains" },
@@ -84,7 +124,6 @@ const Page = () => {
   ];
 
   const types = [
-    // { label: "Select Types", value: "all" },
     { label: "Spotless", value: "Spotless" },
     { label: "Exotic Urbane", value: "Exotic Urbane" },
     { label: "Classic Wood Grains", value: "Classic Wood Grains" },
@@ -112,7 +151,7 @@ const Page = () => {
   ];
 
   const thickness = [
-    { label: "0.9 MM", value: "0.9 MM" },
+    { label: "0.8 mm", value: "0.8 mm" },
     { label: "0.4 MM", value: "0.4 MM" },
     { label: "1.2 MM", value: "1.2 MM" },
     { label: "2.5 MM", value: "2.5 MM" },
@@ -132,11 +171,6 @@ const Page = () => {
   const mappedColor = useMemo(() => {
     return color.map((c) => ({ ...c, className: "myOptionClassName" }));
   }, [color]);
-
-  const handleBrandChange = (e) => {
-    setSelectedBrand(e.value);
-  };
-
   const handleTypeChange = (e) => {
     setSelectedType(e.value);
   };
@@ -144,31 +178,23 @@ const Page = () => {
   const handleCategoryChange = (e) => {
     const value = e.target.value;
     const checked = e.target.checked;
-
     if (checked) {
-      // Add the selected category to the array
+      console.log("Category Selected:", value); // Log the selected category
       setSelectedCategory((prev) => [...prev, value]);
     } else {
-      // Remove the unselected category from the array
       setSelectedCategory((prev) =>
         prev.filter((category) => category !== value)
       );
     }
   };
-
   const handleFinishChange = (e) => {
     setSelectedFinish(e.value);
   };
-
   const handleSizeChange = (e) => {
     setSelectedSize(e.value);
   };
-
   const handleSizeClick = (sizeValue) => {
-    // Set the selected size
     setSelectedSize(sizeValue);
-
-    // Scroll to the "Explore Collection" section
     const exploreCollectionElement = document.querySelector("#sticky_top");
     if (exploreCollectionElement) {
       exploreCollectionElement.scrollIntoView({
@@ -177,7 +203,6 @@ const Page = () => {
       });
     }
   };
-
   const handleThicknessChange = (e) => {
     setSelectedThickness(e.value);
   };
@@ -186,75 +211,210 @@ const Page = () => {
     setSelectedColor(e.value);
   };
 
-  const filteredProducts = currentData.filter((product) => {
-    const brandMatch =
-      selectedBrand === "all" || product.category === selectedBrand;
-    const typeMatch =
-      selectedType === "all" || product.categoryType === selectedType;
-    const colorMatch =
-      selectedColor === "all" || product.categoryColor === selectedColor;
-    const categoryMatch =
-      selectedCategory.length === 0 ||
-      selectedCategory.includes(product.categoryValue); // Multi-select logic
-    const finishMatch =
-      selectedFinish === "all" || product.categoryFinish === selectedFinish;
-    const sizeMatch =
-      selectedSize === "all" || product.categorySize === selectedSize;
-    const thicknessMatch =
-      selectedThickness === "all" ||
-      product.categoryThickness === selectedThickness;
-    return (
-      brandMatch &&
-      typeMatch &&
-      categoryMatch &&
-      finishMatch &&
-      sizeMatch &&
-      thicknessMatch
-    );
-  });
+  const filteredProducts1 = useMemo(() => {
+    return products.filter((product) => {
+      const brandMatch =
+        selectedBrand === "all" || product.category === selectedBrand;
+      const categoryMatch =
+        selectedCategory.length === 0 ||
+        selectedCategory.includes(product.categoryValue);
+      const finishMatch =
+        selectedFinish === "all" || product.categoryFinish === selectedFinish;
+      const sizeMatch =
+        selectedSize === "all" || product.categorySize === selectedSize;
+      const thicknessMatch =
+        selectedThickness === "all" ||
+        // slide.attributes[2].terms[0].name
+        product.attributes[2].terms[0].name === selectedThickness;
+      const colorMatch =
+        selectedColor === "all" || product.categoryColor === selectedColor;
+      const typeMatch =
+        selectedType === "all" || product.categoryType === selectedType;
+      console.log("Checking Product:", product); // Log each product being checked
+      console.log(
+        "Matches Filters:",
+        brandMatch,
+        categoryMatch,
+        finishMatch,
+        sizeMatch,
+        thicknessMatch,
+        colorMatch,
+        typeMatch
+      ); // Log filter match status
 
-  // const handleTabClick = (newTab, category) => {
-  //   setActiveTab(newTab);
-  //   setCurrentData(products.filter((data) => data.category === category));
-  // };
-  const handleTabClick = (newTab) => {
-    setTab(newTab);
+      return (
+        brandMatch &&
+        categoryMatch &&
+        finishMatch &&
+        sizeMatch &&
+        thicknessMatch &&
+        colorMatch &&
+        typeMatch
+      );
+    });
+  }, [
+    products,
+    selectedBrand,
+    selectedCategory,
+    selectedFinish,
+    selectedSize,
+    selectedThickness,
+    selectedColor,
+    selectedType, // Added selectedType to the dependencies of useMemo
+  ]);
+
+  const categoryMap = {
+    "/products#xylem": "Xylem",
+    "/products#royal-crown": "Royal Crown",
+    "/products#crown": "Crown",
+    "/products#Qbiss": "QBliss",
+    "/products#Crown_Xcl": "Crown XCL",
+  };
+  const handleTabClick = (newTab, category) => {
     setActiveTab(newTab);
-    window.history.pushState(null, "", newTab);
+    const filteredData = products.filter((data) => data.category === category);
+    setCurrentData(filteredData);
 
-    // Filter the data based on the selected tab
-    if (newTab === "/products#xylem") {
-      setCurrentData(products.filter((data) => data.category === "Xylem"));
-    } else if (newTab === "/products#Qbiss") {
-      setCurrentData(products.filter((data) => data.category === "QBliss"));
-    } else if (newTab === "/products#Crown_Xcl") {
-      setCurrentData(products.filter((data) => data.category === "Crown XCL"));
-    } else if (newTab === "/products#Crown") {
-      setCurrentData(products.filter((data) => data.category === "Royal Crown"));
-    } 
-    else if (newTab === "/products#royal-crown") {
-      setCurrentData(products.filter((data) => data.category === "Xylem"));
-    } 
-    else {
-      // Reset to default if not a specific tab
-      setCurrentData(products);
+    const { number, title, description } = getShortDescription(category);
+    setShortNumber(number);
+    setShortTitle(title);
+    setShortDescription(description);
+  };
+  const getShortDescription = (category) => {
+    switch (category) {
+      case "Royal Crown":
+        return {
+          number: "03",
+          title: "Royal Crown",
+          description:
+            "Royal Crown Laminates takes pride in its rich legacy of innovation, cutting-edge technology, and expertise, offering over 450 trendsetting surface designs. Our collection of modern laminates boasts a wide range of finishes and textures in 1mm thickness, empowering you to effortlessly realize your dream decor.",
+        };
+      case "Xylem":
+        return {
+          number: "02",
+          title: "Xylem",
+          description:
+            "Step into the world of Xylem, where innovation is at the heart of everything we do. Xylem represents our premium-grade decorative laminates, meticulously crafted to elevate your surroundings.",
+        };
+      case "QBliss":
+        return {
+          number: "05",
+          title: "Qbiss",
+          description:
+            "Qbiss is a high-pressure structural laminate made from multiple layers of kraft papers, with a thickness range from 2mm to 25mm. Its decorative face on both sides makes it suitable for interior applications like washroom cubicles, locker doors, wall panels, and laboratory furniture. With a density of 1.45gm/cm3, our compacts are exceptionally resilient and require no substrate support in thicknesses over 6mm.",
+        };
+      case "Crown":
+        return {
+          number: "05",
+          title: "crown",
+          description:
+            "Crown's Lean Line offers an exquisite and cost-effective range of laminates in a variety of designs, colors, and textures, all in 0.8mm thickness. Manufactured at our highly advanced production facility, the Lean Line guarantees a consistent and exceptional level of quality.",
+        };
+      case "Crown XCL":
+        return {
+          number: "06",
+          title: "Crown XCL",
+          description:
+            "XCL- Exterior Compact Laminate is a high pressure laminate, built up from multiple papers of kraft papers to produce laminate in thickness ranging from 2mm to 25mm.",
+        };
+      default:
+        return {
+          number: "",
+          title: "",
+          description: "",
+        };
     }
   };
+  // const visibleTabs = [
+  //   "Royal Crown",
+  //   "Crown XCL",
+  //   "QBliss",
+  //   "Xylem",
+  //   "crown",
+  // ].filter(
+  //   (category) =>
+  //     activeTab === "" ||
+  //     activeTab === `/products#${category.replace(" ", "-").toLowerCase()}`
+  // );
+  // Handle when user selects a tag from dropdown
+  const handleTagChange = (e) => {
+    setSelectedTag(e.value);
+  };
+
+  useEffect(() => {
+    if (selectedTag === "all") {
+      setFilteredProducts(products);
+    } else {
+      const filtered = products.filter((product) => {
+        console.log("Checking product:", product); // Log each product
+        return (
+          product.type &&
+          product.type.some((tag) => {
+            console.log("Checking tag:", tag.slug, selectedTag); // Log each tag
+            return tag.slug === selectedTag;
+          })
+        );
+      });
+      console.log("Filtered Products:", filtered); // Log the filtered result
+      setFilteredProducts(filtered);
+    }
+  }, [selectedTag, products]);
+  // const randomHeight = Math.floor(Math.random() * (500 - 300 + 1)) + 300; // Random height between 300px and 500px
   return (
     <>
-      <div className="first_top">
+      <div className="productMainContainer">
+        <div className="productMain">
+          <div className="productNumber">
+            <p>{shortNumber}</p>
+          </div>
+          <div className="productDescription">
+            <motion.div
+              className="productDescriptionBorder"
+              initial={{ width: "0%" }}
+              whileInView={{ width: "100%" }} // Adjust this width to fit your design
+              transition={{ duration: 1, ease: "easeOut" }}
+              viewport={{ once: true }}
+            />
+            <div className="productDescriptionHeader">{shortTitle}</div>
+            <div className="productDescriptionContent">
+              <p>{shortDescription}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="first_top1">
         <div id="sticky_top" className="products_name">
           <motion.div
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}
             viewport={{ once: true }}
-            className="ProductsCollection"
           >
             Explore Collection
           </motion.div>
           <div className="products-tabs" id="sticky_top">
-            <div
+            {/* {visibleTabs.map((label) => (
+              <Link
+                key={label}
+                href={`/products#${label.replace(" ", "-").toLowerCase()}`}
+                scroll={false}
+                className={`tab-item ${
+                  activeTab ===
+                  `/products#${label.replace(" ", "-").toLowerCase()}`
+                    ? "active"
+                    : ""
+                }`}
+                onClick={() =>
+                  handleTabClick(
+                    `/products#${label.replace(" ", "-").toLowerCase()}`,
+                    label
+                  )
+                }
+              >
+                <div className="tab-content-inner">{label}</div>
+              </Link>
+            ))} */}
+             <div
               className={`tab-item ${
                 activeTab === "/products#xylem" ? "active" : ""
               }`}
@@ -311,137 +471,6 @@ const Page = () => {
               <div className="tab-content-inner">Crown</div>
             </div>
           </div>
-          {/* <div className="products-tabs" id="sticky_top">
-            {activeTab === "" && (
-              <>
-                <Link
-                  href="/products#royal-crown"
-                  scroll={false}
-                  className={`tab-item ${
-                    activeTab === "/products#royal-crown" ? "active" : ""
-                  }`}
-                  onClick={() =>
-                    handleTabClick("/products#royal-crown", "Royal Crown")
-                  }
-                >
-                  <div className="tab-content-inner">Royal Crown</div>
-                </Link>
-                <Link
-                  href="/products#crown"
-                  scroll={false}
-                  className={`tab-item ${
-                    activeTab === "/products#crown" ? "active" : ""
-                  }`}
-                  onClick={() => handleTabClick("/products#crown", "Crown XCL")}
-                >
-                  <div className="tab-content-inner">CROWN</div>
-                </Link>
-                <Link
-                  href="/products#Qbiss"
-                  scroll={false}
-                  className={`tab-item ${
-                    activeTab === "/products#Qbiss" ? "active" : ""
-                  }`}
-                  onClick={() => handleTabClick("/products#Qbiss", "QBliss")}
-                >
-                  <div className="tab-content-inner">Qbiss</div>
-                </Link>
-                <Link
-                  href="/products#xylem"
-                  scroll={false}
-                  className={`tab-item ${
-                    activeTab === "/products#xylem" ? "active" : ""
-                  }`}
-                  onClick={() => handleTabClick("/products#xylem", "Xylem")}
-                >
-                  <div className="tab-content-inner">Xylem</div>
-                </Link>
-                <Link
-                href="/products#Crown_Xcl"
-                scroll={false}
-                className={`tab-item ${
-                  activeTab === "/products#Crown_Xcl" ? "active" : ""
-                }`}
-                onClick={() =>
-                  handleTabClick("/products#Crown_Xcl", "Crown XCL")
-                }
-              >
-                <div className="tab-content-inner">Crown XCL</div>
-              </Link>
-              </>
-            )}
-
-            {activeTab !== "" && (
-              <>
-                {activeTab === "/products#royal-crown" && (
-                  <Link
-                    href="/products#royal-crown"
-                    scroll={false}
-                    className={`tab-item ${
-                      activeTab === "/products#royal-crown" ? "active" : ""
-                    }`}
-                    onClick={() =>
-                      handleTabClick("/products#royal-crown", "Royal Crown")
-                    }
-                  >
-                    <div className="tab-content-inner">Royal Crown</div>
-                  </Link>
-                )}
-                {activeTab === "/products#crown" && (
-                  <Link
-                    href="/products#crown"
-                    scroll={false}
-                    className={`tab-item ${
-                      activeTab === "/products#crown" ? "active" : ""
-                    }`}
-                    onClick={() =>
-                      handleTabClick("/products#crown", "Crown XCL")
-                    }
-                  >
-                    <div className="tab-content-inner">CROWN</div>
-                  </Link>
-                )}
-                {activeTab === "/products#Qbiss" && (
-                  <Link
-                    href="/products#Qbiss"
-                    scroll={false}
-                    className={`tab-item ${
-                      activeTab === "/products#Qbiss" ? "active" : ""
-                    }`}
-                    onClick={() => handleTabClick("/products#Qbiss", "QBliss")}
-                  >
-                    <div className="tab-content-inner">Qbiss</div>
-                  </Link>
-                )}
-                {activeTab === "/products#xylem" && (
-                  <Link
-                    href="/products#xylem"
-                    scroll={false}
-                    className={`tab-item ${
-                      activeTab === "/products#xylem" ? "active" : ""
-                    }`}
-                    onClick={() => handleTabClick("/products#xylem", "Xylem")}
-                  >
-                    <div className="tab-content-inner">Xylem</div>
-                  </Link>
-                )}
-                 {activeTab === "/products#Crown_Xcl" && (
-                 <Link
-                href="/products#Crown_Xcl"
-                scroll={false}
-                className={`tab-item ${
-                  activeTab === "/products#Crown_Xcl" ? "active" : ""
-                }`}
-                onClick={() =>
-                  handleTabClick("/products#Crown_Xcl", "Crown XCL")
-                }
-              >
-                <div className="tab-content-inner">Crown XCL</div>
-              </Link>
-                )}
-              </>
-            )}
-          </div> */}
         </div>
 
         <div className="supply">
@@ -454,8 +483,8 @@ const Page = () => {
               </div>
               {isMobile ? (
                 <Dropdown
-                  id="type-select"
-                  options={types}
+                  id="tag-select"
+                  options={categories}
                   value={selectedType}
                   onChange={handleTypeChange}
                   placeholder="Select Type"
@@ -480,20 +509,6 @@ const Page = () => {
                 </div>
               )}
             </div>
-
-            {/* <div className="dropdown1">
-              <div className="dropdown-label">
-              </div>
-              <Dropdown
-                id="type-select"
-                options={types}
-                value={selectedType}
-                onChange={handleTypeChange}
-                placeholder="Select Type"
-                className="category-select"
-              />
-            </div> */}
-
             <div className="dropdown1">
               <div className="dropdown-label">
                 <label htmlFor="color-select" className="colorSelectDropdown">
@@ -521,11 +536,8 @@ const Page = () => {
                 </div>
               )}
             </div>
-
             <div className="dropdown1">
-              <div className="dropdown-label">
-                {/* <label htmlFor="finish-select">SELECT FINISH</label> */}
-              </div>
+              <div className="dropdown-label"></div>
               <Dropdown
                 id="finish-select"
                 options={finish}
@@ -535,7 +547,6 @@ const Page = () => {
                 className="category-select"
               />
             </div>
-
             <div className="dropdown1">
               <div className="dropdown-label">
                 <label htmlFor="size-select" className="colorSelectDropdown">
@@ -566,14 +577,6 @@ const Page = () => {
                   ))}
                 </div>
               )}
-              {/* <Dropdown
-                id="size-select"
-                options={size}
-                value={selectedSize}
-                onChange={handleSizeChange}
-                placeholder="Select a Size"
-                className="category-select"
-              /> */}
             </div>
 
             <div className="dropdown1">
@@ -615,9 +618,9 @@ const Page = () => {
               )}
             </div>
           </div>
-          <div className="product_container">
-            {filteredProducts.map((product, index) => {
-              // Determine if the tab is active
+          <div className="product_container" ref={projectsRef}>
+            {/* {filteredProducts.map((product, index) => ( */}
+            {displayedData.map((product, index) => {
               const isTabActive = !!activeTab;
 
               // Only apply "big" or "tall" classNames if not in the tab view
@@ -626,44 +629,121 @@ const Page = () => {
                 : index === 9
                 ? "big"
                 : [
-                    0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 22, 23, 25,
+                    0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20,21
                   ].includes(index)
                 ? "tall"
                 : "";
 
               return (
                 <div key={index} className={`AboutUs_product ${className}`}>
-                  <Link href={"/product-information"}>
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      className="ProductImage"
-                    />
-                    <div className="overlay">
-                      <div>
-                        <svg
-                          width="40"
-                          height="40"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          fill="white"
-                          className="aboutUsProductSvg"
-                        >
-                          <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
-                        </svg>
-                      </div>
-                      <div className="AnchorTag">Know More</div>
+                  <Image
+                    src={product.images[0].src}
+                    alt={product.name}
+                    className="ProductImage"
+                    width={500}
+                    height={600}
+                    // height={randomHeight} // Apply dynamic height
+                    // style={{ height: `${randomHeight}px` }} // Inline style for random height
+                  />
+                  <div className="overlay">
+                    <div>
+                      <svg
+                        width="40"
+                        height="40"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        fill="white"
+                        className="aboutUsProductSvg"
+                      >
+                        <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
+                      </svg>
                     </div>
-                  </Link>
+                    <div
+                      className="AnchorTag"
+                      onClick={() => {
+                        console.log("Product ID:", product.id);
+                        router.push(`/product-information#${product.id}`);
+                      }}
+                    >
+                      Know More
+                    </div>
+                  </div>
                 </div>
               );
             })}
           </div>
         </div>
+        {currentData.length > 0 && (
+          <div>
+            <Stack spacing={2} justifyContent="center">
+              <Pagination
+                count={Math.ceil(currentData.length / itemsPerPage)}
+                color="primary"
+                shape="rounded"
+                page={pageNumber}
+                size="small"
+                variant="outlined"
+                onChange={handlePageChange}
+                hidePrevButton
+                hideNextButton
+                sx={{
+                  "& .MuiPaginationItem-root": {
+                    backgroundColor: "transparent",
+                    border: "1px solid #5b3524",
+                    color: "#5b3524",
+                    margin: "0 10px",
+                    padding: "18px 13px",
+                    fontSize: "20px",
+                    borderRadius: "0px",
+                    transition: "background-color 0.3s, color 0.3s",
+
+                    "@media (max-width: 768px)": {
+                      margin: "0 9px",
+                      padding: "12px 8px",
+                      fontSize: "15px",
+                    },
+
+                    "@media (max-width: 425px)": {
+                      margin: "0 8px",
+                      padding: "12px 8px",
+                      fontSize: "12px",
+                    },
+
+                    "&.Mui-selected": {
+                      backgroundColor: "#5b3524",
+                      margin: "0 10px",
+                      padding: "18px 13px",
+                      fontSize: "20px",
+                      color: "white",
+                      border: "none",
+
+                      "@media (max-width: 768px)": {
+                        margin: "0 9px",
+                        padding: "12px 10px",
+                        fontSize: "15px",
+                      },
+
+                      "@media (max-width: 425px)": {
+                        margin: "0 8px",
+                        padding: "12px 10px",
+                        fontSize: "12px",
+                      },
+                    },
+
+                    "&.Mui-selected:hover": {
+                      backgroundColor: "#c1c0c0",
+                      color: "black",
+                      border: "none",
+                    },
+                  },
+                }}
+              />
+            </Stack>
+          </div>
+        )}
       </div>
     </>
   );
 };
-
 export default Page;

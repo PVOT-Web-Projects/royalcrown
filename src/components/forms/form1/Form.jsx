@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 // import YellowButton from "@/components/buttons/yellowButton/YellowButton";
 // import YellowSubmitButton from "@/components/buttons/yellowSubmitButton/YellowSubmitButton";
 import YellowSubmitButtonForm from "@/components/buttons/yellowSubmitButtonForm/YellowSubmitButtonForm";
-
+import {motion} from "framer-motion";
 const MyForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const submitMessage = () => {
@@ -86,7 +86,23 @@ const MyForm = () => {
   return (
     <div className="form">
       <div>
+        <motion.div 
+        initial={{
+          opacity: 0,
+          y: 80,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+          transition: {
+            duration: 1,
+          },
+        }}
+        viewport={{ once: true }}
+        >
+          
         <p className="form_header">The Authenticity of luxury in each layer</p>
+        </motion.div>
       </div>
       <div>
         <form onSubmit={handleSubmit}>
