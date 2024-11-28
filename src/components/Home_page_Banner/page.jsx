@@ -343,7 +343,7 @@ const Animation = ({ loadImage, counter }) => {
         />
         <HeadingTextAnimation
           heading={"Our Innovation."}
-          justifyContent={"left"}
+          justifyContent={"center"}
         />
       </motion.div>
 
