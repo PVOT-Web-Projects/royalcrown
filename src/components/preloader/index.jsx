@@ -81,11 +81,11 @@ const strokeDashoffset = circleStrokeLength * (1 - loadedFrames / 100);
           />
         </svg>
       </div>
-      {/* <div className={styles.LoaderText}>
+      <div className={styles.LoaderText}>
         <div>
-          <p>loader</p>
+          <p>Unveiling Layers of Luxury</p>
         </div>
-      </div> */}
+      </div>
       <div>
         <motion.path
           variants={curve}

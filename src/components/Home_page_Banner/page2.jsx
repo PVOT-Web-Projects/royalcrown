@@ -6,7 +6,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { motion, useAnimation } from "framer-motion";
 // import HeadingTextAnimation from "@/components/AnimatedText/HeadingTextAnimation";
 import { useInView } from "react-intersection-observer";
-import styles from "@/components/Home_page_Banner/Banner.module.css";
+import "@/components/Home_page_Banner/Banner.module.scss";
 import "./scroll.css";
 gsap.registerPlugin(ScrollTrigger);
 
@@ -147,6 +147,7 @@ const Animation = ({ loadImage, counter }) => {
   }, [controls, inView]);
 
   useEffect(() => {
+
     const updateScrollPercentage = () => {
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;

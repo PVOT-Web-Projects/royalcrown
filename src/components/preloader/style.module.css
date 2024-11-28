@@ -31,7 +31,8 @@
   justify-content: left;
   padding: 0 50px;
   align-items: end;
-  
+  height: 85vh;
+  font-size: 40px;
 }
 
 .circle {

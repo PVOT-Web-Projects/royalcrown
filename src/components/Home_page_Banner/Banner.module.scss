@@ -300,15 +300,15 @@
 }
 .text1 {
   position: absolute;
-  font-size: 4.5vw;
-  left: 50%;
+  font-size: 3vw;
+  left: 5%;
   top: 30%;
   transform: translateX(-50%, 50%);
   /* line-height: 70px; */
   text-transform: uppercase;
   font-family: "made_mirage_thin" !important;
   z-index: 1;
-  color: #ffffff;
+  color: #5b3524;
   /* bottom: 15rem; */
 }
 
@@ -383,7 +383,8 @@
   .text1 {
     position: absolute;
     /* left: 6rem; */
-    font-size: 5vw;
+    font-size: 3.2vw;
+    top: 25%;
     /* line-height: 90px; */
     /* bottom: 20rem; */
   }
