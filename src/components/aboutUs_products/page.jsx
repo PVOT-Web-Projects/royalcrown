@@ -72,9 +72,12 @@ const Page = () => {
   // Handle path changes and category filtering
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
+    
+    const fullPath = pathName + hash;
     const categorySlug = hash ? hash.replace("#", "") : ""; // Get category slug from the URL hash
     console.log("Selected Category from URL Hash:", categorySlug);
     if (categorySlug) {
+      const category = categoryMap[fullPath] || "all";
       const filteredData = products.filter((product) =>
         product.categories.some(
           (category) =>
@@ -83,7 +86,11 @@ const Page = () => {
       );
       // Log what products are being selected
       console.log("Filtered Data Based on Category:", filteredData);
-
+      setActiveTab(fullPath);
+      const { title, number, description } = getShortDescription(category);
+      setShortTitle(title);
+      setShortNumber(number);
+      setShortDescription(description);
       setCurrentData(filteredData);
     } else {
       setCurrentData(products);
