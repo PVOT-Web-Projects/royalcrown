@@ -52,7 +52,7 @@ const SwiperComponent = () => {
           }}
           viewport={{ once: true }}
         >
-          <p className="ThreeTextInner">The Pinnacle of Luxury Laminates</p>
+          <p className="ThreeTextInner">Crafted for Every Space: Discover Our Signature Categories</p>
         </motion.div>
         <p className="ThreeTextInnerFirst">
           {/* Discover the epitome of sophistication with our premium range of

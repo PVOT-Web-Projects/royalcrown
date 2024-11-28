@@ -1,16 +1,14 @@
-"use client"
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import Lenis from "@studio-freight/lenis"; // Import Leni
+import Lenis from "@studio-freight/lenis"; // Import Lenis
+// import MusicPlayer from "@/Components/musicPlayer/page";
 import { motion, useAnimation } from "framer-motion";
 import HeadingTextAnimation from "@/components/AnimatedText/HeadingTextAnimation";
 import { useInView } from "react-intersection-observer";
-// import styles from "@/components/Home_page_Banner/Banner.module.css";
-import "@/components/Home_page_Banner/Banner.module.css"
+import styles from "@/components/Home_page_Banner/Banner.module.scss";
 import "./scroll.css";
 gsap.registerPlugin(ScrollTrigger);
-
 
 const Animation = ({ loadImage, counter }) => {
   const [info, setInfo] = useState(false);
@@ -80,11 +78,11 @@ const Animation = ({ loadImage, counter }) => {
     setCanvasSize();
     window.addEventListener("resize", setCanvasSize);
     // https://interiormaataassets.humbeestudio.xyz/mainsiteassets/desktop/0001.webp
-    const frameCount = 1199;
+    const frameCount = 749;
     const currentFrame = (index) =>
       `https://interiormaataassets.humbeestudio.xyz/mainsiteassets/NewRcFrames/${(
         index + 1
-      ) 
+      )
         .toString()
         .padStart(4, "0")}.jpg`;
 
@@ -275,6 +273,26 @@ const Animation = ({ loadImage, counter }) => {
     setIsVisible(false);
   };
 
+  //  code for video show and hide
+  // useEffect(() => {
+  //   // Function to handle scroll direction and video visibility
+  //   const handleScroll = () => {
+  //     const video = document.querySelector(`.${styles.videoBg}`);
+  //     if (window.scrollY > 0) {
+  //       // Check if window has scrolled down
+  //       video.style.visibility = "hidden";
+  //     } else {
+  //       video.style.visibility = "visible";
+  //     }
+  //   };
+
+  //   // Add scroll event listener
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -303,7 +321,7 @@ const Animation = ({ loadImage, counter }) => {
     <section>
       <section ref={sectionRef}>
         <canvas
-          className="canvas_factory_settings"
+          className={styles.canvas_factory_settings}
           ref={canvasRef}
           style={{
             width: "100%",
@@ -312,29 +330,29 @@ const Animation = ({ loadImage, counter }) => {
           }}
         ></canvas>
       </section>
-      {/* <motion.div
-        ref={ref}
-        initial="hidden"
-        animate={inView ? "visible" : "hidden"}
-        transition={{ duration: 0.9 }}
-        className="text1"
-      >
-        <HeadingTextAnimation
-          heading={"Where Tradition find"}
-          justifyContent={"center"}
-        />
-        <HeadingTextAnimation
-          heading={" it’s modern muse"}
-          justifyContent={"left"}
-        />
-      </motion.div>
-
       <motion.div
         ref={ref}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
         transition={{ duration: 0.9 }}
-        className="interiormaata"
+        className={styles.text1}
+      >
+        <HeadingTextAnimation
+          heading={"Your Imagination."}
+          justifyContent={"center"}
+        />
+        <HeadingTextAnimation
+          heading={"Our Innovation."}
+          justifyContent={"left"}
+        />
+      </motion.div>
+
+      {/* <motion.div
+        ref={ref}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        transition={{ duration: 0.9 }}
+        className={styles.interiormaata}
       >
         <HeadingTextAnimation
           heading={"interior माता"}
@@ -363,10 +381,23 @@ const Animation = ({ loadImage, counter }) => {
           </div>
         )}
       </div>
+
+      {/* <video
+        className={styles.videoBg}
+        width="750"
+        height="500"
+        autoPlay
+        loop
+        muted
+      >
+        <source src="./video/final_frame_video.mp4" type="video/mp4" />
+      </video> */}
+
+      {/* <MusicPlayer /> */}
       {/* {scrollPercentage >= 45 && (
-        <div className="buttonOuter" ref={buttonRef}>
+        <div className={styles.buttonOuter} ref={buttonRef}>
           <motion.button
-            className="buttonX"
+            className={styles.buttonX}
             role="button"
             initial="hidden"
             animate={
@@ -396,7 +427,7 @@ const Animation = ({ loadImage, counter }) => {
             }
             variants={buttonVariants}
           >
-            <a href="tel:+917404040286" className="textX">
+            <a href="tel:+917404040286" className={styles.textX}>
               Contact Us | +917404040286
             </a>
           </motion.button>
