@@ -51,30 +51,14 @@ const Page = () => {
       });
   }, []);
 
-  // useEffect(() => {
-  //   const hash = typeof window !== "undefined" ? window.location.hash : "";
-  //   const fullPath = pathName + hash;
-
-  //   const category = categoryMap[fullPath] || "all";
-  //   setCurrentData(
-  //     category === "all"
-  //       ? products
-  //       : products.filter((data) => data.category === category)
-  //   );
-  //   setActiveTab(fullPath);
-  //   const { title, number, description } = getShortDescription(category);
-  //   setShortTitle(title);
-  //   setShortNumber(number);
-  //   setPageNumber(1);
-  //   setShortDescription(description);
-  // }, [pathName]);
-  // Handle path changes and category filtering
-  // Handle path changes and category filtering
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
+    
+    const fullPath = pathName + hash;
     const categorySlug = hash ? hash.replace("#", "") : ""; // Get category slug from the URL hash
     console.log("Selected Category from URL Hash:", categorySlug);
     if (categorySlug) {
+      const category = categoryMap[fullPath] || "all";
       const filteredData = products.filter((product) =>
         product.categories.some(
           (category) =>
@@ -83,13 +67,18 @@ const Page = () => {
       );
       // Log what products are being selected
       console.log("Filtered Data Based on Category:", filteredData);
-
+      setActiveTab(fullPath);
+      const { title, number, description } = getShortDescription(category);
+      setShortTitle(title);
+      setShortNumber(number);
+      setShortDescription(description);
       setCurrentData(filteredData);
     } else {
       setCurrentData(products);
     }
   }, [pathName, products]);
 
+  
   const handlePageChange = (event, value) => {
     setPageNumber(value);
     projectsRef.current.scrollIntoView({
@@ -124,7 +113,7 @@ const Page = () => {
   ];
 
   const types = [
-    { label: "Spotless", value: "Spotless" },
+    { label: "Spotless", value: "spotless" },
     { label: "Exotic Urbane", value: "Exotic Urbane" },
     { label: "Classic Wood Grains", value: "Classic Wood Grains" },
     { label: "Stones", value: "Stones" },
@@ -142,19 +131,19 @@ const Page = () => {
   ];
 
   const size = [
-    { label: "8 x 2", value: "8 x 2" },
-    { label: "8 x 9", value: "8 x 9" },
-    { label: "3 x 2", value: "3 x 2" },
-    { label: "6 x 6", value: "6 x 6" },
-    { label: "3 x 6", value: "3 x 6" },
-    { label: "6 x 3", value: "6 x 3" },
+    { label: "8 x 2", value: "8*4"  },
+    { label: "8 x 9", value: "8*9" },
+    { label: "3 x 2", value: "3*2" },
+    { label: "6 x 6", value: "6*6" },
+    { label: "3 x 6", value: "3*6" },
+    { label: "6 x 3", value: "6*3" },
   ];
 
   const thickness = [
     { label: "0.8 mm", value: "0.8 mm" },
-    { label: "0.4 MM", value: "0.4 MM" },
-    { label: "1.2 MM", value: "1.2 MM" },
-    { label: "2.5 MM", value: "2.5 MM" },
+    { label: "1.00 mm", value: "1.00 mm" },
+    { label: "1.2 mm", value: "1.2 mm" },
+    { label: "2.5 mm", value: "2.5 mm" },
   ];
 
   const color = [
@@ -221,24 +210,24 @@ const Page = () => {
       const finishMatch =
         selectedFinish === "all" || product.categoryFinish === selectedFinish;
       const sizeMatch =
-        selectedSize === "all" || product.categorySize === selectedSize;
+        selectedSize === "all" || product.attributes[1].terms[0].name === selectedSize;
       const thicknessMatch =
         selectedThickness === "all" ||
         // slide.attributes[2].terms[0].name
         product.attributes[2].terms[0].name === selectedThickness;
       const colorMatch =
-        selectedColor === "all" || product.categoryColor === selectedColor;
+        selectedColor === "all" || product.attributes[4].terms[0].name === selectedColor;
       const typeMatch =
-        selectedType === "all" || product.categoryType === selectedType;
+        selectedType === "all" || product.attributes[3].terms[0].name === selectedType;
       console.log("Checking Product:", product); // Log each product being checked
       console.log(
         "Matches Filters:",
         brandMatch,
         categoryMatch,
-        finishMatch,
-        sizeMatch,
-        thicknessMatch,
-        colorMatch,
+        "finish data" ,finishMatch,
+       "size data", sizeMatch,
+       "thickness data", thicknessMatch,
+        "color match",colorMatch,
         typeMatch
       ); // Log filter match status
 
@@ -325,17 +314,17 @@ const Page = () => {
         };
     }
   };
-  // const visibleTabs = [
-  //   "Royal Crown",
-  //   "Crown XCL",
-  //   "QBliss",
-  //   "Xylem",
-  //   "crown",
-  // ].filter(
-  //   (category) =>
-  //     activeTab === "" ||
-  //     activeTab === `/products#${category.replace(" ", "-").toLowerCase()}`
-  // );
+  const visibleTabs = [
+    "Royal Crown",
+    "Crown XCL",
+    "QBliss",
+    "Xylem",
+    "crown",
+  ].filter(
+    (category) =>
+      activeTab === "" ||
+      activeTab === `/products#${category.replace(" ", "-").toLowerCase()}`
+  );
   // Handle when user selects a tag from dropdown
   const handleTagChange = (e) => {
     setSelectedTag(e.value);
@@ -393,7 +382,7 @@ const Page = () => {
             Explore Collection
           </motion.div>
           <div className="products-tabs" id="sticky_top">
-            {/* {visibleTabs.map((label) => (
+            {visibleTabs.map((label) => (
               <Link
                 key={label}
                 href={`/products#${label.replace(" ", "-").toLowerCase()}`}
@@ -413,65 +402,10 @@ const Page = () => {
               >
                 <div className="tab-content-inner">{label}</div>
               </Link>
-            ))} */}
-             <div
-              className={`tab-item ${
-                activeTab === "/products#xylem" ? "active" : ""
-              }`}
-              onClick={(e) => {
-                e.preventDefault();
-                handleTabClick("/products#xylem");
-              }}
-            >
-              <div className="tab-content-inner">Xylem</div>
-            </div>
-            <div
-              className={`tab-item ${
-                activeTab === "/products#Qbiss" ? "active" : ""
-              }`}
-              onClick={(e) => {
-                e.preventDefault();
-                handleTabClick("/products#Qbiss");
-              }}
-            >
-              <div className="tab-content-inner">Qbiss</div>
-            </div>
-            
-            <div
-              className={`tab-item ${
-                activeTab === "/products#Crown_Xcl" ? "active" : ""
-              }`}
-              onClick={(e) => {
-                e.preventDefault();
-                handleTabClick("/products#Crown_Xcl");
-              }}
-            >
-              <div className="tab-content-inner">Crown Xcl</div>
-            </div>
-            <div
-              className={`tab-item ${
-                activeTab === "/products#royal-crown" ? "active" : ""
-              }`}
-              onClick={(e) => {
-                e.preventDefault();
-                handleTabClick("/products#royal-crown");
-              }}
-            >
-              <div className="tab-content-inner">Royal Crown</div>
-            </div>
-            <div
-              className={`tab-item ${
-                activeTab === "/products#Crown" ? "active" : ""
-              }`}
-              onClick={(e) => {
-                e.preventDefault();
-                handleTabClick("/products#Crown");
-              }}
-            >
-              <div className="tab-content-inner">Crown</div>
+            ))}
             </div>
           </div>
-        </div>
+             
 
         <div className="supply">
           <div id="sticky">
@@ -620,7 +554,7 @@ const Page = () => {
           </div>
           <div className="product_container" ref={projectsRef}>
             {/* {filteredProducts.map((product, index) => ( */}
-            {displayedData.map((product, index) => {
+            {filteredProducts1.map((product, index) => {
               const isTabActive = !!activeTab;
 
               // Only apply "big" or "tall" classNames if not in the tab view
