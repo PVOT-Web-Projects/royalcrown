@@ -62,7 +62,7 @@
     fill:transparent;
     stroke-width:2px;
     stroke-dashoffset:120;
-    stroke-dasharray:120;
+    /* stroke-dasharray:120; */
     -webkit-animation:mouse-scroll-btn-roll-out .55s cubic-bezier(.5,.1,.07,1);
     animation:mouse-scroll-btn-roll-out .55s cubic-bezier(.5,.1,.07,1);
   }
