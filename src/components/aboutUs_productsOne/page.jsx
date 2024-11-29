@@ -131,10 +131,10 @@ const Page = () => {
   ];
 
   const size = [
-    { label: "8 x 2", value: "8*4"  },
-    { label: "8 x 9", value: "8*9" },
-    { label: "3 x 2", value: "3*2" },
-    { label: "6 x 6", value: "6*6" },
+    { label: "8 x 4", value: "8*4"  },
+    { label: "10 x 4.25", value: "8*9" },
+    { label: "12 x 6", value: "3*2" },
+    { label: "14 x 6", value: "6*6" },
     { label: "3 x 6", value: "3*6" },
     { label: "6 x 3", value: "6*3" },
   ];
@@ -142,8 +142,12 @@ const Page = () => {
   const thickness = [
     { label: "0.8 mm", value: "0.8 mm" },
     { label: "1.00 mm", value: "1.00 mm" },
-    { label: "1.2 mm", value: "1.2 mm" },
-    { label: "2.5 mm", value: "2.5 mm" },
+    { label: "6 mm", value: "6 mm" },
+    { label: "8 mm", value: "8 mm" },
+    { label: "12 mm", value: "8 mm" },
+    { label: "13 mm", value: "8 mm" },
+
+
   ];
 
   const color = [
@@ -470,7 +474,7 @@ const Page = () => {
                 </div>
               )}
             </div>
-            <div className="dropdown1">
+            {/* <div className="dropdown1">
               <div className="dropdown-label"></div>
               <Dropdown
                 id="finish-select"
@@ -480,7 +484,7 @@ const Page = () => {
                 placeholder="Select Finish"
                 className="category-select"
               />
-            </div>
+            </div> */}
             <div className="dropdown1">
               <div className="dropdown-label">
                 <label htmlFor="size-select" className="colorSelectDropdown">
