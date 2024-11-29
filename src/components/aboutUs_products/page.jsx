@@ -51,25 +51,6 @@ const Page = () => {
       });
   }, []);
 
-  // useEffect(() => {
-  //   const hash = typeof window !== "undefined" ? window.location.hash : "";
-  //   const fullPath = pathName + hash;
-
-  //   const category = categoryMap[fullPath] || "all";
-  //   setCurrentData(
-  //     category === "all"
-  //       ? products
-  //       : products.filter((data) => data.category === category)
-  //   );
-  //   setActiveTab(fullPath);
-  //   const { title, number, description } = getShortDescription(category);
-  //   setShortTitle(title);
-  //   setShortNumber(number);
-  //   setPageNumber(1);
-  //   setShortDescription(description);
-  // }, [pathName]);
-  // Handle path changes and category filtering
-  // Handle path changes and category filtering
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
     
@@ -120,7 +101,7 @@ const Page = () => {
   const displayedData = currentData.slice(firstIndex, lastIndex);
 
   const categories = [
-    { label: "Spotless", value: "Spotless" },
+    { label: "spotless", value: "simple" },
     { label: "Exotic Urbane", value: "Exotic Urbane" },
     { label: "Classic Wood Grains", value: "Classic Wood Grains" },
     { label: "Stones", value: "Stones" },
@@ -131,7 +112,7 @@ const Page = () => {
   ];
 
   const types = [
-    { label: "Spotless", value: "Spotless" },
+    { label: "spotless", value: "spotless" },
     { label: "Exotic Urbane", value: "Exotic Urbane" },
     { label: "Classic Wood Grains", value: "Classic Wood Grains" },
     { label: "Stones", value: "Stones" },
@@ -142,15 +123,15 @@ const Page = () => {
   ];
 
   const finish = [
-    { label: "Royal Art", value: "Royal Art" },
-    { label: "Finish1", value: "Finish1" },
+    { label: "Royal Art", value: "Decorative" },
+    { label: "Finish1", value: "crown" },
     { label: "Finish2", value: "Finish2" },
     { label: "Finish3", value: "Finish3" },
   ];
 
   const size = [
-    { label: "8 x 2", value: "8 x 2" },
-    { label: "8 x 9", value: "8 x 9" },
+    { label: "8 x 4", value: "8*4" },
+    { label: "8 x 9", value: "8*9" },
     { label: "3 x 2", value: "3 x 2" },
     { label: "6 x 6", value: "6 x 6" },
     { label: "3 x 6", value: "3 x 6" },
@@ -159,20 +140,20 @@ const Page = () => {
 
   const thickness = [
     { label: "0.8 mm", value: "0.8 mm" },
-    { label: "0.4 MM", value: "0.4 MM" },
-    { label: "1.2 MM", value: "1.2 MM" },
-    { label: "2.5 MM", value: "2.5 MM" },
+    { label: "1.00 mm", value: "1.00 mm" },
+    { label: "1.2 mm", value: "1.2 mm" },
+    { label: "2.5 mm", value: "2.5 mm" },
   ];
 
   const color = [
-    { label: "Red", value: "Red" },
-    { label: "Blue", value: "Blue" },
-    { label: "Green", value: "Green" },
-    { label: "Gray", value: "Gray" },
-    { label: "Brown", value: "Brown" },
+    { label: "Red", value: "Grey" },
+    { label: "Blue", value: "Brown" },
+    { label: "Green", value: "Purple" },
+    { label: "Gray", value: "Beige" },
+    { label: "Brown", value: "Black" },
     { label: "Pink", value: "Pink" },
     { label: "Yellow", value: "Yellow" },
-    { label: "White", value: "White" },
+    { label: "White", value: "Orange" },
   ];
 
   const mappedColor = useMemo(() => {
@@ -226,26 +207,26 @@ const Page = () => {
         selectedCategory.length === 0 ||
         selectedCategory.includes(product.categoryValue);
       const finishMatch =
-        selectedFinish === "all" || product.categoryFinish === selectedFinish;
+        selectedFinish === "all" || product.categories[1].slug === selectedFinish;
       const sizeMatch =
-        selectedSize === "all" || product.categorySize === selectedSize;
+        selectedSize === "all" || product.attributes[1].terms[0].name === selectedSize;
       const thicknessMatch =
         selectedThickness === "all" ||
         // slide.attributes[2].terms[0].name
         product.attributes[2].terms[0].name === selectedThickness;
       const colorMatch =
-        selectedColor === "all" || product.categoryColor === selectedColor;
+        selectedColor === "all" || product.attributes[4].terms[0].name === selectedColor;
       const typeMatch =
-        selectedType === "all" || product.categoryType === selectedType;
+        selectedType === "all" || product.attributes[3].terms[0].name === selectedType;
       console.log("Checking Product:", product); // Log each product being checked
       console.log(
         "Matches Filters:",
         brandMatch,
         categoryMatch,
-        finishMatch,
-        sizeMatch,
-        thicknessMatch,
-        colorMatch,
+        "finish data" ,finishMatch,
+       "size data", sizeMatch,
+       "thickness data", thicknessMatch,
+        "color match",colorMatch,
         typeMatch
       ); // Log filter match status
 
@@ -571,7 +552,7 @@ const Page = () => {
           </div>
           <div className="product_container" ref={projectsRef}>
             {/* {filteredProducts.map((product, index) => ( */}
-            {displayedData.map((product, index) => {
+            {filteredProducts1.map((product, index) => {
               const isTabActive = !!activeTab;
 
               // Only apply "big" or "tall" classNames if not in the tab view
