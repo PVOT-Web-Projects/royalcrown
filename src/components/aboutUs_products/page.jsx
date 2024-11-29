@@ -207,7 +207,7 @@ const Page = () => {
         selectedCategory.length === 0 ||
         selectedCategory.includes(product.categoryValue);
       const finishMatch =
-        selectedFinish === "all" || product.categoryFinish === selectedFinish;
+        selectedFinish === "all" || product.categories[1].slug === selectedFinish;
       const sizeMatch =
         selectedSize === "all" || product.attributes[1].terms[0].name === selectedSize;
       const thicknessMatch =
