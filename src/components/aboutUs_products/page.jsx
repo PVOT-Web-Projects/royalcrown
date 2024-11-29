@@ -146,14 +146,14 @@ const Page = () => {
   ];
 
   const color = [
-    { label: "Red", value: "Red" },
-    { label: "Blue", value: "Blue" },
-    { label: "Green", value: "Green" },
-    { label: "Gray", value: "Gray" },
-    { label: "Brown", value: "Brown" },
+    { label: "Red", value: "Grey" },
+    { label: "Blue", value: "Brown" },
+    { label: "Green", value: "Purple" },
+    { label: "Gray", value: "Beige" },
+    { label: "Brown", value: "Black" },
     { label: "Pink", value: "Pink" },
     { label: "Yellow", value: "Yellow" },
-    { label: "White", value: "White" },
+    { label: "White", value: "Orange" },
   ];
 
   const mappedColor = useMemo(() => {
