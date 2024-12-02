@@ -101,7 +101,7 @@ const Page = () => {
   const displayedData = currentData.slice(firstIndex, lastIndex);
 
   const categories = [
-    { label: "spotless", value: "simple" },
+    { label: "spotless", value: "Wardrobe" },
     { label: "Exotic Urbane", value: "Exotic Urbane" },
     { label: "Classic Wood Grains", value: "Classic Wood Grains" },
     { label: "Stones", value: "Stones" },
@@ -111,16 +111,16 @@ const Page = () => {
     { label: "Woodgrains", value: "Woodgrains" },
   ];
 
-  const types = [
-    { label: "spotless", value: "spotless" },
-    { label: "Exotic Urbane", value: "Exotic Urbane" },
-    { label: "Classic Wood Grains", value: "Classic Wood Grains" },
-    { label: "Stones", value: "Stones" },
-    { label: "Solid Colors", value: "Solid Colors" },
-    { label: "Textiles", value: "Textiles" },
-    { label: "Mirrors", value: "Mirrors" },
-    { label: "Woodgrains", value: "Woodgrains" },
-  ];
+  // const types = [
+  //   { label: "spotless", value: "spotless" },
+  //   { label: "Exotic Urbane", value: "Exotic Urbane" },
+  //   { label: "Classic Wood Grains", value: "Classic Wood Grains" },
+  //   { label: "Stones", value: "Stones" },
+  //   { label: "Solid Colors", value: "Solid Colors" },
+  //   { label: "Textiles", value: "Textiles" },
+  //   { label: "Mirrors", value: "Mirrors" },
+  //   { label: "Woodgrains", value: "Woodgrains" },
+  // ];
 
   const finish = [
     { label: "Royal Art", value: "Decorative" },
@@ -131,7 +131,7 @@ const Page = () => {
 
   const size = [
     { label: "8 x 4", value: "8*4"  },
-    { label: "10 x 4.25", value: "8*9" },
+    { label: "8 x 9", value: "8*9" },
     { label: "12 x 6", value: "3*2" },
     { label: "14 x 6", value: "6*6" },
     { label: "3 x 6", value: "3*6" },
@@ -143,10 +143,8 @@ const Page = () => {
     { label: "1.00 mm", value: "1.00 mm" },
     { label: "6 mm", value: "6 mm" },
     { label: "8 mm", value: "8 mm" },
-    { label: "12 mm", value: "8 mm" },
-    { label: "13 mm", value: "8 mm" },
-
-
+    { label: "12 mm", value: "12 mm" },
+    { label: "13 mm", value: "13 mm" },
   ];
 
   const color = [
@@ -182,9 +180,7 @@ const Page = () => {
   const handleFinishChange = (e) => {
     setSelectedFinish(e.value);
   };
-  const handleSizeChange = (e) => {
-    setSelectedSize(e.value);
-  };
+
   const handleSizeClick = (sizeValue) => {
     setSelectedSize(sizeValue);
     const exploreCollectionElement = document.querySelector("#sticky_top");
@@ -199,17 +195,34 @@ const Page = () => {
     setSelectedThickness(e.value);
   };
 
-  const handleColorChange = (e) => {
-    setSelectedColor(e.value);
+  // const handleColorChange = (e) => {
+  //   setSelectedColor(e.value);
+  // };
+  const handleColorChange = (color) => {
+    // If the same color is clicked again, reset the selected color
+    if (selectedColor === color) {
+      setSelectedColor(null); // Clear the selection
+    } else {
+      setSelectedColor(color); // Set the selected color
+    }
   };
+  
 
   const filteredProducts1 = useMemo(() => {
     return products.filter((product) => {
+       // Normalize and compare categories
+    const categoryMatch =
+    selectedCategory.length === 0 ||
+    selectedCategory.some((selectedCat) =>
+      product.categories.some((category) =>
+        category.slug.toLowerCase() === selectedCat.toLowerCase()
+      )
+    );
       const brandMatch =
         selectedBrand === "all" || product.category === selectedBrand;
-      const categoryMatch =
-        selectedCategory.length === 0 ||
-        selectedCategory.includes(product.categoryValue);
+      // const categoryMatch =
+      //   selectedCategory.length === 0 ||
+      //   selectedCategory.includes(product.categoryValue);
       const finishMatch =
         selectedFinish === "all" || product.categories[1].slug === selectedFinish;
       const sizeMatch =
@@ -461,15 +474,15 @@ const Page = () => {
                 />
               ) : (
                 <div className="color_dropdown">
-                  <div className="color1"></div>
-                  <div className="color2"></div>
-                  <div className="color3"></div>
-                  <div className="color4"></div>
-                  <div className="color5"></div>
-                  <div className="color6"></div>
-                  <div className="color7"></div>
-                  <div className="color8"></div>
-                </div>
+                {color.map((colorItem, index) => (
+                  <div
+                    key={index}
+                    className={`color-box color${index + 1}`}
+                    // style={{ backgroundColor: colorItem.value }}
+                    onClick={() => handleColorChange(colorItem.value)} // Add color change functionality
+                  ></div>
+                ))}
+              </div>
               )}
             </div>
             {/* <div className="dropdown1">
