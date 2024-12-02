@@ -123,8 +123,8 @@ const Page = () => {
     { label: "1.00 mm", value: "1.00 mm" },
     { label: "6 mm", value: "6 mm" },
     { label: "8 mm", value: "8 mm" },
-    { label: "12 mm", value: "8 mm" },
-    { label: "13 mm", value: "8 mm" },
+    { label: "12 mm", value: "12 mm" },
+    { label: "13 mm", value: "13 mm" },
   ];
 
   const color = [
