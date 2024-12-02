@@ -78,7 +78,7 @@ const Animation = ({ loadImage, counter }) => {
     setCanvasSize();
     window.addEventListener("resize", setCanvasSize);
     // https://interiormaataassets.humbeestudio.xyz/mainsiteassets/desktop/0001.webp
-    const frameCount = 749;
+    const frameCount = 1199;
     const currentFrame = (index) =>
       `https://interiormaataassets.humbeestudio.xyz/mainsiteassets/NewRcFrames/${(
         index + 1
