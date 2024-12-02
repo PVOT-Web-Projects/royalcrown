@@ -52,7 +52,7 @@ const SwiperComponent = () => {
           }}
           viewport={{ once: true }}
         >
-          <p className="ThreeTextInner">Crafted for Every Space: Discover Our Signature Categories</p>
+          <p className="ThreeTextInner">Laminates Crafted for Every Space</p>
         </motion.div>
         <p className="ThreeTextInnerFirst">
           {/* Discover the epitome of sophistication with our premium range of
