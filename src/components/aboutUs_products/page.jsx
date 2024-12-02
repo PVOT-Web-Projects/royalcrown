@@ -131,7 +131,7 @@ const Page = () => {
     { label: "Red", value: "Red" },
     { label: "Blue", value: "Blue" },
     { label: "Green", value: "Green" },
-    { label: "Gray", value: "Gray" },
+    { label: "Gray", value: "Grey" },
     { label: "Brown", value: "Brown" },
     { label: "Pink", value: "Pink" },
     { label: "Yellow", value: "Yellow" },
