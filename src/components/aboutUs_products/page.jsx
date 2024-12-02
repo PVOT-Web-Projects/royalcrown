@@ -53,7 +53,7 @@ const Page = () => {
 
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
-    
+
     const fullPath = pathName + hash;
     const categorySlug = hash ? hash.replace("#", "") : ""; // Get category slug from the URL hash
     console.log("Selected Category from URL Hash:", categorySlug);
@@ -101,8 +101,8 @@ const Page = () => {
   const displayedData = currentData.slice(firstIndex, lastIndex);
 
   const categories = [
-    { label: "spotless", value: "Wardrobe" },
-    { label: "Exotic Urbane", value: "Exotic Urbane" },
+    { label: "Plain Colour", value: "Plain Colour" },
+    { label: "Abstract", value: "Abstracts" },
     { label: "Classic Wood Grains", value: "Classic Wood Grains" },
     { label: "Stones", value: "Stones" },
     { label: "Solid Colors", value: "Solid Colors" },
@@ -110,94 +110,75 @@ const Page = () => {
     { label: "Mirrors", value: "Mirrors" },
     { label: "Woodgrains", value: "Woodgrains" },
   ];
-
-  // const types = [
-  //   { label: "spotless", value: "spotless" },
-  //   { label: "Exotic Urbane", value: "Exotic Urbane" },
-  //   { label: "Classic Wood Grains", value: "Classic Wood Grains" },
-  //   { label: "Stones", value: "Stones" },
-  //   { label: "Solid Colors", value: "Solid Colors" },
-  //   { label: "Textiles", value: "Textiles" },
-  //   { label: "Mirrors", value: "Mirrors" },
-  //   { label: "Woodgrains", value: "Woodgrains" },
-  // ];
-
-  const finish = [
-    { label: "Royal Art", value: "Decorative" },
-    { label: "Finish1", value: "crown" },
-    { label: "Finish2", value: "Finish2" },
-    { label: "Finish3", value: "Finish3" },
-  ];
-
   const size = [
     { label: "8 x 4", value: "8*4"  },
-    { label: "8 x 9", value: "8*9" },
+    { label: "10 x 4.25", value: "8*9" },
     { label: "12 x 6", value: "3*2" },
     { label: "14 x 6", value: "6*6" },
     { label: "3 x 6", value: "3*6" },
     { label: "6 x 3", value: "6*3" },
   ];
-
   const thickness = [
     { label: "0.8 mm", value: "0.8 mm" },
     { label: "1.00 mm", value: "1.00 mm" },
     { label: "6 mm", value: "6 mm" },
     { label: "8 mm", value: "8 mm" },
-    { label: "12 mm", value: "12 mm" },
-    { label: "13 mm", value: "13 mm" },
+    { label: "12 mm", value: "8 mm" },
+    { label: "13 mm", value: "8 mm" },
   ];
 
   const color = [
-    { label: "Grey", value: "Grey" },
-    { label: "Blue", value: "Brown" },
-    { label: "Green", value: "Purple" },
-    { label: "Gray", value: "Beige" },
-    { label: "Brown", value: "Black" },
+    { label: "Red", value: "Red" },
+    { label: "Blue", value: "Blue" },
+    { label: "Green", value: "Green" },
+    { label: "Gray", value: "Gray" },
+    { label: "Brown", value: "Brown" },
     { label: "Pink", value: "Pink" },
     { label: "Yellow", value: "Yellow" },
-    { label: "White", value: "Orange" },
+    { label: "White", value: "White" },
   ];
-
   const mappedColor = useMemo(() => {
     return color.map((c) => ({ ...c, className: "myOptionClassName" }));
   }, [color]);
   const handleTypeChange = (e) => {
     setSelectedType(e.value);
   };
-
-  const handleCategoryChange = (e) => {
-    const value = e.target.value;
-    const checked = e.target.checked;
-    if (checked) {
-      console.log("Category Selected:", value); // Log the selected category
-      setSelectedCategory((prev) => [...prev, value]);
-    } else {
-      setSelectedCategory((prev) =>
-        prev.filter((category) => category !== value)
-      );
-    }
+  const handleCategoryChange = (event) => {
+    const { value, checked } = event.target;
+    setSelectedCategory((prevSelectedCategory) => {
+      if (checked) {
+        console.log("Category Selected:", value); // Log the selected category
+        return [...prevSelectedCategory, value];
+      } else {
+        return prevSelectedCategory.filter((category) => category !== value);
+      }
+    });
   };
-  const handleFinishChange = (e) => {
-    setSelectedFinish(e.value);
+  // const handleFinishChange = (e) => {
+  //   setSelectedFinish(e.value);
+  // };
+  const handleSizeChange = (e) => {
+    setSelectedSize(e.value);
   };
-
-  const handleSizeClick = (sizeValue) => {
-    setSelectedSize(sizeValue);
-    const exploreCollectionElement = document.querySelector("#sticky_top");
-    if (exploreCollectionElement) {
-      exploreCollectionElement.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  };
+  // Size Click Handler
+const handleSizeClick = (sizeValue) => {
+  // setSelectedSize(sizeValue);
+  setSelectedSize(prevSize => prevSize === sizeValue ? "" : sizeValue);
+  const exploreCollectionElement = document.querySelector("#sticky_top");
+  if (exploreCollectionElement) {
+    exploreCollectionElement.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
+};
   const handleThicknessChange = (e) => {
     setSelectedThickness(e.value);
   };
 
-  // const handleColorChange = (e) => {
-  //   setSelectedColor(e.value);
-  // };
+  const handleColorChange1 = (e) => {
+    setSelectedColor(e.value);
+  };
   const handleColorChange = (color) => {
     // If the same color is clicked again, reset the selected color
     if (selectedColor === color) {
@@ -206,46 +187,51 @@ const Page = () => {
       setSelectedColor(color); // Set the selected color
     }
   };
-  
 
   const filteredProducts1 = useMemo(() => {
     return products.filter((product) => {
-       // Normalize and compare categories
-    const categoryMatch =
-    selectedCategory.length === 0 ||
-    selectedCategory.some((selectedCat) =>
-      product.categories.some((category) =>
-        category.slug.toLowerCase() === selectedCat.toLowerCase()
-      )
-    );
       const brandMatch =
         selectedBrand === "all" || product.category === selectedBrand;
-      // const categoryMatch =
-      //   selectedCategory.length === 0 ||
-      //   selectedCategory.includes(product.categoryValue);
+      const categoryMatch =
+        selectedCategory.length === 0 ||
+        selectedCategory.some((selectedCat) =>
+          product.attributes.some(
+            (attr) =>
+              attr.name === "type" &&
+              attr.terms.some((term) => term.slug === selectedCat)
+          )
+        );
       const finishMatch =
-        selectedFinish === "all" || product.categories[1].slug === selectedFinish;
+        selectedFinish === "all" ||
+        product.categories[1].slug === selectedFinish;
       const sizeMatch =
-        selectedSize === "all" || product.attributes[1].terms[0].name === selectedSize;
+        selectedSize === "all" ||
+        product.attributes[1].terms[0].name === selectedSize;
       const thicknessMatch =
         selectedThickness === "all" ||
-        // slide.attributes[2].terms[0].name
         product.attributes[2].terms[0].name === selectedThickness;
       const colorMatch =
-        selectedColor === "all" || product.attributes[4].terms[0].name === selectedColor;
+        selectedColor === "all" ||
+        product.attributes[4].terms[0].name === selectedColor;
       const typeMatch =
-        selectedType === "all" || product.attributes[3].terms[0].name === selectedType;
+        selectedType === "all" ||
+        product.attributes[3].terms[0].name === selectedType;
       console.log("Checking Product:", product); // Log each product being checked
       console.log(
         "Matches Filters:",
         brandMatch,
+        "CategoryMatch",
         categoryMatch,
-        "finish data" ,finishMatch,
-       "size data", sizeMatch,
-       "thickness data", thicknessMatch,
-        "color match",colorMatch,
+        "finish data",
+        finishMatch,
+        "size data",
+        sizeMatch,
+        "thickness data",
+        thicknessMatch,
+        "color match",
+        colorMatch,
         typeMatch
-      ); // Log filter match status
+      );
 
       return (
         brandMatch &&
@@ -341,10 +327,6 @@ const Page = () => {
       activeTab === "" ||
       activeTab === `/products#${category.replace(" ", "-").toLowerCase()}`
   );
-  // Handle when user selects a tag from dropdown
-  const handleTagChange = (e) => {
-    setSelectedTag(e.value);
-  };
 
   useEffect(() => {
     if (selectedTag === "all") {
@@ -364,6 +346,17 @@ const Page = () => {
       setFilteredProducts(filtered);
     }
   }, [selectedTag, products]);
+  // Thickness Click Handler
+const handleThicknessClick = (thicknessValue) => {
+  setSelectedThickness(prevThickness => prevThickness === thicknessValue ? "" : thicknessValue);
+  const exploreCollectionElement = document.querySelector("#sticky_top");
+  if (exploreCollectionElement) {
+    exploreCollectionElement.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
+};
   // const randomHeight = Math.floor(Math.random() * (500 - 300 + 1)) + 300; // Random height between 300px and 500px
   return (
     <>
@@ -469,33 +462,22 @@ const Page = () => {
                   className="color-select"
                   options={mappedColor}
                   value={selectedColor}
-                  onChange={handleColorChange}
+                  onChange={handleColorChange1}
                   placeholder="Select Color"
                 />
               ) : (
                 <div className="color_dropdown">
-                {color.map((colorItem, index) => (
-                  <div
-                    key={index}
-                    className={`color-box color${index + 1}`}
-                    // style={{ backgroundColor: colorItem.value }}
-                    onClick={() => handleColorChange(colorItem.value)} // Add color change functionality
-                  ></div>
-                ))}
-              </div>
+                  {color.map((colorItem, index) => (
+                    <div
+                      key={index} 
+                      className={`color-box color${index + 1}`}
+                      // style={{ backgroundColor: colorItem.value }}
+                      onClick={() => handleColorChange(colorItem.value)} // Add color change functionality
+                    ></div>
+                  ))}
+                </div>
               )}
             </div>
-            {/* <div className="dropdown1">
-              <div className="dropdown-label"></div>
-              <Dropdown
-                id="finish-select"
-                options={finish}
-                value={selectedFinish}
-                onChange={handleFinishChange}
-                placeholder="Select Finish"
-                className="category-select"
-              />
-            </div> */}
             <div className="dropdown1">
               <div className="dropdown-label">
                 <label htmlFor="size-select" className="colorSelectDropdown">
@@ -556,9 +538,10 @@ const Page = () => {
                           ? "selected"
                           : ""
                       }`}
-                      onClick={() =>
-                        setSelectedThickness(thicknessOption.value)
-                      }
+                      // onClick={() =>
+                      //   setSelectedThickness(thicknessOption.value)
+                      // }
+                      onClick={() => handleThicknessClick(thicknessOption.value)} // Add click functionality
                     >
                       <p>{thicknessOption.label}</p>
                     </div>
@@ -577,9 +560,9 @@ const Page = () => {
                 ? "" // Normal size for tab view
                 : index === 9
                 ? "big"
-                : [
-                    0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20,21
-                  ].includes(index)
+                : [0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21].includes(
+                    index
+                  )
                 ? "tall"
                 : "";
 
