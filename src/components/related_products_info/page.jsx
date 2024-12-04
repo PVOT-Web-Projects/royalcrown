@@ -40,6 +40,10 @@ const RelatedProductInfo = () => {
       }
     };
 
+
+
+
+    
     fetchRelatedProducts();
   }, []);
 
