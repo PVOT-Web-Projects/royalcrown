@@ -37,6 +37,11 @@
     padding: 100px 0;
   }
 }
+@media (min-width: 1025px) and (max-width: 1199px) {
+  .paragraph {
+    font-size: 4.5vw;
+  }
+}
 @media (min-width: 769px) and (max-width: 1024px) {
   .paragraph {
     font-size: 6.5vw;
