@@ -11,6 +11,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
+
 const Page = () => {
   const itemsPerPage = 25;
   const [pageNumber, setPageNumber] = useState(1);
@@ -53,30 +54,60 @@ const Page = () => {
 
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
-
     const fullPath = pathName + hash;
-    const categorySlug = hash ? hash.replace("#", "") : ""; // Get category slug from the URL hash
+    const categorySlug = hash ? hash.replace("#", "").toLowerCase() : ""; // Get category slug from the URL hash and ensure lowercase comparison
     console.log("Selected Category from URL Hash:", categorySlug);
+  
     if (categorySlug) {
-      const category = categoryMap[fullPath] || "all";
-      const filteredData = products.filter((product) =>
-        product.categories.some(
-          (category) =>
-            category.slug.toLowerCase() === categorySlug.toLowerCase()
-        )
-      );
-      // Log what products are being selected
+      // Log all products and categories for debugging
+      console.log("Products:", products);
+  
+      // Filter data based on the selected category slug from the URL
+      const filteredData = products.filter((product) => {
+        console.log("Checking product:", product); // Log each product to debug
+  
+        // Check if the product has categories and if the category structure is correct
+        if (product.categories && Array.isArray(product.categories)) {
+          // Log categories to ensure they are structured correctly
+          console.log("Product Categories:", product.categories);
+  
+          // Filter through categories
+          return product.categories.some((category) => {
+            console.log("Checking category  slug:", category.slug); // Log each category's slug
+  
+            // Match category slug in lowercase (remove leading/trailing spaces)
+            return category.slug && category.slug.toLowerCase().trim() === categorySlug;
+          });
+        }
+  
+        return false; // If no valid categories, don't include the product
+      });
+  
+      // Log the filtered data to see if any products match the category
       console.log("Filtered Data Based on Category:", filteredData);
-      setActiveTab(fullPath);
-      const { title, number, description } = getShortDescription(category);
-      setShortTitle(title);
-      setShortNumber(number);
-      setShortDescription(description);
-      setCurrentData(filteredData);
+  
+      if (filteredData.length > 0) {
+        // Set currentData with all matching products, not just the first one
+        setCurrentData(filteredData);  // Set filtered data to currentData
+  
+        // Set other state values related to the category
+        setActiveTab(fullPath);
+        const { title, number, description } = getShortDescription(categorySlug);
+        setShortTitle(title);
+        setShortNumber(number);
+        setShortDescription(description);
+      } else {
+        console.log("No products found for the selected category.");
+        setCurrentData([]); // If no products are found, clear current data
+      }
     } else {
-      setCurrentData(products);
+      // If no category slug is found, show all products
+      console.log("No category slug found. Showing all products.");
+      setCurrentData(products); // Set currentData to show all products
     }
   }, [pathName, products]);
+   // Make sure to include products in the dependency list
+  
 
   const handlePageChange = (event, value) => {
     setPageNumber(value);
@@ -96,11 +127,11 @@ const Page = () => {
     };
   }, []);
 
-  const lastIndex = pageNumber * itemsPerPage;
-  const firstIndex = lastIndex - itemsPerPage;
-  const displayedData = currentData.slice(firstIndex, lastIndex);
+  // const lastIndex = pageNumber * itemsPerPage;
+  // const firstIndex = lastIndex - itemsPerPage;
+  // const displayedData = currentData.slice(firstIndex, lastIndex);
 
-  const categories = [
+  const categories = [ 
     { label: "Plain Colour", value: "Plain Colour" },
     { label: "Abstract", value: "Abstracts" },
     { label: "Classic Wood Grains", value: "Classic Wood Grains" },
@@ -253,9 +284,15 @@ const handleSizeClick = (sizeValue) => {
     selectedColor,
     selectedType, // Added selectedType to the dependencies of useMemo
   ]);
+  const lastIndex = pageNumber * itemsPerPage;
+const firstIndex = lastIndex - itemsPerPage;
+// Paginated data derived from filtered products
+const displayedData = filteredProducts1.length > 0
+  ? filteredProducts1.slice(firstIndex, lastIndex)
+  : [];
 
   const categoryMap = {
-    "/products#xylem": "Xylem",
+    "/products#xylem": "xylem",
     "/products#royal-crown": "Royal Crown",
     "/products#crown": "Crown",
     "/products#Qbiss": "QBliss",
@@ -357,6 +394,8 @@ const handleThicknessClick = (thicknessValue) => {
     });
   }
 };
+
+
   // const randomHeight = Math.floor(Math.random() * (500 - 300 + 1)) + 300; // Random height between 300px and 500px
   return (
     <>
@@ -552,7 +591,9 @@ const handleThicknessClick = (thicknessValue) => {
           </div>
           <div className="product_container" ref={projectsRef}>
             {/* {filteredProducts.map((product, index) => ( */}
-            {filteredProducts1.map((product, index) => {
+            {displayedData.map((product, index) => {
+              console.log(displayedData);
+
               const isTabActive = !!activeTab;
 
               // Only apply "big" or "tall" classNames if not in the tab view
