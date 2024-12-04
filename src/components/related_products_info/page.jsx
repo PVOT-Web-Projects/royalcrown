@@ -1,11 +1,12 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./relatedProduct.scss";
 import Image from "next/image";
 import Img1 from "@/images/PRODUCT1.png";
+import { useRouter } from "next/navigation";
 import Img2 from "@/images/PRODUCT2.png";
 import Img3 from "@/images/PRODUCT3.png";
-import Img4 from "@/images/SliderImg_2.png"
+import Img4 from "@/images/SliderImg_2.png";
 import LineHeaderText from "../lineheadertext/page";
 import { SwiperSlide, Swiper } from "swiper/react";
 import { Autoplay, FreeMode, Pagination } from "swiper/modules";
@@ -16,6 +17,31 @@ import { motion } from "framer-motion";
 
 const RelatedProductInfo = () => {
   const [liked, setLiked] = useState([false, false, false, false]);
+  const [relatedProducts, setRelatedProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    const fetchRelatedProducts = async () => {
+      try {
+        const response = await fetch(
+          "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100"
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch related products.");
+        }
+        const data = await response.json();
+        setRelatedProducts(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRelatedProducts();
+  }, []);
 
   const toggleLike = (index) => {
     const newLiked = [...liked];
@@ -33,13 +59,21 @@ const RelatedProductInfo = () => {
     { ProductImage: Img3 },
     { ProductImage: Img4 },
   ];
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
   return (
     <div className="RelatedProductMainContainer">
-      <motion.div initial={{ y: 50, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}>
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+      >
         <LineHeaderText text={"RELATED PRODUCTS"} />
       </motion.div>
       <Swiper
@@ -50,41 +84,43 @@ const RelatedProductInfo = () => {
         autoplay={{
           delay: 2500,
         }}
-        slidesPerGroup={2}
-        loop = {true}
+        slidesPerGroup={1}
+        loop={true}
         speed={1500}
-        modules={[FreeMode, Pagination , Autoplay]}
-
+        modules={[FreeMode, Pagination, Autoplay]}
         breakpoints={{
-          1600 : {
-            slidesPerView : 5,
+          1600: {
+            slidesPerView: 5,
           },
-          1200:{
-            slidesPerView: 4
+          1200: {
+            slidesPerView: 4,
           },
-          768 : {
+          768: {
             slidesPerView: 3,
-            spaceBetween : 20,
+            spaceBetween: 20,
           },
-          575 : {
-            spaceBetween : 40,
+          575: {
+            spaceBetween: 40,
           },
-          475 : {
+          475: {
             slidesPerView: 2,
-            spaceBetween : 20
+            spaceBetween: 20,
           },
-          300 : {
+          300: {
             slidesPerView: 1,
-            spaceBetween : 20
-          }
+            spaceBetween: 20,
+          },
         }}
       >
-        {Images.map((item, index) => (
-          <SwiperSlide key={index} className="RelatedProductCard">
+        {relatedProducts.map((product, index) => (
+          <SwiperSlide key={product.id} className="RelatedProductCard">
             <Image
-              src={item.ProductImage}
+              src={product.images[0]?.src || "/placeholder.png"}
+              // src={item.ProductImage}
               alt="Related Product"
               className="ImageProductImg"
+              height={300}
+              width={300}
             />
             <div className="heart-container" title="Like">
               <input
@@ -124,20 +160,36 @@ const RelatedProductInfo = () => {
                 </svg>
               </div>
             </div>
-            <div className="ImageHover">
+            <div className="ImageHover"
+             onClick={() => {
+                  console.log("Product ID:", product.id);
+                  router.push(`/product-information#${product.id}`);
+                }}>
               <svg
                 width="24"
                 height="24"
                 xmlns="http://www.w3.org/2000/svg"
                 fillRule="evenodd"
                 clipRule="evenodd"
-                fill="white"
+                fill="#5b3524"
               >
                 <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
               </svg>
-              <div className="TextSvg">
-                <p className="TextSvgInner">KNOW MORE</p>
+              <div
+                className="TextSvg"
+               
+              >
+                Know More
               </div>
+              {/* <div
+                className="TextSvg"
+                onClick={() => {
+                  console.log("Product ID:", product.id);
+                  router.push(`/product-information#${product.id}`);
+                }}
+              > */}
+                {/* <p className="TextSvgInner">KNOW MORE</p> */}
+              {/* </div> */}
             </div>
           </SwiperSlide>
         ))}
