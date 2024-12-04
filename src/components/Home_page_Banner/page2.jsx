@@ -4,9 +4,9 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 // import MusicPlayer from "@/Components/musicPlayer/page";
 import { motion, useAnimation } from "framer-motion";
-// import HeadingTextAnimation from "@/components/AnimatedText/HeadingTextAnimation";
+import HeadingTextAnimation from "@/components/AnimatedText/HeadingTextAnimation";
 import { useInView } from "react-intersection-observer";
-import "@/components/Home_page_Banner/Banner.module.scss";
+import styles from "@/components/Home_page_Banner/Banner.module.scss";
 import "./scroll.css";
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,7 +55,7 @@ const Animation = ({ loadImage, counter }) => {
     // https://interiormaataassets.humbeestudio.xyz/mainsiteassets/mobile/0001.webp
     const frameCount = 1199;
     const currentFrame = (index) =>
-      `https://interiormaataassets.humbeestudio.xyz/mainsiteassets/RcFrames/${(
+      `https://interiormaataassets.humbeestudio/mainsiteassets/RcFrames/${(
         index + 1
       )
         .toString()
@@ -232,6 +232,23 @@ const Animation = ({ loadImage, counter }) => {
           }}
         ></canvas>
       </section>
+      
+      <motion.div
+        ref={ref}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        transition={{ duration: 0.9 }}
+        className={styles.text1}
+      >
+        <HeadingTextAnimation
+          heading={"Your Imagination."}
+          justifyContent={"center"}
+        />
+        <HeadingTextAnimation
+          heading={"Our Innovation."}
+          justifyContent={"center"}
+        />
+      </motion.div>
       {/* <motion.div
         ref={ref}
         initial="hidden"
