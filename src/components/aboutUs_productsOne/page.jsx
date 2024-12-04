@@ -14,6 +14,7 @@ import { motion } from "framer-motion";
 const Page = () => {
   const itemsPerPage = 25;
   const [pageNumber, setPageNumber] = useState(1);
+  const [selectedTab, setSelectedTab] = useState(""); // Store active tab
   const [selectedBrand, setSelectedBrand] = useState("all");
   const [selectedType, setSelectedType] = useState("all");
   const [selectedCategory, setSelectedCategory] = useState([]);
@@ -53,7 +54,7 @@ const Page = () => {
 
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
-    
+
     const fullPath = pathName + hash;
     const categorySlug = hash ? hash.replace("#", "") : ""; // Get category slug from the URL hash
     console.log("Selected Category from URL Hash:", categorySlug);
@@ -68,17 +69,12 @@ const Page = () => {
       // Log what products are being selected
       console.log("Filtered Data Based on Category:", filteredData);
       setActiveTab(fullPath);
-      const { title, number, description } = getShortDescription(category);
-      setShortTitle(title);
-      setShortNumber(number);
-      setShortDescription(description);
       setCurrentData(filteredData);
     } else {
       setCurrentData(products);
     }
   }, [pathName, products]);
 
-  
   const handlePageChange = (event, value) => {
     setPageNumber(value);
     projectsRef.current.scrollIntoView({
@@ -97,13 +93,14 @@ const Page = () => {
     };
   }, []);
 
-  const lastIndex = pageNumber * itemsPerPage;
-  const firstIndex = lastIndex - itemsPerPage;
-  const displayedData = currentData.slice(firstIndex, lastIndex);
+  // const lastIndex = pageNumber * itemsPerPage;
+  // const firstIndex = lastIndex - itemsPerPage;
+  // const displayedData = currentData.slice(firstIndex, lastIndex);
+  
 
   const categories = [
-    { label: "Spotless", value: "Spotless" },
-    { label: "Exotic Urbane", value: "Exotic Urbane" },
+    { label: "Plain Colour", value: "Plain Colour" },
+    { label: "Abstract", value: "Abstracts" },
     { label: "Classic Wood Grains", value: "Classic Wood Grains" },
     { label: "Stones", value: "Stones" },
     { label: "Solid Colors", value: "Solid Colors" },
@@ -111,25 +108,6 @@ const Page = () => {
     { label: "Mirrors", value: "Mirrors" },
     { label: "Woodgrains", value: "Woodgrains" },
   ];
-
-  const types = [
-    { label: "Spotless", value: "spotless" },
-    { label: "Exotic Urbane", value: "Exotic Urbane" },
-    { label: "Classic Wood Grains", value: "Classic Wood Grains" },
-    { label: "Stones", value: "Stones" },
-    { label: "Solid Colors", value: "Solid Colors" },
-    { label: "Textiles", value: "Textiles" },
-    { label: "Mirrors", value: "Mirrors" },
-    { label: "Woodgrains", value: "Woodgrains" },
-  ];
-
-  const finish = [
-    { label: "Royal Art", value: "Royal Art" },
-    { label: "Finish1", value: "Finish1" },
-    { label: "Finish2", value: "Finish2" },
-    { label: "Finish3", value: "Finish3" },
-  ];
-
   const size = [
     { label: "8 x 4", value: "8*4"  },
     { label: "10 x 4.25", value: "8*9" },
@@ -138,70 +116,70 @@ const Page = () => {
     { label: "3 x 6", value: "3*6" },
     { label: "6 x 3", value: "6*3" },
   ];
-
   const thickness = [
     { label: "0.8 mm", value: "0.8 mm" },
     { label: "1.00 mm", value: "1.00 mm" },
     { label: "6 mm", value: "6 mm" },
     { label: "8 mm", value: "8 mm" },
-    { label: "12 mm", value: "8 mm" },
-    { label: "13 mm", value: "8 mm" },
-
-
+    { label: "12 mm", value: "12 mm" },
+    { label: "13 mm", value: "13 mm" },
   ];
 
   const color = [
     { label: "Red", value: "Red" },
     { label: "Blue", value: "Blue" },
     { label: "Green", value: "Green" },
-    { label: "Gray", value: "Gray" },
+    { label: "Gray", value: "Grey" },
     { label: "Brown", value: "Brown" },
     { label: "Pink", value: "Pink" },
     { label: "Yellow", value: "Yellow" },
     { label: "White", value: "White" },
   ];
-
   const mappedColor = useMemo(() => {
     return color.map((c) => ({ ...c, className: "myOptionClassName" }));
   }, [color]);
   const handleTypeChange = (e) => {
     setSelectedType(e.value);
   };
-
-  const handleCategoryChange = (e) => {
-    const value = e.target.value;
-    const checked = e.target.checked;
-    if (checked) {
-      console.log("Category Selected:", value); // Log the selected category
-      setSelectedCategory((prev) => [...prev, value]);
-    } else {
-      setSelectedCategory((prev) =>
-        prev.filter((category) => category !== value)
-      );
-    }
-  };
-  const handleFinishChange = (e) => {
-    setSelectedFinish(e.value);
+  const handleCategoryChange = (event) => {
+    const { value, checked } = event.target;
+    setSelectedCategory((prevSelectedCategory) => {
+      if (checked) {
+        console.log("Category Selected:", value); // Log the selected category
+        return [...prevSelectedCategory, value];
+      } else {
+        return prevSelectedCategory.filter((category) => category !== value);
+      }
+    });
   };
   const handleSizeChange = (e) => {
     setSelectedSize(e.value);
   };
-  const handleSizeClick = (sizeValue) => {
-    setSelectedSize(sizeValue);
-    const exploreCollectionElement = document.querySelector("#sticky_top");
-    if (exploreCollectionElement) {
-      exploreCollectionElement.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  };
+const handleSizeClick = (sizeValue) => {
+  // setSelectedSize(sizeValue);
+  setSelectedSize(prevSize => prevSize === sizeValue ? "" : sizeValue);
+  const exploreCollectionElement = document.querySelector("#sticky_top");
+  if (exploreCollectionElement) {
+    exploreCollectionElement.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
+};
   const handleThicknessChange = (e) => {
     setSelectedThickness(e.value);
   };
 
-  const handleColorChange = (e) => {
+  const handleColorChange1 = (e) => {
     setSelectedColor(e.value);
+  };
+  const handleColorChange = (color) => {
+    // If the same color is clicked again, reset the selected color
+    if (selectedColor === color) {
+      setSelectedColor(null); // Clear the selection
+    } else {
+      setSelectedColor(color); // Set the selected color
+    }
   };
 
   const filteredProducts1 = useMemo(() => {
@@ -210,30 +188,44 @@ const Page = () => {
         selectedBrand === "all" || product.category === selectedBrand;
       const categoryMatch =
         selectedCategory.length === 0 ||
-        selectedCategory.includes(product.categoryValue);
+        selectedCategory.some((selectedCat) =>
+          product.attributes.some(
+            (attr) =>
+              attr.name === "type" &&
+              attr.terms.some((term) => term.slug === selectedCat)
+          )
+        );
       const finishMatch =
-        selectedFinish === "all" || product.categoryFinish === selectedFinish;
+        selectedFinish === "all" ||
+        product.categories[1].slug === selectedFinish;
       const sizeMatch =
-        selectedSize === "all" || product.attributes[1].terms[0].name === selectedSize;
+        selectedSize === "all" ||
+        product.attributes[1].terms[0].name === selectedSize;
       const thicknessMatch =
         selectedThickness === "all" ||
-        // slide.attributes[2].terms[0].name
         product.attributes[2].terms[0].name === selectedThickness;
       const colorMatch =
-        selectedColor === "all" || product.attributes[4].terms[0].name === selectedColor;
+        selectedColor === "all" ||
+        product.attributes[4].terms[0].name === selectedColor;
       const typeMatch =
-        selectedType === "all" || product.attributes[3].terms[0].name === selectedType;
+        selectedType === "all" ||
+        product.attributes[3].terms[0].name === selectedType;
       console.log("Checking Product:", product); // Log each product being checked
       console.log(
         "Matches Filters:",
         brandMatch,
+        "CategoryMatch",
         categoryMatch,
-        "finish data" ,finishMatch,
-       "size data", sizeMatch,
-       "thickness data", thicknessMatch,
-        "color match",colorMatch,
+        "finish data",
+        finishMatch,
+        "size data",
+        sizeMatch,
+        "thickness data",
+        thicknessMatch,
+        "color match",
+        colorMatch,
         typeMatch
-      ); // Log filter match status
+      );
 
       return (
         brandMatch &&
@@ -256,84 +248,60 @@ const Page = () => {
     selectedType, // Added selectedType to the dependencies of useMemo
   ]);
 
+  const lastIndex = pageNumber * itemsPerPage;
+const firstIndex = lastIndex - itemsPerPage;
+// Paginated data derived from filtered products
+const displayedData = filteredProducts1.length > 0
+  ? filteredProducts1.slice(firstIndex, lastIndex)
+  : [];
+
   const categoryMap = {
-    "/products#xylem": "Xylem",
-    "/products#royal-crown": "Royal Crown",
-    "/products#crown": "Crown",
-    "/products#Qbiss": "QBliss",
-    "/products#Crown_Xcl": "Crown XCL",
+    "/product#xylem": "Xylem",
+    "/product#royal-crown": "Royal Crown",
+    "/product#crown": "crown",
+    "/product#Qbiss": "QBliss",
+    "/product#Crown_Xcl": "Crown XCL",
   };
   const handleTabClick = (newTab, category) => {
-    setActiveTab(newTab);
-    const filteredData = products.filter((data) => data.category === category);
-    setCurrentData(filteredData);
+    setSelectedTab(category);
+    // setActiveTab(newTab);
+    // const filteredData = products.filter((data) => data.category === category);
+     // Filter the products based on the selected category
+     
+     const filteredData = products.filter((product) =>
+      product.categories.some(
+        (categoryItem) =>
+          categoryItem.slug && categoryItem.slug === category
+      )
+    );
+    console.log("ffff", filteredData);
+    
+    //  const filteredData = selectedCategory.length === 0 || products.filter((product) =>
+    //   product.categories.some((categoryItem) => {
+    //     // Ensure categoryItem.slug is defined before calling toLowerCase
+    //     return categoryItem.slug && categoryItem.slug === category;
+    //   })
+    // );
+    // debugger
+    setCurrentData(filteredData); // Update current data based on selected category
+    router.push(`/product#${category}`); // Update the URL hash (for client-side navigation)
 
-    const { number, title, description } = getShortDescription(category);
-    setShortNumber(number);
-    setShortTitle(title);
-    setShortDescription(description);
   };
-  const getShortDescription = (category) => {
-    switch (category) {
-      case "Royal Crown":
-        return {
-          number: "03",
-          title: "Royal Crown",
-          description:
-            "Royal Crown Laminates takes pride in its rich legacy of innovation, cutting-edge technology, and expertise, offering over 450 trendsetting surface designs. Our collection of modern laminates boasts a wide range of finishes and textures in 1mm thickness, empowering you to effortlessly realize your dream decor.",
-        };
-      case "Xylem":
-        return {
-          number: "02",
-          title: "Xylem",
-          description:
-            "Step into the world of Xylem, where innovation is at the heart of everything we do. Xylem represents our premium-grade decorative laminates, meticulously crafted to elevate your surroundings.",
-        };
-      case "QBliss":
-        return {
-          number: "05",
-          title: "Qbiss",
-          description:
-            "Qbiss is a high-pressure structural laminate made from multiple layers of kraft papers, with a thickness range from 2mm to 25mm. Its decorative face on both sides makes it suitable for interior applications like washroom cubicles, locker doors, wall panels, and laboratory furniture. With a density of 1.45gm/cm3, our compacts are exceptionally resilient and require no substrate support in thicknesses over 6mm.",
-        };
-      case "Crown":
-        return {
-          number: "05",
-          title: "crown",
-          description:
-            "Crown's Lean Line offers an exquisite and cost-effective range of laminates in a variety of designs, colors, and textures, all in 0.8mm thickness. Manufactured at our highly advanced production facility, the Lean Line guarantees a consistent and exceptional level of quality.",
-        };
-      case "Crown XCL":
-        return {
-          number: "06",
-          title: "Crown XCL",
-          description:
-            "XCL- Exterior Compact Laminate is a high pressure laminate, built up from multiple papers of kraft papers to produce laminate in thickness ranging from 2mm to 25mm.",
-        };
-      default:
-        return {
-          number: "",
-          title: "",
-          description: "",
-        };
-    }
-  };
-  const visibleTabs = [
-    "Royal Crown",
-    "Crown XCL",
-    "QBliss",
-    "Xylem",
-    "crown",
-  ].filter(
-    (category) =>
-      activeTab === "" ||
-      activeTab === `/products#${category.replace(" ", "-").toLowerCase()}`
-  );
-  // Handle when user selects a tag from dropdown
-  const handleTagChange = (e) => {
-    setSelectedTag(e.value);
-  };
-
+  // const handleTabClick = (tab) => {
+  //   setSelectedTab(tab);
+  // };
+  // const visibleTabs = [
+  //   "Royal Crown",
+  //   "Crown XCL",
+  //   "QBliss",
+  //   "Xylem",
+  //   "crown",
+  // ].filter(
+  //   (category) =>
+  //     activeTab === "" ||
+  //     activeTab === `/product#${category.replace(" ", "-").toLowerCase()}`
+  // );
+  const visibleTabs = ["Xylem", "Royal Crown", "Crown XCL", "QBliss", "crown"];
   useEffect(() => {
     if (selectedTag === "all") {
       setFilteredProducts(products);
@@ -352,8 +320,18 @@ const Page = () => {
       setFilteredProducts(filtered);
     }
   }, [selectedTag, products]);
-  // const randomHeight = Math.floor(Math.random() * (500 - 300 + 1)) + 300; // Random height between 300px and 500px
-  return (
+  // Thickness Click Handler
+const handleThicknessClick = (thicknessValue) => {
+  setSelectedThickness(prevThickness => prevThickness === thicknessValue ? "" : thicknessValue);
+  const exploreCollectionElement = document.querySelector("#sticky_top");
+  if (exploreCollectionElement) {
+    exploreCollectionElement.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
+};
+   return (
     <>
       <div className="productMainContainer">
         <div className="productMain">
@@ -375,7 +353,7 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div className="first_top1">
+      <div className="first_top">
         <div id="sticky_top" className="products_name">
           <motion.div
             initial={{ y: 50, opacity: 0 }}
@@ -389,27 +367,30 @@ const Page = () => {
             {visibleTabs.map((label) => (
               <Link
                 key={label}
-                href={`/products#${label.replace(" ", "-").toLowerCase()}`}
+                href={`/product#${label.replace(" ", "-")}`}
                 scroll={false}
                 className={`tab-item ${
-                  activeTab ===
-                  `/products#${label.replace(" ", "-").toLowerCase()}`
-                    ? "active"
-                    : ""
+                  selectedTab === label ? "active" : ""
                 }`}
-                onClick={() =>
-                  handleTabClick(
-                    `/products#${label.replace(" ", "-").toLowerCase()}`,
-                    label
-                  )
-                }
+                onClick={() => handleTabClick(label)}
+                // className={`tab-item ${
+                //   activeTab ===
+                //   `/product#${label.replace(" ", "-").toLowerCase()}`
+                //     ? "active"
+                //     : ""
+                // }`}
+                // onClick={() =>
+                //   handleTabClick(
+                //     `/product#${label.replace(" ", "-").toLowerCase()}`,
+                //     label
+                //   )
+                // }
               >
                 <div className="tab-content-inner">{label}</div>
               </Link>
             ))}
-            </div>
           </div>
-             
+        </div>
 
         <div className="supply">
           <div id="sticky">
@@ -458,33 +439,22 @@ const Page = () => {
                   className="color-select"
                   options={mappedColor}
                   value={selectedColor}
-                  onChange={handleColorChange}
+                  onChange={handleColorChange1}
                   placeholder="Select Color"
                 />
               ) : (
                 <div className="color_dropdown">
-                  <div className="color1"></div>
-                  <div className="color2"></div>
-                  <div className="color3"></div>
-                  <div className="color4"></div>
-                  <div className="color5"></div>
-                  <div className="color6"></div>
-                  <div className="color7"></div>
-                  <div className="color8"></div>
+                  {color.map((colorItem, index) => (
+                    <div
+                      key={index} 
+                      className={`color-box color${index + 1}`}
+                      // style={{ backgroundColor: colorItem.value }}
+                      onClick={() => handleColorChange(colorItem.value)} // Add color change functionality
+                    ></div>
+                  ))}
                 </div>
               )}
             </div>
-            {/* <div className="dropdown1">
-              <div className="dropdown-label"></div>
-              <Dropdown
-                id="finish-select"
-                options={finish}
-                value={selectedFinish}
-                onChange={handleFinishChange}
-                placeholder="Select Finish"
-                className="category-select"
-              />
-            </div> */}
             <div className="dropdown1">
               <div className="dropdown-label">
                 <label htmlFor="size-select" className="colorSelectDropdown">
@@ -545,9 +515,10 @@ const Page = () => {
                           ? "selected"
                           : ""
                       }`}
-                      onClick={() =>
-                        setSelectedThickness(thicknessOption.value)
-                      }
+                      // onClick={() =>
+                      //   setSelectedThickness(thicknessOption.value)
+                      // }
+                      onClick={() => handleThicknessClick(thicknessOption.value)} // Add click functionality
                     >
                       <p>{thicknessOption.label}</p>
                     </div>
@@ -558,7 +529,7 @@ const Page = () => {
           </div>
           <div className="product_container" ref={projectsRef}>
             {/* {filteredProducts.map((product, index) => ( */}
-            {filteredProducts1.map((product, index) => {
+            {displayedData.map((product, index) => {
               const isTabActive = !!activeTab;
 
               // Only apply "big" or "tall" classNames if not in the tab view
@@ -566,9 +537,9 @@ const Page = () => {
                 ? "" // Normal size for tab view
                 : index === 9
                 ? "big"
-                : [
-                    0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20,21
-                  ].includes(index)
+                : [0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21].includes(
+                    index
+                  )
                 ? "tall"
                 : "";
 
