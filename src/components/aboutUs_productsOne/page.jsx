@@ -10,7 +10,7 @@ import { Dropdown } from "primereact/dropdown";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-
+import { Skeleton, Grid } from "@mui/material";
 const Page = () => {
   const itemsPerPage = 25;
   const [pageNumber, setPageNumber] = useState(1);
@@ -23,7 +23,8 @@ const Page = () => {
   const [selectedThickness, setSelectedThickness] = useState("all");
   const [selectedColor, setSelectedColor] = useState("all");
   const [isMobile, setIsMobile] = useState(0);
-  const [tab, setTab] = useState("");
+  const [tab, setTab] = useState("");// Adding a loading state
+  const [loading, setLoading] = useState(true); // Initially, set loading to t
   const pathName = usePathname();
   const [shortTitle, setShortTitle] = useState("");
   const [selectedTag, setSelectedTag] = useState("all"); // Initially no tag selected
@@ -43,11 +44,13 @@ const Page = () => {
     )
       .then((res) => res.json())
       .then((data) => {
+        setLoading(false); // Set loading to false once data is fetched
         console.log("API Response:", data); // Log the response for debugging
         setProducts(data);
         setFilteredProducts(data); // Initially show all products
       })
       .catch((error) => {
+        setLoading(false); // Set loading to false once data is fetched
         console.error("Failed to fetch data:", error);
       });
   }, []);
@@ -527,15 +530,28 @@ const handleThicknessClick = (thicknessValue) => {
               )}
             </div>
           </div>
+          {loading ? (
+            // <div className="skeleton-loader">
+            <Grid container spacing={2}>
+              {/* Render exactly 25 skeletons in the grid */}
+              {Array.from({ length: 25 }).map((_, index) => (
+                <Grid item xs={12} sm={6} md={4} key={index}>
+                  <Skeleton variant="rectangular" width="100%" height={200} />
+                </Grid>
+              ))}
+            </Grid>
+          ) : (
           <div className="product_container" ref={projectsRef}>
             {/* {filteredProducts.map((product, index) => ( */}
             {displayedData.map((product, index) => {
-              const isTabActive = !!activeTab;
+              // const isTabActive = !!activeTab;
 
               // Only apply "big" or "tall" classNames if not in the tab view
-              const className = isTabActive
-                ? "" // Normal size for tab view
-                : index === 9
+              const className =
+              //  isTabActive
+                // ? "" // Normal size for tab view
+                // : 
+                index === 9
                 ? "big"
                 : [0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21].includes(
                     index
@@ -582,6 +598,7 @@ const handleThicknessClick = (thicknessValue) => {
               );
             })}
           </div>
+           )}
         </div>
         {currentData.length > 0 && (
           <div>
