@@ -11,6 +11,7 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 // import Skeleton from '@mui/material/Skeleton';
 import { Skeleton, Grid } from "@mui/material";
+
 const Page = () => {
   const itemsPerPage = 25;
   const [pageNumber, setPageNumber] = useState(1);
@@ -32,8 +33,8 @@ const Page = () => {
   const [activeTab, setActiveTab] = useState("");
   const [products, setProducts] = useState([]);
   const [currentData, setCurrentData] = useState([]);
-    // Adding a loading state
-    const [loading, setLoading] = useState(true); // Initially, set loading to t
+  // Adding a loading state
+  const [loading, setLoading] = useState(true); // Initially, set loading to t
   const router = useRouter();
   // Create a ref to the element you want to scroll to
   const projectsRef = useRef(null);
@@ -63,22 +64,26 @@ const Page = () => {
     if (categorySlug) {
       console.log("Products:", products);
       const filteredData = products.filter((product) => {
-        console.log("Checking product:", product); 
+        console.log("Checking product:", product);
         if (product.categories && Array.isArray(product.categories)) {
           console.log("Product Categories:", product.categories);
           return product.categories.some((category) => {
             console.log("Checking category  slug:", category.slug);
-            return category.slug && category.slug.toLowerCase().trim() === categorySlug;
+            return (
+              category.slug &&
+              category.slug.toLowerCase().trim() === categorySlug
+            );
           });
         }
         return false; // If no valid categories, don't include the product
       });
       console.log("Filtered Data Based on Category:", filteredData);
-  
+
       if (filteredData.length > 0) {
         setCurrentData(filteredData);
         setActiveTab(fullPath);
-        const { title, number, description } = getShortDescription(categorySlug);
+        const { title, number, description } =
+          getShortDescription(categorySlug);
         setShortTitle(title);
         setShortNumber(number);
         setShortDescription(description);
@@ -108,7 +113,7 @@ const Page = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  const categories = [ 
+  const categories = [
     { label: "Plain Colour", value: "Plain Colour" },
     { label: "Abstract", value: "Abstracts" },
     { label: "Classic Wood Grains", value: "Classic Wood Grains" },
@@ -119,7 +124,7 @@ const Page = () => {
     { label: "Woodgrains", value: "Woodgrains" },
   ];
   const size = [
-    { label: "8 x 4", value: "8*4"  },
+    { label: "8 x 4", value: "8*4" },
     { label: "10 x 4.25", value: "8*9" },
     { label: "12 x 6", value: "3*2" },
     { label: "14 x 6", value: "6*6" },
@@ -165,16 +170,16 @@ const Page = () => {
   const handleSizeChange = (e) => {
     setSelectedSize(e.value);
   };
-const handleSizeClick = (sizeValue) => {
-  setSelectedSize(prevSize => prevSize === sizeValue ? "" : sizeValue);
-  const exploreCollectionElement = document.querySelector("#sticky_top");
-  if (exploreCollectionElement) {
-    exploreCollectionElement.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }
-};
+  const handleSizeClick = (sizeValue) => {
+    setSelectedSize((prevSize) => (prevSize === sizeValue ? "" : sizeValue));
+    const exploreCollectionElement = document.querySelector("#sticky_top");
+    if (exploreCollectionElement) {
+      exploreCollectionElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
   const handleThicknessChange = (e) => {
     setSelectedThickness(e.value);
   };
@@ -256,10 +261,11 @@ const handleSizeClick = (sizeValue) => {
     selectedType, // Added selectedType to the dependencies of useMemo
   ]);
   const lastIndex = pageNumber * itemsPerPage;
-const firstIndex = lastIndex - itemsPerPage;
-const displayedData = filteredProducts1.length > 0
-  ? filteredProducts1.slice(firstIndex, lastIndex)
-  : [];
+  const firstIndex = lastIndex - itemsPerPage;
+  const displayedData =
+    filteredProducts1.length > 0
+      ? filteredProducts1.slice(firstIndex, lastIndex)
+      : [];
 
   const categoryMap = {
     "/products#xylem": "xylem",
@@ -354,17 +360,19 @@ const displayedData = filteredProducts1.length > 0
       setFilteredProducts(filtered);
     }
   }, [selectedTag, products]);
-const handleThicknessClick = (thicknessValue) => {
-  setSelectedThickness(prevThickness => prevThickness === thicknessValue ? "" : thicknessValue);
-  const exploreCollectionElement = document.querySelector("#sticky_top");
-  if (exploreCollectionElement) {
-    exploreCollectionElement.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }
-};
- return (
+  const handleThicknessClick = (thicknessValue) => {
+    setSelectedThickness((prevThickness) =>
+      prevThickness === thicknessValue ? "" : thicknessValue
+    );
+    const exploreCollectionElement = document.querySelector("#sticky_top");
+    if (exploreCollectionElement) {
+      exploreCollectionElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+  return (
     <>
       <div className="productMainContainer">
         <div className="productMain">
@@ -475,7 +483,7 @@ const handleThicknessClick = (thicknessValue) => {
                 <div className="color_dropdown">
                   {color.map((colorItem, index) => (
                     <div
-                      key={index} 
+                      key={index}
                       className={`color-box color${index + 1}`}
                       onClick={() => handleColorChange(colorItem.value)} // Add color change functionality
                     ></div>
@@ -543,7 +551,9 @@ const handleThicknessClick = (thicknessValue) => {
                           ? "selected"
                           : ""
                       }`}
-                      onClick={() => handleThicknessClick(thicknessOption.value)} // Add click functionality
+                      onClick={() =>
+                        handleThicknessClick(thicknessOption.value)
+                      } // Add click functionality
                     >
                       <p>{thicknessOption.label}</p>
                     </div>
@@ -552,78 +562,77 @@ const handleThicknessClick = (thicknessValue) => {
               )}
             </div>
           </div>
-            {/* Skeleton Loader */}
-      {loading ? (
-        
-        // <div className="skeleton-loader">
+          {/* Skeleton Loader */}
+          {loading ? (
+            // <div className="skeleton-loader">
             <Grid container spacing={2}>
-          {/* Render exactly 25 skeletons in the grid */}
-          {Array.from({ length: 25 }).map((_, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <Skeleton variant="rectangular" width="100%" height={200} />
+              {/* Render exactly 25 skeletons in the grid */}
+              {Array.from({ length: 25 }).map((_, index) => (
+                <Grid item xs={12} sm={6} md={4} key={index}>
+                  <Skeleton variant="rectangular" width="100%" height={200} />
+                </Grid>
+              ))}
             </Grid>
-          ))}
-        </Grid>
-      // </div>
-        // <div className="skeleton-loader">
-        //   <div className="skeleton-item"></div>
-        //   <div className="skeleton-item"></div>
-        //   <div className="skeleton-item"></div>
-        // </div>
-      ) : (
-          <div className="product_container" ref={projectsRef}>
-            {displayedData.map((product, index) => {
-              console.log(displayedData);
-              // const isTabActive = !!activeTab;
-              const className = 
-                // ? "" // Normal size for tab view
-                // : 
-                index === 9
-                ? "big"
-                : [0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21].includes(
-                    index
-                  )
-                ? "tall"
-                : "";
+          ) : (
+            // </div>
+            // <div className="skeleton-loader">
+            //   <div className="skeleton-item"></div>
+            //   <div className="skeleton-item"></div>
+            //   <div className="skeleton-item"></div>
+            // </div>
+            <div className="product_container" ref={projectsRef}>
+              {displayedData.map((product, index) => {
+                console.log(displayedData);
+                // const isTabActive = !!activeTab;
+                const className =
+                  // ? "" // Normal size for tab view
+                  // :
+                  index === 9
+                    ? "big"
+                    : [0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21].includes(
+                        index
+                      )
+                    ? "tall"
+                    : "";
 
-              return (
-                <div key={index} className={`AboutUs_product ${className}`}>
-                  <Image
-                    src={product.images[0].src}
-                    alt={product.name}
-                    className="ProductImage"
-                    width={500}
-                    height={600}
-                  />
-                  <div className="overlay">
-                    <div>
-                      <svg
-                        width="40"
-                        height="40"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        fill="white"
-                        className="aboutUsProductSvg"
+                return (
+                  <div key={index} className={`AboutUs_product ${className}`}>
+                    <Image
+                      src={product.images[0].src}
+                      alt={product.name}
+                      className="ProductImage"
+                      width={500}
+                      height={600}
+                    />
+                    <div className="overlay">
+                      <div>
+                        <svg
+                          width="40"
+                          height="40"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          fill="white"
+                          className="aboutUsProductSvg"
+                        >
+                          <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
+                        </svg>
+                      </div>
+                      <div
+                        className="AnchorTag"
+                        onClick={() => {
+                          console.log("Product ID:", product.id);
+                          router.push(`/product-information#${product.id}`);
+                        }}
                       >
-                        <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
-                      </svg>
-                    </div>
-                    <div
-                      className="AnchorTag"
-                      onClick={() => {
-                        console.log("Product ID:", product.id);
-                        router.push(`/product-information#${product.id}`);
-                      }}
-                    >
-                      Know More
+                        Know More
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
-      )}
+                );
+              })}
+            </div>
+          )}
         </div>
         {currentData.length > 0 && (
           <div>
