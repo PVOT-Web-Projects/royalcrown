@@ -5,13 +5,12 @@ import Stack from "@mui/material/Stack";
 import "./aboutUs_product.scss";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-// import products from "./productData.js";
 import { Dropdown } from "primereact/dropdown";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-
-
+// import Skeleton from '@mui/material/Skeleton';
+import { Skeleton, Grid } from "@mui/material";
 const Page = () => {
   const itemsPerPage = 25;
   const [pageNumber, setPageNumber] = useState(1);
@@ -33,6 +32,8 @@ const Page = () => {
   const [activeTab, setActiveTab] = useState("");
   const [products, setProducts] = useState([]);
   const [currentData, setCurrentData] = useState([]);
+    // Adding a loading state
+    const [loading, setLoading] = useState(true); // Initially, set loading to t
   const router = useRouter();
   // Create a ref to the element you want to scroll to
   const projectsRef = useRef(null);
@@ -43,11 +44,13 @@ const Page = () => {
     )
       .then((res) => res.json())
       .then((data) => {
+        setLoading(false); // Set loading to false once data is fetched
         console.log("API Response:", data); // Log the response for debugging
         setProducts(data);
         setFilteredProducts(data); // Initially show all products
       })
       .catch((error) => {
+        setLoading(false); // Set loading to false once data is fetched
         console.error("Failed to fetch data:", error);
       });
   }, []);
@@ -57,40 +60,23 @@ const Page = () => {
     const fullPath = pathName + hash;
     const categorySlug = hash ? hash.replace("#", "").toLowerCase() : ""; // Get category slug from the URL hash and ensure lowercase comparison
     console.log("Selected Category from URL Hash:", categorySlug);
-  
     if (categorySlug) {
-      // Log all products and categories for debugging
       console.log("Products:", products);
-  
-      // Filter data based on the selected category slug from the URL
       const filteredData = products.filter((product) => {
-        console.log("Checking product:", product); // Log each product to debug
-  
-        // Check if the product has categories and if the category structure is correct
+        console.log("Checking product:", product); 
         if (product.categories && Array.isArray(product.categories)) {
-          // Log categories to ensure they are structured correctly
           console.log("Product Categories:", product.categories);
-  
-          // Filter through categories
           return product.categories.some((category) => {
-            console.log("Checking category  slug:", category.slug); // Log each category's slug
-  
-            // Match category slug in lowercase (remove leading/trailing spaces)
+            console.log("Checking category  slug:", category.slug);
             return category.slug && category.slug.toLowerCase().trim() === categorySlug;
           });
         }
-  
         return false; // If no valid categories, don't include the product
       });
-  
-      // Log the filtered data to see if any products match the category
       console.log("Filtered Data Based on Category:", filteredData);
   
       if (filteredData.length > 0) {
-        // Set currentData with all matching products, not just the first one
-        setCurrentData(filteredData);  // Set filtered data to currentData
-  
-        // Set other state values related to the category
+        setCurrentData(filteredData);
         setActiveTab(fullPath);
         const { title, number, description } = getShortDescription(categorySlug);
         setShortTitle(title);
@@ -101,14 +87,10 @@ const Page = () => {
         setCurrentData([]); // If no products are found, clear current data
       }
     } else {
-      // If no category slug is found, show all products
       console.log("No category slug found. Showing all products.");
       setCurrentData(products); // Set currentData to show all products
     }
   }, [pathName, products]);
-   // Make sure to include products in the dependency list
-  
-
   const handlePageChange = (event, value) => {
     setPageNumber(value);
     projectsRef.current.scrollIntoView({
@@ -126,11 +108,6 @@ const Page = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  // const lastIndex = pageNumber * itemsPerPage;
-  // const firstIndex = lastIndex - itemsPerPage;
-  // const displayedData = currentData.slice(firstIndex, lastIndex);
-
   const categories = [ 
     { label: "Plain Colour", value: "Plain Colour" },
     { label: "Abstract", value: "Abstracts" },
@@ -185,15 +162,10 @@ const Page = () => {
       }
     });
   };
-  // const handleFinishChange = (e) => {
-  //   setSelectedFinish(e.value);
-  // };
   const handleSizeChange = (e) => {
     setSelectedSize(e.value);
   };
-  // Size Click Handler
 const handleSizeClick = (sizeValue) => {
-  // setSelectedSize(sizeValue);
   setSelectedSize(prevSize => prevSize === sizeValue ? "" : sizeValue);
   const exploreCollectionElement = document.querySelector("#sticky_top");
   if (exploreCollectionElement) {
@@ -211,7 +183,6 @@ const handleSizeClick = (sizeValue) => {
     setSelectedColor(e.value);
   };
   const handleColorChange = (color) => {
-    // If the same color is clicked again, reset the selected color
     if (selectedColor === color) {
       setSelectedColor(null); // Clear the selection
     } else {
@@ -286,7 +257,6 @@ const handleSizeClick = (sizeValue) => {
   ]);
   const lastIndex = pageNumber * itemsPerPage;
 const firstIndex = lastIndex - itemsPerPage;
-// Paginated data derived from filtered products
 const displayedData = filteredProducts1.length > 0
   ? filteredProducts1.slice(firstIndex, lastIndex)
   : [];
@@ -298,6 +268,7 @@ const displayedData = filteredProducts1.length > 0
     "/products#Qbiss": "QBliss",
     "/products#Crown_Xcl": "Crown XCL",
   };
+
   const handleTabClick = (newTab, category) => {
     setActiveTab(newTab);
     const filteredData = products.filter((data) => data.category === category);
@@ -383,7 +354,6 @@ const displayedData = filteredProducts1.length > 0
       setFilteredProducts(filtered);
     }
   }, [selectedTag, products]);
-  // Thickness Click Handler
 const handleThicknessClick = (thicknessValue) => {
   setSelectedThickness(prevThickness => prevThickness === thicknessValue ? "" : thicknessValue);
   const exploreCollectionElement = document.querySelector("#sticky_top");
@@ -394,10 +364,7 @@ const handleThicknessClick = (thicknessValue) => {
     });
   }
 };
-
-
-  // const randomHeight = Math.floor(Math.random() * (500 - 300 + 1)) + 300; // Random height between 300px and 500px
-  return (
+ return (
     <>
       <div className="productMainContainer">
         <div className="productMain">
@@ -510,7 +477,6 @@ const handleThicknessClick = (thicknessValue) => {
                     <div
                       key={index} 
                       className={`color-box color${index + 1}`}
-                      // style={{ backgroundColor: colorItem.value }}
                       onClick={() => handleColorChange(colorItem.value)} // Add color change functionality
                     ></div>
                   ))}
@@ -577,9 +543,6 @@ const handleThicknessClick = (thicknessValue) => {
                           ? "selected"
                           : ""
                       }`}
-                      // onClick={() =>
-                      //   setSelectedThickness(thicknessOption.value)
-                      // }
                       onClick={() => handleThicknessClick(thicknessOption.value)} // Add click functionality
                     >
                       <p>{thicknessOption.label}</p>
@@ -589,17 +552,33 @@ const handleThicknessClick = (thicknessValue) => {
               )}
             </div>
           </div>
+            {/* Skeleton Loader */}
+      {loading ? (
+        
+        // <div className="skeleton-loader">
+            <Grid container spacing={2}>
+          {/* Render exactly 25 skeletons in the grid */}
+          {Array.from({ length: 25 }).map((_, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <Skeleton variant="rectangular" width="100%" height={200} />
+            </Grid>
+          ))}
+        </Grid>
+      // </div>
+        // <div className="skeleton-loader">
+        //   <div className="skeleton-item"></div>
+        //   <div className="skeleton-item"></div>
+        //   <div className="skeleton-item"></div>
+        // </div>
+      ) : (
           <div className="product_container" ref={projectsRef}>
-            {/* {filteredProducts.map((product, index) => ( */}
             {displayedData.map((product, index) => {
               console.log(displayedData);
-
-              const isTabActive = !!activeTab;
-
-              // Only apply "big" or "tall" classNames if not in the tab view
-              const className = isTabActive
-                ? "" // Normal size for tab view
-                : index === 9
+              // const isTabActive = !!activeTab;
+              const className = 
+                // ? "" // Normal size for tab view
+                // : 
+                index === 9
                 ? "big"
                 : [0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21].includes(
                     index
@@ -615,8 +594,6 @@ const handleThicknessClick = (thicknessValue) => {
                     className="ProductImage"
                     width={500}
                     height={600}
-                    // height={randomHeight} // Apply dynamic height
-                    // style={{ height: `${randomHeight}px` }} // Inline style for random height
                   />
                   <div className="overlay">
                     <div>
@@ -646,6 +623,7 @@ const handleThicknessClick = (thicknessValue) => {
               );
             })}
           </div>
+      )}
         </div>
         {currentData.length > 0 && (
           <div>

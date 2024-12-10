@@ -891,3 +891,27 @@
     color: white;
   }
 }
+.skeleton-loader {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust columns based on screen size */
+  gap: 16px;
+}
+
+.skeleton-item {
+  background-color: #ddd;
+  border-radius: 8px;
+  height: 300px; /* Adjust height based on your design */
+  animation: skeleton-animation 1.5s infinite ease-in-out;
+}
+
+@keyframes skeleton-animation {
+  0% {
+    background-color: #ddd;
+  }
+  50% {
+    background-color: #e0e0e0;
+  }
+  100% {
+    background-color: #ddd;
+  }
+}
