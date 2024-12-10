@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import "./productslider.scss";
 import { usePathname, useSearchParams } from "next/navigation";
-
+import { Skeleton, Grid } from "@mui/material";
 const SlidesContent = ({ slide }) => (
   <div className="Carousel_text_maincontent">
     <div className="FirstSSliderText">
@@ -81,7 +81,8 @@ export default function ProductInfoSlider() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const [slidesData, setSlidesData] = useState([]); // Store API data
-
+  const [loading, setLoading] = useState(true); // Initially, set loading to t
+  
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
     let hashUrl = hash.slice(1);
@@ -95,7 +96,9 @@ export default function ProductInfoSlider() {
       );
       const data = await response.json();
       setSlidesData(Array.isArray(data) ? data : [data]); // Ensure `slidesData` is always an array
+      setLoading(false); 
     } catch (error) {
+      setLoading(false); 
       console.error("Error fetching project data:", error);
     }
   };
@@ -116,7 +119,9 @@ export default function ProductInfoSlider() {
                 </div>
               ))
             ) : (
-              <div>Loading...</div>
+              <div> 
+                <Skeleton variant="rectangle" width={1000} height={400} />
+               </div>
             )}
           </div>
         </div>
@@ -137,7 +142,7 @@ export default function ProductInfoSlider() {
                 </div>
               ))
             ) : (
-              <div>Loading...</div>
+              <div><Skeleton variant="square" width={400} height={400} /></div>
             )}
           </div>
 
