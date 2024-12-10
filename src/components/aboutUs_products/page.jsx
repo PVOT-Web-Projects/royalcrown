@@ -65,6 +65,7 @@ const Page = () => {
       console.log("Products:", products);
       const filteredData = products.filter((product) => {
         console.log("Checking product:", product);
+        
         if (product.categories && Array.isArray(product.categories)) {
           console.log("Product Categories:", product.categories);
           return product.categories.some((category) => {
@@ -395,7 +396,7 @@ const Page = () => {
         </div>
       </div>
       <div className="first_top">
-        <div id="sticky_top" className="products_name">
+        <div id="sticky_top" className="products_name1">
           <motion.div
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
