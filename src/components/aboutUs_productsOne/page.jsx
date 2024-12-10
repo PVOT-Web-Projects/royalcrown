@@ -356,7 +356,7 @@ const handleThicknessClick = (thicknessValue) => {
           </div>
         </div>
       </div>
-      <div className="first_top">
+      <div className="first_top1">
         <div id="sticky_top" className="products_name">
           <motion.div
             initial={{ y: 50, opacity: 0 }}
