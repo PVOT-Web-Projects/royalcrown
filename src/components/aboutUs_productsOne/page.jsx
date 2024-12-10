@@ -54,21 +54,14 @@ const Page = () => {
 
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
-
-    const fullPath = pathName + hash;
-    const categorySlug = hash ? hash.replace("#", "") : ""; // Get category slug from the URL hash
-    console.log("Selected Category from URL Hash:", categorySlug);
+    const categorySlug = hash ? hash.replace("#", "") : "";
     if (categorySlug) {
-      const category = categoryMap[fullPath] || "all";
+      setActiveTab(categorySlug);
       const filteredData = products.filter((product) =>
         product.categories.some(
-          (category) =>
-            category.slug.toLowerCase() === categorySlug.toLowerCase()
+          (categoryItem) => categoryItem.slug === categorySlug
         )
       );
-      // Log what products are being selected
-      console.log("Filtered Data Based on Category:", filteredData);
-      setActiveTab(fullPath);
       setCurrentData(filteredData);
     } else {
       setCurrentData(products);
@@ -247,45 +240,23 @@ const handleSizeClick = (sizeValue) => {
     selectedColor,
     selectedType, // Added selectedType to the dependencies of useMemo
   ]);
+  // Calculate the start and end indices for pagination
+const startIndex = (pageNumber - 1) * itemsPerPage;
+const endIndex = pageNumber * itemsPerPage;
 
-  const lastIndex = pageNumber * itemsPerPage;
-const firstIndex = lastIndex - itemsPerPage;
-// Paginated data derived from filtered products
-const displayedData = filteredProducts1.length > 0
-  ? filteredProducts1.slice(firstIndex, lastIndex)
-  : [];
+// Slice the filtered products based on the current page
+const currentPageProducts = filteredProducts.slice(startIndex, endIndex);
+
 
   const categoryMap = {
-    "/product#xylem": "Xylem",
-    "/product#royal-crown": "Royal Crown",
-    "/product#crown": "crown",
-    "/product#Qbiss": "QBliss",
-    "/product#Crown_Xcl": "Crown XCL",
+    "/products#xylem": "Xylem",
+    "/products#royal-crown": "Royal Crown",
+    "/products#crown": "Crown",
+    "/products#Qbiss": "QBliss",
+    "/products#Crown_Xcl": "Crown XCL",
   };
-  const handleTabClick = (newTab, category) => {
-    setSelectedTab(category);
-    // setActiveTab(newTab);
-    // const filteredData = products.filter((data) => data.category === category);
-     // Filter the products based on the selected category
-     
-     const filteredData = products.filter((product) =>
-      product.categories.some(
-        (categoryItem) =>
-          categoryItem.slug && categoryItem.slug === category
-      )
-    );
-    console.log("ffff", filteredData);
-    
-    //  const filteredData = selectedCategory.length === 0 || products.filter((product) =>
-    //   product.categories.some((categoryItem) => {
-    //     // Ensure categoryItem.slug is defined before calling toLowerCase
-    //     return categoryItem.slug && categoryItem.slug === category;
-    //   })
-    // );
-    // debugger
-    setCurrentData(filteredData); // Update current data based on selected category
-    router.push(`/product#${category}`); // Update the URL hash (for client-side navigation)
-
+  const handleTabClick = (tab) => {
+    setSelectedTag(tab.toLowerCase());
   };
   // const handleTabClick = (tab) => {
   //   setSelectedTab(tab);
@@ -301,26 +272,101 @@ const displayedData = filteredProducts1.length > 0
   //     activeTab === "" ||
   //     activeTab === `/product#${category.replace(" ", "-").toLowerCase()}`
   // );
-  const visibleTabs = ["Xylem", "Royal Crown", "Crown XCL", "QBliss", "crown"];
+
+  const getShortDescription = (category) => {
+    switch (category) {
+      case "Royal Crown":
+        return {
+          number: "03",
+          title: "Royal Crown",
+          description:
+            "Royal Crown Laminates takes pride in its rich legacy of innovation, cutting-edge technology, and expertise, offering over 450 trendsetting surface designs. Our collection of modern laminates boasts a wide range of finishes and textures in 1mm thickness, empowering you to effortlessly realize your dream decor.",
+        };
+      case "Xylem":
+        return {
+          number: "02",
+          title: "Xylem",
+          description:
+            "Step into the world of Xylem, where innovation is at the heart of everything we do. Xylem represents our premium-grade decorative laminates, meticulously crafted to elevate your surroundings.",
+        };
+      case "QBliss":
+        return {
+          number: "05",
+          title: "Qbiss",
+          description:
+            "Qbiss is a high-pressure structural laminate made from multiple layers of kraft papers, with a thickness range from 2mm to 25mm. Its decorative face on both sides makes it suitable for interior applications like washroom cubicles, locker doors, wall panels, and laboratory furniture. With a density of 1.45gm/cm3, our compacts are exceptionally resilient and require no substrate support in thicknesses over 6mm.",
+        };
+      case "Crown":
+        return {
+          number: "05",
+          title: "crown",
+          description:
+            "Crown's Lean Line offers an exquisite and cost-effective range of laminates in a variety of designs, colors, and textures, all in 0.8mm thickness. Manufactured at our highly advanced production facility, the Lean Line guarantees a consistent and exceptional level of quality.",
+        };
+      case "Crown XCL":
+        return {
+          number: "06",
+          title: "Crown XCL",
+          description:
+            "XCL- Exterior Compact Laminate is a high pressure laminate, built up from multiple papers of kraft papers to produce laminate in thickness ranging from 2mm to 25mm.",
+        };
+      default:
+        return {
+          number: "",
+          title: "",
+          description: "",
+        };
+    }
+  };
+
+  const visibleTabs = [
+    "Royal Crown",
+    "Crown XCL",
+    "QBliss",
+    "Xylem",
+    "crown",
+  ].filter(
+    (category) =>
+      activeTab === "" ||
+      activeTab === `/product#${category.replace(" ", "-").toLowerCase()}`
+  );
+
   useEffect(() => {
+    console.log("Selected Tag:", selectedTag);
+    console.log("Products Data:", products);
+  
+    // If selectedTag is 'all', just return all products
     if (selectedTag === "all") {
       setFilteredProducts(products);
-    } else {
-      const filtered = products.filter((product) => {
-        console.log("Checking product:", product); // Log each product
-        return (
-          product.type &&
-          product.type.some((tag) => {
-            console.log("Checking tag:", tag.slug, selectedTag); // Log each tag
-            return tag.slug === selectedTag;
-          })
-        );
-      });
-      console.log("Filtered Products:", filtered); // Log the filtered result
-      setFilteredProducts(filtered);
+      return;
     }
+  
+    // Extract the tag from the selectedTag if it's a URL hash (e.g., '/product#tagName')
+    const actualTag = selectedTag.split('#')[1];  // Extracts tag name after '#'
+  
+    // Filter products based on selectedTag (by matching the category slug)
+    const filtered = products.filter((product) => {
+      if (Array.isArray(product.categories)) {
+        console.log("Product Categories:", product.categories);
+  
+        // Check if any category slug matches the selectedTag
+        return product.categories.some((category) => {
+          // Ensure case-insensitive comparison for slugs
+          return category.slug.toLowerCase() === actualTag.toLowerCase();
+        });
+      }
+      return false; // If no categories array or no matching category, return false
+    });
+  
+    console.log("Filtered Products:", filtered);
+  
+    // Update the state with filtered products
+    setFilteredProducts(filtered);
   }, [selectedTag, products]);
-  // Thickness Click Handler
+  
+  
+  
+   // Thickness Click Handler
 const handleThicknessClick = (thicknessValue) => {
   setSelectedThickness(prevThickness => prevThickness === thicknessValue ? "" : thicknessValue);
   const exploreCollectionElement = document.querySelector("#sticky_top");
@@ -364,32 +410,23 @@ const handleThicknessClick = (thicknessValue) => {
             Explore Collection
           </motion.div>
           <div className="products-tabs" id="sticky_top">
-            {visibleTabs.map((label) => (
-              <Link
-                key={label}
-                href={`/product#${label.replace(" ", "-")}`}
-                scroll={false}
-                className={`tab-item ${
-                  selectedTab === label ? "active" : ""
-                }`}
-                onClick={() => handleTabClick(label)}
-                // className={`tab-item ${
-                //   activeTab ===
-                //   `/product#${label.replace(" ", "-").toLowerCase()}`
-                //     ? "active"
-                //     : ""
-                // }`}
-                // onClick={() =>
-                //   handleTabClick(
-                //     `/product#${label.replace(" ", "-").toLowerCase()}`,
-                //     label
-                //   )
-                // }
-              >
-                <div className="tab-content-inner">{label}</div>
-              </Link>
-            ))}
-          </div>
+  {visibleTabs.map((label) => (
+    <Link
+      key={label}
+      href={`/product#${label.replace(" ", "-").toLowerCase()}`}
+      scroll={false}
+      className={`tab-item ${
+        activeTab === `/product#${label.replace(" ", "-").toLowerCase()}`
+          ? "active"
+          : ""
+      }`}
+      onClick={() => handleTabClick(`/product#${label.replace(" ", "-").toLowerCase()}`, label)} // Use the new handleTabClick
+    >
+      <div className="tab-content-inner">{label}</div>
+    </Link>
+  ))}
+</div>
+
         </div>
 
         <div className="supply">
@@ -528,60 +565,62 @@ const handleThicknessClick = (thicknessValue) => {
             </div>
           </div>
           <div className="product_container" ref={projectsRef}>
-            {/* {filteredProducts.map((product, index) => ( */}
-            {displayedData.map((product, index) => {
-              const isTabActive = !!activeTab;
+    {/* Render the paginated products */}
+    {currentPageProducts.length > 0 ? (
+      currentPageProducts.map((product, index) => {
+        console.log(currentPageProducts); // Log to verify data
 
-              // Only apply "big" or "tall" classNames if not in the tab view
-              const className = isTabActive
-                ? "" // Normal size for tab view
-                : index === 9
-                ? "big"
-                : [0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21].includes(
-                    index
-                  )
-                ? "tall"
-                : "";
+        const isTabActive = !!activeTab;
 
-              return (
-                <div key={index} className={`AboutUs_product ${className}`}>
-                  <Image
-                    src={product.images[0].src}
-                    alt={product.name}
-                    className="ProductImage"
-                    width={500}
-                    height={600}
-                    // height={randomHeight} // Apply dynamic height
-                    // style={{ height: `${randomHeight}px` }} // Inline style for random height
-                  />
-                  <div className="overlay">
-                    <div>
-                      <svg
-                        width="40"
-                        height="40"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        fill="white"
-                        className="aboutUsProductSvg"
-                      >
-                        <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
-                      </svg>
-                    </div>
-                    <div
-                      className="AnchorTag"
-                      onClick={() => {
-                        console.log("Product ID:", product.id);
-                        router.push(`/product-information#${product.id}`);
-                      }}
-                    >
-                      Know More
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+        // Only apply "big" or "tall" classNames if not in the tab view
+        const className = isTabActive
+          ? "" // Normal size for tab view
+          : index === 9
+          ? "big"
+          : [0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21].includes(index)
+          ? "tall"
+          : "";
+
+        return (
+          <div key={index} className={`AboutUs_product ${className}`}>
+            <Image
+              src={product.images[0].src}
+              alt={product.name}
+              className="ProductImage"
+              width={500}
+              height={600}
+            />
+            <div className="overlay">
+              <div>
+                <svg
+                  width="40"
+                  height="40"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  fill="white"
+                  className="aboutUsProductSvg"
+                >
+                  <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
+                </svg>
+              </div>
+              <div
+                className="AnchorTag"
+                onClick={() => {
+                  console.log("Product ID:", product.id);
+                  router.push(`/product-information#${product.id}`);
+                }}
+              >
+                Know More
+              </div>
+            </div>
           </div>
+        );
+      })
+    ) : (
+      <p>No products found matching the selected filter</p> // Display a message if no products
+    )}
+  </div>
         </div>
         {currentData.length > 0 && (
           <div>
