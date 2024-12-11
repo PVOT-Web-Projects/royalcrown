@@ -55,29 +55,43 @@ const Page = () => {
       });
   }, []);
 
+  // useEffect(() => {
+  //   const hash = typeof window !== "undefined" ? window.location.hash : "";
+
+  //   // const fullPath = pathName + hash;
+  //   const categorySlug = hash ? hash.replace("#", "") : ""; // Get category slug from the URL hash
+  //   console.log("Selected Category from URL Hash:", categorySlug);
+  //   if (categorySlug) {
+  //     const category = categoryMap[fullPath] || "all";
+  //     const filteredData = products.filter((product) =>
+  //       product.categories.some(
+  //         (category) =>
+  //           category.slug.toLowerCase() === categorySlug.toLowerCase()
+  //       )
+  //     );
+  //     // Log what products are being selected
+  //     console.log("Filtered Data Based on Category:", filteredData);
+  //     setActiveTab(fullPath);
+  //     setCurrentData(filteredData);
+  //   } else {
+  //     setCurrentData(products);
+  //   }
+  // }, [pathName, products]);
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
-
-    const fullPath = pathName + hash;
-    const categorySlug = hash ? hash.replace("#", "") : ""; // Get category slug from the URL hash
-    console.log("Selected Category from URL Hash:", categorySlug);
+    const categorySlug = hash ? hash.replace("#", "") : "";
     if (categorySlug) {
-      const category = categoryMap[fullPath] || "all";
+      setActiveTab(categorySlug);
       const filteredData = products.filter((product) =>
         product.categories.some(
-          (category) =>
-            category.slug.toLowerCase() === categorySlug.toLowerCase()
+          (categoryItem) => categoryItem.slug === categorySlug
         )
       );
-      // Log what products are being selected
-      console.log("Filtered Data Based on Category:", filteredData);
-      setActiveTab(fullPath);
       setCurrentData(filteredData);
     } else {
       setCurrentData(products);
     }
   }, [pathName, products]);
-
   const handlePageChange = (event, value) => {
     setPageNumber(value);
     projectsRef.current.scrollIntoView({
@@ -107,9 +121,9 @@ const Page = () => {
     { label: "Classic Wood Grains", value: "Classic Wood Grains" },
     { label: "Stones", value: "Stones" },
     { label: "Solid Colors", value: "Solid Colors" },
-    { label: "Textiles", value: "Textiles" },
+    { label: "Textile", value: "Textile" },
     { label: "Mirrors", value: "Mirrors" },
-    { label: "Woodgrains", value: "Woodgrains" },
+    { label: "Woodgrain", value: "Woodgrain" },
   ];
   const size = [
     { label: "8 x 4", value: "8*4"  },
@@ -187,6 +201,8 @@ const handleSizeClick = (sizeValue) => {
 
   const filteredProducts1 = useMemo(() => {
     return products.filter((product) => {
+      // Tab-specific filtering logic
+      const tabMatch = activeTab === "all" || product.category === activeTab;
       const brandMatch =
         selectedBrand === "all" || product.category === selectedBrand;
       const categoryMatch =
@@ -231,6 +247,7 @@ const handleSizeClick = (sizeValue) => {
       );
 
       return (
+        tabMatch &&
         brandMatch &&
         categoryMatch &&
         finishMatch &&
@@ -242,6 +259,7 @@ const handleSizeClick = (sizeValue) => {
     });
   }, [
     products,
+    activeTab,
     selectedBrand,
     selectedCategory,
     selectedFinish,
@@ -251,12 +269,20 @@ const handleSizeClick = (sizeValue) => {
     selectedType, // Added selectedType to the dependencies of useMemo
   ]);
 
-  const lastIndex = pageNumber * itemsPerPage;
-const firstIndex = lastIndex - itemsPerPage;
-// Paginated data derived from filtered products
-const displayedData = filteredProducts1.length > 0
-  ? filteredProducts1.slice(firstIndex, lastIndex)
-  : [];
+//   const lastIndex = pageNumber * itemsPerPage;
+// const firstIndex = lastIndex - itemsPerPage;
+// // Paginated data derived from filtered products
+// const displayedData = filteredProducts1.length > 0
+//   ? filteredProducts1.slice(firstIndex, lastIndex)
+//   : [];
+// Pagination Logic
+const startIndex = (pageNumber - 1) * itemsPerPage;
+const endIndex = pageNumber * itemsPerPage;
+const paginatedProducts = useMemo(() => {
+  return filteredProducts.slice(startIndex, endIndex);
+}, [filteredProducts, pageNumber, itemsPerPage]);
+// Displayed Data
+const displayedData = paginatedProducts;
 
   const categoryMap = {
     "/product#xylem": "Xylem",
@@ -265,31 +291,32 @@ const displayedData = filteredProducts1.length > 0
     "/product#Qbiss": "QBliss",
     "/product#Crown_Xcl": "Crown XCL",
   };
-  const handleTabClick = (newTab, category) => {
-    setSelectedTab(category);
-    // setActiveTab(newTab);
-    // const filteredData = products.filter((data) => data.category === category);
-     // Filter the products based on the selected category
+  // const handleTabClick = (newTab, category) => {
+  //   setSelectedTab(category);
+  //   // setActiveTab(newTab);
+  //   // const filteredData = products.filter((data) => data.category === category);
+  //    // Filter the products based on the selected category
      
-     const filteredData = products.filter((product) =>
-      product.categories.some(
-        (categoryItem) =>
-          categoryItem.slug && categoryItem.slug === category
-      )
-    );
-    console.log("ffff", filteredData);
+  //    const filteredData = products.filter((product) =>
+  //     product.categories.some(
+  //       (categoryItem) =>
+  //         categoryItem.slug && categoryItem.slug === category
+  //     )
+  //   );
+  //   console.log("ffff", filteredData);
+  
     
-    //  const filteredData = selectedCategory.length === 0 || products.filter((product) =>
-    //   product.categories.some((categoryItem) => {
-    //     // Ensure categoryItem.slug is defined before calling toLowerCase
-    //     return categoryItem.slug && categoryItem.slug === category;
-    //   })
-    // );
-    // debugger
-    setCurrentData(filteredData); // Update current data based on selected category
-    router.push(`/product#${category}`); // Update the URL hash (for client-side navigation)
+  //   //  const filteredData = selectedCategory.length === 0 || products.filter((product) =>
+  //   //   product.categories.some((categoryItem) => {
+  //   //     // Ensure categoryItem.slug is defined before calling toLowerCase
+  //   //     return categoryItem.slug && categoryItem.slug === category;
+  //   //   })
+  //   // );
+  //   // debugger
+  //   setCurrentData(filteredData); // Update current data based on selected category
+  //   router.push(`/product#${category}`); // Update the URL hash (for client-side navigation)
 
-  };
+  // };
   // const handleTabClick = (tab) => {
   //   setSelectedTab(tab);
   // };
@@ -304,26 +331,102 @@ const displayedData = filteredProducts1.length > 0
   //     activeTab === "" ||
   //     activeTab === `/product#${category.replace(" ", "-").toLowerCase()}`
   // );
-  const visibleTabs = ["Xylem", "Royal Crown", "Crown XCL", "QBliss", "crown"];
-  useEffect(() => {
-    if (selectedTag === "all") {
-      setFilteredProducts(products);
-    } else {
-      const filtered = products.filter((product) => {
-        console.log("Checking product:", product); // Log each product
-        return (
-          product.type &&
-          product.type.some((tag) => {
-            console.log("Checking tag:", tag.slug, selectedTag); // Log each tag
-            return tag.slug === selectedTag;
-          })
-        );
-      });
-      console.log("Filtered Products:", filtered); // Log the filtered result
-      setFilteredProducts(filtered);
-    }
-  }, [selectedTag, products]);
+  // const visibleTabs = ["Xylem", "Royal Crown", "Crown XCL", "QBliss", "crown"];
+  const handleTabClick = (tab) => {
+    setSelectedTag(tab.toLowerCase());
+  };
+  const visibleTabs = [
+    "Royal Crown",
+    "Crown XCL",
+    "QBliss",
+    "Xylem",
+    "crown",
+  ].filter(
+    (category) =>
+      activeTab === "" ||
+      activeTab === `/product#${category.replace(" ", "-").toLowerCase()}`
+  );
+  // useEffect(() => {
+  //   if (selectedTag === "all") {
+  //     setFilteredProducts(products);
+  //   } else {
+  //     const filtered = products.filter((product) => {
+  //       console.log("Checking product:", product); // Log each product
+  //       return (
+  //         product.type &&
+  //         product.type.some((tag) => {
+  //           console.log("Checking tag:", tag.slug, selectedTag); // Log each tag
+  //           return tag.slug === selectedTag;
+  //         })
+  //       );
+  //     });
+  //     console.log("Filtered Products:", filtered); // Log the filtered result
+  //     setFilteredProducts(filtered);
+  //   }
+  // }, [selectedTag, products]);
   // Thickness Click Handler
+
+  useEffect(() => {
+    console.log("Selected Tag:", selectedTag);
+    console.log("Products Data:", products);
+    // If selectedTag is 'all', just return all products
+    let filtered = products;
+    // Filter products based on the selectedTag
+    if (selectedTag !== "all") {
+      const actualTag = selectedTag.split('#')[1];  // Extracts tag name after '#'
+      filtered = filtered.filter((product) => {
+        if (Array.isArray(product.categories)) {
+          // Check if any category slug matches the selectedTag
+          return product.categories.some((category) => {
+            return category.slug.toLowerCase() === actualTag.toLowerCase();
+          });
+        }
+        return false;
+      });
+    }
+    console.log("Filtered by selectedTag:", filtered);
+    // Now apply the other filters (e.g., brand, size, etc.) to the filtered products
+    filtered = filtered.filter((product) => {
+      const brandMatch = selectedBrand === "all" || product.category === selectedBrand;
+      const categoryMatch =
+        selectedCategory.length === 0 ||
+        selectedCategory.some((selectedCat) =>
+          product.attributes.some(
+            (attr) =>
+              attr.name === "type" &&
+              attr.terms.some((term) => term.slug === selectedCat)
+          )
+        );
+      const finishMatch = selectedFinish === "all" || product.categories[1].slug === selectedFinish;
+      const sizeMatch = selectedSize === "all" || product.attributes[1].terms[0].name === selectedSize;
+      const thicknessMatch = selectedThickness === "all" || product.attributes[2].terms[0].name === selectedThickness;
+      const colorMatch = selectedColor === "all" || product.attributes[4].terms[0].name === selectedColor;
+      const typeMatch = selectedType === "all" || product.attributes[3].terms[0].name === selectedType;
+      // Add more filters as necessary
+      return (
+        brandMatch &&
+        categoryMatch &&
+        finishMatch &&
+        sizeMatch &&
+        thicknessMatch &&
+        colorMatch &&
+        typeMatch
+      );
+    });
+    console.log("Final Filtered Products:", filtered);
+    // Update the state with filtered products
+    setFilteredProducts(filtered);
+  }, [
+    selectedTag,
+    products,
+    selectedBrand,
+    selectedCategory,
+    selectedFinish,
+    selectedSize,
+    selectedThickness,
+    selectedColor,
+    selectedType, // Add other filter states as needed
+  ]);
 const handleThicknessClick = (thicknessValue) => {
   setSelectedThickness(prevThickness => prevThickness === thicknessValue ? "" : thicknessValue);
   const exploreCollectionElement = document.querySelector("#sticky_top");
@@ -367,7 +470,7 @@ const handleThicknessClick = (thicknessValue) => {
             Explore Collection
           </motion.div>
           <div className="products-tabs" id="sticky_top">
-            {visibleTabs.map((label) => (
+            {/* {visibleTabs.map((label) => (
               <Link
                 key={label}
                 href={`/product#${label.replace(" ", "-")}`}
@@ -391,7 +494,22 @@ const handleThicknessClick = (thicknessValue) => {
               >
                 <div className="tab-content-inner">{label}</div>
               </Link>
-            ))}
+            ))} */}
+            {visibleTabs.map((label) => (
+    <Link
+      key={label}
+      href={`/product#${label.replace(" ", "-").toLowerCase()}`}
+      scroll={false}
+      className={`tab-item ${
+        activeTab === `/product#${label.replace(" ", "-").toLowerCase()}`
+          ? "active"
+          : ""
+      }`}
+      onClick={() => handleTabClick(`/product#${label.replace(" ", "-").toLowerCase()}`, label)} // Use the new handleTabClick
+    >
+      <div className="tab-content-inner">{label}</div>
+    </Link>
+  ))}
           </div>
         </div>
 
