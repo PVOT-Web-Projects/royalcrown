@@ -1,5 +1,6 @@
 // @import "../../app/variables.scss";
 .InsightsTextInnerF {
+  
   font-size: 60px;
   // font-weight: 400;
   text-transform: uppercase;
@@ -10,6 +11,7 @@
   font-family: "made_mirage_regular";
 }
 .category_left_right {
+  background: linear-gradient(to bottom, #FFEEE2, #FFEDE0, #FFECDE, #FFEBDD, #FFEADB);
   padding: 100px 140px 50px; 
   overflow: hidden;
 

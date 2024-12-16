@@ -1,7 +1,8 @@
 @import "../../app/variables.scss";
 
 .ply_marquee {
-  background-color: #FFF5ED;
+  // background-color: #FFF5ED;
+  background: linear-gradient(to bottom, #FFEEE2, #FFEDE0, #FFECDE, #FFEBDD, #FFEADB);
   padding: 100px 0;
   overflow: hidden;
   .MarqueeTextFirst{

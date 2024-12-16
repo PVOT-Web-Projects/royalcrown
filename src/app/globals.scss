@@ -8,6 +8,10 @@ body {
   margin: 0;
   padding: 0;
   background-color: $bg;
+  // background: linear-gradient(to bottom, #FFEEE2, #FFEDE0, #FFECDE, #FFEBDD, #FFEADB) !important; 
+  // background: rgb(255,238,226);
+  // background-image: linear-gradient(to bottom, #ffeee2, #ffede0, #ffecde, #ffebdd, #ffeadb);
+// background: linear-gradient(90deg, rgba(255,238,226,1) 0%, rgba(255,234,219,1) 100%);
   color: $white;
   transition-property: opacity, transform, filter, background-color;
   transition-timing-function: ease-in-out;
