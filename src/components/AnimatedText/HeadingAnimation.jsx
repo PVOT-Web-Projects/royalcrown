@@ -1,6 +1,6 @@
 import { motion, useTransform, useScroll } from "framer-motion";
 
-const AnimatedTextWord = ({ text, fontSize, justifyContent, className, startOpacity = 1, endOpacity = 0, startScroll = 0, endScroll = 500 }) => {
+const AnimatedTextWord = ({ text, fontSize, justifyContent, className, startOpacity = 1, endOpacity = 0, startScroll = 0, endScroll = 400 }) => {
   // Use useScroll to get the scroll progress
   const { scrollY } = useScroll();
 
