@@ -1,5 +1,6 @@
 .MainSwiperthreedContainer {
   width: 100%;
+  background: linear-gradient(to bottom, #FFEEE2, #FFEDE0, #FFECDE, #FFEBDD, #FFEADB);
   .swiper-slide:not(.swiper-slide-prev):not(.swiper-slide-active):not(
       .swiper-slide-next
     ) {

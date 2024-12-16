@@ -1,5 +1,6 @@
 .NewContainer{
   padding: 200px 0;
+  background: linear-gradient(to bottom, #FFEEE2, #FFEDE0, #FFECDE, #FFEBDD, #FFEADB);
 }
 .paragraph {
   display: flex;
