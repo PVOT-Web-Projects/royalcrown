@@ -1,11 +1,22 @@
-import { motion } from "framer-motion";
-const AnimatedTextWord = ({ text, fontSize, justifyContent , className}) => {
+import { motion, useTransform, useScroll } from "framer-motion";
+
+const AnimatedTextWord = ({ text, fontSize, justifyContent, className, startOpacity = 1, endOpacity = 0, startScroll = 0, endScroll = 500 }) => {
+  // Use useScroll to get the scroll progress
+  const { scrollY } = useScroll();
+
+  // Map scroll values to opacity
+  const opacity = useTransform(
+    scrollY,
+    [startScroll, endScroll], // Range of scroll (start and end)
+    [startOpacity, endOpacity] // Corresponding opacity values
+  );
+
   const container = {
     hidden: { opacity: 0 },
-    visible: (i = 1) => ({
+    visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.12, delayChildren: 1 * i },
-    }),
+      transition: { staggerChildren: 0.12 },
+    },
   };
 
   const child = {
@@ -14,11 +25,9 @@ const AnimatedTextWord = ({ text, fontSize, justifyContent , className}) => {
       x: 0,
       y: 0,
       transition: {
-        // type: "spring",
         delay: 0.2,
         damping: 12,
         stiffness: 50,
-        duration: "1",
       },
     },
     hidden: {
@@ -27,7 +36,6 @@ const AnimatedTextWord = ({ text, fontSize, justifyContent , className}) => {
       transition: {
         damping: 12,
         stiffness: 50,
-        duration: "1",
       },
     },
   };
@@ -39,12 +47,21 @@ const AnimatedTextWord = ({ text, fontSize, justifyContent , className}) => {
         display: "flex",
         fontSize: fontSize,
         justifyContent: justifyContent,
-       
       }}
       className={className}
       variants={container}
+      initial="hidden"
+      animate="visible"
     >
-      <motion.span variants={child}>{text}</motion.span>
+      <motion.span
+        variants={child}
+        style={{
+          display: "inline-block",
+          opacity, // Controlled opacity
+        }}
+      >
+        {text}
+      </motion.span>
     </motion.div>
   );
 };
