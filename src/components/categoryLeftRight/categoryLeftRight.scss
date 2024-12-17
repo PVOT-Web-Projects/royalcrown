@@ -1,7 +1,6 @@
 // @import "../../app/variables.scss";
 
 .category_left_right {
-  
   padding: 200px 140px 50px; 
   overflow: hidden;
 
@@ -57,11 +56,11 @@
             padding: 50px 0;
             width: 100%;
           }
-          .left_item {
+          .left_itemOne {
             font-family: "futura_thin";
-            .text_effect {
+            .text_effectOne {
               clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-              .card {
+              .cardOne {
                 overflow: hidden;
 
                 h2 {
@@ -98,7 +97,7 @@
                 width: 100%;
               }
             }
-            .left_bottom {
+            .left_bottomOne {
               display: flex;
               justify-content: space-between;
               gap: 20px;
@@ -106,7 +105,7 @@
               @media (max-width: 600px) {
                 flex-direction: column;
               }
-              .logoes {
+              .logoesOne {
                 display: flex;
                 gap: 20px;
                 @media (max-width: 600px) {
@@ -116,7 +115,7 @@
             }
           }
         }
-        .right {
+        .rightOne {
           width: 50%;
           height: 500px;
           @media (max-width: 1199px) {
@@ -124,7 +123,7 @@
             margin: 0 0 50px;
             height: auto;
           }
-          .right_item {
+          .right_itemOne {
             display: flex;
             @media (max-width: 1199px) {
               justify-content: center;
@@ -149,7 +148,7 @@
                 width: 230px;
               }
             }
-            .img1 {
+            .img1One {
               z-index: 2;
               top: 0;
               right: 250px;
@@ -164,7 +163,7 @@
                 width: 100px;
               }
             }
-            .img2 {
+            .img2One {
               top: 50px;
               right: 120px;
               z-index: 1;
@@ -181,7 +180,7 @@
                 transform: translate(-84px, 60px);
               }
             }
-            .img3 {
+            .img3One {
               top: 100px;
               right: 0;
               width: 100%;

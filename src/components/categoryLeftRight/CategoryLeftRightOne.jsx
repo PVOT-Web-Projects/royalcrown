@@ -12,10 +12,10 @@ import logo2 from "@/images/crown.png";
 import logo3 from "@/images/crown_qbiss.png";
 import logo4 from "@/images/crownXCL.png";
 import logo5 from "@/images/svgLogos/FinalHeaderLogo.svg";
-import CategoryLeftRightItem from "./categoryLeftRightItem.jsx/CategoryLeftRightItem";
+// import CategoryLeftRightItem from "./categoryLeftRightItem.jsx/CategoryLeftRightItem";
 import "./categoryLeftRight.scss"
-
-const categoryLeftRightData = [
+import CategoryLeftRightItemOne from "./categoryLeftRightItem.jsx/CategoryLeftRightItem";
+const categoryLeftRightDataOne = [
     {
         title:"XYLEM",
         text:"Step into the world of Xylem, where innovation is at the heart of everything we do. Xylem represents our premium-grade decorative laminates, meticulously crafted to elevate your surroundings. Each laminate embodies inspiring, high quality, and artistic excellence designed to define your unique style. From curating unique designs to creating exclusive laminates, we are on a mission to bring your vision to life.",
@@ -65,15 +65,15 @@ const categoryLeftRightData = [
     },
 ]
 
-const CategoryLeftRight = ()=>{
+const CategoryLeftRightO = ()=>{
     return(
         <div className="category_left_right">
             <div className="category_left_right_wrapper">
-               {categoryLeftRightData.map((item, index)=>(
-                <CategoryLeftRightItem key={index} {...item} />
+               {categoryLeftRightDataOne.map((item, index)=>(
+                <CategoryLeftRightItemOne key={index} {...item} />
                ))}
             </div>
         </div>
     )
 }
-export default CategoryLeftRight
+export default CategoryLeftRightO;
