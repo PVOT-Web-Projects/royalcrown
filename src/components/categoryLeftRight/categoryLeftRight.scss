@@ -1,9 +1,10 @@
-// @import "../../app/variables.scss";
+@import "../../app/variables.scss";
 
 .category_left_right {
-  
   padding: 200px 140px 50px; 
   overflow: hidden;
+  // background-color: yellow;
+  background: linear-gradient(to bottom, #FFEEE2, #FFEDE0, #FFECDE, #FFEBDD, #FFEADB);
 
   @media (max-width: 1350px) {
     padding: 200px 60px 50px;
@@ -58,14 +59,13 @@
             width: 100%;
           }
           .left_item {
-            font-family: "futura_thin";
             .text_effect {
               clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
               .card {
                 overflow: hidden;
 
                 h2 {
-                  font-size: 60px;
+                  font-size: 48px;
                   line-height: 62px;
                   letter-spacing: 3px;
                   margin: 0 0 40px;
@@ -79,7 +79,7 @@
                     position: absolute;
                     bottom: -15px;
                     left: 0;
-                    background-color: #5B3524;
+                    background-color: #5b3524;
                     width: 145px;
                     height: 3px;
                   }
@@ -87,7 +87,7 @@
               }
             }
             p {
-              font-size: 21px;
+              font-size: 22px;
               line-height: 28px;
               width: 600px;
               margin: 0 0 40px;
@@ -134,19 +134,19 @@
             }
             img {
               @media (max-width: 1420px) {
-                width: 240px !important;
+                width: 240px;
               }
               @media (max-width: 1280px) {
-                width: 220px !important;
+                width: 220px;
               }
               @media (max-width: 1199px) {
-                width: 100% !important;
+                width: 100%;
               }
               @media (max-width: 767px) {
-                width: auto !important;
+                width: auto;
               }
               @media (max-width: 575px) {
-                width: 230px !important;
+                width: 230px;
               }
             }
             .img1 {
