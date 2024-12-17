@@ -10,7 +10,7 @@ import { useEffect } from "react";
 import SocialPage from "@/components/socialPage/socialpage";
 import Form from "@/components/forms/form1/Form";
 import SocialMediaImg from "@/images/socials-image.png";
-import CategoryLeftRight from "@/components/categoryLeftRight/CategoryLeftRight";
+import CategoryLeftRight from "@/components/categoryLeftRight/CategoryLeftRightOne";
 import "./category.scss"
 // import ProductsInner from "@/components/ProductsComponenetsInner/decorativeLaminatesInner/page";
 const Category = () => {
