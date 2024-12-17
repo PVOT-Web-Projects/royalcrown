@@ -60,7 +60,7 @@
             font-family: "futura_thin";
             .text_effectOne {
               clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-              @media(max-width: 767px){
+              @media(max-width: 1199px){
               padding-top: 6rem;
               }
               .cardOne {
