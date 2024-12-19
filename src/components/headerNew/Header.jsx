@@ -11,7 +11,7 @@ import HoverImg2 from "@/images/decorative2.png";
 import HoverImg3 from "@/images/decorative3.png";
 import HoverImg4 from "@/images/decorative1.png";
 import fb from "@/images/svgLogos/facebook.svg";
-import ig from "@/images/svgLogos/insta.svg";
+import ig from "@/images/svgLogos/instagramSvg.svg";
 import yt from "@/images/svgLogos/youtube.svg";
 import wa from "@/images/svgLogos/whatsapp.svg";
 import li from "@/images/svgLogos/Linkedin.svg";
