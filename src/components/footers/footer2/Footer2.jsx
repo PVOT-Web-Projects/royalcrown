@@ -9,7 +9,7 @@ import LinkHover from "@/components/linkHover/LinkHover";
 import telIcon from "@/images/svgLogos/phone_icon.svg";
 import mailIcon from "@/images/svgLogos/mail_icon.svg";
 import fb from "@/images/svgLogos/facebook.svg";
-import ig from "@/images/svgLogos/insta.svg";
+import ig from "@/images/svgLogos/instagramSvg.svg";
 import yt from "@/images/svgLogos/youtube.svg";
 import wa from "@/images/svgLogos/whatsapp.svg";
 import li from "@/images/svgLogos/Linkedin.svg";
