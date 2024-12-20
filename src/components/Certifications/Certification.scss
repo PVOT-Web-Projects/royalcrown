@@ -3,6 +3,7 @@
   // color: white;
   margin-top: 0 !important;
   .certification_heading {
+    padding-top: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,6 +16,7 @@
       font-size: 50px;
     }
     @media (max-width: 575px) {
+      padding-top: 2rem;
       font-size: 42px;
       // letter-spacing: 0px;
     }

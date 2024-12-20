@@ -31,7 +31,7 @@
   justify-content: center;
   padding: 0 50px;
   align-items: end;
-  height: 85vh;
+  height: 75vh;
   font-size: 40px;
 }
 
@@ -75,8 +75,19 @@
   height: auto;
   /* width: 6vw; */
 }
-
-
+/* .svgLogoCenter{
+  position: relative;
+} */
+.svgLogoCenterInner{
+  display: flex !important;
+    justify-content: center !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    align-items: center !important;
+    height: 100vh !important;
+ }
 
 
 .loader {
@@ -118,13 +129,20 @@
 
 
 
-
+/* @media(min-height: 919px){
+  .svgLogoCenterInner{
+    top: 34.5%;
+    height: auto;
+    max-height: 40vh;
+  }
+} */
 
 @media (min-width: 1600px) and (max-width: 1920px) {
   .logoImage {
     height: auto;
     /* width: 6vw; */
   }
+  
 }
 
 @media (min-width: 521px) and (max-width: 1024px) {

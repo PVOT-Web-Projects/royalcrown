@@ -98,7 +98,7 @@ const MyForm = () => {
             duration: 1,
           },
         }}
-        viewport={{ once: true }}
+        viewport={{ once: true}}
         >
           
         <p className="form_header">The Authenticity of luxury in each layer</p>

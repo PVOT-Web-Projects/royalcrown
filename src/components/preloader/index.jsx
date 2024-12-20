@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { opacity, slideUp } from "./anime";
-// import Image from "next/image";
-// import logo from "@/images/svgLogos/header_logo.svg";
+import Image from "next/image";
+import logo from "@/images/svgLogos/newww.svg";
 import styles from "./style.module.css";
 
 
@@ -63,9 +63,14 @@ const strokeDashoffset = circleStrokeLength * (1 - loadedFrames / 100);
         
         {/* <div className={styles.loadingCounter}>{loadedFrames}</div> */}
       </motion.div>
-
+      <div className={styles.svgLogoCenter}>
+      <Image src={logo} alt="none" className={styles.svgLogoCenterInner}/>
+      
+ 
       <div className={styles.circleCenter}>
+        
         <svg className={styles.border} height="200" width="200">
+      
           <circle
             className={styles.circle}
             cx="100"
@@ -78,8 +83,11 @@ const strokeDashoffset = circleStrokeLength * (1 - loadedFrames / 100);
             strokeDashoffset={strokeDashoffset} // This makes the circle progress
             transform="rotate(-90deg)" // Rotate the circle to start from the top
             // strokeDashoffset={circleStrokeLength * (loadedFrames / 100)}
-          />
+         
+         />
+         
         </svg>
+      </div>
       </div>
       <div className={styles.LoaderText}>
         <div>
