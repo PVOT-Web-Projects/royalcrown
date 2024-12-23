@@ -144,6 +144,8 @@ header {
         }
       }
       &.light {
+        display: flex;
+        gap: 30px;
         li {
           // height: 15px;
           a {
