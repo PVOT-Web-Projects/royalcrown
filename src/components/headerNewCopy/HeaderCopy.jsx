@@ -275,7 +275,7 @@ const HeaderCopy = () => {
               isHomePage={isHome}
               onClick={(e) => e.preventDefault()} // Disable link behavior for "Category"
             />
-            {/* {hoveredItem === "products" && ( */}
+            {hoveredItem === "products" && (
               <motion.div
                 className="ProductsLi"
                 initial={{ opacity: 0, y: -10 }}
@@ -822,7 +822,7 @@ const HeaderCopy = () => {
                           />
                         </motion.div>
               </motion.div>
-            {/* )}  */}
+             )} 
           </motion.li>
           <motion.li
             initial={{
