@@ -822,7 +822,7 @@ const HeaderCopy = () => {
                           />
                         </motion.div>
               </motion.div>
-             )} 
+              )} 
           </motion.li>
           <motion.li
             initial={{
