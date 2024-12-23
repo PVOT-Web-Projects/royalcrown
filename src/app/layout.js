@@ -1,6 +1,7 @@
 
 import Footer2 from "@/components/footers/footer2/Footer2";
 import Header from "../components/headerNew/Header";
+import HeaderCopy from "@/components/headerNewCopy/HeaderCopy";
 // import Header1 from "@/components/headers/index"
 import "./globals.scss";
 import Script from 'next/script'
@@ -17,7 +18,8 @@ export default function RootLayout({ children }) {
       <head></head>
       <body>
         {/* <Header1 /> */}
-        <Header />
+        {/* <Header /> */}
+        <HeaderCopy />
         {children}
         {/* <Footer /> */}
         <Footer2 />
