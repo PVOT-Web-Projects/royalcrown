@@ -68,7 +68,7 @@ const categoryLeftRightDataOne = [
 const CategoryLeftRightO = ()=>{
     return(
         <div className="category_left_right">
-            <div className="category_left_right_wrapper">
+            <div className="category_left_right__wrapper">
                {categoryLeftRightDataOne.map((item, index)=>(
                 <CategoryLeftRightItemOne key={index} {...item} />
                ))}
