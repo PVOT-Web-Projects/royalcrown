@@ -20,6 +20,7 @@ import NewThreeDSlider from "@/components/newthreedslider/newthreedslider";
 import CategoryLeftRightInsights from "@/components/categoryLeftRightInsights/CategoryLeftRightInsights";
 import { AnimatePresence } from "framer-motion";
 import Preloader from "@/components/preloader";
+import SliderNew from "@/components/SliderNew/SliderNew";
 
 const HomeBanner = dynamic(() => import("@/components/Home_page_Banner/page"));
 const HomeBanner1 = dynamic(() => import("@/components/Home_page_Banner/page2"));
@@ -70,7 +71,8 @@ export default function Home() {
       <main className="main">
         {/* <HeroBanner /> */}
         <HomeHeroSection />
-        <NewThreeDSlider />
+        <SliderNew />
+        {/* <NewThreeDSlider /> */}
         {/* <ThreeSlider /> */}
         <NewRevealText paragraph={paragraph} />
         <PlyMarquee />
