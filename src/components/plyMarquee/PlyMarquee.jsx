@@ -44,7 +44,7 @@ const PlyMarquee = () => {
             <div className="ply_item top1">
               <div className="ply_info">
                 <div className="info_left">
-                  <p className="num">6038</p>
+                  <p className="num">576</p>
                   <p className="text">tw</p>
                 </div>
                 <div className="info_right">
