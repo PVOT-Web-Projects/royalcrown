@@ -196,6 +196,10 @@ const Page = () => {
 
   const filteredProducts1 = useMemo(() => {
     return products.filter((product) => {
+      // Check if the product belongs to the "CrownXcl" category
+      const isCrownXclCategory = product.categories.some(
+        (category) => category.name.toLowerCase() === "crown xcl"
+      );
       const brandMatch =
         selectedBrand === "all" || product.category === selectedBrand;
       const categoryMatch =
@@ -225,6 +229,7 @@ const Page = () => {
       console.log("Checking Product:", product); // Log each product being checked
       console.log(
         "Matches Filters:",
+        isCrownXclCategory,
         brandMatch,
         "CategoryMatch",
         categoryMatch,
@@ -240,6 +245,7 @@ const Page = () => {
       );
 
       return (
+        isCrownXclCategory &&
         brandMatch &&
         categoryMatch &&
         finishMatch &&
@@ -268,6 +274,10 @@ const Page = () => {
   useEffect(() => {
     if (selectedTag === "all") {
       setFilteredProducts(products);
+    } else if (selectedTag === "CrownXCL") { // Highlighted: Check for CrownXCL explicitly
+      const filtered = products.filter((product) => product.category === "CrownXCL"); // Highlighted: Filter by category CrownXCL
+      console.log("Filtered Products for CrownXCL:", filtered); // Log the filtered result
+      setFilteredProducts(filtered);
     } else {
       const filtered = products.filter((product) => {
         console.log("Checking product:", product); // Log each product
