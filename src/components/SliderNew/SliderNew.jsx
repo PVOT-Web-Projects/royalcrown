@@ -72,35 +72,35 @@ const Category = () => {
       description:
         "Royal Crown Laminates takes pride in its rich legacy of innovation, cutting-edge technology, and expertise, offering over 450 trendsetting surface designs. Our collection of modern laminates boasts a wide range of finishes and textures in 1mm thickness, empowering you to effortlessly realize your dream decor.",
       background: Img1,
-      urlLink: "/products#royal-crown",
+      url: "/royal-crown",
     },
     {
       name: "CROWN",
       description:
         "Crown's Lean Line offers an exquisite and cost-effective range of laminates in a variety of designs, colors, and textures, all in 0.8mm thickness. Manufactured at our highly advanced production facility, the Lean Line guarantees a consistent and exceptional level of quality.",
       background: Img2,
-      urlLink: "/products#crown",
+      url: "/crown",
     },
     {
       name: "XYLEM",
       description:
         "Step into the world of Xylem, where innovation is at the heart of everything we do. Xylem represents our premium-grade decorative laminates, meticulously crafted to elevate your surroundings. Each laminate embodies inspiring, high quality, and artistic excellence designed to define your unique style. From curating unique designs to creating exclusive laminates, we are on a mission to bring your vision to life.",
       background: Img3,
-      urlLink: "/products#xylem",
+      url: "/xylem",
     },
     {
       name: "QBISS",
       description:
         "Qbiss is a high-pressure structural laminate made from multiple layers of kraft papers, with a thickness range from 2mm to 25mm. Its decorative face on both sides makes it suitable for interior applications like washroom cubicles, locker doors, wall panels, and laboratory furniture. With a density of 1.45gm/cm3, our compacts are exceptionally resilient and require no substrate support in thicknesses over 6mm.",
       background: Img4,
-      urlLink: "/products#Qbiss",
+      url: "/qbiss",
     },
     {
       name: "CROWN XCL",
       description:
         "XCL - Exterior Compact Laminate is a highly durable, versatile material made from layers of kraft papers, offering thickness options from 2mm to 25mm. With decorative surfaces on both sides and a UV protective film, it is perfect for Building Facades/Cladding, Balconies, Verandah, Outdoor Benches, etc. Boasting a density of 1.45gm/cm3, our compacts are exceptionally sturdy, resistant to damage, and exhibit outstanding structural stability, eliminating the need for substrate support in thicknesses above 6mm.",
       background: Img5,
-      urlLink: "/products#Crown_Xcl",
+      url: "/crown-xcl",
     },
   ];
 
@@ -112,7 +112,7 @@ const Category = () => {
             <div className="contentSlider">
               <div className="nameSlider">{slide.name}</div>
               <div className="descriptionSlider">{slide.description}</div>
-              <Link href={slide.urlLink} className="yello_btn">
+              <Link href={slide.url} className="yello_btn">
                 <span className="button-content">{`GO TO ${slide.name}`}</span>
               </Link>
             </div>
