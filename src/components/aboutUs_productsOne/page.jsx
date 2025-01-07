@@ -172,9 +172,29 @@ const Page = () => {
   const handleSizeChange = (e) => {
     setSelectedSize(e.value);
   };
+// const handleSizeClick = (sizeValue) => {
+//   // setSelectedSize(sizeValue);
+//   setSelectedSize(prevSize => prevSize === sizeValue ? "" : sizeValue);
+//   const exploreCollectionElement = document.querySelector("#sticky_top");
+//   if (exploreCollectionElement) {
+//     exploreCollectionElement.scrollIntoView({
+//       behavior: "smooth",
+//       block: "start",
+//     });
+//   }
+// };
 const handleSizeClick = (sizeValue) => {
-  // setSelectedSize(sizeValue);
-  setSelectedSize(prevSize => prevSize === sizeValue ? "" : sizeValue);
+  setSelectedSize((prevSelectedSize) => {
+    // If the size is already selected, deselect it (set to null or "")
+    if (prevSelectedSize === sizeValue) {
+      console.log("Size Deselected:", sizeValue);
+      return null; // Deselect the size to show all products
+    } else {
+      console.log("Size Selected:", sizeValue);
+      return sizeValue; // Select the new size
+    }
+  });
+  // Scroll to the top of the page (or a specific element) smoothly
   const exploreCollectionElement = document.querySelector("#sticky_top");
   if (exploreCollectionElement) {
     exploreCollectionElement.scrollIntoView({
@@ -199,6 +219,17 @@ const handleSizeClick = (sizeValue) => {
     }
   };
 
+  // Function to reset all filters to default
+const resetFiltersDrop = () => {
+  setSelectedBrand("all");
+  setSelectedCategory([]);
+  setSelectedFinish("all");
+  setSelectedSize("all");
+  setSelectedThickness("all");
+  setSelectedColor("all");
+  setSelectedType("all");
+};
+
   const filteredProducts1 = useMemo(() => {
     return products.filter((product) => {
       // Tab-specific filtering logic
@@ -218,15 +249,19 @@ const handleSizeClick = (sizeValue) => {
         selectedFinish === "all" ||
         product.categories[1].slug === selectedFinish;
       const sizeMatch =
+      selectedSize === null ||
         selectedSize === "all" ||
         product.attributes[1].terms[0].name === selectedSize;
       const thicknessMatch =
+      selectedThickness === null ||
         selectedThickness === "all" ||
         product.attributes[2].terms[0].name === selectedThickness;
       const colorMatch =
+      selectedColor === null ||
         selectedColor === "all" ||
         product.attributes[4].terms[0].name === selectedColor;
       const typeMatch =
+      selectedType === null ||
         selectedType === "all" ||
         product.attributes[3].terms[0].name === selectedType;
       console.log("Checking Product:", product); // Log each product being checked
@@ -397,11 +432,11 @@ const displayedData = paginatedProducts;
               attr.terms.some((term) => term.slug === selectedCat)
           )
         );
-      const finishMatch = selectedFinish === "all" || product.categories[1].slug === selectedFinish;
-      const sizeMatch = selectedSize === "all" || product.attributes[1].terms[0].name === selectedSize;
-      const thicknessMatch = selectedThickness === "all" || product.attributes[2].terms[0].name === selectedThickness;
-      const colorMatch = selectedColor === "all" || product.attributes[4].terms[0].name === selectedColor;
-      const typeMatch = selectedType === "all" || product.attributes[3].terms[0].name === selectedType;
+      const finishMatch = selectedFinish === "all" ||selectedFinish === null || product.categories[1].slug === selectedFinish;
+      const sizeMatch = selectedSize === "all" ||selectedSize === null || product.attributes[1].terms[0].name === selectedSize;
+      const thicknessMatch = selectedThickness === "all" || selectedThickness === null || product.attributes[2].terms[0].name === selectedThickness;
+      const colorMatch = selectedColor === "all" || selectedColor === null || product.attributes[4].terms[0].name === selectedColor;
+      const typeMatch = selectedType === "all" || selectedType === null || product.attributes[3].terms[0].name === selectedType;
       // Add more filters as necessary
       return (
         brandMatch &&
@@ -427,8 +462,38 @@ const displayedData = paginatedProducts;
     selectedColor,
     selectedType, // Add other filter states as needed
   ]);
+// const handleThicknessClick = (thicknessValue) => {
+//   setSelectedThickness(prevThickness => prevThickness === thicknessValue ? "" : thicknessValue);
+//   setSelectedThickness((prevSelectedThickness) => {
+//     // If the thickness is already selected, deselect it (set to null or "")
+//     if (prevSelectedThickness === thicknessValue) {
+//       console.log("Thickness Deselected:", thicknessValue);
+//       return null; // Deselect the thickness to show all products
+//     } else {
+//       console.log("Thickness Selected:", thicknessValue);
+//       return thicknessValue; // Select the new thickness
+//     }
+//   });
+//   const exploreCollectionElement = document.querySelector("#sticky_top");
+//   if (exploreCollectionElement) {
+//     exploreCollectionElement.scrollIntoView({
+//       behavior: "smooth",
+//       block: "start",
+//     });
+//   }
+// };
 const handleThicknessClick = (thicknessValue) => {
-  setSelectedThickness(prevThickness => prevThickness === thicknessValue ? "" : thicknessValue);
+  setSelectedThickness((prevSelectedThickness) => {
+    // If the thickness is already selected, deselect it (set to null or "")
+    if (prevSelectedThickness === thicknessValue) {
+      console.log("Thickness Deselected:", thicknessValue);
+      return null; // Deselect the thickness to show all products
+    } else {
+      console.log("Thickness Selected:", thicknessValue);
+      return thicknessValue; // Select the new thickness
+    }
+  });
+  // Scroll to the top of the page (or a specific element) smoothly
   const exploreCollectionElement = document.querySelector("#sticky_top");
   if (exploreCollectionElement) {
     exploreCollectionElement.scrollIntoView({
@@ -512,9 +577,17 @@ const handleThicknessClick = (thicknessValue) => {
   ))}
           </div>
         </div>
-
+      
         <div className="supply">
           <div id="sticky">
+              {/* reset filter */}
+          <div className="resetFilters">
+              <button className="resetButton" onClick={resetFiltersDrop}>
+              <span className="resetButton-content">reset filters</span>
+                {/* Reset Filters */}
+                </button>
+        </div>
+        {/* reset filter ends */}
             <div className="dropdown1">
               <div className="dropdown-label">
                 <label className="colorSelectDropdown" htmlFor="type-select">
@@ -571,6 +644,7 @@ const handleThicknessClick = (thicknessValue) => {
                       className={`color-box color${index + 1}`}
                       // style={{ backgroundColor: colorItem.value }}
                       onClick={() => handleColorChange(colorItem.value)} // Add color change functionality
+                      scroll={false}
                     ></div>
                   ))}
                 </div>
@@ -600,6 +674,7 @@ const handleThicknessClick = (thicknessValue) => {
                         selectedSize === sizeOption.value ? "selected" : ""
                       }`}
                       onClick={() => handleSizeClick(sizeOption.value)}
+                      scroll={false}
                     >
                       <p>{sizeOption.label}</p>
                     </div>
@@ -640,6 +715,7 @@ const handleThicknessClick = (thicknessValue) => {
                       //   setSelectedThickness(thicknessOption.value)
                       // }
                       onClick={() => handleThicknessClick(thicknessOption.value)} // Add click functionality
+                      scroll={false}
                     >
                       <p>{thicknessOption.label}</p>
                     </div>
