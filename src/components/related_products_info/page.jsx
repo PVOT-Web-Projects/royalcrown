@@ -24,6 +24,7 @@ const RelatedProductInfo = () => {
 
   useEffect(() => {
 
+
     const fetchRelatedProducts = async () => {
       try {
         const response = await fetch(
