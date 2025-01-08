@@ -26,7 +26,14 @@ const HeroBanner = () => {
     } else if (width < 1600) {
       Y = 195;
     }
-
+    const scrollDownByTenPercent = () => {
+      const tenPercentOfHeight = window.innerHeight * 1;
+      window.scrollBy({
+        top: tenPercentOfHeight,
+        behavior: "smooth",
+      });
+      setIsVisible(false);
+    };
   return (
     <div className="hero_banner">
       <div className="banner_image">
@@ -59,7 +66,7 @@ const HeroBanner = () => {
             dolor Lorem ipsum dolor Lorem ipsum dolor
           </p> */}
           <div className="link">
-            <Link href={"#"}>Let's Start</Link>
+            <div className="linkInner" onClick={scrollDownByTenPercent} >Let's Start</div>
           </div>
         </div>
       </div>

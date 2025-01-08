@@ -88,7 +88,8 @@ export default function Home() {
         {/* <HeroBanner /> */}
         {/* <HomeSlider /> */}
 
-        <TextAnimOne />
+        {/* <TextAnimOne /> */}
+        <HeroBanner />
         <HomeSliderOne />
         <HomeHeroSection />
         <SliderNew />

@@ -72,12 +72,13 @@
         text-align: center;
         display: flex;
         justify-content: center;
-        a {
+        .linkInner {
           text-decoration: none;
-          color: $black;
+          color: $white;
           background-color: #FEFAE0;
           display: block;
           padding: 44px 25px;
+          cursor: pointer;
           border-radius: 50%;
           transition: all 0.4s;
           &:hover {
