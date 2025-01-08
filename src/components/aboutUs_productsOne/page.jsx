@@ -312,14 +312,34 @@ const Page = () => {
   //   ? filteredProducts1.slice(firstIndex, lastIndex)
   //   : [];
   // Pagination Logic
-  const startIndex = (pageNumber - 1) * itemsPerPage;
-  const endIndex = pageNumber * itemsPerPage;
-  const paginatedProducts = useMemo(() => {
-    return filteredProducts.slice(startIndex, endIndex);
-  }, [filteredProducts, pageNumber, itemsPerPage]);
-  // Displayed Data
-  const displayedData = paginatedProducts;
-
+  // const startIndex = (pageNumber - 1) * itemsPerPage;
+  // const endIndex = pageNumber * itemsPerPage;
+  // const paginatedProducts = useMemo(() => {
+  //   return filteredProducts.slice(startIndex, endIndex);
+  // }, [filteredProducts, pageNumber, itemsPerPage]);
+  // // Displayed Data
+  // const displayedData = paginatedProducts;
+      //  pagination finall logic
+  // Calculate total pages dynamically based on filtered products
+const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+// Ensure the current page is within the valid range
+const currentPage = Math.min(pageNumber, totalPages);
+// Calculate indices for the current page
+const lastIndex = currentPage * itemsPerPage;
+const firstIndex = lastIndex - itemsPerPage;
+// Slice the filtered products to display only the current page's items
+const displayedData = filteredProducts.slice(firstIndex, lastIndex);
+// Render only valid pagination buttons
+useEffect(() => {
+  if (currentPage > totalPages && totalPages > 0) {
+    setPageNumber(totalPages); // Redirect to the last valid page
+  }
+}, [currentPage, totalPages]);
+// Reset to the first page if filters change
+useEffect(() => {
+  setPageNumber(1); // Reset to the first page when filtered products change
+}, [filteredProducts]);
+// 
   const categoryMap = {
     "/product#xylem": "Xylem",
     "/product#royal-crown": "Royal Crown",
