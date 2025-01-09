@@ -85,7 +85,7 @@
   // user-select: none;
   cursor: pointer;
   will-change: transform;
-  transition: transform 0.1s ease-in; /* Smooth transition for any transformation */
+  // transition: transform 0.1s ease-in; /* Smooth transition for any transformation */
   // box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
   //             rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
   //             rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
@@ -97,13 +97,14 @@
   vertical-align: top;
   border-radius: 8px;
   pointer-events: none;
-  transition: transform 0.3s ease; /* Smooth transition for zoom effect */
+  object-fit: cover;
+  // transition: transform 0.3s ease; /* Smooth transition for zoom effect */
 
   /* Zoom effect */
-  &.zoomed {
-    transform: scale(1.5); /* Adjust scale value for the zoom effect */
-    z-index: 10; /* Ensure zoomed image is on top */
-  }
+  // &.zoomed {
+  //   transform: scale(1.5); /* Adjust scale value for the zoom effect */
+  //   z-index: 10; /* Ensure zoomed image is on top */
+  // }
   @media (min-width: 1550px) {
     width: 400px;
   }
@@ -161,33 +162,24 @@
   height: 3rem;
   padding: 0 3rem;
   background-color: transparent;
-  border: 1px solid #5b3524;
+  border: 1px solid #5B3524;
   border-radius: 5px;
   text-transform: uppercase;
   background-size: 400%;
-  color: #5b3524;
+  color: #5B3524;
   font-size: 18px;
-  font-family: "futura_thin";
-  line-height: 16px;
+  line-height: 16px; 
   cursor: pointer;
+  display: flex;
   align-items: center;
   text-decoration: none;
-  width: -moz-fit-content;
   width: fit-content;
-  // left:45%;
-
-  @media (max-width: 575px) {
-    padding: 0 1rem;
-  }
-  .button-content {
+  .button-content-explore {
     font-size: 25px;
     font-weight: 550;
     position: relative;
     z-index: 1;
     transition: color 0.475s;
-    @media (max-width: 575px) {
-      font-size: 18px;
-    }
   }
   &::before {
     content: "";
@@ -199,17 +191,17 @@
     width: 100%;
     height: inherit;
     border-radius: inherit;
-    // background: #5b3524;
-
+    background: #5b3524;
     transition: all 0.475s;
   }
   &:hover {
-    .button-content {
-      color: #f3efed;
+    .button-content-explore {
+      color: white;
     }
     &::before {
       transform: scaleX(1);
       border-radius: inherit;
+      
     }
   }
 }
@@ -253,7 +245,7 @@
     background-size: 400%;
     color: #5B3524;
     font-size: 18px;
-    line-height: 16px;
+    line-height: 16px; 
     cursor: pointer;
     display: flex;
     align-items: center;
