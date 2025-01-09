@@ -4,6 +4,8 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import "./HomeSliderOne.scss";
+import Image from "next/image";
+import Img1 from "@/images/bgrem.png";
 import Page1 from "@/components/Home_page_Banner_Kitchen/page";
 import Page2 from "@/components/Home_page_Banner_Bedroom/page";
 import Page3 from "@/components/Home_page_Banner_Living/page";
@@ -136,9 +138,9 @@ const SwiperCarousel = () => {
 
   return (
     <div className="containerText">
-      <div>
-
-      </div>
+      {/* <div>
+      <Image src={Img1} alt="none" className="Img1Ref"/>
+      </div> */}
       {isCarouselVisible ? (
         <div className={`carouselOne ${isCarouselVisible ? "" : "hidden"}`}>
           <Swiper
