@@ -23,6 +23,8 @@ export default function RootLayout({ children }) {
         {children}
         {/* <Footer /> */}
         <Footer2 />
+        {/* <Script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" /> */}
+        {/* <Script type="module" src="./js/index2.js" /> */}
         <Script src="http://localhost/humbeeassets/js/style.js" strategy="lazyOnload" />
       </body>
     </html>

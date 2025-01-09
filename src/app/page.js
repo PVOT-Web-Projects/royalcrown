@@ -21,6 +21,9 @@ import CategoryLeftRightInsights from "@/components/categoryLeftRightInsights/Ca
 import { AnimatePresence } from "framer-motion";
 import Preloader from "@/components/preloader";
 import SliderNew from "@/components/SliderNew/SliderNew";
+import TextAnimOne from "@/components/TextAnimOne/page";
+import HomeSlider from "@/components/Homeslider/page";
+import HomeSliderOne from "@/components/HomeSliderOne/page";
 
 const HomeBanner = dynamic(() => import("@/components/Home_page_Banner/page"));
 const HomeBanner1 = dynamic(() => import("@/components/Home_page_Banner/page2"));
@@ -43,7 +46,14 @@ export default function Home() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+ // Timer to hide the preloader after 5 seconds
+ useEffect(() => {
+  const timer = setTimeout(() => {
+    setIsLoading(false); // Set to false after 5 seconds
+  }, 5000); // 5000ms = 5 seconds
 
+  return () => clearTimeout(timer); // Clear the timer on cleanup
+}, []);
   function handleLoad(data) {
     console.log("data", data);
     setIsLoading(data);
@@ -55,10 +65,16 @@ export default function Home() {
   return (
     <>
 
-      <AnimatePresence mode="wait">
-        {isLoading && <Preloader counter={isCounter} />}
-      </AnimatePresence> 
-      {width && (
+      <AnimatePresence
+       mode="wait"
+       >
+        {isLoading &&
+          <Preloader
+            counter={isCounter}
+          />
+        }
+      </AnimatePresence>
+      {/* {width && (
         <>
           {width > 575 ? (
             <HomeBanner loadImage={handleLoad} counter={handleCounter} />
@@ -66,10 +82,15 @@ export default function Home() {
             <HomeBanner1 loadImage={handleLoad} counter={handleCounter} />
           )}
         </>
-      )}
+      )} */}
       {/* FRAMES ENDED */}
       <main className="main">
         {/* <HeroBanner /> */}
+        {/* <HomeSlider /> */}
+
+        {/* <TextAnimOne /> */}
+        <HeroBanner />
+        <HomeSliderOne />
         <HomeHeroSection />
         <SliderNew />
         {/* <NewThreeDSlider /> */}

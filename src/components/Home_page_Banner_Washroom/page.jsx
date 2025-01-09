@@ -79,13 +79,13 @@ const Animation = ({ loadImage, counter }) => {
     setCanvasSize();
     window.addEventListener("resize", setCanvasSize);
     // https://interiormaataassets.humbeestudio.xyz/mainsiteassets/desktop/0001.webp
-    const frameCount = 1199;
+    const frameCount = 120;
     const currentFrame = (index) =>
-      `https://interiormaataassets.humbeestudio.xyz/mainsiteassets/NewRcFrames/${(
+      `https://interiormaataassets.humbeestudio.xyz/mainsiteassets/Washroom/${(
         index + 1
       )
         .toString()
-        .padStart(4, "0")}.jpg`;
+        .padStart(4, "0")}.webp`;
 
     let imgL = [];
     for (let i = 0; i < frameCount; i++) {
@@ -331,7 +331,7 @@ const Animation = ({ loadImage, counter }) => {
           }}
         ></canvas>
       </section>
-      <motion.div
+      {/* <motion.div
         ref={ref}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
@@ -346,7 +346,7 @@ const Animation = ({ loadImage, counter }) => {
           heading={"Our Innovation."}
           justifyContent={"center"}
         />
-      </motion.div>  
+      </motion.div> */}
 
       {/* <motion.div
         ref={ref}
@@ -361,7 +361,7 @@ const Animation = ({ loadImage, counter }) => {
         />
       </motion.div> */}
 
-      <div class="scroll-down-wrap no-border">
+      {/* <div class="scroll-down-wrap no-border">
         {isVisible && (
           <div className="section-down-arrow" onClick={scrollDownByTenPercent}>
             <svg
@@ -381,7 +381,7 @@ const Animation = ({ loadImage, counter }) => {
             <div className="scroll">Scroll to explore</div>
           </div>
         )}
-      </div>
+      </div> */}
 
       {/* <video
         className={styles.videoBg}

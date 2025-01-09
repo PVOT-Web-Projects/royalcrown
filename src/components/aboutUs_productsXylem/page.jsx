@@ -198,6 +198,10 @@ const Page = () => {
 
   const filteredProducts1 = useMemo(() => {
     return products.filter((product) => {
+      // Check if the product belongs to the "Xylem" category
+      const isXylemCategory = product.categories.some(
+        (category) => category.name.toLowerCase() === "xylem"
+      );
       const brandMatch =
         selectedBrand === "all" || product.category === selectedBrand;
       const categoryMatch =
@@ -227,6 +231,7 @@ const Page = () => {
       console.log("Checking Product:", product); // Log each product being checked
       console.log(
         "Matches Filters:",
+        isXylemCategory,
         brandMatch,
         "CategoryMatch",
         categoryMatch,
@@ -242,6 +247,7 @@ const Page = () => {
       );
 
       return (
+        isXylemCategory &&
         brandMatch &&
         categoryMatch &&
         finishMatch &&
@@ -346,7 +352,12 @@ const Page = () => {
   useEffect(() => {
     if (selectedTag === "all") {
       setFilteredProducts(products);
-    } else {
+    } else if (selectedTag === "Xylem") { // Highlighted: Check for Xylem explicitly
+      const filtered = products.filter((product) => product.category === "Xylem"); // Highlighted: Filter by category Xylem
+      console.log("Filtered Products for Xylem:", filtered); // Log the filtered result
+      setFilteredProducts(filtered);
+    } 
+   else {
       const filtered = products.filter((product) => {
         console.log("Checking product:", product); // Log each product
         return (

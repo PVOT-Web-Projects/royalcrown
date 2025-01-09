@@ -33,7 +33,12 @@
         /* This class will be added when the image becomes the main large image */
         filter: brightness(0.5);
       }
-    
+      .imageWrapper{
+        // overflow: hidden;
+        @media(max-width: 1200px){
+          overflow: hidden;
+        }
+      }
       /* Additional styles for your slider */
       .imageWrapper img {
         /* Apply brightness filter to images */
