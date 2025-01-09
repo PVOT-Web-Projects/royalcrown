@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import banner from "@/images/hero_banner.png";
+import banner from "@/images/hero_banner.png"; 
 import "./heroBanner.scss";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -53,7 +53,7 @@ const HeroBanner = () => {
                   duration: 1,
                 },
               }}
-              viewport={{ once: true }}
+              // viewport={{ once: true }}
             >
               <h2>
                 THE <br /> CROWN <br /> EXPERIENCE
