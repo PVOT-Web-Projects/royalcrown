@@ -57,7 +57,7 @@ const PlyMarquee = () => {
             <div className="ply_item bottom1">
               <div className="ply_info">
                 <div className="info_left">
-                  <p className="num">6038</p>
+                  <p className="num">6008</p>
                   <p className="text">tw</p>
                 </div>
                 <div className="info_right">
@@ -70,7 +70,7 @@ const PlyMarquee = () => {
             <div className="ply_item top1">
               <div className="ply_info">
                 <div className="info_left">
-                  <p className="num">6038</p>
+                  <p className="num">6007</p>
                   <p className="text">tw</p>
                 </div>
                 <div className="info_right">
@@ -83,7 +83,7 @@ const PlyMarquee = () => {
             <div className="ply_item bottom1">
               <div className="ply_info">
                 <div className="info_left">
-                  <p className="num">6038</p>
+                  <p className="num">6032</p>
                   <p className="text">tw</p>
                 </div>
                 <div className="info_right">
@@ -96,7 +96,7 @@ const PlyMarquee = () => {
             <div className="ply_item top1">
               <div className="ply_info">
                 <div className="info_left">
-                  <p className="num">6038</p>
+                  <p className="num">583</p>
                   <p className="text">tw</p>
                 </div>
                 <div className="info_right">
@@ -109,8 +109,8 @@ const PlyMarquee = () => {
             <div className="ply_item bottom1">
               <div className="ply_info">
                 <div className="info_left">
-                  <p className="num">6038</p>
-                  <p className="text">tw</p>
+                  <p className="num">6029</p>
+                  <p className="text">sn</p>
                 </div>
                 <div className="info_right">
                   <div className="ply_name">Mauri</div>
@@ -122,8 +122,8 @@ const PlyMarquee = () => {
             <div className="ply_item top1">
               <div className="ply_info">
                 <div className="info_left">
-                  <p className="num">6038</p>
-                  <p className="text">tw</p>
+                  <p className="num">6031</p>
+                  <p className="text">sn</p>
                 </div>
                 <div className="info_right">
                   <div className="ply_name">Mauri</div>
@@ -135,8 +135,190 @@ const PlyMarquee = () => {
             <div className="ply_item bottom1">
               <div className="ply_info">
                 <div className="info_left">
-                  <p className="num">6038</p>
-                  <p className="text">tw</p>
+                  <p className="num">6019</p>
+                  <p className="text">sn</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item top1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">691x</p>
+                  <p className="text">sn</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item bottom1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">6025</p>
+                  <p className="text">to</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item top1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">6017</p>
+                  <p className="text">mo</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item bottom1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">6018</p>
+                  <p className="text">mo</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item top1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">574</p>
+                  <p className="text">hng</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item bottom1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">575</p>
+                  <p className="text">hng</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item top1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">5009</p>
+                  <p className="text">gm</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item bottom1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">5010</p>
+                  <p className="text">gm</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item top1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">4004</p>
+                  <p className="text">tf</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item bottom1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">4006</p>
+                  <p className="text">tf</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item top1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">4001</p>
+                  <p className="text">cl</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item bottom1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">664x</p>
+                  <p className="text">sf</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item top1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">669x</p>
+                  <p className="text">sfs</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item bottom1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">670x</p>
+                  <p className="text">sfs</p>
                 </div>
                 <div className="info_right">
                   <div className="ply_name">Mauri</div>
