@@ -7,6 +7,7 @@ import Link from "next/link";
 export default function ProductsCommonInnerPage({ data }) {
   return (
     <>
+    
       {/* Product Category Header */}
       <div className="productCategoryHeader">
         <div className="productCategoryHeaderInner">
