@@ -4,9 +4,12 @@ import "./homehero.scss";
 // import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image4 from "../../images/image_15_small.jpg";
-import Image5 from "../../images/image 48.jpg";
-import Image6 from "../../images/laminate - about-us 6.jpg";
+// import Image4 from "../../images/image_15_small.jpg";
+// import Image5 from "../../images/image 48.jpg";
+// import Image6 from "../../images/laminate - about-us 6.jpg";
+import Image4 from "../../images/aboutIMg1.jpg";
+import Image5 from "../../images/aboutImg2.jpg";
+import Image6 from "../../images/fctImg5.JPG";
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 
