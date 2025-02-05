@@ -6,6 +6,9 @@
   .banner_image {
     height: 85vh;
     position: relative;
+    @media(max-width: 1370px){
+      height: 70vh;
+    }
     @media(max-width: 475px){
       height: 45vh;
     }

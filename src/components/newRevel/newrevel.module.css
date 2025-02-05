@@ -28,6 +28,11 @@
   position: absolute;
   opacity: 20%;
 }
+@media(max-width: 1370px){
+  .paragraph{
+    width: 67%;
+  }
+}
 @media(max-width: 1024px){
   .NewContainer{
     padding: 150px 0;
