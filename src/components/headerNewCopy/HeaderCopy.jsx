@@ -95,7 +95,7 @@ const HeaderCopy = () => {
   useEffect(() => {
     if (pathname === "/" && pathname === "/royalcrown/") setIsHome(true);
     else setIsHome(false);
-  }, [pathname]);
+  }, []);
   // Function to close the mobile menu with animation
   // const closeMobileMenu = () => {
   //   setIsMobileMenuOpen(false);
