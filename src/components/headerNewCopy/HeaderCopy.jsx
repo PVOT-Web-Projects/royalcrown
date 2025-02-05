@@ -34,62 +34,6 @@ const HeaderCopy = () => {
   const [isNavbarVisible, setIsNavbarVisible] = useState(true); // State to control navbar visibility
   const [lastScrollY, setLastScrollY] = useState(0); // Track last scroll position
   const [isOpen, setIsOpen] =useState(false);
-
-  const pathname = usePathname();
-  console.log("url", isHome);
-  // useEffect(() => {
-  //   if (pathname === "/") setIsHome(true);
-  //   else setIsHome(false);
-  // }, [pathname]);
-  useEffect(() => {
-    const currentPath = window.location.pathname;
-    console.log("Current pathname:", currentPath);
-  
-    if (currentPath === "/" || currentPath === "/royalcrown/") {
-      console.log("Setting isHome to true");
-      setIsHome(true);
-    } else {
-      console.log("Setting isHome to false");
-      setIsHome(false);
-    }
-  
-    console.log("Current isHome:", isHome);
-  }, []); // Ensure it runs only once when the component mounts
-  
-  useEffect(() => {
-    const currentPath = window.location.pathname;
-    const normalizedPath = currentPath.endsWith("/") ? currentPath : `${currentPath}/`;
-    
-    console.log("Normalized pathname:", normalizedPath);
-  
-    if (normalizedPath === "/" && normalizedPath === "/royalcrown/") {
-      setIsHome(true);
-    } else {
-      setIsHome(false);
-    }
-  }, []); // Ensure it runs only once when the component mounts
-  
-  // useEffect(() => {
-  //   const currentPath = window.location.pathname;
-  //   console.log("Current pathname:", pathname);
-  //   if (currentPath === "/" || currentPath === "/royalcrown/") {
-  //     setIsHome(true);
-  //   } else {
-  //     setIsHome(false);
-  //   }
-  // }, []);
-  // console.log("Current isHome value:", isHome); // Log the current value of isHome to track updates
-  // useEffect(() => {
-  //   const pathname = window.location.pathname;
-  //   console.log("Current pathname:", pathname);  // Check what the pathname is
-  //   if (pathname === "/") {
-  //     setIsHome(true);
-  //   } else {
-  //     setIsHome(false);
-  //   }
-  // }, []);
-  
-  
   // Data for each subcategory and its items
   const categoryData = [
     {
@@ -145,7 +89,13 @@ const HeaderCopy = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen); // Toggle the menu open/close state
   };
- 
+  
+  const pathname = usePathname();
+  console.log("url", isHome);
+  useEffect(() => {
+    if (pathname === "/" || pathname === "/royalcrown/") setIsHome(true);
+    else setIsHome(false);
+  }, [pathname]);
   // Function to close the mobile menu with animation
   // const closeMobileMenu = () => {
   //   setIsMobileMenuOpen(false);
