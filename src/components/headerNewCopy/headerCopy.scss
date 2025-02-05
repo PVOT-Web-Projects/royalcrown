@@ -133,10 +133,11 @@ header {
         display: none; /* Hide desktop menu on mobile */
       }
       &.dark {
-        
+        color: white !important;
         display: flex;
         gap: 30px;
         li {
+          color: white !important;
           // height: 15px;
           a {
             color: white !important;
@@ -145,8 +146,10 @@ header {
       }
       &.light {
         display: flex;
+        color: $white !important;
         gap: 30px;
         li {
+          color: $white !important;
           // height: 15px;
           a {
             color: $white !important;
