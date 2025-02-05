@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import banner from "@/images/hero_banner.png";
+import banner from "@/images/hero_banner.png"; 
 import "./heroBanner.scss";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -26,7 +26,14 @@ const HeroBanner = () => {
     } else if (width < 1600) {
       Y = 195;
     }
-
+    const scrollDownByTenPercent = () => {
+      const tenPercentOfHeight = window.innerHeight * 1;
+      window.scrollBy({
+        top: tenPercentOfHeight,
+        behavior: "smooth",
+      });
+      setIsVisible(false);
+    };
   return (
     <div className="hero_banner">
       <div className="banner_image">
@@ -46,7 +53,7 @@ const HeroBanner = () => {
                   duration: 1,
                 },
               }}
-              viewport={{ once: true }}
+              // viewport={{ once: true }}
             >
               <h2>
                 THE <br /> CROWN <br /> EXPERIENCE
@@ -59,7 +66,7 @@ const HeroBanner = () => {
             dolor Lorem ipsum dolor Lorem ipsum dolor
           </p> */}
           <div className="link">
-            <Link href={"#"}>Let's Start</Link>
+            <div className="linkInner" onClick={scrollDownByTenPercent} >Let's Start</div>
           </div>
         </div>
       </div>

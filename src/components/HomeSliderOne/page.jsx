@@ -4,23 +4,28 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import "./HomeSliderOne.scss";
+import Image from "next/image";
+import Img1 from "@/images/bgrem.png";
 import Page1 from "@/components/Home_page_Banner_Kitchen/page";
 import Page2 from "@/components/Home_page_Banner_Bedroom/page";
 import Page3 from "@/components/Home_page_Banner_Living/page";
 import Page4 from "@/components/Home_page_Banner_Washroom/page";
 
 // Constants for the multiplier in the custom wheel effect
+// const multiplier = {
+//   translate: 0.1,
+//   rotate: 0.01,
+// };
 const multiplier = {
-  translate: 0.1,
-  rotate: 0.01,
+  translate: 0.3,
+  rotate: 0.02,
 };
-
-
 const SwiperCarousel = () => {
   const swiperRef = useRef(null); // Use useRef to reference Swiper
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null); // Track the clicked image
   const [isCarouselVisible, setIsCarouselVisible] = useState(true); // Controls carousel visibility
+
   // Array of custom image URLs
   const images = [
     "https://images.unsplash.com/photo-1556911220-bff31c812dba?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8a2l0Y2hlbnxlbnwwfHwwfHx8MA%3D%3D", // Image 1 URL
@@ -49,7 +54,6 @@ const SwiperCarousel = () => {
     });
   };
 
-  // Animation frame loop for updating the wheel effect (not during transition)
   const raf = () => {
     if (!isTransitioning) {
       requestAnimationFrame(raf);
@@ -57,7 +61,6 @@ const SwiperCarousel = () => {
     }
   };
 
-  // Start the animation frame loop
   useEffect(() => {
     raf();
   }, [isTransitioning]);
@@ -94,42 +97,18 @@ const SwiperCarousel = () => {
   const onSlideTransitionEnd = () => {
     setIsTransitioning(false);
   };
-  
+
   // Handle click on an image
   const handleImageClick = (index) => {
     setSelectedImage(index); // Update the state with the selected image index
     setIsCarouselVisible(false); // Hide the carousel when an image is clicked
   };
-
-  // Render the section content based on the clicked image
-  // const HomePageBanner = ({ selectedImage }) => {
-  //   const sections = [
-  //     "This is section for Image 1",
-  //     "This is section for Image 2",
-  //     "This is section for Image 3",
-  //     "This is section for Image 4",
-  //     "This is section for Image 5",
-  //     "This is section for Image 6",
-  //     "This is section for Image 7",
-  //     "This is section for Image 8",
-  //     "This is section for Image 9",
-  //     "This is section for Image 10",
-  //   ];
-
-  //   return (
-  //     <div className="homePageBanner">
-  //       {selectedImage !== null ? (
-  //         <div>
-  //           <h2>{`Section for Image ${selectedImage + 1}`}</h2>
-  //           <p>{sections[selectedImage]}</p>
-  //         </div>
-  //       ) : (
-  //         <p>Select an image to view more details.</p>
-  //       )}
-  //     </div>
-  //   );
-  // };
-  // Render the corresponding page based on the clicked image
+  const imageTexts = [
+    "Beautiful Kitchen Design", // Text for Image 1
+    "Cozy Bedroom Inspiration", // Text for Image 2
+    "Spacious Living Room Ideas", // Text for Image 3
+    "Modern Washroom Design", // Text for Image 4
+  ];
   const renderPage = () => {
     switch (selectedImage) {
       case 0:
@@ -158,35 +137,46 @@ const SwiperCarousel = () => {
   };
 
   return (
-    <div>
-      {/* Show the carousel only when no image is selected */}
-      {/* {selectedImage === null ? ( */}
+    <div className="containerText">
+      {/* <div>
+      <Image src={Img1} alt="none" className="Img1Ref"/>
+      </div> */}
       {isCarouselVisible ? (
         <div className={`carouselOne ${isCarouselVisible ? "" : "hidden"}`}>
           <Swiper
             ref={swiperRef}
-            spaceBetween={20}
+            spaceBetween={30}
             centeredSlides={true}
             loop={true}
             onSlideChange={onSlideChange}
             onSlideTransitionEnd={onSlideTransitionEnd}
             speed={1500}
+            simulateTouch={false}
+            touchMoveStopPropagation={true}
             breakpoints={{
               575: { slidesPerView: 2 },
               576: { slidesPerView: 2 },
               1024: { slidesPerView: 3 },
             }}
           >
-            {/* Rendering slides dynamically */}
-            {/* {[...Array(4)].map((_, index) => ( */}
             {images.map((imageUrl, index) => (
               <SwiperSlide key={index}>
                 <div className="single" onClick={() => handleImageClick(index)}>
-                  <img
-                    src={imageUrl}
-                    // src={`https://picsum.photos/800/1200?random=${index + 1}`}
-                    alt={`Random Image ${index + 1}`}
-                  />
+                  <div className="image-container">
+                    <img
+                      src={imageUrl}
+                      alt={`Random Image ${index + 1}`}
+                      className="image"
+                     />
+                    <div className="hover-text">
+                      <span className="hovertextInner">
+                        {imageTexts[index]}
+                      </span>{" "}
+                    </div>
+                    {/* <div className="hover-overlay">
+                      <span className="hover-overlay-text">Explore</span>
+                    </div> */}
+                  </div>
                 </div>
               </SwiperSlide>
             ))}
@@ -202,10 +192,8 @@ const SwiperCarousel = () => {
       {!isCarouselVisible && (
         <div className="explore-button-container">
           <button onClick={handleExploreClick} className="explore-button">
-            {/* Explore More */}
             <span className="button-content-explore">Explore More</span>
           </button>
-          {/* <YellowButton url={url} btn_text={"Read More"} /> */}
         </div>
       )}
 
@@ -214,10 +202,12 @@ const SwiperCarousel = () => {
       {isCarouselVisible && (
         <div className="swiper-buttons">
           <button onClick={goToPrevSlide} className="swiper-button">
-            Prev
+          <span className="button-content-explore">Prev</span>
+            {/* Prev */}
           </button>
           <button onClick={goToNextSlide} className="swiper-button">
-            Next
+          <span className="button-content-explore">Next</span>
+            {/* Next */}
           </button>
         </div>
       )}
