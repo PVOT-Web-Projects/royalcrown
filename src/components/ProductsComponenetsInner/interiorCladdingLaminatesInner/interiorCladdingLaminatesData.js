@@ -18,7 +18,7 @@ import Tr1 from "../../../images/svglogo/Termiteresistant.jpg";
 import Anti1 from "../../../images/svglogo/AntiBacterial.jpg";
 import Abra1 from "../../../images/svglogo/AbrasionResistant.jpg"
 import Cr1 from "../../../images/svglogo/ChemicalResistant.jpg";
-import Img1 from "../../../images/dwg_room1.jpg";
+import Img1 from "../../../images/interior-cladding-laminate.png";
 // import products from "@/components/aboutUs_products/productData";
 // import verticalIcon from "../../images/vertical-icon.svg";
 // import horizontalIcon from "../../images/horizontal-icon.svg";

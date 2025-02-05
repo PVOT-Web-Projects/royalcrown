@@ -9,7 +9,7 @@ import Es1 from "../../../images/svglogo/EasytoClean.jpg";
 import Sus1 from "../../../images/svglogo/Sustainability.jpg";
 import Imp1 from "../../../images/svglogo/ImpactResistant.jpg";
 import Sr1 from "../../../images/svglogo/ChemicalResistant.jpg";
-import Img1 from "../../../images/dwg_room1.jpg";
+import Img1 from "../../../images/Decorative-Laminates.jpg";
 const DecorativeLaminatesData = {
   header: "Decorative Laminates",
   description: `Royal Crown’s decorative laminates undergo a cautious production process where multiple
