@@ -9,7 +9,7 @@ import Es1 from "../../../images/svglogo/EasytoClean.jpg";
 import Sus1 from "../../../images/svglogo/Sustainability.jpg";
 import Imp1 from "../../../images/svglogo/ImpactResistant.jpg";
 import Sr1 from "../../../images/svglogo/ChemicalResistant.jpg";
-
+import Img1 from "../../../images/dwg_room1.jpg";
 const DecorativeLaminatesData = {
   header: "Decorative Laminates",
   description: `Royal Crown’s decorative laminates undergo a cautious production process where multiple
@@ -27,6 +27,11 @@ decorative side is uniformly sanded using cutting-edge machinery to ensure optim
  quintessential choice for surface decoration, boasting abrasion resistance, mild chemical
  resistance, diverse finishes, and effortless cleaning, making them the perfect enhancement
  for any space.`,
+ images:[
+  {
+    headerImg: Img1,
+  }
+ ],
   boxes: [
     {
       icon: icon1,
