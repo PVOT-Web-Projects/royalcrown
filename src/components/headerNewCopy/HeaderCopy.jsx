@@ -62,7 +62,7 @@ const HeaderCopy = () => {
     
     console.log("Normalized pathname:", normalizedPath);
   
-    if (normalizedPath === "/" || normalizedPath === "/royalcrown/") {
+    if (normalizedPath === "/" && normalizedPath === "/royalcrown/") {
       setIsHome(true);
     } else {
       setIsHome(false);
