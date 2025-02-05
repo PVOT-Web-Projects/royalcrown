@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import "./productsCommonPage.scss";
 import Link from "next/link";
-import Img1 from "@/images/dwg_room1.jpg";
 
 export default function ProductsCommonInnerPage({ data }) {
   return (
