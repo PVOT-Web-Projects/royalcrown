@@ -13,7 +13,7 @@ import Imp1 from "../../../images/svglogo/ImpactResistant.jpg";
 import Wr1 from "../../../images/svglogo/WaterResistant.jpg";
 import Cg1 from "../../../images/svglogo/CigratteBurnResistant.jpg";
 import St1 from "../../../images/svglogo/Stainresistant.jpg";
-import Img1 from "../../../images/dwg_room1.jpg";
+import Img1 from "../../../images/Exterior-wall-cladding.png";
 const ExteriorCladdingLaminatesData = {
   header: "Exterior cladding (XCL)",
   description: `Discover Crown Decor’s XCL - Exterior Compact Laminate, a revolutionary high-pressure
