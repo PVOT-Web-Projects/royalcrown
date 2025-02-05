@@ -139,7 +139,7 @@ header {
         li {
           // height: 15px;
           a {
-            color: white;
+            color: white !important;
           }
         }
       }
@@ -149,7 +149,7 @@ header {
         li {
           // height: 15px;
           a {
-            color: $white;
+            color: $white !important;
           }
         }
       }
@@ -296,11 +296,13 @@ header {
             font-family: "futura_thin";
             font-weight: 500;
             font-size: 19px;
+            color: #5b3524 !important;
           }
           .prdtsFonts{
             cursor: default;
             font-size: 20px;
             font-weight: bold;
+            color: #5b3524 !important;
             &::after{
               position: absolute;
                 width: 100%;
