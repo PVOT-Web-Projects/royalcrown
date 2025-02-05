@@ -89,7 +89,7 @@ const HeaderCopy = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen); // Toggle the menu open/close state
   };
-  const pathname = window.location.pathname;
+  const pathname = usePathname();
 
   console.log("url", isHome);
 
