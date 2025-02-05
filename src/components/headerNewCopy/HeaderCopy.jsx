@@ -90,12 +90,17 @@ const HeaderCopy = () => {
     setIsMenuOpen(!isMenuOpen); // Toggle the menu open/close state
   };
   const pathname = window.location.pathname;
-  // const pathname = usePathname();
+
   console.log("url", isHome);
+
   useEffect(() => {
-    if (pathname === "/" && pathname === "/royalcrown/") setIsHome(true);
-    else setIsHome(false);
-  }, [pathname]);
+    // Check if the pathname is either '/' or '/royalcrown/'
+    if (pathname === "/" || pathname === "/royalcrown/") {
+      setIsHome(true);
+    } else {
+      setIsHome(false);
+    }
+  }, [pathname]); // Add pathname to the dependency array
   // Function to close the mobile menu with animation
   // const closeMobileMenu = () => {
   //   setIsMobileMenuOpen(false);
