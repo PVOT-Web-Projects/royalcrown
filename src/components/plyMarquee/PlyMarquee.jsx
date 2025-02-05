@@ -185,8 +185,6 @@ const PlyMarquee = () => {
                 <div className="info_left">
                   <p className="num">6019</p>
                   <p className="text">sn</p>
-<<<<<<< HEAD
-=======
                 </div>
                 <div className="info_right">
                   <div className="ply_name">Mauri</div>
@@ -369,7 +367,6 @@ const PlyMarquee = () => {
                 <div className="info_left">
                   <p className="num">670x</p>
                   <p className="text">sfs</p>
->>>>>>> 5aa8e428fa2b5ee6736fc497508bf30bbbfc2279
                 </div>
                 <div className="info_right">
                   <div className="ply_name">sun</div>
