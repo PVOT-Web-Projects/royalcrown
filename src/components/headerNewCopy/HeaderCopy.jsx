@@ -892,6 +892,7 @@ const HeaderCopy = () => {
         </motion.div>
         <ul className={isHome ? "dark" : "light"}>
           <motion.li
+           className={isHome ? "dark" : "light"}
             initial={{
               opacity: 0,
             }}
