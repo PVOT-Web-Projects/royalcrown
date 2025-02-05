@@ -49,7 +49,7 @@ const HeaderCopy = () => {
     } else {
       setIsHome(false);
     }
-  }, [pathname]);
+  }, []);
   // useEffect(() => {
   //   const pathname = window.location.pathname;
   //   console.log("Current pathname:", pathname);  // Check what the pathname is
