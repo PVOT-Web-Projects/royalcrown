@@ -44,6 +44,14 @@ export default function Home() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+  // Timer to hide the preloader after 5 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false); // Set to false after 5 seconds
+    }, 1000); // 5000ms = 5 seconds
+
+    return () => clearTimeout(timer); // Clear the timer on cleanup
+  }, []);
 
   function handleLoad(data) {
     console.log("data", data);
@@ -55,7 +63,15 @@ export default function Home() {
   }
   return (
     <>
-
+      {/* <AnimatePresence
+        mode="wait"
+      >
+        {isLoading &&
+          <Preloader
+            counter={isCounter}
+          />
+        }
+      </AnimatePresence> */}
       {/* <AnimatePresence mode="wait">
         {isLoading && <Preloader counter={isCounter} />}
       </AnimatePresence> 
