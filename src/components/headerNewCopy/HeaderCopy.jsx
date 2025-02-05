@@ -41,24 +41,24 @@ const HeaderCopy = () => {
   //   if (pathname === "/") setIsHome(true);
   //   else setIsHome(false);
   // }, [pathname]);
-  // useEffect(() => {
-  //   const currentPath = window.location.pathname;
-    
-  //   if (currentPath === "/" || currentPath === "/royalcrown/") {
-  //     setIsHome(true);
-  //   } else {
-  //     setIsHome(false);
-  //   }
-  // }, [pathname]);
   useEffect(() => {
-    const pathname = window.location.pathname;
-    console.log("Current pathname:", pathname);  // Check what the pathname is
-    if (pathname === "/") {
+    const currentPath = window.location.pathname;
+    
+    if (currentPath === "/" || currentPath === "/royalcrown/") {
       setIsHome(true);
     } else {
       setIsHome(false);
     }
-  }, []);
+  }, [pathname]);
+  // useEffect(() => {
+  //   const pathname = window.location.pathname;
+  //   console.log("Current pathname:", pathname);  // Check what the pathname is
+  //   if (pathname === "/") {
+  //     setIsHome(true);
+  //   } else {
+  //     setIsHome(false);
+  //   }
+  // }, []);
   
   
   // Data for each subcategory and its items
