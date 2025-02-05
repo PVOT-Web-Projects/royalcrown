@@ -5,8 +5,6 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import "./HomeSliderOne.scss";
 import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
-import Img1 from "@/images/bgrem.png";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 const multiplier = {
