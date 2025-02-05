@@ -2,6 +2,7 @@ import icon1 from "../../../images/Icons-11-2048x2048.png";
 import icon2 from "../../../images/Icons-12.png";
 import Image1 from "../../../images/1_LOW-ELECTRICAL-RESISTANT.svg";
 import Productimg1 from "../../../images/5-2048x749.png";
+import Img1 from "../../../images/dwg_room1.jpg";
 // import products from "@/components/aboutUs_products/productData";
 // import verticalIcon from "../../images/vertical-icon.svg";
 // import horizontalIcon from "../../images/horizontal-icon.svg";
@@ -23,7 +24,12 @@ over 6mm. Choose Qbiss for a sophisticated and enduring interior solution.`,
 //   description1: `They are designed to impress with their striking patterns, cutting-edge technology, easy-touse features, and high-quality materials. These laminates can be effortlessly moulded into
 // sleek cylindrical inward or outward curves, delivering a modern and sophisticated touch to
 // any design.`,
-  boxes: [
+  images:[
+   {
+     headerImg: Img1,
+   }
+  ],
+boxes: [
     {
       icon: icon1,
       title: "SHEET THICKNESS",

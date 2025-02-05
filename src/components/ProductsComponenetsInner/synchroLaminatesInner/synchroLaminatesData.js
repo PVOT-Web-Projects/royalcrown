@@ -10,7 +10,7 @@ import Es1 from "../../../images/svglogo/EasytoClean.jpg";
 import Sus1 from "../../../images/svglogo/Sustainability.jpg";
 import Imp1 from "../../../images/svglogo/ImpactResistant.jpg";
 import Sr1 from "../../../images/svglogo/ChemicalResistant.jpg";
-
+import Img1 from "../../../images/dwg_room1.jpg";
 // import products from "@/components/aboutUs_products/productData";
 // import verticalIcon from "../../images/vertical-icon.svg";
 // import horizontalIcon from "../../images/horizontal-icon.svg";
@@ -35,6 +35,11 @@ compromising on durability, maintenance, or affordability. With its unmatched at
 detail, this laminate is designed to elevate interior designs to a whole new level of
 sophistication and modernity.
 `,
+ images:[
+  {
+    headerImg: Img1,
+  }
+ ],
   boxes: [
     {
       icon: icon1,

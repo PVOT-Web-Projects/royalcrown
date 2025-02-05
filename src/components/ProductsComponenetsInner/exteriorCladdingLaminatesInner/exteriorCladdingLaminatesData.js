@@ -13,6 +13,7 @@ import Imp1 from "../../../images/svglogo/ImpactResistant.jpg";
 import Wr1 from "../../../images/svglogo/WaterResistant.jpg";
 import Cg1 from "../../../images/svglogo/CigratteBurnResistant.jpg";
 import St1 from "../../../images/svglogo/Stainresistant.jpg";
+import Img1 from "../../../images/dwg_room1.jpg";
 const ExteriorCladdingLaminatesData = {
   header: "Exterior cladding (XCL)",
   description: `Discover Crown Decor’s XCL - Exterior Compact Laminate, a revolutionary high-pressure
@@ -24,7 +25,12 @@ choice. With an impressive density of 1.45gm/cm3, these compacts are not only in
 sturdy and resistant to damage, but they also exhibit exceptional structural stability, eliminating
 the need for substrate support in thicknesses over 6mm. Elevate your projects with the
 unparalleled durability and aesthetic appeal of Crown Decor’s XCL - Exterior Compact Laminate.`,
-  boxes: [
+  images:[
+    {
+      headerImg: Img1,
+    }
+   ],
+boxes: [
     {
       icon: icon1,
       title: "SHEET THICKNESS",

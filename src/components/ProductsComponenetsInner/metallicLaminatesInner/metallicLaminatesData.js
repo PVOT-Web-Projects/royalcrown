@@ -10,7 +10,7 @@ import Es1 from "../../../images/svglogo/EasytoClean.jpg";
 import Sus1 from "../../../images/svglogo/Sustainability.jpg";
 import Imp1 from "../../../images/svglogo/ImpactResistant.jpg";
 import Sr1 from "../../../images/svglogo/ChemicalResistant.jpg";
-
+import Img1 from "../../../images/dwg_room1.jpg";
 // import products from "@/components/aboutUs_products/productData";
 // import verticalIcon from "../../images/vertical-icon.svg";
 // import horizontalIcon from "../../images/horizontal-icon.svg";
@@ -34,7 +34,12 @@ ensures a lasting impression for years to come. Available in a stunning array of
 flexibility to bring your design vision to life. Treat your space to the opulence of metallic
 laminate and redefine the essence of luxury in your interior design.
 `,
-  boxes: [
+   images:[
+    {
+      headerImg: Img1,
+    }
+   ],
+boxes: [
     {
       icon: icon1,
       title: "SHEET THICKNESS",

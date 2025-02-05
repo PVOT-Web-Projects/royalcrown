@@ -18,7 +18,7 @@ import Sr1 from "../../../images/svglogo/ChemicalResistant.jpg";
 // import pharmaceuticalLabsIcon from "../../images/pharmaceutical-labs-icon.svg";
 // import itOfficesIcon from "../../images/it-offices-icon.svg";
 // import callCentresIcon from "../../images/call-centres-icon.svg";
-
+import Img1 from "../../../images/dwg_room1.jpg";
 const AntifingerLaminatesData = {
   header: "Anti-finger Laminates (Spotless)",
   description: `Discover the incredible benefits of Royal Crown’s Spotless – a revolutionary decorative laminate
@@ -34,6 +34,11 @@ aesthetic appeal, they are exceptionally durable, effortless to clean, and imper
 moisture, heat, and stains, ensuring enduring performance. Experience the perfect fusion of
 functionality and beauty with our anti-finger laminate.
 `,
+images:[
+  {
+    headerImg: Img1,
+  }
+ ],
   boxes: [
     {
       icon: icon1,

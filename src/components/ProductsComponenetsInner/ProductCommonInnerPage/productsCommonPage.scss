@@ -46,6 +46,10 @@
       .productCategoryHeaderTextInnner {
         font-family: "made_mirage_bold";
         font-size: 30px;
+        @media(max-width: 575px){
+          font-size: 21px;
+          
+        }
       }
     }
   }
