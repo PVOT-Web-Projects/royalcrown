@@ -89,11 +89,11 @@ const HeaderCopy = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen); // Toggle the menu open/close state
   };
-  
-  const pathname = usePathname();
+  const pathname = window.location.pathname;
+  // const pathname = usePathname();
   console.log("url", isHome);
   useEffect(() => {
-    if (pathname === "/" || pathname === "/royalcrown/") setIsHome(true);
+    if (pathname === "/" && pathname === "/royalcrown/") setIsHome(true);
     else setIsHome(false);
   }, [pathname]);
   // Function to close the mobile menu with animation
