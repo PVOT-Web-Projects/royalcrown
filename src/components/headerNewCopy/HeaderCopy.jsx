@@ -34,6 +34,33 @@ const HeaderCopy = () => {
   const [isNavbarVisible, setIsNavbarVisible] = useState(true); // State to control navbar visibility
   const [lastScrollY, setLastScrollY] = useState(0); // Track last scroll position
   const [isOpen, setIsOpen] =useState(false);
+
+  const pathname = usePathname();
+  console.log("url", isHome);
+  // useEffect(() => {
+  //   if (pathname === "/") setIsHome(true);
+  //   else setIsHome(false);
+  // }, [pathname]);
+  // useEffect(() => {
+  //   const currentPath = window.location.pathname;
+    
+  //   if (currentPath === "/" || currentPath === "/royalcrown/") {
+  //     setIsHome(true);
+  //   } else {
+  //     setIsHome(false);
+  //   }
+  // }, [pathname]);
+  useEffect(() => {
+    const pathname = window.location.pathname;
+    console.log("Current pathname:", pathname);  // Check what the pathname is
+    if (pathname === "/") {
+      setIsHome(true);
+    } else {
+      setIsHome(false);
+    }
+  }, []);
+  
+  
   // Data for each subcategory and its items
   const categoryData = [
     {
@@ -89,12 +116,7 @@ const HeaderCopy = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen); // Toggle the menu open/close state
   };
-  const pathname = usePathname();
-  console.log("url", isHome);
-  useEffect(() => {
-    if (pathname === "/") setIsHome(true);
-    else setIsHome(false);
-  }, [pathname]);
+ 
   // Function to close the mobile menu with animation
   // const closeMobileMenu = () => {
   //   setIsMobileMenuOpen(false);
