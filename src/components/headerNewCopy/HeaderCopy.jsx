@@ -90,7 +90,7 @@ const HeaderCopy = () => {
     setIsMenuOpen(!isMenuOpen); // Toggle the menu open/close state
   };
   const pathname = usePathname();
-  // console.log("url", isHome);
+  console.log("url", isHome);
   useEffect(() => {
     if (pathname === "/") setIsHome(true);
     else setIsHome(false);
