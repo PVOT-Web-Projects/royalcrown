@@ -4,6 +4,11 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./aboutUsEstablishment.scss";
 import establish_image from "@/images/fctImg1.JPG";
+import establish_image1 from "@/images/fctImg2.JPG";
+import establish_image2 from "@/images/fctImg3.JPG";
+import establish_image3 from "@/images/fctImg4.JPG";
+import establish_image4 from "@/images/fctImg5.JPG";
+import establish_image5 from "@/images/fctImg6.JPG";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -154,7 +159,7 @@ const AboutUsEstablishment = () => {
                     </div>
                     <div className="Establishment_content triggered-element">
                       <Image
-                        src={establish_image}
+                        src={establish_image1}
                         alt="Your Image"
                         className="Establishment_timeline_image"
                       />
@@ -176,7 +181,7 @@ const AboutUsEstablishment = () => {
                     </div>
                     <div className="Establishment_content triggered-element">
                       <Image
-                        src={establish_image}
+                        src={establish_image2}
                         alt="Your Image"
                         className="Establishment_timeline_image"
                       />
@@ -198,7 +203,7 @@ const AboutUsEstablishment = () => {
                     </div>
                     <div className="Establishment_content triggered-element">
                       <Image
-                        src={establish_image}
+                        src={establish_image3}
                         alt="Your Image"
                         className="Establishment_timeline_image"
                       />
@@ -220,7 +225,7 @@ const AboutUsEstablishment = () => {
                     </div>
                     <div className="Establishment_content triggered-element">
                       <Image
-                        src={establish_image}
+                        src={establish_image4}
                         alt="Your Image"
                         className="Establishment_timeline_image"
                       />

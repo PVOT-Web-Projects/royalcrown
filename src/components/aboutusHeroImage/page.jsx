@@ -4,9 +4,9 @@ import "./aboutUsImage.scss";
 // import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image1 from "../../images/image 73.jpg";
-import Image2 from "../../images/image 72.jpg";
-import Image3 from "../../images/image 15.jpg";
+import Image1 from "../../images/aboutHeroImg1.png";
+import Image2 from "../../images/aboutHeroImg2.png";
+import Image3 from "../../images/aboutHeroImg3.png";
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 
