@@ -3,9 +3,8 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./aboutUsEstablishment.scss";
-import establish_image from "../../images/laminate - about-us 5.jpg";
+import establish_image from "@/images/fctImg1.JPG";
 import Image from "next/image";
-import crown from "../../images/crown11.png";
 import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
