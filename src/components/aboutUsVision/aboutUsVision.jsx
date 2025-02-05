@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import AboutUs_vision from "../../images/image 65.jpg";
+import AboutUs_vision from "@/images/fctImage.JPG";
 import "./aboutUsVision.scss";
 import {motion } from "framer-motion";
 
