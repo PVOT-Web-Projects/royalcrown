@@ -43,7 +43,7 @@ const HeaderCopy = () => {
   // }, [pathname]);
   useEffect(() => {
     const currentPath = window.location.pathname;
-    
+    console.log("Current pathname:", pathname);
     if (currentPath === "/" || currentPath === "/royalcrown/") {
       setIsHome(true);
     } else {
