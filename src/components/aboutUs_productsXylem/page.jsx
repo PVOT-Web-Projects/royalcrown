@@ -267,13 +267,43 @@ const Page = () => {
     selectedColor,
     selectedType, // Added selectedType to the dependencies of useMemo
   ]);
-  const lastIndex = pageNumber * itemsPerPage;
+   // Calculate total pages dynamically based on filtered products
+  const totalPages = Math.ceil(filteredProducts1.length / itemsPerPage);
+  // Ensure the current page is within the valid range
+  const currentPage = Math.min(pageNumber, totalPages);
+  // Calculate indices for the current page
+  const lastIndex = currentPage * itemsPerPage;
   const firstIndex = lastIndex - itemsPerPage;
-  const displayedData =
-    filteredProducts1.length > 0
-      ? filteredProducts1.slice(firstIndex, lastIndex)
-      : [];
-
+  // Slice the filtered products to display only the current page's items
+  const displayedData = filteredProducts1.slice(firstIndex, lastIndex);
+  // Render only valid pagination buttons
+  useEffect(() => {
+    if (currentPage > totalPages && totalPages > 0) {
+      setPageNumber(totalPages); // Redirect to the last valid page
+    }
+  }, [currentPage, totalPages]);
+  // Reset to the first page if filters change
+  useEffect(() => {
+    setPageNumber(1); // Reset to the first page when filtered products change
+  }, [filteredProducts1]);
+  // 
+  // const lastIndex = pageNumber * itemsPerPage;
+  // const firstIndex = lastIndex - itemsPerPage;
+  // const displayedData =
+  //   filteredProducts1.length > 0
+  //     ? filteredProducts1.slice(firstIndex, lastIndex)
+  //     : [];
+  const resetFiltersDrop = () => {
+    setSelectedBrand("all");
+    setSelectedCategory([]);
+    setSelectedFinish("all");
+    setSelectedSize("all");
+    setSelectedThickness("all");
+    setSelectedColor("all");
+    setSelectedType("all");
+      // Reset the URL to /product without the hash
+  // router.push("/product", undefined, { shallow: true });
+  };
   const categoryMap = {
     "/products#xylem": "xylem",
     "/products#royal-crown": "Royal Crown",
@@ -447,6 +477,14 @@ const Page = () => {
 
         <div className="supply">
           <div id="sticky">
+             {/* reset filter */}
+             <div className="resetFilters">
+              <button className="resetButton" onClick={resetFiltersDrop} scroll={false}>
+                <span className="resetButton-content">reset filters</span>
+                {/* Reset Filters */}
+              </button>
+            </div>
+            {/* reset filter ends */}
             <div className="dropdown1">
               <div className="dropdown-label">
                 <label className="colorSelectDropdown" htmlFor="type-select">

@@ -23,7 +23,7 @@ const Page = () => {
   const [selectedThickness, setSelectedThickness] = useState("all");
   const [selectedColor, setSelectedColor] = useState("all");
   const [isMobile, setIsMobile] = useState(0);
-  const [tab, setTab] = useState("");// Adding a loading state
+  const [tab, setTab] = useState(""); // Adding a loading state
   const [loading, setLoading] = useState(true); // Initially, set loading to t
   const pathName = usePathname();
   const [shortTitle, setShortTitle] = useState("");
@@ -113,7 +113,6 @@ const Page = () => {
   // const lastIndex = pageNumber * itemsPerPage;
   // const firstIndex = lastIndex - itemsPerPage;
   // const displayedData = currentData.slice(firstIndex, lastIndex);
-  
 
   const categories = [
     { label: "Plain Colour", value: "Plain Colour" },
@@ -126,7 +125,7 @@ const Page = () => {
     { label: "Woodgrain", value: "Woodgrain" },
   ];
   const size = [
-    { label: "8 x 4", value: "8*4"  },
+    { label: "8 x 4", value: "8*4" },
     { label: "10 x 4.25", value: "8*9" },
     { label: "12 x 6", value: "3*2" },
     { label: "14 x 6", value: "6*6" },
@@ -172,17 +171,37 @@ const Page = () => {
   const handleSizeChange = (e) => {
     setSelectedSize(e.value);
   };
-const handleSizeClick = (sizeValue) => {
-  // setSelectedSize(sizeValue);
-  setSelectedSize(prevSize => prevSize === sizeValue ? "" : sizeValue);
-  const exploreCollectionElement = document.querySelector("#sticky_top");
-  if (exploreCollectionElement) {
-    exploreCollectionElement.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
+  // const handleSizeClick = (sizeValue) => {
+  //   // setSelectedSize(sizeValue);
+  //   setSelectedSize(prevSize => prevSize === sizeValue ? "" : sizeValue);
+  //   const exploreCollectionElement = document.querySelector("#sticky_top");
+  //   if (exploreCollectionElement) {
+  //     exploreCollectionElement.scrollIntoView({
+  //       behavior: "smooth",
+  //       block: "start",
+  //     });
+  //   }
+  // };
+  const handleSizeClick = (sizeValue) => {
+    setSelectedSize((prevSelectedSize) => {
+      // If the size is already selected, deselect it (set to null or "")
+      if (prevSelectedSize === sizeValue) {
+        console.log("Size Deselected:", sizeValue);
+        return null; // Deselect the size to show all products
+      } else {
+        console.log("Size Selected:", sizeValue);
+        return sizeValue; // Select the new size
+      }
     });
-  }
-};
+    // Scroll to the top of the page (or a specific element) smoothly
+    const exploreCollectionElement = document.querySelector("#sticky_top");
+    if (exploreCollectionElement) {
+      exploreCollectionElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
   const handleThicknessChange = (e) => {
     setSelectedThickness(e.value);
   };
@@ -197,6 +216,19 @@ const handleSizeClick = (sizeValue) => {
     } else {
       setSelectedColor(color); // Set the selected color
     }
+  };
+
+  // Function to reset all filters to default
+  const resetFiltersDrop = () => {
+    setSelectedBrand("all");
+    setSelectedCategory([]);
+    setSelectedFinish("all");
+    setSelectedSize("all");
+    setSelectedThickness("all");
+    setSelectedColor("all");
+    setSelectedType("all");
+      // Reset the URL to /product without the hash
+  // router.push("/product", undefined, { shallow: true });
   };
 
   const filteredProducts1 = useMemo(() => {
@@ -218,15 +250,19 @@ const handleSizeClick = (sizeValue) => {
         selectedFinish === "all" ||
         product.categories[1].slug === selectedFinish;
       const sizeMatch =
+        selectedSize === null ||
         selectedSize === "all" ||
         product.attributes[1].terms[0].name === selectedSize;
       const thicknessMatch =
+        selectedThickness === null ||
         selectedThickness === "all" ||
         product.attributes[2].terms[0].name === selectedThickness;
       const colorMatch =
+        selectedColor === null ||
         selectedColor === "all" ||
         product.attributes[4].terms[0].name === selectedColor;
       const typeMatch =
+        selectedType === null ||
         selectedType === "all" ||
         product.attributes[3].terms[0].name === selectedType;
       console.log("Checking Product:", product); // Log each product being checked
@@ -269,21 +305,41 @@ const handleSizeClick = (sizeValue) => {
     selectedType, // Added selectedType to the dependencies of useMemo
   ]);
 
-//   const lastIndex = pageNumber * itemsPerPage;
-// const firstIndex = lastIndex - itemsPerPage;
-// // Paginated data derived from filtered products
-// const displayedData = filteredProducts1.length > 0
-//   ? filteredProducts1.slice(firstIndex, lastIndex)
-//   : [];
-// Pagination Logic
-const startIndex = (pageNumber - 1) * itemsPerPage;
-const endIndex = pageNumber * itemsPerPage;
-const paginatedProducts = useMemo(() => {
-  return filteredProducts.slice(startIndex, endIndex);
-}, [filteredProducts, pageNumber, itemsPerPage]);
-// Displayed Data
-const displayedData = paginatedProducts;
-
+  //   const lastIndex = pageNumber * itemsPerPage;
+  // const firstIndex = lastIndex - itemsPerPage;
+  // // Paginated data derived from filtered products
+  // const displayedData = filteredProducts1.length > 0
+  //   ? filteredProducts1.slice(firstIndex, lastIndex)
+  //   : [];
+  // Pagination Logic
+  // const startIndex = (pageNumber - 1) * itemsPerPage;
+  // const endIndex = pageNumber * itemsPerPage;
+  // const paginatedProducts = useMemo(() => {
+  //   return filteredProducts.slice(startIndex, endIndex);
+  // }, [filteredProducts, pageNumber, itemsPerPage]);
+  // // Displayed Data
+  // const displayedData = paginatedProducts;
+      //  pagination finall logic
+  // Calculate total pages dynamically based on filtered products
+const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+// Ensure the current page is within the valid range
+const currentPage = Math.min(pageNumber, totalPages);
+// Calculate indices for the current page
+const lastIndex = currentPage * itemsPerPage;
+const firstIndex = lastIndex - itemsPerPage;
+// Slice the filtered products to display only the current page's items
+const displayedData = filteredProducts.slice(firstIndex, lastIndex);
+// Render only valid pagination buttons
+useEffect(() => {
+  if (currentPage > totalPages && totalPages > 0) {
+    setPageNumber(totalPages); // Redirect to the last valid page
+  }
+}, [currentPage, totalPages]);
+// Reset to the first page if filters change
+useEffect(() => {
+  setPageNumber(1); // Reset to the first page when filtered products change
+}, [filteredProducts]);
+// 
   const categoryMap = {
     "/product#xylem": "Xylem",
     "/product#royal-crown": "Royal Crown",
@@ -296,7 +352,7 @@ const displayedData = paginatedProducts;
   //   // setActiveTab(newTab);
   //   // const filteredData = products.filter((data) => data.category === category);
   //    // Filter the products based on the selected category
-     
+
   //    const filteredData = products.filter((product) =>
   //     product.categories.some(
   //       (categoryItem) =>
@@ -304,8 +360,7 @@ const displayedData = paginatedProducts;
   //     )
   //   );
   //   console.log("ffff", filteredData);
-  
-    
+
   //   //  const filteredData = selectedCategory.length === 0 || products.filter((product) =>
   //   //   product.categories.some((categoryItem) => {
   //   //     // Ensure categoryItem.slug is defined before calling toLowerCase
@@ -373,7 +428,7 @@ const displayedData = paginatedProducts;
     let filtered = products;
     // Filter products based on the selectedTag
     if (selectedTag !== "all") {
-      const actualTag = selectedTag.split('#')[1];  // Extracts tag name after '#'
+      const actualTag = selectedTag.split("#")[1]; // Extracts tag name after '#'
       filtered = filtered.filter((product) => {
         if (Array.isArray(product.categories)) {
           // Check if any category slug matches the selectedTag
@@ -387,7 +442,8 @@ const displayedData = paginatedProducts;
     console.log("Filtered by selectedTag:", filtered);
     // Now apply the other filters (e.g., brand, size, etc.) to the filtered products
     filtered = filtered.filter((product) => {
-      const brandMatch = selectedBrand === "all" || product.category === selectedBrand;
+      const brandMatch =
+        selectedBrand === "all" || product.category === selectedBrand;
       const categoryMatch =
         selectedCategory.length === 0 ||
         selectedCategory.some((selectedCat) =>
@@ -397,11 +453,26 @@ const displayedData = paginatedProducts;
               attr.terms.some((term) => term.slug === selectedCat)
           )
         );
-      const finishMatch = selectedFinish === "all" || product.categories[1].slug === selectedFinish;
-      const sizeMatch = selectedSize === "all" || product.attributes[1].terms[0].name === selectedSize;
-      const thicknessMatch = selectedThickness === "all" || product.attributes[2].terms[0].name === selectedThickness;
-      const colorMatch = selectedColor === "all" || product.attributes[4].terms[0].name === selectedColor;
-      const typeMatch = selectedType === "all" || product.attributes[3].terms[0].name === selectedType;
+      const finishMatch =
+        selectedFinish === "all" ||
+        selectedFinish === null ||
+        product.categories[1].slug === selectedFinish;
+      const sizeMatch =
+        selectedSize === "all" ||
+        selectedSize === null ||
+        product.attributes[1].terms[0].name === selectedSize;
+      const thicknessMatch =
+        selectedThickness === "all" ||
+        selectedThickness === null ||
+        product.attributes[2].terms[0].name === selectedThickness;
+      const colorMatch =
+        selectedColor === "all" ||
+        selectedColor === null ||
+        product.attributes[4].terms[0].name === selectedColor;
+      const typeMatch =
+        selectedType === "all" ||
+        selectedType === null ||
+        product.attributes[3].terms[0].name === selectedType;
       // Add more filters as necessary
       return (
         brandMatch &&
@@ -427,17 +498,47 @@ const displayedData = paginatedProducts;
     selectedColor,
     selectedType, // Add other filter states as needed
   ]);
-const handleThicknessClick = (thicknessValue) => {
-  setSelectedThickness(prevThickness => prevThickness === thicknessValue ? "" : thicknessValue);
-  const exploreCollectionElement = document.querySelector("#sticky_top");
-  if (exploreCollectionElement) {
-    exploreCollectionElement.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
+  // const handleThicknessClick = (thicknessValue) => {
+  //   setSelectedThickness(prevThickness => prevThickness === thicknessValue ? "" : thicknessValue);
+  //   setSelectedThickness((prevSelectedThickness) => {
+  //     // If the thickness is already selected, deselect it (set to null or "")
+  //     if (prevSelectedThickness === thicknessValue) {
+  //       console.log("Thickness Deselected:", thicknessValue);
+  //       return null; // Deselect the thickness to show all products
+  //     } else {
+  //       console.log("Thickness Selected:", thicknessValue);
+  //       return thicknessValue; // Select the new thickness
+  //     }
+  //   });
+  //   const exploreCollectionElement = document.querySelector("#sticky_top");
+  //   if (exploreCollectionElement) {
+  //     exploreCollectionElement.scrollIntoView({
+  //       behavior: "smooth",
+  //       block: "start",
+  //     });
+  //   }
+  // };
+  const handleThicknessClick = (thicknessValue) => {
+    setSelectedThickness((prevSelectedThickness) => {
+      // If the thickness is already selected, deselect it (set to null or "")
+      if (prevSelectedThickness === thicknessValue) {
+        console.log("Thickness Deselected:", thicknessValue);
+        return null; // Deselect the thickness to show all products
+      } else {
+        console.log("Thickness Selected:", thicknessValue);
+        return thicknessValue; // Select the new thickness
+      }
     });
-  }
-};
-   return (
+    // Scroll to the top of the page (or a specific element) smoothly
+    const exploreCollectionElement = document.querySelector("#sticky_top");
+    if (exploreCollectionElement) {
+      exploreCollectionElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+  return (
     <>
       <div className="productMainContainer">
         <div className="productMain">
@@ -495,26 +596,41 @@ const handleThicknessClick = (thicknessValue) => {
                 <div className="tab-content-inner">{label}</div>
               </Link>
             ))} */}
-            {visibleTabs.map((label) => (
-    <Link
-      key={label}
-      href={`/product#${label.replace(" ", "-").toLowerCase()}`}
-      scroll={false}
-      className={`tab-item ${
-        activeTab === `/product#${label.replace(" ", "-").toLowerCase()}`
-          ? "active"
-          : ""
-      }`}
-      onClick={() => handleTabClick(`/product#${label.replace(" ", "-").toLowerCase()}`, label)} // Use the new handleTabClick
-    >
-      <div className="tab-content-inner">{label}</div>
-    </Link>
-  ))}
+            {/* {visibleTabs.map((label) => ( */}
+            {["Royal Crown", "Crown XCL", "QBliss", "Xylem", "crown"].map((label) => (
+              <Link
+                key={label}
+                href={`/product#${label.replace(" ", "-").toLowerCase()}`}
+                scroll={false}
+                className={`tab-item ${
+                  activeTab ===
+                  `/product#${label.replace(" ", "-").toLowerCase()}`
+                    ? "active"
+                    : ""
+                }`}
+                onClick={() =>
+                  handleTabClick(
+                    `/product#${label.replace(" ", "-").toLowerCase()}`,
+                    label
+                  )
+                } // Use the new handleTabClick
+              >
+                <div className="tab-content-inner">{label}</div>
+              </Link>
+            ))}
           </div>
         </div>
 
         <div className="supply">
           <div id="sticky">
+            {/* reset filter */}
+            <div className="resetFilters">
+              <button className="resetButton" onClick={resetFiltersDrop} scroll={false}>
+                <span className="resetButton-content">reset filters</span>
+                {/* Reset Filters */}
+              </button>
+            </div>
+            {/* reset filter ends */}
             <div className="dropdown1">
               <div className="dropdown-label">
                 <label className="colorSelectDropdown" htmlFor="type-select">
@@ -567,10 +683,11 @@ const handleThicknessClick = (thicknessValue) => {
                 <div className="color_dropdown">
                   {color.map((colorItem, index) => (
                     <div
-                      key={index} 
+                      key={index}
                       className={`color-box color${index + 1}`}
                       // style={{ backgroundColor: colorItem.value }}
                       onClick={() => handleColorChange(colorItem.value)} // Add color change functionality
+                      scroll={false}
                     ></div>
                   ))}
                 </div>
@@ -600,6 +717,7 @@ const handleThicknessClick = (thicknessValue) => {
                         selectedSize === sizeOption.value ? "selected" : ""
                       }`}
                       onClick={() => handleSizeClick(sizeOption.value)}
+                      scroll={false}
                     >
                       <p>{sizeOption.label}</p>
                     </div>
@@ -639,7 +757,10 @@ const handleThicknessClick = (thicknessValue) => {
                       // onClick={() =>
                       //   setSelectedThickness(thicknessOption.value)
                       // }
-                      onClick={() => handleThicknessClick(thicknessOption.value)} // Add click functionality
+                      onClick={() =>
+                        handleThicknessClick(thicknessOption.value)
+                      } // Add click functionality
+                      scroll={false}
                     >
                       <p>{thicknessOption.label}</p>
                     </div>
@@ -659,64 +780,64 @@ const handleThicknessClick = (thicknessValue) => {
               ))}
             </Grid>
           ) : (
-          <div className="product_container" ref={projectsRef}>
-            {/* {filteredProducts.map((product, index) => ( */}
-            {displayedData.map((product, index) => {
-              // const isTabActive = !!activeTab;
+            <div className="product_container" ref={projectsRef}>
+              {/* {filteredProducts.map((product, index) => ( */}
+              {displayedData.map((product, index) => {
+                // const isTabActive = !!activeTab;
 
-              // Only apply "big" or "tall" classNames if not in the tab view
-              const className =
-              //  isTabActive
-                // ? "" // Normal size for tab view
-                // : 
-                index === 9
-                ? "big"
-                : [0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21].includes(
-                    index
-                  )
-                ? "tall"
-                : "";
+                // Only apply "big" or "tall" classNames if not in the tab view
+                const className =
+                  //  isTabActive
+                  // ? "" // Normal size for tab view
+                  // :
+                  index === 9
+                    ? "big"
+                    : [0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21].includes(
+                        index
+                      )
+                    ? "tall"
+                    : "";
 
-              return (
-                <div key={index} className={`AboutUs_product ${className}`}>
-                  <Image
-                    src={product.images[0].src}
-                    alt={product.name}
-                    className="ProductImage"
-                    width={500}
-                    height={600}
-                    // height={randomHeight} // Apply dynamic height
-                    // style={{ height: `${randomHeight}px` }} // Inline style for random height
-                  />
-                  <div className="overlay">
-                    <div>
-                      <svg
-                        width="40"
-                        height="40"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        fill="white"
-                        className="aboutUsProductSvg"
+                return (
+                  <div key={index} className={`AboutUs_product ${className}`}>
+                    <Image
+                      src={product.images[0].src}
+                      alt={product.name}
+                      className="ProductImage"
+                      width={500}
+                      height={600}
+                      // height={randomHeight} // Apply dynamic height
+                      // style={{ height: `${randomHeight}px` }} // Inline style for random height
+                    />
+                    <div className="overlay">
+                      <div>
+                        <svg
+                          width="40"
+                          height="40"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          fill="white"
+                          className="aboutUsProductSvg"
+                        >
+                          <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
+                        </svg>
+                      </div>
+                      <div
+                        className="AnchorTag"
+                        onClick={() => {
+                          console.log("Product ID:", product.id);
+                          router.push(`/product-information#${product.id}`);
+                        }}
                       >
-                        <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
-                      </svg>
-                    </div>
-                    <div
-                      className="AnchorTag"
-                      onClick={() => {
-                        console.log("Product ID:", product.id);
-                        router.push(`/product-information#${product.id}`);
-                      }}
-                    >
-                      Know More
+                        Know More
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
-           )}
+                );
+              })}
+            </div>
+          )}
         </div>
         {currentData.length > 0 && (
           <div>

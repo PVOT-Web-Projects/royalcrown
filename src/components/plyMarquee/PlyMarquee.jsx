@@ -185,6 +185,191 @@ const PlyMarquee = () => {
                 <div className="info_left">
                   <p className="num">6019</p>
                   <p className="text">sn</p>
+<<<<<<< HEAD
+=======
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item top1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">691x</p>
+                  <p className="text">sn</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item bottom1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">6025</p>
+                  <p className="text">to</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item top1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">6017</p>
+                  <p className="text">mo</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item bottom1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">6018</p>
+                  <p className="text">mo</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item top1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">574</p>
+                  <p className="text">hng</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item bottom1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">575</p>
+                  <p className="text">hng</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item top1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">5009</p>
+                  <p className="text">gm</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item bottom1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">5010</p>
+                  <p className="text">gm</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item top1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">4004</p>
+                  <p className="text">tf</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item bottom1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">4006</p>
+                  <p className="text">tf</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item top1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">4001</p>
+                  <p className="text">cl</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item bottom1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">664x</p>
+                  <p className="text">sf</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item top1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">669x</p>
+                  <p className="text">sfs</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Mauri</div>
+                  <div className="ply_wood">true wood</div>
+                </div>
+              </div>
+              <Image src={img7} alt="ply" />
+            </div>
+            <div className="ply_item bottom1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">670x</p>
+                  <p className="text">sfs</p>
+>>>>>>> 5aa8e428fa2b5ee6736fc497508bf30bbbfc2279
                 </div>
                 <div className="info_right">
                   <div className="ply_name">sun</div>

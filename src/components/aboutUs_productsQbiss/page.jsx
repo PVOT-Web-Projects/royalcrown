@@ -170,7 +170,17 @@ const Page = () => {
     setSelectedSize(e.value);
   };
   const handleSizeClick = (sizeValue) => {
-    setSelectedSize((prevSize) => (prevSize === sizeValue ? "" : sizeValue));
+    setSelectedSize((prevSelectedSize) => {
+      // If the size is already selected, deselect it (set to null or "")
+      if (prevSelectedSize === sizeValue) {
+        console.log("Size Deselected:", sizeValue);
+        return null; // Deselect the size to show all products
+      } else {
+        console.log("Size Selected:", sizeValue);
+        return sizeValue; // Select the new size
+      }
+    });
+    // Scroll to the top of the page (or a specific element) smoothly
     const exploreCollectionElement = document.querySelector("#sticky_top");
     if (exploreCollectionElement) {
       exploreCollectionElement.scrollIntoView({
@@ -186,12 +196,23 @@ const Page = () => {
   const handleColorChange1 = (e) => {
     setSelectedColor(e.value);
   };
+  // const handleColorChange = (color) => {
+  //   if (selectedColor === color) {
+  //     setSelectedColor(null); // Clear the selection
+  //   } else {
+  //     setSelectedColor(color); // Set the selected color
+  //   }
+  // };
   const handleColorChange = (color) => {
-    if (selectedColor === color) {
-      setSelectedColor(null); // Clear the selection
-    } else {
-      setSelectedColor(color); // Set the selected color
-    }
+    setSelectedColor((prevSelectedColor) => {
+      if (prevSelectedColor === color) {
+        console.log("Color Deselected:", color);
+        return null; // Deselect the color to show all products
+      } else {
+        console.log("Color Selected:", color);
+        return color; // Filter products by this color
+      }
+    });
   };
 
   const filteredProducts1 = useMemo(() => {
@@ -201,7 +222,7 @@ const Page = () => {
         (category) => category.name.toLowerCase() === "qbliss"
       );
       const brandMatch =
-        selectedBrand === "all" || product.category === selectedBrand;
+        selectedBrand === "all" || selectedBrand === null || product.category === selectedBrand;
       const categoryMatch =
         selectedCategory.length === 0 ||
         selectedCategory.some((selectedCat) =>
@@ -213,18 +234,23 @@ const Page = () => {
         );
       const finishMatch =
         selectedFinish === "all" ||
+        selectedFinish === null ||
         product.categories[1].slug === selectedFinish;
       const sizeMatch =
         selectedSize === "all" ||
+        selectedSize === null ||
         product.attributes[1].terms[0].name === selectedSize;
       const thicknessMatch =
         selectedThickness === "all" ||
+        selectedThickness === null ||
         product.attributes[2].terms[0].name === selectedThickness;
       const colorMatch =
         selectedColor === "all" ||
+        selectedColor === null ||
         product.attributes[4].terms[0].name === selectedColor;
       const typeMatch =
         selectedType === "all" ||
+        selectedType === null ||
         product.attributes[3].terms[0].name === selectedType;
       console.log("Checking Product:", product); // Log each product being checked
       console.log(
@@ -265,12 +291,44 @@ const Page = () => {
     selectedColor,
     selectedType, // Added selectedType to the dependencies of useMemo
   ]);
-  const lastIndex = pageNumber * itemsPerPage;
+  // const lastIndex = pageNumber * itemsPerPage;
+  // const firstIndex = lastIndex - itemsPerPage;
+  // const displayedData =
+  //   filteredProducts1.length > 0
+  //     ? filteredProducts1.slice(firstIndex, lastIndex)
+  //     : [];
+  const resetFiltersDrop = () => {
+    setSelectedBrand("all");
+    setSelectedCategory([]);
+    setSelectedFinish("all");
+    setSelectedSize("all");
+    setSelectedThickness("all");
+    setSelectedColor("all");
+    setSelectedType("all");
+      // Reset the URL to /product without the hash
+  // router.push("/product", undefined, { shallow: true });
+  };
+       //  pagination finall logic
+    // Calculate total pages dynamically based on filtered products
+  const totalPages = Math.ceil(filteredProducts1.length / itemsPerPage);
+  // Ensure the current page is within the valid range
+  const currentPage = Math.min(pageNumber, totalPages);
+  // Calculate indices for the current page
+  const lastIndex = currentPage * itemsPerPage;
   const firstIndex = lastIndex - itemsPerPage;
-  const displayedData =
-    filteredProducts1.length > 0
-      ? filteredProducts1.slice(firstIndex, lastIndex)
-      : [];
+  // Slice the filtered products to display only the current page's items
+  const displayedData = filteredProducts1.slice(firstIndex, lastIndex);
+  // Render only valid pagination buttons
+  useEffect(() => {
+    if (currentPage > totalPages && totalPages > 0) {
+      setPageNumber(totalPages); // Redirect to the last valid page
+    }
+  }, [currentPage, totalPages]);
+  // Reset to the first page if filters change
+  useEffect(() => {
+    setPageNumber(1); // Reset to the first page when filtered products change
+  }, [filteredProducts1]);
+  // 
   useEffect(() => {
     if (selectedTag === "all") {
       setFilteredProducts(products);
@@ -294,10 +352,19 @@ const Page = () => {
       setFilteredProducts(filtered);
     }
   }, [selectedTag, products]);
+
   const handleThicknessClick = (thicknessValue) => {
-    setSelectedThickness((prevThickness) =>
-      prevThickness === thicknessValue ? "" : thicknessValue
-    );
+    setSelectedThickness((prevSelectedThickness) => {
+      // If the thickness is already selected, deselect it (set to null or "")
+      if (prevSelectedThickness === thicknessValue) {
+        console.log("Thickness Deselected:", thicknessValue);
+        return null; // Deselect the thickness to show all products
+      } else {
+        console.log("Thickness Selected:", thicknessValue);
+        return thicknessValue; // Select the new thickness
+      }
+    });
+    // Scroll to the top of the page (or a specific element) smoothly
     const exploreCollectionElement = document.querySelector("#sticky_top");
     if (exploreCollectionElement) {
       exploreCollectionElement.scrollIntoView({
@@ -306,6 +373,18 @@ const Page = () => {
       });
     }
   };
+  // const handleThicknessClick = (thicknessValue) => {
+  //   setSelectedThickness((prevThickness) =>
+  //     prevThickness === thicknessValue ? "" : thicknessValue
+  //   );
+  //   const exploreCollectionElement = document.querySelector("#sticky_top");
+  //   if (exploreCollectionElement) {
+  //     exploreCollectionElement.scrollIntoView({
+  //       behavior: "smooth",
+  //       block: "start",
+  //     });
+  //   }
+  // };
   return (
     <>
       <div className="productMainContainer">
@@ -357,7 +436,16 @@ const Page = () => {
         </div>
 
         <div className="supply">
+          
           <div id="sticky">
+            {/* reset filter */}
+            <div className="resetFilters">
+              <button className="resetButton" onClick={resetFiltersDrop} scroll={false}>
+                <span className="resetButton-content">reset filters</span>
+                {/* Reset Filters */}
+              </button>
+            </div>
+            {/* reset filter ends */}
             <div className="dropdown1">
               <div className="dropdown-label">
                 <label className="colorSelectDropdown" htmlFor="type-select">

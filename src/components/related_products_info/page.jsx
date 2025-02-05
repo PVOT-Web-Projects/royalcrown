@@ -14,7 +14,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import { motion } from "framer-motion";
-
+  
 const RelatedProductInfo = () => {
   const [liked, setLiked] = useState([false, false, false, false]);
   const [relatedProducts, setRelatedProducts] = useState([]);
@@ -23,6 +23,8 @@ const RelatedProductInfo = () => {
   const router = useRouter();
 
   useEffect(() => {
+
+
     const fetchRelatedProducts = async () => {
       try {
         const response = await fetch(
