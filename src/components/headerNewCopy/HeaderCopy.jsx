@@ -43,6 +43,34 @@ const HeaderCopy = () => {
   // }, [pathname]);
   useEffect(() => {
     const currentPath = window.location.pathname;
+    console.log("Current pathname:", currentPath);
+  
+    if (currentPath === "/" || currentPath === "/royalcrown/") {
+      console.log("Setting isHome to true");
+      setIsHome(true);
+    } else {
+      console.log("Setting isHome to false");
+      setIsHome(false);
+    }
+  
+    console.log("Current isHome:", isHome);
+  }, []); // Ensure it runs only once when the component mounts
+  
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+    const normalizedPath = currentPath.endsWith("/") ? currentPath : `${currentPath}/`;
+    
+    console.log("Normalized pathname:", normalizedPath);
+  
+    if (normalizedPath === "/" || normalizedPath === "/royalcrown/") {
+      setIsHome(true);
+    } else {
+      setIsHome(false);
+    }
+  }, []); // Ensure it runs only once when the component mounts
+  
+  useEffect(() => {
+    const currentPath = window.location.pathname;
     console.log("Current pathname:", pathname);
     if (currentPath === "/" || currentPath === "/royalcrown/") {
       setIsHome(true);
@@ -50,6 +78,7 @@ const HeaderCopy = () => {
       setIsHome(false);
     }
   }, []);
+  console.log("Current isHome value:", isHome); // Log the current value of isHome to track updates
   // useEffect(() => {
   //   const pathname = window.location.pathname;
   //   console.log("Current pathname:", pathname);  // Check what the pathname is
