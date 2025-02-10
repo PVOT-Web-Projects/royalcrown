@@ -4,9 +4,9 @@ import Link from "next/link";
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
-import Img1 from "@/images/RoyalCrownNew.png";
-import Img2 from "@/images/CrownNew.png";
-import Img3 from "@/images/XylemNew.png";
+import Img1 from "/src/images/Royalcrown123.jpeg";
+import Img2 from "/src/images/Crown123.jpeg";
+import Img3 from "/src/images/Xylem123.jpeg";
 import Img4 from "@/images/QbissNew.png";
 import Img5 from "@/images/CrownXCLNew.png";
 
@@ -79,7 +79,7 @@ useEffect(() => {
     const startTimer = () => {
       timerRef.current = setInterval(() => {
         handleNext(); // Same animation logic for automatic transitions
-      }, 10000000);
+      }, 10000);
     };
 
     startTimer();
