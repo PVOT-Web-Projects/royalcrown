@@ -32,6 +32,8 @@ const Category = () => {
         gsap.set(firstItem, { x: 200, opacity: 0 });
         // Animate it back into view smoothly
         gsap.to(firstItem, { x: 0, opacity: 1, duration: 0.5 });
+
+        updateBrightness(); // Apply brightness logic after shifting items
       },
     });
   };
@@ -48,14 +50,36 @@ const Category = () => {
     slideRef.current.prepend(lastItem);
     // Animate it into view
     gsap.to(lastItem, { x: 0, opacity: 1, duration: 0.5 });
+
+    updateBrightness(); // Apply brightness logic after shifting items
   };
+
+  // Function to update brightness dynamically
+const updateBrightness = () => {
+  const items = slideRef.current.children;
+  
+  // Reset all items to full brightness
+  Array.from(items).forEach((item) => {
+    item.classList.remove("background");
+  });
+
+  // Apply dimming only to background items
+  for (let i = 2; i < items.length; i++) {
+    items[i].classList.add("background");
+  }
+};
+
+// Initialize brightness on first render
+useEffect(() => {
+  updateBrightness();
+}, []);
 
   // Set up automatic slide transitions
   useEffect(() => {
     const startTimer = () => {
       timerRef.current = setInterval(() => {
         handleNext(); // Same animation logic for automatic transitions
-      }, 10000);
+      }, 10000000);
     };
 
     startTimer();

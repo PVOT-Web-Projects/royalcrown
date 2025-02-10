@@ -26,9 +26,13 @@
       background-size: cover;
       background-repeat: no-repeat;
       display: inline-block;
-      transition: 0.5s;
+      transition: 0.5s ;
       overflow: hidden;
-      filter: brightness(100%);
+      filter: brightness(0.5);
+
+      &.background {
+        filter: brightness(1); // Darken only when it's in the background
+      }
       // z-index: -1; /* Ensures the image stays in the background */
       &.active {
         /* This class will be added when the image becomes the main large image */
@@ -44,7 +48,7 @@
       .imageWrapper img {
         /* Apply brightness filter to images */
         transition: filter 0.5s ease;
-        filter: brightness(0.5);
+        // filter: brightness(0.5);
       }
       &:nth-child(1),
       &:nth-child(2) {
