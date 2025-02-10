@@ -79,7 +79,7 @@ useEffect(() => {
     const startTimer = () => {
       timerRef.current = setInterval(() => {
         handleNext(); // Same animation logic for automatic transitions
-      }, 10000000);
+      }, 10000);
     };
 
     startTimer();
