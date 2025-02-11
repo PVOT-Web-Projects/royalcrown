@@ -10,6 +10,7 @@ import Es1 from "../../../images/svglogo/EasytoClean.jpg";
 import Sus1 from "../../../images/svglogo/Sustainability.jpg";
 import Imp1 from "../../../images/svglogo/ImpactResistant.jpg"
 import Sr1 from "../../../images/svglogo/ChemicalResistant.jpg";
+import Img1 from "../../../images/flicker-laminate.jpg";
 // import products from "@/components/aboutUs_products/productData";
 // import verticalIcon from "../../images/vertical-icon.svg";
 // import horizontalIcon from "../../images/horizontal-icon.svg";
@@ -33,7 +34,12 @@ projects. Beyond its aesthetic appeal, our flicker laminate upholds the practica
 traditional laminates, offering durability, scratch and stain resistance, and easy maintenance.
 With a range of captivating colors and patterns, designers can effortlessly incorporate this
 dynamic effect into diverse styles and settings, ensuring a truly remarkable visual experience.`,
-  boxes: [
+   images:[
+    {
+      headerImg: Img1,
+    }
+   ],
+boxes: [
     {
       icon: icon1,
       title: "SHEET THICKNESS",

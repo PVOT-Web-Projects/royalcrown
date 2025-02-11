@@ -4,9 +4,9 @@ import Link from "next/link";
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
-import Img1 from "@/images/RoyalCrownNew.png";
-import Img2 from "@/images/CrownNew.png";
-import Img3 from "@/images/XylemNew.png";
+import Img1 from "/src/images/Royalcrown123.jpeg";
+import Img2 from "/src/images/Crown123.jpeg";
+import Img3 from "/src/images/Xylem123.jpeg";
 import Img4 from "@/images/QbissNew.png";
 import Img5 from "@/images/CrownXCLNew.png";
 
@@ -32,6 +32,8 @@ const Category = () => {
         gsap.set(firstItem, { x: 200, opacity: 0 });
         // Animate it back into view smoothly
         gsap.to(firstItem, { x: 0, opacity: 1, duration: 0.5 });
+
+        updateBrightness(); // Apply brightness logic after shifting items
       },
     });
   };
@@ -48,14 +50,36 @@ const Category = () => {
     slideRef.current.prepend(lastItem);
     // Animate it into view
     gsap.to(lastItem, { x: 0, opacity: 1, duration: 0.5 });
+
+    updateBrightness(); // Apply brightness logic after shifting items
   };
+
+  // Function to update brightness dynamically
+const updateBrightness = () => {
+  const items = slideRef.current.children;
+  
+  // Reset all items to full brightness
+  Array.from(items).forEach((item) => {
+    item.classList.remove("background");
+  });
+
+  // Apply dimming only to background items
+  for (let i = 2; i < items.length; i++) {
+    items[i].classList.add("background");
+  }
+};
+
+// Initialize brightness on first render
+useEffect(() => {
+  updateBrightness();
+}, []);
 
   // Set up automatic slide transitions
   useEffect(() => {
     const startTimer = () => {
       timerRef.current = setInterval(() => {
         handleNext(); // Same animation logic for automatic transitions
-      }, 5000);
+      }, 10000);
     };
 
     startTimer();

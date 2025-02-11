@@ -7,18 +7,28 @@ import Link from "next/link";
 export default function ProductsCommonInnerPage({ data }) {
   return (
     <>
+    
       {/* Product Category Header */}
       <div className="productCategoryHeader">
         <div className="productCategoryHeaderInner">
-          <motion.div
-            className="productCategoryHeaderText"
-            initial={{ x: -100, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-          >
-            <p className="productCategoryHeaderTextInnner">{data.header}</p>
-          </motion.div>
+          {data.images.map((img, index) => (
+            <div className="productCategoryHeaderInneriMg" key={index}>
+             <Image
+                src={img.headerImg}  // Dynamically set the image source
+                alt="none"   // Dynamically set the image alt text
+                className="ProdctImg"
+              />
+              <motion.div
+                className="productCategoryHeaderText"
+                initial={{ x: -100, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                transition={{ duration: 1 }}
+                viewport={{ once: true }}
+              >
+                <p className="productCategoryHeaderTextInnner">{data.header}</p>
+              </motion.div>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -76,34 +86,31 @@ export default function ProductsCommonInnerPage({ data }) {
               </div>
             </div> */}
 
-            
                     <div className="productApplicationSection2Inner_Main">
                       {data.application.pdfLink.map((item, index) => (
-                        
-                          <Link
-                            href={item.pdfUrl}
-                            target="_blank"
-                            className="applicationSection1InnerPdfInner"
-                          >
-                            <div
-                          className="applicationSection1InnerPdf"
-                          key={index}
+                        <Link
+                          href={item.pdfUrl}
+                          target="_blank"
+                          className="applicationSection1InnerPdfInner"
                         >
-                             <div>
-                            <svg
-                              width="24"
-                              height="24"
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
-                            >
-                              <path d="M8 11h-6v10h20v-10h-6v-2h8v14h-24v-14h8v2zm5 2h4l-5 6-5-6h4v-12h2v12z" />
-                            </svg>
-                          </div>
-                            {item.pdfDesc}
+                          <div
+                            className="applicationSection1InnerPdf"
+                            key={index}
+                          >
+                            <div>
+                              <svg
+                                width="24"
+                                height="24"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                              >
+                                <path d="M8 11h-6v10h20v-10h-6v-2h8v14h-24v-14h8v2zm5 2h4l-5 6-5-6h4v-12h2v12z" />
+                              </svg>
                             </div>
-                          </Link>
-                        
+                            {item.pdfDesc}
+                          </div>
+                        </Link>
                       ))}
                     </div>
                   </div>

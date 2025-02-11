@@ -17,6 +17,7 @@ import ServicesPageCard from "@/components/InsightsPageCards/insightsPageCards";
 import TimelineHome from "@/components/timelinehome/page";
 import HomeHeroSection from "@/components/homeHeroSection/page";
 import NewThreeDSlider from "@/components/newthreedslider/newthreedslider";
+import HomeSliderOne from "@/components/HomeSliderOne/page";
 import CategoryLeftRightInsights from "@/components/categoryLeftRightInsights/CategoryLeftRightInsights";
 import { AnimatePresence } from "framer-motion";
 import Preloader from "@/components/preloader";
@@ -43,6 +44,14 @@ export default function Home() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+  // Timer to hide the preloader after 5 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false); // Set to false after 5 seconds
+    }, 1000); // 5000ms = 5 seconds
+
+    return () => clearTimeout(timer); // Clear the timer on cleanup
+  }, []);
 
   function handleLoad(data) {
     console.log("data", data);
@@ -54,8 +63,16 @@ export default function Home() {
   }
   return (
     <>
-
-      <AnimatePresence mode="wait">
+      {/* <AnimatePresence
+        mode="wait"
+      >
+        {isLoading &&
+          <Preloader
+            counter={isCounter}
+          />
+        }
+      </AnimatePresence> */}
+      {/* <AnimatePresence mode="wait">
         {isLoading && <Preloader counter={isCounter} />}
       </AnimatePresence> 
       {width && (
@@ -66,14 +83,17 @@ export default function Home() {
             <HomeBanner1 loadImage={handleLoad} counter={handleCounter} />
           )}
         </>
-      )}
+      )} */}
       {/* FRAMES ENDED */}
       <main className="main">
-        {/* <HeroBanner /> */}
-        <HomeHeroSection />
-        <SliderNew />
+        <HeroBanner />
+        {/* <HomeHeroSection /> */}
+        {/* <SliderNew /> */}
         {/* <NewThreeDSlider /> */}
         {/* <ThreeSlider /> */}
+        <HomeSliderOne />
+        <HomeHeroSection />
+        <SliderNew />
         <NewRevealText paragraph={paragraph} />
         <PlyMarquee />
         <RoyalCrownSlider />

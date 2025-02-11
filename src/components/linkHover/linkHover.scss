@@ -19,7 +19,6 @@ a.linkHover  {
       transform: translateY(-23px);
       overflow: hidden;
       color: #5B3524;
-      // color: #1c211e;
       font-weight: 900;
     }
   }
@@ -30,7 +29,8 @@ a.linkHover  {
   &.homePage {
     &:hover {
       span {
-        color: #1c211e; // Specific hover color for the Home page
+        color: #fff;
+        // color: #1c211e; // Specific hover color for the Home page
       }
     }
   }

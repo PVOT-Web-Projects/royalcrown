@@ -18,6 +18,7 @@ import Tr1 from "../../../images/svglogo/Termiteresistant.jpg";
 import Anti1 from "../../../images/svglogo/AntiBacterial.jpg";
 import Abra1 from "../../../images/svglogo/AbrasionResistant.jpg"
 import Cr1 from "../../../images/svglogo/ChemicalResistant.jpg";
+import Img1 from "../../../images/interior-cladding-laminate.png";
 // import products from "@/components/aboutUs_products/productData";
 // import verticalIcon from "../../images/vertical-icon.svg";
 // import horizontalIcon from "../../images/horizontal-icon.svg";
@@ -44,7 +45,12 @@ kitchens, and healthcare facilities. Available in a rich array of thicknesses, c
 this material unlocks endless design possibilities while delivering a seamless, modern aesthetic.
 Its unwavering durability and design adaptability have firmly positioned interior cladding
 compact laminate as the top choice for creating enduring and stylish interior surfaces.`,
-  boxes: [
+  images:[
+   {
+     headerImg: Img1,
+   }
+  ],
+boxes: [
     {
       icon: icon1,
       title: "SHEET THICKNESS",
