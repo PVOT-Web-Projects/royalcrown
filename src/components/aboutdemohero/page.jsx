@@ -11,9 +11,6 @@ import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
-
-
-
 export default function AboutUsDemo() {
   const sectionRef = useRef(null);
 
@@ -22,9 +19,9 @@ export default function AboutUsDemo() {
 
     gsap.fromTo(
       section,
-      { opacity: 1, scale: 1 , y: 0},
+      { opacity: 1, scale: 1, y: 0 },
       {
-        y : -200,
+        y: -200,
         scrollTrigger: {
           trigger: section,
           start: "20% 60%",
@@ -47,7 +44,7 @@ export default function AboutUsDemo() {
           initial={{ y: 500, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 1 }}
-          viewport={{once : true}}
+          viewport={{ once: true }}
           className="AbousUsTextContainerOuter"
         >
           <div className="AbousUsTextContainer">
@@ -60,7 +57,7 @@ export default function AboutUsDemo() {
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
               className="AbousUsTextImage"
-              viewport={{once : true}}
+              viewport={{ once: true }}
             >
               <Image src={Image1} alt="none" />
             </motion.div>
@@ -69,7 +66,7 @@ export default function AboutUsDemo() {
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 1.1, delay: 0.6 }}
               className="AbousUsTextImage1"
-              viewport={{once : true}}
+              viewport={{ once: true }}
             >
               <Image src={Image2} alt="none" />
             </motion.div>
@@ -78,7 +75,7 @@ export default function AboutUsDemo() {
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 1.3, delay: 0.8 }}
               className="AbousUsTextImage3"
-              viewport={{once : true}}
+              viewport={{ once: true }}
             >
               <Image src={Image4} alt="none" />
             </motion.div>
