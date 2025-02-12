@@ -7,7 +7,7 @@ import "./variables.scss";
 import dynamic from 'next/dynamic';
 import Form from "@/components/forms/form1/Form";
 import RoyalCrownSlider from "@/components/RoyalCrownSlider/RoyalCrownSlider";
-import SocialMediaImg from "@/images/socials-image.png";
+import SocialMediaImg from "@/images/socials-image.jpg";
 import SocialPage from "@/components/socialPage/socialpage";
 import Certification from "@/components/Certifications/Certification";
 // import ThreeSlider from "@/components/threedslider/page";

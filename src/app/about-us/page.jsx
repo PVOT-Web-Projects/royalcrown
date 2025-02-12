@@ -6,7 +6,7 @@ import AboutUsVision from "@/components/aboutUsVision/aboutUsVision";
 import AboutUsWhyUs from "@/components/aboutUsWhyUs/aboutUsWhyUs";
 import Form from "@/components/forms/form1/Form";
 import SocialPage from "@/components/socialPage/socialpage";
-import SocialMediaImg from "@/images/socials-image.png";
+import SocialMediaImg from "@/images/socials-image.jpg";
 import AboutUsDemo from "@/components/aboutdemohero/page";
 import HomeHeroSection from "@/components/homeHeroSection/page";
 import AboutUsHero from "@/components/aboutUsHero/aboutUsHero";
