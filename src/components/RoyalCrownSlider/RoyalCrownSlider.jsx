@@ -25,7 +25,7 @@ export default function App() {
   return (
     <div className="royal_crown_slider">
       <div className="RoyalCrownText">
-        <motion.div
+        {/* <motion.div
           className="RoyalCrownTextInner"
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -33,7 +33,7 @@ export default function App() {
           viewport={{ once: true }}
         >
           WHY
-        </motion.div>
+        </motion.div> */}
         {/* <p className="RoyalCrownTextInner">WHY</p> */}
         <motion.div
           className="RoyalCrownTextInnerFirst"
@@ -42,7 +42,7 @@ export default function App() {
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          ROYAL CROWN
+          Reasons to count on us
         </motion.div>
         {/* <p className="RoyalCrownTextInnerFirst">ROYAL CROWN</p> */}
       </div>
