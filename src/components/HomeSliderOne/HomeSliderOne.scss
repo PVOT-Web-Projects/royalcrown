@@ -31,7 +31,10 @@
     }
 
     @media (max-width: 1199px) {
-      margin-top: -310px;
+      margin-top: -370px;
+    }
+    @media(max-width: 768px){
+      margin-top: -220px;
     }
     @media (max-width: 575px) {
       margin-top: -215px;
@@ -190,12 +193,12 @@
       // }
       text {
         fill: #fff;
-        font-size: 2.5rem;
+        font-size: 1.5rem;
         letter-spacing: 0.03em;
         text-transform: uppercase;
-
+        font-family: "safira_march";
         @media (max-width: 768px) {
-          font-size: 2.2rem;
+          font-size: 1.8rem;
         }
 
         @media (max-width: 480px) {
