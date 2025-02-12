@@ -29,6 +29,9 @@
     margin-left: 100px;
     display: inline-block;
     padding-top: 2rem;
+    @media(max-width: 1300px){
+      margin-left: 70px;
+    }
     @media (max-width: 768px) {
       margin-left: 40px;
     }
@@ -41,13 +44,18 @@
     }
 
     .RoyalCrownTextInnerFirst {
-      font-size: 60px;
-      border-bottom: 1px solid #000000;
+      font-size: 40px;
+      // border-bottom: 1px solid #000000;
       width: 100%;
       margin-right: 50px;
+      text-transform: uppercase;
+      font-family: "safira_march";
       // padding-bottom: 2rem;
+      @media(max-width: 768px){
+        font-size: 27px;
+      }
       @media (max-width: 425px) {
-        font-size: 35px;
+        font-size: 21px;
         margin-right: 0px;
       }
     }
@@ -86,6 +94,7 @@
       }
       @media (max-width: 768px) {
         flex-direction: column;
+        width: 100%;
       }
 
       &.left {
@@ -319,6 +328,7 @@
 
     @media (max-width: 1300px) {
       padding-bottom: 3rem;
+      width: 85%;
     }
 
     @media (max-width: 767px) {
@@ -347,7 +357,7 @@
       font-style: normal;
       font-weight: normal;
       line-height: normal;
-      text-transform: capitalize;
+      // text-transform: capitalize;
       @media (max-width: 1440px) {
         font-size: 22px;
       }
