@@ -72,7 +72,7 @@ const PlyMarquee = () => {
                 </div>
               </div>
               <Image
-                loading="lazy" // This will lazy load images that aren't critical
+                // loading="lazy" // This will lazy load images that aren't critical
                 src={img12}
                 alt="ply"
               />
@@ -89,7 +89,7 @@ const PlyMarquee = () => {
                 </div>
               </div>
               <Image
-                loading="lazy" // This will lazy load images that aren't critical
+                // loading="lazy" // This will lazy load images that aren't critical
                 src={img21}
                 alt="ply"
               />
@@ -107,7 +107,7 @@ const PlyMarquee = () => {
               </div>
               <Image
                 src={img20}
-                loading="lazy" // This will lazy load images that aren't critical
+                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
             </div>
@@ -125,7 +125,7 @@ const PlyMarquee = () => {
               {/* baaki */}
               <Image
                 src={img9}
-                loading="lazy" // This will lazy load images that aren't critical
+                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
             </div>
@@ -142,7 +142,7 @@ const PlyMarquee = () => {
               </div>
               <Image
                 src={img13}
-                loading="lazy" // This will lazy load images that aren't critical
+                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
             </div>
@@ -159,7 +159,7 @@ const PlyMarquee = () => {
               </div>
               <Image
                 src={img24}
-                loading="lazy" // This will lazy load images that aren't critical
+                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
             </div>
@@ -176,7 +176,7 @@ const PlyMarquee = () => {
               </div>
               <Image
                 src={img25}
-                loading="lazy" // This will lazy load images that aren't critical
+                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
             </div>
@@ -193,7 +193,7 @@ const PlyMarquee = () => {
               </div>
               <Image
                 src={img8}
-                loading="lazy" // This will lazy load images that aren't critical
+                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
             </div>
@@ -211,7 +211,7 @@ const PlyMarquee = () => {
               </div>
               <Image
                 src={img2}
-                loading="lazy" // This will lazy load images that aren't critical
+                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
             </div>
@@ -228,7 +228,7 @@ const PlyMarquee = () => {
               </div>
               <Image
                 src={img22}
-                loading="lazy" // This will lazy load images that aren't critical
+                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
             </div>
@@ -246,7 +246,7 @@ const PlyMarquee = () => {
               </div>
               <Image
                 src={img23}
-                loading="lazy" // This will lazy load images that aren't critical
+                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
             </div>
@@ -263,7 +263,7 @@ const PlyMarquee = () => {
               </div>
               <Image
                 src={img6}
-                loading="lazy" // This will lazy load images that aren't critical
+                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
             </div>
@@ -282,7 +282,7 @@ const PlyMarquee = () => {
               </div>
               <Image
                 src={img7}
-                loading="lazy" // This will lazy load images that aren't critical
+                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
             </div>
@@ -299,7 +299,7 @@ const PlyMarquee = () => {
               </div>
               <Image
                 src={img11}
-                loading="lazy" // This will lazy load images that aren't critical
+                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
             </div>
@@ -317,7 +317,7 @@ const PlyMarquee = () => {
               </div>
               <Image
                 src={img10}
-                loading="lazy" // This will lazy load images that aren't critical
+                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
             </div>
@@ -334,8 +334,8 @@ const PlyMarquee = () => {
               </div>
               <Image
                 src={img4}
-                layout="intrinsic"
-                loading="lazy" // This will lazy load images that aren't critical
+                // layout="intrinsic"
+                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
             </div>
@@ -353,7 +353,7 @@ const PlyMarquee = () => {
               </div>
               <Image
                 src={img5}
-                loading="lazy" // This will lazy load images that aren't critical
+                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
             </div>
@@ -370,7 +370,7 @@ const PlyMarquee = () => {
               </div>
               <Image
                 src={img17}
-                loading="lazy" // This will lazy load images that aren't critical
+                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
             </div>
@@ -388,7 +388,7 @@ const PlyMarquee = () => {
               </div>
               <Image
                 src={img18}
-                loading="lazy" // This will lazy load images that aren't critical
+                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
             </div>
@@ -405,7 +405,7 @@ const PlyMarquee = () => {
               </div>
               <Image
                 src={img19}
-                loading="lazy" // This will lazy load images that aren't critical
+                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
             </div>
@@ -422,7 +422,7 @@ const PlyMarquee = () => {
               </div>
               <Image
                 src={img3}
-                loading="lazy" // This will lazy load images that aren't critical
+                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
             </div>
@@ -439,7 +439,7 @@ const PlyMarquee = () => {
               </div>
               <Image
                 src={img14}
-                loading="lazy" // This will lazy load images that aren't critical
+                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
             </div>
@@ -457,7 +457,7 @@ const PlyMarquee = () => {
               </div>
               <Image
                 src={img15}
-                loading="lazy" // This will lazy load images that aren't critical
+                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
             </div>
@@ -474,7 +474,7 @@ const PlyMarquee = () => {
               </div>
               <Image
                 src={img16}
-                loading="lazy" // This will lazy load images that aren't critical
+                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
             </div>
