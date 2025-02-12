@@ -16,7 +16,7 @@ import {
   Autoplay,
   Navigation,
 } from "swiper/modules";
-import testimonial1 from "@/images/Crownsliderimg1.png";
+import testimonial1 from "@/images/Crownsliderimg1.jpg";
 import { motion } from "framer-motion";
 
 export default function App() {
