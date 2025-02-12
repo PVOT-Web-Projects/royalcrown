@@ -110,7 +110,9 @@
   // padding: 0px 0 100px 0;
   padding: 150px 50px 100px 50px;
   // overflow: hidden;
-
+@media(max-width: 1280px){
+  padding: 0px 50px 100px 50px;
+}
   @media (max-width: 991px) {
     padding: 50px 0 100px 0;
   }
@@ -564,18 +566,18 @@
     gap: 1rem;
   }
 @media(max-width: 1330px){
-  width: 27%;
+  width: 20%;
 }
 @media(max-width: 1255px){
-  width: 30%;
+  width: 20%;
 }
   @media (max-width: 1180px) {
     top: 165px;
-    width: 35%;
+    width: 18%;
   }
   @media (max-width: 1056px) {
     // top: 165px;
-    width: 37%;
+    width: 30%;
   }
 
   @media (max-width: 575px) {

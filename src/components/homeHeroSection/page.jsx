@@ -84,7 +84,7 @@ export default function HomeHeroSection() {
                 should be worth a thousand memories. However, we do have a tiny
                 tale to tell, a sneak peek to our story. */}
               </div>
-              <div className="text-section-inner-footer">See our story</div>
+              <div className="text-section-inner-footer">know more</div>
             </div>
             <motion.div
               className="image-wrapper-2"

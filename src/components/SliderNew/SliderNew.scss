@@ -139,6 +139,9 @@
         z-index: 10 !important;
         filter: brightness(1) !important; // Ensure no brightness or dimming is applied
         mix-blend-mode: normal; // Ensure normal text visibility
+        @media(max-width: 1280px) {
+        left: 60px;
+        }
         @media(max-width: 1024px){
           left: 40px;
           width: 330px;
