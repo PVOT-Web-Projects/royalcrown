@@ -5,7 +5,7 @@ import "./product.scss";
 import AboutUs_products from "@/components/aboutUs_products/page";
 import Form from "@/components/forms/form1/Form";
 import SocialPage from "@/components/socialPage/socialpage";
-import SocialMediaImg from "@/images/socials-image.png";
+import SocialMediaImg from "@/images/socials-image.jpg";
 // import { useRef } from "react";
 const AboutUs = () => {
   // const section1 = useRef();

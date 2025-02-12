@@ -1,4 +1,4 @@
-import image1 from "@/images/Pl1.webp";
+import image1 from "@/images/Pl1.jpg";
 import image2 from "@/images/Pl2.webp";
 import image3 from "@/images/decorative3.png";
 import image4 from "@/images/interior1.png";

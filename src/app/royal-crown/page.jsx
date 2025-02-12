@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import SocialPage from "@/components/socialPage/socialpage";
 import Form from "@/components/forms/form1/Form";
-import SocialMediaImg from "@/images/socials-image.png";
+import SocialMediaImg from "@/images/socials-image.jpg";
 // import CategoryLeftRightCat from "@/components/categoryLeftRight/CategoryLeftRightOne";
 import AboutUs_productsRc from "@/components/aboutUs_productsRoyalCrown/page";
 import "./royalCrownPage.scss"
