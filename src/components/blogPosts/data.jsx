@@ -12,6 +12,8 @@ import BlogPostImage11 from "@/images/BlogsCards1.jpg";
 import BlogPostImage12 from "@/images/BlogsCards2.jpg";
 
 
+
+
 const Data = [
   {
     image: BlogPostImage1,
