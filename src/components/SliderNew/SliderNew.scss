@@ -234,12 +234,12 @@
             width: 100%;
             height: inherit;
             border-radius: inherit;
-            background: #fff;
+            // background: #fff;
             transition: all 0.475s;
           }
           &:hover {
             .button-content {
-              color: #5b3524;
+              // color: #5b3524;
             }
             &::before {
               transform: scaleX(1);
