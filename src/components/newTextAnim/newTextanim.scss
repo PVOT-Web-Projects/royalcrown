@@ -16,8 +16,12 @@
   font-size: 115px;
     line-height: 195px;
     font-family: "safira_march";
-font-family: "safira_march";
+// font-family: "safira_march";
   // font-family: "made_mirage_thin";
+  @media(max-width: 1300px){
+    font-size: 90px;
+    line-height: 152px;
+  }
   @media (max-width: 1024px) {
     // font-size: 160px;
     // line-height: 125px;

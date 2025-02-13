@@ -46,15 +46,15 @@ export default function HomeHeroSection() {
                   transition={{ duration: 1 }}
                   viewport={{ once: true }}
                 >
-                  Where elegance meets desire
+                  explore our legacy
                 </motion.div>
-                <motion.div
-                  className="animated-border"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "100%" }}
-                  transition={{ duration: 2, ease: "easeInOut" }}
-                  viewport={{ once: true }}
-                />
+                  {/* <motion.div
+                    className="animated-border"
+                    initial={{ width: 0 }}
+                    whileInView={{ width: "100%" }}
+                    transition={{ duration: 2, ease: "easeInOut" }}
+                    viewport={{ once: true }}
+                  /> */}
               </div>
             </div>
             <motion.div

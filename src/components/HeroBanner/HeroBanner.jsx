@@ -48,7 +48,7 @@ const HeroBanner = () => {
   return (
     <div className="hero_banner">
       <div className="banner_image">
-        {/* <Image src={banner} alt="banner" /> */}
+        <Image src={banner} alt="banner" />
         <div className="banner_text">
           <div className="text_effect">
           {isVisible && (
