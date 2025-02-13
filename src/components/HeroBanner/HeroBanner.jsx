@@ -11,15 +11,25 @@ import { useEffect, useState } from "react";
 const HeroBanner = () => {
   const [width, setWidth] = useState(0); 
   console.log("width", width);
+  const [isVisible, setIsVisible] = useState(false); // State to control visibility of animation
+ 
 
   useEffect(() => {
     setWidth(window.innerWidth);
+
     const handleResize = () => {
       setWidth(window.innerWidth);
-      window.addEventListener("resize", handleResize);
     };
-    return () => window.removeEventListener("resize", handleResize);
-  }, [width]);
+
+    // Set the animation to trigger after 10 seconds
+    const timer = setTimeout(() => {
+      setIsVisible(true); // Trigger the animation after 10 seconds
+    }, 5200); // 10 seconds (10000ms)
+
+    // Cleanup the timer on component unmount
+    return () => clearTimeout(timer);
+
+  }, []); // Only run once on mount
 
   let Y;
     if (width > 1600) {
@@ -41,7 +51,9 @@ const HeroBanner = () => {
         {/* <Image src={banner} alt="banner" /> */}
         <div className="banner_text">
           <div className="text_effect">
+          {isVisible && (
             <Textanim />
+          )}
             {/* <motion.div
               className="card"
               initial={{
