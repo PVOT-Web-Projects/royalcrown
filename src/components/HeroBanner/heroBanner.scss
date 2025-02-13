@@ -4,14 +4,14 @@
   background-color: #212121;
   font-family: "made_mirage_thin" !important;
   .banner_image {
-    height: 85vh;
+    height: 100vh;
     position: relative;
     @media(max-width: 1370px){
       // height: 80vh;
       height: 100vh;
     }
     @media(max-width: 475px){
-      height: 45vh;
+      // height: 45vh;
     }
     img {
       max-width: 100%;

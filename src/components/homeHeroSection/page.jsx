@@ -64,7 +64,7 @@ export default function HomeHeroSection() {
               transition={{ duration: 1 }}
               viewport={{ once: true }}
             >
-              <Image src={Image4} alt="Image 1" className="image-1" />
+              <Image src={Image4} alt="Image 1" className="image_1" />
             </motion.div>
           </div>
           <div className="text-section-content">

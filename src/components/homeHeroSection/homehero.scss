@@ -66,7 +66,7 @@
 
         .header_text {
           // font-family: "made_mirage_regular" !important;
-          font-size: 35px;
+          font-size: 40px;
           position: relative;
           display: inline-block;
 
@@ -120,11 +120,13 @@
           width: 300px;
           height: auto;
           transform: translate(10px, -210px) !important;
-
-          .image-1 {
+          @media(max-width: 1300px){
+            transform: translate(10px, -85px) !important;
+          }
+          .image_1 {
             // max-width: 100%;
             width: 250px;
-            height: 350px;
+            height: 320px !important;
             display: block;
             height: auto;
             margin: 0 auto;
@@ -176,7 +178,9 @@
 
         .image-wrapper-2 {
           transform: translate(10px, -100px) !important;
-
+          @media(max-width: 1300px){
+            transform: translate(10px, 20px) !important;
+          }
           @media (max-width: 768px) {
             display: none;
           }

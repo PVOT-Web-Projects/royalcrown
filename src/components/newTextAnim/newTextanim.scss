@@ -13,11 +13,21 @@
   // line-height: 160px;
   // font-size: 135px;
   //   line-height: 219px;
-  font-size: 115px;
-    line-height: 195px;
+  // font-size: 115px;
+  //   line-height: 195px;
+  font-size: 90px;
+  line-height: 152px;
     font-family: "safira_march";
 // font-family: "safira_march";
   // font-family: "made_mirage_thin";
+  @media(min-width: 1550px){
+    font-size: 115px;
+    line-height: 195px;
+  }
+  @media(max-width: 1440x){
+    font-size: 90px;
+    line-height: 152px;
+  }
   @media(max-width: 1300px){
     font-size: 90px;
     line-height: 152px;
@@ -25,14 +35,14 @@
   @media (max-width: 1024px) {
     // font-size: 160px;
     // line-height: 125px;
-    font-size: 123px;
-    line-height: 200px
+    font-size: 90px;
+    line-height: 152px
   }
   @media (max-width: 991px) {
     // font-size: 160px;
     // line-height: 125px;
-    font-size: 101px;
-        line-height: 170px;
+    font-size: 90px;
+        line-height: 152px;
   }
   @media (max-width: 768px) {
     // font-size: 150px;
