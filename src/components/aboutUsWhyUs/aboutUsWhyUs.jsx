@@ -46,7 +46,7 @@ export default function AboutUsWhyUs({heading , cardOneText , cardTwoText , card
                   </svg>
               </div>
               <div className="cardinner">
-                <div className="card_header">20+</div>
+                <div className="card_header">45+</div>
                 <div className="card_description">
                   {cardOneText}
                 </div>

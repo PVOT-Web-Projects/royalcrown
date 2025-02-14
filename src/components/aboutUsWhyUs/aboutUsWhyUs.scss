@@ -50,7 +50,7 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-end;
-                padding: 70px 40px 70px 40px;
+                padding: 70px 40px 40px 40px;
                 position: relative;
 
                 @media (max-width : 425px) {
@@ -76,7 +76,7 @@
                 .card_description {
                     font-family: "futura_thin";
                     font-size: 21px; // Adjust description font size
-                    padding: 15px 0px 10px 0px;
+                    padding: 15px 0px 30px 0px;
 
                     @media (max-width : 425px) {
                         font-size: 18px;
@@ -84,7 +84,7 @@
                 }
 
                 .card-button{
-                    margin-top: 15px;
+                    margin-top: auto;
                 }
             }
 
@@ -114,7 +114,7 @@
 
                 .cardinner_1,
                 .cardinner_2 {
-                    padding: 20px 50px 20px 50px;
+                    padding: 20px 50px 25px 50px;
 
                     @media (max-width : 425px) {
                         padding: 30px 20px;
@@ -167,7 +167,7 @@
                     transition: all 0.5s ease;
 
                     .card-button{
-                        margin-top: 15px;
+                        margin-top: auto;
                     }
 
                     &:hover {
@@ -191,7 +191,7 @@
 
                 .card_description {
                     font-size: 21px; // Adjust description font size
-                    padding: 5px 0px 10px 0px;
+                    padding: 5px 0px 30px 0px;
 
                     @media (max-width : 425px) {
                         font-size: 18px;
