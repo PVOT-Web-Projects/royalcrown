@@ -40,7 +40,7 @@ const AnimatedCharacters = ({ text, type }) => {
   const words = splitWords.map((word) => word.split(""))
 
   // Add a space character at the end of each word for spacing
-  words.forEach((word) => word.push("\u00A0"))
+  // words.forEach((word) => word.push("\u00A0"))
 
   // Get the tag name from the tagMap based on the type (heading or paragraph)
   const Tag = tagMap[type] || "span"

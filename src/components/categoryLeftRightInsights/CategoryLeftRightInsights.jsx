@@ -15,7 +15,7 @@ import logo5 from "@/images/svgLogos/FinalHeaderLogo.svg";
 // import CategoryLeftRightItem from "./categoryLeftRightItem.jsx/CategoryLeftRightItem";
 import CategoryLeftRightItemInsights from "./categoryLeftRightItemInsights.jsx/CategoryLeftRightItemInsights";
 import "./categoryLeftRightInsights.scss";
-
+import { motion } from "framer-motion";
 const categoryLeftRightData = [
   {
     // CardNumber: "01",
@@ -79,7 +79,16 @@ const CategoryLeftRightInsights = () => {
   return (
     <div className="category_left_right">
       <div>
-        <div className="InsightsTextInnerF">Insights</div>
+      <motion.div
+          className="InsightsTextInnerF"
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          Insights
+        </motion.div>
+        {/* <div className="InsightsTextInnerF">Insights</div> */}
         {/* <p>Insights</p> */}
       </div>
       <div className="category_left_right_wrapper">
