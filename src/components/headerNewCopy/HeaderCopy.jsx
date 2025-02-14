@@ -982,7 +982,7 @@ const HeaderCopy = () => {
               }}
               transition={{ type: "spring", stiffness: 50 }} // Smooth spring animation
             >
-              <ul 
+              <div 
               id="MainMobile"
                className={isHome ? "dark" : "ligh t"}>
                 <div className="ToggleMainName">
@@ -1064,7 +1064,7 @@ const HeaderCopy = () => {
 
                   {isCategoryOpen && (
                     <div className="category-dropdown">
-                      <ul>
+                      <div>
                         {categoryData.map((category, categoryIndex) => (
                           <li key={categoryIndex} className="subcategory">
                             <Link
@@ -1084,7 +1084,7 @@ const HeaderCopy = () => {
                             {/* Subcategory Dropdown */}
                             {activeCategory === categoryIndex && (
                               <div className="subcategory-dropdown">
-                                <ul className="subcategoryInner">
+                                <div className="subcategoryInner">
                                   {category.items.map((item, itemIndex) => (
                                     <motion.li
                                       initial={{ opacity: 0 }}
@@ -1098,17 +1098,18 @@ const HeaderCopy = () => {
                                       <Link
                                         href={item.url}
                                         onClick={toggleMenu}
+                                        className="subcategoryInnertext"
                                       >
                                         {item.name}{" "}
                                       </Link>
                                     </motion.li>
                                   ))}
-                                </ul>
+                                </div>
                               </div>
                             )}
                           </li>
                         ))}
-                      </ul>
+                      </div>
                     </div>
                   )}
                 </motion.li>
@@ -1161,7 +1162,7 @@ const HeaderCopy = () => {
               </ul>
             </div>
                 </div>
-              </ul>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

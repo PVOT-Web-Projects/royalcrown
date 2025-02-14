@@ -2,46 +2,60 @@
 
 .ply_marquee {
   // background-color: #FFF5ED;
-  background: linear-gradient(to bottom, #FFEEE2, #FFEDE0, #FFECDE, #FFEBDD, #FFEADB);
+  background: linear-gradient(
+    to bottom,
+    #ffeee2,
+    #ffede0,
+    #ffecde,
+    #ffebdd,
+    #ffeadb
+  );
   padding: 100px 0;
   overflow: hidden;
-  .MarqueeTextFirst{
-    font-size: 60px;
+  .MarqueeTextFirst {
+    font-size: 35px;
     padding: 20px 70px;
     text-transform: uppercase;
     font-weight: 400;
-    @media(max-width: 425px){
-      font-size: 45px;
+    font-family: "safira_march";
+    @media (max-width: 425px) {
+      font-size: 30px;
       padding: 0px 20px 10px;
     }
+    @media (max-width: 350px) {
+      font-size: 25px;
+    }
+    div {
+      font-family: "safira_march";
+    }
   }
-  .MarqueeTextSecond{
+  .MarqueeTextSecond {
     font-family: "futura_thin";
     font-size: 21px;
     padding: 0px 100px;
     font-weight: 400;
     width: 45%;
-    @media(min-width: 1500px){
+    @media (min-width: 1500px) {
       width: 35%;
     }
-    @media(max-width: 1200px){
+    @media (max-width: 1200px) {
       width: 55%;
     }
-    @media(max-width: 575px){
+    @media (max-width: 575px) {
       width: 85%;
       padding: 0px 50px 20px;
     }
-    @media(max-width: 425px){
+    @media (max-width: 425px) {
       padding: 0px 20px 10px;
     }
   }
-  .MarqueeTextSecondInner{
+  .MarqueeTextSecondInner {
     padding-top: 1rem;
   }
-  .MarqueMainSection{
+  .MarqueMainSection {
     // padding-left: 100px;
   }
-  
+
   .ply_list {
     padding: 150px 0 100px;
     @media (max-width: 991px) {
@@ -54,20 +68,28 @@
       display: inline-block;
       padding: 0 20px;
       cursor: pointer;
+      position: relative; // Add this to make absolute positioning work
       @media (max-width: 575px) {
         padding: 0 10px;
       }
+      img {
+        width: 251px;
+        height: 301px !important;
+        transition: filter 0.4s; // Add transition for smooth effect
+      }
       &:hover {
+        img {
+          filter: brightness(0.5); // Reduce brightness on hover
+        }
         .ply_info {
-          transform: translateY(120px);
+          transform: translateY(0);
           opacity: 1;
         }
       }
-      img{
-        width: 251px;
-        height: 301px !important;
-
-      }
+      // img {
+      //   width: 251px;
+      //   height: 301px !important;
+      // }
       &.top1 {
         transform: translateY(-40px);
       }
@@ -80,14 +102,19 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        transform: translateY(80px);
+        position: absolute;
+        transform: translateY(20px);
         opacity: 0;
         transition: all 0.4s;
-        position: absolute;
-        margin-left: 20px;
-        // z-index: -1;
+        margin-left: 10px;
+        top: 216px;
+        // bottom: 0;
+        // left: 20px;
+        // right: 62px;
+        padding: 10px;
+        z-index: 1;
         .info_left {
-          border: 1px solid white;
+          // border: 1px solid white;
           padding: 5px 20px;
           color: white;
           .num {

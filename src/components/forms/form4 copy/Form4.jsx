@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import image from "@/images/getInTouchImage.png";
+import image from "@/images/getInTouchImage.jpg";
 import "./form4.scss";
 import { useState } from "react";
 import ClickHandler from "@/components/buttons/clickHandler/ClickHandler";

@@ -8,7 +8,8 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: linear-gradient(to bottom, #FFEEE2, #FFEDE0, #FFECDE, #FFEBDD, #FFEADB);
+  background-color: #252220;
+  // background: linear-gradient(to bottom, #FFEEE2, #FFEDE0, #FFECDE, #FFEBDD, #FFEADB);
 //   border-bottom: 1px solid #5b3524;
   @media(max-width: 768px){
     padding: 0px !important;
@@ -53,6 +54,7 @@
       .text-section-header {
         text-transform: uppercase;
         display: flex;
+        color: white;
 
         @media (max-width: 991px) {
           flex-direction: column;
@@ -65,37 +67,46 @@
         }
 
         .header_text {
-          font-family: "made_mirage_regular" !important;
-          font-size: 60px;
+          // font-family: "made_mirage_regular" !important;
+          font-size: 40px;
           position: relative;
           display: inline-block;
+          color: white;
 
           @media (min-width: 1500px) {
-            font-size: 65px;
+            font-size: 40px;
             width: 80%;
           }
           @media(max-width:1200px){
-            font-size: 45px;
+            font-size: 30px;
+          }
+          @media(max-width:1199px){
+            font-size: 30px;
           }
           @media (max-width: 991px) {
             text-align: center;
           }
 
           @media (max-width: 768px) {
-            font-size: 45px;
+            font-size: 23px;
           }
 
           @media (max-width: 575px) {
-            font-size: 40px;
+            font-size: 22px;
           }
 
           @media (max-width: 475px) {
-            font-size: 28px;
+            font-size: 18px;
+          }
+          @media (max-width: 375px) {
+            font-size: 16px;
           }
           .HeaderTextInner{
             letter-spacing: 2px;
             font-weight: 550;
-            font-family: "made_mirage_regular";
+            // font-family: "made_mirage_regular";
+            font-family: "safira_march";
+            color: white;
           }
 
           .animated-border {
@@ -113,11 +124,16 @@
           width: 300px;
           height: auto;
           transform: translate(10px, -210px) !important;
-
-          .image-1 {
+          @media(min-width: 1800px){
+            transform: translate(225px, -210px) !important;
+          }
+          @media(max-width: 1300px){
+            transform: translate(10px, -85px) !important;
+          }
+          .image_1 {
             // max-width: 100%;
             width: 250px;
-            height: 350px;
+            height: 320px !important;
             display: block;
             height: auto;
             margin: 0 auto;
@@ -140,6 +156,7 @@
           font-family: "futura_thin";
           font-weight: 550;
             width: 80%;
+            color: white;
             @media(min-width: 1500px){
                 width: 75%;
             }
@@ -152,24 +169,38 @@
         .text-section-inner-footer {
           font-family: "futura_thin";
           font-weight: 550;
-          // font-family: "made_mirage_bold";
           padding-top: 3rem;
           font-size: 25px;
+          color: white;
           text-transform: uppercase;
-          border-bottom: 1px solid $white;
-          max-width: max-content;
-          // color: #FFF5ED;
+          border-bottom: 1px solid white;
+          display: inline-block;
           cursor: pointer;
           transition: all .5s ease-in-out;
-          &:hover{
-            color: #5b3524d7;
-            border-bottom: 1px solid #5b3524d7;
+          position: relative; // This is required for the pseudo-element to be positioned relative to this element.
+        
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px; // Thickness of the underline
+            background-color: white; // Color of the underline
+            transition: width 0.3s ease; // Underline draw animation
+          }
+        
+          &:hover::after {
+            width: 100%; // Underline will expand to full width when hovered
           }
         }
+        
 
         .image-wrapper-2 {
           transform: translate(10px, -100px) !important;
-
+          @media(max-width: 1300px){
+            transform: translate(10px, 20px) !important;
+          }
           @media (max-width: 768px) {
             display: none;
           }

@@ -89,6 +89,9 @@ export default function ProductInfoSlider() {
     handleSingleProject(hashUrl);
   }, [pathname, searchParams]);
 
+
+
+  
   const handleSingleProject = async (hashUrl) => {
     try {
       const response = await fetch(

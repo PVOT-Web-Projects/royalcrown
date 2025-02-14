@@ -130,7 +130,7 @@ header {
         gap: 20px;
       }
       @media (max-width: 991px) {
-        display: none; /* Hide desktop menu on mobile */
+        display: none !important; /* Hide desktop menu on mobile */
       }
       &.dark {
         color: white !important;
@@ -152,7 +152,7 @@ header {
           color: white !important;
           // height: 15px;
           a {
-            color: white !important;
+            color: #fff !important;
           }
         }
       }
@@ -406,6 +406,8 @@ header {
         padding: 90px 20px 30px;
       }
       #MainMobile {
+        list-style: none;
+        text-decoration: none;
         display: flex;
         flex-direction: column;
         justify-content: left;
@@ -428,16 +430,21 @@ header {
         font-size: 18px;
         font-weight: bolder;
         text-transform: uppercase;
+        color: #5b3524;
       }
       .SubcategoryName {
         font-size: 17px;
         padding-bottom: 10px;
+        color: #5b3524;
       }
       .subcategoryInner {
         padding: 5px 0 0 10px;
         @media (max-height: 800px) {
           max-height: 100px; /* Maximum height of the dropdown */
           overflow-y: auto; /* Make it scrollable if content exceeds max-height */
+        }
+        .subcategoryInnertext{
+          color: #5b3524;
         }
       }
       .category-icon {
@@ -487,6 +494,7 @@ header {
         // }
       }
       .subcategory {
+        padding: 0 0 10px 0;
       }
 
       /* Show dropdowns when category is open */

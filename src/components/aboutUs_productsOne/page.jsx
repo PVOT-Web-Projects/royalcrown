@@ -563,6 +563,7 @@ useEffect(() => {
       <div className="first_top1">
         <div id="sticky_top" className="products_name">
           <motion.div
+          className="exploreCollection"
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}

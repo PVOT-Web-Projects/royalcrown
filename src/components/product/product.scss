@@ -22,17 +22,20 @@
 
     .productHeader {
         text-align: center;
-        font-size: 80px;
+        font-size: 40px;
         letter-spacing: 5px;
         text-transform: uppercase;
 
         .productHeaderInner {
-            font-family: "made_mirage_regular";
+            font-family: "safira_march";
         }
 
         @media (max-width: 575px) {
-            font-size: 50px;
+            font-size: 25px;
         }
+        @media (max-width: 475px) {
+          font-size: 22px;
+      }
     }
 
     .productNumber {
