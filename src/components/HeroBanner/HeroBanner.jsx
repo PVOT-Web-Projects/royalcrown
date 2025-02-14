@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import banner from "@/images/hero_banner.png"; 
+import banner from "@/images/spotless laminates.jpg"; 
 import Textanim from "@/components/newTextAnim/page"
 import "./heroBanner.scss";
 import { motion } from "framer-motion";
