@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 0rem;
     padding: 100px 0;
     .ContactUsHearText {
       font-size: 30px;
@@ -18,10 +18,10 @@
       }
     }
     .ContactUsHearTextOne {
-      font-size: 30px;
+      font-size: 24px;
       text-align: center;
       @media(max-width: 575px){
-        font-size: 25px;
+        font-size: 20px;
       }
     }
   }

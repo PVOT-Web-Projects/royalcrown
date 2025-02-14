@@ -35,7 +35,7 @@ export default function AboutUsVision() {
             </div>
             <div className="description_right">
               <div className="description_right_box">
-                <div className="right_box_number">10</div>
+                <div className="right_box_number">45</div>
               </div>
               <div className="description_right_text">years of experience</div>
             </div>
