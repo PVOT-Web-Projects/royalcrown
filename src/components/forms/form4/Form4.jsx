@@ -73,7 +73,7 @@ const Form4 = () => {
           <div className="form4_wrap">
             {/* <Form /> */}
             <div className="form4_wrap_inner">
-              <h2>Let’s Get In Touch.</h2>
+              <h2>Let’s Get In Touch</h2>
               <p>
                 Our helpline is always open to receive any inquiry or feedback.
                 Please feel free to drop us an email from the form below and we
