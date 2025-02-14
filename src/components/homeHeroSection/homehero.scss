@@ -81,7 +81,7 @@
             font-size: 30px;
           }
           @media(max-width:1199px){
-            font-size: 23px;
+            font-size: 30px;
           }
           @media (max-width: 991px) {
             text-align: center;
@@ -124,6 +124,9 @@
           width: 300px;
           height: auto;
           transform: translate(10px, -210px) !important;
+          @media(min-width: 1800px){
+            transform: translate(225px, -210px) !important;
+          }
           @media(max-width: 1300px){
             transform: translate(10px, -85px) !important;
           }

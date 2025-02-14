@@ -6,6 +6,15 @@ import { motion } from "framer-motion";
 const TimelineHome = () => {
   return (
     <div className="Timelinecontainer">
+        <motion.div
+           className="certification_heading"
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1 }}
+                viewport={{ once: true }}
+              >
+                Our Legacy: 45 Years of Excellence
+              </motion.div>
       <div className="Timelinecontainer1">
         <motion.div
           className="TimelinetextContainer1"
