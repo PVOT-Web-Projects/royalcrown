@@ -11,6 +11,9 @@
   @media (min-width : 1600px) {
     padding: 200px 200px;
   }
+  @media(max-width: 900px){
+    padding: 100px 100px;
+  }
   @media(max-width: 768px){
     padding: 50px 100px;
   }
@@ -42,29 +45,38 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 20px 0px 20px 135px;
+  margin: 20px 0px 20px -55%;
   width: 100%;
 
   @media (max-width : 1260px) {
-    margin: 20px 0px 20px 170px;
+    // margin: 20px 0px 20px 170px;
   }
 
   @media (max-width : 1120px) {
-    margin: 20px 0px 20px 25px;
+    // margin: 20px 0px 20px 25px;
+  }
+  @media (max-width : 900px) {
+    // margin: 20px 0px 20px 10px;
+    margin: 0px 0px 40px 0%;
   }
   @media (max-width : 600px) {
     margin: 0 !important;
+    flex-direction: column;
   }
 }
 
 .TimelineContainer3 {
   display: flex;
-  flex-direction: row;
-  margin: 20px 40% 20px 0;
+  // flex-direction: row;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0% 20px 32%;
   width: 100%;
 
   @media (max-width : 1120px) {
-    margin: 20px 90% 20px 0;
+    // margin: 20px 90% 20px 0;
+    margin: 60px 0% 20px 32%;
   }
 
   @media (max-width : 600px) {
@@ -91,7 +103,22 @@
     width: 95% !important;
   }
 }
-
+.TimelinetextContainer2 {
+  font-family: "futura_thin";
+  font-size: 21px;
+  width: 60%;
+  //   padding: 20px;
+  text-align: left;
+  transform: translate(10px, 50px) !important;
+  
+  @media (max-width : 1120px) {
+    width: 65%;
+    font-size: 21px;
+  }
+  @media(max-width: 575px){
+    width: 95% !important;
+  }
+}
 .TimelinetextContainer3 {
   font-size: 24px;
   width: 60%;
@@ -115,7 +142,7 @@
       width: 92%; 
     }
     @media(max-width: 575px){
-      margin: 0;
+      margin-left: 100px;
     }
   }
 }
@@ -214,7 +241,7 @@
   &::after {
     position: absolute;
     content: "";
-    left: 85px;
+    left: 130px;
     border: 1px solid black;
     height: 1px;
     height: 150%;
@@ -276,7 +303,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 20px 0px 20px 145px;
+    margin: 20px 0px 20px -40%;
     width: 100%;
   }
 
@@ -306,7 +333,10 @@
   .TimelineContainer3 {
     display: flex;
     flex-direction: row;
-    margin: 20px 35% 20px 0;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    // margin: 20px 35% 20px 0;
     width: 100%;
   }
 
