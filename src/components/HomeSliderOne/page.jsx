@@ -422,7 +422,7 @@ const SwiperCarousel = () => {
                   isHovered
                     ? // M 50 330 Q 200 180 400 330 Q 600 430 750 280
                       "M 50 290 Q 200 140 400 290 Q 600 310 750 240" // Path on hover
-                    : "M 100 400 A 300 350 0 0 1 700 400" // Path when not hovered
+                    : "M 200 250 A 200 200 0 0 1 600 250" // Path when not hovered
                 }
                 fill="transparent"
               />
@@ -434,7 +434,7 @@ const SwiperCarousel = () => {
                 startOffset="50%" // Position text along the path
                 textAnchor="middle" // Center the text
               >
-                WHERE ELEGANCE MEETS DESIRE
+                WHERE &nbsp; ELEGANCE &nbsp; MEETS &nbsp; DESIRE
                 {/* drinking the acid water from the sky */}
               </motion.textPath>
             </text>
