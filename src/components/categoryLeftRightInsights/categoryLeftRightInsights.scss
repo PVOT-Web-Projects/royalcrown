@@ -1,14 +1,18 @@
 // @import "../../app/variables.scss";
 .InsightsTextInnerF {
   
-  font-size: 60px;
+  font-size: 40px;
   // font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 5px;
   // padding: 100px 100px 0;
   padding: 0 0 100px 0;
   text-align: center;
-  font-family: "made_mirage_regular";
+  font-family: "safira_march";
+  @media(max-width: 475px){
+    font-size: 28px;
+    padding: 0 0 40px 0;
+  }
 }
 .category_left_right {
   background: linear-gradient(to bottom, #FFEEE2, #FFEDE0, #FFECDE, #FFEBDD, #FFEADB);
