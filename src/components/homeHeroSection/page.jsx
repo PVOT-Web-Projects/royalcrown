@@ -46,15 +46,15 @@ export default function HomeHeroSection() {
                   transition={{ duration: 1 }}
                   viewport={{ once: true }}
                 >
-                  Where elegance meets desire
+                  explore our legacy
                 </motion.div>
-                <motion.div
-                  className="animated-border"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "100%" }}
-                  transition={{ duration: 2, ease: "easeInOut" }}
-                  viewport={{ once: true }}
-                />
+                {/* <motion.div
+                    className="animated-border"
+                    initial={{ width: 0 }}
+                    whileInView={{ width: "100%" }}
+                    transition={{ duration: 2, ease: "easeInOut" }}
+                    viewport={{ once: true }}
+                  /> */}
               </div>
             </div>
             <motion.div
@@ -64,27 +64,36 @@ export default function HomeHeroSection() {
               transition={{ duration: 1 }}
               viewport={{ once: true }}
             >
-              <Image src={Image4} alt="Image 1" className="image-1" />
+              <Image src={Image4} alt="Image 1" className="image_1" />
             </motion.div>
           </div>
           <div className="text-section-content">
             <div className="text-section-inner">
               <div className="TextSectionInnerFirst">
-                At Royal Crown, customers are the cornerstone of our unique
+                Royal Crown Laminates' legacy celebrates innovation,
+                cutting-edge technology, craft, and expertise in delivering the
+                best and trendsetting laminate surfaces. We have grown to become
+                a leader in every sense of the word in the laminate industry.Our
+                unceasing efforts with architects, interiors, OEMs, contractors,
+                carpenters, and end consumers and an in-depth understanding of
+                the market and its demands have strengthened our product base.
+                Moreover, it has helped us establish ourselves as domestic and
+                global leaders.
+                {/* At Royal Crown, customers are the cornerstone of our unique
                 business model. We are dedicated to providing every individual
                 with an unparalleled royal service, ensuring that their
                 experience is etched into their memories forever. Our story
                 began on a scorching Indian summer day, where the golden grasses
                 and swaying flowers painted a picture of tranquility. It was on
                 this day that a visionary businessmen's dream was transformed
-                into the reality we now know as Royal Crown.
+                into the reality we now know as Royal Crown. */}
                 {/* Customers are at the heart of our unique business model. Royal
                 Crown thrives at providing royal service to everyone. Our work
                 is all about our customers and we believe their experience
                 should be worth a thousand memories. However, we do have a tiny
                 tale to tell, a sneak peek to our story. */}
               </div>
-              <div className="text-section-inner-footer">know more</div>
+              <div className="text-section-inner-footer">read more</div>
             </div>
             <motion.div
               className="image-wrapper-2"

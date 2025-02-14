@@ -4,13 +4,14 @@
   background-color: #212121;
   font-family: "made_mirage_thin" !important;
   .banner_image {
-    height: 85vh;
+    height: 100vh;
     position: relative;
     @media(max-width: 1370px){
-      height: 80vh;
+      // height: 80vh;
+      height: 100vh;
     }
     @media(max-width: 475px){
-      height: 45vh;
+      // height: 45vh;
     }
     img {
       max-width: 100%;
@@ -18,6 +19,7 @@
       height: 100%;
       // object-fit: cover;
       display: block;
+      filter: brightness(0.5);
       @media(max-width: 768px){
         object-fit: cover;
       }

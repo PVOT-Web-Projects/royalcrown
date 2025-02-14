@@ -6,6 +6,15 @@ import { motion } from "framer-motion";
 const TimelineHome = () => {
   return (
     <div className="Timelinecontainer">
+        <motion.div
+           className="certification_heading"
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1 }}
+                viewport={{ once: true }}
+              >
+                Our Legacy: 45 Years of Excellence
+              </motion.div>
       <div className="Timelinecontainer1">
         <motion.div
           className="TimelinetextContainer1"
@@ -14,17 +23,12 @@ const TimelineHome = () => {
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          {/* We are known for providing high density laminates with unparalleled
-          services in terms of quality and reliability. We are known for
-          providing high density laminates with unparalleled services in terms
-          of quality and reliability. */}
-          Our extensive network of 15,000 dealers/sub-dealers/retailers and over
-          30 distributors across India ensures that our products are readily
-          available, allowing us to better serve you. Our success extends beyond
-          India, as we proudly export our products to Europe, Asia, Latin
-          America, Australia and North America, marking our presence on the
-          international stage. From Ahmedabad to the world, we are reaching new
-          horizons.
+          For over 45 years, Royal Crown Laminates has been at the forefront of
+          the decorative laminates industry. Our journey began with a bold
+          vision to transform interior spaces through innovative, high-quality
+          laminates that marry aesthetics with durability. This long-standing
+          legacy of excellence has built a foundation of trust among designers,
+          architects, and homeowners alike.
         </motion.div>
         <motion.div
           className="Timelinecircle1"
@@ -36,6 +40,19 @@ const TimelineHome = () => {
       </div>
       <div className="Timelinecontainer2">
         <motion.div
+          className="TimelinetextContainer2"
+          initial={{ x: -200, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1  , delay: 1 }}
+          viewport={{ once: true }}
+        >
+          Our enduring reputation is rooted in decades of experience and a
+          relentless commitment to quality. Every laminate we produce reflects
+          our heritage of precision craftsmanship and the integration of modern
+          technology, ensuring products that not only enhance your living spaces
+          but also stand the test of time.
+        </motion.div>
+        <motion.div
           className="Timelinecircle2"
           initial={{ x: 0, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
@@ -46,22 +63,18 @@ const TimelineHome = () => {
       <div className="TimelineContainer3">
         <motion.div
           className="TimelinetextContainer3"
-          initial={{ x: -200, opacity: 0 }}
-          whileInView={{ x: 100, opacity: 1 }}
+          initial={{ x: 200, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
           viewport={{ once: true }}
         >
           <p className="TimeTextNewinner">
-            {" "}
-            {/* We are known for providing high density laminates with unparalleled
-            services in terms of quality and reliability. We are known for
-            providing high density laminates with unparalleled services in terms
-            of quality and reliability. */}
-            We have made substantial investments in wind and solar power to
-            effectively minimise our carbon footprint. Our product mixes are
-            continuously evolving to proactively reduce our impact on the
-            environment. As proud members of FSC, Green-guard, and other
-            organisations, we are committed to sustainability.
+            At Royal Crown Laminates, our 45-year legacy is more than just a
+            milestone—it’s a promise to continually deliver superior design,
+            sustainable practices, and customer-centric solutions. As we evolve
+            with the market, our focus remains on innovating and setting new
+            benchmarks in quality, ensuring that every project you undertake is
+            supported by a heritage of expertise and reliability.
           </p>
         </motion.div>
 

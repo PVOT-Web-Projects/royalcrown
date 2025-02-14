@@ -228,13 +228,13 @@ const MyForm = () => {
           </div>
         </form>
       </div>
-      <div className="form_footer">
+      {/* <div className="form_footer">
         <div>
           We are known for providing high density laminates with unparalleled
           services in terms of quality and reliability. We are known for
           providing high.
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

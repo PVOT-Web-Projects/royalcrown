@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import banner from "@/images/hero_banner.png"; 
+import banner from "@/images/spotless laminates.jpg"; 
 import Textanim from "@/components/newTextAnim/page"
 import "./heroBanner.scss";
 import { motion } from "framer-motion";
@@ -48,7 +48,7 @@ const HeroBanner = () => {
   return (
     <div className="hero_banner">
       <div className="banner_image">
-        {/* <Image src={banner} alt="banner" /> */}
+        <Image src={banner} alt="banner" />
         <div className="banner_text">
           <div className="text_effect">
           {isVisible && (
