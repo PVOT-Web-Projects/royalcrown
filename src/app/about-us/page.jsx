@@ -24,16 +24,16 @@ const AboutUs = () => {
       <AboutUsWhyUs
         heading={"Why Us"}
         cardOneText={
-          "We are known for providing high density laminates with unparalleled services in terms of quality and reliability. We are known for providing high density laminates with unparalleled services in terms of quality and reliability."
+          "With over 45 years of expertise, Royal Crown Laminates has built a strong legacy ofquality and trust. Our journey reflects a commitment to excellence, delivering premiumlaminates that blend aesthetics with durability."
         }
         cardTwoText={
-          "We are known for providing high density laminates with unparalleled services in terms of quality and reliability. We are known for providing high density laminates with unparalleled services in terms of quality and reliability."
+          "Our diverse range of laminates offers endless design possibilities. With various textures, finishes, and thicknesses, we provide solutions for both residential andcommercial projects. Whether you seek classic elegance or contemporary designs."
         }
         cardThreeText={
-          "We are known for providing high density laminates with unparalleled services in terms of quality and reliability. We are known for providing high density laminates with unparalleled services in terms of quality and reliability."
+          "Innovation drives everything we do at Royal Crown Laminates. We constantly explorenew designs, materials, and technologies to create high-quality laminates. We ensureour products stay ahead of trends, offering stylish solutions."
         }
         cardFourText={
-          "We are known for providing high density laminates with unparalleled services in terms of quality and reliability. We are known for providing high density laminates with unparalleled services in terms of quality and reliability."
+          "We adhere to the highest quality and environmental standards, reflected in ourprestigious certifications like FSC and Greengard. These certifications ensure that ourproducts are safe, sustainable, and responsibly manufactured."
         }
       />
       <div className="Form_Page">

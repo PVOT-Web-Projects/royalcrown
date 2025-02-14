@@ -2,18 +2,19 @@
 import Image from "next/image";
 import AboutUs_vision from "@/images/fctImage.JPG";
 import "./aboutUsVision.scss";
-import {motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function AboutUsVision() {
   return (
     <>
       <div className="aboutVisionWrapper">
         <div className="aboutVisionContainer">
-          <motion.div className="visionHeader"
-          initial={{ y: 50, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
+          <motion.div
+            className="visionHeader"
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
           >
             <div>Vision</div>
           </motion.div>
@@ -22,10 +23,15 @@ export default function AboutUsVision() {
           </div>
           <div className="visionDescription">
             <div className="description_left">
-              We are known for providing high density laminates with
-              unparalleled services in terms of quality and reliability. We are
-              known for providing high density laminates with unparalleled
-              services in terms of quality and reliability.
+              At the heart of The Royal Way lies our vision: Customers for Life.
+              We believe in forging enduring relationships by delivering
+              exceptional quality, innovative design, and unmatched service. Our
+              commitment is to transform everyday spaces into
+              inspiring experiences, ensuring that every interaction builds
+              trust, and every project reflects our passion for excellence. By
+              listening to our customers and anticipating their needs, we aim to
+              create not just products, but lasting value that turns every
+              client into a lifelong partner.
             </div>
             <div className="description_right">
               <div className="description_right_box">

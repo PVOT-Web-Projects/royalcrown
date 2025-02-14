@@ -15,11 +15,14 @@
 .form_header {
   text-align: left;
   margin-bottom: 50px;
-  font-size: 50px;
+  font-size: 28px;
+  font-family: "safira_march";
   width: 78%;
-
+@media(max-width: 1199px){
+  font-size: 26px;
+}
   @media (max-width : 575px) {
-    font-size: 32px;
+    font-size: 18px;
     width: 100%;
   }
 }
