@@ -22,7 +22,6 @@ import testimonial3 from "@/images/Product_Compatibility_Image.jpg";
 import testimonial4 from "@/images/Environment.webp";
 import testimonial5 from "@/images/Order_and_delivery.jpg";
 
-
 import { motion } from "framer-motion";
 
 export default function App() {
@@ -48,7 +47,9 @@ export default function App() {
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          Reasons to count on us
+          {/* Reasons to count on us
+           */}
+           why royal crown
         </motion.div>
         {/* <p className="RoyalCrownTextInnerFirst">ROYAL CROWN</p> */}
       </div>
@@ -64,10 +65,10 @@ export default function App() {
               className="mySwiper"
               modules={[FreeMode, Thumbs, Autoplay, Navigation]}
               slidesPerView={1}
-              // autoplay={{
-              //   delay: 2500,
-              // }}
-              // loop={true}
+              autoplay={{
+                delay: 2500,
+              }}
+              loop={true}
               // navigation={true}
               navigation={{
                 nextEl: ".swiper-button-next",
@@ -122,7 +123,8 @@ export default function App() {
                 </div>
               </SwiperSlide>
             </Swiper>
-
+            <div className="swiper-button-next"></div>
+            <div className="swiper-button-prev"></div>
             {/* <div className="swiper-button-next"></div>
             <div className="swiper-button-prev"></div> */}
           </div>
@@ -136,19 +138,19 @@ export default function App() {
             <Swiper
               modules={[Thumbs, Autoplay, EffectFade]}
               onSwiper={setThumbsSwiper}
-              // loop={true}
-              // autoplay={{
-              //   delay: 2500,
-              // }}
+              loop={true}
+              autoplay={{
+                delay: 5000,
+              }}
               // navigation={true}
               slidesPerView={1}
               speed={1500}
               effect="fade"
               fadeEffect={{ crossFade: true }}
-              // navigation={{
-              //   nextEl: ".swiper-button-next",
-              //   prevEl: ".swiper-button-prev",
-              // }}
+              navigation={{
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+              }}
               // pagination={{
               //   dynamicBullets: true,
               // }}
@@ -157,16 +159,12 @@ export default function App() {
             >
               <SwiperSlide>
                 <div className="Carousel_text_maincontent">
-                  {/* <p className="Text_InnerText">Unparalled Services</p> */}
+                  <p className="Text_InnerText">Unparalleled Services</p>
                   <p className="carousel_text_Content">
-                    Royal Crown Laminates’ are renowned for providing
-                    high-density laminates with unrivaled quality and
-                    reliability. To guarantee topnotch products, we have
-                    implemented stringent quality checks and procedures in our
-                    manufacturing process, along with the use of highly accurate
-                    and calibrated testing equipment. Our product range includes
-                    sizes of 8x4, 10x4, 10x4.25, 12x6, and 14x6 feet, with
-                    thickness ranging from 0.8mm to 25mm.
+                    We provide high-density laminates with unmatched
+                    reliability, combining advanced R&D, a fully equipped
+                    laboratory, and a skilled workforce to ensure you always
+                    receive the best in quality and performance.
                     {/* We are known for providing high density laminates with
                     unparalleled services in terms of quality and reliability.
                     We are known for providing high density laminates with
@@ -176,47 +174,48 @@ export default function App() {
               </SwiperSlide>
               <SwiperSlide>
                 <div className="Carousel_text_maincontent">
-                  {/* <p className="Text_InnerText">Unparalled Services</p> */}
+                  <p className="Text_InnerText">Wide Range</p>
                   <p className="carousel_text_Content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Exercitationem esse quaerat quisquam, cupiditate possimus
-                    optio earum quibusdam. Nam aperiam voluptate iste ullam
-                    laboriosam maxime asperiores, sequi quibusdam quae.
-                    Praesentium, earum.
+                    With 2000+ SKUs and 100+ textures, our extensive portfolio
+                    offers exceptional value. Whatever your style or budget, we
+                    have a laminate solution that delivers premium aesthetics
+                    without breaking the bank.
                   </p>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
                 <div className="Carousel_text_maincontent">
-                  {/* <p className="Text_InnerText">Unparalled Services</p> */}
+                  <p className="Text_InnerText">Product Compatibility</p>
                   <p className="carousel_text_Content">
-                    We are known for providing high density laminates with
-                    unparalleled services in terms of quality and reliability.
-                    We are known for providing high density laminates with
-                    unparalleled services in terms of quality and reliability.
+                    Our laminates are designed to fit seamlessly onto almost any
+                    wooden surface and come in multiple sheet sizes (1220x2440
+                    mm, 1220x2800 mm, 1320x2440 mm, 1320x2800 mm), guaranteeing
+                    a perfect match for every project.
                   </p>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
                 <div className="Carousel_text_maincontent">
-                  {/* <p className="Text_InnerText">Unparalled Services</p> */}
+                  <p className="Text_InnerText">Quick Order & Delivery</p>
                   <p className="carousel_text_Content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Exercitationem esse quaerat quisquam, cupiditate possimus
-                    optio earum quibusdam. Nam aperiam voluptate iste ullam
-                    laboriosam maxime asperiores, sequi quibusdam quae.
-                    Praesentium, earum.
+                    Thanks to our pan-India network of showrooms and
+                    distributors, placing an order is effortless. We dispatch
+                    within 48 hours of receiving your order, reflecting our
+                    commitment to reliability and punctuality. Our expert team
+                    is always on hand to guide you toward the perfect laminate
+                    solution for your project.
                   </p>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
                 <div className="Carousel_text_maincontent">
-                  {/* <p className="Text_InnerText">Unparalled Services</p> */}
+                  <p className="Text_InnerText">Environment</p>
                   <p className="carousel_text_Content">
-                    We are known for providing high density laminates with
-                    unparalleled services in terms of quality and reliability.
-                    We are known for providing high density laminates with
-                    unparalleled services in terms of quality and reliability.
+                    We’ve invested in eco-friendly manufacturing processes that
+                    prioritize responsible sourcing, minimal waste, and a
+                    reduced carbon footprint. Our certifications—such as FSC and
+                    Greenguard—underscore our dedication to sustainability and
+                    help ensure a healthier future for our planet.
                   </p>
                 </div>
               </SwiperSlide>
@@ -224,7 +223,7 @@ export default function App() {
           </div>
           <div className="tenExp" style={{ marginBottom: "50px" }}>
             <div className="tenExpBorder">
-              <p className="tenExpBorderText">10</p>
+              <p className="tenExpBorderText">45</p>
             </div>
             <div>
               <p className="tenExpBorderTextInner">years of experience</p>
