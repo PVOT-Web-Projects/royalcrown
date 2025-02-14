@@ -166,21 +166,32 @@
         .text-section-inner-footer {
           font-family: "futura_thin";
           font-weight: 550;
-          // font-family: "made_mirage_bold";
           padding-top: 3rem;
           font-size: 25px;
           color: white;
           text-transform: uppercase;
           border-bottom: 1px solid white;
-          max-width: max-content;
-          // color: #FFF5ED;
+          display: inline-block;
           cursor: pointer;
           transition: all .5s ease-in-out;
-          &:hover{
-            color: #5b3524d7;
-            border-bottom: 1px solid #5b3524d7;
+          position: relative; // This is required for the pseudo-element to be positioned relative to this element.
+        
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px; // Thickness of the underline
+            background-color: white; // Color of the underline
+            transition: width 0.3s ease; // Underline draw animation
+          }
+        
+          &:hover::after {
+            width: 100%; // Underline will expand to full width when hovered
           }
         }
+        
 
         .image-wrapper-2 {
           transform: translate(10px, -100px) !important;
