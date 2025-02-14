@@ -8,17 +8,17 @@
     align-items: center;
     justify-content: center;
     color: #5B3524;
-    font-size: 45px;
+    font-size: 35px;
     font-weight: 400;
     font-family: "safira_march";
     // line-height: 57.6px;
     // letter-spacing: 2px;
     @media (max-width: 991px) {
-      font-size: 40px;
+      font-size: 30px;
     }
     @media (max-width: 575px) {
       padding-top: 2rem;
-      font-size: 35px;
+      font-size: 25px;
       // letter-spacing: 0px;
     }
     @media(max-width: 375px){
@@ -32,8 +32,8 @@
     align-items: center; // Aligns images vertically in the center
     
     img {
-      width: 180px; // Set a consistent width
-      height: 180px; // Set a consistent height
+      width: 100px; // Set a consistent width
+      height: 100px; // Set a consistent height
       object-fit: contain; // Ensures images maintain their aspect ratio
     }
     .logocertificate {

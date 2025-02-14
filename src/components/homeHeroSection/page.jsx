@@ -73,7 +73,7 @@ export default function HomeHeroSection() {
                 Royal Crown Laminates' legacy celebrates innovation,
                 cutting-edge technology, craft, and expertise in delivering the
                 best and trendsetting laminate surfaces. We have grown to become
-                a leader in every sense of the word in the laminate industry.Our
+                a leader in every sense of the word in the laminate industry. Our
                 unceasing efforts with architects, interiors, OEMs, contractors,
                 carpenters, and end consumers and an in-depth understanding of
                 the market and its demands have strengthened our product base.
