@@ -29,20 +29,20 @@
 
   .productHeader {
       text-align: center;
-      font-size: 80px;
+      font-size: 50px;
       letter-spacing: 5px;
       text-transform: uppercase;
 
       .productHeaderInner {
-          font-family: "made_mirage_regular";
+          font-family: "safira_march";
       }
 
       @media (max-width: 575px) {
-          font-size: 50px;
-      }
-      @media (max-width: 475px) {
-        font-size: 45px;
+        font-size: 25px;
     }
+    @media (max-width: 475px) {
+      font-size: 22px;
+  }
   }
 
   .productNumber {
@@ -458,25 +458,29 @@
 
 .products_name1 {
   text-align: center;
-  font-size: 40px;
+  font-size: 30px;
   margin: 180px 0 0;
   background-color: rgb(28, 33, 30);
   letter-spacing: 5px;
   color: rgba(89, 89, 89, 0.35);
   font-weight: 500;
-
+ 
+ 
   @media (min-width: 1600px) {
-    font-size: 50px;
+    font-size: 40px;
     // padding: 2rem 0;
   }
   @media (max-width: 575px) {
-    font-size: 25px;
+    font-size: 20px;
     padding: 1rem 0;
   }
   @media only screen and (min-width: 576px) and (max-width: 1024px) {
     font-size: 30px;
     padding: 1rem;
   }
+ 
+} .exploreCollection{
+  font-family: "safira_march"
 }
 .resetFilters{
   padding: 0 0 10px;

@@ -352,12 +352,13 @@
 .products_name {
   text-align: center;
   font-size: 40px;
+  
+  
   padding: 15px 0;
   background-color: rgb(28, 33, 30);
   letter-spacing: 5px;
   color: rgba(89, 89, 89, 0.35);
   font-weight: 500;
-
   @media (min-width: 1600px) {
     font-size: 50px;
     padding: 2rem 0;

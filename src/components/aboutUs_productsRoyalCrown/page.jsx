@@ -338,6 +338,7 @@ const Page = () => {
       <div className="first_top">
         <div id="sticky_top" className="products_name1">
           <motion.div
+          className="exploreCollection"
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}

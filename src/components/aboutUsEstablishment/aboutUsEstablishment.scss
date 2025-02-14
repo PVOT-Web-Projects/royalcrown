@@ -9,17 +9,19 @@
 
 .Establishment_header {
   text-align: center;
-  font-size: 60px;
+  font-size: 40px;
   letter-spacing: 3px;
   text-transform: uppercase;
 
   .Establishment_header_1 {
     // font-weight: 500;
-    font-family: "made_mirage_regular";
+    // font-family: "made_mirage_regular";
+    font-family: "safira_march";
   }
 
   .Establishment_header_bottom {
-    font-family: "made_mirage_regular";
+    // font-family: "made_mirage_regular";
+    font-family: "safira_march";
   }
 }
 
@@ -352,7 +354,7 @@
 
 @media (max-width: 575px) {
   .Establishment_header {
-    font-size: 40px;
+    font-size: 22px;
   }
   .Establishment_timeline_outer {
     padding: 50px 30px 200px 30px;
@@ -462,7 +464,7 @@
     width: 30px;
   }
   .Establishment_header {
-    font-size: 30px;
+    font-size: 18px;
   }
 
   .Establishment_content {
