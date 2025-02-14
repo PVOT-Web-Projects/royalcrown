@@ -60,6 +60,9 @@
         @media (max-width: 575px) {
           font-size: 21px;
         }
+        @media (max-width: 375px) {
+          font-size: 16px;
+        }
       }
     }
   }
@@ -78,7 +81,7 @@
   }
 
   @media (max-width: 375px) {
-    padding: 80px 20px;
+    padding: 20px 20px;
   }
 
   .laminatesWrapper {
@@ -165,7 +168,7 @@
   }
 
   @media (max-width: 375px) {
-    padding: 80px 20px;
+    padding: 0px 20px;
   }
 
   .product_construct_header {
@@ -230,7 +233,7 @@
   }
 
   @media (max-width: 375px) {
-    padding: 80px 20px;
+    padding: 20px 20px;
   }
 
   .productFeaturesInner {
@@ -238,6 +241,9 @@
       text-align: center;
       font-size: 25px;
       padding: 40px 0;
+      @media(max-width: 475px){
+        font-size: 20px;
+      }
       div{
       font-family: "safira_march";
       }
@@ -315,11 +321,14 @@
   }
 
   @media (max-width: 375px) {
-    padding: 80px 20px;
+    padding: 50px 20px;
   }
 
   .productApplicationHeader {
     font-size: 25px;
+    @media(max-width: 475px){
+      font-size: 20px;
+    }
     div {
       font-family: "safira_march";
     }
