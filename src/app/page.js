@@ -63,7 +63,7 @@ export default function Home() {
   }
   return (
     <>
-      {/* <AnimatePresence
+      <AnimatePresence
         mode="wait"
       >
         {isLoading &&
@@ -71,7 +71,7 @@ export default function Home() {
             counter={isCounter}
           />
         }
-      </AnimatePresence> */}
+      </AnimatePresence>
       {/* <AnimatePresence mode="wait">
         {isLoading && <Preloader counter={isCounter} />}
       </AnimatePresence> 
