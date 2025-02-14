@@ -15,10 +15,14 @@
   
     .PrivacyMainHeaderInnerTextinner {
       text-align: center;
-      font-size: 80px;
+      font-size: 40px;
       font-weight: 500;
+      font-family: "safira_march";
       @media (max-width: 575px) {
-        font-size: 45px;
+        font-size: 25px;
+      }
+      @media (max-width: 325px) {
+        font-size: 20px;
       }
     }
     .TextCommitInner {
