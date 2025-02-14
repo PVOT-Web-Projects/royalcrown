@@ -16,7 +16,13 @@ import {
   Autoplay,
   Navigation,
 } from "swiper/modules";
-import testimonial1 from "@/images/Crownsliderimg1.jpg";
+import testimonial1 from "@/images/Wide_Range.jpg";
+import testimonial2 from "@/images/Unparalleled_Services.jpg";
+import testimonial3 from "@/images/Product_Compatibility_Image.jpg";
+import testimonial4 from "@/images/Environment.webp";
+import testimonial5 from "@/images/Order_and_delivery.jpg";
+
+
 import { motion } from "framer-motion";
 
 export default function App() {
@@ -82,7 +88,7 @@ export default function App() {
               <SwiperSlide>
                 <div className="third_section_content">
                   <Image
-                    src={testimonial1}
+                    src={testimonial2}
                     alt="carousel_image"
                     className="third_section_image"
                   />
@@ -91,7 +97,7 @@ export default function App() {
               <SwiperSlide>
                 <div className="third_section_content">
                   <Image
-                    src={testimonial1}
+                    src={testimonial3}
                     alt="carousel_image"
                     className="third_section_image"
                   />
@@ -100,7 +106,7 @@ export default function App() {
               <SwiperSlide>
                 <div className="third_section_content">
                   <Image
-                    src={testimonial1}
+                    src={testimonial4}
                     alt="carousel_image"
                     className="third_section_image"
                   />
@@ -109,7 +115,7 @@ export default function App() {
               <SwiperSlide>
                 <div className="third_section_content">
                   <Image
-                    src={testimonial1}
+                    src={testimonial5}
                     alt="carousel_image"
                     className="third_section_image"
                   />

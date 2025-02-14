@@ -4,12 +4,12 @@ import Link from "next/link";
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
-import Img1 from "/src/images/Royalcrown123.jpeg";
-import Img2 from "/src/images/Crown123.jpeg";
-import Img3 from "/src/images/Xylem123.jpeg";
-import Img4 from "@/images/QbissNew.png";
-import Img5 from "@/images/CrownXCLNew.png";
-
+import Img1 from "@/images/Royalcrown123.jpeg";
+import Img2 from "@/images/Crown123.jpeg";
+import Img3 from "@/images/Xylem123.jpeg";
+import Img4 from "@/images/QbissNew.webp";
+import Img5 from "@/images/CrownXCLNew.jpg";
+  
 
 const Category = () => {
   const slideRef = useRef(null);
