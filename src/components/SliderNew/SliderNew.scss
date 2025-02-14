@@ -225,27 +225,19 @@
               font-size: 18px;
             }
           }
-          &::before {
-            content: "";
+          &::after {
+            content: '';
             position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
-            transform: scaleX(0);
-            transform-origin: 0 50%;
-            width: 100%;
-            height: inherit;
-            border-radius: inherit;
-            // background: #fff;
-            transition: all 0.475s;
+            width: 0;
+            height: 1px; // Thickness of the underline
+            background-color: white; // Color of the underline
+            transition: width 0.3s ease; // Underline draw animation
           }
-          &:hover {
-            .button-content {
-              // color: #5b3524;
-            }
-            &::before {
-              transform: scaleX(1);
-              border-radius: inherit;
-            }
+        
+          &:hover::after {
+            width: 100%; // Underline will expand to full width when hovered
           }
         }
       }
@@ -275,6 +267,12 @@
     // bottom: 140px;
     left: 40%;
     bottom: 100px;
+    @media(min-width: 1450px){
+      bottom: 235px;
+    }
+    @media(max-width: 1449px){
+      bottom: 200px;
+    }
     @media(max-width: 1300px){
       bottom: 100px;
       left: 44%;
