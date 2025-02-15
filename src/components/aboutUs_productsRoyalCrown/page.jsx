@@ -311,7 +311,14 @@ const Page = () => {
       <div className="productMainContainer">
         <div className="productMain">
           <div className="productNumber">
-            <p>01</p>
+            <motion.p
+                         initial={{ x: 100, opacity: 0 }}
+                         whileInView={{ x: 0, opacity: 1 }}
+                         transition={{ duration: 1 }}
+                         viewport={{ once: true }}
+                       >
+                         02
+                       </motion.p>
           </div>
           <div className="productDescription">
             <motion.div
@@ -323,14 +330,18 @@ const Page = () => {
             />
             <div className="productDescriptionHeader">royal crown</div>
             <div className="productDescriptionContent">
-              <p>
+              <motion.p
+               initial={{ y: 100, opacity: 0 }}
+               whileInView={{ y: 0, opacity: 1 }}
+               transition={{ duration: 1 }}
+               viewport={{ once: true }}>
                 Royal Crown Laminates takes pride in its rich legacy of
                 innovation, cutting-edge technology, and expertise, offering
                 over 450 trendsetting surface designs. Our collection of modern
                 laminates boasts a wide range of finishes and textures in 1mm
                 thickness, empowering you to effortlessly realize your dream
                 decor.
-              </p>
+              </motion.p>
             </div>
           </div>
         </div>

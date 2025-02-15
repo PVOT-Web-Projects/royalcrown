@@ -390,7 +390,14 @@ const Page = () => {
       <div className="productMainContainer">
         <div className="productMain">
           <div className="productNumber">
-            <p>02</p>
+            <motion.p
+                         initial={{ x: 100, opacity: 0 }}
+                         whileInView={{ x: 0, opacity: 1 }}
+                         transition={{ duration: 1 }}
+                         viewport={{ once: true }}
+                       >
+                         05
+                       </motion.p>
           </div>
           <div className="productDescription">
             <motion.div
@@ -402,7 +409,11 @@ const Page = () => {
             />
             <div className="productDescriptionHeader">Qbiss</div>
             <div className="productDescriptionContent">
-              <p>
+              <motion.p
+               initial={{ y: 100, opacity: 0 }}
+               whileInView={{ y: 0, opacity: 1 }}
+               transition={{ duration: 1 }}
+               viewport={{ once: true }}>
                 Qbiss is a high-pressure structural laminate made from multiple
                 layers of kraft papers, with a thickness range from 2mm to 25mm.
                 Its decorative face on both sides makes it suitable for interior
@@ -410,7 +421,7 @@ const Page = () => {
                 and laboratory furniture. With a density of 1.45gm/cm3, our
                 compacts are exceptionally resilient and require no substrate
                 support in thicknesses over 6mm.
-              </p>
+              </motion.p>
             </div>
           </div>
         </div>

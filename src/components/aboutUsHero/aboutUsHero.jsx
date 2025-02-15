@@ -122,9 +122,9 @@ export default function AboutUsHero() {
       </section>
       
       {/* Home Hero Section */}
-      <section ref={eleganceSectionRef} className="HomeHeroThirdSection">
+      {/* <section ref={eleganceSectionRef} className="HomeHeroThirdSection">
         <HomeHeroSection />
-      </section>
+      </section> */}
     </>
   );
 }
