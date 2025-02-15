@@ -46,7 +46,8 @@ export default function HomeHeroSection() {
                   transition={{ duration: 1 }}
                   viewport={{ once: true }}
                 >
-                  explore our legacy
+                  <p>
+                  explore our legacy</p>
                 </motion.div>
                 {/* <motion.div
                     className="animated-border"
