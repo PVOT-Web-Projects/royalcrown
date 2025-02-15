@@ -8,9 +8,16 @@ const SlidesContent = ({ slide }) => (
   <div className="Carousel_text_maincontent">
     <div className="FirstSSliderText">
       <p className="Text_InnerText">{slide.name}</p>
-      <p className="TextInner1">{slide.categories[0].name} / {slide.categories[1].name}</p>
+      <p className="TextInner1">
+        {slide.categories[0].name} /{" "}
+        {slide.categories[1].name === "Qbliss"
+          ? "Qbiss"
+          : slide.categories[1].name}
+      </p>
       <div className="TextButtonoUTER">
-        <p className="TextInnerCollection">{slide.attributes[3].terms[0].name}</p>
+        <p className="TextInnerCollection">
+          {slide.attributes[3].terms[0].name}
+        </p>
         <div className="submit_btn">
           <button type="submit" className="yello_btn">
             <span className="button-content">Enquire Now</span>
@@ -22,43 +29,57 @@ const SlidesContent = ({ slide }) => (
       <div className="SecondSliderTextInner">
         <div className="ProductCategoryText">
           <p className="ProductCategoryText1">product name</p>
-          <p className="ProductCategoryText2">{slide.attributes[7].terms[0].name}</p>
+          <p className="ProductCategoryText2">
+            {slide.attributes[7].terms[0].name}
+          </p>
         </div>
       </div>
       <div className="SecondSliderTextInner">
         <div className="ProductCategoryText">
           <p className="ProductCategoryText1">product code</p>
-          <p className="ProductCategoryText2">{slide.attributes[0].terms[0].name}</p>
+          <p className="ProductCategoryText2">
+            {slide.attributes[0].terms[0].name}
+          </p>
         </div>
       </div>
       <div className="SecondSliderTextInner">
         <div className="ProductCategoryText">
           <p className="ProductCategoryText1">product category</p>
-          <p className="ProductCategoryText2">{slide.attributes[5].terms[0].name}</p>
+          <p className="ProductCategoryText2">
+            {slide.attributes[5].terms[0].name}
+          </p>
         </div>
       </div>
       <div className="SecondSliderTextInner">
         <div className="ProductCategoryText">
           <p className="ProductCategoryText1">Product Size</p>
-          <p className="ProductCategoryText2">{slide.attributes[1].terms[0].name}</p>
+          <p className="ProductCategoryText2">
+            {slide.attributes[1].terms[0].name}
+          </p>
         </div>
       </div>
       <div className="SecondSliderTextInner">
         <div className="ProductCategoryText">
           <p className="ProductCategoryText1">product type</p>
-          <p className="ProductCategoryText2">{slide.attributes[3].terms[0].name}</p>
+          <p className="ProductCategoryText2">
+            {slide.attributes[3].terms[0].name}
+          </p>
         </div>
       </div>
       <div className="SecondSliderTextInner">
         <div className="ProductCategoryText">
           <p className="ProductCategoryText1">Thickness (MM)</p>
-          <p className="ProductCategoryText2">{slide.attributes[2].terms[0].name}</p>
+          <p className="ProductCategoryText2">
+            {slide.attributes[2].terms[0].name}
+          </p>
         </div>
       </div>
       <div className="SecondSliderTextInner">
         <div className="ProductCategoryText">
           <p className="ProductCategoryText1">Color</p>
-          <p className="ProductCategoryText2">{slide.attributes[4].terms[0].name}</p>
+          <p className="ProductCategoryText2">
+            {slide.attributes[4].terms[0].name}
+          </p>
         </div>
       </div>
       <div className="SecondSliderTextInner">
@@ -70,9 +91,11 @@ const SlidesContent = ({ slide }) => (
       <div className="SecondSliderTextInner">
         <div className="ProductCategoryText">
           <p className="ProductCategoryText1">Theme / mood</p>
-          <p className="ProductCategoryText2">{slide.attributes[6].terms[0].name}</p>
+          <p className="ProductCategoryText2">
+            {slide.attributes[6].terms[0].name}
+          </p>
         </div>
-</div>
+      </div>
     </div>
   </div>
 );
@@ -82,16 +105,13 @@ export default function ProductInfoSlider() {
   const pathname = usePathname();
   const [slidesData, setSlidesData] = useState([]); // Store API data
   const [loading, setLoading] = useState(true); // Initially, set loading to t
-  
+
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
     let hashUrl = hash.slice(1);
     handleSingleProject(hashUrl);
   }, [pathname, searchParams]);
 
-
-
-  
   const handleSingleProject = async (hashUrl) => {
     try {
       const response = await fetch(
@@ -99,16 +119,15 @@ export default function ProductInfoSlider() {
       );
       const data = await response.json();
       setSlidesData(Array.isArray(data) ? data : [data]); // Ensure `slidesData` is always an array
-      setLoading(false); 
+      setLoading(false);
     } catch (error) {
-      setLoading(false); 
+      setLoading(false);
       console.error("Error fetching project data:", error);
     }
   };
 
   const filterImages = (...images) => images.filter((image) => image);
 
-  
   return (
     <div className="ProductInfoSliderMain">
       <div className="MainContainer" style={{ marginTop: "50px" }}>
@@ -122,9 +141,9 @@ export default function ProductInfoSlider() {
                 </div>
               ))
             ) : (
-              <div> 
+              <div>
                 <Skeleton variant="rectangle" width={1000} height={400} />
-               </div>
+              </div>
             )}
           </div>
         </div>
@@ -145,7 +164,9 @@ export default function ProductInfoSlider() {
                 </div>
               ))
             ) : (
-              <div><Skeleton variant="square" width={400} height={400} /></div>
+              <div>
+                <Skeleton variant="square" width={400} height={400} />
+              </div>
             )}
           </div>
 
@@ -163,4 +184,3 @@ export default function ProductInfoSlider() {
     </div>
   );
 }
-
