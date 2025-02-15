@@ -40,11 +40,11 @@ const SwiperCarousel = () => {
     "https://interiormaataassets.humbeestudio.xyz/interior-outdoor.png", // Image 4 URL
   ];
   const videoUrls = [
-    "https://vanras.humbeestudio.xyz/videos/kitchen_new.mp4",
-    "https://vanras.humbeestudio.xyz/videos/living_new.mp4",
-    "https://vanras.humbeestudio.xyz/videos/interiorOut_new.mp4",
-    "https://vanras.humbeestudio.xyz/videos/living_new.mp4",
-    "https://vanras.humbeestudio.xyz/videos/interiorOut_new.mp4",
+    "https://vanras.humbeestudio.xyz/videos/Kitchen.mp4",
+    "https://vanras.humbeestudio.xyz/videos/Bedroom.mp4",
+    "https://vanras.humbeestudio.xyz/videos/Living%20Space.mp4",
+    "https://vanras.humbeestudio.xyz/videos/Bathroom.mp4",
+    "https://vanras.humbeestudio.xyz/videos/Outdoor.mp4",
   ];
   // const videoUrls = [
   //   "./video/kitchen_new.mp4",

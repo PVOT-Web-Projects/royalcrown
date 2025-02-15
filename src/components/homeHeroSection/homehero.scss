@@ -8,8 +8,8 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #252220;
-  // background: linear-gradient(to bottom, #FFEEE2, #FFEDE0, #FFECDE, #FFEBDD, #FFEADB);
+  // background-color: #252220;
+  background: linear-gradient(to bottom, #FFEEE2, #FFEDE0, #FFECDE, #FFEBDD, #FFEADB);
 //   border-bottom: 1px solid #5b3524;
   @media(max-width: 768px){
     padding: 0px !important;
@@ -54,7 +54,7 @@
       .text-section-header {
         text-transform: uppercase;
         display: flex;
-        color: white;
+        color: #5b3524;
 
         @media (max-width: 991px) {
           flex-direction: column;
@@ -71,7 +71,7 @@
           font-size: 33px;
           position: relative;
           display: inline-block;
-          color: white;
+          color: #5b3524;
 
           @media (min-width: 1500px) {
             font-size: 40px;
@@ -106,7 +106,7 @@
             font-weight: 550;
             // font-family: "made_mirage_regular";
             font-family: "safira_march";
-            color: white;
+            color: #5b3524;
           }
 
           .animated-border {
@@ -156,7 +156,7 @@
           font-family: "futura_thin";
           font-weight: 550;
             width: 80%;
-            color: white;
+            color: #5b3524;
             @media(min-width: 1500px){
                 width: 75%;
             }
@@ -171,7 +171,7 @@
           font-weight: 550;
           padding-top: 3rem;
           font-size: 25px;
-          color: white;
+          color: #5b3524;
           text-transform: uppercase;
           // border-bottom: 1px solid white;
           display: inline-block;
@@ -186,7 +186,7 @@
             left: 0;
             width: 0;
             height: 1px; // Thickness of the underline
-            background-color: white; // Color of the underline
+            background-color: #5b3524; // Color of the underline
             transition: width 0.3s ease; // Underline draw animation
           }
         
