@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { opacity, slideUp } from "./anime";
 import Image from "next/image";
-import logo from "@/images/svgLogos/newww.svg";
+import logo from "@/images/Loading.png";
 import styles from "./style.module.css";
 
 
@@ -64,8 +64,8 @@ const strokeDashoffset = circleStrokeLength * (1 - loadedFrames / 100);
         {/* <div className={styles.loadingCounter}>{loadedFrames}</div> */}
       </motion.div>
       <div className={styles.svgLogoCenter}>
-      {/* <Image src={logo} alt="none" className={styles.svgLogoCenterInner}/> */}
-      <p className={styles.LoadingName}>Loading..</p>
+      <Image src={logo} alt="none" className={styles.svgLogoCenterInner}/>
+      {/* <p className={styles.LoadingName}>Loading..</p> */}
  
       <div className={styles.circleCenter}>
       
