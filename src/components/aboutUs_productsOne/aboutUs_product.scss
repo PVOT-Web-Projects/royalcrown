@@ -90,6 +90,10 @@
       .tab-content-inner {
         position: relative;
         z-index: 100;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
         // color: $white;
         transition: color 0.475s ease-out; // Smooth color transition
       }
@@ -137,6 +141,9 @@
 #dropdownLabel{
   height: 120px;
   overflow-x: hidden;
+  background-color: rgb(253 231 216);
+  padding: 12px;
+  border-radius: 6px;
   @media(min-width: 1500px){
     height: 200px;
   }
@@ -654,6 +661,7 @@
 
 .product_container div {
   overflow: hidden;
+  font-size: 22px;
   @media (max-width: 575px) {
     display: flex;
     justify-content: center;

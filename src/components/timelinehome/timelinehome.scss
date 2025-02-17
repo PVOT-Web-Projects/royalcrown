@@ -29,23 +29,23 @@
     justify-content: center;
     color: #5B3524;
     // font-size: 64px;
-    font-size: 35px;
+    font-size: 24px;
     font-family: "safira_march";
     font-weight: 400;
     text-align: center;
     // line-height: 57.6px;
     // letter-spacing: 2px;
     @media (max-width: 991px) {
-      font-size: 30px;
+      font-size: 22px;
       padding-top: 7rem;
     }
     @media (max-width: 768px) {
-      font-size: 25px;
+      font-size: 22px;
       padding-top: 8rem;
     }
     @media (max-width: 575px) {
       // padding-top: 2rem;
-      font-size: 22px;
+      font-size: 20px;
       padding-top: 3rem;
       // letter-spacing: 0px;
     }
@@ -139,10 +139,10 @@
 .TimelinetextContainer2 {
   font-family: "futura_thin";
   font-size: 21px;
-  width: 60%;
+  width: 59%;
   //   padding: 20px;
   text-align: left;
-  transform: translate(10px, 50px) !important;
+  transform: translate(40px, 25px) !important;
   
   @media (max-width : 1120px) {
     width: 65%;
@@ -150,6 +150,8 @@
   }
   @media(max-width: 575px){
     width: 95% !important;
+    transform: translate(0px, 10px) !important;
+    padding-bottom: 2rem;
   }
 }
 .TimelinetextContainer3 {
@@ -192,6 +194,9 @@
     width: 150px;
     height: 150px;
   }
+  @media(max-width: 767px){
+    display: none;
+  }
 
   @media (max-width : 520px) {
     width: 100px;
@@ -224,7 +229,9 @@
     width: 150px;
     height: 150px;
   }
-
+  @media(max-width: 767px){
+    display: none;
+  }
   @media (max-width : 520px) {
     width: 100px;
     height: 100px;
@@ -265,7 +272,9 @@
     width: 150px;
     height: 150px;
   }
-
+  @media(max-width: 767px){
+    display: none;
+  }
   @media (max-width : 520px) {
     width: 100px;
     height: 100px;
@@ -278,7 +287,7 @@
     border: 1px solid black;
     height: 1px;
     height: 150%;
-    bottom: 15px;
+    bottom: -50px;
 
     @media (max-width : 1120px) {
       left: 60px;

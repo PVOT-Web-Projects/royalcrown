@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import "./storeHero.scss";
-import productImage from "../../images/productHero.jpg";
+import productImage from "../../images/store_locater.jpg";
 import scrollSvg from "../../images/svgLogos/mouse.svg";
 import { motion } from "framer-motion";
 import gsap from "gsap";

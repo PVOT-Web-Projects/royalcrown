@@ -188,7 +188,7 @@ export default function ProductsCommonInnerPage({ data }) {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            <div>FEATURES & ATTRIBUTES</div>
+            <div>FEATURES AND ATTRIBUTES</div>
           </motion.div>
           <div className="productFeaturesContainer">
             {data.features.map((item, index) => (

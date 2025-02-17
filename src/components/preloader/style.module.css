@@ -12,7 +12,13 @@
   align-items: center;
   height: 100vh;
 }
-
+.LoadingName{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+}
 
 .loadingCounter{
   z-index: 99;
@@ -70,7 +76,7 @@
 
 
 .logoImage {
-  max-width: 100%; /* Ensure image doesn't exceed container width */
+  max-width: 100%; 
   max-height: 100%;
   height: auto;
   /* width: 6vw; */
@@ -86,9 +92,13 @@
     left: 50% !important;
     transform: translate(-50%, -50%) !important;
     align-items: center !important;
-    height: 100vh !important;
+    /* height: 100vh !important; */
+    width: 180px;
+  height: 180px;
  }
-
+.svgLogoCenterInner img{
+  
+}
 
 .loader {
   width: 250px;

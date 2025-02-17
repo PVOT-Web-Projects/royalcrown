@@ -13,7 +13,7 @@ const TimelineHome = () => {
                 transition={{ duration: 1 }}
                 viewport={{ once: true }}
               >
-                Our Legacy: 45 Years of Excellence
+                Our Legacy of Excellence
               </motion.div>
       <div className="Timelinecontainer1">
         <motion.div

@@ -10,7 +10,7 @@ import Es1 from "../../../images/svglogo/EasytoClean.jpg";
 import Sus1 from "../../../images/svglogo/Sustainability.jpg";
 import Imp1 from "../../../images/svglogo/ImpactResistant.jpg"
 import Sr1 from "../../../images/svglogo/ChemicalResistant.jpg";
-import Img1 from "../../../images/fire-retardant-laminates.webp";
+import Img1 from "../../../images/fire_ret.jpg";
 // import products from "@/components/aboutUs_products/productData";
 // import verticalIcon from "../../images/vertical-icon.svg";
 // import horizontalIcon from "../../images/horizontal-icon.svg";

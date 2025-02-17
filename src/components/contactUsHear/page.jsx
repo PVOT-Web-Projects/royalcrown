@@ -5,7 +5,7 @@ const ContactUsHear = () => {
   return (
     <div className="ContactUsmainBanner">
       <div className="ContactUsHearBanner">
-      <motion.div
+      {/* <motion.div
           className="ContactUsHearText"
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -13,7 +13,7 @@ const ContactUsHear = () => {
           viewport={{ once: true }}
         >
           Contact Us
-        </motion.div>
+        </motion.div> */}
         {/* <p className="ContactUsHearText">Contact Us</p> */}
         <div>
           <p className="ContactUsHearTextInner">We’d love to hear from you</p>

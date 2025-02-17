@@ -419,7 +419,14 @@ const Page = () => {
       <div className="productMainContainer">
         <div className="productMain">
           <div className="productNumber">
-            <p>05</p>
+            <motion.p
+                         initial={{ x: 100, opacity: 0 }}
+                         whileInView={{ x: 0, opacity: 1 }}
+                         transition={{ duration: 1 }}
+                         viewport={{ once: true }}
+                       >
+                         04
+                       </motion.p>
           </div>
           <div className="productDescription">
             <motion.div
@@ -431,7 +438,12 @@ const Page = () => {
             />
             <div className="productDescriptionHeader">Xylem</div>
             <div className="productDescriptionContent">
-              <p>
+              <motion.p
+              initial={{ y: 100, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+              >
                 Step into the world of Xylem, where innovation is at the heart
                 of everything we do. Xylem represents our premium-grade
                 decorative laminates, meticulously crafted to elevate your
@@ -439,7 +451,7 @@ const Page = () => {
                 and artistic excellence designed to define your unique style.
                 From curating unique designs to creating exclusive laminates, we
                 are on a mission to bring your vision to life.
-              </p>
+              </motion.p>
             </div>
           </div>
         </div>

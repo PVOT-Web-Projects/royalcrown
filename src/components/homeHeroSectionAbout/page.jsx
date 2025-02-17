@@ -70,15 +70,16 @@ export default function HomeHeroSection() {
           <div className="text-section-content">
             <div className="text-section-inner">
               <div className="TextSectionInnerFirst">
-                Royal Crown Laminates' legacy celebrates innovation,
-                cutting-edge technology, craft, and expertise in delivering the
-                best and trendsetting laminate surfaces. We have grown to become
-                a leader in every sense of the word in the laminate industry.Our
-                unceasing efforts with architects, interiors, OEMs, contractors,
-                carpenters, and end consumers and an in-depth understanding of
-                the market and its demands have strengthened our product base.
-                Moreover, it has helped us establish ourselves as domestic and
-                global leaders.
+                Crown Decor, a Royale Touche Laminate group company, is a niche
+                luxury laminate brand from India. It was launched in 1979 with
+                the idea that laminate has unlimited potential in surface décor.
+                We made people look at laminates as a resilient and flexible
+                product. We gave laminates a complete makeover with unparalleled
+                endless designs and textures. The product has a rich, luxurious
+                feel that adds aesthetic value to interiors, making architects',
+                end users', and interior designers' lives easy. Since 2011,
+                Crown Laminates has boasted a legacy celebrating innovation,
+                cutting-edge technology, craft, and expertise.
                 {/* At Royal Crown, customers are the cornerstone of our unique
                 business model. We are dedicated to providing every individual
                 with an unparalleled royal service, ensuring that their
