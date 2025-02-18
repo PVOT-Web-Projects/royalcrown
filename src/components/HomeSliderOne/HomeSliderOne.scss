@@ -60,6 +60,7 @@
     }
 
     .cardOOne {
+      transition: transform 0.3s ease;
       position: relative;
       width: 350px;
       height: 420px;
@@ -169,6 +170,9 @@
           // }
         }
       }
+    }
+    .cardOOne.inView {
+      transform: scale(1.1); /* Example: Zoom in when the image is in view */
     }
   }
   .curved-text-container {
