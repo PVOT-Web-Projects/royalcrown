@@ -374,7 +374,7 @@ const SwiperCarousel = () => {
               muted // Mute the video to avoid sound playback on load
               autoPlay
               playsInline
-              loop
+              loop       
               className="videoOneVid"
             />
             <div className="VideoInnerContainerText">
