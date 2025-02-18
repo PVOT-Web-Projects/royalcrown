@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import "./HomeSliderOne.scss";
-import { AnimatePresence, motion, useInView } from "framer-motion";
+import { AnimatePresence, motion, useInView,useTransform,useViewportScroll } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 const multiplier = {
@@ -295,6 +295,16 @@ const SwiperCarousel = () => {
   const onSlideTransitionEnd = () => {
     setIsTransitioning(false);
   };
+
+  function ScrollableImages({ images, imageTexts }) {
+    const { scrollYProgress } = useViewportScroll();
+    
+    // Create a smooth, fluid scroll effect using scrollYProgress
+    const scale = useTransform(scrollYProgress, [0, 1], [0.5, 1]); // Scale transition
+    const rotateY = useTransform(scrollYProgress, [0, 1], [90, 0]); // Rotation transition
+  
+    const [clickedIndex, setClickedIndex] = useState(null); }
+   
   const handleImageClick = (event, index) => {
     setSelectedImage(index); // Update the state with the selected image index
     setIsCarouselVisible(false); // Hide the carousel
@@ -435,7 +445,7 @@ const SwiperCarousel = () => {
           setHasTriggered(true); // Prevent triggering multiple times
           setTimeout(() => {
             handleExploreClick(); // Trigger the action after 2-3 seconds
-          }, 200); // Delay of 2 seconds (2000 ms)
+          }, 600); // Delay of 2 seconds (2000 ms)
         } else if (!isInViewport) {
           setHasTriggered(false); // Reset the trigger when the image is not in view
         }
