@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import "./HomeSliderOne.scss";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 const multiplier = {
@@ -12,6 +12,18 @@ const multiplier = {
   rotate: 0.02,
 };
 const SwiperCarousel = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [hasTriggered, setHasTriggered] = useState(false); // State to track if the delay has occurred
+  const cardRef = useRef(null);
+  const isInView = useInView(cardRef, { once: true, margin: "-100px" });
+  const [isScrolled, setIsScrolled] = useState(false);
+  const sectionRef = useRef(null);
+
+
+
+
+
+
   const pageRef = useRef(null);
   // Use a ref to track whether the page is mounted for the first time
   const isFirstRender = useRef(true);
@@ -206,7 +218,7 @@ const SwiperCarousel = () => {
   
     // Cleanup ScrollTrigger when the component unmounts
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
   // useEffect(() => {
@@ -362,7 +374,7 @@ const SwiperCarousel = () => {
               muted // Mute the video to avoid sound playback on load
               autoPlay
               playsInline
-              loop
+              loop       
               className="videoOneVid"
             />
             <div className="VideoInnerContainerText">
@@ -403,7 +415,84 @@ const SwiperCarousel = () => {
         behavior: "smooth",
       });
     }
+    console.log("Explore clicked or triggered by scroll!");
   };
+
+
+  // Function to handle the scroll and trigger the effect
+    // Function to handle the scroll and trigger the effect with a delay
+    const handleScroll = () => {
+      const imageElement = imageRef.current;
+      if (imageElement) {
+        const rect = imageElement.getBoundingClientRect();
+        const isInViewport = rect.top >= 0 && rect.bottom <= window.innerHeight;
+  
+        if (isInViewport && !hasTriggered) {
+          // Trigger your delayed action when the image is in view
+          setIsVisible(true);
+  
+          // Set a delay before triggering handleExploreClick
+          setHasTriggered(true); // Prevent triggering multiple times
+          setTimeout(() => {
+            handleExploreClick(); // Trigger the action after 2-3 seconds
+          }, 200); // Delay of 2 seconds (2000 ms)
+        } else if (!isInViewport) {
+          setHasTriggered(false); // Reset the trigger when the image is not in view
+        }
+      }
+    };
+  
+    // Scroll event listener
+    useEffect(() => {
+      window.addEventListener("scroll", handleScroll);
+  
+      // Clean up the event listener when the component is unmounted
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }, [hasTriggered]);
+
+  // Scroll event listener
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 600); // Change path after scrolling 100px
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsScrolled(true);
+        } else {
+          setIsScrolled(false);
+        }
+      },
+      {
+        root: null, // Observe in the viewport
+        threshold: 1, // Trigger when 60% of the section is visible
+      }
+    );
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div className="containerText">
@@ -418,12 +507,13 @@ const SwiperCarousel = () => {
               <motion.path
                 ref={pathRef}
                 id="curve"
-                d={
-                  isHovered
-                    ? // M 50 330 Q 200 180 400 330 Q 600 430 750 280
-                      "M 50 290 Q 200 140 400 290 Q 600 310 750 240" // Path on hover
-                    : "M 200 250 A 200 200 0 0 1 600 250" // Path when not hovered
-                }
+                initial={{ d: "M 200 250 A 200 200 0 0 1 600 250" }} // Default path
+                animate={{
+                  d: isScrolled
+                    ? "M 50 290 Q 200 140 400 290 Q 600 310 750 240" // Smooth transition path
+                    : "M 200 250 A 200 200 0 0 1 600 250", // Back to original
+                }}
+                transition={{ duration: 1, ease: "easeInOut" }} // Smooth animation
                 fill="transparent"
               />
             </defs>
@@ -447,7 +537,7 @@ const SwiperCarousel = () => {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <motion.div className="cardOOne" onClick={handleExploreClick}>
+          <motion.div className="cardOOne">
             <div className="imgBx">
               <img
                 src="https://interiormaataassets.humbeestudio.xyz/KitchenImgThumb.png"
