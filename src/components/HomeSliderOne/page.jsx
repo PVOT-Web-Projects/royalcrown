@@ -303,7 +303,51 @@ const SwiperCarousel = () => {
     const scale = useTransform(scrollYProgress, [0, 1], [0.5, 1]); // Scale transition
     const rotateY = useTransform(scrollYProgress, [0, 1], [90, 0]); // Rotation transition
   
-    const [clickedIndex, setClickedIndex] = useState(null); }
+    const [clickedIndex, setClickedIndex] = useState(null); 
+    
+    return (
+      <div>
+        <motion.div
+          className="swiper-wrapper"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          {images.map((imageUrl, index) => (
+            <motion.div
+              className="single"
+              key={index}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={(event) => handleImageClick(event, index)}
+            >
+              <motion.div
+                className="image-container"
+                style={{
+                  scale,
+                  rotateY
+                }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+              >
+                <motion.img
+                  style={{ scale }}
+                  src={imageUrl}
+                  alt={`Random Image ${index + 1}`}
+                  className="image"
+                />
+                <div className="hover-text">
+                  <span className="hovertextInner">{imageTexts[index]}</span>
+                </div>
+              </motion.div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    );
+  
+  
+  }
    
   const handleImageClick = (event, index) => {
     setSelectedImage(index); // Update the state with the selected image index
@@ -505,6 +549,8 @@ const SwiperCarousel = () => {
   }, []);
 
   return (
+
+
     <div className="containerText">
       {isCardVisible && (
         <div
