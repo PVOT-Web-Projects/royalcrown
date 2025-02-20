@@ -1,12 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 
-// Global styles
-body {
-  background-color: black;
-  color: white;
-  font-family: "Playfair Display", serif;
-}
-
 // Hero Section styles
 .HeroSection {
   color: white;
@@ -54,43 +47,89 @@ body {
       position: absolute;
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat; 
-
+      background-repeat: no-repeat;
+    
+      /* Image container for the zoom effect */
+      .image-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 12px;
+          transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        }
+    
+        /* Apply the zoom effect when hovering */
+        &:hover img.zoom-effect {
+          transform: scale(1.1); /* Zoom in */
+          // opacity: 0; /* Fade out during zoom */
+        }
+      }
+    
+      /* Hover text styles */
+      .hover-text {
+        position: absolute;
+        bottom:-21%;
+        left: 18%;
+        transform: translateX(-50%); /* Center text horizontally */
+        padding: 10px 0;
+        font-size: 30px;
+        text-align: center;
+        color: white;
+        font-weight: 300;
+        width: 60%;
+        opacity: 0; /* Initially hidden */
+        transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
+        transform: translateY(50%); /* Start with text below the image */
+      }
+    
+      /* Show hover text when card is hovered */
+      &:hover .hover-text {
+        opacity: 1; /* Make text visible */
+        transform: translateY(10%); /* Move text into view */
+      }
+    
+      /* Card-specific styles */
       &.card1 {
         background-image: url("https://interiormaataassets.humbeestudio.xyz/interior-outdoor.png");
         z-index: 11;
-        height: 400px;
-        width: 300px;
+        height: 500px;
+        width: 400px;
       }
-
+    
       &.card2 {
         background-image: url("https://interiormaataassets.humbeestudio.xyz/livingroomthumb.png");
         z-index: 13;
-        height: 400px;
-        width: 300px;
+        height: 500px;
+        width: 400px;
       }
-
+    
       &.card3 {
         background-image: url("https://interiormaataassets.humbeestudio.xyz/KitchenImgThumb.png");
         z-index: 100;
-        height: 400px;
-        width: 300px;
+        height: 520px;
+        width: 410px;
       }
-
+    
       &.card4 {
         background-image: url("https://interiormaataassets.humbeestudio.xyz/livingroomthumb.png");
         z-index: 14;
-        height: 400px;
-        width: 300px;
+        height: 500px;
+        width: 400px;
       }
-
+    
       &.card5 {
         background-image: url("https://interiormaataassets.humbeestudio.xyz/interior-outdoor.png");
         z-index: 13;
-        height: 400px;
-        width: 300px;
+        height: 500px;
+        width: 400px;
       }
     }
+    
   }
 }
 
@@ -253,6 +292,7 @@ body {
   }
 }
 
+/* Video Modal Styling */
 .video-modal {
   position: fixed;
   top: 0;
@@ -264,29 +304,59 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 1000;
+}
 
-  .video-content {
+.video-content {
+  position: relative;
+  width: 80%;
+  max-width: 900px;
+
+  video {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+
+  .close-btn {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    background: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+}
+
+/* Custom Video Styling */
+.VideoOneContainer {
+  .VideoInnerContainer {
     position: relative;
-    width: 80%;
-    max-width: 900px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    video {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-    }
+  .videoOneVid {
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+  }
 
-    .close-btn {
-      position: absolute;
-      top: -40px;
-      right: -40px;
-      background: white;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-    }
+  .VideoInnerContainerText {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-size: 2em;
+    width: 100%;
   }
 }
