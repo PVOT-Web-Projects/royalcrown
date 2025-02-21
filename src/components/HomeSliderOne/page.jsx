@@ -130,7 +130,7 @@
 
 // export default ScrollAnimation;
 
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef  } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import "./HomeSliderOne.scss";
@@ -148,6 +148,7 @@ const ScrollAnimation = () => {
   const [isCarouselVisible, setIsCarouselVisible] = useState(false);
   const [isCardVisible, setIsCardVisible] = useState(true); // Adjust visibility
   const [isContainerTextVisible, setIsContainerTextVisible] = useState(true);
+  const swiperRef = useRef(null);
 
 
   const images = [
@@ -258,6 +259,14 @@ const ScrollAnimation = () => {
     setSelectedImage(url); // Set selected video URL
     setIsCarouselVisible(false); // Toggle carousel visibility
   };
+
+  const onSlideChange = () => {
+    console.log("Slide changed");
+  };
+
+  const onSlideTransitionEnd = () => {
+    console.log("Slide transition ended");
+  };
   
 
   return (
@@ -266,7 +275,7 @@ const ScrollAnimation = () => {
         {/* Animated Circular Path Text */}
         <svg width="1500" height="600" viewBox="0 0 900 400">
           <path
-            d="M 150,350 A 300,300 0 0,1 750,350"
+            d="M 150,450 A 300,300 0 0,1 750,450"
             id="circularPath"
             fill="transparent"
           />
@@ -282,7 +291,7 @@ const ScrollAnimation = () => {
   
           {/* Animated Curved Path Text */}
           <path
-            d="M 25 300 Q 225 200, 450 300 Q 675 400, 875 300"
+            d="M 25 350 Q 225 250, 450 350 Q 675 450, 875 350"
             id="curvPath"
             fill="transparent"
           />
@@ -295,7 +304,7 @@ const ScrollAnimation = () => {
   
         {/* Card Container with Images */}
         <div className="card-container">
-          {["Living Space", "Bedroom", "Kitchen", "Bathroom", "Outdoor"].map((title, index) => (
+          {["Livingroom", "Minimalist Bedroom", " Beautiful Kitchen", "Cozy Bedroom", "Modern Washroom"].map((title, index) => (
             <div
               key={index}
               className={`card card${index + 1}`}
