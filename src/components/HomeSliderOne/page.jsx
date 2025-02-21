@@ -136,6 +136,8 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import "./HomeSliderOne.scss";
 import { AnimatePresence, motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Mousewheel, FreeMode } from "swiper/modules";
+
 
 
 if (typeof window !== "undefined") {
@@ -369,23 +371,35 @@ const ScrollAnimation = () => {
       {/* Carousel for Image Selection */}
       {isCarouselVisible && (
         <div className={`carouselOne ${isCarouselVisible ? "" : "hidden"}`}>
-          <Swiper spaceBetween={20} centeredSlides={true} loop={true}>
-            {images.map((imageUrl, index) => (
-              <SwiperSlide key={index}>
-                <motion.div
-                  className="single"
-                  onClick={() => setSelectedImage(index)}
-                >
-                  <motion.div className="image-container">
-                    <motion.img src={imageUrl} alt={`Random Image ${index + 1}`} />
-                    <div className="hover-text">
-                      <span className="hovertextInner">{imageTexts[index]}</span>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+         
+<Swiper
+  modules={[Navigation, Pagination, Mousewheel, FreeMode]}
+  spaceBetween={20}
+  slidesPerView="auto"
+  grabCursor={true} // Enables grabbing cursor for drag functionality
+  loop={true}
+  freeMode={true} // Enables free dragging (like a continuous slider)
+  mousewheel={true} // Enables dragging with mouse wheel
+  centeredSlides={true}
+  navigation={true} // Arrows for navigation
+  pagination={{ clickable: true }} // Pagination dots
+>
+  {images.map((imageUrl, index) => (
+    <SwiperSlide key={index} style={{ width: "auto" }}>
+      <motion.div
+        className="single"
+        onClick={() => setSelectedImage(index)}
+      >
+        <motion.div className="image-container">
+          <motion.img src={imageUrl} alt={`Image ${index + 1}`} />
+          <div className="hover-text">
+            <span className="hovertextInner">{`Image ${index + 1}`}</span>
+          </div>
+        </motion.div>
+      </motion.div>
+    </SwiperSlide>
+  ))}
+</Swiper>
         </div>
       )}
     </div>
