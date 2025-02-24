@@ -40,7 +40,11 @@
   height: 75vh;
   font-size: 40px;
 }
-
+.LoaderTextFirst{
+  text-transform: uppercase;
+  font-weight: 500;
+  font-family: "futura_regular";
+}
 .circle {
  
   stroke-dasharray: 1000;
