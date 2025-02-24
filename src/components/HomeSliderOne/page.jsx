@@ -11,6 +11,7 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+
 const ScrollAnimation = () => {
   const [videoUrl, setVideoUrl] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -202,7 +203,7 @@ const ScrollAnimation = () => {
     <div>
       <div className="ScrollTextSection">
         {/* Animated Circular Path Text */}
-        <svg width="1500" height="400" viewBox="0 0 900 400">
+        <svg width="1500" height="450" viewBox="0 0 900 400">
           <path
             d="M 150,450 A 300,300 0 0,1 750,450"
             id="circularPath"
