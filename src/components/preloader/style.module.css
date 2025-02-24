@@ -38,11 +38,11 @@
   padding: 0 50px;
   align-items: end;
   height: 75vh;
-  font-size: 40px;
+  font-size: 30px;
 }
 .LoaderTextFirst{
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 600;
   font-family: "futura_regular";
 }
 .circle {
@@ -170,5 +170,8 @@
   .logoImage {
     height: auto;
     /* width: 14vw; */
+  }
+  .LoaderText{
+    font-size: 22px;
   }
 }
