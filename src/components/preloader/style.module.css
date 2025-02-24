@@ -39,6 +39,7 @@
   align-items: end;
   height: 75vh;
   font-size: 30px;
+  text-align: center;
 }
 .LoaderTextFirst{
   text-transform: uppercase;
