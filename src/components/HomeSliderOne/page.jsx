@@ -130,15 +130,13 @@
 
 // export default ScrollAnimation;
 
-import { useState, useEffect,useRef  } from "react";
+import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import "./HomeSliderOne.scss";
 import { AnimatePresence, motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Mousewheel, FreeMode } from "swiper/modules";
-
-
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -152,14 +150,12 @@ const ScrollAnimation = () => {
   const [isContainerTextVisible, setIsContainerTextVisible] = useState(true);
   const swiperRef = useRef(null);
 
-
   const images = [
     "https://interiormaataassets.humbeestudio.xyz/interior-outdoor.png",
-    "https://interiormaataassets.humbeestudio.xyz/livingroomthumb.png", // Image 2 URL 
+    "https://interiormaataassets.humbeestudio.xyz/livingroomthumb.png", // Image 2 URL
     "https://interiormaataassets.humbeestudio.xyz/KitchenImgThumb.png",
     "https://interiormaataassets.humbeestudio.xyz/livingroomthumb.png",
     "https://interiormaataassets.humbeestudio.xyz/interior-outdoor.png", // Image 4 URL
-    
   ];
   const videoUrls = [
     "https://vanras.humbeestudio.xyz/videos/Kitchen.mp4",
@@ -168,8 +164,6 @@ const ScrollAnimation = () => {
     "https://vanras.humbeestudio.xyz/videos/Bathroom.mp4",
     "https://vanras.humbeestudio.xyz/videos/Outdoor.mp4",
   ];
-
-
 
   const handleCardClick = (url) => setVideoUrl(url);
   const closeModal = () => setVideoUrl(null);
@@ -251,10 +245,12 @@ const ScrollAnimation = () => {
     return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
   }, []);
 
+
   const handleExploreClick = () => {
     setVideoUrl(null);
     setIsCarouselVisible(true); // Close video modal
   };
+
 
   const handleImageClick = (event, index) => {
     const url = images[index]; // Use your image data for the video URL
@@ -269,7 +265,6 @@ const ScrollAnimation = () => {
   const onSlideTransitionEnd = () => {
     console.log("Slide transition ended");
   };
-  
 
   return (
     <div>
@@ -290,7 +285,7 @@ const ScrollAnimation = () => {
               WHERE ELEGANCE MEETS DESIRE
             </textPath>
           </text>
-  
+
           {/* Animated Curved Path Text */}
           <path
             d="M 25 350 Q 225 250, 450 350 Q 675 450, 875 350"
@@ -303,10 +298,16 @@ const ScrollAnimation = () => {
             </textPath>
           </text>
         </svg>
-  
+
         {/* Card Container with Images */}
         <div className="card-container">
-          {["Livingroom", "Minimalist Bedroom", " Beautiful Kitchen", "Cozy Bedroom", "Modern Washroom"].map((title, index) => (
+          {[
+            "Livingroom",
+            "Minimalist Bedroom",
+            "Beautiful Kitchen",
+            "Cozy Bedroom",
+            "Modern Washroom",
+          ].map((title, index) => (
             <div
               key={index}
               className={`card card${index + 1}`}
@@ -324,7 +325,7 @@ const ScrollAnimation = () => {
           ))}
         </div>
       </div>
-  
+
       {/* Video Modal with Animation */}
       {videoUrl && (
         <div className="video-modal">
@@ -340,7 +341,7 @@ const ScrollAnimation = () => {
                 </div>
               </div>
             )}
-  
+
             <div className="VideoOneContainer">
               <div className="VideoInnerContainer">
                 {/* Video with autoplay and no loop */}
@@ -367,45 +368,44 @@ const ScrollAnimation = () => {
           </div>
         </div>
       )}
-  
+
       {/* Carousel for Image Selection */}
       {isCarouselVisible && (
         <div className={`carouselOne ${isCarouselVisible ? "" : "hidden"}`}>
-         
-<Swiper
-  modules={[Navigation, Pagination, Mousewheel, FreeMode]}
-  spaceBetween={20}
-  slidesPerView="auto"
-  grabCursor={true} // Enables grabbing cursor for drag functionality
-  loop={true}
-  freeMode={true} // Enables free dragging (like a continuous slider)
-  mousewheel={true} // Enables dragging with mouse wheel
-  centeredSlides={true}
-  navigation={true} // Arrows for navigation
-  pagination={{ clickable: true }} // Pagination dots
->
-  {images.map((imageUrl, index) => (
-    <SwiperSlide key={index} style={{ width: "auto" }}>
-      <motion.div
-        className="single"
-        onClick={() => setSelectedImage(index)}
-      >
-        <motion.div className="image-container">
-          <motion.img src={imageUrl} alt={`Image ${index + 1}`} />
-          <div className="hover-text">
-            <span className="hovertextInner">{`Image ${index + 1}`}</span>
-          </div>
-        </motion.div>
-      </motion.div>
-    </SwiperSlide>
-  ))}
-</Swiper>
+          <Swiper
+            modules={[Navigation, Pagination, Mousewheel, FreeMode]}
+            spaceBetween={20}
+            slidesPerView="auto"
+            grabCursor={true} // Enables grabbing cursor for drag functionality
+            loop={true}
+            freeMode={true} // Enables free dragging (like a continuous slider)
+            mousewheel={true} // Enables dragging with mouse wheel
+            centeredSlides={true}
+            navigation={true} // Arrows for navigation
+            pagination={{ clickable: true }} // Pagination dots
+          >
+            {images.map((imageUrl, index) => (
+              <SwiperSlide key={index} style={{ width: "auto" }}>
+                <motion.div
+                  className="single"
+                  onClick={() => setSelectedImage(index)}
+                >
+                  <motion.div className="image-container">
+                    <motion.img src={imageUrl} alt={`Image ${index + 1}`} />
+                    <div className="hover-text">
+                      <span className="hovertextInner">{`Image ${
+                        index + 1
+                      }`}</span>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       )}
     </div>
   );
-  
-  
 };
 
 export default ScrollAnimation;
