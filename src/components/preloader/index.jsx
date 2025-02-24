@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { opacity, slideUp } from "./anime";
 import Image from "next/image";
-import logo from "@/images/Loading.png";
+import logo from "@/images/preloader_img.png";
 import styles from "./style.module.css";
 
 
@@ -91,7 +91,7 @@ const strokeDashoffset = circleStrokeLength * (1 - loadedFrames / 100);
       </div>
       <div className={styles.LoaderText}>
         <div>
-          <p>Unveiling Layers of Luxury</p>
+          <p className={styles.LoaderTextFirst}>Unveiling Layers of Luxury</p>
         </div>
       </div>
       <div>
