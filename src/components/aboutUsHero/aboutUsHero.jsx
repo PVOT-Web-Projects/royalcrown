@@ -87,7 +87,7 @@ export default function AboutUsHero() {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            About
+            first
           </motion.div>
           <motion.div
             className="aboutUsHeroHeader2"
@@ -96,7 +96,7 @@ export default function AboutUsHero() {
             transition={{ duration: 1, delay: 0.5 }}
             viewport={{ once: true }}
           >
-            Royal Crown
+            acquaintance
           </motion.div> 
         </div>
       </section>

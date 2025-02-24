@@ -55,12 +55,12 @@ const ScrollAnimation = () => {
         x3 = 0; y3 = 60; scale3 = 0.8;
         x4 = 200; y4 = 80; scale4 = 0.8;
         x5 = 350; y5 = 100; scale5 = 0.8;
-      } else if (screenWidth <= 900) { // Medium screens
-        x1 = -600; y1 = 150; scale1 = 0.85;
-        x2 = -250; y2 = 110; scale2 = 0.85;
-        x3 = 0; y3 = 90; scale3 = 0.85;
-        x4 = 400; y4 = 120; scale4 = 0.85;
-        x5 = 600; y5 = 150; scale5 = 0.85;
+      } else if (screenWidth <= 1300) { // Medium screens
+        x1 = -475; y1 = 193; scale1 = 0.85;
+        x2 = -225; y2 = 123; scale2 = 0.85;
+        x3 = -10; y3 = 101; scale3 = 0.85;
+        x4 = 415; y4 = 196; scale4 = 0.85;
+        x5 = 240; y5 = 124; scale5 = 0.85;
       } else if (screenWidth <= 1500) { // Large screens
         x1 = -525; y1 = 193; scale1 = 0.9;
         x2 = -243; y2 = 123; scale2 = 0.9;
