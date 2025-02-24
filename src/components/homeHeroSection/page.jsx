@@ -12,7 +12,7 @@ import Image5 from "../../images/aboutImg2.jpg";
 import Image6 from "../../images/fctImg5.JPG";
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
-
+import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HomeHeroSection() {
@@ -46,8 +46,10 @@ export default function HomeHeroSection() {
                   transition={{ duration: 1 }}
                   viewport={{ once: true }}
                 >
-                  <p>
-                  explore our legacy</p>
+                  <p>explore our <br /> legacy</p>
+                  {/* <p>
+                  explore our</p>
+                  <p>legacy</p> */}
                 </motion.div>
                 {/* <motion.div
                     className="animated-border"
@@ -94,7 +96,9 @@ export default function HomeHeroSection() {
                 should be worth a thousand memories. However, we do have a tiny
                 tale to tell, a sneak peek to our story. */}
               </div>
+              <Link href={"/about-us"}>
               <div className="text-section-inner-footer">read more</div>
+              </Link>
             </div>
             <motion.div
               className="image-wrapper-2"
