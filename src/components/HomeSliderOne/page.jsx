@@ -1,134 +1,3 @@
-// import { useEffect } from "react";
-// import gsap from "gsap";
-// import ScrollTrigger from "gsap/ScrollTrigger";
-// import "./HomeSliderOne.scss";
-
-// if (typeof window !== "undefined") {
-//   gsap.registerPlugin(ScrollTrigger);
-// }
-// const ScrollAnimation = () => {
-//   useEffect(() => {
-//     gsap.utils.toArray(".ScrollTextSection").forEach((section) => {
-//       const circularPath = section.querySelector("#circularPath");
-//       const curvPath = section.querySelector("#curvPath");
-//       const textCircular = section.querySelector("#textCircular");
-//       const textCurv = section.querySelector("#textCurv");
-//       const [card1, card2, card3, card4, card5] = [
-//         ".card1",
-//         ".card2",
-//         ".card3",
-//         ".card4",
-//         ".card5"
-//       ].map((cls) => section.querySelector(cls));
-
-//       ScrollTrigger.create({
-//         trigger: section,
-//         start: "top center",
-//         end: "top+=250 center",
-//         scrub: true,
-//         onUpdate: (self) => {
-//           const progress = self.progress;
-//           gsap.set(textCircular, { opacity: 1 - progress });
-//           gsap.set(textCurv, { opacity: progress });
-//         },
-//       });
-
-//       // Card Rotation Animation
-//       ScrollTrigger.create({
-//         trigger: section,
-//         start: "top center",
-//         end: "top+=250 center",
-//         scrub: true,
-//         onUpdate: (self) => {
-//           const progress = self.progress;
-//           gsap.set(card2, {
-//             transform: `rotate(${-30 * progress}deg) scale(0.8)`,
-//             transformOrigin: "left bottom",
-//           });
-//           gsap.set(card4, {
-//             transform: `rotate(${30 * progress}deg) scale(0.8)`,
-//             transformOrigin: "right bottom",
-//           });
-//         },
-//       });
-
-//       const cardAnimation = gsap.timeline({
-//         scrollTrigger: {
-//           trigger: section,
-//           start: "top+=300 center",
-//           end: "top+=550 center",
-//           scrub: true,
-//           pin: true,
-//         },
-//       });
-
-//       cardAnimation
-//         .to(card1, { duration: 1, rotation: -12, x: -444, y: 44, scale: 0.9 }, 0)
-//         .to(card2, { duration: 1, rotation: -6, x: -204, y: 6, scale: 0.9 }, 0)
-//         .to(card3, { duration: 1, scale: 0.9 }, 0)
-//         .to(card4, { duration: 1, rotation: 6, x: 204, y: 6, scale: 0.9 }, 0)
-//         .to(card5, { duration: 1, rotation: 12, x: 444, y: 44, scale: 0.9 }, 0)
-//         .to(
-//           section,
-//           { duration: 1, backgroundColor: "white", ease: "none" },
-//           0
-//         )
-//         .to(
-//           textCurv,
-//           { duration: 1, fill: "black", ease: "none" },
-//           0
-//         );
-//     });
-
-//     return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-//   }, []);
-
-//   return (
-//     <div>
-//       <div className="ScrollTextSection">
-//         <svg width="1500" height="600" viewBox="0 0 900 400">
-//           <path
-//             d="M 150,350 A 300,300 0 0,1 750,350"
-//             stroke="black"
-//             id="circularPath"
-//             fill="transparent"
-//             strokeWidth="2"
-//             opacity="0"
-//           />
-//           <text fontSize="60" fill="white" id="textCircular">
-//             <textPath href="#circularPath" startOffset="50%" textAnchor="middle">
-//               WHERE ELEGANCE MEETS DESIRE
-//             </textPath>
-//           </text>
-
-//           <path
-//             d="M 25 300 Q 225 200, 450 300 Q 675 400, 875 300"
-//             stroke="black"
-//             id="curvPath"
-//             fill="transparent"
-//             strokeWidth="2"
-//             opacity="0"
-//           />
-//           <text fontSize="56" fill="white" id="textCurv" style={{ opacity: 0 }}>
-//             <textPath href="#curvPath" startOffset="50%" textAnchor="middle">
-//               WHERE ELEGANCE MEETS DESIRE
-//             </textPath>
-//           </text>
-//         </svg>
-
-//         <div className="card-container">
-//           <div className="card card1"></div>
-//           <div className="card card2"></div>
-//           <div className="card card3"></div>
-//           <div className="card card4"></div>
-//           <div className="card card5"></div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ScrollAnimation;
 
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
@@ -146,8 +15,7 @@ const ScrollAnimation = () => {
   const [videoUrl, setVideoUrl] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [isCarouselVisible, setIsCarouselVisible] = useState(false);
-  const [isCardVisible, setIsCardVisible] = useState(true); // Adjust visibility
-  const [isContainerTextVisible, setIsContainerTextVisible] = useState(true);
+  const [isCardVisible, setIsCardVisible] = useState(true);
   const swiperRef = useRef(null);
 
   const images = [
@@ -169,6 +37,55 @@ const ScrollAnimation = () => {
   const closeModal = () => setVideoUrl(null);
 
   useEffect(() => {
+    const calculatePosition = () => {
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+  
+      // Define responsive positions and scale based on screen width
+      let x1 = -750, y1 = 193, scale1 = 0.9;
+      let x2 = -350, y2 = 123, scale2 = 0.9;
+      let x3 = -21, y3 = 101, scale3 = 0.9;
+      let x4 = 680, y4 = 196, scale4 = 0.9;
+      let x5 = 350, y5 = 124, scale5 = 0.9;
+  
+      // Adjust values based on screen width
+      if (screenWidth <= 600) { // Small screens
+        x1 = -350; y1 = 100; scale1 = 0.8;
+        x2 = -200; y2 = 80; scale2 = 0.8;
+        x3 = 0; y3 = 60; scale3 = 0.8;
+        x4 = 200; y4 = 80; scale4 = 0.8;
+        x5 = 350; y5 = 100; scale5 = 0.8;
+      } else if (screenWidth <= 900) { // Medium screens
+        x1 = -600; y1 = 150; scale1 = 0.85;
+        x2 = -250; y2 = 110; scale2 = 0.85;
+        x3 = 0; y3 = 90; scale3 = 0.85;
+        x4 = 400; y4 = 120; scale4 = 0.85;
+        x5 = 600; y5 = 150; scale5 = 0.85;
+      } else if (screenWidth <= 1500) { // Large screens
+        x1 = -525; y1 = 193; scale1 = 0.9;
+        x2 = -243; y2 = 123; scale2 = 0.9;
+        x3 = -10; y3 = 101; scale3 = 0.9;
+        x4 = 475; y4 = 196; scale4 = 0.9;
+        x5 = 260; y5 = 124; scale5 = 0.9;
+      }
+      // else if (screenWidth <= 1480) { // Large screens
+      //   // x1 = -550; y1 = 193; scale1 = 0.9;
+      //   // x2 = -250; y2 = 123; scale2 = 0.9;
+      //   // x3 = -21; y3 = 101; scale3 = 0.9;
+      //   // x4 = 219; y4 = 120; scale4 = 0.9;
+      //   // x5 = 550; y5 = 124; scale5 = 0.9;
+      //   x1 = -600; y1 = 150; scale1 = 0.85;
+      //   x2 = -250; y2 = 110; scale2 = 0.85;
+      //   x3 = 0; y3 = 90; scale3 = 0.85;
+      //   x4 = 270; y4 = 120; scale4 = 0.85;
+      //   x5 = 270; y5 = 150; scale5 = 0.85;
+      // }
+      return { x1, y1, scale1, x2, y2, scale2, x3, y3, scale3, x4, y4, scale4, x5, y5, scale5 };
+    };
+  
+    // Initial position calculation
+    const { x1, y1, scale1, x2, y2, scale2, x3, y3, scale3, x4, y4, scale4, x5, y5, scale5 } = calculatePosition();
+  
     gsap.utils.toArray(".ScrollTextSection").forEach((section) => {
       const textCircular = section.querySelector("#textCircular");
       const textCurv = section.querySelector("#textCurv");
@@ -233,14 +150,29 @@ const ScrollAnimation = () => {
           pin: true,
         },
       });
+  //     cardAnimation
+  //     .to(card1, { rotation: -12, x: -750, y: 193, scale: 0.9 }, 0)
+  //     .to(card2, { rotation: -6, x: -350, y: 123, scale: 0.9 }, 0)
+  //     .to(card3, { scale: 0.9, x: -21, y: 101 }, 0)
+  //     .to(card4, { rotation: 12, x: 680, y: 196, scale: 0.9 }, 0)
+  //     .to(card5, { rotation: 6, x: 350, y: 124, scale: 0.9 }, 0);
+  // });
+  cardAnimation
+  .to(card1, { rotation: -12, x: x1, y: y1, scale: scale1 }, 0)
+  .to(card2, { rotation: -6, x: x2, y: y2, scale: scale2 }, 0)
+  .to(card3, { scale: scale3, x: x3, y: y3 }, 0)
+  .to(card4, { rotation: 12, x: x4, y: y4, scale: scale4 }, 0)
+  .to(card5, { rotation: 6, x: x5, y: y5, scale: scale5 }, 0);
+});
 
-      cardAnimation
-        .to(card1, { rotation: -12, x: -850, y: 193, scale: 0.9 }, 0)
-        .to(card2, { rotation: -6, x: -400, y: 123, scale: 0.9 }, 0)
-        .to(card3, { scale: 0.9, x: -21, y: 101 }, 0)
-        .to(card4, { rotation: 12, x: 750, y: 196, scale: 0.9 }, 0)
-        .to(card5, { rotation: 6, x: 406, y: 124, scale: 0.9 }, 0);
-    });
+
+    //   cardAnimation
+    //     .to(card1, { rotation: -12, x: -850, y: 193, scale: 0.9 }, 0)
+    //     .to(card2, { rotation: -6, x: -400, y: 123, scale: 0.9 }, 0)
+    //     .to(card3, { scale: 0.9, x: -21, y: 101 }, 0)
+    //     .to(card4, { rotation: 12, x: 750, y: 196, scale: 0.9 }, 0)
+    //     .to(card5, { rotation: 6, x: 406, y: 124, scale: 0.9 }, 0);
+    // });
 
     return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
   }, []);
@@ -270,7 +202,7 @@ const ScrollAnimation = () => {
     <div>
       <div className="ScrollTextSection">
         {/* Animated Circular Path Text */}
-        <svg width="1500" height="600" viewBox="0 0 900 400">
+        <svg width="1500" height="400" viewBox="0 0 900 400">
           <path
             d="M 150,450 A 300,300 0 0,1 750,450"
             id="circularPath"
@@ -310,7 +242,7 @@ const ScrollAnimation = () => {
           ].map((title, index) => (
             <div
               key={index}
-              className={`card card${index + 1}`}
+              className={`cardAll card${index + 1}`}
               onClick={() => handleCardClick(videoUrls[index])} // Use correct video URL for each card
             >
               <div className="image-container">
@@ -368,8 +300,6 @@ const ScrollAnimation = () => {
           </div>
         </div>
       )}
-
-      {/* Carousel for Image Selection */}
       {isCarouselVisible && (
         <div className={`carouselOne ${isCarouselVisible ? "" : "hidden"}`}>
           <Swiper

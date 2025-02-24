@@ -39,7 +39,7 @@
 // ScrollTextSection
 .ScrollTextSection {
   width: 100%;
-  height: 140vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -54,12 +54,15 @@
     justify-content: center;
     align-items: center;
     margin: 5px auto;
-    margin-top: -250px;
+    margin-top: -100px;
     position: relative;
+    @media(max-width: 1480px){
+      margin-top: -100px;
+    }
 
-    .card {
-      height: 300px;
-      width: 200px;
+    .cardAll {
+      height: 350px;
+      width: 250px;
       border: 1px solid black;
       border-radius: 12px;
       background-color: white;
@@ -67,7 +70,10 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-    
+    @media(max-width: 1480px){
+      height: 350px;
+      width: 250px;
+    }
       /* Image container for the zoom effect */
       .image-container {
         position: relative;
@@ -93,14 +99,14 @@
       .hover-text {
         position: absolute;
         bottom:-21%;
-        left: 18%;
+        left: 0%;
         transform: translateX(-50%); /* Center text horizontally */
         padding: 10px 0;
         font-size: 30px;
         text-align: center;
         color: white;
         font-weight: 300;
-        width: 60%;
+        width: 100%;
         opacity: 0; /* Initially hidden */
         transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
         transform: translateY(50%); /* Start with text below the image */
@@ -109,52 +115,59 @@
       /* Show hover text when card is hovered */
       &:hover .hover-text {
         opacity: 1; /* Make text visible */
-        transform: translateY(10%); /* Move text into view */
+        transform: translateY(10%);
+         /* Move text into view */
+         @media(min-width: 1500px){
+          transform: translateY(50%);
+         }
+      @media(max-width: 1480px){
+        transform: translateY(40%);
+      }
       }
     
       /* Card-specific styles */
       &.card1 {
         background-image: url("https://interiormaataassets.humbeestudio.xyz/interior-outdoor.png");
         z-index: 11;
-        height: 500px;
-        width: 400px;
-        margin-top: 410px;
+        // height: 500px;
+        // width: 400px;
+        // margin-top: 410px;
 
       }
     
       &.card2 {
         background-image: url("https://interiormaataassets.humbeestudio.xyz/livingroomthumb.png");
         z-index: 13;
-        height: 500px;
-        width: 400px;
-        margin-top: 410px;
+        // height: 500px;
+        // width: 400px;
+        // margin-top: 410px;
 
       }
     
       &.card3 {
         background-image: url("https://interiormaataassets.humbeestudio.xyz/KitchenImgThumb.png");
         z-index: 100;
-        height: 520px;
-        width: 410px;
-        margin-top: 410px;
+        // height: 520px;
+        // width: 410px;
+        // margin-top: 410px;
 
       }
     
       &.card4 {
         background-image: url("https://interiormaataassets.humbeestudio.xyz/livingroomthumb.png");
         z-index: 14;
-        height: 500px;
-        width: 400px;
-        margin-top: 410px;
+        // height: 500px;
+        // width: 400px;
+        // margin-top: 410px;
 
       }
     
       &.card5 {
         background-image: url("https://interiormaataassets.humbeestudio.xyz/interior-outdoor.png");
         z-index: 13;
-        height: 500px;
-        width: 400px;
-        margin-top: 410px;
+        // height: 500px;
+        // width: 400px;
+        // margin-top: 410px;
       }
     }
     
@@ -183,26 +196,26 @@
     justify-content: center;
     align-items: center;
     padding-bottom: 100px;
-    margin-top: -555px;
-    @media (min-width: 1550px) {
-      margin-top: -600px;
-    }
-    @media (max-width: 1480px) {
-      margin-top: -420px;
-    }
-    @media (max-width: 1370px) {
-      margin-top: -455px;
-      padding-bottom: 60px;
-    }
-    @media (max-width: 1199px) {
-      margin-top: -370px;
-    }
-    @media (max-width: 768px) {
-      margin-top: -220px;
-    }
-    @media (max-width: 575px) {
-      margin-top: -215px;
-    }
+    // margin-top: -555px;
+    // @media (min-width: 1550px) {
+    //   margin-top: -600px;
+    // }
+    // @media (max-width: 1480px) {
+    //   margin-top: -420px;
+    // }
+    // @media (max-width: 1370px) {
+    //   margin-top: -455px;
+    //   padding-bottom: 60px;
+    // }
+    // @media (max-width: 1199px) {
+    //   margin-top: -370px;
+    // }
+    // @media (max-width: 768px) {
+    //   margin-top: -220px;
+    // }
+    // @media (max-width: 575px) {
+    //   margin-top: -215px;
+    // }
 
     transition: all 0.1s ease-in-out;
 
