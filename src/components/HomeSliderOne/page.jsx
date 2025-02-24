@@ -209,7 +209,7 @@ const ScrollAnimation = () => {
             id="circularPath"
             fill="transparent"
           />
-          <text fontSize="60" fill="white" id="textCircular">
+          <text fontSize="54" fill="white" id="textCircular">
             <textPath
               href="#circularPath"
               startOffset="50%"
