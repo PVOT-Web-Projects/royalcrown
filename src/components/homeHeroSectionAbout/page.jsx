@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import "./homehero.scss";
+import "./homeheroAbout.scss";
 // import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -12,7 +12,7 @@ import Image5 from "../../images/aboutImg2.jpg";
 import Image6 from "../../images/fctImg5.JPG";
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
-import Link from "next/link";
+
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HomeHeroSection() {
@@ -33,7 +33,7 @@ export default function HomeHeroSection() {
   //   });
   // },[])
   return (
-    <div className="elegance-Wrapper">
+    <div className="elegance-WrapperAbout">
       <div className="elegance-container">
         <div className="text-section">
           <div className="text-section-header">
@@ -46,10 +46,7 @@ export default function HomeHeroSection() {
                   transition={{ duration: 1 }}
                   viewport={{ once: true }}
                 >
-                  <p>explore our <br /> legacy</p>
-                  {/* <p>
-                  explore our</p>
-                  <p>legacy</p> */}
+                  explore our legacy
                 </motion.div>
                 {/* <motion.div
                     className="animated-border"
@@ -73,15 +70,16 @@ export default function HomeHeroSection() {
           <div className="text-section-content">
             <div className="text-section-inner">
               <div className="TextSectionInnerFirst">
-                Royal Crown Laminates' legacy celebrates innovation,
-                cutting-edge technology, craft, and expertise in delivering the
-                best and trendsetting laminate surfaces. We have grown to become
-                a leader in every sense of the word in the laminate industry. Our
-                unceasing efforts with architects, interiors, OEMs, contractors,
-                carpenters, and end consumers and an in-depth understanding of
-                the market and its demands have strengthened our product base.
-                Moreover, it has helped us establish ourselves as domestic and
-                global leaders.
+                Crown Decor, a Royale Touche Laminate group company, is a niche
+                luxury laminate brand from India. It was launched in 1979 with
+                the idea that laminate has unlimited potential in surface décor.
+                We made people look at laminates as a resilient and flexible
+                product. We gave laminates a complete makeover with unparalleled
+                endless designs and textures. The product has a rich, luxurious
+                feel that adds aesthetic value to interiors, making architects',
+                end users', and interior designers' lives easy. Since 2011,
+                Crown Laminates has boasted a legacy celebrating innovation,
+                cutting-edge technology, craft, and expertise.
                 {/* At Royal Crown, customers are the cornerstone of our unique
                 business model. We are dedicated to providing every individual
                 with an unparalleled royal service, ensuring that their
@@ -96,9 +94,7 @@ export default function HomeHeroSection() {
                 should be worth a thousand memories. However, we do have a tiny
                 tale to tell, a sneak peek to our story. */}
               </div>
-              <Link href={"/about-us"}>
               <div className="text-section-inner-footer">read more</div>
-              </Link>
             </div>
             <motion.div
               className="image-wrapper-2"

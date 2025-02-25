@@ -47,9 +47,8 @@ export default function App() {
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          {/* Reasons to count on us
-           */}
-           why royal crown
+          Reasons to count on us
+           {/* why royal crown */}
         </motion.div>
         {/* <p className="RoyalCrownTextInnerFirst">ROYAL CROWN</p> */}
       </div>

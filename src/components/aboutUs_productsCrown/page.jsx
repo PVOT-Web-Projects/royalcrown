@@ -310,7 +310,14 @@ const Page = () => {
       <div className="productMainContainer">
         <div className="productMain">
           <div className="productNumber">
-            <p>04</p>
+          <motion.p
+              initial={{ x: 100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+            >
+              03
+            </motion.p>
           </div>
           <div className="productDescription">
             <motion.div
@@ -322,13 +329,18 @@ const Page = () => {
             />
             <div className="productDescriptionHeader">crown</div>
             <div className="productDescriptionContent">
-              <p>
+              <motion.p
+              initial={{ y: 100, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+              >
                 Crown's Lean Line offers an exquisite and cost-effective range
                 of laminates in a variety of designs, colors, and textures, all
                 in 0.8mm thickness. Manufactured at our highly advanced
                 production facility, the Lean Line guarantees a consistent and
                 exceptional level of quality.
-              </p>
+              </motion.p>
             </div>
           </div>
         </div>
@@ -336,6 +348,7 @@ const Page = () => {
       <div className="first_top">
         <div id="sticky_top" className="products_name1">
           <motion.div
+          className="exploreCollection"
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}

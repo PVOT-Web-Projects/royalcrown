@@ -129,7 +129,7 @@
 
       .contentSlider {
         position: absolute;
-        top: 50%;
+        top: 40%;
         left: 100px;
         width: 500px;
         text-align: left;
@@ -154,10 +154,12 @@
         @media(max-width: 475px){
           width: 345px;
           left: 30px;
+          top: 27%;
         }
         @media(max-width: 375px){
           width: 300px;
           left: 20px;
+          top: 27%;
         }
         .nameSlider {
           font-family: "safira_march";
@@ -168,7 +170,7 @@
           padding: 10px 0;
           animation: animate 1s ease-in-out 1 forwards;
           @media(max-width: 575px){
-            font-size: 25px;
+            font-size: 22px;
           }
         }
 
@@ -187,6 +189,8 @@
           }
           @media(max-width: 475px){
             margin-bottom: 10px;
+            font-size: 16px;
+            margin-top: 0px;
           }
         }
 

@@ -274,8 +274,11 @@ const Page = () => {
   useEffect(() => {
     if (selectedTag === "all") {
       setFilteredProducts(products);
-    } else if (selectedTag === "CrownXCL") { // Highlighted: Check for CrownXCL explicitly
-      const filtered = products.filter((product) => product.category === "CrownXCL"); // Highlighted: Filter by category CrownXCL
+    } else if (selectedTag === "CrownXCL") {
+      // Highlighted: Check for CrownXCL explicitly
+      const filtered = products.filter(
+        (product) => product.category === "CrownXCL"
+      ); // Highlighted: Filter by category CrownXCL
       console.log("Filtered Products for CrownXCL:", filtered); // Log the filtered result
       setFilteredProducts(filtered);
     } else {
@@ -310,7 +313,14 @@ const Page = () => {
       <div className="productMainContainer">
         <div className="productMain">
           <div className="productNumber">
-            <p>03</p>
+            <motion.p
+              initial={{ x: 100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+            >
+              01
+            </motion.p>
           </div>
           <div className="productDescription">
             <motion.div
@@ -322,11 +332,15 @@ const Page = () => {
             />
             <div className="productDescriptionHeader">crown xcl</div>
             <div className="productDescriptionContent">
-              <p>
+              <motion.p
+              initial={{ y: 100, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}>
                 XCL- Exterior Compact Laminate is a high pressure laminate,
                 built up from multiple papers of kraft papers to produce
                 laminate in thickness ranging from 2mm to 25mm.
-              </p>
+              </motion.p>
             </div>
           </div>
         </div>
@@ -334,6 +348,7 @@ const Page = () => {
       <div className="first_top">
         <div id="sticky_top" className="products_name1">
           <motion.div
+            className="exploreCollection"
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}

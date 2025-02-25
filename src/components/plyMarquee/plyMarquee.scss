@@ -13,7 +13,7 @@
   padding: 100px 0;
   overflow: hidden;
   .MarqueeTextFirst {
-    font-size: 35px;
+    font-size: 24px;
     padding: 20px 70px;
     text-transform: uppercase;
     font-weight: 400;
@@ -22,8 +22,8 @@
       font-size: 30px;
       padding: 0px 20px 10px;
     }
-    @media (max-width: 350px) {
-      font-size: 25px;
+    @media (max-width: 375px) {
+      font-size: 22px;
     }
     div {
       font-family: "safira_march";

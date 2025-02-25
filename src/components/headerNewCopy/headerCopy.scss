@@ -70,7 +70,7 @@ header {
       .hamburger-line {
         width: 30px;
         height: 3px;
-        background-color: #5b3524;
+        background-color: #fff;
         margin: 7px 0;
         transition: all 0.3s ease;
         border-radius: 5px;
@@ -151,7 +151,10 @@ header {
         li {
           color: white !important;
           // height: 15px;
-          a {
+          a{
+            color: #fff !important;
+          }
+          span{
             color: #fff !important;
           }
         }
@@ -299,6 +302,7 @@ header {
             font-family: "futura_thin";
             font-weight: 500;
             font-size: 19px;
+            margin-left: 1rem;
             color: #5b3524 !important;
           }
           .prdtsFonts{

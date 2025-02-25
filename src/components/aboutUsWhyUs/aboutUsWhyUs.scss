@@ -26,10 +26,11 @@
 
         .whyusHeader {
             text-align: center;
-            font-size: 60px;
+            font-size: 24px;
             letter-spacing: 8px;
             margin-bottom: 50px;
             text-transform: uppercase;
+            font-family: "safira_march";
         }
 
         .whyUsCardWrapper {
@@ -49,7 +50,7 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-end;
-                padding: 70px 40px 70px 40px;
+                padding: 70px 40px 40px 40px;
                 position: relative;
 
                 @media (max-width : 425px) {
@@ -68,14 +69,14 @@
                     color: #5b3524;
                     position: absolute;
                     right: 20px;
-                    top: 10px;
+                    top: 30px;
                     cursor: pointer;
                 }
 
                 .card_description {
                     font-family: "futura_thin";
                     font-size: 21px; // Adjust description font size
-                    padding: 15px 0px 10px 0px;
+                    padding: 15px 0px 30px 0px;
 
                     @media (max-width : 425px) {
                         font-size: 18px;
@@ -83,7 +84,13 @@
                 }
 
                 .card-button{
-                    margin-top: 15px;
+                    margin-top: 25px;
+                    @media(max-width:1500px){
+                        margin-top: 25px;
+                    }
+                    @media(max-width: 991px){
+                        margin-top: auto;
+                    }
                 }
             }
 
@@ -113,8 +120,10 @@
 
                 .cardinner_1,
                 .cardinner_2 {
-                    padding: 20px 50px 20px 50px;
-
+                    padding: 40px 50px 25px 50px;
+@media(max-width: 1300px){
+    padding: 40px 50px 0px 50px;
+}
                     @media (max-width : 425px) {
                         padding: 30px 20px;
                     }
@@ -122,7 +131,7 @@
                     .card_description {
                         font-family: "futura_thin";
                         font-size: 21px; // Adjust description font size
-                        padding:40px 0;
+                        padding:20px 0;
 
                         @media (max-width : 425px) {
                             font-size: 18px;
@@ -140,7 +149,7 @@
                         color: #5b3524;
                         position: absolute;
                         right: 20px;
-                        top: 10px;
+                        top: 35px;
                         cursor: pointer;
                     }
 
@@ -166,7 +175,10 @@
                     transition: all 0.5s ease;
 
                     .card-button{
-                        margin-top: 15px;
+                        margin-top: 25px;
+                        @media(max-width: 991px){
+                            margin-top: auto;
+                        }
                     }
 
                     &:hover {
@@ -190,7 +202,7 @@
 
                 .card_description {
                     font-size: 21px; // Adjust description font size
-                    padding: 5px 0px 10px 0px;
+                    padding: 5px 0px 30px 0px;
 
                     @media (max-width : 425px) {
                         font-size: 18px;

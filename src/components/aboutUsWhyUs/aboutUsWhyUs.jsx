@@ -46,12 +46,12 @@ export default function AboutUsWhyUs({heading , cardOneText , cardTwoText , card
                   </svg>
               </div>
               <div className="cardinner">
-                <div className="card_header">20+</div>
+                <div className="card_header">60+</div>
                 <div className="card_description">
                   {cardOneText}
                 </div>
                 <div className="card-button">
-                  <AboutUsButton text={"Legacy"} />
+                  <AboutUsButton text={"global"} />
                 </div>
               </div>
             </div>
@@ -73,7 +73,7 @@ export default function AboutUsWhyUs({heading , cardOneText , cardTwoText , card
                   </svg>
                 </div>
                 <div className="card-button">
-                  <AboutUsButton text={"categories"} />
+                  <AboutUsButton text={"range"} />
                 </div>
                 <div className="card_description">
                   
@@ -85,7 +85,7 @@ export default function AboutUsWhyUs({heading , cardOneText , cardTwoText , card
                   {cardThreeText}
                 </div>
                 <div className="card-button">
-                  <AboutUsButton text={"innovation"} />
+                  <AboutUsButton text={"excellence"} />
                 </div>
               </div>
             </div>
@@ -106,12 +106,12 @@ export default function AboutUsWhyUs({heading , cardOneText , cardTwoText , card
                     />
                   </svg>
                 </div>
-                <div className="card_header">5+</div>
+                <div className="card_header">15000+</div>
                 <div className="card_description">
                  {cardFourText}
                 </div>
                 <div className="card-button">
-                  <AboutUsButton text={"certificates"} />
+                  <AboutUsButton text={"distribution"} />
                 </div>
               </div>
             </div>

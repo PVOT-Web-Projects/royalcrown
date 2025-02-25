@@ -7,7 +7,7 @@ import AboutUs_products from "@/components/aboutUs_products/page";
 import AboutUs_productsOne from "@/components/aboutUs_productsOne/page"
 import Form from "@/components/forms/form1/Form";
 import SocialPage from "@/components/socialPage/socialpage";
-import SocialMediaImg from "@/images/socials-image.jpg";
+import SocialMediaImg from "@/images/getInTouchImage.jpg";
 import { useRef } from "react";
 const AboutUs = () => {
   useEffect(() => {

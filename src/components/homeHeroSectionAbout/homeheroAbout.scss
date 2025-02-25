@@ -1,7 +1,7 @@
 @import "../../app/variables.scss";
 @import "../../fonts/fonts.scss";
 
-.elegance-Wrapper {
+.elegance-WrapperAbout {
   padding: 200px 0 0px !important;
   overflow: hidden;
   display: flex;
@@ -9,20 +9,19 @@
   align-items: center;
   flex-direction: column;
   // background-color: #252220;
-  background: linear-gradient(to bottom, #FFEEE2, #FFEDE0, #FFECDE, #FFEBDD, #FFEADB);
+  // background: linear-gradient(to bottom, #FFEEE2, #FFEDE0, #FFECDE, #FFEBDD, #FFEADB);
 //   border-bottom: 1px solid #5b3524;
   @media(max-width: 768px){
     padding: 0px !important;
   }
   @media(max-width: 475px){
-    padding: 0px 0 0px !important;
+    padding: 140px 0 0px !important;
   }
 
   .elegance-container {
     display: flex;
     padding: 100px 30px !important;
     position: relative;
-   
 
     @media (max-width: 991px) {
       display: flex;
@@ -30,7 +29,7 @@
       align-items: center;
     }
     @media(max-width: 575px){
-      padding: 50px 0 50px !important;
+      padding: 100px 0 50px !important;
     }
 
     .text-section {
@@ -55,7 +54,7 @@
       .text-section-header {
         text-transform: uppercase;
         display: flex;
-        color: #5b3524;
+        // color: white;
 
         @media (max-width: 991px) {
           flex-direction: column;
@@ -66,28 +65,23 @@
         @media(max-width: 768px){
           gap: 3rem;
         }
-        .text-section-header-inner{
-          width: 100%;
-          @media(max-width: 991px){
-            text-align: center;
-          }
-        }
+
         .header_text {
           // font-family: "made_mirage_regular" !important;
           font-size: 33px;
           position: relative;
           display: inline-block;
-          color: #5b3524;
+          // color: white;
 
           @media (min-width: 1500px) {
             font-size: 40px;
             width: 80%;
           }
           @media(max-width:1200px){
-            font-size: 28px;
+            font-size: 33px;
           }
           @media(max-width:1199px){
-            font-size: 25px;
+            font-size: 30px;
           }
           @media (max-width: 991px) {
             text-align: center;
@@ -112,16 +106,7 @@
             font-weight: 550;
             // font-family: "made_mirage_regular";
             font-family: "safira_march";
-            color: #5b3524;
-            p{
-              font-size: 25px;
-              @media(max-width: 575px){
-                font-size: 22px;
-                @media(max-width: 325px){
-                  font-size: 20px;
-                }
-              }
-            }
+            // color: white;
           }
 
           .animated-border {
@@ -140,7 +125,7 @@
           height: auto;
           transform: translate(10px, -210px) !important;
           @media(min-width: 1800px){
-            transform: translate(25px, -210px) !important;
+            transform: translate(225px, -210px) !important;
           }
           @media(max-width: 1300px){
             transform: translate(10px, -85px) !important;
@@ -171,7 +156,7 @@
           font-family: "futura_thin";
           font-weight: 550;
             width: 80%;
-            color: #5b3524;
+            // color: white;
             @media(min-width: 1500px){
                 width: 75%;
             }
@@ -186,7 +171,7 @@
           font-weight: 550;
           padding-top: 3rem;
           font-size: 25px;
-          color: #5b3524;
+          // color: white;
           text-transform: uppercase;
           // border-bottom: 1px solid white;
           display: inline-block;
