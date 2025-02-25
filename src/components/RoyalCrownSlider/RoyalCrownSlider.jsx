@@ -9,6 +9,8 @@ import "swiper/css/effect-fade";
 import "swiper/css/thumbs";
 import "swiper/css/pagination";
 import "./RoyalCrownSlider.scss";
+import StatsSection from "@/components/whyroyalcrownhero/page";
+
 import {
   EffectFade,
   FreeMode,
@@ -52,13 +54,10 @@ export default function App() {
         </motion.div>
         {/* <p className="RoyalCrownTextInnerFirst">ROYAL CROWN</p> */}
       </div>
+      <StatsSection />
       {/* <ShadowHeading text={"WHY ROYAL CROWN"}/> */}
-      <div className="MainContainer" style={{ marginTop: "50px" }}>
+      {/* <div className="MainContainer" style={{ marginTop: "50px" }}>
         <div className="abc left">
-          {/* <div className="LogoImg">
-            <Image src={LogoImg} alt="none" />
-          </div> */}
-          {/* <ShadowHeading text={"Why Royal Crown"} /> */}
           <div className="Carousel_Slider_container">
             <Swiper
               className="mySwiper"
@@ -68,7 +67,6 @@ export default function App() {
                 delay: 2500,
               }}
               loop={true}
-              // navigation={true}
               navigation={{
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev",
@@ -124,15 +122,10 @@ export default function App() {
             </Swiper>
             <div className="swiper-button-next"></div>
             <div className="swiper-button-prev"></div>
-            {/* <div className="swiper-button-next"></div>
-            <div className="swiper-button-prev"></div> */}
           </div>
         </div>
 
         <div className="abc right">
-          {/* <div className="Rc_Text_Main">
-            <p className="Rc_Text_MainInner">Royal Crown Laminates</p>
-          </div> */}
           <div className="Carousel_Slider_container2">
             <Swiper
               modules={[Thumbs, Autoplay, EffectFade]}
@@ -141,7 +134,6 @@ export default function App() {
               autoplay={{
                 delay: 5000,
               }}
-              // navigation={true}
               slidesPerView={1}
               speed={1500}
               effect="fade"
@@ -150,9 +142,6 @@ export default function App() {
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev",
               }}
-              // pagination={{
-              //   dynamicBullets: true,
-              // }}
               allowTouchMove={false}
               className="mySwiper2"
             >
@@ -164,11 +153,7 @@ export default function App() {
                     reliability, combining advanced R&D, a fully equipped
                     laboratory, and a skilled workforce to ensure you always
                     receive the best in quality and performance.
-                    {/* We are known for providing high density laminates with
-                    unparalleled services in terms of quality and reliability.
-                    We are known for providing high density laminates with
-                    unparalleled services in terms of quality and reliability. */}
-                  </p>
+                    </p>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
@@ -227,11 +212,9 @@ export default function App() {
             <div>
               <p className="tenExpBorderTextInner">years of experience</p>
             </div>
-            {/* <div className="swiper-button-next"></div>
-            <div className="swiper-button-prev"></div> */}
-          </div>
+            </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
