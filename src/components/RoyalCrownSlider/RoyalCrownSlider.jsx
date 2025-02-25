@@ -19,7 +19,7 @@ import {
 import testimonial1 from "@/images/Wide_Range.jpg";
 import testimonial2 from "@/images/Unparalleled_Services.jpg";
 import testimonial3 from "@/images/Product_Compatibility_Image.jpg";
-import testimonial4 from "@/images/Environment.webp";
+import testimonial4 from "@/images/Environment.jpg";
 import testimonial5 from "@/images/Order_and_delivery.jpg";
 
 import { motion } from "framer-motion";
