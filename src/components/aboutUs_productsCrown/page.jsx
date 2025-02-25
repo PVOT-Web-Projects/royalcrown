@@ -346,8 +346,7 @@ const Page = () => {
         </div>
       </div>
       <div className="first_top">
-        <div id="sticky_top" className="products_name1">
-          <motion.div
+      <motion.div
           className="exploreCollection"
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -356,6 +355,8 @@ const Page = () => {
           >
             Explore Collection
           </motion.div>
+        <div id="sticky_top" className="products_name1">
+         
           <div className="products-tabs" id="sticky_top">
             <div scroll={false} className="tab-item">
               <div className="tab-content-inner">crown</div>
