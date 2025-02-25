@@ -28,7 +28,7 @@ export async function POST(request) {
       secure: false,
       auth: {
         user: "jaykalariya.humbee@gmail.com",
-        pass: "pmwzlpxmpwclboag",
+        pass: "hguj xcok qzpx maca",
         // pmwzlpxmpwclboag
       },
     });
