@@ -376,8 +376,8 @@
 
 .video-content {
   position: relative;
-  width: 80%;
-  max-width: 900px;
+  width: 100%;
+  // max-width: 900px;
   animation: videoOpenFade 0.6s ease forwards;
 
   video {
@@ -412,6 +412,40 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .closeButton {
+    position: absolute;
+    top: 31px;
+    left: 95%;
+    // right: -465px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10; /* Ensures it stays on top of the video */
+    @media (max-width: 1024px) {
+      left: 94%;
+    }
+    @media (max-width: 768px) {
+      left: 92%;
+    }
+    @media (max-width: 425px) {
+      left: 87%;
+    }
+   
+
+  }
+  
+  .closeButton:hover {
+    background: rgba(0, 0, 0, 0.8);
   }
 
   // .videoOneVid {
