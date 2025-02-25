@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -10,7 +9,6 @@ import { Navigation, Pagination, Mousewheel, FreeMode } from "swiper/modules";
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
-
 
 const ScrollAnimation = () => {
   const [videoUrl, setVideoUrl] = useState(null);
@@ -41,33 +39,76 @@ const ScrollAnimation = () => {
     const calculatePosition = () => {
       const screenWidth = window.innerWidth;
       const screenHeight = window.innerHeight;
-  
+
       // Define responsive positions and scale based on screen width
-      let x1 = -750, y1 = 193, scale1 = 0.9;
-      let x2 = -350, y2 = 123, scale2 = 0.9;
-      let x3 = -21, y3 = 101, scale3 = 0.9;
-      let x4 = 680, y4 = 196, scale4 = 0.9;
-      let x5 = 350, y5 = 124, scale5 = 0.9;
-  
+      let x1 = -750,
+        y1 = 193,
+        scale1 = 0.9;
+      let x2 = -350,
+        y2 = 123,
+        scale2 = 0.9;
+      let x3 = -21,
+        y3 = 101,
+        scale3 = 0.9;
+      let x4 = 680,
+        y4 = 196,
+        scale4 = 0.9;
+      let x5 = 350,
+        y5 = 124,
+        scale5 = 0.9;
+
       // Adjust values based on screen width
-      if (screenWidth <= 600) { // Small screens
-        x1 = -350; y1 = 100; scale1 = 0.8;
-        x2 = -200; y2 = 80; scale2 = 0.8;
-        x3 = 0; y3 = 60; scale3 = 0.8;
-        x4 = 200; y4 = 80; scale4 = 0.8;
-        x5 = 350; y5 = 100; scale5 = 0.8;
-      } else if (screenWidth <= 1300) { // Medium screens
-        x1 = -475; y1 = 193; scale1 = 0.85;
-        x2 = -225; y2 = 123; scale2 = 0.85;
-        x3 = -10; y3 = 101; scale3 = 0.85;
-        x4 = 415; y4 = 196; scale4 = 0.85;
-        x5 = 240; y5 = 124; scale5 = 0.85;
-      } else if (screenWidth <= 1500) { // Large screens
-        x1 = -525; y1 = 193; scale1 = 0.9;
-        x2 = -243; y2 = 123; scale2 = 0.9;
-        x3 = -10; y3 = 101; scale3 = 0.9;
-        x4 = 475; y4 = 196; scale4 = 0.9;
-        x5 = 260; y5 = 124; scale5 = 0.9;
+      if (screenWidth <= 600) {
+        // Small screens
+        x1 = -350;
+        y1 = 100;
+        scale1 = 0.8;
+        x2 = -200;
+        y2 = 80;
+        scale2 = 0.8;
+        x3 = 0;
+        y3 = 60;
+        scale3 = 0.8;
+        x4 = 200;
+        y4 = 80;
+        scale4 = 0.8;
+        x5 = 350;
+        y5 = 100;
+        scale5 = 0.8;
+      } else if (screenWidth <= 1300) {
+        // Medium screens
+        x1 = -475;
+        y1 = 193;
+        scale1 = 0.85;
+        x2 = -225;
+        y2 = 123;
+        scale2 = 0.85;
+        x3 = -10;
+        y3 = 101;
+        scale3 = 0.85;
+        x4 = 415;
+        y4 = 196;
+        scale4 = 0.85;
+        x5 = 240;
+        y5 = 124;
+        scale5 = 0.85;
+      } else if (screenWidth <= 1500) {
+        // Large screens
+        x1 = -525;
+        y1 = 193;
+        scale1 = 0.9;
+        x2 = -243;
+        y2 = 123;
+        scale2 = 0.9;
+        x3 = -10;
+        y3 = 101;
+        scale3 = 0.9;
+        x4 = 475;
+        y4 = 196;
+        scale4 = 0.9;
+        x5 = 260;
+        y5 = 124;
+        scale5 = 0.9;
       }
       // else if (screenWidth <= 1480) { // Large screens
       //   // x1 = -550; y1 = 193; scale1 = 0.9;
@@ -81,12 +122,44 @@ const ScrollAnimation = () => {
       //   x4 = 270; y4 = 120; scale4 = 0.85;
       //   x5 = 270; y5 = 150; scale5 = 0.85;
       // }
-      return { x1, y1, scale1, x2, y2, scale2, x3, y3, scale3, x4, y4, scale4, x5, y5, scale5 };
+      return {
+        x1,
+        y1,
+        scale1,
+        x2,
+        y2,
+        scale2,
+        x3,
+        y3,
+        scale3,
+        x4,
+        y4,
+        scale4,
+        x5,
+        y5,
+        scale5,
+      };
     };
-  
+
     // Initial position calculation
-    const { x1, y1, scale1, x2, y2, scale2, x3, y3, scale3, x4, y4, scale4, x5, y5, scale5 } = calculatePosition();
-  
+    const {
+      x1,
+      y1,
+      scale1,
+      x2,
+      y2,
+      scale2,
+      x3,
+      y3,
+      scale3,
+      x4,
+      y4,
+      scale4,
+      x5,
+      y5,
+      scale5,
+    } = calculatePosition();
+
     gsap.utils.toArray(".ScrollTextSection").forEach((section) => {
       const textCircular = section.querySelector("#textCircular");
       const textCurv = section.querySelector("#textCurv");
@@ -151,21 +224,20 @@ const ScrollAnimation = () => {
           pin: true,
         },
       });
-  //     cardAnimation
-  //     .to(card1, { rotation: -12, x: -750, y: 193, scale: 0.9 }, 0)
-  //     .to(card2, { rotation: -6, x: -350, y: 123, scale: 0.9 }, 0)
-  //     .to(card3, { scale: 0.9, x: -21, y: 101 }, 0)
-  //     .to(card4, { rotation: 12, x: 680, y: 196, scale: 0.9 }, 0)
-  //     .to(card5, { rotation: 6, x: 350, y: 124, scale: 0.9 }, 0);
-  // });
-  cardAnimation
-  .to(card1, { rotation: -12, x: x1, y: y1, scale: scale1 }, 0)
-  .to(card2, { rotation: -6, x: x2, y: y2, scale: scale2 }, 0)
-  .to(card3, { scale: scale3, x: x3, y: y3 }, 0)
-  .to(card4, { rotation: 12, x: x4, y: y4, scale: scale4 }, 0)
-  .to(card5, { rotation: 6, x: x5, y: y5, scale: scale5 }, 0);
-});
-
+      //     cardAnimation
+      //     .to(card1, { rotation: -12, x: -750, y: 193, scale: 0.9 }, 0)
+      //     .to(card2, { rotation: -6, x: -350, y: 123, scale: 0.9 }, 0)
+      //     .to(card3, { scale: 0.9, x: -21, y: 101 }, 0)
+      //     .to(card4, { rotation: 12, x: 680, y: 196, scale: 0.9 }, 0)
+      //     .to(card5, { rotation: 6, x: 350, y: 124, scale: 0.9 }, 0);
+      // });
+      cardAnimation
+        .to(card1, { rotation: -12, x: x1, y: y1, scale: scale1 }, 0)
+        .to(card2, { rotation: -6, x: x2, y: y2, scale: scale2 }, 0)
+        .to(card3, { scale: scale3, x: x3, y: y3 }, 0)
+        .to(card4, { rotation: 12, x: x4, y: y4, scale: scale4 }, 0)
+        .to(card5, { rotation: 6, x: x5, y: y5, scale: scale5 }, 0);
+    });
 
     //   cardAnimation
     //     .to(card1, { rotation: -12, x: -850, y: 193, scale: 0.9 }, 0)
@@ -178,12 +250,10 @@ const ScrollAnimation = () => {
     return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
   }, []);
 
-
   const handleExploreClick = () => {
     setVideoUrl(null);
     setIsCarouselVisible(true); // Close video modal
   };
-
 
   const handleImageClick = (event, index) => {
     const url = images[index]; // Use your image data for the video URL
@@ -198,6 +268,22 @@ const ScrollAnimation = () => {
   const onSlideTransitionEnd = () => {
     console.log("Slide transition ended");
   };
+
+  useEffect(() => {
+    if (videoUrl) {
+      // Disable scroll when video is playing
+      document.body.style.overflow = "hidden";
+    } else {
+      // Enable scroll when video is closed
+      document.body.style.overflow = "auto";
+    }
+
+    // Cleanup function to ensure scroll is re-enabled
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [videoUrl]);
+
 
   return (
     <div>
@@ -277,6 +363,16 @@ const ScrollAnimation = () => {
 
             <div className="VideoOneContainer">
               <div className="VideoInnerContainer">
+                {/* Close Button */}
+                {videoUrl && (
+                  <button
+                    className="closeButton"
+                    onClick={() => setVideoUrl(null)}
+                  >
+                    ✖
+                  </button>
+                )}
+
                 {/* Video with autoplay and no loop */}
                 <video
                   src={videoUrl}
