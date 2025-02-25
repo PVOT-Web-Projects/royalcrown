@@ -380,7 +380,7 @@ const ScrollAnimation = () => {
                   autoPlay
                   playsInline
                   className="videoOneVid"
-                  onEnded={() => setVideoUrl(null)} // Set videoUrl to null after video ends to stop it from playing
+                  // onEnded={() => setVideoUrl(null)} // Set videoUrl to null after video ends to stop it from playing
                 />
                 <div className="VideoInnerContainerText">
                   <motion.div
