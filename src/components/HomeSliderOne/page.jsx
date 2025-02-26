@@ -18,18 +18,26 @@ const ScrollAnimation = () => {
   const swiperRef = useRef(null);
 
   const images = [
-    "https://interiormaataassets.humbeestudio.xyz/interior-outdoor.png",
-    "https://interiormaataassets.humbeestudio.xyz/livingroomthumb.png", // Image 2 URL
-    "https://interiormaataassets.humbeestudio.xyz/KitchenImgThumb.png",
-    "https://interiormaataassets.humbeestudio.xyz/livingroomthumb.png",
-    "https://interiormaataassets.humbeestudio.xyz/interior-outdoor.png", // Image 4 URL
+    "https://vanras.humbeestudio.xyz/images/living_room.png",
+    "https://vanras.humbeestudio.xyz/images/kitchen_Des.png", // Image 2 URL
+    "https://vanras.humbeestudio.xyz/images/kitchen_Design.png",
+    "https://vanras.humbeestudio.xyz/images/outdoor_Space.png",
+    "https://vanras.humbeestudio.xyz/images/modern_washroom.png", // Image 4 URL
   ];
+  // const videoUrls = [
+  //   "https://vanras.humbeestudio.xyz/videos/Kitchen.mp4",
+  //   "https://vanras.humbeestudio.xyz/videos/Bedroom.mp4",
+  //   "https://vanras.humbeestudio.xyz/videos/Living%20Space.mp4",
+  //   "https://vanras.humbeestudio.xyz/videos/Bathroom.mp4",
+  //   "https://vanras.humbeestudio.xyz/videos/Outdoor.mp4",
+  // ];
   const videoUrls = [
-    "https://vanras.humbeestudio.xyz/videos/Kitchen.mp4",
-    "https://vanras.humbeestudio.xyz/videos/Bedroom.mp4",
     "https://vanras.humbeestudio.xyz/videos/Living%20Space.mp4",
-    "https://vanras.humbeestudio.xyz/videos/Bathroom.mp4",
+    "https://vanras.humbeestudio.xyz/videos/Bedroom.mp4",
+    "https://vanras.humbeestudio.xyz/videos/Kitchen.mp4",
     "https://vanras.humbeestudio.xyz/videos/Outdoor.mp4",
+    "https://vanras.humbeestudio.xyz/videos/Bathroom.mp4",
+    
   ];
 
   const handleCardClick = (url) => setVideoUrl(url);
