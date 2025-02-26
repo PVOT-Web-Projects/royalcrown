@@ -11,6 +11,9 @@
   // background-color: #252220;
   background: linear-gradient(to bottom, #FFEEE2, #FFEDE0, #FFECDE, #FFEBDD, #FFEADB);
 //   border-bottom: 1px solid #5b3524;
+@media(max-width: 1300px){
+  padding: 100px 0px 0px !important;
+}
   @media(max-width: 768px){
     padding: 0px !important;
   }
@@ -163,7 +166,10 @@
       .text-section-content {
         display: flex;
         font-size: 21px;
-        margin-top: -80px;
+        margin-top: -165px;
+        @media(max-width: 991px){
+          margin-top: -80px;
+        }
         @media(max-width: 768px){
           margin-top: 0px;
         }
@@ -193,7 +199,9 @@
           cursor: pointer;
           transition: all .5s ease-in-out;
           position: relative; // This is required for the pseudo-element to be positioned relative to this element.
-        
+        @media(max-width: 991px){
+          padding-top: 1rem;
+        }
           &::after {
             content: '';
             position: absolute;
@@ -212,9 +220,9 @@
         
 
         .image-wrapper-2 {
-          transform: translate(10px, -100px) !important;
+          transform: translate(10px, -10px) !important;
           @media(max-width: 1300px){
-            transform: translate(10px, 20px) !important;
+            transform: translate(10px, 110px) !important;
           }
           @media (max-width: 768px) {
             display: none;
