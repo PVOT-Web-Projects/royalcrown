@@ -27,9 +27,11 @@
   }
 }
 .statsItempara {
-  font-size: 40px;
-  font-weight: bold;
-  font-family: "made_mirage_regular";
+  font-size: 18px;
+  text-align: center;
+  /* font-weight: bold; */
+  font-weight: 400;
+  font-family: "safira_march";
 
 }
 .statsContent {

@@ -100,10 +100,10 @@ useEffect(() => {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            <p className={styles.statsItempara}>2017</p>
+            <p className={styles.statsItempara}>Unparalleled Services</p>
             <p className={styles.statsItemparainner}>
-              We&apos;re based in Kraków, Poland. <br />
-              We have been manufacturing fronts since 2017.
+            We provide high-density laminates with unmatched
+            reliability.
             </p>
           </motion.div>
           <motion.div
@@ -113,10 +113,10 @@ useEffect(() => {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            <p className={styles.statsItempara}>2017</p>
+            <p className={styles.statsItempara}>Wide Range</p>
             <p className={styles.statsItemparainner}>
-              FØRMATs found their way to apartments internationally, in Berlin,
-              Paris and more.
+            With 2000+ SKUs and 100+ textures, our extensive portfolio
+            offers exceptional value.
             </p>
           </motion.div>
         </div>
@@ -139,10 +139,10 @@ useEffect(() => {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            <p className={styles.statsItempara}>2017</p>
+            <p className={styles.statsItempara}>Product Compatibility</p>
             <p className={styles.statsItemparainner}>
-              We&apos;re based in Kraków, Poland. <br />
-              We have been manufacturing fronts since 2017.
+            Our laminates are designed to fit seamlessly onto almost any
+            wooden surface and come in multiple sheet sizes
             </p>
           </motion.div>
           <motion.div
@@ -152,10 +152,11 @@ useEffect(() => {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            <p className={styles.statsItempara}>2017</p>
+            <p className={styles.statsItempara}>Environment</p>
             <p className={styles.statsItemparainner}>
-              FØRMATs found their way to apartments internationally, in Berlin,
-              Paris and more.
+            We’ve invested in eco-friendly manufacturing processes that
+                    prioritize responsible sourcing, minimal waste, and a
+                    reduced carbon footprint.
             </p>
           </motion.div>
         </div>
