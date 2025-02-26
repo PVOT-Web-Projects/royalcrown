@@ -5,10 +5,11 @@ import "./HomeSliderOne.scss";
 import { AnimatePresence, motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Mousewheel, FreeMode } from "swiper/modules";
-
-if (typeof window !== "undefined") {
+// import LocomotiveScroll from "locomotive-scroll";
+// import "locomotive-scroll/dist/locomotive-scroll.css";
+// if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
-}
+// }
 
 const ScrollAnimation = () => {
   const [videoUrl, setVideoUrl] = useState(null);
@@ -16,13 +17,20 @@ const ScrollAnimation = () => {
   const [isCarouselVisible, setIsCarouselVisible] = useState(false);
   const [isCardVisible, setIsCardVisible] = useState(true);
   const swiperRef = useRef(null);
-
+  // const scrollRef = useRef(null); // Create a ref for the scroll container
+  // const images = [
+  //   "https://vanras.humbeestudio.xyz/images/living_room.png",
+  //   "https://vanras.humbeestudio.xyz/images/kitchen_Des.png", // Image 2 URL
+  //   "https://vanras.humbeestudio.xyz/images/kitchen1.png",
+  //   "https://vanras.humbeestudio.xyz/images/outdoor1.png",
+  //   "https://vanras.humbeestudio.xyz/images/modern_washroom.png", // Image 4 URL
+  // ];
   const images = [
+    "https://vanras.humbeestudio.xyz/images/outdoor1.png",
+    "https://vanras.humbeestudio.xyz/images/kitchen1.png", // Image 2 URL
     "https://vanras.humbeestudio.xyz/images/living_room.png",
-    "https://vanras.humbeestudio.xyz/images/kitchen_Des.png", // Image 2 URL
-    "https://vanras.humbeestudio.xyz/images/kitchen_Design.png",
-    "https://vanras.humbeestudio.xyz/images/outdoor_Space.png",
-    "https://vanras.humbeestudio.xyz/images/modern_washroom.png", // Image 4 URL
+    "https://vanras.humbeestudio.xyz/images/modern_washroom.png",
+    "https://vanras.humbeestudio.xyz/images/kitchen_Des.png",
   ];
   // const videoUrls = [
   //   "https://vanras.humbeestudio.xyz/videos/Kitchen.mp4",
@@ -32,17 +40,47 @@ const ScrollAnimation = () => {
   //   "https://vanras.humbeestudio.xyz/videos/Outdoor.mp4",
   // ];
   const videoUrls = [
-    "https://vanras.humbeestudio.xyz/videos/Living%20Space.mp4",
-    "https://vanras.humbeestudio.xyz/videos/Bedroom.mp4",
-    "https://vanras.humbeestudio.xyz/videos/Kitchen.mp4",
     "https://vanras.humbeestudio.xyz/videos/Outdoor.mp4",
+    "https://vanras.humbeestudio.xyz/videos/Kitchen.mp4",
+    "https://vanras.humbeestudio.xyz/videos/Living%20Space.mp4",
     "https://vanras.humbeestudio.xyz/videos/Bathroom.mp4",
-    
+    "https://vanras.humbeestudio.xyz/videos/Bedroom.mp4",
   ];
 
   const handleCardClick = (url) => setVideoUrl(url);
   const closeModal = () => setVideoUrl(null);
+  // useEffect(() => {
+  //   // Check if the scroll container is available
+  //   if (scrollRef.current) {
+  //     const locoScroll = new LocomotiveScroll({
+  //       el: scrollRef.current,
+  //       smooth: true,
+  //       lerp: 0.6, // Optional: Adjust the easing for smoothness
+  //     });
 
+  //     // Update ScrollTrigger to sync with Locomotive Scroll
+  //     ScrollTrigger.scrollerProxy(scrollRef.current, {
+  //       scrollTop(value) {
+  //         if (arguments.length) {
+  //           locoScroll.scrollTo(value, 0, 0);
+  //         }
+  //         return locoScroll.scroll.instance.scroll.y;
+  //       },
+  //       getBoundingClientRect() {
+  //         return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+  //       },
+  //     });
+
+  //     // Refresh ScrollTrigger and Locomotive Scroll
+  //     ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+
+  //     // Cleanup function to destroy Locomotive Scroll
+  //     return () => {
+  //       locoScroll.destroy();
+  //       ScrollTrigger.removeEventListener("refresh", () => locoScroll.update());
+  //     };
+  //   }
+  // }, []); // This will run only once after the initial render
   useEffect(() => {
     const calculatePosition = () => {
       const screenWidth = window.innerWidth;
@@ -178,10 +216,11 @@ const ScrollAnimation = () => {
         start: "top 3900vh", // Trigger when the top of the section reaches the center of the screen
         end: "bottom center", // End trigger when the bottom of the section reaches the center
         scrub: true, // Smooth scroll animation
+
         onUpdate: (self) => {
           const progress = self.progress;
           // Fade out the textCurv as it moves towards the center (progress increases)
-          gsap.set(textCurv, { opacity: 1 - progress });
+          gsap.set(textCurv, { opacity: 0 - progress });
         },
       });
 
@@ -193,15 +232,71 @@ const ScrollAnimation = () => {
         ".card5",
       ].map((cls) => section.querySelector(cls));
 
+      // ScrollTrigger.create({
+      //   trigger: section,
+      //   start: "top center",
+      //   end: "top+=450 end",
+      //   scrub: true,
+      //   markers: true,
+      //   onUpdate: (self) => {
+      //     const progress = self.progress;
+      //     gsap.set(textCircular, { opacity: 1 - progress });
+      //     gsap.set(textCurv, { opacity: progress });
+      //   },
+      // });
+      // ScrollTrigger for textCircular
+          // ScrollTrigger for border-radius animation
+    ScrollTrigger.create({
+      trigger: section,
+      start: "top center",
+      end: "bottom center",
+      scrub: true, // Smooth scroll animation
+      onUpdate: (self) => {
+        const progress = self.progress;
+        // Adjust the border-radius based on scroll progress
+        const borderRadiusValue = 20 - (20 * progress); // Transition from 20px to 0px
+
+        gsap.set(card1, { borderRadius: `${borderRadiusValue}px` });
+        gsap.set(card2, { borderRadius: `${borderRadiusValue}px` });
+        gsap.set(card3, { borderRadius: `${borderRadiusValue}px` });
+        gsap.set(card4, { borderRadius: `${borderRadiusValue}px` });
+        gsap.set(card5, { borderRadius: `${borderRadiusValue}px` });
+      }
+    });
       ScrollTrigger.create({
         trigger: section,
         start: "top center",
-        end: "top+=250 center",
+        end: "end end",
         scrub: true,
+        // markers: true,
         onUpdate: (self) => {
           const progress = self.progress;
-          gsap.set(textCircular, { opacity: 1 - progress });
-          gsap.set(textCurv, { opacity: progress });
+          gsap.set(textCircular, { opacity: 1 - progress }); // Fade out textCircular
+        },
+        onLeave: () => {
+          gsap.set(textCircular, { opacity: 0 }); // Ensure textCircular is fully hidden when scroll leaves
+        },
+        onEnter: () => {
+          gsap.set(textCircular, { opacity: 1 }); // Ensure textCircular is fully visible when entering the scroll area
+        },
+      });
+
+      // ScrollTrigger for textCurv
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top center",
+        end: "top+=350 end",
+        scrub: true,
+        // markers: true,
+        onUpdate: (self) => {
+          const progress = self.progress;
+          gsap.set(textCurv, { opacity: progress }); // Fade in textCurv
+        },
+        onLeave: () => {
+          gsap.set(textCurv, { opacity: 1 }); // Ensure textCurv is fully visible when scroll leaves
+        },
+        onEnter: () => {
+          gsap.set(textCurv, { opacity: 0 }); // Ensure textCurv is fully hidden when entering the scroll area
         },
       });
 
@@ -210,6 +305,7 @@ const ScrollAnimation = () => {
         start: "top center",
         end: "top+=250 center",
         scrub: true,
+        
         onUpdate: (self) => {
           const progress = self.progress;
           gsap.set(card2, {
@@ -227,9 +323,12 @@ const ScrollAnimation = () => {
         scrollTrigger: {
           trigger: section,
           start: "top+=300 center",
-          end: "top+=550 center",
+          end: "top+=400 center",
+          // 450
           scrub: true,
-          pin: true,
+        //   pin: true,
+        //  pinSpacing: "margin",
+        // markers: true,
         },
       });
       //     cardAnimation
@@ -240,11 +339,11 @@ const ScrollAnimation = () => {
       //     .to(card5, { rotation: 6, x: 350, y: 124, scale: 0.9 }, 0);
       // });
       cardAnimation
-        .to(card1, { rotation: -12, x: x1, y: y1, scale: scale1 }, 0)
-        .to(card2, { rotation: -6, x: x2, y: y2, scale: scale2 }, 0)
-        .to(card3, { scale: scale3, x: x3, y: y3 }, 0)
-        .to(card4, { rotation: 12, x: x4, y: y4, scale: scale4 }, 0)
-        .to(card5, { rotation: 6, x: x5, y: y5, scale: scale5 }, 0);
+        .to(card1, { rotation: -12, borderRadius: 0, x: x1, y: y1, scale: scale1 }, 0)
+        .to(card2, { rotation: -6,borderRadius: 0,  x: x2, y: y2, scale: scale2 }, 0)
+        .to(card3, { scale: scale3, borderRadius: 0,  x: x3, y: y3 }, 0)
+        .to(card4, { rotation: 12, borderRadius: 0, x: x4, y: y4, scale: scale4 }, 0)
+        .to(card5, { rotation: 6, borderRadius: 0, x: x5, y: y5, scale: scale5 }, 0);
     });
 
     //   cardAnimation
@@ -292,12 +391,11 @@ const ScrollAnimation = () => {
     };
   }, [videoUrl]);
 
-
   return (
     <div>
       <div className="ScrollTextSection">
         {/* Animated Circular Path Text */}
-        <svg width="1500" height="450" viewBox="0 0 900 400">
+        <svg width="1500" height="450" viewBox="0 0 900 400" className="svgCircular">
           <path
             d="M 150,450 A 300,300 0 0,1 750,450"
             id="circularPath"
@@ -312,14 +410,17 @@ const ScrollAnimation = () => {
               WHERE ELEGANCE MEETS DESIRE
             </textPath>
           </text>
+        </svg>
 
+        <svg width="1500" height="450" viewBox="0 0 900 400" className="svgCurve">
+        
           {/* Animated Curved Path Text */}
           <path
             d="M 25 350 Q 225 250, 450 350 Q 675 450, 875 350"
             id="curvPath"
             fill="transparent"
           />
-          <text fontSize="56" fill="white" id="textCurv" style={{ opacity: 0 }}>
+          <text fontSize="56" fill="white" id="textCurv">
             <textPath href="#curvPath" startOffset="50%" textAnchor="middle">
               WHERE ELEGANCE MEETS DESIRE
             </textPath>
@@ -329,11 +430,11 @@ const ScrollAnimation = () => {
         {/* Card Container with Images */}
         <div className="card-container">
           {[
-            "Livingroom",
-            "Minimalist Bedroom",
+            "Outdoor Space",
             "Beautiful Kitchen",
-            "Cozy Bedroom",
+            "Living Room",
             "Modern Washroom",
+            "Cozy Bedroom",
           ].map((title, index) => (
             <div
               key={index}
@@ -405,7 +506,7 @@ const ScrollAnimation = () => {
           </div>
         </div>
       )}
-      {isCarouselVisible && (
+      {/* {isCarouselVisible && (
         <div className={`carouselOne ${isCarouselVisible ? "" : "hidden"}`}>
           <Swiper
             modules={[Navigation, Pagination, Mousewheel, FreeMode]}
@@ -438,7 +539,7 @@ const ScrollAnimation = () => {
             ))}
           </Swiper>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
