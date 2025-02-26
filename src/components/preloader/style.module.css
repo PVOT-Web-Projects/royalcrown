@@ -45,6 +45,9 @@
   text-transform: uppercase;
   font-weight: 600;
   font-family: "futura_regular";
+  @media(max-width: 1300px){
+    margin-bottom: -2rem;
+  }
 }
 .circle {
  
