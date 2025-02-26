@@ -81,6 +81,7 @@ header {
         transform: rotate(45deg);
         position: relative;
         top: 10px; // Move the first line to form an X
+        background-color: #5b3524;
       }
 
       .open:nth-child(2) {
@@ -90,6 +91,7 @@ header {
       .open:nth-child(3) {
         transform: rotate(-45deg);
         position: relative;
+        background-color: #5b3524;
         bottom: 10px; // Move the third line to form an X
       }
     }
