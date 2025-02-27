@@ -283,6 +283,9 @@
       color: white;
       font-size: 2em;
       width: 100%;
+      @media(max-width: 575px){
+        font-size: 1.5em;
+      }
     }
   }
   .carouselOne {
@@ -465,6 +468,9 @@
     opacity: 0; /* Initially hidden */
     transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
     transform: translateY(100%); /* Start with text below the image */
+    @media(max-width: 475px){
+      font-size: 20px;
+    }
   }
 
   .single:hover .hover-text {
