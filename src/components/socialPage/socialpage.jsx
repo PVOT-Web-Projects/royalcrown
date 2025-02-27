@@ -9,7 +9,7 @@ import linkedinIcon from "@/images/LinkedinIcon.svg";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+import {motion} from "framer-motion";
 import "./socialpage.scss";
 gsap.registerPlugin(ScrollTrigger);
 const SocialPage = ({ socialMediaImgSrc }) => {
@@ -46,11 +46,15 @@ const SocialPage = ({ socialMediaImgSrc }) => {
       <div className="Footer_Logo">
         {/* <Image src={Footer_img} alt="Image" className="FooterImg" /> */}
       </div>
-      <div className="SocialMediaImg"
+      <motion.div className="SocialMediaImg"
+       initial={{ x: -100, opacity: 0 }}
+       whileInView={{ x: 0, opacity: 1 }}
+       transition={{ duration: 1.5 ,delay: 0.5 }}
+       viewport={{ once: true }}
       //  ref={imageRef}
        >
         <Image src={socialMediaImgSrc} alt="Image" className="SocialImg" />
-      </div>
+      </motion.div>
       {/* <div className="SocialMediaMain">
         {icons.map((item, index) => (
           <div className="SocialIcons" key={index}>

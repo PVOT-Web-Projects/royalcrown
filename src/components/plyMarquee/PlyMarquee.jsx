@@ -35,9 +35,9 @@ const PlyMarquee = () => {
     <div className="ply_marquee">
       <div className="MarqueeTextFirst">
         <motion.div
-          initial={{ y: 50, opacity: 0 }}
+          initial={{ y: 100, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 1.5 }}
           viewport={{ once: true }}
         >
           Catalogue
@@ -45,17 +45,27 @@ const PlyMarquee = () => {
         {/* <p>Catalogue</p> */}
       </div>
       <div className="MarqueeTextSecond">
-        <p>
+        <motion.p
+         initial={{ x: -100, opacity: 0 }}
+         whileInView={{ x: 0, opacity: 1 }}
+         transition={{ duration: 1.5 }}
+         viewport={{ once: true }}
+        >
           Experience the epitome of modern minimalist aesthetic with our luxury
           laminates, tailored to ful-fill every desire, ensuring your interiors
           exude a sophisticated charm that captivates and endures.
           {/* It's a modern minimalist aesthetic look, our luxury laminates cater to
           every desire, ensuring your interiors exude a refined charm that
           captivates and endures. */}
-        </p>
-        <p className="MarqueeTextSecondInner">
+        </motion.p>
+        <motion.p className="MarqueeTextSecondInner"
+        initial={{ x: -100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1.5 }}
+        viewport={{ once: true }}
+        >
           Elevate your space with the ultimate expression of luxury and grace.
-        </p>
+        </motion.p>
       </div>
       <div className="MarqueMainSection">
         <Marquee class="r3f_marquee" speed={60} pauseOnHover={true}>
