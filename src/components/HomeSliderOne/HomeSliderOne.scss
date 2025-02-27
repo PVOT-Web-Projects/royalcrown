@@ -46,6 +46,9 @@
   align-items: center;
   position: relative;
   background-color: black;
+  @media(max-width: 1000px){
+    height: auto;
+  }
  .svgCircular{
   margin-top: -150px;
  }
@@ -61,6 +64,9 @@
     margin: 5px auto;
     margin-top: -310px;
     position: relative;
+    @media(max-width: 1000px){
+      display: none;
+    }
     @media(max-height: 760px){
       margin-top: -400px;
       @media(max-height: 650px){

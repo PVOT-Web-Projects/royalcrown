@@ -25,3 +25,15 @@
 .main{
     overflow: hidden;
 }
+.HomeDesktop{
+    // display: block;
+    @media(max-width: 1000px){
+        display: none;
+    }
+}
+.HomeMobile{
+    display: none;
+    @media(max-width: 1000px){
+        display: block;
+    }
+}
