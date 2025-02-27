@@ -21,9 +21,9 @@ const Certification = () => {
       <div className="certification_main" style={{ marginTop: "140px" }}>
         <motion.div
           className="certification_heading"
-          initial={{ y: 50, opacity: 0 }}
+          initial={{ y: 100, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 1.5, delay: 0.5  }}
           viewport={{ once: true }}
         >
           CERTIFICATIONS

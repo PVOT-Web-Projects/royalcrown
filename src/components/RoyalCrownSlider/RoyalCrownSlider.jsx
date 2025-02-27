@@ -44,9 +44,9 @@ export default function App() {
         {/* <p className="RoyalCrownTextInner">WHY</p> */}
         <motion.div
           className="RoyalCrownTextInnerFirst"
-          initial={{ y: 50, opacity: 0 }}
+          initial={{ y: 100, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 1.5, delay: 0.5  }}
           viewport={{ once: true }}
         >
           Reasons to count on us

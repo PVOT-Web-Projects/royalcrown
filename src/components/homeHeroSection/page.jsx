@@ -19,7 +19,6 @@ export default function HomeHeroSection() {
   const imageRef = useRef(null);
   const imageRef1 = useRef(null);
   const imageRef2 = useRef(null);
-  
 
   // const eleganceContainer = useRef(null);
   useEffect(() => {
@@ -104,10 +103,12 @@ export default function HomeHeroSection() {
                   className="HeaderTextInner"
                   initial={{ x: -100, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 1 }}
+                  transition={{ duration: 1.5, delay: 0.5  }}
                   viewport={{ once: true }}
                 >
-                  <p>explore our <br /> legacy</p>
+                  <p>
+                    explore our <br /> legacy
+                  </p>
                   {/* <p>
                   explore our</p>
                   <p>legacy</p> */}
@@ -121,25 +122,28 @@ export default function HomeHeroSection() {
                   /> */}
               </div>
             </div>
-            <div
-              className="image-wrapper-1"
-              ref={imageRef}
-            >
+            <div className="image-wrapper-1" ref={imageRef}>
               <Image src={Image4} alt="Image 1" className="image_1" />
             </div>
           </div>
           <div className="text-section-content">
             <div className="text-section-inner">
-              <div className="TextSectionInnerFirst">
+              <motion.div
+                className="TextSectionInnerFirst"
+                initial={{ y: 100, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1.5 }}
+                viewport={{ once: true }}
+              >
                 Royal Crown Laminates' legacy celebrates innovation,
                 cutting-edge technology, craft, and expertise in delivering the
                 best and trendsetting laminate surfaces. We have grown to become
-                a leader in every sense of the word in the laminate industry. Our
-                unceasing efforts with architects, interiors, OEMs, contractors,
-                carpenters, and end consumers and an in-depth understanding of
-                the market and its demands have strengthened our product base.
-                Moreover, it has helped us establish ourselves as domestic and
-                global leaders.
+                a leader in every sense of the word in the laminate industry.
+                Our unceasing efforts with architects, interiors, OEMs,
+                contractors, carpenters, and end consumers and an in-depth
+                understanding of the market and its demands have strengthened
+                our product base. Moreover, it has helped us establish ourselves
+                as domestic and global leaders.
                 {/* At Royal Crown, customers are the cornerstone of our unique
                 business model. We are dedicated to providing every individual
                 with an unparalleled royal service, ensuring that their
@@ -153,24 +157,18 @@ export default function HomeHeroSection() {
                 is all about our customers and we believe their experience
                 should be worth a thousand memories. However, we do have a tiny
                 tale to tell, a sneak peek to our story. */}
-              </div>
+              </motion.div>
               <Link href={"/about-us"}>
-              <div className="text-section-inner-footer">read more</div>
+                <div className="text-section-inner-footer">read more</div>
               </Link>
             </div>
-            <div
-            ref={imageRef1}
-              className="image-wrapper-2"
-            >
+            <div ref={imageRef1} className="image-wrapper-2">
               <Image src={Image6} alt="Image 3" />
             </div>
           </div>
         </div>
         <div className="image-section">
-          <div
-          ref={imageRef2}
-            className="image-wrapper-3"
-          >
+          <div ref={imageRef2} className="image-wrapper-3">
             <Image src={Image5} alt="Image 2" />
           </div>
         </div>

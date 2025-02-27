@@ -6,15 +6,15 @@ import { motion } from "framer-motion";
 const TimelineHome = () => {
   return (
     <div className="Timelinecontainer">
-        <motion.div
-           className="certification_heading"
-                initial={{ y: 50, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1 }}
-                viewport={{ once: true }}
-              >
-                Our Legacy of Excellence
-              </motion.div>
+      <motion.div
+        className="certification_heading"
+        initial={{ y: 100, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1.5, delay: 0.5 }}
+        viewport={{ once: true }}
+      >
+        Our Legacy of Excellence
+      </motion.div>
       <div className="Timelinecontainer1">
         <motion.div
           className="TimelinetextContainer1"
@@ -43,7 +43,7 @@ const TimelineHome = () => {
           className="TimelinetextContainer2"
           initial={{ x: -200, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1  , delay: 1 }}
+          transition={{ duration: 1, delay: 1 }}
           viewport={{ once: true }}
         >
           Our enduring reputation is rooted in decades of experience and a
