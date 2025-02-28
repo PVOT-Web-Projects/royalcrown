@@ -18,8 +18,27 @@ gsap.registerPlugin(ScrollTrigger);
 export default function HomeHeroSection() {
   const imageRef = useRef(null);
   const imageRef1 = useRef(null);
+  const sectionRef = useRef(null);
   const imageRef2 = useRef(null);
-
+useEffect(() => {
+    gsap.fromTo(
+      sectionRef.current,
+      { y: 0, scale: 1.2, opacity: 0, clipPath: "inset(100% 0% 0% 0%)" },
+      {
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        clipPath: "inset(0% 0% 0% 0%)",
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          end: "bottom 40%",
+          scrub: 2, // Smoothness of the scroll animation
+        },
+      }
+    );
+  }, []);
   // const eleganceContainer = useRef(null);
   useEffect(() => {
     gsap.fromTo(
@@ -93,7 +112,7 @@ export default function HomeHeroSection() {
   //   });
   // },[])
   return (
-    <div className="elegance-Wrapper">
+    <div className="elegance-Wrapper" ref={sectionRef}>
       <div className="elegance-container">
         <div className="text-section">
           <div className="text-section-header">

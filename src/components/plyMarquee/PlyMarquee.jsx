@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useRef } from "react";
 const { default: Image } = require("next/image");
 const { default: Marquee } = require("react-fast-marquee");
 import img1 from "@/images/ply/574_HNG.jpeg";
@@ -26,13 +27,37 @@ import img22 from "@/images/ply/RC_6025_TO.jpg";
 import img23 from "@/images/ply/RC_6026_TO.jpg";
 import img24 from "@/images/ply/RC_6029_SN.jpg";
 import img25 from "@/images/ply/RC_6031_SN.jpg";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
 import "./plyMarquee.scss";
 import "./marquee.css";
 import { motion } from "framer-motion";
+
 const PlyMarquee = () => {
+  const imageRef = useRef(null);
+  useEffect(() => {
+    gsap.fromTo(
+      imageRef.current,
+      { y: 0, scale: 1.2, opacity: 0, clipPath: "inset(100% 0% 0% 0%)" },
+      {
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        clipPath: "inset(0% 0% 0% 0%)",
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: imageRef.current,
+          start: "top 80%",
+          end: "bottom 40%",
+          scrub: 2, // Smoothness of the scroll animation
+        },
+      }
+    );
+  }, []);
   return (
-    <div className="ply_marquee">
+    <div className="ply_marquee" ref={imageRef}>
       <div className="MarqueeTextFirst">
         <motion.div
           initial={{ y: 100, opacity: 0 }}
