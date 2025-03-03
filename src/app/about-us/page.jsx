@@ -6,10 +6,12 @@ import AboutUsVision from "@/components/aboutUsVision/aboutUsVision";
 import AboutUsWhyUs from "@/components/aboutUsWhyUs/aboutUsWhyUs";
 import Form from "@/components/forms/form1/Form";
 import SocialPage from "@/components/socialPage/socialpage";
-import SocialMediaImg from "@/images/socials-image.png";
+import SocialMediaImg from "@/images/getInTouchImage.jpg";
 import AboutUsDemo from "@/components/aboutdemohero/page";
-import HomeHeroSection from "@/components/homeHeroSection/page";
+// import HomeHeroSection from "@/components/homeHeroSection/page";
+import HomeHeroSection from "@/components/homeHeroSectionAbout/page";
 import AboutUsHero from "@/components/aboutUsHero/aboutUsHero";
+
 const AboutUs = () => {
   useEffect(() => {
     document.title = "About Us | Royal Crown";
@@ -18,22 +20,23 @@ const AboutUs = () => {
     <div>
       {/* <AboutUsDemo /> */}
       <AboutUsHero />
+      <HomeHeroSection />
       {/* <HomeHeroSection/> */}
-      <AboutUsEstablishment />
+      {/* <AboutUsEstablishment /> */}
       <AboutUsVision />
       <AboutUsWhyUs
         heading={"Why Us"}
         cardOneText={
-          "We are known for providing high density laminates with unparalleled services in terms of quality and reliability. We are known for providing high density laminates with unparalleled services in terms of quality and reliability."
+          "With a presence in 60+ countries and global warehousing, we ensure seamless accessibility. Committed to sustainability, we utilize wind and solar power to reduce our carbon footprint. As proud members of FSC and Greenguard, we prioritize eco-friendly practices while delivering high-quality, responsibly sourced laminates worldwide."
         }
         cardTwoText={
-          "We are known for providing high density laminates with unparalleled services in terms of quality and reliability. We are known for providing high density laminates with unparalleled services in terms of quality and reliability."
+          "With a diverse range of 2000 SKUs and 100 unique textures, we offer endless design possibilities. From classic to contemporary, our extensive collection ensures the perfect match for every project. Crafted for durability and aesthetics, our laminates provide versatility to transform spaces with style and functionality."
         }
         cardThreeText={
-          "We are known for providing high density laminates with unparalleled services in terms of quality and reliability. We are known for providing high density laminates with unparalleled services in terms of quality and reliability."
+          "Our state-of-the-art manufacturing unit, ensures top-quality laminates crafted with precision. Using technology and strict quality control, we deliver durable and stylish solutions. With a wide range of sizes available, our laminates offer versatility, reliability, and superior performance."
         }
         cardFourText={
-          "We are known for providing high density laminates with unparalleled services in terms of quality and reliability. We are known for providing high density laminates with unparalleled services in terms of quality and reliability."
+          "With 15,000+ dealerships across India and abroad, along with 150+ product showrooms, we ensure easy access to our premium laminates. Our strong distribution network guarantees seamless availability, bringing quality and innovation closer to you. Wherever you are, our expansive presence ensures superior products and exceptional service at your convenience."
         }
       />
       <div className="Form_Page">

@@ -26,28 +26,45 @@
   }
 
   .RoyalCrownText {
-    margin-left: 100px;
+    margin-left: 70px;
     display: inline-block;
-    padding-top: 2rem;
-    @media (max-width: 768px) {
+    padding-top: 70px;
+    // @media(max-width: 1300px){
+    //   margin-left: 70px;
+    // }
+    // @media (max-width: 768px) {
+    //   margin-left: 40px;
+    // }
+    // @media (max-width: 575px) {
+    //   margin-left: 40px;
+    // }
+    @media (max-width: 1199px) {
       margin-left: 40px;
-    }
-    @media (max-width: 575px) {
-      margin-left: 40px;
+      padding-top: 40px;
     }
 
+    @media (max-width: 425px) {
+      margin-left: 20px;
+      padding-top: 20px;
+    }
     .RoyalCrownTextInner {
       font-size: 60px;
     }
 
     .RoyalCrownTextInnerFirst {
-      font-size: 60px;
-      border-bottom: 1px solid #000000;
+      font-size: 24px;
+      // border-bottom: 1px solid #000000;
       width: 100%;
       margin-right: 50px;
+      text-transform: uppercase;
+      font-family: "safira_march";
       // padding-bottom: 2rem;
+      
+      @media(max-width: 768px){
+        font-size: 22px;
+      }
       @media (max-width: 425px) {
-        font-size: 35px;
+        font-size: 21px;
         margin-right: 0px;
       }
     }
@@ -67,8 +84,9 @@
       padding-left: 40px;
     }
 
-    @media (max-width: 767px) {
+    @media (max-width: 768px) {
       flex-direction: column;
+      padding: 0 40px;
     }
 
     @media (max-width: 425px) {
@@ -86,6 +104,7 @@
       }
       @media (max-width: 768px) {
         flex-direction: column;
+        width: 100%;
       }
 
       &.left {
@@ -205,6 +224,7 @@
         width: 100%;
         display: block;
         height: auto;
+        object-fit: cover;
         @media (max-width: 1440px) {
           height: 50vh;
         }
@@ -212,7 +232,13 @@
           height: 58vh !important;
         }
         @media(max-width: 991px){
-          height: auto;
+          height: 50vh;
+        }
+        @media(max-width: 500px){
+          height: 35vh;
+        }
+        @media(max-width: 375px){
+          height: 30vh;
         }
       }
     }
@@ -268,45 +294,47 @@
 
   .swiper-button-next,
   .swiper-button-prev {
-    top: 53%;
+    top: 50%;
     color: #5b3524 !important;
     font-weight: 900;
   }
 
   .swiper-button-next {
-    left: 92%;
-    top: 53%;
+    left: 96%;
+    top: 50%;
 
-    @media (max-width: 767px) {
-      left: auto;
-      right: 40px;
+    @media (max-width: 768px) {
+      left: 95%;
+      // right: 40px;
     }
 
     @media (max-width: 575px) {
-      left: auto;
-      right: 20px;
+      left: 93%;
+      // left: auto;
+      // right: 20px;
     }
 
     @media (max-width: 375px) {
-      right: 0px;
+      // right: 0px;
+      left: 90%;
     }
   }
 
   .swiper-button-prev {
-    left: 79%;
+    left: 1%;
 
     @media (max-width: 767px) {
-      left: auto;
-      right: 130px;
+      // left: auto;
+      // right: 130px;
     }
 
     @media (max-width: 575px) {
-      left: auto;
-      right: 100px;
+      // left: auto;
+      // right: 100px;
     }
 
     @media (max-width: 375px) {
-      right: 50px;
+      // right: 50px;
     }
   }
 
@@ -319,6 +347,7 @@
 
     @media (max-width: 1300px) {
       padding-bottom: 3rem;
+      width: 85%;
     }
 
     @media (max-width: 767px) {
@@ -333,9 +362,9 @@
 
     .Text_InnerText {
       color: #5b3524;
-      font-size: 45px;
+      font-size: 25px;
       text-align: left;
-      padding-bottom: 2rem;
+      // padding-bottom: 2rem;
     }
 
     .carousel_text_Content {
@@ -347,7 +376,7 @@
       font-style: normal;
       font-weight: normal;
       line-height: normal;
-      text-transform: capitalize;
+      // text-transform: capitalize;
       @media (max-width: 1440px) {
         font-size: 22px;
       }

@@ -1,10 +1,20 @@
 import "./contactUsHear.scss";
 import Link from "next/link";
+import { motion } from "framer-motion";
 const ContactUsHear = () => {
   return (
     <div className="ContactUsmainBanner">
       <div className="ContactUsHearBanner">
-        <p className="ContactUsHearText">Contact Us</p>
+      {/* <motion.div
+          className="ContactUsHearText"
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          Contact Us
+        </motion.div> */}
+        {/* <p className="ContactUsHearText">Contact Us</p> */}
         <div>
           <p className="ContactUsHearTextInner">We’d love to hear from you</p>
         </div>

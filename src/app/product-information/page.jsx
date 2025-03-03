@@ -6,7 +6,7 @@ import RelatedProductInfo from "@/components/related_products_info/page";
 import SocialPage from "@/components/socialPage/socialpage";
 import Form from "@/components/forms/form1/Form";
 import "./productInfo.scss";
-import SocialMediaImg from "@/images/socials-image.png";
+import SocialMediaImg from "@/images/getInTouchImage.jpg";
 import ClipLoader from "react-spinners/PuffLoader";
 
 const ProductInformationPage = lazy(() =>

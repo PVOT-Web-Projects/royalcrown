@@ -1,8 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import image from "@/images/getInTouchImage.png";
+import image from "@/images/getInTouchImage.jpg";
 import "./form4.scss";
+import { motion } from "framer-motion";
 // import { useState } from "react";
 // import ClickHandler from "@/components/buttons/clickHandler/ClickHandler";
 import { Slide, ToastContainer, toast } from "react-toastify";
@@ -73,7 +74,15 @@ const Form4 = () => {
           <div className="form4_wrap">
             {/* <Form /> */}
             <div className="form4_wrap_inner">
-              <h2>Let’s Get In Touch.</h2>
+              <motion.h2
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1 }}
+                viewport={{ once: true }}
+              >
+                Let’s Get In Touch
+              </motion.h2>
+              {/* <h2>Let’s Get In Touch</h2> */}
               <p>
                 Our helpline is always open to receive any inquiry or feedback.
                 Please feel free to drop us an email from the form below and we

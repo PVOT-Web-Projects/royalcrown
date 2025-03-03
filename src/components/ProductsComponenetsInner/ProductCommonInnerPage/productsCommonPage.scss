@@ -10,31 +10,39 @@
     // align-items: flex-end;
     // background-size: cover;
     color: white;
-.productCategoryHeaderInneriMg{
-  position: relative;
-  .ProdctImg{
-    width: 100%;
-    height: 90vh;
-    @media(min-width: 1500px){
-      height: 90vh;
+    .productCategoryHeaderInneriMg {
+      position: relative;
+      .ProdctImg {
+        width: 100%;
+        height: 90vh;
+        filter: brightness(0.6);
+        object-fit: cover;
+        @media (min-width: 1500px) {
+          height: 90vh;
+        }
+        @media (max-width: 768px) {
+          height: 50vh;
+          object-fit: cover;
+        }
+      }
     }
-    @media(max-width: 768px){
-      height: 50vh;
-      object-fit: cover;
-    }
-  }
-}
     .productCategoryHeaderText {
       display: flex;
       position: absolute;
-      top: 90%;
+      top: 85%;
       left: 5%;
       transform: translate(-50%, -50%);
       margin-right: auto;
       margin-left: auto;
       // position: relative;
-      text-transform: uppercase;  
+      text-transform: uppercase;
       letter-spacing: 2px;
+      // background: linear-gradient(
+      //   to top,
+      //   rgba(0, 0, 0, 0.8),
+      //   transparent
+      // ); 
+    
       // margin: 0px 0px 50px 0px;
       // padding: 20px 0px 20px 60px;
 
@@ -44,11 +52,16 @@
       }
 
       .productCategoryHeaderTextInnner {
-        font-family: "made_mirage_bold";
-        font-size: 30px;
-        @media(max-width: 575px){
-          font-size: 21px;
-          
+        font-family: "safira_march";
+        font-size: 22px;
+        @media(max-width: 768px){
+          font-size: 20px;
+        }
+        @media (max-width: 575px) {
+          font-size: 18px;
+        }
+        @media (max-width: 475px) {
+          font-size: 15px;
         }
       }
     }
@@ -68,7 +81,7 @@
   }
 
   @media (max-width: 375px) {
-    padding: 80px 20px;
+    padding: 20px 20px;
   }
 
   .laminatesWrapper {
@@ -84,27 +97,27 @@
         font-size: 21px;
         display: flex;
         // width: 50%;
-        @media(max-width: 991px){
+        @media (max-width: 991px) {
           gap: 1rem;
           flex-direction: column;
         }
       }
-      .laminateBodyDescriptionOuter{
+      .laminateBodyDescriptionOuter {
+        font-family: "futura_thin";
         width: 70%;
-        p{
+        p {
           width: 85%;
-          @media(max-width: 991px){
+          @media (max-width: 991px) {
             width: 100%;
           }
         }
-        @media(max-width: 991px){
+        @media (max-width: 991px) {
           width: 100%;
         }
-        .laminateBodyDescriptionOne{
+        .laminateBodyDescriptionOne {
           padding-top: 15px;
         }
       }
-     
 
       .laminatesBoxOuter {
         .laminatesBoxInner {
@@ -126,7 +139,7 @@
             gap: 1rem;
             flex-direction: column;
             margin-bottom: 15px;
-            @media(max-width: 768px){
+            @media (max-width: 768px) {
               padding: 25px 50px 25px 50px;
             }
           }
@@ -155,12 +168,13 @@
   }
 
   @media (max-width: 375px) {
-    padding: 80px 20px;
+    padding: 0px 20px;
   }
 
   .product_construct_header {
-    font-size: 35px;
+    font-size: 25px;
     margin: 30px 0;
+    font-family: "safira_march";
   }
 
   .product_construct_image {
@@ -187,20 +201,20 @@
     font-size: 35px;
     margin: 30px 0;
   }
-  .corporateRecognitionCardImageInner{
+  .corporateRecognitionCardImageInner {
     // display: flex;
     // flex-direction: column;
     // align-items: center;
-    color: #5B3524;
+    color: #5b3524;
     font-size: 20px;
     gap: 5px;
-    .corporateRecognitionCardImg{
+    .corporateRecognitionCardImg {
       width: 100%;
       height: auto;
       display: block;
     }
-    p{
-      color: #5B3524;
+    p {
+      color: #5b3524;
     }
   }
 
@@ -219,14 +233,20 @@
   }
 
   @media (max-width: 375px) {
-    padding: 80px 20px;
+    padding: 20px 20px;
   }
 
   .productFeaturesInner {
     .productFeaturesHeader {
       text-align: center;
-      font-size: 35px;
+      font-size: 25px;
       padding: 40px 0;
+      @media(max-width: 475px){
+        font-size: 20px;
+      }
+      div{
+      font-family: "safira_march";
+      }
     }
 
     .productFeaturesContainer {
@@ -251,8 +271,6 @@
       // }
 
       .productFeaturesContainerInner {
-       
-        
         display: flex;
         flex-direction: column;
         align-items: center; // Center items horizontally
@@ -282,6 +300,7 @@
         }
 
         .productDescription {
+          font-family: "futura_thin";
           display: flex;
           justify-content: center; // Center description horizontally
         }
@@ -302,13 +321,16 @@
   }
 
   @media (max-width: 375px) {
-    padding: 80px 20px;
+    padding: 50px 20px;
   }
 
   .productApplicationHeader {
-    font-size: 35px;
-    div{
-      font-family: "made_mirage_regular";
+    font-size: 25px;
+    @media(max-width: 475px){
+      font-size: 20px;
+    }
+    div {
+      font-family: "safira_march";
     }
   }
 
@@ -316,7 +338,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10rem;
-    @media(max-width: 1400px){
+    @media (max-width: 1400px) {
       gap: 10rem;
     }
 
@@ -334,7 +356,6 @@
       display: flex;
       gap: 3rem;
       margin: 20px 0;
-
       @media (max-width: 768px) {
         flex-direction: column;
         gap: 1rem;
@@ -359,8 +380,11 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  div {
+    font-family: "futura_regular";
+  }
 }
-.applicationSection1InnerPdf{
+.applicationSection1InnerPdf {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -368,22 +392,22 @@
   cursor: pointer;
   padding: 5px 0;
 }
-.applicationSection1InnerPdfInner{
+.applicationSection1InnerPdfInner {
   // font-weight: 800;
   font-size: 18px;
-  color: #5B3524;
+  color: #5b3524;
 }
-.TechnicalSpecsHeader{
+.TechnicalSpecsHeader {
   // margin-top: -70px;
   background-color: #edd7c2;
   text-align: center;
   // margin: 0 auto;
   font-size: 35px;
-  @media(max-width: 800px){
+  @media (max-width: 800px) {
     margin: 0;
   }
 }
 .productApplicationSection1Header {
-  font-family: "made_mirage_regular";
+  font-family: "futura_regular";
   font-size: 21px;
 }

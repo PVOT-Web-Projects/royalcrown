@@ -8,7 +8,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
-import HomeHeroSection from "../homeHeroSection/page";
+import HomeHeroSection from "@/components/homeHeroSectionAbout/page";
 import AboutHeroImage from "../aboutusHeroImage/page";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -122,9 +122,9 @@ export default function AboutUsHero() {
       </section>
       
       {/* Home Hero Section */}
-      <section ref={eleganceSectionRef} className="HomeHeroThirdSection">
+      {/* <section ref={eleganceSectionRef} className="HomeHeroThirdSection">
         <HomeHeroSection />
-      </section>
+      </section> */}
     </>
   );
 }

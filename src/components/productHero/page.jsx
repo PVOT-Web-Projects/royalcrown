@@ -1,12 +1,12 @@
 "use client";
 import Image from "next/image";
 import "./productHero.scss";
-import productImage from "../../images/productHero.jpg";
+import productImage from "../../images/product_image.jpg";
 import scrollSvg from "../../images/svgLogos/mouse.svg";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { useEffect } from "react";
-export default function ProductHero({scrollTo , goToSectionRef}) {
+export default function ProductHero({ scrollTo, goToSectionRef }) {
   useEffect(() => {
     const animateLine = () => {
       gsap.fromTo(
@@ -56,10 +56,12 @@ export default function ProductHero({scrollTo , goToSectionRef}) {
               transition={{ duration: 1, delay: 0.5 }}
               viewport={{ once: true }}
             >
-              Customers are at the heart of our unique business model. Royal
-              Crown thrives at providing royal service to everyone. Our work is
-              all about our customers and we believe their experience should be
-              worth.
+              Discover a world of premium laminates crafted to enhance every
+              space with style and durability. Our collection features a wide
+              range of textures,finishes, and colours, catering to both modern
+              and classic aesthetics. With superior quality and innovative
+              designs, our laminates offer theperfect blend of beauty and
+              functionality.
             </motion.div>
           </div>
           <motion.div

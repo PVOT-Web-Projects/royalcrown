@@ -1,15 +1,17 @@
-import BlogPostImage1 from "@/images/BlogsCards1.png";
-import BlogPostImage2 from "@/images/BlogsCards2.png";
-import BlogPostImage3 from "@/images/BlogsCards1.png";
-import BlogPostImage4 from "@/images/BlogsCards2.png";
-import BlogPostImage5 from "@/images/BlogsCards1.png";
-import BlogPostImage6 from "@/images/BlogsCards2.png";
-import BlogPostImage7 from "@/images/BlogsCards1.png";
-import BlogPostImage8 from "@/images/BlogsCards2.png";
-import BlogPostImage9 from "@/images/BlogsCards1.png";
-import BlogPostImage10 from "@/images/BlogsCards2.png";
-import BlogPostImage11 from "@/images/BlogsCards1.png";
-import BlogPostImage12 from "@/images/BlogsCards2.png";
+import BlogPostImage1 from "@/images/BlogsCards1.jpg";
+import BlogPostImage2 from "@/images/BlogsCards2.jpg";
+import BlogPostImage3 from "@/images/BlogsCards1.jpg";
+import BlogPostImage4 from "@/images/BlogsCards2.jpg";
+import BlogPostImage5 from "@/images/BlogsCards1.jpg";
+import BlogPostImage6 from "@/images/BlogsCards2.jpg";
+import BlogPostImage7 from "@/images/BlogsCards1.jpg";
+import BlogPostImage8 from "@/images/BlogsCards2.jpg";
+import BlogPostImage9 from "@/images/BlogsCards1.jpg";
+import BlogPostImage10 from "@/images/BlogsCards2.jpg";
+import BlogPostImage11 from "@/images/BlogsCards1.jpg";
+import BlogPostImage12 from "@/images/BlogsCards2.jpg";
+
+
 
 
 const Data = [

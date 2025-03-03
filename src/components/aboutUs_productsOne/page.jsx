@@ -32,6 +32,7 @@ const Page = () => {
   const [shortNumber, setShortNumber] = useState("");
   const [shortDescription, setShortDescription] = useState("");
   const [activeTab, setActiveTab] = useState("");
+  const [activeTabOne, setActiveTabOne] = useState(0);
   const [products, setProducts] = useState([]);
   const [currentData, setCurrentData] = useState([]);
   const router = useRouter();
@@ -55,6 +56,13 @@ const Page = () => {
       });
   }, []);
 
+  const linksTabs = [
+    { link: "/crown" },
+    { link: "/crown-xcl" },
+    { link: "/.xylem" },
+    { link: "https://example.com/4" },
+    { link: "https://example.com/5" },
+  ];
   // useEffect(() => {
   //   const hash = typeof window !== "undefined" ? window.location.hash : "";
 
@@ -227,8 +235,8 @@ const Page = () => {
     setSelectedThickness("all");
     setSelectedColor("all");
     setSelectedType("all");
-      // Reset the URL to /product without the hash
-  // router.push("/product", undefined, { shallow: true });
+    // Reset the URL to /product without the hash
+    // router.push("/product", undefined, { shallow: true });
   };
 
   const filteredProducts1 = useMemo(() => {
@@ -319,32 +327,32 @@ const Page = () => {
   // }, [filteredProducts, pageNumber, itemsPerPage]);
   // // Displayed Data
   // const displayedData = paginatedProducts;
-      //  pagination finall logic
+  //  pagination finall logic
   // Calculate total pages dynamically based on filtered products
-const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
-// Ensure the current page is within the valid range
-const currentPage = Math.min(pageNumber, totalPages);
-// Calculate indices for the current page
-const lastIndex = currentPage * itemsPerPage;
-const firstIndex = lastIndex - itemsPerPage;
-// Slice the filtered products to display only the current page's items
-const displayedData = filteredProducts.slice(firstIndex, lastIndex);
-// Render only valid pagination buttons
-useEffect(() => {
-  if (currentPage > totalPages && totalPages > 0) {
-    setPageNumber(totalPages); // Redirect to the last valid page
-  }
-}, [currentPage, totalPages]);
-// Reset to the first page if filters change
-useEffect(() => {
-  setPageNumber(1); // Reset to the first page when filtered products change
-}, [filteredProducts]);
-// 
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+  // Ensure the current page is within the valid range
+  const currentPage = Math.min(pageNumber, totalPages);
+  // Calculate indices for the current page
+  const lastIndex = currentPage * itemsPerPage;
+  const firstIndex = lastIndex - itemsPerPage;
+  // Slice the filtered products to display only the current page's items
+  const displayedData = filteredProducts.slice(firstIndex, lastIndex);
+  // Render only valid pagination buttons
+  useEffect(() => {
+    if (currentPage > totalPages && totalPages > 0) {
+      setPageNumber(totalPages); // Redirect to the last valid page
+    }
+  }, [currentPage, totalPages]);
+  // Reset to the first page if filters change
+  useEffect(() => {
+    setPageNumber(1); // Reset to the first page when filtered products change
+  }, [filteredProducts]);
+  //
   const categoryMap = {
     "/product#xylem": "Xylem",
     "/product#royal-crown": "Royal Crown",
     "/product#crown": "crown",
-    "/product#Qbiss": "QBliss",
+    "/product#qbliss": "qbliss",
     "/product#Crown_Xcl": "Crown XCL",
   };
   // const handleTabClick = (newTab, category) => {
@@ -393,7 +401,7 @@ useEffect(() => {
   const visibleTabs = [
     "Royal Crown",
     "Crown XCL",
-    "QBliss",
+    "qbliss",
     "Xylem",
     "crown",
   ].filter(
@@ -563,6 +571,7 @@ useEffect(() => {
       <div className="first_top1">
         <div id="sticky_top" className="products_name">
           <motion.div
+            className="exploreCollection"
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}
@@ -597,27 +606,50 @@ useEffect(() => {
               </Link>
             ))} */}
             {/* {visibleTabs.map((label) => ( */}
-            {["Royal Crown", "Crown XCL", "QBliss", "Xylem", "crown"].map((label) => (
-              <Link
-                key={label}
-                href={`/product#${label.replace(" ", "-").toLowerCase()}`}
-                scroll={false}
-                className={`tab-item ${
-                  activeTab ===
-                  `/product#${label.replace(" ", "-").toLowerCase()}`
-                    ? "active"
-                    : ""
-                }`}
-                onClick={() =>
-                  handleTabClick(
-                    `/product#${label.replace(" ", "-").toLowerCase()}`,
-                    label
-                  )
-                } // Use the new handleTabClick
-              >
-                <div className="tab-content-inner">{label}</div>
-              </Link>
-            ))}
+            {["Royal Crown", "Crown XCL", "qbliss", "Xylem", "crown"].map(
+              (label) => (
+                <Link
+                  key={label}
+                  href={`/product#${label.replace(" ", "-").toLowerCase()}`}
+                  scroll={false}
+                  className={`tab-item ${
+                    activeTab ===
+                    `/product#${label.replace(" ", "-").toLowerCase()}`
+                      ? "active"
+                      : ""
+                  }`}
+                  onClick={() =>
+                    handleTabClick(
+                      `/product#${label.replace(" ", "-").toLowerCase()}`,
+                      label
+                    )
+                  }
+                >
+                  <div className="tab-content-inner">
+                    {label === "qbliss" ? "qbiss" : label}
+                  </div>
+                  {/* <div
+                    onClick={() => {
+                      setActiveTabOne(index);
+                      window.open(tab.link, "_blank");
+                    }}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      x="0px"
+                      y="0px"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 48 48"
+                      fill="#5b3524"
+                    >
+                      <path d="M 40.960938 4.9804688 A 2.0002 2.0002 0 0 0 40.740234 5 L 28 5 A 2.0002 2.0002 0 1 0 28 9 L 36.171875 9 L 22.585938 22.585938 A 2.0002 2.0002 0 1 0 25.414062 25.414062 L 39 11.828125 L 39 20 A 2.0002 2.0002 0 1 0 43 20 L 43 7.2460938 A 2.0002 2.0002 0 0 0 40.960938 4.9804688 z M 12.5 8 C 8.3826878 8 5 11.382688 5 15.5 L 5 35.5 C 5 39.617312 8.3826878 43 12.5 43 L 32.5 43 C 36.617312 43 40 39.617312 40 35.5 L 40 26 A 2.0002 2.0002 0 1 0 36 26 L 36 35.5 C 36 37.446688 34.446688 39 32.5 39 L 12.5 39 C 10.553312 39 9 37.446688 9 35.5 L 9 15.5 C 9 13.553312 10.553312 12 12.5 12 L 22 12 A 2.0002 2.0002 0 1 0 22 8 L 12.5 8 z"></path>
+                    </svg>
+                  </div> */}
+                  {/* <span>{linksTabs.link}</span> */}
+                </Link>
+              )
+            )}
           </div>
         </div>
 
@@ -625,7 +657,11 @@ useEffect(() => {
           <div id="sticky">
             {/* reset filter */}
             <div className="resetFilters">
-              <button className="resetButton" onClick={resetFiltersDrop} scroll={false}>
+              <button
+                className="resetButton"
+                onClick={resetFiltersDrop}
+                scroll={false}
+              >
                 <span className="resetButton-content">reset filters</span>
                 {/* Reset Filters */}
               </button>

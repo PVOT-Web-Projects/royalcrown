@@ -90,6 +90,10 @@
       .tab-content-inner {
         position: relative;
         z-index: 100;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
         // color: $white;
         transition: color 0.475s ease-out; // Smooth color transition
       }
@@ -137,6 +141,9 @@
 #dropdownLabel{
   height: 120px;
   overflow-x: hidden;
+  background-color: rgb(253 231 216);
+  padding: 12px;
+  border-radius: 6px;
   @media(min-width: 1500px){
     height: 200px;
   }
@@ -352,12 +359,13 @@
 .products_name {
   text-align: center;
   font-size: 40px;
+  
+  
   padding: 15px 0;
   background-color: rgb(28, 33, 30);
   letter-spacing: 5px;
   color: rgba(89, 89, 89, 0.35);
   font-weight: 500;
-
   @media (min-width: 1600px) {
     font-size: 50px;
     padding: 2rem 0;
@@ -392,6 +400,7 @@
     width: fit-content;
     .resetButton-content {
       font-size: 18px;
+      text-transform: capitalize;
       font-weight: 550;
       position: relative;
       z-index: 1;
@@ -459,18 +468,18 @@
     gap: 1rem;
   }
 @media(max-width: 1330px){
-  width: 27%;
+  width: 20%;
 }
 @media(max-width: 1255px){
-  width: 30%;
+  width: 20%;
 }
   @media (max-width: 1180px) {
     top: 165px;
-    width: 35%;
+    width: 18%;
   }
   @media (max-width: 1056px) {
     // top: 165px;
-    width: 37%;
+    width: 30%;
   }
 
   @media (max-width: 575px) {
@@ -652,6 +661,7 @@
 
 .product_container div {
   overflow: hidden;
+  font-size: 22px;
   @media (max-width: 575px) {
     display: flex;
     justify-content: center;
