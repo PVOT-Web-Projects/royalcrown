@@ -22,6 +22,7 @@ import CategoryLeftRightInsights from "@/components/categoryLeftRightInsights/Ca
 import { AnimatePresence } from "framer-motion";
 import Preloader from "@/components/preloader";
 import SliderNew from "@/components/SliderNew/SliderNew";
+import ScrollAnimationMobile from "@/components/HomeSliderMobile/page";
 
 const HomeBanner = dynamic(() => import("@/components/Home_page_Banner/page"));
 const HomeBanner1 = dynamic(() => import("@/components/Home_page_Banner/page2"));
@@ -91,7 +92,13 @@ export default function Home() {
         {/* <SliderNew /> */}
         {/* <NewThreeDSlider /> */}
         {/* <ThreeSlider /> */}
+        {/* <HomeSliderOne /> */}
+        <div className="HomeDesktop">
         <HomeSliderOne />
+        </div>
+        <div className="HomeMobile">
+        <ScrollAnimationMobile />
+        </div>
         <HomeHeroSection />
         <SliderNew />
         <NewRevealText paragraph={paragraph} />

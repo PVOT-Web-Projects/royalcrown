@@ -19,7 +19,7 @@
   font-family: "safira_march";
   width: 78%;
 @media(max-width: 1199px){
-  font-size: 26px;
+  font-size: 22px;
 }
   @media (max-width : 575px) {
     font-size: 18px;
@@ -114,8 +114,10 @@ input:-webkit-autofill:active {
   display: flex;
   justify-content: flex-start;
   padding-top: 4rem;
+padding-bottom: 1rem;
   @media screen and (max-width:575px) {
     padding-top: 3rem;
+padding-bottom: 1rem;
   }
   .submit_button {
     background-color: transparent;

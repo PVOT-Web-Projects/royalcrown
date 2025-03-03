@@ -17,7 +17,7 @@
     "framer-motion": "^11.2.10",
     "gsap": "^3.12.5",
     "locomotive-scroll": "^4.1.4",
-    "next": "14.2.3",
+    "next": "14.2.21",
     "nodemailer": "^6.9.15",
     "primereact": "^10.6.6",
     "react": "^18",

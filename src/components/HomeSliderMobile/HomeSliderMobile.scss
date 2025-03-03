@@ -1,0 +1,684 @@
+.containerText {
+  text-align: center;
+  // height: 100vh;
+  position: relative;
+  background-color: black;
+  margin-bottom: -15px;
+  @media (max-width: 1380px) {
+    height: auto;
+  }
+  .page-container {
+    &.hidden {
+      display: none;
+    }
+  }
+  .card-containerOne {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 100px;
+    margin-top: -555px;
+    // 555
+    @media (min-width: 1550px) {
+      margin-top: -600px;
+      // 600
+    }
+    @media (max-width: 1480px) {
+      margin-top: -420px;
+    }
+    @media (max-width: 1370px) {
+      margin-top: -455px;
+      padding-bottom: 60px;
+    }
+
+    @media (max-width: 1199px) {
+      margin-top: -370px;
+    }
+    @media(max-width: 768px){
+      margin-top: -220px;
+    }
+    @media (max-width: 575px) {
+      margin-top: -215px;
+    }
+    // margin-bottom: 300px;
+    // opacity: 0;
+    // visibility: hidden;
+    // transform: scale(0.8); // Start from a smaller size
+    transition: all 0.1s ease-in-out;
+    &.visible {
+      opacity: 1;
+      visibility: visible;
+      // transform: scale(1); // Zoom-in effect
+    }
+    .parent-container {
+      position: relative; /* Ensures the child can use absolute positioning */
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cardOOne {
+      transition: transform 0.3s ease;
+      position: relative;
+      width: 250px;
+      height: 350px;
+      // width: 400px;
+      // height: 500px;
+      background: #fff;
+      border-radius: 28px;
+      cursor: pointer;
+      @media (max-width: 475px) {
+        width: 250px;
+        height: 320px;
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 75%;
+        height: 75%;
+        border-radius: 28px;
+        background: #fff;
+        background-image: url(https://interiormaataassets.humbeestudio.xyz/livingroomthumb.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        transition: 0.5s ease-in-out;
+        // z-index: -1;
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 80%;
+        height: 80%;
+        border-radius: 28px;
+        background: #fff;
+        background-image: url(https://interiormaataassets.humbeestudio.xyz/interior-outdoor.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        transition: 0.5s ease-in-out;
+        // z-index: -1;
+      }
+
+      &:hover {
+        &:before {
+          transform: rotate(20deg);
+          left: 200px;
+          top: 38px;
+        }
+
+        &:after {
+          transform: rotate(-30deg);
+          left: -150px;
+          top: 60px;
+        }
+
+        // .imgBx {
+        //   bottom: 80px;
+        // }
+      }
+
+      .imgBx {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        bottom: 0px;
+        right: 0px;
+        transition: 0.5s;
+        z-index: 1;
+
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          border-radius: 28px;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .details {
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        height: 60px;
+        cursor: pointer;
+        text-align: center;
+
+        p {
+          margin: 0;
+          padding: 0;
+          font-weight: 600;
+          font-size: 20px;
+          color: #5b3524;
+          text-transform: uppercase;
+
+          // span {
+          //   font-weight: 500;
+          //   font-size: 16px;
+          //   color: #f38695;
+          //   display: block;
+          //   margin-top: 5px;
+          // }
+        }
+      }
+    }
+    .cardOOne.inView {
+      transform: scale(1.1); /* Example: Zoom in when the image is in view */
+    }
+  }
+  .curved-text-container {
+    width: 100%;
+    background-color: black;
+    // max-width: 1000px;
+    max-width: 100%;
+    // margin: 0 auto;
+    margin-top: -100px;
+    overflow: hidden;
+    // padding: 1rem;
+    &.hidden {
+      display: none;
+    }
+    svg {
+      width: 100%;
+      height: 100%;
+      // margin-top: -90px;
+      @media (max-width: 1440px) {
+        // margin-top: -75px;
+      }
+      // @media (max-width: 1250px) {
+      //   margin-top: -150px;
+      // }
+      text {
+        fill: #fff;
+        font-size: 1rem;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        font-family: "safira_march";
+        @media (max-width: 768px) {
+          font-size: 1.8rem;
+        }
+
+        @media (max-width: 480px) {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+  .VideoOneContainer {
+    .VideoInnerContainer {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .closeButton {
+      position: absolute;
+      top: 31px;
+      left: 90%;
+      // right: -465px;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10; /* Ensures it stays on top of the video */
+      @media (max-width: 1024px) {
+        left: 94%;
+      }
+      @media (max-width: 768px) {
+        left: 92%;
+      }
+      @media (max-width: 425px) {
+        left: 80%;
+      }
+     
+  
+    }
+    
+    .closeButton:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+  
+    // .videoOneVid {
+    //   height: 100vh;
+    //   width: 300vh;
+    //   object-fit: cover;
+    // }
+  
+    .videoOneVid {
+      position: absolute;
+      top: 0;
+      // left: -520px;
+      min-width: 100vw;
+      min-height: 100vh;
+      object-fit: cover;
+    }
+    
+  
+    .VideoInnerContainerText {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      font-size: 2em;
+      width: 100%;
+      @media(max-width: 575px){
+        font-size: 1.5em;
+      }
+    }
+  }
+  .carouselOne {
+    overflow-x: clip;
+    height: 50vh;
+    // margin-top: 150px;
+    // margin-bottom: 50px;
+    // padding: 5rem 0;
+    @media (max-width: 1250px) {
+      // margin-top: -80px;
+    }
+    @media (max-width: 900px) {
+      // margin-top: -45px;
+      // margin-bottom: 80px;
+    }
+  }
+  .hidden {
+    display: none;
+  }
+
+  .swiper {
+    // padding: 5rem 0 5rem;
+    overflow: visible;
+    // margin: 0 40px;
+    // @media(max-width: 1200px){
+    //   padding: 5rem 0 3rem;
+    // }
+  }
+
+  .swiper-slide {
+    // flex-shrink: 0;
+    width: auto;
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Smooth sliding transition */
+  }
+  .swiper-slide img {
+    width: 100%;
+    object-fit: cover; // Ensure images fit inside their containers properly
+  }
+  .swiper-slide-next,
+  .swiper-slide-prev {
+    // opacity: 0.9; // Slightly fade the adjacent slides
+  }
+
+  .single {
+    position: relative;
+    margin-top: -450px;
+    cursor: pointer;
+    will-change: transform;
+    // transition: transform 0.1s ease-in; /* Smooth transition for any transformation */
+    // box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+    //             rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    //             rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  }
+
+  .single img {
+    width: 340px;
+    height: 230px;
+    vertical-align: top;
+    border-radius: 8px;
+    pointer-events: none;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out; /* Smooth transition for scaling */
+    will-change: transform;
+
+   
+    @media (max-width: 1300px) {
+      width: 230px;
+      height: 300px;
+    }
+    // @media (max-width: 1100px) {
+    //   width: 250px;
+    //   height: 350px;
+    // }
+    // @media (max-width: 940px) {
+    //   width: 250px;
+    //   height: 350px;
+    // }
+    // @media (max-width: 740px) {
+    //   width: 250px;
+    //   height: 350px;
+    // }
+    // @media (max-width: 666px) {
+    //   width: 250px;
+    //   height: 350px;
+    // }
+  }
+
+  .image-container {
+    flex-direction: column;
+    max-width: 400px; /* Adjust based on your design */
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    margin: 0 auto;
+    @media (max-width: 1370px) {
+      max-width: 150px; /* Adjust based on your design */
+      height: auto;
+    }
+  }
+  .image-container img {
+    transition: all 0.5s ease-in-out; /* Smooth scaling */
+  }
+  .hover-text1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 0;
+    font-size: 22px;
+    text-align: center;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    padding: 10px 1rem;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Add transition for smooth fade-in/out */
+    visibility: hidden; /* Ensure it's not visible when opacity is 0 */
+  }
+  .single:hover .hover-text1 {
+    opacity: 1; /* Make "Explore" visible */
+    visibility: visible;
+  }
+  .single:hover img {
+    // transform: scale(1.05); /* Zoom in */
+    // filter: brightness(0.5);
+  }
+  /* Add the click (active) burst effect */
+  .single:active img {
+    animation: burstAnimation 0.5s ease-out; /* Trigger animation on click */
+    transform: scale(1.1); /* Initial expansion */
+  }
+
+  /* Define the animation for expanding and contracting */
+  @keyframes burstAnimation {
+    0% {
+      transform: scale(1); /* Start at normal size */
+    }
+    50% {
+      transform: scale(1.2); /* Expand to 1.2x size */
+    }
+    100% {
+      transform: scale(1); /* Return to normal size */
+    }
+  }
+  .image-container img.zoom-effect {
+    transform: scale(1.5); /* Zoom in */
+    opacity: 0; /* Fade out during zoom */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  }
+  // .hover-text{
+  //   padding: 10px 0;
+  //   font-size: 22px;
+  //   position: absolute;
+  //   top: 50%;
+  //   left: 50%;
+  //   transform: translate(-50%, -50%);
+  //   text-align: center;
+  //   color: #fff;
+  //   font-weight: bold;
+  //   transition: color 0.3s ease;
+
+  // }
+  .hover-text {
+    position: absolute;
+    // bottom: 40px; /* Position text at the bottom of the image */
+    // left: 20%;
+    bottom: 0;
+    transform: translateX(-50%); /* Center text horizontally */
+    padding: 10px 0;
+    font-size: 24px;
+    text-align: center;
+    color: #fff;
+    font-weight: 300;
+    // border-radius: 10px;
+    // background-color: #5b3524;
+    width: 100%;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    transform: translateY(100%); /* Start with text below the image */
+    @media(max-width: 475px){
+      font-size: 20px;
+    }
+  }
+
+  .single:hover .hover-text {
+    opacity: 1; /* Make text visible */
+    transform: translateY(-90%); /* Move text into view */
+    @media (max-width: 1370px) {
+      transform: translateY(115%); /* Move text into view */
+    }
+    @media (max-width: 1030px) {
+      width: 100%;
+      transform: translateY(120%); /* Move text into view */
+    }
+  }
+  .swiper-button {
+    position: relative;
+    overflow: hidden;
+    height: 3rem;
+    padding: 0 3rem;
+    background-color: transparent;
+    border: 1px solid #5b3524;
+    border-radius: 5px;
+    text-transform: uppercase;
+    background-size: 400%;
+    color: #5b3524;
+    font-size: 18px;
+    line-height: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    width: fit-content;
+    .button-content-explore {
+      font-size: 25px;
+      font-weight: 550;
+      position: relative;
+      z-index: 1;
+      transition: color 0.475s;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: scaleX(0);
+      transform-origin: 0 50%;
+      width: 100%;
+      height: inherit;
+      border-radius: inherit;
+      background: #5b3524;
+      transition: all 0.475s;
+    }
+    // &:hover {
+    //   .button-content-explore {
+    //     color: white;
+    //   }
+    //   &::before {
+    //     transform: scaleX(1);
+    //     border-radius: inherit;
+    //   }
+    // }
+  }
+  .swiper-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    // @media (max-width: 575px) {
+    //   flex-direction: column;
+    // }
+  }
+  .Img1Ref {
+    width: 100vw;
+    height: auto;
+  }
+  /* Optionally add transition for smoother switching */
+  .carouselOne,
+  .homePageBanner {
+    /* Set an initial transition for smooth fade in/out */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .carouselOne.hidden,
+  .homePageBanner.hidden {
+    visibility: hidden;
+    opacity: 0;
+  }
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Ensure it fills the slide's height */
+  }
+
+  .swiper-slide:hover {
+    transform: scale(1.1); // Slightly scale the active slide for a better focus
+  }
+  .explore-button-container {
+    text-align: left;
+    // margin-top: 20px;
+    margin-top: -80px;
+    padding-left: 40px;
+    display: flex;
+    justify-content: left;
+    .explore-button {
+      position: absolute;
+    overflow: hidden;
+    top: 3%;
+    right: 2rem;
+    height: 3rem;
+    /* padding: 0 3rem; */
+    background-color: transparent;
+    text-transform: uppercase;
+    background-size: 400%;
+    color: #5b3524;
+    font-size: 18px;
+    line-height: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    width: -moz-fit-content;
+    width: fit-content;
+      .button-content-explore {
+        font-size: 25px;
+        font-weight: 550;
+        position: relative;
+        z-index: 1;
+        transition: color 0.475s;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: scaleX(0);
+        transform-origin: 0 50%;
+        width: 100%;
+        height: inherit;
+        border-radius: inherit;
+        background: #5b3524;
+        transition: all 0.475s;
+      }
+      // &:hover {
+      //   .button-content-explore {
+      //     color: white;
+      //   }
+      //   &::before {
+      //     transform: scaleX(1);
+      //     border-radius: inherit;
+      //   }
+      // }
+    }
+  }
+  .VideoOneContainer {
+    .VideoInnerContainer {
+      position: relative;
+      width: 100%;
+      // padding-bottom: 56.25%;
+      // @media (min-width: 1600px) {
+      //   padding-bottom: 56.25%;
+      // }
+    }
+    .videoOneVid {
+      height: 100vh;
+      width: 100vw;
+      object-fit: cover;
+      // position: relative;
+      @media (min-width: 1600px) {
+        height: 100vh;
+        object-fit: cover;
+        width: 100vw;
+      }
+      @media (max-width: 1370px) {
+        height: 100%;
+      }
+    }
+    .VideoInnerContainerText {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      font-size: 2em;
+      width: 100%;
+      @media (max-width: 1550px) {
+        left: 50%;
+        @media (max-width: 1090px) {
+          left: 50%;
+        }
+      }
+      .VideoInnerContainerTextOne {
+        position: absolute;
+        top: 50%;
+        left: 85%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+        font-size: 2em;
+        width: 100%;
+        @media (max-width: 1550px) {
+          left: 83%;
+          @media (max-width: 1090px) {
+            left: 80%;
+          }
+        }
+      }
+    }
+  }
+}

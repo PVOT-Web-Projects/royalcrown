@@ -8,6 +8,33 @@
   @media (max-width: 991px) {
     padding: 50px 0 100px 0;
   }
+  .exploreCollection {
+    background-color: black;
+    color: white;
+    font-family: "safira_march";
+    margin: 0 -50px;
+    padding: 100px 0;
+    text-align: center;
+    font-size: 40px;
+    text-transform: uppercase;
+    @media (max-width: 991px) {
+      margin: 0 -1rem;
+      padding: 50px 50px;
+      font-size: 30px;
+    }
+    @media (max-width: 575px) {
+      font-size: 22px;
+      padding: 50px 40px;
+    }
+    @media (max-width: 475px) {
+      font-size: 18px;
+      padding: 50px 40px;
+    }
+    @media (max-width: 325px) {
+      font-size: 16px;
+      padding: 50px 40px;
+    }
+  }
   .ProductsCollection{
     font-family: "made_mirage_regular";
   }
@@ -41,10 +68,10 @@
     font-size: 20px;
     justify-content: center;
     // justify-content: space-around;
-    padding: 25px 0rem;
+    padding: 30px 10rem 30px;
 
     @media (max-width: 1024px) {
-      padding: 25px 0;
+      padding: 30px 0rem 30px;
     }
 
     @media (max-width: 768px) {
@@ -90,6 +117,7 @@
       .tab-content-inner {
         position: relative;
         z-index: 100;
+        font-size: 18px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -509,7 +537,7 @@
     width: 100%;
     overflow-y: auto;
     padding: 0 0 30px 0;
-    z-index: 5;
+    z-index: -1;
   }
 }
 .product_container {

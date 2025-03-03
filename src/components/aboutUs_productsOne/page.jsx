@@ -569,16 +569,16 @@ const Page = () => {
         </div>
       </div>
       <div className="first_top1">
+        <motion.div
+          className="exploreCollection"
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          Explore Collection
+        </motion.div>
         <div id="sticky_top" className="products_name">
-          <motion.div
-            className="exploreCollection"
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-          >
-            Explore Collection
-          </motion.div>
           <div className="products-tabs" id="sticky_top">
             {/* {visibleTabs.map((label) => (
               <Link

@@ -3,8 +3,32 @@ import Image from "next/image";
 import AboutUs_vision from "@/images/fctImage.JPG";
 import "./aboutUsVision.scss";
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
 export default function AboutUsVision() {
+  // const imageRef = useRef(null);
+  // useEffect(() => {
+  //   gsap.fromTo(
+  //     imageRef.current,
+  //     { x: -50, scale: 1.2, opacity: 0, clipPath: "inset(0% 100% 0% 0%)" },
+  //     {
+  //       x: 0,
+  //       scale: 1,
+  //       opacity: 1,
+  //       clipPath: "inset(0% 0% 0% 0%)",
+  //       ease: "power4.out",
+  //       scrollTrigger: {
+  //         trigger: imageRef.current,
+  //         start: "top 70%",
+  //         end: "bottom 40%",
+  //         scrub: 2, // Smoothness of the scroll animation
+  //       },
+  //     }
+  //   );
+  // }, []);
   return (
     <>
       <div className="aboutVisionWrapper">
@@ -18,7 +42,9 @@ export default function AboutUsVision() {
           >
             <div>Vision</div>
           </motion.div>
-          <div>
+          <div className="ImagrefCurrent" 
+          // ref={imageRef}
+          >
             <Image src={AboutUs_vision} alt="" className="visionImage" />
           </div>
           <div className="visionDescription">

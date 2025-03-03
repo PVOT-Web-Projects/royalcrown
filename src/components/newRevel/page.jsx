@@ -1,10 +1,32 @@
 "use client"
 import { useScroll, useTransform, motion } from 'framer-motion';
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import styles from "@/components/newRevel/newrevel.module.css"
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
 export default function Paragraph({paragraph}) {
-
+  const imageRef = useRef(null);
+  useEffect(() => {
+    gsap.fromTo(
+      imageRef.current,
+      { y: 0, scale: 1.2, opacity: 0, clipPath: "inset(100% 0% 0% 0%)" },
+      {
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        clipPath: "inset(0% 0% 0% 0%)",
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: imageRef.current,
+          start: "top 80%",
+          end: "bottom 40%",
+          scrub: 2, // Smoothness of the scroll animation
+        },
+      }
+    );
+  }, []);
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
@@ -14,7 +36,7 @@ export default function Paragraph({paragraph}) {
 
   const words = paragraph.split(" ")
   return (
-    <div className={styles.NewContainer}>
+    <div className={styles.NewContainer} ref={imageRef}>
     <p 
       ref={container}         
       className={styles.paragraph}

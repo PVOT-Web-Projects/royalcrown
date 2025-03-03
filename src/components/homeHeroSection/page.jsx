@@ -8,16 +8,95 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 // import Image5 from "../../images/image 48.jpg";
 // import Image6 from "../../images/laminate - about-us 6.jpg";
 import Image4 from "../../images/aboutIMg1.jpg";
-import Image5 from "../../images/aboutImg2.jpg";
+import Image5 from "../../images/aboutImgg2.jpg";
 import Image6 from "../../images/fctImg5.JPG";
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
-
+import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HomeHeroSection() {
+  const imageRef = useRef(null);
+  const imageRef1 = useRef(null);
+  const sectionRef = useRef(null);
+  const imageRef2 = useRef(null);
+useEffect(() => {
+    gsap.fromTo(
+      sectionRef.current,
+      { y: 0, scale: 1.2, opacity: 0, clipPath: "inset(100% 0% 0% 0%)" },
+      {
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        clipPath: "inset(0% 0% 0% 0%)",
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          end: "bottom 40%",
+          scrub: 2, // Smoothness of the scroll animation
+        },
+      }
+    );
+  }, []);
   // const eleganceContainer = useRef(null);
-
+  useEffect(() => {
+    gsap.fromTo(
+      imageRef.current,
+      { y: -100, scale: 1.7, opacity: 0, clipPath: "inset(100% 0% 0% 0%)" },
+      {
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        clipPath: "inset(0% 0% 0% 0%)",
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: imageRef.current,
+          start: "top 70%",
+          end: "bottom 40%",
+          scrub: 2, // Smoothness of the scroll animation
+        },
+      }
+    );
+  }, []);
+  useEffect(() => {
+    gsap.fromTo(
+      imageRef1.current,
+      { y: -100, scale: 1.7, opacity: 0, clipPath: "inset(100% 0% 0% 0%)" },
+      {
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        clipPath: "inset(0% 0% 0% 0%)",
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: imageRef1.current,
+          start: "top 90%",
+          end: "bottom 50%",
+          scrub: 2, // Smoothness of the scroll animation
+        },
+      }
+    );
+  }, []);
+  useEffect(() => {
+    gsap.fromTo(
+      imageRef2.current,
+      { y: -100, scale: 1.7, opacity: 0, clipPath: "inset(100% 0% 0% 0%)" },
+      {
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        clipPath: "inset(0% 0% 0% 0%)",
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: imageRef2.current,
+          start: "top 70%",
+          end: "bottom 40%",
+          scrub: 2, // Smoothness of the scroll animation
+        },
+      }
+    );
+  }, []);
   // useEffect(() => {
   //   gsap.to(eleganceContainer.current, {
   //     scale: 0.35,
@@ -33,7 +112,7 @@ export default function HomeHeroSection() {
   //   });
   // },[])
   return (
-    <div className="elegance-Wrapper">
+    <div className="elegance-Wrapper" ref={sectionRef}>
       <div className="elegance-container">
         <div className="text-section">
           <div className="text-section-header">
@@ -43,11 +122,15 @@ export default function HomeHeroSection() {
                   className="HeaderTextInner"
                   initial={{ x: -100, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 1 }}
+                  transition={{ duration: 1.5, delay: 0.5  }}
                   viewport={{ once: true }}
                 >
                   <p>
-                  explore our legacy</p>
+                    explore our <br /> legacy
+                  </p>
+                  {/* <p>
+                  explore our</p>
+                  <p>legacy</p> */}
                 </motion.div>
                 {/* <motion.div
                     className="animated-border"
@@ -58,28 +141,28 @@ export default function HomeHeroSection() {
                   /> */}
               </div>
             </div>
-            <motion.div
-              className="image-wrapper-1"
-              initial={{ y: 700, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
-            >
+            <div className="image-wrapper-1" ref={imageRef}>
               <Image src={Image4} alt="Image 1" className="image_1" />
-            </motion.div>
+            </div>
           </div>
           <div className="text-section-content">
             <div className="text-section-inner">
-              <div className="TextSectionInnerFirst">
+              <motion.div
+                className="TextSectionInnerFirst"
+                initial={{ y: 100, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1.5 }}
+                viewport={{ once: true }}
+              >
                 Royal Crown Laminates' legacy celebrates innovation,
                 cutting-edge technology, craft, and expertise in delivering the
                 best and trendsetting laminate surfaces. We have grown to become
-                a leader in every sense of the word in the laminate industry. Our
-                unceasing efforts with architects, interiors, OEMs, contractors,
-                carpenters, and end consumers and an in-depth understanding of
-                the market and its demands have strengthened our product base.
-                Moreover, it has helped us establish ourselves as domestic and
-                global leaders.
+                a leader in every sense of the word in the laminate industry.
+                Our unceasing efforts with architects, interiors, OEMs,
+                contractors, carpenters, and end consumers and an in-depth
+                understanding of the market and its demands have strengthened
+                our product base. Moreover, it has helped us establish ourselves
+                as domestic and global leaders.
                 {/* At Royal Crown, customers are the cornerstone of our unique
                 business model. We are dedicated to providing every individual
                 with an unparalleled royal service, ensuring that their
@@ -93,30 +176,20 @@ export default function HomeHeroSection() {
                 is all about our customers and we believe their experience
                 should be worth a thousand memories. However, we do have a tiny
                 tale to tell, a sneak peek to our story. */}
-              </div>
-              <div className="text-section-inner-footer">read more</div>
+              </motion.div>
+              <Link href={"/about-us"}>
+                <div className="text-section-inner-footer">read more</div>
+              </Link>
             </div>
-            <motion.div
-              className="image-wrapper-2"
-              initial={{ x: 300, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
-            >
+            <div ref={imageRef1} className="image-wrapper-2">
               <Image src={Image6} alt="Image 3" />
-            </motion.div>
+            </div>
           </div>
         </div>
         <div className="image-section">
-          <motion.div
-            className="image-wrapper-3"
-            initial={{ y: 300, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-          >
+          <div ref={imageRef2} className="image-wrapper-3">
             <Image src={Image5} alt="Image 2" />
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>

@@ -33,7 +33,14 @@
       overflow: hidden;
       // filter: brightness(0.5);
       filter: none; // Remove brightness from the whole container
-
+      @media(max-width: 1300px){
+        width: 185px;
+        height: 290px;
+      }
+      @media(max-width: 575px){
+        width: 165px;
+        height: 210px;
+      }
       &.background .imageWrapper img {
         filter: brightness(0.5); // ✅ Apply brightness only to the image
       }
@@ -97,6 +104,9 @@
         @media(max-width: 768px){
           top: 70%;
         }
+        @media(max-width: 575px){
+          top: 78%;
+        }
         @media(max-width: 375px){
           top: 75%;
         }
@@ -129,7 +139,7 @@
 
       .contentSlider {
         position: absolute;
-        top: 40%;
+        top: 48%;
         left: 100px;
         width: 500px;
         text-align: left;
@@ -139,8 +149,8 @@
         z-index: 10 !important;
         filter: brightness(1) !important; // Ensure no brightness or dimming is applied
         mix-blend-mode: normal; // Ensure normal text visibility
-        @media(max-width: 1280px) {
-        left: 60px;
+        @media(max-width: 1300px) {
+        left: 40px;
         }
         @media(max-width: 1024px){
           left: 40px;
@@ -151,13 +161,19 @@
           width: 500px;
           top: 25%;
         }
+       
         @media(max-width: 475px){
           width: 345px;
           left: 30px;
+          top: 27%;
+        }
+        @media(max-height: 650px){
+          top: 33% !important;
         }
         @media(max-width: 375px){
           width: 300px;
           left: 20px;
+          top: 30%;
         }
         .nameSlider {
           font-family: "safira_march";
@@ -168,7 +184,11 @@
           padding: 10px 0;
           animation: animate 1s ease-in-out 1 forwards;
           @media(max-width: 575px){
-            font-size: 25px;
+            font-size: 22px;
+          }
+          @media(max-width: 475px){
+            font-size: 16px;
+            padding: 0;
           }
         }
 
@@ -187,6 +207,8 @@
           }
           @media(max-width: 475px){
             margin-bottom: 10px;
+            font-size: 15px;
+            margin-top: 0px;
           }
         }
 
@@ -213,7 +235,7 @@
           width: fit-content;
 
           @media (max-width: 575px) {
-            padding: 0 1rem;
+            // padding: 0 1rem;
           }
           .button-content {
             font-size: 25px;
@@ -243,7 +265,6 @@
       }
     }
   }
-
   @keyframes animate {
     from {
       opacity: 0;
@@ -288,6 +309,12 @@
     }
     @media (max-width: 768px) {
       left: -38%;
+    }
+    @media(max-height: 750px){
+      bottom: 110px;
+    }
+    @media(max-height: 540px){
+      bottom: 40px; 
     }
     @media (max-width: 575px) {
       left: -30%;

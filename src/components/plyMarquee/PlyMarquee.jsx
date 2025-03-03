@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useRef } from "react";
 const { default: Image } = require("next/image");
 const { default: Marquee } = require("react-fast-marquee");
 import img1 from "@/images/ply/574_HNG.jpeg";
@@ -26,18 +27,42 @@ import img22 from "@/images/ply/RC_6025_TO.jpg";
 import img23 from "@/images/ply/RC_6026_TO.jpg";
 import img24 from "@/images/ply/RC_6029_SN.jpg";
 import img25 from "@/images/ply/RC_6031_SN.jpg";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
 import "./plyMarquee.scss";
 import "./marquee.css";
 import { motion } from "framer-motion";
+
 const PlyMarquee = () => {
+  const imageRef = useRef(null);
+  useEffect(() => {
+    gsap.fromTo(
+      imageRef.current,
+      { y: 0, scale: 1.2, opacity: 0, clipPath: "inset(100% 0% 0% 0%)" },
+      {
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        clipPath: "inset(0% 0% 0% 0%)",
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: imageRef.current,
+          start: "top 80%",
+          end: "bottom 40%",
+          scrub: 2, // Smoothness of the scroll animation
+        },
+      }
+    );
+  }, []);
   return (
-    <div className="ply_marquee">
+    <div className="ply_marquee" ref={imageRef}>
       <div className="MarqueeTextFirst">
         <motion.div
-          initial={{ y: 50, opacity: 0 }}
+          initial={{ y: 100, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 1.5 }}
           viewport={{ once: true }}
         >
           Catalogue
@@ -45,17 +70,27 @@ const PlyMarquee = () => {
         {/* <p>Catalogue</p> */}
       </div>
       <div className="MarqueeTextSecond">
-        <p>
+        <motion.p
+         initial={{ x: -100, opacity: 0 }}
+         whileInView={{ x: 0, opacity: 1 }}
+         transition={{ duration: 1.5 }}
+         viewport={{ once: true }}
+        >
           Experience the epitome of modern minimalist aesthetic with our luxury
           laminates, tailored to ful-fill every desire, ensuring your interiors
           exude a sophisticated charm that captivates and endures.
           {/* It's a modern minimalist aesthetic look, our luxury laminates cater to
           every desire, ensuring your interiors exude a refined charm that
           captivates and endures. */}
-        </p>
-        <p className="MarqueeTextSecondInner">
+        </motion.p>
+        <motion.p className="MarqueeTextSecondInner"
+        initial={{ x: -100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1.5 }}
+        viewport={{ once: true }}
+        >
           Elevate your space with the ultimate expression of luxury and grace.
-        </p>
+        </motion.p>
       </div>
       <div className="MarqueMainSection">
         <Marquee class="r3f_marquee" speed={60} pauseOnHover={true}>

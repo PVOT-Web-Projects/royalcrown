@@ -53,10 +53,16 @@
     padding-bottom: 28px;
     padding-left: 4px;
   }
+.SocialMediaImg{
+  // overflow: hidden;
+  // position: relative;
+}
   .SocialImg{
     width: 400px;
     height: 70vh;
     object-fit: cover;
+    // transform-origin: center;
+    // will-change: transform, opacity, clip-path;
     // max-width: 100%;
     // height: auto;
     @media(max-width: 768px){

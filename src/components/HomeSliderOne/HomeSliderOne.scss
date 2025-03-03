@@ -19,6 +19,23 @@
   }
 }
 
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto; // Allow slides to have width based on content
+  cursor: grab; // Shows grab cursor for drag functionality
+}
+
+.swiper-slide:active {
+  cursor: grabbing;
+}
+
 // ScrollTextSection
 .ScrollTextSection {
   width: 100%;
@@ -29,18 +46,44 @@
   align-items: center;
   position: relative;
   background-color: black;
-
+  @media(max-width: 1000px){
+    height: auto;
+  }
+ .svgCircular{
+  margin-top: -150px;
+ }
+ .svgCurve{
+  margin-top: -310px;
+ }
   .card-container {
+    font-size: 24px;
+    font-family: "safira_march";
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 5px auto;
-    margin-top: -250px;
+    margin-top: -310px;
     position: relative;
+    @media(max-width: 1000px){
+      display: none;
+    }
+    @media(max-height: 760px){
+      margin-top: -400px;
+      @media(max-height: 650px){
+        margin-top: -435px;
+      }
+    }
+    // @media(max-width: 1480px){
+    //   margin-top: -100px;
+    // }
+    // @media(max-width: 1350px){
+    //   margin-top: -50px;
+    // }
 
-    .card {
-      height: 300px;
-      width: 200px;
+    .cardAll {
+      height: 330px;
+      width: 250px;
+      cursor: pointer;
       border: 1px solid black;
       border-radius: 12px;
       background-color: white;
@@ -48,7 +91,17 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-    
+    @media(max-width: 1480px){
+      height: 350px;
+      width: 250px;
+    }
+    @media(max-width: 1350px){
+      height: 340px;
+        width: 230px;
+    }
+    @media(max-height: 650px){
+      height: 285px;
+    }
       /* Image container for the zoom effect */
       .image-container {
         position: relative;
@@ -74,14 +127,14 @@
       .hover-text {
         position: absolute;
         bottom:-21%;
-        left: 18%;
+        left: 0%;
         transform: translateX(-50%); /* Center text horizontally */
         padding: 10px 0;
         font-size: 30px;
         text-align: center;
         color: white;
         font-weight: 300;
-        width: 60%;
+        width: 100%;
         opacity: 0; /* Initially hidden */
         transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
         transform: translateY(50%); /* Start with text below the image */
@@ -90,43 +143,59 @@
       /* Show hover text when card is hovered */
       &:hover .hover-text {
         opacity: 1; /* Make text visible */
-        transform: translateY(10%); /* Move text into view */
+        transform: translateY(10%);
+         /* Move text into view */
+         @media(min-width: 1500px){
+          transform: translateY(50%);
+         }
+      @media(max-width: 1480px){
+        transform: translateY(40%);
+      }
       }
     
       /* Card-specific styles */
       &.card1 {
-        background-image: url("https://interiormaataassets.humbeestudio.xyz/interior-outdoor.png");
+        background-image: url("https://vanras.humbeestudio.xyz/images/outdoor1.png");
         z-index: 11;
-        height: 500px;
-        width: 400px;
+        // height: 500px;
+        // width: 400px;
+        margin-top: 410px;
+
       }
     
       &.card2 {
-        background-image: url("https://interiormaataassets.humbeestudio.xyz/livingroomthumb.png");
+        background-image: url("https://vanras.humbeestudio.xyz/images/kitchen1.png");
         z-index: 13;
-        height: 500px;
-        width: 400px;
+        // height: 500px;
+        // width: 400px;
+        margin-top: 410px;
+
       }
     
       &.card3 {
-        background-image: url("https://interiormaataassets.humbeestudio.xyz/KitchenImgThumb.png");
+        background-image: url("https://vanras.humbeestudio.xyz/images/living_room.png");
         z-index: 100;
-        height: 520px;
-        width: 410px;
+        // height: 520px;
+        // width: 410px;
+        margin-top: 410px;
+
       }
     
       &.card4 {
-        background-image: url("https://interiormaataassets.humbeestudio.xyz/livingroomthumb.png");
+        background-image: url("https://vanras.humbeestudio.xyz/images/modern_washroom.png");
         z-index: 14;
-        height: 500px;
-        width: 400px;
+        // height: 500px;
+        // width: 400px;
+        margin-top: 410px;
+
       }
     
       &.card5 {
-        background-image: url("https://interiormaataassets.humbeestudio.xyz/interior-outdoor.png");
+        background-image: url("https://vanras.humbeestudio.xyz/images/kitchen_Des.png");
         z-index: 13;
-        height: 500px;
-        width: 400px;
+        // height: 500px;
+        // width: 400px;
+        margin-top: 410px;
       }
     }
     
@@ -292,6 +361,19 @@
   }
 }
 
+
+/* Video Modal Transition Animation */
+@keyframes videoOpenFade {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 /* Video Modal Styling */
 .video-modal {
   position: fixed;
@@ -303,18 +385,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
   z-index: 1000;
+  opacity: 0;
+  animation: videoOpenFade 0.1s ease forwards;
 }
 
 .video-content {
   position: relative;
-  width: 80%;
-  max-width: 900px;
+  width: 100%;
+  // max-width: 900px;
+  animation: videoOpenFade 0.6s ease forwards;
 
   video {
     width: 100%;
     height: auto;
     border-radius: 12px;
+    transform: scale(0.8);
+      animation: videoOpenFade 0.9s ease forwards;
   }
 
 
@@ -343,11 +432,55 @@
     align-items: center;
   }
 
+  .closeButton {
+    position: absolute;
+    top: 31px;
+    left: 95%;
+    // right: -465px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10; /* Ensures it stays on top of the video */
+    @media (max-width: 1024px) {
+      left: 94%;
+    }
+    @media (max-width: 768px) {
+      left: 92%;
+    }
+    @media (max-width: 425px) {
+      left: 87%;
+    }
+   
+
+  }
+  
+  .closeButton:hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  // .videoOneVid {
+  //   height: 100vh;
+  //   width: 300vh;
+  //   object-fit: cover;
+  // }
+
   .videoOneVid {
-    height: 100vh;
-    width: 100vw;
+    position: absolute;
+    top: 0;
+    // left: -520px;
+    min-width: 100vw;
+    min-height: 100vh;
     object-fit: cover;
   }
+  
 
   .VideoInnerContainerText {
     position: absolute;
@@ -360,3 +493,4 @@
     width: 100%;
   }
 }
+

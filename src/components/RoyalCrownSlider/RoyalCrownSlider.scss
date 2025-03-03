@@ -44,8 +44,9 @@
     }
 
     @media (max-width: 425px) {
-      margin-left: 20px;
-      padding-top: 20px;
+      margin-left: 0px;
+      padding: 20px 30px;
+      // padding-top: 20px;
     }
     .RoyalCrownTextInner {
       font-size: 60px;
@@ -64,8 +65,9 @@
         font-size: 22px;
       }
       @media (max-width: 425px) {
-        font-size: 21px;
+        font-size: 18px;
         margin-right: 0px;
+        text-align: center;
       }
     }
   }
@@ -221,9 +223,9 @@
       margin: 0 auto;
 
       .third_section_image {
-        width: 100%;
+        width: 100vw;
         display: block;
-        height: auto;
+        height: 50vh;
         object-fit: cover;
         @media (max-width: 1440px) {
           height: 50vh;

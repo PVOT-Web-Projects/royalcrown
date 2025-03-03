@@ -38,9 +38,17 @@
   padding: 0 50px;
   align-items: end;
   height: 75vh;
-  font-size: 40px;
+  font-size: 30px;
+  text-align: center;
 }
-
+.LoaderTextFirst{
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: "futura_regular";
+  @media(max-width: 1300px){
+    margin-bottom: -2rem;
+  }
+}
 .circle {
  
   stroke-dasharray: 1000;
@@ -166,5 +174,8 @@
   .logoImage {
     height: auto;
     /* width: 14vw; */
+  }
+  .LoaderText{
+    font-size: 22px;
   }
 }
