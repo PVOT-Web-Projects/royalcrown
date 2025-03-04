@@ -135,29 +135,29 @@ header {
         display: none !important; /* Hide desktop menu on mobile */
       }
       &.dark {
-        color: white !important;
+        color: white;
         display: flex;
         gap: 30px;
         li {
-          color: white !important;
+          color: white;
           // height: 15px;
           a {
-            color: white !important;
+            color: white;
           }
         }
       }
       &.light {
         display: flex;
-        color: $white !important;
+        color: $white;
         gap: 30px;
         li {
-          color: #5b3524 !important;
+          color: #5b3524;
           // height: 15px;
           a{
-            color: #5b3524 !important;
+            color: #5b3524;
           }
           span{
-            color: #5b3524 !important;
+            color: #5b3524;
           }
         }
       }
