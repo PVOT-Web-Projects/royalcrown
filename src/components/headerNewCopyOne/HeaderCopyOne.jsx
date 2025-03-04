@@ -251,7 +251,7 @@ const HeaderCopyOne = () => {
   return (
     <header className={isNavbarVisible ? "navbar-visible" : "navbar-hidden"}>
       <nav>
-        <ul className="light">
+        <ul className="lightOne">
           <motion.li
             initial={{
               opacity: 0,
@@ -896,9 +896,9 @@ const HeaderCopyOne = () => {
             )}
           </PageTransition>
         </motion.div>
-        <ul className="light">
+        <ul className="lightOne">
           <motion.li
-           className="light"
+           className="lightOne"
             initial={{
               opacity: 0,
             }}
@@ -984,7 +984,7 @@ const HeaderCopyOne = () => {
             >
               <div 
               id="MainMobile"
-               className="light">
+               className="lightOne">
                 <div className="ToggleMainName">
                 <motion.li
                   initial={{ opacity: 0 }}
