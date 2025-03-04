@@ -251,7 +251,7 @@ const HeaderCopy = () => {
   return (
     <header className={isNavbarVisible ? "navbar-visible" : "navbar-hidden"}>
       <nav>
-        <ul className={isHome ? "dark" : "light"}>
+        <ul className="light">
           <motion.li
             initial={{
               opacity: 0,
@@ -896,9 +896,9 @@ const HeaderCopy = () => {
             )}
           </PageTransition>
         </motion.div>
-        <ul className={isHome ? "dark" : "light"}>
+        <ul className="light">
           <motion.li
-           className={isHome ? "dark" : "light"}
+           className="light"
             initial={{
               opacity: 0,
             }}
