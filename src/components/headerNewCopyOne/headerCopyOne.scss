@@ -67,10 +67,10 @@ header {
         // z-index: 5;
         z-index: 11; // Ensure it's above other content
       }
-      .hamburger-line {
+      .hamburger-lineOne {
         width: 30px;
         height: 3px;
-        background-color: #fff;
+        background-color: #5b3524;
         margin: 7px 0;
         transition: all 0.3s ease;
         border-radius: 5px;
@@ -135,29 +135,29 @@ header {
         display: none !important; /* Hide desktop menu on mobile */
       }
       &.dark {
-        color: white;
+        color: white !important;
         display: flex;
         gap: 30px;
         li {
-          color: white;
+          color: white !important;
           // height: 15px;
           a {
-            color: white;
+            color: white !important;
           }
         }
       }
       &.light {
         display: flex;
-        color: $white;
+        color: $white !important;
         gap: 30px;
         li {
-          color: white;
+          color: #5b3524 !important;
           // height: 15px;
           a{
-            color: #fff ;
+            color: #5b3524 !important;
           }
           span{
-            color: #fff;
+            color: #5b3524 !important;
           }
         }
       }
