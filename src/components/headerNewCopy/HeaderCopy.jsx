@@ -17,7 +17,7 @@ import wa from "@/images/svgLogos/whatsapp.svg";
 import li from "@/images/svgLogos/Linkedin.svg";
 import "./headerCopy.scss";
 import Image from "next/image";
-import LinkHover from "../linkHover/LinkHover";
+import LinkHover from "../linkHoverOne/LinkHoverOne";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
@@ -278,7 +278,7 @@ const HeaderCopy = () => {
               url={"#"}
               text={"Category"}
               fontSize={"16px"}
-              isHomePage={isHome}
+              // isHomePage={isHome}
               onClick={(e) => e.preventDefault()} // Disable link behavior for "Category"
             />
             {hoveredItem === "products" && (
@@ -856,7 +856,7 @@ const HeaderCopy = () => {
               url={"/about-us"}
               text={"About Us"}
               fontSize={"16px"}
-              isHomePage={isHome}
+              // isHomePage={isHome}
             />
           </motion.li>
           {/* <motion.li
@@ -914,7 +914,7 @@ const HeaderCopy = () => {
               url={"/product"}
               text={"Products"}
               fontSize={"16px"}
-              isHomePage={isHome}
+              // isHomePage={isHome}
             />
           </motion.li>
           <motion.li
@@ -933,7 +933,7 @@ const HeaderCopy = () => {
               url={"/contact-us"}
               text={"Contact Us"}
               fontSize={"16px"}
-              isHomePage={isHome}
+              // isHomePage={isHome}
             />
           </motion.li>
           {/* <div className="side_logo"> */}

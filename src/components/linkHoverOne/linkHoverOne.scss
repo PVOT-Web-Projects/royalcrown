@@ -1,7 +1,7 @@
 @import "../../app/variables.scss";
 
-a.linkHover  {
-  color: $white;
+a.linkHoverOne  {
+  color: #fff;
   text-decoration: none;
   text-transform: uppercase;
   color: $black;
@@ -22,7 +22,7 @@ a.linkHover  {
     span{
       transform: translateY(-23px);
       overflow: hidden;
-      color: #5B3524;
+      color: #fff;
       font-weight: 900;
     }
   }
