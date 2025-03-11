@@ -15,15 +15,15 @@ import ig from "@/images/svgLogos/instagramSvg.svg";
 import yt from "@/images/svgLogos/youtube.svg";
 import wa from "@/images/svgLogos/whatsapp.svg";
 import li from "@/images/svgLogos/Linkedin.svg";
-import "./headerCopy.scss";
+import "./headerCopyOne.scss";
 import Image from "next/image";
-import LinkHover from "../linkHoverOne/LinkHoverOne";
+import LinkHover from "../linkHover/LinkHover";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import PageTransition from "../pageTransition/PageTransition";
 
-const HeaderCopy = () => {
+const HeaderCopyOne = () => {
   const [isHome, setIsHome] = useState(true);
   const [hoveredItem, setHoveredItem] = useState(null);
   const [hoveredSubmenuItem, setHoveredSubmenuItem] = useState(null);
@@ -93,14 +93,14 @@ const HeaderCopy = () => {
 
   console.log("url", isHome);
 
-  useEffect(() => {
-    // Check if the pathname is either '/' or '/royalcrown/'
-    if (pathname === "/" || pathname === "/royalcrown/") {
-      setIsHome(true);
-    } else {
-      setIsHome(false);
-    }
-  }, [pathname]); // Add pathname to the dependency array
+  // useEffect(() => {
+  //   // Check if the pathname is either '/' or '/royalcrown/'
+  //   if (pathname === "/" || pathname === "/royalcrown/") {
+  //     setIsHome(true);
+  //   } else {
+  //     setIsHome(false);
+  //   }
+  // }, [pathname]); // Add pathname to the dependency array
   // Function to close the mobile menu with animation
   // const closeMobileMenu = () => {
   //   setIsMobileMenuOpen(false);
@@ -251,7 +251,7 @@ const HeaderCopy = () => {
   return (
     <header className={isNavbarVisible ? "navbar-visible" : "navbar-hidden"}>
       <nav>
-        <ul className="light">
+        <ul className="lightOne">
           <motion.li
             initial={{
               opacity: 0,
@@ -896,9 +896,9 @@ const HeaderCopy = () => {
             )}
           </PageTransition>
         </motion.div>
-        <ul className="light">
+        <ul className="lightOne">
           <motion.li
-           className="light"
+           className="lightOne"
             initial={{
               opacity: 0,
             }}
@@ -952,9 +952,9 @@ const HeaderCopy = () => {
           // onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           onClick={toggleMenu}
         >
-          <div className={`hamburger-line ${isMenuOpen ? "open" : ""}`}></div>
-          <div className={`hamburger-line ${isMenuOpen ? "open" : ""}`}></div>
-          <div className={`hamburger-line ${isMenuOpen ? "open" : ""}`}></div>
+          <div className={`hamburger-lineOne ${isMenuOpen ? "open" : ""}`}></div>
+          <div className={`hamburger-lineOne ${isMenuOpen ? "open" : ""}`}></div>
+          <div className={`hamburger-lineOne ${isMenuOpen ? "open" : ""}`}></div>
           {/* <svg
             width="24"
             height="24"
@@ -984,7 +984,7 @@ const HeaderCopy = () => {
             >
               <div 
               id="MainMobile"
-               className={isHome ? "dark" : "ligh t"}>
+               className="lightOne">
                 <div className="ToggleMainName">
                 <motion.li
                   initial={{ opacity: 0 }}
@@ -1170,4 +1170,4 @@ const HeaderCopy = () => {
     </header>
   );
 };
-export default HeaderCopy;
+export default HeaderCopyOne;

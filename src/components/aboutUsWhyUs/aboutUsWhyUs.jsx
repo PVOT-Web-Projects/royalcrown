@@ -19,6 +19,7 @@ export default function AboutUsWhyUs({heading , cardOneText , cardTwoText , card
       });
     });
   }, []);
+  
   return (
     <>
       <div className="whyUsContainer">
