@@ -108,6 +108,7 @@
         transition: all 0.4s;
         margin-left: 10px;
         top: 216px;
+        left: 15%;
         // bottom: 0;
         // left: 20px;
         // right: 62px;
@@ -115,7 +116,7 @@
         z-index: 1;
         .info_left {
           // border: 1px solid white;
-          padding: 5px 20px;
+          padding: 5px 10px;
           color: white;
           .num {
             font-size: 20px;
@@ -129,11 +130,11 @@
         }
         .info_right {
           border-left: 1px solid white;
-          margin-left: 12px;
+          // margin-left: 12px;
           padding: 5px 0 5px 11px;
           color: white;
           .ply_name {
-            font-size: 20px;
+            font-size: 18px;
             text-transform: uppercase;
           }
           .ply_wood {

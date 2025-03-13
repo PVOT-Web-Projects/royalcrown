@@ -80,6 +80,7 @@
   justify-content: center;
   margin: 20px 0px 20px -55%;
   width: 100%;
+  gap: 3rem;
 
   @media (max-width : 1260px) {
     // margin: 20px 0px 20px 170px;
@@ -139,10 +140,10 @@
 .TimelinetextContainer2 {
   font-family: "futura_thin";
   font-size: 21px;
-  width: 59%;
+  width: 50%;
   //   padding: 20px;
   text-align: left;
-  transform: translate(40px, 25px) !important;
+  transform: translate(40px, 20px) !important;
   
   @media (max-width : 1120px) {
     width: 65%;
