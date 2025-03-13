@@ -538,7 +538,7 @@ const ScrollAnimationMobile = () => {
     <div className="containerText">
        {!videoVisible && (
       <div className="ScrollTextSection">
-        <svg
+        {/* <svg
           width="1500"
           height="450"
           viewBox="0 0 900 400"
@@ -558,13 +558,14 @@ const ScrollAnimationMobile = () => {
               WHERE ELEGANCE MEETS DESIRE
             </textPath>
           </text>
-        </svg>
+        </svg> */}
+        <p className="NormalSvgCurve">where elegance meets desire</p>
 
         <svg
           width="1500"
           height="450"
           viewBox="0 0 900 400"
-          className="svgCurve"
+          className="svgCurveOne"
         >
           <path
             d="M 25 350 Q 225 250, 450 350 Q 675 450, 875 350"
