@@ -12,6 +12,29 @@
       display: none;
     }
   }
+  .NormalSvgCurve{
+    font-size: 20px;
+    color: white;
+    padding: 30px 20px; 
+    text-transform: uppercase; 
+    @media(max-width: 768px){
+      font-size: 40px;
+    }
+    @media(max-width: 575px){
+      font-size: 35px;
+    }
+    @media(max-width: 475px){
+      font-size: 30px;
+    }
+    @media(max-width: 375px){
+      font-size: 22px;
+    }
+  }
+  // ScrollTextSection
+ .svgCurveOne{
+  margin-top: -140px;
+ }
+
   .card-containerOne {
     background-color: black;
     display: flex;
