@@ -127,6 +127,10 @@ const RelatedProductInfo = () => {
               className="ImageProductImg"
               height={300}
               width={300}
+              onClick={() => {
+                console.log("Product ID:", product.id);
+                router.push(`/product-information#${product.id}`);
+              }}
             />
             <div className="heart-container" title="Like">
               <input
@@ -167,10 +171,8 @@ const RelatedProductInfo = () => {
               </div>
             </div>
             <div className="ImageHover"
-             onClick={() => {
-                  console.log("Product ID:", product.id);
-                  router.push(`/product-information#${product.id}`);
-                }}>
+          
+                >
               <svg
                 width="24"
                 height="24"
