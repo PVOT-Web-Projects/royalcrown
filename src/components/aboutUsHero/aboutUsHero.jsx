@@ -26,7 +26,8 @@ export default function AboutUsHero() {
       scrollTrigger: {
         trigger: headerRef.current,
         start: "top top",
-        end: "bottom+=600 1",
+        end: "bottom+=300 1",
+        // end: "bottom+=600 1",
         scrub: true,
         // markers: true,
       },
