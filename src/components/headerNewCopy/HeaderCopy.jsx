@@ -50,7 +50,7 @@ const HeaderCopy = () => {
         { name: "Exterior Cladding(XCL)", url: "/exterior-cladding-laminates" },
         { name: "Interior Cladding", url: "/interior-cladding-laminates" },
         { name: "Fire Retardant", url: "/fire-retardant-laminates" },
-        { name: "Color Core", url: "/" },
+        // { name: "Color Core", url: "/" },
       ],
     },
     {
@@ -64,18 +64,18 @@ const HeaderCopy = () => {
         { name: "Metallic Laminate", url: "/metallic-laminates" },
         { name: "Synchro Laminate", url: "/synchro-laminates" },
         { name: "Color core Laminate", url: "/color-core-laminates" },
-        { name: "Digital Laminate", url: "/" },
+        // { name: "Digital Laminate", url: "/" },
         { name: "Flicker Laminate", url: "/flicker-laminates" },
       ],
     },
-    {
-      name: "TECHNICAL GRADE LAMINATE",
-      items: [
-        { name: "Electrostatic Dissipative", url: "/" },
-        { name: "Chemical Resistant", url: "/" },
-        { name: "Fire Retardant", url: "/" },
-      ],
-    },
+    // {
+    //   name: "TECHNICAL GRADE LAMINATE",
+    //   items: [
+    //     { name: "Electrostatic Dissipative", url: "/" },
+    //     { name: "Chemical Resistant", url: "/" },
+    //     { name: "Fire Retardant", url: "/" },
+    //   ],
+    // },
   ];
 
   const toggleCategoryMenu = () => {
@@ -495,7 +495,7 @@ const HeaderCopy = () => {
                           //   setHoveredSubSubmenuItem(null)
                           // }
                           >
-                            <Link
+                            {/* <Link
                               href="#"
                               className="SubmenuClass"
                               onClick={() => {
@@ -505,7 +505,7 @@ const HeaderCopy = () => {
                               }}
                             >
                               Color Core
-                            </Link>
+                            </Link> */}
                           </li>
                         </ul>
                       
@@ -655,7 +655,7 @@ const HeaderCopy = () => {
                           //   setHoveredSubSubmenuItem(null)
                           // }
                           >
-                            <Link
+                            {/* <Link
                               href="#"
                               className="SubmenuClass"
                               onClick={() => {
@@ -665,7 +665,7 @@ const HeaderCopy = () => {
                               }}
                             >
                               Digital Laminate
-                            </Link>
+                            </Link> */}
                           </li>
                           <li
                           // onMouseEnter={() =>
@@ -714,9 +714,9 @@ const HeaderCopy = () => {
                     onMouseEnter={() => setHoveredSubmenuItem("submenu4")}
                     // onMouseLeave={() => setHoveredSubmenuItem(null)}
                   >
-                    <Link className="prdtsFonts" href="#" onClick={(e) => e.preventDefault()}>
+                    {/* <Link className="prdtsFonts" href="#" onClick={(e) => e.preventDefault()}>
                       TECHNICAL GRADE LAMINATE
-                    </Link>
+                    </Link> */}
                     {/* <span className={`arrow ${isOpen ? "up" : "down"}`}></span> */}
                     {/* <svg
                       width="24"
@@ -745,7 +745,7 @@ const HeaderCopy = () => {
                           //   setHoveredSubSubmenuItem(null)
                           // }
                           >
-                            <Link
+                            {/* <Link
                               href="#"
                               className="SubmenuClass"
                               onClick={() => {
@@ -755,7 +755,7 @@ const HeaderCopy = () => {
                               }}
                             >
                               Electrostatic Dissipative
-                            </Link>
+                            </Link> */}
                           </li>
                           <li
                           // onMouseEnter={() =>
@@ -765,7 +765,7 @@ const HeaderCopy = () => {
                           //   setHoveredSubSubmenuItem(null)
                           // }
                           >
-                            <Link
+                            {/* <Link
                               href="#"
                               className="SubmenuClass"
                               onClick={() => {
@@ -775,7 +775,7 @@ const HeaderCopy = () => {
                               }}
                             >
                               Chemical Resistant
-                            </Link>
+                            </Link> */}
                           </li>
                           <li
                           // onMouseEnter={() =>
@@ -785,7 +785,7 @@ const HeaderCopy = () => {
                           //   setHoveredSubSubmenuItem(null)
                           // }
                           >
-                            <Link
+                            {/* <Link
                               href="#"
                               className="SubmenuClass"
                               onClick={() => {
@@ -795,7 +795,7 @@ const HeaderCopy = () => {
                               }}
                             >
                               Fire Retardant
-                            </Link>
+                            </Link> */}
                           </li>
                         </ul>
                         <motion.div
