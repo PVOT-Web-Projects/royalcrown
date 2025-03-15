@@ -19,6 +19,8 @@ import Anti1 from "../../../images/svglogo/AntiBacterial.jpg";
 import Abra1 from "../../../images/svglogo/AbrasionResistant.jpg"
 import Cr1 from "../../../images/svglogo/ChemicalResistant.jpg";
 import Img1 from "../../../images/interior-cladding-laminate.png";
+
+import Image2 from "../../../images/svglogo/Less_Volatile_Organic_Compounds_Emission.png";
 // import products from "@/components/aboutUs_products/productData";
 // import verticalIcon from "../../images/vertical-icon.svg";
 // import horizontalIcon from "../../images/horizontal-icon.svg";
@@ -120,7 +122,7 @@ boxes: [
       description: "Fast Colours and Durable",
     },
     {
-      image1: Image1,
+      image1: Image2,
       description: "less Volatile Organic Compounds[VOC] Emission",
     },
 
