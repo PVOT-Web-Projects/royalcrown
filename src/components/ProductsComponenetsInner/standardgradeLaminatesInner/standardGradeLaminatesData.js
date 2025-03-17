@@ -3,6 +3,9 @@ import icon2 from "../../../images/Icons-12.png";
 import Image1 from "../../../images/1_LOW-ELECTRICAL-RESISTANT.svg";
 import Productimg1 from "../../../images/5-2048x749.png";
 import Img1 from "../../../images/QbissNew.webp";
+import Image2 from "../../../images/svglogo/Easy_Installation.png"
+import Image3 from "../../../images/svglogo/Air_Ventilation.png"
+import Image4 from "../../../images/svglogo/Light_Weight.png"
 // import products from "@/components/aboutUs_products/productData";
 // import verticalIcon from "../../images/vertical-icon.svg";
 // import horizontalIcon from "../../images/horizontal-icon.svg";
@@ -71,11 +74,11 @@ boxes: [
       description: "Fire retardant",
     },
     {
-      image1: Image1,
+      image1: Image2,
       description: "Easy Installation",
     },
     {
-      image1: Image1,
+      image1: Image3,
       description: "Air Ventilation",
     },
     {
@@ -83,7 +86,7 @@ boxes: [
       description: "Space saving - partition panels are only 12mm thick as compared to conventional system like 150mm thick brick wall",
     },
     {
-      image1: Image1,
+      image1: Image4,
       description: "Light Weight",
     },
     {
