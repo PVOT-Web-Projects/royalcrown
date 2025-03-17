@@ -105,6 +105,9 @@ boxes: [
       image1: Abra1,
       description: "Abrasion Resistant",
     },
+
+
+    
     {
       image1: Image1,
       description: "Wide Choice of Colours",
