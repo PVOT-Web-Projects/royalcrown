@@ -14,11 +14,15 @@ import Wr1 from "../../../images/svglogo/WaterResistant.jpg";
 import Cg1 from "../../../images/svglogo/CigratteBurnResistant.jpg";
 import St1 from "../../../images/svglogo/Stainresistant.jpg";
 import Gr1 from "../../../images/svglogo/GraffitiResistant.jpg";
-import Tr1 from "../../../images/svglogo/Termiteresistant.jpg";
+// import Tr1 from "../../../images/svglogo/Termiteresistant.jpg";
 import Anti1 from "../../../images/svglogo/AntiBacterial.jpg";
 import Abra1 from "../../../images/svglogo/AbrasionResistant.jpg"
 import Cr1 from "../../../images/svglogo/ChemicalResistant.jpg";
 import Img1 from "../../../images/interior-cladding-laminate.png";
+import Tr1 from "../../../images/svglogo/AntiBacterial.jpg";
+import Image3 from "../../../images/svglogo/Wide Range to choose.png";
+import Image4 from "../../../images/svglogo/Space Saving.png";
+import Image5 from "../../../images/svglogo/BackSending.jpg";
 
 import Image2 from "../../../images/svglogo/Less_Volatile_Organic_Compounds_Emission.png";
 // import products from "@/components/aboutUs_products/productData";
@@ -109,7 +113,7 @@ boxes: [
 
     
     {
-      image1: Image1,
+      image1: Image3,
       description: "Wide Choice of Colours",
     },
     {
@@ -117,11 +121,11 @@ boxes: [
       description: "Chemical Resistant",
     },
     {
-      image1: Image1,
+      image1: Image4,
       description: "Flexibility of Design and Space Saving",
     },
     {
-      image1: Image1,
+      image1: Image5,
       description: "Fast Colours and Durable",
     },
     {

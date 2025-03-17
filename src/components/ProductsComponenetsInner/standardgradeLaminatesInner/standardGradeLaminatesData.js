@@ -1,6 +1,17 @@
 import icon1 from "../../../images/Icons-11-2048x2048.png";
 import icon2 from "../../../images/Icons-12.png";
 import Image1 from "../../../images/1_LOW-ELECTRICAL-RESISTANT.svg";
+import Image5 from "../../../images/svglogo/Anti-Bacterial.png";
+import Image6 from "../../../images/svglogo/International Standard.png";
+import Image7 from "../../../images/svglogo/Custom Dimensions.png";
+import Image8 from "../../../images/svglogo/Wide Range to choose.png";
+import Image9 from "../../../images/svglogo/Easy Maintenance.png";
+import Image10 from "../../../images/svglogo/Aesthetically beautiful.png";
+import Image11 from "../../../images/svglogo/Fire Resistant.png";
+import Image12 from "../../../images/svglogo/Space Saving.png";
+import Image13 from "../../../images/svglogo/Cigratte Burn Resistant.png";
+import Image14 from "../../../images/svglogo/Weather Resistant.png";
+import Image15 from "../../../images/svglogo/Stain Resistant.png";
 import Productimg1 from "../../../images/5-2048x749.png";
 import Img1 from "../../../images/QbissNew.webp";
 import Image2 from "../../../images/svglogo/Easy_Installation.png"
@@ -46,31 +57,31 @@ boxes: [
   ],
   features: [
     {
-      image1: Image1,
+      image1: Image5,
       description: "Made from Anti-Bacterial grade high pressure compact laminate panel confirming to EN438",
     },
     {
-      image1: Image1,
+      image1: Image6,
       description: "Accessories made of Nylon Polyamide, Stainless Steel and aluminium of International standard",
     },
     {
-      image1: Image1,
+      image1: Image7,
       description: "Available in standard and custom made dimension",
     },
     {
-      image1: Image1,
+      image1: Image8,
       description: "Wide colour range to choose from",
     },
     {
-      image1: Image1,
+      image1: Image9,
       description: "Hygienic and easily maintainable",
     },
     {
-      image1: Image1,
+      image1: Image10,
       description: "Durable and aesthetically appealing",
     },
     {
-      image1: Image1,
+      image1: Image11,
       description: "Fire retardant",
     },
     {
@@ -82,7 +93,7 @@ boxes: [
       description: "Air Ventilation",
     },
     {
-      image1: Image1,
+      image1: Image12,
       description: "Space saving - partition panels are only 12mm thick as compared to conventional system like 150mm thick brick wall",
     },
     {
@@ -90,19 +101,19 @@ boxes: [
       description: "Light Weight",
     },
     {
-      image1: Image1,
+      image1: Image13,
       description: "Resistant to cigarette burns",
     },
     {
-      image1: Image1,
+      image1: Image14,
       description: "Exceptional water, humidity and high temperature Resistance",
     },
     {
-      image1: Image1,
+      image1: Image15,
       description: "Scratch and Stain Resistance",
     },
     {
-      image1: Image1,
+      image1: Image5,
       description: "Anti - Bacterial, Anti - Fungal and Termite Resistant",
     },
 
