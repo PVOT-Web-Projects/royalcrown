@@ -4,6 +4,7 @@ import Image from "next/image";
 import "./productslider.scss";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Skeleton, Grid } from "@mui/material";
+import Link from "next/link";
 const SlidesContent = ({ slide }) => (
   <div className="Carousel_text_maincontent">
     <div className="FirstSSliderText">
@@ -19,9 +20,11 @@ const SlidesContent = ({ slide }) => (
           {slide.attributes[3].terms[0].name}
         </p>
         <div className="submit_btn">
+          <Link href={"/contact-us"}>
           <button type="submit" className="yello_btn">
             <span className="button-content">Enquire Now</span>
           </button>
+          </Link>
         </div>
       </div>
     </div>
