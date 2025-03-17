@@ -17,7 +17,6 @@ const Page = () => {
   const [isMobileOne, setIsMobileOne] = useState(false);  // State for mobile detection
     const [lastScrollTop, setLastScrollTop] = useState(0); // Track the last scroll position
     const stickyRef = useRef(null); // Ref for the sticky element
-    c
   const [pageNumber, setPageNumber] = useState(1);
   const [selectedBrand, setSelectedBrand] = useState("all");
   const [selectedType, setSelectedType] = useState("all");
