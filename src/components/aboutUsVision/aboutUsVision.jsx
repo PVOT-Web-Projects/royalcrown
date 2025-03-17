@@ -31,8 +31,8 @@ export default function AboutUsVision() {
   }, []);
   return (
     <>
-      <div className="aboutVisionWrapper" ref={imageRef}>
-        <div className="aboutVisionContainer">
+      <div className="aboutVisionWrapper" >
+        <div className="aboutVisionContainer" ref={imageRef}>
           <motion.div
             className="visionHeader"
             initial={{ y: 50, opacity: 0 }}

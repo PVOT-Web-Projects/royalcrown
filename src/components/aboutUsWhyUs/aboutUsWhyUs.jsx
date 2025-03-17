@@ -48,6 +48,7 @@ export default function AboutUsWhyUs({heading , cardOneText , cardTwoText , card
               </div>
               <div className="cardinner">
                 <div className="card_header">60+</div>
+                <p>Countries | Global Presence</p>
                 <div className="card_description">
                   {cardOneText}
                 </div>
@@ -108,6 +109,7 @@ export default function AboutUsWhyUs({heading , cardOneText , cardTwoText , card
                   </svg>
                 </div>
                 <div className="card_header">15000+</div>
+                <p>Distribution Channel</p>
                 <div className="card_description">
                  {cardFourText}
                 </div>
