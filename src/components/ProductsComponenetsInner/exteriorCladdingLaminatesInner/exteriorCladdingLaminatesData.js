@@ -18,6 +18,10 @@ import Image2 from "../../../images/svglogo/Rot_Resistant.png";
 import Image3 from "../../../images/svglogo/Suitable_for_contract_use.png";
 import Image4 from "../../../images/svglogo/Weather_Resistant.png";
 import Image5 from "../../../images/svglogo/Indoor_and_Outdoor_Use.png";
+import Image6 from "../../../images/svglogo/Modern Design.png";
+import Image7 from "../../../images/svglogo/BackSending.jpg";
+import Image9 from "../../../images/svglogo/StablilityOne.png";
+import Image8 from "../../../images/svglogo/Easy Maintenance.png";
 const ExteriorCladdingLaminatesData = {
   header: "Exterior cladding (XCL)",
   description: `Discover Crown Decor’s XCL - Exterior Compact Laminate, a revolutionary high-pressure
@@ -64,7 +68,7 @@ boxes: [
       description: "Scratch Resistant",
     },
     {
-      image1: Image1,
+      image1: Image7,
       description: "ColourFast",
     },
     {
@@ -80,7 +84,7 @@ boxes: [
       description: "Stain Resistant",
     },
     {
-      image1: Image1,
+      image1: Image6,
       description: "Sleek Modern Design",
     },
     {
@@ -88,7 +92,7 @@ boxes: [
       description: "Rot Resistant",
     },
     {
-      image1: Image1,
+      image1: Image9,
       description: "Stability",
     },
     {
@@ -96,7 +100,7 @@ boxes: [
       description: "Suitable for contract use",
     },
     {
-      image1: Image1,
+      image1: Fr1,
       description: "Flame Resistant",
     },
     {
@@ -112,7 +116,7 @@ boxes: [
       description: "Easy to clean",
     },
     {
-      image1: Image1,
+      image1: Image8,
       description: "Minimum Maintenance",
     },
 
