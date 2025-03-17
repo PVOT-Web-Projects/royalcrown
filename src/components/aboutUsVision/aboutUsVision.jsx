@@ -30,6 +30,8 @@ export default function AboutUsVision() {
     );
   }, []);
   return (
+
+    
     <>
       <div className="aboutVisionWrapper" >
         <div className="aboutVisionContainer" ref={imageRef}>
