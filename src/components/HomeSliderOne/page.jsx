@@ -266,12 +266,14 @@ const ScrollAnimation = () => {
       ScrollTrigger.create({
         trigger: section,
         start: "top center",
-        end: "end end",
+        end: "top+=200 center", // Ends before textCurv starts appearing
+        // end: "end end",
         scrub: true,
         // markers: true,
         onUpdate: (self) => {
           const progress = self.progress;
-          gsap.set(textCircular, { opacity: 1 - progress }); // Fade out textCircular
+          // gsap.set(textCircular, { opacity: 1 - progress }); // Fade out textCircular
+          gsap.set(textCircular, { opacity: 1 - progress * 3 }); // Fades out quicker
         },
         onLeave: () => {
           gsap.set(textCircular, { opacity: 0 }); // Ensure textCircular is fully hidden when scroll leaves
@@ -285,12 +287,14 @@ const ScrollAnimation = () => {
       ScrollTrigger.create({
         trigger: section,
         start: "top center",
+        // start: "top+=300 center", // Starts only after textCircular has fully disappeared
         end: "top+=350 end",
         scrub: true,
         // markers: true,
         onUpdate: (self) => {
           const progress = self.progress;
-          gsap.set(textCurv, { opacity: progress }); // Fade in textCurv
+          // gsap.set(textCurv, { opacity: progress }); // Fade in textCurv
+          gsap.set(textCurv, { opacity: progress * 1.5 }); // Fades in smoothly
         },
         onLeave: () => {
           gsap.set(textCurv, { opacity: 1 }); // Ensure textCurv is fully visible when scroll leaves
