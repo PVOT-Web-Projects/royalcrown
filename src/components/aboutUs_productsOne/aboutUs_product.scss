@@ -525,12 +525,12 @@
   }
 
   @media (max-width: 465px) {
-    top: 150px;
+    top: 100px;
   }
 
-  @media (max-width: 330px) {
-    top: 170px;
-  }
+  // @media (max-width: 330px) {
+  //   top: 170px;
+  // }
   @media only screen and (min-width: 576px) and (max-width: 1024px) {
     flex-direction: row;
     top: 145px;
