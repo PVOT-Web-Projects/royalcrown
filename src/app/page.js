@@ -45,6 +45,10 @@ export default function Home() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  useEffect(() => {
+      document.title = "Royal Crown";
+    });
   // Timer to hide the preloader after 5 seconds
   useEffect(() => {
     const timer = setTimeout(() => {
