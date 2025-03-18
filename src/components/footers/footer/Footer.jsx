@@ -26,7 +26,7 @@ const footerUrls = [
   },
   {
     url1: "#",
-    url1Text: "Copyright 2024",
+    url1Text: "Copyright 2025",
     url2: "#",
     url2Text: "Royal Crown Laminates",
   },
@@ -72,7 +72,7 @@ const Footer = () => {
         </nav>
         <div>
         <Image src={border} alt="border" className="FooteriMg"/>
-        <div className="copyright">© 2024 All Rights Reserved</div>
+        <div className="copyright">© 2025 All Rights Reserved</div>
         </div>
       </footer>
     )
