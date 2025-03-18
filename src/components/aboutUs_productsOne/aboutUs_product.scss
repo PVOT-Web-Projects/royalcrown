@@ -79,6 +79,7 @@
 
     @media (max-width: 768px) {
       font-size: 16px;
+      padding: 60px 0rem 30px;
       // gap: 10px;
     }
 
@@ -518,7 +519,7 @@
   @media (max-width: 575px) {
     flex-direction: row;
     width: 100%;
-    top: 110px;
+    top: 215px;
     overflow-y: auto;
     padding: 0 0 20px 0;
     z-index: 5;
