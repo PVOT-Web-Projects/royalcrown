@@ -13,9 +13,9 @@ import { motion } from "framer-motion";
 import { Skeleton, Grid } from "@mui/material";
 const Page = () => {
   const itemsPerPage = 25;
-  const [isMobileOne, setIsMobileOne] = useState(false);  // State for mobile detection
-  const [lastScrollTop, setLastScrollTop] = useState(0); // Track the last scroll position
-  const stickyRef = useRef(null); // Ref for the sticky element
+  // const [isMobileOne, setIsMobileOne] = useState(false);  // State for mobile detection
+  // const [lastScrollTop, setLastScrollTop] = useState(0); // Track the last scroll position
+  // const stickyRef = useRef(null); // Ref for the sticky element
 
   const [pageNumber, setPageNumber] = useState(1);
   const [selectedTab, setSelectedTab] = useState(""); // Store active tab
@@ -89,49 +89,49 @@ const Page = () => {
     });
   };
  // Scroll event listener to hide/show the sticky element
- useEffect(() => {
-  if (isMobileOne) {
-    const handleScroll = () => {
-      const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+//  useEffect(() => {
+//   if (isMobileOne) {
+//     const handleScroll = () => {
+//       const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-      // If the user is scrolling down
-      if (currentScrollTop > lastScrollTop) {
-        // Hide the sticky element
-        if (stickyRef.current) {
-          stickyRef.current.style.transform = "translateY(-100%)";  // Move it up
-          stickyRef.current.style.zIndex = -1;  // Set z-index to -1 when hidden
-        }
-      } else {
-        // If scrolling up, show the sticky element
-        if (stickyRef.current) {
-          stickyRef.current.style.transform = "translateY(0)";  // Move it down
-          stickyRef.current.style.zIndex = 1;  // Set z-index to 1 when visible
-        }
-      }
+//       // If the user is scrolling down
+//       if (currentScrollTop > lastScrollTop) {
+//         // Hide the sticky element
+//         if (stickyRef.current) {
+//           stickyRef.current.style.transform = "translateY(-100%)";  // Move it up
+//           stickyRef.current.style.zIndex = -1;  // Set z-index to -1 when hidden
+//         }
+//       } else {
+//         // If scrolling up, show the sticky element
+//         if (stickyRef.current) {
+//           stickyRef.current.style.transform = "translateY(0)";  // Move it down
+//           stickyRef.current.style.zIndex = 1;  // Set z-index to 1 when visible
+//         }
+//       }
 
-      setLastScrollTop(currentScrollTop <= 0 ? 0 : currentScrollTop); // Update the scroll position
-    };
+//       setLastScrollTop(currentScrollTop <= 0 ? 0 : currentScrollTop); // Update the scroll position
+//     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }
-}, [isMobileOne, lastScrollTop]);
+//     window.addEventListener("scroll", handleScroll);
+//     return () => {
+//       window.removeEventListener("scroll", handleScroll);
+//     };
+//   }
+// }, [isMobileOne, lastScrollTop]);
 
 
    // Detect if the screen is mobile
-   useEffect(() => {
-    const handleResize = () => {
-      setIsMobileOne(window.innerWidth < 1025); // Update isMobile state
-    };
+  //  useEffect(() => {
+  //   const handleResize = () => {
+  //     setIsMobileOne(window.innerWidth < 1025); // Update isMobile state
+  //   };
     
-    window.addEventListener("resize", handleResize);
-    handleResize(); // Check initial size
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  //   window.addEventListener("resize", handleResize);
+  //   handleResize(); // Check initial size
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -523,7 +523,9 @@ const Page = () => {
         </div>
 
         <div className="supply">
-          <div id="sticky"  ref={stickyRef} style={{ transition: "transform 0.3s ease" }}>
+          <div id="sticky" 
+          //  ref={stickyRef} style={{ transition: "transform 0.3s ease" }}
+           >
             {/* reset filter */}
             <div className="resetFilters">
               <button

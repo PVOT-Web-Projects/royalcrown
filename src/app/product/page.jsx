@@ -19,7 +19,7 @@ const AboutUs = () => {
     section.current.scrollIntoView({ behavior: "smooth" });
   }
   return (
-    <div>
+    <div className="ProductsHero">
       <div ref={section1}>
         <ProductHero goToSectionRef={section2} scrollTo={scrollTo} />
       </div>

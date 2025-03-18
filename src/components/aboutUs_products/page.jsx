@@ -482,7 +482,9 @@ const Page = () => {
         </div>
 
         <div className="supply">
-          <div id="sticky" ref={stickyRef} style={{ transition: "transform 0.3s ease" }}>
+          <div id="sticky"
+          //  ref={stickyRef} style={{ transition: "transform 0.3s ease" }}
+           >
             <div className="dropdown1">
               <div className="dropdown-label">
                 <label className="colorSelectDropdown" htmlFor="type-select">
