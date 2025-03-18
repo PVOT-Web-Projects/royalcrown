@@ -498,7 +498,9 @@ const Page = () => {
 
         <div className="supply">
           
-          <div id="sticky" ref={stickyRef} style={{ transition: "transform 0.3s ease" }}>
+          <div id="sticky"
+          //  ref={stickyRef} style={{ transition: "transform 0.3s ease" }}
+           >
             {/* reset filter */}
             <div className="resetFilters">
               <button className="resetButton" onClick={resetFiltersDrop} scroll={false}>
