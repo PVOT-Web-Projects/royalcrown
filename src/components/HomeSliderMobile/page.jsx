@@ -44,7 +44,7 @@ const ScrollAnimationMobile = () => {
   const handleCardClick = (url) => setVideoUrl(url);
   const closeModal = () => setVideoUrl(null);
   const videoUrls = [
-    "./videos/Outdoor.mp4",
+    "./videos/OutdoorOne.mp4",
     "./videos/Kitchen.mp4",
     "./videos/LivingSpace.mp4",
     "./videos/Bathroom.mp4",
