@@ -56,7 +56,7 @@ export async function POST(request) {
         `,
       attachments: [
         {
-          filename: "FinalHeaderLogo.svg",
+          filename: "royalcrownlogo.jpg",
           path: logoPath,
           cid: "logo",
         },

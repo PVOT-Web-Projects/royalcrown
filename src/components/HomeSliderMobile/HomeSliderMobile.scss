@@ -12,28 +12,28 @@
       display: none;
     }
   }
-  .NormalSvgCurve{
+  .NormalSvgCurve {
     font-size: 20px;
     color: white;
-    padding: 30px 20px; 
-    text-transform: uppercase; 
-    @media(max-width: 768px){
+    padding: 30px 20px;
+    text-transform: uppercase;
+    @media (max-width: 768px) {
       font-size: 40px;
     }
-    @media(max-width: 575px){
+    @media (max-width: 575px) {
       font-size: 35px;
     }
-    @media(max-width: 475px){
+    @media (max-width: 475px) {
       font-size: 30px;
     }
-    @media(max-width: 375px){
+    @media (max-width: 375px) {
       font-size: 22px;
     }
   }
   // ScrollTextSection
- .svgCurveOne{
-  margin-top: -140px;
- }
+  .svgCurveOne {
+    margin-top: -140px;
+  }
 
   .card-containerOne {
     background-color: black;
@@ -58,7 +58,7 @@
     @media (max-width: 1199px) {
       margin-top: -370px;
     }
-    @media(max-width: 768px){
+    @media (max-width: 768px) {
       margin-top: -220px;
     }
     @media (max-width: 575px) {
@@ -196,7 +196,7 @@
       }
     }
     .cardOOne.inView {
-      transform: scale(1.1); /* Example: Zoom in when the image is in view */
+      // transform: scale(1.1); /* Example: Zoom in when the image is in view */
     }
   }
   .curved-text-container {
@@ -246,7 +246,7 @@
       justify-content: center;
       align-items: center;
     }
-  
+
     .closeButton {
       position: absolute;
       top: 31px;
@@ -273,20 +273,18 @@
       @media (max-width: 425px) {
         left: 80%;
       }
-     
-  
     }
-    
+
     .closeButton:hover {
       background: rgba(0, 0, 0, 0.8);
     }
-  
+
     // .videoOneVid {
     //   height: 100vh;
     //   width: 300vh;
     //   object-fit: cover;
     // }
-  
+
     .videoOneVid {
       position: absolute;
       top: 0;
@@ -295,8 +293,7 @@
       min-height: 100vh;
       object-fit: cover;
     }
-    
-  
+
     .VideoInnerContainerText {
       position: absolute;
       top: 10%;
@@ -306,7 +303,7 @@
       color: white;
       font-size: 2em;
       width: 100%;
-      @media(max-width: 575px){
+      @media (max-width: 575px) {
         font-size: 1.5em;
       }
     }
@@ -373,7 +370,6 @@
     transition: transform 0.3s ease-in-out; /* Smooth transition for scaling */
     will-change: transform;
 
-   
     @media (max-width: 1300px) {
       width: 230px;
       height: 300px;
@@ -431,8 +427,8 @@
     visibility: hidden; /* Ensure it's not visible when opacity is 0 */
   }
   .single:hover .hover-text1 {
-    opacity: 1; /* Make "Explore" visible */
-    visibility: visible;
+    // opacity: 1; /* Make "Explore" visible */
+    // visibility: visible;
   }
   .single:hover img {
     // transform: scale(1.05); /* Zoom in */
@@ -457,7 +453,7 @@
     }
   }
   .image-container img.zoom-effect {
-    transform: scale(1.5); /* Zoom in */
+    // transform: scale(1.5); /* Zoom in */
     opacity: 0; /* Fade out during zoom */
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
   }
@@ -475,23 +471,23 @@
 
   // }
   .hover-text {
-    position: absolute;
+    // position: absolute;
     // bottom: 40px; /* Position text at the bottom of the image */
     // left: 20%;
-    bottom: 0;
-    transform: translateX(-50%); /* Center text horizontally */
+    // bottom: 0;
+    // transform: translateX(-50%); /* Center text horizontally */
     padding: 10px 0;
-    font-size: 24px;
-    text-align: center;
+    // font-size: 24px;
+    // text-align: center;
     color: #fff;
     font-weight: 300;
     // border-radius: 10px;
     // background-color: #5b3524;
-    width: 100%;
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
-    transform: translateY(100%); /* Start with text below the image */
-    @media(max-width: 475px){
+    // width: 100%;
+    // opacity: 0; /* Initially hidden */
+    // transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    // transform: translateY(100%); /* Start with text below the image */
+    @media (max-width: 475px) {
       font-size: 20px;
     }
   }
@@ -589,7 +585,7 @@
   }
 
   .swiper-slide:hover {
-    transform: scale(1.1); // Slightly scale the active slide for a better focus
+    // transform: scale(1.1); // Slightly scale the active slide for a better focus
   }
   .explore-button-container {
     text-align: left;
@@ -600,23 +596,23 @@
     justify-content: left;
     .explore-button {
       position: absolute;
-    overflow: hidden;
-    top: 3%;
-    right: 2rem;
-    height: 3rem;
-    /* padding: 0 3rem; */
-    background-color: transparent;
-    text-transform: uppercase;
-    background-size: 400%;
-    color: #5b3524;
-    font-size: 18px;
-    line-height: 16px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    width: -moz-fit-content;
-    width: fit-content;
+      overflow: hidden;
+      top: 3%;
+      right: 2rem;
+      height: 3rem;
+      /* padding: 0 3rem; */
+      background-color: transparent;
+      text-transform: uppercase;
+      background-size: 400%;
+      color: #5b3524;
+      font-size: 18px;
+      line-height: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      width: -moz-fit-content;
+      width: fit-content;
       .button-content-explore {
         font-size: 25px;
         font-weight: 550;
@@ -646,6 +642,62 @@
       //     border-radius: inherit;
       //   }
       // }
+    }
+  }
+  .custom-prev {
+    position: absolute;
+    // top: 72%;
+    // left: 30%;
+    top: 44%;
+    left: 3%;
+    z-index: 5;
+    color: #fff;
+    font-size: 30px;
+    // background: #5b3524;
+    // border-radius: 50px;
+    // padding: 5px 10px;
+    @media(max-width: 1000px){
+      top: 74%;
+    left: 40%;
+    }
+    @media (max-width: 550px) {
+      top: 44%;
+      left: 10%;
+    }
+    @media (max-width: 440px) {
+      top: 44%;
+      left: 5%;
+    }
+    @media (max-width: 375px) {
+      left: 3%;
+      top: 44%;
+    }
+  }
+  .custom-next {
+    position: absolute;
+    top: 44%;
+    left: 88%;
+    z-index: 5;
+    font-size: 30px;
+    // background: #5b3524;
+    // border-radius: 50px;
+    // padding: 5px 10px;
+    color: #fff;
+    @media(max-width: 1000px){
+      top: 74%;
+    left: 52%;
+    }
+    @media (max-width: 550px) {
+      left: 80%;
+      top: 44%;
+    }
+    @media (max-width: 440px) {
+      left: 86%;
+      top: 44%;
+    }
+    @media (max-width: 375px) {
+      left: 87%;
+      top: 44%;
     }
   }
   .VideoOneContainer {

@@ -26,8 +26,9 @@ const AboutUs = () => {
       <AboutUsVision />
       <AboutUsWhyUs
         heading={"Why Us"}
+        // With a presence in 60+ countries and global warehousing, we ensure seamless accessibility. 
         cardOneText={
-          "With a presence in 60+ countries and global warehousing, we ensure seamless accessibility. Committed to sustainability, we utilize wind and solar power to reduce our carbon footprint. As proud members of FSC and Greenguard, we prioritize eco-friendly practices while delivering high-quality, responsibly sourced laminates worldwide."
+          "Committed to sustainability, we utilize wind and solar power to reduce our carbon footprint. As proud members of FSC and Greenguard, we prioritize eco-friendly practices while delivering high-quality, responsibly sourced laminates worldwide."
         }
         cardTwoText={
           "With a diverse range of 2000 SKUs and 100 unique textures, we offer endless design possibilities. From classic to contemporary, our extensive collection ensures the perfect match for every project. Crafted for durability and aesthetics, our laminates provide versatility to transform spaces with style and functionality."
@@ -35,8 +36,9 @@ const AboutUs = () => {
         cardThreeText={
           "Our state-of-the-art manufacturing unit, ensures top-quality laminates crafted with precision. Using technology and strict quality control, we deliver durable and stylish solutions. With a wide range of sizes available, our laminates offer versatility, reliability, and superior performance."
         }
+        // With 15,000+ dealerships across India and abroad, along with 150+ product showrooms, we ensure easy access to our premium laminates. 
         cardFourText={
-          "With 15,000+ dealerships across India and abroad, along with 150+ product showrooms, we ensure easy access to our premium laminates. Our strong distribution network guarantees seamless availability, bringing quality and innovation closer to you. Wherever you are, our expansive presence ensures superior products and exceptional service at your convenience."
+          "Our strong distribution network guarantees seamless availability, bringing quality and innovation closer to you. Wherever you are, our expansive presence ensures superior products and exceptional service at your convenience."
         }
       />
       <div className="Form_Page">

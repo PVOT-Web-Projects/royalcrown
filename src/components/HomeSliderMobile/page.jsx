@@ -4,6 +4,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import "./HomeSliderMobile.scss";
+import { Navigation, Autoplay } from "swiper/modules";
 import { AnimatePresence, motion, useInView } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -32,7 +33,7 @@ const ScrollAnimationMobile = () => {
   const [videoVisible, setVideoVisible] = useState(false); // Track if video should be visible
 
   const videoRefs = useRef([]);
-  
+
   const images = [
     "https://vanras.humbeestudio.xyz/images/outdoor1.png",
     "https://vanras.humbeestudio.xyz/images/kitchen1.png", // Image 2 URL
@@ -43,13 +44,21 @@ const ScrollAnimationMobile = () => {
   const handleCardClick = (url) => setVideoUrl(url);
   const closeModal = () => setVideoUrl(null);
   const videoUrls = [
-    "https://vanras.humbeestudio.xyz/videos/Outdoor.mp4",
+    // "./videos/OutdoorOne.mp4",
+    // "./videos/Kitchen.mp4",
+    // "./videos/LivingSpace.mp4",
+    // "./videos/Bathroom.mp4",
+    // "./videos/Bedroom.mp4",
+    // "https://vanras.humbeestudio.xyz/videos/Kitchen.mp4",
+    // "https://vanras.humbeestudio.xyz/videos/Living%20Space.mp4",
+    // "https://vanras.humbeestudio.xyz/videos/Bathroom.mp4",
+    // "https://vanras.humbeestudio.xyz/videos/Bedroom.mp4",
+    "https://vanras.humbeestudio.xyz/videos/OutdoorOne.mp4",
     "https://vanras.humbeestudio.xyz/videos/Kitchen.mp4",
     "https://vanras.humbeestudio.xyz/videos/Living%20Space.mp4",
     "https://vanras.humbeestudio.xyz/videos/Bathroom.mp4",
     "https://vanras.humbeestudio.xyz/videos/Bedroom.mp4",
   ];
-
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -241,6 +250,13 @@ const ScrollAnimationMobile = () => {
     console.log("Explore clicked or triggered by scroll!");
   };
 
+  useEffect(() => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.navigation.init();
+      swiperRef.current.swiper.navigation.update();
+    }
+  }, []);
+
   const handleScroll = () => {
     const imageElement = imageRef.current;
     if (imageElement) {
@@ -400,22 +416,22 @@ const ScrollAnimationMobile = () => {
         ".card4",
         ".card5",
       ].map((cls) => section.querySelector(cls));
-    ScrollTrigger.create({
-      trigger: section,
-      start: "top center",
-      end: "bottom center",
-      scrub: true, // Smooth scroll animation
-      onUpdate: (self) => {
-        const progress = self.progress;
-        const borderRadiusValue = 20 - (20 * progress); // Transition from 20px to 0px
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top center",
+        end: "bottom center",
+        scrub: true, // Smooth scroll animation
+        onUpdate: (self) => {
+          const progress = self.progress;
+          const borderRadiusValue = 20 - 20 * progress; // Transition from 20px to 0px
 
-        gsap.set(card1, { borderRadius: `${borderRadiusValue}px` });
-        gsap.set(card2, { borderRadius: `${borderRadiusValue}px` });
-        gsap.set(card3, { borderRadius: `${borderRadiusValue}px` });
-        gsap.set(card4, { borderRadius: `${borderRadiusValue}px` });
-        gsap.set(card5, { borderRadius: `${borderRadiusValue}px` });
-      }
-    });
+          gsap.set(card1, { borderRadius: `${borderRadiusValue}px` });
+          gsap.set(card2, { borderRadius: `${borderRadiusValue}px` });
+          gsap.set(card3, { borderRadius: `${borderRadiusValue}px` });
+          gsap.set(card4, { borderRadius: `${borderRadiusValue}px` });
+          gsap.set(card5, { borderRadius: `${borderRadiusValue}px` });
+        },
+      });
       ScrollTrigger.create({
         trigger: section,
         start: "top center",
@@ -457,7 +473,7 @@ const ScrollAnimationMobile = () => {
         start: "top center",
         end: "top+=250 center",
         scrub: true,
-        
+
         onUpdate: (self) => {
           const progress = self.progress;
           gsap.set(card2, {
@@ -480,11 +496,27 @@ const ScrollAnimationMobile = () => {
         },
       });
       cardAnimation
-        .to(card1, { rotation: -12, borderRadius: 0, x: x1, y: y1, scale: scale1 }, 0)
-        .to(card2, { rotation: -6,borderRadius: 0,  x: x2, y: y2, scale: scale2 }, 0)
-        .to(card3, { scale: scale3, borderRadius: 0,  x: x3, y: y3 }, 0)
-        .to(card4, { rotation: 12, borderRadius: 0, x: x4, y: y4, scale: scale4 }, 0)
-        .to(card5, { rotation: 6, borderRadius: 0, x: x5, y: y5, scale: scale5 }, 0);
+        .to(
+          card1,
+          { rotation: -12, borderRadius: 0, x: x1, y: y1, scale: scale1 },
+          0
+        )
+        .to(
+          card2,
+          { rotation: -6, borderRadius: 0, x: x2, y: y2, scale: scale2 },
+          0
+        )
+        .to(card3, { scale: scale3, borderRadius: 0, x: x3, y: y3 }, 0)
+        .to(
+          card4,
+          { rotation: 12, borderRadius: 0, x: x4, y: y4, scale: scale4 },
+          0
+        )
+        .to(
+          card5,
+          { rotation: 6, borderRadius: 0, x: x5, y: y5, scale: scale5 },
+          0
+        );
     });
     return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
   }, []);
@@ -536,9 +568,9 @@ const ScrollAnimationMobile = () => {
 
   return (
     <div className="containerText">
-       {!videoVisible && (
-      <div className="ScrollTextSection">
-        {/* <svg
+      {!videoVisible && (
+        <div className="ScrollTextSection">
+          {/* <svg
           width="1500"
           height="450"
           viewBox="0 0 900 400"
@@ -559,27 +591,27 @@ const ScrollAnimationMobile = () => {
             </textPath>
           </text>
         </svg> */}
-        <p className="NormalSvgCurve">where elegance meets desire</p>
+          <p className="NormalSvgCurve">where elegance meets desire</p>
 
-        <svg
-          width="1500"
-          height="450"
-          viewBox="0 0 900 400"
-          className="svgCurveOne"
-        >
-          <path
-            d="M 25 350 Q 225 250, 450 350 Q 675 450, 875 350"
-            id="curvPath"
-            fill="transparent"
-          />
-          <text fontSize="56" fill="white" id="textCurv">
-            <textPath href="#curvPath" startOffset="50%" textAnchor="middle">
-              WHERE ELEGANCE MEETS DESIRE
-            </textPath>
-          </text>
-        </svg>
-      </div>
-       )}
+          <svg
+            width="1500"
+            height="450"
+            viewBox="0 0 900 400"
+            className="svgCurveOne"
+          >
+            <path
+              d="M 25 350 Q 225 250, 450 350 Q 675 450, 875 350"
+              id="curvPath"
+              fill="transparent"
+            />
+            <text fontSize="56" fill="white" id="textCurv">
+              <textPath href="#curvPath" startOffset="50%" textAnchor="middle">
+                WHERE ELEGANCE MEETS DESIRE
+              </textPath>
+            </text>
+          </svg>
+        </div>
+      )}
       {isCardVisible && (
         <div
           className={`card-containerOne ${isCardVisible ? "visible" : ""}`}
@@ -610,8 +642,14 @@ const ScrollAnimationMobile = () => {
             simulateTouch={true}
             draggable={true} // Enable mouse dragging
             touchMoveStopPropagation={true}
+            modules={[Navigation, Autoplay]}
+            navigation={{
+              nextEl: ".custom-next",
+              prevEl: ".custom-prev",
+            }}
+            autoplay={{ delay: 5000, disableOnInteraction: false }} // Auto-slide every 5s
             breakpoints={{
-              575: { slidesPerView: 3 },
+              575: { slidesPerView: 2 },
               576: { slidesPerView: 3 },
               1024: { slidesPerView: 3 },
             }}
@@ -623,7 +661,7 @@ const ScrollAnimationMobile = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  onClick={() => handleCardClick(videoUrls[index])} 
+                  onClick={() => handleCardClick(videoUrls[index])}
                   // onClick={(event) => handleImageClick(event, index)} // Pass event and index
                 >
                   <motion.div
@@ -642,15 +680,15 @@ const ScrollAnimationMobile = () => {
                       className="image"
                     />
                     <div className="hover-text">
-                      <span className="hovertextInner">
-                        {imageTexts[index]}
-                      </span>{" "}
+                      <span>{imageTexts[index]}</span>{" "}
                     </div>
                   </motion.div>
                 </motion.div>
               </SwiperSlide>
             ))}
           </Swiper>
+          <div className="custom-prev">&#8592;</div>
+          <div className="custom-next">&#8594;</div>
         </div>
       )}
       {/* {selectedImage !== null && !isCarouselVisible && renderPage()} */}

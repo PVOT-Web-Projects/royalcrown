@@ -101,7 +101,7 @@ export default function CorporateSwiper() {
                 <div className="corporateSwiperCardInner">
                   <Image
                     src={swiperData.image}
-                    alt=""
+                    alt="data"
                     className="corporateImage"
                   />
                 </div>
