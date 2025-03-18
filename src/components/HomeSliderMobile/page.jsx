@@ -44,15 +44,20 @@ const ScrollAnimationMobile = () => {
   const handleCardClick = (url) => setVideoUrl(url);
   const closeModal = () => setVideoUrl(null);
   const videoUrls = [
-    "./videos/Outdoor.mp4",
-    "./videos/Kitchen.mp4",
-    "./videos/LivingSpace.mp4",
-    "./videos/Bathroom.mp4",
-    "./videos/Bedroom.mp4",
+    // "./videos/OutdoorOne.mp4",
+    // "./videos/Kitchen.mp4",
+    // "./videos/LivingSpace.mp4",
+    // "./videos/Bathroom.mp4",
+    // "./videos/Bedroom.mp4",
     // "https://vanras.humbeestudio.xyz/videos/Kitchen.mp4",
     // "https://vanras.humbeestudio.xyz/videos/Living%20Space.mp4",
     // "https://vanras.humbeestudio.xyz/videos/Bathroom.mp4",
     // "https://vanras.humbeestudio.xyz/videos/Bedroom.mp4",
+    "https://vanras.humbeestudio.xyz/videos/OutdoorOne.mp4",
+    "https://vanras.humbeestudio.xyz/videos/Kitchen.mp4",
+    "https://vanras.humbeestudio.xyz/videos/Living%20Space.mp4",
+    "https://vanras.humbeestudio.xyz/videos/Bathroom.mp4",
+    "https://vanras.humbeestudio.xyz/videos/Bedroom.mp4",
   ];
 
   const handleMouseEnter = () => {
