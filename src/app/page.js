@@ -47,7 +47,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-      document.title = "Royal Crown";
+      document.title = "Royal Crown Laminates";
     });
   // Timer to hide the preloader after 5 seconds
   useEffect(() => {
