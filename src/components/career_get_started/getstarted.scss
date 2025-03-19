@@ -11,6 +11,10 @@
       font-weight: 400;
       @media(max-width: 575px){
         font-size: 40px;
+        
+      }
+      @media(max-width: 475px){
+        font-size: 30px;
       }
       &::before {
         content: "";
@@ -22,6 +26,9 @@
         background-color: #5B3524;
         width: 150px;
         height: 2px;
+        @media(max-width: 475px){
+          top: 50px;
+        }
       }
     }
   }

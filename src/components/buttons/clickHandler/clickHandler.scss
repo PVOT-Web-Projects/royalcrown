@@ -19,12 +19,18 @@
   align-items: center;
   text-decoration: none;
   width: fit-content;
+  @media(max-width: 475px){
+    padding: 0 2rem;
+  }
   .button-content {
     font-size: 25px;
     font-weight: 550;
     position: relative;
     z-index: 1;
     transition: color 0.475s;
+    @media(max-width: 475px){
+      font-size: 20px;
+    }
   }
   &::before {
     content: "";
