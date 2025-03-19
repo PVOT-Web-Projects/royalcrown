@@ -44,6 +44,9 @@ $form-button-text: #5B3524;
   // color: #000;
   margin-bottom: 2.5rem;
   font-size: 30px;
+  @media(max-width: 475px){
+    margin-bottom: 1.5rem;
+  }
 }
 
 .CareerForm {
@@ -68,6 +71,9 @@ $form-button-text: #5B3524;
     // color: #000;
     font-size: 22px;
     font-weight: 500;
+    @media(max-width: 475px){
+      font-size: 16px;
+    }
     @media(max-width: 375px){
       font-size: 16px;
     }
@@ -79,13 +85,18 @@ $form-button-text: #5B3524;
   display: flex;
   flex-direction: column;
   height: 92px;
+  @media(max-width: 475px){
+    height: 75px;
+  }
 
   label {
     margin-bottom: 0.5rem;
     color: $form-text;
     font-weight: 500;
     font-size: 22px;
-
+    @media (max-width: 475px) {
+      font-size: 18px;
+    }
     @media (max-width: 320px) {
       // padding: 10px 20px;
       font-size: 16px;
@@ -102,7 +113,9 @@ $form-button-text: #5B3524;
     border-top: none;
     border-right: none;
     background-color: transparent;
-
+@media(max-width: 475px){
+  font-size: 16px;
+}
     @media (max-width: 320px) {
       // padding: 10px 20px;
       font-size: 14px;
@@ -152,6 +165,9 @@ $form-button-text: #5B3524;
     transition: all 0.5s ease;
     // color: black;
     font-size: 18px;
+    @media(max-width: 475px){
+      font-size: 16px;
+    }
   }
 
   .p-dropdown-item:hover {
@@ -162,10 +178,23 @@ $form-button-text: #5B3524;
 .p-dropdown-label {
   font-size: 20px;
   color: #757575;
-
+  @media (max-width: 475px) {
+    font-size: 16px; 
+  }
   @media (max-width: 320px) {
-    // padding: 10px 20px;
-    font-size: 17px; 
+    font-size: 16px; 
+  }
+}
+
+.FormButtonCareer .yello_btn .button-content{
+  @media(max-width: 475px){
+    font-size: 20px;
+  }
+}
+
+.FormButtonCareer .yello_btn{
+  @media(max-width: 475px){
+    padding: 0 2rem;
   }
 }
 
