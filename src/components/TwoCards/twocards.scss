@@ -40,6 +40,9 @@
         margin: 0 0 0.5rem;
         font-weight: 400;
         // color: black;
+        @media(max-width: 475px){
+          font-size: 25px;
+        }
       }
   
       .Twocard-description {
@@ -53,6 +56,9 @@
         @media(max-width: 768px){
           width: 100%;
         }
+        @media(max-width: 475px){
+          font-size: 18px;
+        }
       }
   
       .Twocard-link {
@@ -62,6 +68,9 @@
         margin-top: auto;
         font-size: 28px;
         transition: all 0.3s ease;
+        @media(max-width: 475px){
+          font-size: 25px;
+        }
         &:hover{
             color: white;
         }
