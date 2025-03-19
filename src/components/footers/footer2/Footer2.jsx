@@ -89,7 +89,7 @@ const Footer2 = ({ bgColor }) => {
               <div className="col col2">
                 <div className="title">Resources</div>
                 <ul>
-                <li>
+                {/* <li>
                     <LinkHover
                       url={"/category"}
                       text={"Category"}
@@ -99,7 +99,7 @@ const Footer2 = ({ bgColor }) => {
                       textTransform={"capitalize"}
                       HoverBtn={"#5b3524"}
                     />
-                  </li>
+                  </li> */}
                   <li>
                     <LinkHover
                       url={"/product"}
