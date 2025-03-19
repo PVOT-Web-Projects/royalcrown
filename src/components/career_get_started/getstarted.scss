@@ -46,6 +46,9 @@
       font-family: "futura_thin";
       font-size: 22px;
       text-align: center;
+      @media(max-width: 475px){
+        font-size: 20px;
+      }
     }
     .TextSecondInnerFirst {
       font-family: "futura_thin";
