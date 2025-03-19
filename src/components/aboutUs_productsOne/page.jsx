@@ -533,7 +533,7 @@ const Page = () => {
                 onClick={resetFiltersDrop}
                 scroll={false}
               >
-                <span className="resetButton-content">reset filters</span>
+                <span className="resetButton-content">reset</span>
                 {/* Reset Filters */}
               </button>
             </div>
