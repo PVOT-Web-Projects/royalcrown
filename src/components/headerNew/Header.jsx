@@ -68,14 +68,14 @@ const Header = () => {
         { name: "Flicker Laminate", url: "/flicker-laminates" },
       ],
     },
-    {
-      name: "TECHNICAL GRADE LAMINATE",
-      items: [
-        { name: "Electrostatic Dissipative", url: "/" },
-        { name: "Chemical Resistant", url: "/" },
-        { name: "Fire Retardant", url: "/" },
-      ],
-    },
+    // {
+    //   name: "TECHNICAL GRADE LAMINATE",
+    //   items: [
+    //     { name: "Electrostatic Dissipative", url: "/" },
+    //     { name: "Chemical Resistant", url: "/" },
+    //     { name: "Fire Retardant", url: "/" },
+    //   ],
+    // },
   ];
 
   const toggleCategoryMenu = () => {

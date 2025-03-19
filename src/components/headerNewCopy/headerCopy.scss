@@ -17,9 +17,12 @@ header {
   &.navbar-visible {
     transform: translateY(0); /* Bring navbar back */
     transition: transform 0.3s ease-in-out; /* Smooth transition when navbar shows */
+    @media(max-width: 991px){
+    background-color: #FFEEE2;
+    }
   }
   @media (max-width: 991px) {
-    padding: 15px 20px 0 20px;
+    padding: 0px 0px 0 0px !important;
     position: fixed; /* Fix navbar at the top of the page for mobile */
   }
 
@@ -30,23 +33,25 @@ header {
     position: relative;
     transition: top 0.3s ease-in-out;
     @media (max-width: 991px) {
-      width: 94%;
-      position: fixed;
+      width: 100% !important;
+      // position: fixed;
+      position: sticky !important;
        z-index: 10;
       transition: transform 0.3s ease-in-out; /* Smooth transition for showing/hiding */
+      
     }
     @media (max-width: 768px) {
-      width: 93.5%;
+      // width: 93.5%;
        z-index: 10;
     }
     @media (max-width: 575px) {
-      width: 90%;
+      // width: 90%;
     }
     @media (max-width: 475px) {
-      width: 89%;
+      // width: 89%;
     }
     @media (max-width: 325px) {
-      width: 88%;
+      // width: 88%;
     }
     /* When navbar is hidden */
     .navbar-hidden {
@@ -64,8 +69,12 @@ header {
 
       @media (max-width: 991px) {
         display: block;
+        padding-right: 25px;
         // z-index: 5;
         z-index: 11; // Ensure it's above other content
+      }
+      @media(max-width: 475px){
+        padding-right: 15px;
       }
       .hamburger-line {
         width: 30px;
@@ -106,7 +115,10 @@ header {
         padding-left: 20px;
       }
       @media (max-width: 991px) {
-        padding-left: 0px;
+        padding-left: 25px !important;
+      }
+      @media (max-width: 475px) {
+        padding-left: 15px !important;
       }
       img {
         max-width: 100%;
