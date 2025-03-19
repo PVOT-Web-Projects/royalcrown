@@ -313,6 +313,18 @@ const Page = () => {
     }
   };
 
+  const resetFiltersDrop = () => {
+    setSelectedBrand("all");
+    setSelectedCategory([]);
+    setSelectedFinish("all");
+    setSelectedSize("all");
+    setSelectedThickness("all");
+    setSelectedColor("all");
+    setSelectedType("all");
+      // Reset the URL to /product without the hash
+  // router.push("/product", undefined, { shallow: true });
+  };
+
 
   // Detect if the screen is mobile
     useEffect(() => {
@@ -416,6 +428,14 @@ const Page = () => {
           <div id="sticky"
           //  ref={stickyRef} style={{ transition: "transform 0.3s ease" }}
            >
+           {/* reset filter */}
+           <div className="resetFilters">
+              <button className="resetButton" onClick={resetFiltersDrop} scroll={false}>
+                <span className="resetButton-content">reset</span>
+                {/* Reset Filters */}
+              </button>
+            </div>
+            {/* reset filter ends */}
             <div className="dropdown1">
               <div className="dropdown-label">
                 <label className="colorSelectDropdown" htmlFor="type-select">

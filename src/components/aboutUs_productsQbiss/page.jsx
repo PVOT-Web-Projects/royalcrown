@@ -504,7 +504,7 @@ const Page = () => {
             {/* reset filter */}
             <div className="resetFilters">
               <button className="resetButton" onClick={resetFiltersDrop} scroll={false}>
-                <span className="resetButton-content">reset filters</span>
+                <span className="resetButton-content">reset</span>
                 {/* Reset Filters */}
               </button>
             </div>
