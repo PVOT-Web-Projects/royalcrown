@@ -192,7 +192,7 @@ const CareerForm = () => {
                 errors.privacyPolicy && 
                 errors.privacyPolicy}
             </p> */}
-          <div>
+          <div className="FormButtonCareer">
             <YellowSubmitButton btn_text={"Submit"} />
           </div>
           {/* <button type="submit">GET STARTED</button> */}

@@ -107,6 +107,9 @@
         position: relative;
         z-index: 1;
         transition: color 0.475s;
+        @media(max-width: 475px){
+          font-size: 20px;
+        }
       }
   
       &::before {
