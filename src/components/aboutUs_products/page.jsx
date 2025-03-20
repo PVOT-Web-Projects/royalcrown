@@ -728,7 +728,7 @@ const Page = () => {
                       backgroundColor: "#5b3524",
                       margin: "0 10px",
                       padding: "14px 10px",
-                      fontSize: "15px",
+                      fontSize: "16px",
                       color: "white",
                       border: "none",
 

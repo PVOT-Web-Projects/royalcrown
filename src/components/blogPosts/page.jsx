@@ -212,8 +212,8 @@ const BlogPost = ({ readMoreRoute }) => {
                 "&.Mui-selected": {
                   backgroundColor: "#FFF5ED",
                   margin: "0 10px",
-                  padding: "18px 13px",
-                  fontSize: "20px",
+                  padding: "14px 10px",
+                  fontSize: "16px",
                   color: "#5B3524",
                   border: "none",
 

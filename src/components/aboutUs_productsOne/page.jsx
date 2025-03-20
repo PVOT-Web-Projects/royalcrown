@@ -777,7 +777,7 @@ const Page = () => {
                     "&.Mui-selected": {
                       backgroundColor: "#5b3524",
                       margin: "0 10px",
-                      padding: "13px 10px",
+                      padding: "14px 10px",
                       fontSize: "16px",
                       color: "white",
                       border: "none",
