@@ -10,6 +10,8 @@ import styles from "@/components/Home_page_Banner/Banner.module.scss";
 import "./scroll.css";
 gsap.registerPlugin(ScrollTrigger);
 
+
+
 const Animation = ({ loadImage, counter }) => {
   const [info, setInfo] = useState(false);
   const [animationEnded, setAnimationEnded] = useState(false);

@@ -706,7 +706,7 @@ const Page = () => {
                       className="ProductImage"
                       width={500}
                       height={600}
-                      onClick={() => {
+                      onClick={() => { 
                         console.log("Product ID:", product.id);
                         router.push(`/product-information#${product.id}`);
                       }}
@@ -751,7 +751,7 @@ const Page = () => {
                 onChange={handlePageChange}
                 hidePrevButton
                 hideNextButton
-                sx={{
+                sx={{ 
                   "& .MuiPaginationItem-root": {
                     backgroundColor: "transparent",
                     border: "1px solid #5b3524",
@@ -777,7 +777,7 @@ const Page = () => {
                     "&.Mui-selected": {
                       backgroundColor: "#5b3524",
                       margin: "0 10px",
-                      padding: "13px 10px",
+                      padding: "14px 10px",
                       fontSize: "16px",
                       color: "white",
                       border: "none",

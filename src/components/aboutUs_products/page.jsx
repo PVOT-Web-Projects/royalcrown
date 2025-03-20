@@ -657,6 +657,10 @@ const Page = () => {
                       className="ProductImage"
                       width={500}
                       height={600}
+                      onClick={() => {
+                        console.log("Product ID:", product.id);
+                        router.push(`/product-information#${product.id}`);
+                      }}
                     />
                     <div className="overlay">
                       <div>
@@ -707,7 +711,7 @@ const Page = () => {
                     border: "1px solid #5b3524",
                     color: "#5b3524",
                     margin: "0 10px",
-                    padding: "14px 10px",
+                    padding: "13px 10px",
                     fontSize: "15px",
                     borderRadius: "0px",
                     transition: "background-color 0.3s, color 0.3s",
@@ -728,7 +732,7 @@ const Page = () => {
                       backgroundColor: "#5b3524",
                       margin: "0 10px",
                       padding: "14px 10px",
-                      fontSize: "15px",
+                      fontSize: "16px",
                       color: "white",
                       border: "none",
 
