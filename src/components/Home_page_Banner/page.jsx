@@ -12,6 +12,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 
+
+
 const Animation = ({ loadImage, counter }) => {
   const [info, setInfo] = useState(false);
   const [animationEnded, setAnimationEnded] = useState(false);
