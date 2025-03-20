@@ -161,7 +161,7 @@
 
     @media (max-width: 575px) {
       font-size: 14px;
-      padding: 130px 0rem 30px;
+      padding: 40px 0rem 30px;
       // flex-wrap: wrap;
       // gap: 10px;
     }
@@ -173,8 +173,9 @@
       padding: 110px 0rem 30px;
     }
 
-    @media (max-width: 375px) {
-      font-size: 15px;
+    @media (max-width: 390px) {
+      font-size: 15px !important;
+      padding: 120px 0rem 30px !important;
     }
     @media (max-width: 330px) {
       font-size: 12px;
