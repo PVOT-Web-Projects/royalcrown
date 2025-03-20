@@ -719,6 +719,10 @@ const Page = () => {
                       className="ProductImage"
                       width={500}
                       height={600}
+                      onClick={() => {
+                        console.log("Product ID:", product.id);
+                        router.push(`/product-information#${product.id}`);
+                      }}
                     />
                     <div className="overlay">
                       <div>
