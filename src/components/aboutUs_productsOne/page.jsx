@@ -751,7 +751,7 @@ const Page = () => {
                 onChange={handlePageChange}
                 hidePrevButton
                 hideNextButton
-                sx={{
+                sx={{ 
                   "& .MuiPaginationItem-root": {
                     backgroundColor: "transparent",
                     border: "1px solid #5b3524",
