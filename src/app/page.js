@@ -15,7 +15,7 @@ import NewRevealText from "@/components/newRevel/page";
 import PlyMarquee from "@/components/plyMarquee/PlyMarquee";
 import ServicesPageCard from "@/components/InsightsPageCards/insightsPageCards";
 import TimelineHome from "@/components/timelinehome/page";
-import HomeHeroSection from "@/components/homeHeroSection/page";
+import HomeHeroSection from "@/components/homeHeroSectionOne/page";
 import NewThreeDSlider from "@/components/newthreedslider/newthreedslider";
 import HomeSliderOne from "@/components/HomeSliderOne/page";
 import CategoryLeftRightInsights from "@/components/categoryLeftRightInsights/CategoryLeftRightInsights";

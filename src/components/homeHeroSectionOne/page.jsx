@@ -153,10 +153,11 @@ export default function HomeHeroSection() {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            explore our legacy
+            <p> explore our <br /> legacy</p>
           </motion.div>
-          <p>
-            <div className="TextSectionInnerFirst">
+
+          <div className="TextSectionInnerFirst">
+            <p>
               Crown Decor, a Royale Touche Laminate group company, is a niche
               luxury laminate brand from India. It was launched in 1979 with the
               idea that laminate has unlimited potential in surface décor. We
@@ -167,25 +168,24 @@ export default function HomeHeroSection() {
               and interior designers' lives easy. Since 2011, Crown Laminates
               has boasted a legacy celebrating innovation, cutting-edge
               technology, craft, and expertise.
-              {/* At Royal Crown, customers are the cornerstone of our unique
-                business model. We are dedicated to providing every individual
-                with an unparalleled royal service, ensuring that their
-                experience is etched into their memories forever. Our story
-                began on a scorching Indian summer day, where the golden grasses
-                and swaying flowers painted a picture of tranquility. It was on
-                this day that a visionary businessmen's dream was transformed
-                into the reality we now know as Royal Crown. */}
-              {/* Customers are at the heart of our unique business model. Royal
-                Crown thrives at providing royal service to everyone. Our work
-                is all about our customers and we believe their experience
-                should be worth a thousand memories. However, we do have a tiny
-                tale to tell, a sneak peek to our story. */}
-            </div>
-          </p>
-        </div>
+            </p>
+            <Link href={"/about-us"}>
+              <div className="text-section-inner-footer">read more</div>
+            </Link>
+          </div>
 
-        <div>
-          <p>image sectiob</p>
+        </div>
+        {/* IMage section */}
+        <div className="ImageDiv">
+          <div className="ImageOne">
+            <Image src={Image4} alt="none" className="ImageSectionOne" />
+          </div>
+          <div className="ImageTwo">
+            <Image src={Image5} alt="none" className="ImageSectionTwo" />
+          </div>
+          <div className="ImageThree">
+            <Image src={Image6} alt="none" className="ImageSectionThree" />
+          </div>
         </div>
       </div>
     </div>
