@@ -18,6 +18,7 @@ import TimelineHome from "@/components/timelinehome/page";
 import HomeHeroSection from "@/components/homeHeroSectionOne/page";
 import NewThreeDSlider from "@/components/newthreedslider/newthreedslider";
 import HomeSliderOne from "@/components/HomeSliderOne/page";
+import Home_Sec from "@/components/home_section/page";
 import CategoryLeftRightInsights from "@/components/categoryLeftRightInsights/CategoryLeftRightInsights";
 import { AnimatePresence } from "framer-motion";
 import Preloader from "@/components/preloader";
@@ -104,6 +105,7 @@ export default function Home() {
         <ScrollAnimationMobile />
         </div>
         <HomeHeroSection />
+        <Home_Sec />
         <SliderNew />
         <NewRevealText paragraph={paragraph} />
         <PlyMarquee />
