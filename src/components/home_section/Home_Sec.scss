@@ -12,9 +12,13 @@
         // padding: 0px 50px 40px;
         align-items: center;
         justify-content: space-between;
+        
         @media(min-width: 1600px){
             justify-content: center;
             gap: 10rem;
+        }
+        @media(min-width: 1700px){
+            gap: 25rem;
         }
         @media(max-width: 1024px){
             flex-direction: column;
