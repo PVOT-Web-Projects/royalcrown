@@ -142,8 +142,8 @@ export default function HomeHeroSection() {
   //   });
   // },[])
   return (
-    <div className="ExploreSection" id="project-content">
-      <div className="ExploreSectionFlex">
+    <div className="ExploreSection">
+      <div className="ExploreSectionFlex" ref={sectionRef}>
         {/*  */}
         <div>
           <motion.div
@@ -156,7 +156,12 @@ export default function HomeHeroSection() {
             <p> explore our <br /> legacy</p>
           </motion.div>
 
-          <div className="TextSectionInnerFirst">
+          <motion.div 
+          initial={{ y: 100, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="TextSectionInnerFirst">
             <p>
               Crown Decor, a Royale Touche Laminate group company, is a niche
               luxury laminate brand from India. It was launched in 1979 with the
@@ -172,18 +177,18 @@ export default function HomeHeroSection() {
             <Link href={"/about-us"}>
               <div className="text-section-inner-footer">read more</div>
             </Link>
-          </div>
+          </motion.div>
 
         </div>
         {/* IMage section */}
         <div className="ImageDiv">
-          <div className="ImageOne">
+          <div className="ImageOne" ref={imageRef}>
             <Image src={Image4} alt="none" className="ImageSectionOne" />
           </div>
-          <div className="ImageTwo">
+          <div className="ImageTwo" ref={imageRef1}>
             <Image src={Image5} alt="none" className="ImageSectionTwo" />
           </div>
-          <div className="ImageThree">
+          <div className="ImageThree" ref={imageRef2}>
             <Image src={Image6} alt="none" className="ImageSectionThree" />
           </div>
         </div>

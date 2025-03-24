@@ -11,8 +11,19 @@
         // padding: 0px 50px 40px;
         align-items: center;
         justify-content: space-between;
+        @media(min-width: 1600px){
+            justify-content: center;
+            gap: 10rem;
+        }
+        @media(max-width: 1199px){
+            gap: 0rem;
+        }
 
         .ImageDivHome {
+            width: 100%;
+            @media(min-width: 1600px){
+                width: 50%; 
+            }
             .ImageOneHomeFirst {
                 position: absolute;
                 transform: translate(400px, 50px);
@@ -121,6 +132,13 @@
             padding-top: 1rem;
             font-family: "futura_thin";
             font-size: 17px;
+            @media(min-width: 1600px){
+                font-size: 20px;
+                width: 45%;
+            }
+            @media(max-width: 1060px){
+                width: 100%;
+            }
         }
 
 
