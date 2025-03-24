@@ -15,9 +15,10 @@ import NewRevealText from "@/components/newRevel/page";
 import PlyMarquee from "@/components/plyMarquee/PlyMarquee";
 import ServicesPageCard from "@/components/InsightsPageCards/insightsPageCards";
 import TimelineHome from "@/components/timelinehome/page";
-import HomeHeroSection from "@/components/homeHeroSection/page";
+import HomeHeroSection from "@/components/homeHeroSectionOne/page";
 import NewThreeDSlider from "@/components/newthreedslider/newthreedslider";
 import HomeSliderOne from "@/components/HomeSliderOne/page";
+import Home_Sec from "@/components/home_section/page";
 import CategoryLeftRightInsights from "@/components/categoryLeftRightInsights/CategoryLeftRightInsights";
 import { AnimatePresence } from "framer-motion";
 import Preloader from "@/components/preloader";
@@ -104,7 +105,9 @@ export default function Home() {
         <ScrollAnimationMobile />
         </div>
         <HomeHeroSection />
+        
         <SliderNew />
+        <Home_Sec />
         <NewRevealText paragraph={paragraph} />
         <PlyMarquee />
         <RoyalCrownSlider />
