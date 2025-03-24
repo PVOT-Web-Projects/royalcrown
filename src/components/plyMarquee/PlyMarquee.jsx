@@ -29,7 +29,7 @@ import img24 from "@/images/ply/RC_6029_SN.jpg";
 import img25 from "@/images/ply/RC_6031_SN.jpg";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 import "./plyMarquee.scss";
 import "./marquee.css";
@@ -114,11 +114,13 @@ const PlyMarquee = () => {
                   <div className="ply_wood">wood</div>
                 </div>
               </div>
+              <Link href={"https://www.instagram.com/royalcrownlaminates/"} target="_blank">
               <Image
                 // loading="lazy" // This will lazy load images that aren't critical
                 src={img1}
                 alt="ply"
               />
+              </Link>
             </div>
             <div className="ply_item bottom1">
               <div className="ply_info">
@@ -131,11 +133,12 @@ const PlyMarquee = () => {
                   <p className="ply_wood">chestnut</p>
                 </div>
               </div>
+              <Link href={"https://www.instagram.com/royalcrownlaminates/"} target="_blank">
               <Image
-                // loading="lazy" // This will lazy load images that aren't critical
                 src={img2}
                 alt="ply"
               />
+              </Link>
             </div>
             <div className="ply_item top1">
               <div className="ply_info">
@@ -148,11 +151,12 @@ const PlyMarquee = () => {
                   <div className="ply_wood">chestnut</div>
                 </div>
               </div>
+              <Link href={"https://www.instagram.com/royalcrownlaminates/"} target="_blank">
               <Image
                 src={img3}
-                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
+              </Link>
             </div>
             <div className="ply_item bottom1">
               <div className="ply_info">
@@ -165,10 +169,12 @@ const PlyMarquee = () => {
                   <div className="ply_wood">teak</div>
                 </div>
               </div>
+              <Link href={"https://www.instagram.com/royalcrownlaminates/"} target="_blank">
               <Image
                 src={img4}
                 alt="ply"
               />
+              </Link>
             </div>
 
 
@@ -183,11 +189,12 @@ const PlyMarquee = () => {
                   <div className="ply_wood">wood</div>
                 </div>
               </div>
+              <Link href={"https://www.instagram.com/royalcrownlaminates/"} target="_blank">
               <Image
-                // loading="lazy" // This will lazy load images that aren't critical
                 src={img1}
                 alt="ply"
               />
+              </Link>
             </div>
             <div className="ply_item bottom1">
               <div className="ply_info">
@@ -200,11 +207,12 @@ const PlyMarquee = () => {
                   <p className="ply_wood">chestnut</p>
                 </div>
               </div>
+              <Link href={"https://www.instagram.com/royalcrownlaminates/"} target="_blank">
               <Image
-                // loading="lazy" // This will lazy load images that aren't critical
                 src={img2}
                 alt="ply"
               />
+              </Link>
             </div>
             <div className="ply_item top1">
               <div className="ply_info">
@@ -217,11 +225,12 @@ const PlyMarquee = () => {
                   <div className="ply_wood">chestnut</div>
                 </div>
               </div>
+              <Link href={"https://www.instagram.com/royalcrownlaminates/"} target="_blank">
               <Image
                 src={img3}
-                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
+              </Link>
             </div>
             <div className="ply_item bottom1">
               <div className="ply_info">
@@ -234,10 +243,12 @@ const PlyMarquee = () => {
                   <div className="ply_wood">teak</div>
                 </div>
               </div>
+              <Link href={"https://www.instagram.com/royalcrownlaminates/"} target="_blank">
               <Image
                 src={img4}
                 alt="ply"
               />
+              </Link>
             </div>
             {/* <div className="ply_item top1">
               <div className="ply_info">

@@ -105,8 +105,9 @@ export default function Home() {
         <ScrollAnimationMobile />
         </div>
         <HomeHeroSection />
-        <Home_Sec />
+        
         <SliderNew />
+        <Home_Sec />
         <NewRevealText paragraph={paragraph} />
         <PlyMarquee />
         <RoyalCrownSlider />
