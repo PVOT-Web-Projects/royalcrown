@@ -13,6 +13,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image4 from "../../images/newExp2.png";
 import Image5 from "../../images/newExp1.png";
 import Image6 from "../../images/exp3.png";
+import Image7 from "../../images/full_exp_img.png";
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import Link from "next/link";
@@ -153,15 +154,19 @@ export default function HomeHeroSection() {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            <p> explore our <br /> legacy</p>
+            <p>
+              {" "}
+              explore our <br /> legacy
+            </p>
           </motion.div>
 
-          <motion.div 
-          initial={{ y: 100, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-          className="TextSectionInnerFirst">
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+            className="TextSectionInnerFirst"
+          >
             <p>
               Crown Decor, a Royale Touche Laminate group company, is a niche
               luxury laminate brand from India. It was launched in 1979 with the
@@ -178,19 +183,34 @@ export default function HomeHeroSection() {
               <div className="text-section-inner-footer">read more</div>
             </Link>
           </motion.div>
-
         </div>
         {/* IMage section */}
         <div className="ImageDiv">
-          <div className="ImageOne" ref={imageRef}>
-            <Image src={Image4} alt="none" className="ImageSectionOne" />
-          </div>
-          <div className="ImageTwo" ref={imageRef1}>
-            <Image src={Image5} alt="none" className="ImageSectionTwo" />
-          </div>
-          <div className="ImageThree" ref={imageRef2}>
-            <Image src={Image6} alt="none" className="ImageSectionThree" />
-          </div>
+          {/* <div className="ImageDisplay"> */}
+            <div
+              className="ImageOne"
+              ref={imageRef}
+            >
+              <Image src={Image4} alt="none" className="ImageSectionOne" />
+            </div>
+            <div
+              className="ImageTwo"
+               ref={imageRef1}
+            >
+              <Image src={Image5} alt="none" className="ImageSectionTwo" />
+            </div>
+            <div
+              className="ImageThree"
+              ref={imageRef2}
+            >
+              <Image src={Image6} alt="none" className="ImageSectionThree" />
+            </div>
+          {/* </div> */}
+          {/* <div>
+            <div className="EleganceContainerOne">
+              <Image src={Image7} alt="none" className="EleganceImageOne" />
+            </div>
+          </div> */}
         </div>
       </div>
     </div>

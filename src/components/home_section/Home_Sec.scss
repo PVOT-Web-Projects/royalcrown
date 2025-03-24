@@ -26,7 +26,7 @@
             }
             .ImageOneHomeFirst {
                 position: absolute;
-                transform: translate(400px, 50px);
+                transform: translate(400px, 50px) !important;
 
                 .ImageOneHomeFirstText {
                     font-size: 25px;
@@ -48,7 +48,7 @@
 
             .ImageTwoHome {
                 position: absolute;
-                transform: translate(130px, -495px);
+                transform: translate(130px, -495px) !important;
 
                 .ImageSectionTwoHome {
                     width: 100%;
@@ -59,7 +59,7 @@
 
             .ImageThreeHome {
                 position: absolute;
-                transform: translate(400px, -455px);
+                transform: translate(400px, -455px) !important;
                 //   z-index: -1;
 
                 .ImageSectionThreeHome {
@@ -71,7 +71,7 @@
 
             .ImageFourHome {
                 position: absolute;
-                transform: translate(290px, -175px);
+                transform: translate(290px, -175px) !important;
                 //   z-index: -1;
 
                 .ImageSectionFourHome {

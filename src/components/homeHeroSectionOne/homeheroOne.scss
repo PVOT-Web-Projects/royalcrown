@@ -12,6 +12,12 @@
     @media(min-width: 1600px){
       padding: 40px 100px;
     }
+    @media(max-width: 1199px){
+      flex-direction: column;
+    }
+    @media(max-width: 475px){
+      padding: 30px 20px;
+    }
 
     .HeaderTextInner {
       padding-top: 8rem;
@@ -20,6 +26,9 @@
       // font-family: "made_mirage_regular";
       font-family: "safira_march";
       color: #5b3524;
+      @media(max-width: 991px){
+        padding-top: 4rem;
+      }
 
       p {
         text-transform: uppercase;
@@ -87,7 +96,27 @@
   }
 
   .ImageDiv {
-
+    // @media(max-width: 1024px){
+    //   width: 10%;
+    // }
+    @media(max-width: 1199px){
+      margin-left: 335px;
+    }
+    @media(max-width: 1024px){
+      margin-left: 270px;
+    }
+    @media(max-width: 575px){
+      margin-left: 200px;
+    }
+    @media(max-width: 475px){
+      margin-left: 160px;
+    }
+   
+    // .ImageDisplay{
+    //   @media(max-width: 768px){
+    //     display: none;
+    //   }
+    // }
     // height: 100vh;
     .ImageOne {
       .ImageSectionOne {
@@ -96,17 +125,45 @@
         height: auto;
         object-fit: cover;
         display: block;
+        @media(max-width: 1024px){
+          width: 280px;
+        }
+        @media(max-width: 575px){
+          width: 190px;
+        }
+        @media(max-width: 475px){
+          width: 160px;
+        }
       }
+      
     }
 
     .ImageTwo {
       position: absolute;
       transform: translate(-95px, -400px) !important;
-
+      @media(max-width: 1024px){
+        transform: translate(-95px, -310px) !important;
+      }
+      @media(max-width: 575px){
+        transform: translate(-70px, -210px) !important;
+      }
+      @media(max-width: 475px){
+        transform: translate(-63px, -175px) !important;
+      }
       .ImageSectionTwo {
         width: 100%;
         // height: 100%;
         display: block;
+        @media(max-width: 1024px){
+          width: auto;
+        }
+        @media(max-width: 575px){
+          width: 125px;
+          height: auto;
+        }
+        @media(max-width: 475px){
+          width: 110px;
+        }
       }
     }
 
@@ -114,14 +171,38 @@
       position: absolute;
       transform: translate(-485px, -600px) !important;
       z-index: -1;
-
+      @media(max-width: 1024px){
+        transform: translate(-380px, -442px) !important;
+      }
+      @media(max-width: 575px){
+        transform: translate(-290px, -340px) !important;
+      }
+      @media(max-width: 475px){
+        transform: translate(-250px, -268px) !important;
+      }
       .ImageSectionThree {
         // width: 100%;
         // height: 100%;
         display: block;
+        @media(max-width: 1024px){
+          width: 500px;
+          height: auto;
+        }
+        @media(max-width: 575px){
+          width: 400px;
+        }
+        @media(max-width: 475px){
+          width: 340px;
+        }
       }
     }
   }
+  // .EleganceContainerOne{
+  //   display: none;
+  //   @media(max-width: 768px){
+  //     display: block;
+  //   }
+  // }
 
 
 }
