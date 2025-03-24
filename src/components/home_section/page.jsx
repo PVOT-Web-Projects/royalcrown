@@ -49,8 +49,8 @@ export default function Home_Sec() {
         ease: "power4.out",
         scrollTrigger: {
           trigger: imageRef.current,
-          start: "top 70%",
-          end: "bottom 40%",
+          start: "top 80%",
+          end: "bottom 50%",
           scrub: 2, // Smoothness of the scroll animation
         },
       }
@@ -87,9 +87,10 @@ export default function Home_Sec() {
         ease: "power4.out",
         scrollTrigger: {
           trigger: imageRef2.current,
-          start: "top 70%",
-          end: "bottom 40%",
+          start: "top 60%",
+          end: "center 40%",
           scrub: 2, // Smoothness of the scroll animation
+          // markers: true,
         },
       }
     );
