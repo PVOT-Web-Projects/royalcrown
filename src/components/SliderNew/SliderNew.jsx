@@ -2,6 +2,9 @@
 
 import React, { useEffect, useRef } from 'react';
 import './SliderNew.scss';
+import { gsap } from "gsap";
+import Link from "next/link";
+import Image from "next/image";
 import Img1 from "@/images/Royalcrown123.jpeg";
 import Img2 from "@/images/Crown123.jpeg";
 import Img3 from "@/images/Xylem123.jpeg";
@@ -57,7 +60,7 @@ const Slider = () => {
         const items = slideRef.current.querySelectorAll('.item');
         slideRef.current.appendChild(items[0]);
       }
-    }, 7000);
+    },7000);
   };
 
   useEffect(() => {
@@ -65,21 +68,73 @@ const Slider = () => {
     return () => clearInterval(intervalRef.current);
   }, []);
 
-  const handleNext = () => {
-    if (slideRef.current) {
-      const items = slideRef.current.querySelectorAll('.item');
-      slideRef.current.appendChild(items[0]);
-      startTimer();
+   // Function to update brightness dynamically
+  const updateBrightness = () => {
+    const items = slideRef.current.children;
+    // Reset all items to full brightness
+    Array.from(items).forEach((item) => {
+      item.classList.remove("background");
+    });
+    // Apply dimming only to background items
+    for (let i = 2; i < items.length; i++) {
+      items[i].classList.add("background");
     }
+  };
+  // Initialize brightness on first render
+  useEffect(() => {
+    updateBrightness();
+  }, []);
+
+  // const handleNext = () => {
+  //   if (slideRef.current) {
+  //     const items = slideRef.current.querySelectorAll('.item');
+  //     slideRef.current.appendChild(items[0]);
+  //     startTimer();
+  //   }
+  // };
+  
+  // Function for Next button click
+  const handleNext = () => {
+    const items = slideRef.current.children;
+    const firstItem = items[0];
+    // Animate the first card out to the left (off-screen)
+    gsap.to(firstItem, {
+      x: -200,
+      opacity: 0,
+      duration: 0.5,
+      onComplete: () => {
+        // Move the first card to the end
+        slideRef.current.appendChild(firstItem);
+        // Reset its position and opacity to prepare for sliding back in from the right
+        gsap.set(firstItem, { x: 200, opacity: 0 });
+        // Animate it back into view smoothly
+        gsap.to(firstItem, { x: 0, opacity: 1, duration: 0.5 });
+        updateBrightness(); // Apply brightness logic after shifting items
+      },
+    });
   };
 
+  // Function for Previous button click
   const handlePrev = () => {
-    if (slideRef.current) {
-      const items = slideRef.current.querySelectorAll('.item');
-      slideRef.current.prepend(items[items.length - 1]);
-      startTimer();
-    }
+    const items = slideRef.current.children;
+    const lastIndex = items.length - 1;
+    const lastItem = items[lastIndex];
+    // Set the last card to the left (off-screen)
+    gsap.set(lastItem, { x: -200, opacity: 0, y: 0 });
+    // Move the last card to the start
+    slideRef.current.prepend(lastItem);
+    // Animate it into view
+    gsap.to(lastItem, { x: 0, opacity: 1, duration: 0.5 });
+    updateBrightness(); // Apply brightness logic after shifting items
   };
+
+  // const handlePrev = () => {
+  //   if (slideRef.current) {
+  //     const items = slideRef.current.querySelectorAll('.item');
+  //     slideRef.current.prepend(items[items.length - 1]);
+  //     startTimer();
+  //   }
+  // };
 
   const handleSlideClick = (e) => {
     if (slideRef.current) {
@@ -97,22 +152,44 @@ const Slider = () => {
             key={index}
             className="item"
             style={{ backgroundImage: `url(${item.image})` }}
-            onClick={handleSlideClick}
+            // onClick={handleSlideClick}
           >
             <div className="content">
               <div className="name">{item.name}</div>
               <div className="des">{item.description}</div>
-              <a className="button" href={item.url}>Read more</a>
+              {/* <a className="button-content" href={item.url}>Read more</a> */}
+              <Link href={item.url} className="yello_btnoNe">
+              <span className="button-content">Read More</span>
+                {/* <span className="button-content">{`GO TO ${slide.btnName}`}</span> */}
+              </Link>
             </div>
+            {/* <div className="imageWrapper">
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      layout="fill"
+                      objectFit="cover"
+                      priority={index === 0} // Optional: prioritize the first image for faster loading
+                    />
+                  </div> */}
           </div>
         ))}
       </div>
-      <div className="buttons">
+      {/* <div className="buttons">
         <button id="prev" onClick={handlePrev}>
           <i className="fa-solid fa-angle-left"></i>
         </button>
         <button id="next" onClick={handleNext}>
           <i className="fa-solid fa-angle-right"></i>
+        </button>
+      </div> */}
+
+      <div className="buttons">
+        <button id="prev" onClick={handlePrev}>
+          &#8592;
+        </button>
+        <button id="next" onClick={handleNext}>
+          &#8594;
         </button>
       </div>
     </div>
