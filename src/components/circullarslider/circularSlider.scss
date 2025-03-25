@@ -1,9 +1,8 @@
-// styles/CircularCarouselSlider.module.scss
+
 $colors: #2f4b26, #3e885b, #85bda6, #bedcfe, #c0d7bb;
 
-body {
-  overflow: hidden;
-}
+.CircularSlider{
+overflow: hidden;
 
 .circular-carousel-slider {
   position: absolute;
@@ -11,6 +10,7 @@ body {
   top: calc((100vh - 400px) / 2);
   transform-origin: 150px 2500px;
   will-change: transform;
+  // overflow-x: hidden;
   
   .slide-item {
     position: absolute;
@@ -39,4 +39,5 @@ body {
       background: currentColor;
     }
   }
+}
 }

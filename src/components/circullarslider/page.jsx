@@ -1,8 +1,8 @@
-// components/CircularCarouselSlider.js
+
 import React, { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/Draggable';
-import 'gsap/InertiaPlugin';
+// import 'gsap/InertiaPlugin';
 import "./circularSlider.scss"
 const CircularCarouselSlider = () => {
   useEffect(() => {
@@ -22,12 +22,14 @@ const CircularCarouselSlider = () => {
   }, []);
 
   return (
-    <div className="circular-carousel-slider">
+    <div className='CircularSlider'>
+      <div className="circular-carousel-slider">
       {[...Array(36)].map((_, i) => (
         <div className="slide-item" key={i}>
           <div></div>
         </div>
       ))}
+    </div>
     </div>
   );
 };
