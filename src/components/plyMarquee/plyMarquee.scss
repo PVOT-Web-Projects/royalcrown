@@ -15,7 +15,7 @@
   .MarqueeTextFirst {
     font-size: 24px;
     padding: 20px 70px;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     font-weight: 400;
     font-family: "safira_march";
     @media (max-width: 425px) {
@@ -73,19 +73,21 @@
         padding: 0 10px;
       }
       img {
-        width: 251px;
+        width: 260px;
         height: 301px !important;
+        // width: 100%;
+        // height: auto;
         transition: filter 0.4s; // Add transition for smooth effect
       }
-      &:hover {
-        img {
-          filter: brightness(0.5); // Reduce brightness on hover
-        }
-        .ply_info {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
+      // &:hover {
+      //   img {
+      //     filter: brightness(0.5); // Reduce brightness on hover
+      //   }
+      //   .ply_info {
+      //     transform: translateY(0);
+      //     opacity: 1;
+      //   }
+      // }
       // img {
       //   width: 251px;
       //   height: 301px !important;

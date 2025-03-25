@@ -66,7 +66,7 @@ const RelatedProductInfo = () => {
     { ProductImage: Img4 },
   ];
   if (loading) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   if (error) {

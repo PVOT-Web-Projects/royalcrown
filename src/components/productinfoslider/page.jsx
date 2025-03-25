@@ -21,9 +21,9 @@ const SlidesContent = ({ slide }) => (
         </p>
         <div className="submit_btn">
           <Link href={"/contact-us"}>
-          <button type="submit" className="yello_btn">
-            <span className="button-content">Enquire Now</span>
-          </button>
+            <button type="submit" className="yello_btn">
+              <span className="button-content">Enquire Now</span>
+            </button>
           </Link>
         </div>
       </div>
@@ -31,9 +31,10 @@ const SlidesContent = ({ slide }) => (
     <div className="SecondSliderText">
       <div className="SecondSliderTextInner">
         <div className="ProductCategoryText">
-          <p className="ProductCategoryText1">product name</p>
+          <p className="ProductCategoryText1">design code</p>
           <p className="ProductCategoryText2">
-            {slide.attributes[7].terms[0].name}
+            {/* {slide.attributes[8].terms[0].name} */}
+            {slide.attributes[8]?.terms[0]?.name || "No data found"}
           </p>
         </div>
       </div>
@@ -108,6 +109,18 @@ export default function ProductInfoSlider() {
   const pathname = usePathname();
   const [slidesData, setSlidesData] = useState([]); // Store API data
   const [loading, setLoading] = useState(true); // Initially, set loading to t
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalImage, setModalImage] = useState(null);
+
+  const openModal = (imageSrc) => {
+    setModalImage(imageSrc);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalImage(null);
+  };
 
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
@@ -130,6 +143,27 @@ export default function ProductInfoSlider() {
   };
 
   const filterImages = (...images) => images.filter((image) => image);
+  const handleDownload = async (imageUrl) => {
+    try {
+      // Fetch the image as a blob
+      const response = await fetch(imageUrl);
+      const blob = await response.blob();
+
+      // Create a temporary URL for the image blob
+      const blobUrl = URL.createObjectURL(blob);
+
+      // Create a temporary anchor element to trigger the download
+      const link = document.createElement("a");
+      link.href = blobUrl;
+      link.download = imageUrl.split("/").pop(); // Use the image file name for the download
+      link.click();
+
+      // Cleanup the created object URL
+      URL.revokeObjectURL(blobUrl);
+    } catch (error) {
+      console.error("Error downloading image:", error);
+    }
+  };
 
   return (
     <div className="ProductInfoSliderMain">
@@ -163,7 +197,44 @@ export default function ProductInfoSlider() {
                     className="third_section_image1"
                     width={300}
                     height={1000}
+                    onClick={() => openModal(slide.images[0].src)}
                   />
+                  <div className="DownloadButton">
+                    <div className="DownloadOuter">
+                      <div
+                        className="DownloadInner"
+                        onClick={() => handleDownload(slide.images[0].src)}
+                      >
+                        <svg
+                          className="DownloadSvg"
+                          viewBox="0 0 24 24"
+                          fill="white"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                          <g
+                            id="SVGRepo_tracerCarrier"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          ></g>
+                          <g id="SVGRepo_iconCarrier">
+                            {" "}
+                            <g id="Interface / Download">
+                              {" "}
+                              <path
+                                id="Vector"
+                                d="M6 21H18M12 3V17M12 17L17 12M12 17L7 12"
+                                stroke="#ffffff"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              ></path>{" "}
+                            </g>{" "}
+                          </g>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               ))
             ) : (
@@ -173,6 +244,23 @@ export default function ProductInfoSlider() {
             )}
           </div>
 
+          {/* Modal Section */}
+          {isModalOpen && (
+            <div className="modal-overlay-product">
+              <div className="modal-content-product">
+                <button className="close-button-product" onClick={closeModal}>
+                  X
+                </button>
+                <Image
+                  src={modalImage}
+                  alt="Modal Image"
+                  className="modal-image-product"
+                  width={600}
+                  height={600}
+                />
+              </div>
+            </div>
+          )}
           {/* Disclaimer text */}
           <div className="tenExp" style={{ marginBottom: "50px" }}>
             <div className="ProductInfoText">

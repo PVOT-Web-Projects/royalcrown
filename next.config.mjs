@@ -5,4 +5,15 @@ const nextConfig = {
       },
 };
 // module.exports = nextConfig;
+// module.exports = {
+//   async rewrites() {
+//     return [
+//       {
+//         source: "/api/:path*",
+//         destination: "https://vanras.humbeestudio.xyz/wp-json/wc/store/:path*",
+//       },
+//     ];
+//   },
+// };
+
 export default nextConfig;

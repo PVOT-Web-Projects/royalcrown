@@ -2,6 +2,7 @@
 @import "../../fonts/fonts.scss";
 
 .ProductInfoSliderMain {
+  position: relative;
   .shadow_heading {
     .wrapper {
       position: static;
@@ -188,6 +189,7 @@
       max-width: 100%;
       height: auto;
       display: block;
+      cursor: pointer;
       @media(min-width: 1500px){
         height: 75vh;
         width: 100%;
@@ -209,7 +211,40 @@
         margin: 0 auto;
       }
     }
+    .DownloadButton {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .DownloadOuter {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: -80px;
+    }
+    
+    .DownloadInner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 60px; 
+      height: 60px; 
+      background-color: #5B3524; 
+      border-radius: 50%; 
+      cursor: pointer;
+      color: white;
+      // transition: background-color 0.3s ease;
+    }
+    
+    .DownloadSvg {
+      width: 30px; 
+      height: 30px; 
+      display: block;
+      fill: white;
+    }
 
+  
     .third_section_overlay_text {
       color: black;
       text-align: center;
@@ -229,6 +264,46 @@
       }
     }
   }
+  /* Modal Styles */
+.modal-overlay-product {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7); /* Dark background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content-product {
+  position: relative;
+  // background: white;
+  // padding: 20px;
+  border-radius: 10px;
+}
+
+.close-button-product {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  background-color: #5B3524;
+  padding: 10px 15px;
+  border-radius: 25px;
+}
+
+.modal-image-product {
+  max-width: 100%;
+  max-height: 80vh; /* Prevent the image from being too large */
+}
+
 
   .swiper2,
   .swiper3 {

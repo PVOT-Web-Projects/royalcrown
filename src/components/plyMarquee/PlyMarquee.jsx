@@ -2,10 +2,10 @@
 import { useEffect, useRef } from "react";
 const { default: Image } = require("next/image");
 const { default: Marquee } = require("react-fast-marquee");
-import img1 from "@/images/ply/574_HNG.jpeg";
-import img2 from "@/images/ply/691X_SN.jpg";
-import img3 from "@/images/ply/4001_CL.jpg";
-import img4 from "@/images/ply/5009_GEM.jpg";
+import img1 from "@/images/ins1.png";
+import img2 from "@/images/ins2.png";
+import img3 from "@/images/ins3.png";
+import img4 from "@/images/ins4.png";
 import img5 from "@/images/ply/5010_GEM.jpg";
 import img6 from "@/images/ply/6017_MO.jpg";
 import img7 from "@/images/ply/6018_MO.jpg";
@@ -29,7 +29,7 @@ import img24 from "@/images/ply/RC_6029_SN.jpg";
 import img25 from "@/images/ply/RC_6031_SN.jpg";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 import "./plyMarquee.scss";
 import "./marquee.css";
@@ -65,8 +65,16 @@ const PlyMarquee = () => {
           transition={{ duration: 1.5 }}
           viewport={{ once: true }}
         >
-          Catalogue
+          Follow US <br />on Instagram 
         </motion.div>
+        {/* <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1.5 }}
+          viewport={{ once: true }}
+        >
+          on Instagram 
+        </motion.div> */}
         {/* <p>Catalogue</p> */}
       </div>
       <div className="MarqueeTextSecond">
@@ -106,11 +114,13 @@ const PlyMarquee = () => {
                   <div className="ply_wood">wood</div>
                 </div>
               </div>
+              <Link href={"https://www.instagram.com/royalcrownlaminates/"} target="_blank">
               <Image
                 // loading="lazy" // This will lazy load images that aren't critical
-                src={img12}
+                src={img1}
                 alt="ply"
               />
+              </Link>
             </div>
             <div className="ply_item bottom1">
               <div className="ply_info">
@@ -123,11 +133,12 @@ const PlyMarquee = () => {
                   <p className="ply_wood">chestnut</p>
                 </div>
               </div>
+              <Link href={"https://www.instagram.com/royalcrownlaminates/"} target="_blank">
               <Image
-                // loading="lazy" // This will lazy load images that aren't critical
-                src={img21}
+                src={img2}
                 alt="ply"
               />
+              </Link>
             </div>
             <div className="ply_item top1">
               <div className="ply_info">
@@ -140,11 +151,12 @@ const PlyMarquee = () => {
                   <div className="ply_wood">chestnut</div>
                 </div>
               </div>
+              <Link href={"https://www.instagram.com/royalcrownlaminates/"} target="_blank">
               <Image
-                src={img20}
-                // loading="lazy" // This will lazy load images that aren't critical
+                src={img3}
                 alt="ply"
               />
+              </Link>
             </div>
             <div className="ply_item bottom1">
               <div className="ply_info">
@@ -157,14 +169,88 @@ const PlyMarquee = () => {
                   <div className="ply_wood">teak</div>
                 </div>
               </div>
-              {/* baaki */}
+              <Link href={"https://www.instagram.com/royalcrownlaminates/"} target="_blank">
               <Image
-                src={img9}
-                // loading="lazy" // This will lazy load images that aren't critical
+                src={img4}
                 alt="ply"
               />
+              </Link>
+            </div>
+
+
+            <div className="ply_item top1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">576</p>
+                  <p className="text">tw</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Ganges</div>
+                  <div className="ply_wood">wood</div>
+                </div>
+              </div>
+              <Link href={"https://www.instagram.com/royalcrownlaminates/"} target="_blank">
+              <Image
+                src={img1}
+                alt="ply"
+              />
+              </Link>
+            </div>
+            <div className="ply_item bottom1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">6008</p>
+                  <p className="text">tw</p>
+                </div>
+                <div className="info_right">
+                  <p className="ply_name">Bloomberg</p>
+                  <p className="ply_wood">chestnut</p>
+                </div>
+              </div>
+              <Link href={"https://www.instagram.com/royalcrownlaminates/"} target="_blank">
+              <Image
+                src={img2}
+                alt="ply"
+              />
+              </Link>
             </div>
             <div className="ply_item top1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">6007</p>
+                  <p className="text">tw</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">Bloomberg</div>
+                  <div className="ply_wood">chestnut</div>
+                </div>
+              </div>
+              <Link href={"https://www.instagram.com/royalcrownlaminates/"} target="_blank">
+              <Image
+                src={img3}
+                alt="ply"
+              />
+              </Link>
+            </div>
+            <div className="ply_item bottom1">
+              <div className="ply_info">
+                <div className="info_left">
+                  <p className="num">6032</p>
+                  <p className="text">tw</p>
+                </div>
+                <div className="info_right">
+                  <div className="ply_name">sumatra</div>
+                  <div className="ply_wood">teak</div>
+                </div>
+              </div>
+              <Link href={"https://www.instagram.com/royalcrownlaminates/"} target="_blank">
+              <Image
+                src={img4}
+                alt="ply"
+              />
+              </Link>
+            </div>
+            {/* <div className="ply_item top1">
               <div className="ply_info">
                 <div className="info_left">
                   <p className="num">583</p>
@@ -180,8 +266,8 @@ const PlyMarquee = () => {
                 // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
-            </div>
-            <div className="ply_item bottom1">
+            </div> */}
+            {/* <div className="ply_item bottom1">
               <div className="ply_info">
                 <div className="info_left">
                   <p className="num">6029</p>
@@ -197,8 +283,8 @@ const PlyMarquee = () => {
                 // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
-            </div>
-            <div className="ply_item top1">
+            </div> */}
+            {/* <div className="ply_item top1">
               <div className="ply_info">
                 <div className="info_left">
                   <p className="num">6031</p>
@@ -214,8 +300,8 @@ const PlyMarquee = () => {
                 // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
-            </div>
-            <div className="ply_item bottom1">
+            </div> */}
+            {/* <div className="ply_item bottom1">
               <div className="ply_info">
                 <div className="info_left">
                   <p className="num">6019</p>
@@ -231,9 +317,9 @@ const PlyMarquee = () => {
                 // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
-            </div>
+            </div> */}
             {/*  */}
-            <div className="ply_item top1">
+            {/* <div className="ply_item top1">
               <div className="ply_info">
                 <div className="info_left">
                   <p className="num">691x</p>
@@ -249,8 +335,8 @@ const PlyMarquee = () => {
                 // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
-            </div>
-            <div className="ply_item bottom1">
+            </div> */}
+            {/* <div className="ply_item bottom1">
               <div className="ply_info">
                 <div className="info_left">
                   <p className="num">6025</p>
@@ -258,17 +344,15 @@ const PlyMarquee = () => {
                 </div>
                 <div className="info_right">
                   <div className="ply_name">naulo</div>
-                  {/* <div className="ply_wood"></div> */}
                 </div>
               </div>
               <Image
                 src={img22}
-                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
-            </div>
+            </div> */}
             {/*  */}
-            <div className="ply_item top1">
+            {/* <div className="ply_item top1">
               <div className="ply_info">
                 <div className="info_left">
                   <p className="num">6026</p>
@@ -276,16 +360,14 @@ const PlyMarquee = () => {
                 </div>
                 <div className="info_right">
                   <div className="ply_name">naulo</div>
-                  {/* <div className="ply_wood">true wood</div> */}
                 </div>
               </div>
               <Image
                 src={img23}
-                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
-            </div>
-            <div className="ply_item bottom1">
+            </div> */}
+            {/* <div className="ply_item bottom1">
               <div className="ply_info">
                 <div className="info_left">
                   <p className="num">6017</p>
@@ -301,10 +383,10 @@ const PlyMarquee = () => {
                 // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
-            </div>
+            </div> */}
 
             {/*  */}
-            <div className="ply_item top1">
+            {/* <div className="ply_item top1">
               <div className="ply_info">
                 <div className="info_left">
                   <p className="num">6018</p>
@@ -320,8 +402,8 @@ const PlyMarquee = () => {
                 // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
-            </div>
-            <div className="ply_item bottom1">
+            </div> */}
+            {/* <div className="ply_item bottom1">
               <div className="ply_info">
                 <div className="info_left">
                   <p className="num">574</p>
@@ -334,12 +416,11 @@ const PlyMarquee = () => {
               </div>
               <Image
                 src={img11}
-                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
-            </div>
+            </div> */}
             {/*  */}
-            <div className="ply_item top1">
+            {/* <div className="ply_item top1">
               <div className="ply_info">
                 <div className="info_left">
                   <p className="num">575</p>
@@ -364,18 +445,15 @@ const PlyMarquee = () => {
                 </div>
                 <div className="info_right">
                   <div className="ply_name">harea</div>
-                  {/* <div className="ply_wood">true wood</div> */}
                 </div>
               </div>
               <Image
                 src={img4}
-                // layout="intrinsic"
-                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
-            </div>
+            </div> */}
             {/*  */}
-            <div className="ply_item top1">
+            {/* <div className="ply_item top1">
               <div className="ply_info">
                 <div className="info_left">
                   <p className="num">5010</p>
@@ -383,12 +461,10 @@ const PlyMarquee = () => {
                 </div>
                 <div className="info_right">
                   <div className="ply_name">harea</div>
-                  {/* <div className="ply_wood">true wood</div> */}
                 </div>
               </div>
               <Image
                 src={img5}
-                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
             </div>
@@ -400,17 +476,15 @@ const PlyMarquee = () => {
                 </div>
                 <div className="info_right">
                   <div className="ply_name">tariq</div>
-                  {/* <div className="ply_wood">true wood</div> */}
                 </div>
               </div>
               <Image
                 src={img17}
-                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
-            </div>
+            </div> */}
             {/*  */}
-            <div className="ply_item top1">
+            {/* <div className="ply_item top1">
               <div className="ply_info">
                 <div className="info_left">
                   <p className="num">4005</p>
@@ -418,16 +492,14 @@ const PlyMarquee = () => {
                 </div>
                 <div className="info_right">
                   <div className="ply_name">tariq</div>
-                  {/* <div className="ply_wood">true wood</div> */}
                 </div>
               </div>
               <Image
                 src={img18}
-                // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
-            </div>
-            <div className="ply_item bottom1">
+            </div> */}
+            {/* <div className="ply_item bottom1">
               <div className="ply_info">
                 <div className="info_left">
                   <p className="num">4006</p>
@@ -443,8 +515,8 @@ const PlyMarquee = () => {
                 // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
-            </div>
-            <div className="ply_item top1">
+            </div> */}
+            {/* <div className="ply_item top1">
               <div className="ply_info">
                 <div className="info_left">
                   <p className="num">4001</p>
@@ -460,8 +532,8 @@ const PlyMarquee = () => {
                 // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
-            </div>
-            <div className="ply_item bottom1">
+            </div> */}
+            {/* <div className="ply_item bottom1">
               <div className="ply_info">
                 <div className="info_left">
                   <p className="num">664x</p>
@@ -477,9 +549,9 @@ const PlyMarquee = () => {
                 // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
-            </div>
+            </div> */}
             {/*  */}
-            <div className="ply_item top1">
+            {/* <div className="ply_item top1">
               <div className="ply_info">
                 <div className="info_left">
                   <p className="num">669x</p>
@@ -512,7 +584,7 @@ const PlyMarquee = () => {
                 // loading="lazy" // This will lazy load images that aren't critical
                 alt="ply"
               />
-            </div>
+            </div> */}
           </div>
         </Marquee>
       </div>
