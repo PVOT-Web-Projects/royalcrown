@@ -31,9 +31,10 @@ const SlidesContent = ({ slide }) => (
     <div className="SecondSliderText">
       <div className="SecondSliderTextInner">
         <div className="ProductCategoryText">
-          <p className="ProductCategoryText1">product name</p>
+          <p className="ProductCategoryText1">design code</p>
           <p className="ProductCategoryText2">
-            {slide.attributes[7].terms[0].name}
+            {/* {slide.attributes[8].terms[0].name} */}
+            {slide.attributes[8]?.terms[0]?.name || "No data found"}
           </p>
         </div>
       </div>
