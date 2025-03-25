@@ -301,6 +301,12 @@
   left: 40%;
   bottom: 100px;
   z-index: 99;
+  @media (max-width: 768px) {
+    left: -35%;
+  }
+  @media (max-height: 820px) {
+    bottom: 150px !important;
+  }
   @media(min-width: 1800px){
     left: 30%;
   }
@@ -322,8 +328,9 @@
     bottom: 108px;
     left: 40%;
   }
-  @media (max-width: 768px) {
-    left: -35%;
+
+  @media(max-height: 780px){
+    bottom: 150px;
   }
   @media(max-height: 750px){
     bottom: 82px;
