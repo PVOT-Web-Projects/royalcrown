@@ -247,7 +247,7 @@ const ScrollAnimation = () => {
       // ScrollTrigger for textCircular
           // ScrollTrigger for border-radius animation
     ScrollTrigger.create({
-      trigger: section,
+      trigger: section, 
       start: "top center",
       end: "bottom center",
       scrub: true, // Smooth scroll animation

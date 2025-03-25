@@ -610,9 +610,9 @@ const Page = () => {
                         <div className="AnchorTag">Know More</div>
                       </div>
                       {/* Design Code Container */}
-                      {/* <div className="designCodeContainer">
+                      <div className="designCodeContainer">
                         <p className="designCode">{designCode}</p>
-                      </div> */}
+                      </div>
                     </div>
                   );
                 })
