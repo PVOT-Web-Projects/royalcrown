@@ -218,18 +218,23 @@
     }
     
     .DownloadOuter {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: -80px;
+      position: absolute;
+    bottom: 5px;
+    right: 5px;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
+      // margin-top: -80px;
+      // margin-top: -55px;
+      // margin-right: -245px;
     }
     
     .DownloadInner {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 60px; 
-      height: 60px; 
+      width: 40px; 
+      height: 40px; 
       background-color: #5B3524; 
       border-radius: 50%; 
       cursor: pointer;
@@ -239,7 +244,7 @@
     
     .DownloadSvg {
       width: 30px; 
-      height: 30px; 
+      height: 20px; 
       display: block;
       fill: white;
     }
