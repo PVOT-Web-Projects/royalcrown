@@ -175,6 +175,28 @@
     }
   }
 }
+.searchInput{
+  border: none;
+  outline: none;
+  background: transparent;
+  border-bottom: 1px solid #5b3524;
+  font-family: "made_mirage_regular";
+  font-size: 15px;
+  color: #5b3524;
+}
+.noMatchFound {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 18px;
+  color: #5b3524;
+  margin-top: 20px;
+  padding: 20px;
+}
+
 
 .products-tabs .tab-item.active {
   background-color: $white;
@@ -720,6 +742,16 @@
       transform: translateY(0); /* Move to final position */
     }
   }
+}
+
+.designCodeContainer {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  background-color: #5b3524;
+  color: white;
+  padding: 5px 10px;
+  font-size: 14px;
 }
 .aboutUsProductSvg {
   padding: 20px 0 0 0;
