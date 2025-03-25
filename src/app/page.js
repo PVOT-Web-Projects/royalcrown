@@ -24,7 +24,7 @@ import { AnimatePresence } from "framer-motion";
 import Preloader from "@/components/preloader";
 import SliderNew from "@/components/SliderNew/SliderNew";
 import ScrollAnimationMobile from "@/components/HomeSliderMobile/page";
-
+// import CircularCarouselSlider from "@/components/circullarslider/page";
 const HomeBanner = dynamic(() => import("@/components/Home_page_Banner/page"));
 const HomeBanner1 = dynamic(() => import("@/components/Home_page_Banner/page2"));
 export default function Home() {
@@ -105,7 +105,7 @@ export default function Home() {
         <ScrollAnimationMobile />
         </div>
         <HomeHeroSection />
-        
+        {/* <CircularCarouselSlider /> */}
         <SliderNew />
         <Home_Sec />
         <NewRevealText paragraph={paragraph} />
