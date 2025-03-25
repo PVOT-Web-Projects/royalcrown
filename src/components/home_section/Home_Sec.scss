@@ -12,6 +12,7 @@
         // padding: 0px 50px 40px;
         align-items: center;
         justify-content: space-between;
+
         
         @media(min-width: 1600px){
             justify-content: center;
@@ -24,6 +25,9 @@
             flex-direction: column;
             gap: 0rem;
              padding-top: 2rem;
+        }
+        @media(max-width: 575px){
+            margin-top: -8rem;
         }
 
         .ImageDivHome {
