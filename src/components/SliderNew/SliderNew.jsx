@@ -150,7 +150,7 @@ const Slider = () => {
         {slides.map((item, index) => (
           <div
             key={index}
-            className="item"
+            className="itemone"
             style={{ backgroundImage: `url(${item.image})` }}
             // onClick={handleSlideClick}
           >
@@ -159,7 +159,7 @@ const Slider = () => {
               <div className="des">{item.description}</div>
               {/* <a className="button-content" href={item.url}>Read more</a> */}
               <Link href={item.url} className="yello_btnoNe">
-              <span className="button-content">Read More</span>
+              <span className="button-content-slide">Read More</span>
                 {/* <span className="button-content">{`GO TO ${slide.btnName}`}</span> */}
               </Link>
             </div>

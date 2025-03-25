@@ -25,12 +25,15 @@
 #slide {
   width: max-content;
   position: relative;
-  height: 700px;
+  height: 100%;
   width: 100%;
   display: inline-block;
+  @media(max-width: 575px){
+    height: 85%;
+  }
 }
 
-.item {
+.itemone {
   width: 200px;
   height: 300px;
   background-position: 50% 50%;
@@ -39,12 +42,14 @@
   background-size: cover;
   position: absolute;
   z-index: 1;
-  top: 25%;
+  top: 30%;
   transform: translate(0, 0%);
   border-radius: 20px;
   box-shadow: 0 30px 50px #505050;
   width: 15%;
-
+@media(min-width: 1600px){
+  width: 240px;
+}
   @media (max-width: 1024px) {
     height: 250px;
   }
@@ -107,7 +112,9 @@
     color: #eee;
     transform: translate(0, -50%);
     display: none;
-    font-family: system-ui;
+    @media(max-width: 1199px){
+      left: 0px;
+    }
   }
   .yello_btnoNe {
     position: relative;
@@ -133,7 +140,7 @@
     @media (max-width: 575px) {
       // padding: 0 1rem;
     }
-    .button-content {
+    .button-content-slide {
       font-size: 25px;
       font-weight: 550;
       position: relative;
@@ -270,27 +277,8 @@
   }
 }
 
-// .buttons {
-//   position: absolute;
-//   bottom: 30px;
-//   z-index: 222222;
-//   text-align: center;
-//   width: 100%;
 
-//   button {
-//     width: 50px;
-//     height: 50px;
-//     border-radius: 50%;
-//     border: 1px solid #555;
-//     transition: 0.5s;
-
-//     &:hover {
-//       background-color: #bac383;
-//     }
-//   }
-// }
-
-.button-content {
+.button-content-slide {
   font-size: 25px;
   font-weight: 550;
   position: relative;
@@ -317,11 +305,11 @@
     left: 30%;
   }
   @media(min-width: 1450px){
-    bottom: 290px;
+    bottom: 220px;
     left: 43%;
   }
   @media(max-width: 1449px){
-    bottom: 320px;
+    bottom: 220px;
     left: 43%;
   }
   @media(max-width: 1300px){
@@ -331,11 +319,11 @@
   @media (max-width: 1199px) {
     // bottom: 130px;
     // left: 7%;
-    bottom: 200px;
+    bottom: 108px;
     left: 40%;
   }
   @media (max-width: 768px) {
-    left: -38%;
+    left: -35%;
   }
   @media(max-height: 750px){
     bottom: 82px;
@@ -346,7 +334,11 @@
   }
   @media (max-width: 575px) {
     left: -34%;
-    bottom: 86px;
+    bottom: 170px;
+  }
+  @media (max-width: 540px) {
+    left: -34%;
+    bottom: 150px;
   }
   button {
     width: 45px;
@@ -380,11 +372,11 @@
 }
 
 @media (max-width: 992px) {
-  #slide {
-    height: 575px;
-  }
+  // #slide {
+  //   height: 575px;
+  // }
 
-  .item {
+  .itemone {
     height: 178px;
     top: 58%;
 
@@ -395,7 +387,7 @@
 }
 
 @media (max-width: 768px) {
-  .item {
+  .itemone {
     width: 20%;
 
     &:nth-child(3) {
@@ -434,7 +426,7 @@
 
 
 @media (max-width: 550px) {
-  .item {
+  .itemone {
     width: 31%;
     height: 30%;
 
@@ -460,16 +452,10 @@
     }
   }
   
-
-  // .buttons {
-  //   padding-left: 15px;
-  //   text-align: left;
-  //   padding-right: 15px;
-  // }
 } 
 
 @media (max-width: 375px) {
-  .item {
+  .itemone {
     width: 31%;
     height: 25%;
 
@@ -488,7 +474,7 @@
 }
 
 @media (max-width: 320px) {
-  .item {
+  .itemone {
     width: 31%;
     height: 25%;
 
