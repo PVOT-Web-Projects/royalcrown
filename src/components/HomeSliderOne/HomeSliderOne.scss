@@ -24,17 +24,17 @@
   height: 100%;
 }
 
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: auto; // Allow slides to have width based on content
-  cursor: grab; // Shows grab cursor for drag functionality
-}
+// .swiper-slide {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: auto; // Allow slides to have width based on content
+//   cursor: grab; // Shows grab cursor for drag functionality
+// }
 
-.swiper-slide:active {
-  cursor: grabbing;
-}
+// .swiper-slide:active {
+//   cursor: grabbing;
+// }
 
 // ScrollTextSection
 .ScrollTextSection {
