@@ -1133,7 +1133,7 @@ const HeaderCopyOne = () => {
                 </div>
                 <div className="SocialIconss">
                 <div className="bottom">
-              <ul className="SocialIconsNav">
+              <div className="SocialIconsNav">
                 <li>
                   <Link href={"https://www.facebook.com/royalcrownlaminates/"} target="_blank">
                     <Image src={fb} alt="fb" />
@@ -1159,7 +1159,7 @@ const HeaderCopyOne = () => {
                     <Image src={wa} alt="wa"/> 
                   </Link>
                 </li>
-              </ul>
+              </div>
             </div>
                 </div>
               </div>
