@@ -1,35 +1,46 @@
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { Draggable } from "gsap/Draggable";
+import "./circularSlider.scss";
 
-import React, { useEffect } from 'react';
-import { gsap } from 'gsap';
-import { Draggable } from 'gsap/Draggable';
-// import 'gsap/InertiaPlugin';
-import "./circularSlider.scss"
+const images = [
+  "https://vanras.humbeestudio.xyz/images/OutdoorNeww.png",
+  "https://vanras.humbeestudio.xyz/images/KitchenNeww.png",
+  "https://vanras.humbeestudio.xyz/images/LivingroomNeww.png",
+  "https://vanras.humbeestudio.xyz/images/BathroomNeww.png",
+  "https://vanras.humbeestudio.xyz/images/BedroomSpaceNeww.png",
+  "https://vanras.humbeestudio.xyz/images/OutdoorNeww.png",
+  "https://vanras.humbeestudio.xyz/images/LivingroomNeww.png",
+  "https://vanras.humbeestudio.xyz/images/BathroomNeww.png",
+];
+
 const CircularCarouselSlider = () => {
+  const sliderRef = useRef(null);
+
   useEffect(() => {
-    // Register GSAP plugins
     gsap.registerPlugin(Draggable);
 
-    // Initialize Draggable on the carousel slider
-    Draggable.create(".circular-carousel-slider", {
-      type: "rotation",
-      inertia: true,
-      minimumMovement: 0,
-      snap: function (endValue) {
-        const step = 10;
-        return Math.round(endValue / step) * step;
-      }
-    });
+    if (sliderRef.current) {
+      Draggable.create(sliderRef.current, {
+        type: "rotation",
+        inertia: true,
+        snap: (endValue) => Math.round(endValue / 10) * 10, // Snap every 10 degrees
+      });
+    }
   }, []);
 
   return (
-    <div className='CircularSlider'>
-      <div className="circular-carousel-slider">
-      {[...Array(36)].map((_, i) => (
-        <div className="slide-item" key={i}>
-          <div></div>
-        </div>
-      ))}
-    </div>
+    <div className="circular-slider-container">
+      <div className="circular-carousel-slider" ref={sliderRef}>
+        {[...Array(36)].map((_, i) => (
+          <div className="slide-item" key={i}>
+            <div className="card">
+              {/* Adding offset to avoid duplicate first & last image */}
+              <img src={images[(i + 2) % images.length]} alt={`Slide ${i + 1}`} />
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
