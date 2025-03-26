@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { opacity, slideUp } from "./anime";
 import Image from "next/image";
+// import logo from "@/images/preloader_img.png";
 import logo from "@/images/new_crown_logo.png";
 import styles from "./style.module.css";
 
