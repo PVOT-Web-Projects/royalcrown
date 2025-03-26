@@ -242,7 +242,7 @@ export default function ProductInfoSlider() {
                           alt={`carousel_image_${idx}`}
                           className="third_section_image1"
                           width={300}
-                          height={1000}
+                          height={1362}
                           onClick={() => openModal(image.src)}
                         />
                       </SwiperSlide>

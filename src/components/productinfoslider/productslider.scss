@@ -210,7 +210,11 @@
       }
 
       @media (max-width: 768px) {
-        height: auto;
+        height: 80vh;
+        margin: 0 auto;
+      }
+      @media (max-width: 575px) {
+        height: 60vh;
         margin: 0 auto;
       }
     }
