@@ -565,6 +565,8 @@ header {
         margin-top: auto;
         .SocialIconsNav {
           display: flex;
+          justify-content: space-around;
+          align-items: center;
         }
       }
       .bottom {
