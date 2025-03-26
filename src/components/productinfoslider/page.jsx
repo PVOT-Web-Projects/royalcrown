@@ -5,6 +5,11 @@ import "./productslider.scss";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Skeleton, Grid } from "@mui/material";
 import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
+import { Navigation, Autoplay, FreeMode } from "swiper/modules";
 const SlidesContent = ({ slide }) => (
   <div className="Carousel_text_maincontent">
     <div className="FirstSSliderText">
@@ -111,6 +116,7 @@ export default function ProductInfoSlider() {
   const [loading, setLoading] = useState(true); // Initially, set loading to t
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImage, setModalImage] = useState(null);
+  const [activeSlideIndex, setActiveSlideIndex] = useState(0); // Track active slide index
 
   const openModal = (imageSrc) => {
     setModalImage(imageSrc);
@@ -143,27 +149,49 @@ export default function ProductInfoSlider() {
   };
 
   const filterImages = (...images) => images.filter((image) => image);
-  const handleDownload = async (imageUrl) => {
-    try {
-      // Fetch the image as a blob
-      const response = await fetch(imageUrl);
-      const blob = await response.blob();
+  const handleDownload = async () => {
+    const activeImage = slidesData[0]?.images[activeSlideIndex]?.src; // Get the current active image URL
+    if (!activeImage) {
+      console.error("No image found to download.");
+      return;
+    }
 
-      // Create a temporary URL for the image blob
+    try {
+      const response = await fetch(activeImage);
+      const blob = await response.blob();
       const blobUrl = URL.createObjectURL(blob);
 
-      // Create a temporary anchor element to trigger the download
       const link = document.createElement("a");
       link.href = blobUrl;
-      link.download = imageUrl.split("/").pop(); // Use the image file name for the download
+      link.download = activeImage.split("/").pop(); 
       link.click();
 
-      // Cleanup the created object URL
       URL.revokeObjectURL(blobUrl);
     } catch (error) {
       console.error("Error downloading image:", error);
     }
   };
+  // const handleDownload = async (imageUrl) => {
+  //   try {
+  //     // Fetch the image as a blob
+  //     const response = await fetch(imageUrl);
+  //     const blob = await response.blob();
+
+  //     // Create a temporary URL for the image blob
+  //     const blobUrl = URL.createObjectURL(blob);
+
+  //     // Create a temporary anchor element to trigger the download
+  //     const link = document.createElement("a");
+  //     link.href = blobUrl;
+  //     link.download = imageUrl.split("/").pop(); // Use the image file name for the download
+  //     link.click();
+
+  //     // Cleanup the created object URL
+  //     URL.revokeObjectURL(blobUrl);
+  //   } catch (error) {
+  //     console.error("Error downloading image:", error);
+  //   }
+  // };
 
   return (
     <div className="ProductInfoSliderMain">
@@ -191,14 +219,77 @@ export default function ProductInfoSlider() {
             {slidesData.length > 0 ? (
               slidesData.map((slide, index) => (
                 <div key={index} className="third_section_content">
-                  <Image
+                  <Swiper
+                    modules={[Navigation, Autoplay, FreeMode]} // Import Navigation module
+                    spaceBetween={10} // Space between slides
+                    slidesPerView={1} // Show one slide at a time
+                    speed={1500}
+                    loop={false} // Infinite loop
+                    autoplay={{ delay: 5000 }} // Auto slide every 3 seconds
+                    // navigation={true} // Navigation arrows
+                    navigation={{
+                      nextEl: ".swiper-button-next-product",
+                      prevEl: ".swiper-button-prev-product",
+                    }}
+                    onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)} // Track active slide index
+                  >
+                    {slide.images.map((image, idx) => (
+                      <SwiperSlide key={idx}>
+                        <Image
+                          src={image.src}
+                          alt={`carousel_image_${idx}`}
+                          className="third_section_image1"
+                          width={300}
+                          height={1000}
+                          onClick={() => openModal(image.src)}
+                        />
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                  <div className="swiper-button-next-product">
+                    <svg
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                      stroke-linejoin="round"
+                      stroke-miterlimit="2"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="30"
+                      height="30"
+                    >
+                      <path
+                        d="m14.523 18.787s4.501-4.505 6.255-6.26c.146-.146.219-.338.219-.53s-.073-.383-.219-.53c-1.753-1.754-6.255-6.258-6.255-6.258-.144-.145-.334-.217-.524-.217-.193 0-.385.074-.532.221-.293.292-.295.766-.004 1.056l4.978 4.978h-14.692c-.414 0-.75.336-.75.75s.336.75.75.75h14.692l-4.979 4.979c-.289.289-.286.762.006 1.054.148.148.341.222.533.222.19 0 .378-.072.522-.215z"
+                        fill-rule="nonzero"
+                        fill="#5B3524"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div className="swiper-button-prev-product">
+                    <svg
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                      stroke-linejoin="round"
+                      stroke-miterlimit="2"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="30"
+                      width="30"
+                    >
+                      <path
+                        d="m9.474 5.209s-4.501 4.505-6.254 6.259c-.147.146-.22.338-.22.53s.073.384.22.53c1.752 1.754 6.252 6.257 6.252 6.257.145.145.336.217.527.217.191-.001.383-.074.53-.221.293-.293.294-.766.004-1.057l-4.976-4.976h14.692c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-14.692l4.978-4.979c.289-.289.287-.761-.006-1.054-.147-.147-.339-.221-.53-.221-.191-.001-.38.071-.525.215z"
+                        fill-rule="nonzero"
+                        fill="#5B3524"
+                      ></path>
+                    </svg>
+                  </div>
+                  {/* <Image
                     src={slide.images[0].src}
                     alt="carousel_image"
                     className="third_section_image1"
                     width={300}
                     height={1000}
                     onClick={() => openModal(slide.images[0].src)}
-                  />
+                  /> */}
                   <div className="DownloadButton">
                     <div className="DownloadOuter">
                       <div
