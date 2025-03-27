@@ -56,11 +56,8 @@ const Slider = () => {
   const startTimer = () => {
     clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
-      if (slideRef.current) {
-        const items = slideRef.current.querySelectorAll('.item');
-        slideRef.current.appendChild(items[0]);
-      }
-    },7000);
+      handleNext(); // Call handleNext instead of modifying DOM directly
+    }, 7000);
   };
 
   useEffect(() => {
@@ -95,37 +92,35 @@ const Slider = () => {
   
   // Function for Next button click
   const handleNext = () => {
+    clearInterval(intervalRef.current); // Stop the timer before the transition
     const items = slideRef.current.children;
     const firstItem = items[0];
-    // Animate the first card out to the left (off-screen)
+  
     gsap.to(firstItem, {
       x: -200,
       opacity: 0,
       duration: 0.5,
       onComplete: () => {
-        // Move the first card to the end
         slideRef.current.appendChild(firstItem);
-        // Reset its position and opacity to prepare for sliding back in from the right
         gsap.set(firstItem, { x: 200, opacity: 0 });
-        // Animate it back into view smoothly
         gsap.to(firstItem, { x: 0, opacity: 1, duration: 0.5 });
-        updateBrightness(); // Apply brightness logic after shifting items
+        updateBrightness();
+        startTimer(); // Restart the timer after transition
       },
     });
   };
 
   // Function for Previous button click
   const handlePrev = () => {
+    clearInterval(intervalRef.current);
     const items = slideRef.current.children;
-    const lastIndex = items.length - 1;
-    const lastItem = items[lastIndex];
-    // Set the last card to the left (off-screen)
-    gsap.set(lastItem, { x: -200, opacity: 0, y: 0 });
-    // Move the last card to the start
+    const lastItem = items[items.length - 1];
+  
+    gsap.set(lastItem, { x: -200, opacity: 0 });
     slideRef.current.prepend(lastItem);
-    // Animate it into view
     gsap.to(lastItem, { x: 0, opacity: 1, duration: 0.5 });
-    updateBrightness(); // Apply brightness logic after shifting items
+    updateBrightness();
+    startTimer(); // Restart the timer after transition
   };
 
   // const handlePrev = () => {
