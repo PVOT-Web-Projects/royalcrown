@@ -149,49 +149,49 @@ export default function ProductInfoSlider() {
   };
 
   const filterImages = (...images) => images.filter((image) => image);
-  const handleDownload = async () => {
-    const activeImage = slidesData[0]?.images[activeSlideIndex]?.src; // Get the current active image URL
-    if (!activeImage) {
-      console.error("No image found to download.");
-      return;
-    }
+  // const handleDownload = async () => {
+  //   const activeImage = slidesData[0]?.images[activeSlideIndex]?.src; // Get the current active image URL
+  //   if (!activeImage) {
+  //     console.error("No image found to download.");
+  //     return;
+  //   }
 
-    try {
-      const response = await fetch(activeImage);
-      const blob = await response.blob();
-      const blobUrl = URL.createObjectURL(blob);
-
-      const link = document.createElement("a");
-      link.href = blobUrl;
-      link.download = activeImage.split("/").pop();
-      link.click();
-
-      URL.revokeObjectURL(blobUrl);
-    } catch (error) {
-      console.error("Error downloading image:", error);
-    }
-  };
-  // const handleDownload = async (imageUrl) => {
   //   try {
-  //     // Fetch the image as a blob
-  //     const response = await fetch(imageUrl);
+  //     const response = await fetch(activeImage);
   //     const blob = await response.blob();
-
-  //     // Create a temporary URL for the image blob
   //     const blobUrl = URL.createObjectURL(blob);
 
-  //     // Create a temporary anchor element to trigger the download
   //     const link = document.createElement("a");
   //     link.href = blobUrl;
-  //     link.download = imageUrl.split("/").pop(); // Use the image file name for the download
+  //     link.download = activeImage.split("/").pop();
   //     link.click();
 
-  //     // Cleanup the created object URL
   //     URL.revokeObjectURL(blobUrl);
   //   } catch (error) {
   //     console.error("Error downloading image:", error);
   //   }
   // };
+  const handleDownload = async (imageUrl) => {
+    try {
+      // Fetch the image as a blob
+      const response = await fetch(imageUrl);
+      const blob = await response.blob();
+
+      // Create a temporary URL for the image blob
+      const blobUrl = URL.createObjectURL(blob);
+
+      // Create a temporary anchor element to trigger the download
+      const link = document.createElement("a");
+      link.href = blobUrl;
+      link.download = imageUrl.split("/").pop(); // Use the image file name for the download
+      link.click();
+
+      // Cleanup the created object URL
+      URL.revokeObjectURL(blobUrl);
+    } catch (error) {
+      console.error("Error downloading image:", error);
+    }
+  };
 
   return (
     <div className="ProductInfoSliderMain">
