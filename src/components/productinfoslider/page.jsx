@@ -287,7 +287,11 @@ export default function ProductInfoSlider() {
                     <div className="DownloadOuter">
                       <div
                         className="DownloadInner"
-                        onClick={() => handleDownload(slide.images[0].src)}
+                        onClick={() =>
+                          // Check the number of images and download accordingly
+                          handleDownload(slide.images.length > 1 ? slide.images[1].src : slide.images[0].src)
+                        }
+                        // onClick={() => handleDownload(slide.images[1].src)}
                       >
                         <svg
                           className="DownloadSvg"
