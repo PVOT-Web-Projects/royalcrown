@@ -31,14 +31,7 @@ const CircularCarouselSlider = () => {
   const rotationRef = useRef(0);
   const lastScrollY = useRef(0);  // Initialize with 0 to avoid the ReferenceError
   const [scrollRange, setScrollRange] = useState({ start: 0, end: 0 });
-  // const videoUrls = [
-  //   "https://vanras.humbeestudio.xyz/videos/Outdoor.mp4",
-  //   "https://vanras.humbeestudio.xyz/videos/Kitchen.mp4",
-  //   "https://vanras.humbeestudio.xyz/videos/Living%20Space.mp4",
-  //   "https://vanras.humbeestudio.xyz/videos/Bathroom.mp4",
-  //   "https://vanras.humbeestudio.xyz/videos/Bedroom.mp4",
-  // ];
-  // Mapping text to video URLs
+  
 const videoUrls = {
   "Outdoor Space": "https://vanras.humbeestudio.xyz/videos/Outdoor.mp4",
   "Modern Kitchen": "https://vanras.humbeestudio.xyz/videos/Kitchen.mp4",
@@ -111,7 +104,7 @@ const videoUrls = {
           const slideText = slides[i % slides.length].text;
           return (
             <div className="slide-item" key={i}
-            //  onClick={() => handleCardClick(slideText)}
+             onClick={() => handleCardClick(slideText)}
              >
               <div className="card">
                 <img src={slides[i % slides.length].image} alt={`Slide ${i + 1}`} />
@@ -121,7 +114,7 @@ const videoUrls = {
           );
         })}
       </div>
-      {/* {videoUrl && (
+      {videoUrl && (
         <div className="video-modal">
           <div className="video-content">
             <div className="VideoOneContainer">
@@ -137,7 +130,7 @@ const videoUrls = {
                 )}
                 <video
                   src={videoUrl}
-                  controls={false} // Disable controls (pause, fullscreen, etc.)
+                  controls={false} 
                   autoPlay
                   playsInline
                   className="videoOneVid"
@@ -157,7 +150,7 @@ const videoUrls = {
             </div>
           </div>
         </div>
-      )} */}
+      )}
     </div>
     
   );

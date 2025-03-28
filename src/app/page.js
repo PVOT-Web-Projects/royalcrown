@@ -105,7 +105,7 @@ export default function Home() {
         <ScrollAnimationMobile />
         </div>
         <HomeHeroSection />
-        {/* <CircularCarouselSlider /> */}
+        <CircularCarouselSlider />
         <SliderNew />
         <Home_Sec />
         <NewRevealText paragraph={paragraph} />
