@@ -60,7 +60,7 @@ const videoUrls = {
     if (typeof window !== "undefined") {  // Check if we are in the browser
       // Set scroll range dynamically based on viewport height
       setScrollRange({
-        start: window.innerHeight * 2.5, // 180vh
+        start: window.innerHeight * 0.8, // 180vh
         end: window.innerHeight * 3.3, // 240vh
       });
 
