@@ -98,15 +98,17 @@ export default function Home() {
         {/* <NewThreeDSlider /> */}
         {/* <ThreeSlider /> */}
         {/* <HomeSliderOne /> */}
-        
+
         {/* <div className="HomeDesktop">
         <HomeSliderOne /> 
         </div>
         <div className="HomeMobile">
         <ScrollAnimationMobile />
+        
         </div> */}
-        <HomeHeroSection />
+        
         <CircularCarouselSlider />
+        <HomeHeroSection />
         <SliderNew />
         <Home_Sec />
         <NewRevealText paragraph={paragraph} />
