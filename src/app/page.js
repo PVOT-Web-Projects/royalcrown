@@ -98,12 +98,13 @@ export default function Home() {
         {/* <NewThreeDSlider /> */}
         {/* <ThreeSlider /> */}
         {/* <HomeSliderOne /> */}
-        <div className="HomeDesktop">
+        
+        {/* <div className="HomeDesktop">
         <HomeSliderOne /> 
         </div>
         <div className="HomeMobile">
         <ScrollAnimationMobile />
-        </div>
+        </div> */}
         <HomeHeroSection />
         <CircularCarouselSlider />
         <SliderNew />
