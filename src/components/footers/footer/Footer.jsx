@@ -72,7 +72,7 @@ const Footer = () => {
         </nav>
         <div>
         <Image src={border} alt="border" className="FooteriMg"/>
-        <div className="copyright">© 2025 All Rights Reserved</div>
+        <div className="copyright">© 2025 All Rights Reserveds</div>
         </div>
       </footer>
     )

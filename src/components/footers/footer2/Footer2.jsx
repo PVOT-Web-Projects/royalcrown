@@ -16,21 +16,22 @@ import li from "@/images/svgLogos/Linkedin.svg";
 import PageTransition from "@/components/pageTransition/PageTransition";
 import border from "@/images/svgLogos/FooterBorder.svg";
 import { usePathname } from "next/navigation";
+import { height } from "@/components/headers/anim";
 
 const Footer2 = ({ bgColor }) => {
   const pathname = usePathname();
   console.log("path", pathname);
   // return pathname === "/" || pathname === "/store" ? null : (
-  return(
+  return (
     <footer className="footer2" style={{ backgroundColor: bgColor }}>
       <div className="wrapper">
         <div className="left">
           <div className="left_wrapper">
-          <PageTransition href={"/"}>
-                <Image src={logo} alt="logo"/>
-              </PageTransition>
+            <PageTransition href={"/"}>
+              <Image src={logo} alt="logo" />
+            </PageTransition>
             <div className="footer_logo">
-             <Form3 />
+              <Form3 />
             </div>
           </div>
         </div>
@@ -89,7 +90,7 @@ const Footer2 = ({ bgColor }) => {
               <div className="col col2">
                 <div className="title">Resources</div>
                 <ul>
-                {/* <li>
+                  {/* <li>
                     <LinkHover
                       url={"/category"}
                       text={"Category"}
@@ -133,14 +134,12 @@ const Footer2 = ({ bgColor }) => {
                       HoverBtn={"#5b3524"}
                     />
                   </li>
-                  
-                 
                 </ul>
               </div>
               <div className="col col3">
                 <div className="title">Use cases </div>
                 <ul>
-                <li>
+                  <li>
                     <LinkHover
                       url={"/blogs"}
                       text={"Blogs"}
@@ -234,28 +233,34 @@ const Footer2 = ({ bgColor }) => {
             <div className="bottom">
               <ul>
                 <li>
-                  <Link href={"https://www.facebook.com/royalcrownlaminates/"} target="_blank">
+                  <Link
+                    href={"https://www.facebook.com/royalcrownlaminates/"}
+                    target="_blank"
+                  >
                     <Image src={fb} alt="fb" />
                   </Link>
                 </li>
                 <li>
-                  <Link href={"https://www.instagram.com/royalcrownlaminates/"} target="_blank">
+                  <Link
+                    href={"https://www.instagram.com/royalcrownlaminates/"}
+                    target="_blank"
+                  >
                     <Image src={ig} alt="ig" />
                   </Link>
                 </li>
                 <li>
                   <Link href={"https://www.youtube.com/"} target="_blank">
-                    <Image src={yt} alt="yt" /> 
+                    <Image src={yt} alt="yt" />
                   </Link>
                 </li>
                 <li>
                   <Link href={"https://in.linkedin.com/"} target="_blank">
                     <Image src={li} alt="li" />
-                     </Link>
+                  </Link>
                 </li>
                 <li>
                   <Link href={"https://www.whatsapp.com/"} target="_blank">
-                    <Image src={wa} alt="wa"/> 
+                    <Image src={wa} alt="wa" />
                   </Link>
                 </li>
               </ul>
@@ -263,8 +268,15 @@ const Footer2 = ({ bgColor }) => {
           </div>
         </div>
       </div>
-      <Image src={border} alt="border" className="ImageBorder"/>
-      <div className="copyright">© 2025 All Rights Reserved <span id="imageContainer"></span></div>
+      <Image src={border} alt="border" className="ImageBorder" />
+      <div className="copyright">
+        © 2025 All Rights Reserved{" "}
+        <span id="imageContainer">
+          <a href="https://pvotdesigns.com/" target="_blank">
+            <img src="/pvot_logo.png" alt="" style={{ height: "20px" }} />{" "}
+          </a>
+        </span>
+      </div>
       {/* <div className="devComp" id="image1"></div> */}
     </footer>
   );
