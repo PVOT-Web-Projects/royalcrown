@@ -601,11 +601,18 @@ const Page = () => {
                       )
                     ? "tall"
                     : "";
+                  // Get Design Code, default to "No Data Found" if not available
+                  const designCode = product.attributes[7]?.terms[0].name || "";
+                  const defaultImage =
+                    "http://vanras.humbeestudio.xyz/wp-content/uploads/2025/03/default_image.png";
 
                 return (
                   <div key={index} className={`AboutUs_product ${className}`}>
                     <Image
-                      src={product.images[0].src}
+                      src={                          product.images?.length > 0
+                        ? product.images[0].src
+                        : defaultImage
+}
                       alt={product.name}
                       className="ProductImage"
                       width={500}
@@ -639,6 +646,10 @@ const Page = () => {
                         Know More
                       </div>
                     </div>
+                      {/* Design Code Container */}
+                      <div className="designCodeContainer">
+                        <p className="designCode">{designCode}</p>
+                      </div>
                   </div>
                 );
               })}

@@ -39,7 +39,7 @@ const SlidesContent = ({ slide }) => (
           <p className="ProductCategoryText1">design code</p>
           <p className="ProductCategoryText2">
             {/* {slide.attributes[8].terms[0].name} */}
-            {slide.attributes[8]?.terms[0]?.name || "No data found"}
+            {slide.attributes[7]?.terms[0]?.name || ""}
           </p>
         </div>
       </div>
@@ -245,37 +245,44 @@ export default function ProductInfoSlider() {
                           height={1362}
                           onClick={() => openModal(image.src)}
                         />
+                        <div className="imageSizeLabel">
+                          {image.src.includes("A4") ? "A4" : "FullSheet"}
+                        </div>{" "}
                       </SwiperSlide>
                     ))}
                   </Swiper>
-                  <div className="swiper-button-next-product">
-                  <svg
-                      width="30"
-                      height="30"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      
-                    >
-                      <path fill="#5B3524" d="M4 .755l14.374 11.245-14.374 11.219.619.781 15.381-12-15.391-12-.609.755z" />
-                    </svg>
-                    
-                  </div>
-                  <div className="swiper-button-prev-product">
-                  <svg
-                      width="30"
-                      height="30"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                    >
-                      <path
-                        fill="#5B3524"
-                        d="M20 .755l-14.374 11.245 14.374 11.219-.619.781-15.381-12 15.391-12 .609.755z"
-                      />
-                    </svg>
-                  </div>
-                  {/* <Image
+                  <div className="swiper-image-bottom">
+                    <div className="swiper-button-container">
+                      <div className="swiper-button-next-product">
+                        <svg
+                          width="30"
+                          height="30"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                        >
+                          <path
+                            fill="#5B3524"
+                            d="M4 .755l14.374 11.245-14.374 11.219.619.781 15.381-12-15.391-12-.609.755z"
+                          />
+                        </svg>
+                      </div>
+                      <div className="swiper-button-prev-product">
+                        <svg
+                          width="30"
+                          height="30"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                        >
+                          <path
+                            fill="#5B3524"
+                            d="M20 .755l-14.374 11.245 14.374 11.219-.619.781-15.381-12 15.391-12 .609.755z"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                    {/* <Image
                     src={slide.images[0].src}
                     alt="carousel_image"
                     className="third_section_image1"
@@ -283,43 +290,58 @@ export default function ProductInfoSlider() {
                     height={1000}
                     onClick={() => openModal(slide.images[0].src)}
                   /> */}
-                  <div className="DownloadButton">
-                    <div className="DownloadOuter">
-                      <div
-                        className="DownloadInner"
-                        onClick={() =>
-                          // Check the number of images and download accordingly
-                          handleDownload(slide.images.length > 1 ? slide.images[1].src : slide.images[0].src)
-                        }
-                        // onClick={() => handleDownload(slide.images[1].src)}
-                      >
-                        <svg
-                          className="DownloadSvg"
-                          viewBox="0 0 24 24"
-                          fill="white"
-                          xmlns="http://www.w3.org/2000/svg"
+                    <div className="DownloadButton">
+                      <div className="DownloadOuter">
+                        <div
+                          className="DownloadInner"
+                          onClick={() => {
+                            const fullSizeImage = slide.images.find((img) =>
+                              img.src.includes("FullSheet")
+                            );
+                            handleDownload(
+                              fullSizeImage
+                                ? fullSizeImage.src
+                                : slide.images.length > 1
+                                ? slide.images[1].src
+                                : slide.images[0].src
+                            );
+                            // Check the number of images and download accordingly
+                            // handleDownload(
+                            //   slide.images.length > 1
+                            //     ? slide.images[1].src
+                            //     : slide.images[0].src
+                            // );
+                          }}
+                          // onClick={() => handleDownload(slide.images[1].src)}
                         >
-                          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                          <g
-                            id="SVGRepo_tracerCarrier"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          ></g>
-                          <g id="SVGRepo_iconCarrier">
-                            {" "}
-                            <g id="Interface / Download">
+                          <svg
+                            className="DownloadSvg"
+                            viewBox="0 0 24 24"
+                            fill="white"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g
+                              id="SVGRepo_tracerCarrier"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            ></g>
+                            <g id="SVGRepo_iconCarrier">
                               {" "}
-                              <path
-                                id="Vector"
-                                d="M6 21H18M12 3V17M12 17L17 12M12 17L7 12"
-                                stroke="#ffffff"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                              ></path>{" "}
-                            </g>{" "}
-                          </g>
-                        </svg>
+                              <g id="Interface / Download">
+                                {" "}
+                                <path
+                                  id="Vector"
+                                  d="M6 21H18M12 3V17M12 17L17 12M12 17L7 12"
+                                  stroke="#ffffff"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                ></path>{" "}
+                              </g>{" "}
+                            </g>
+                          </svg>
+                        </div>
                       </div>
                     </div>
                   </div>
