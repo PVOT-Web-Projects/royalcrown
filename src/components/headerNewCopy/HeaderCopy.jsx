@@ -50,7 +50,7 @@ const HeaderCopy = () => {
         { name: "Exterior Cladding(XCL)", url: "/exterior-cladding-laminates" },
         { name: "Interior Cladding", url: "/interior-cladding-laminates" },
         { name: "Fire Retardant", url: "/fire-retardant-laminates" },
-        // { name: "Color Core", url: "/" },
+        { name: "Color Core", url: "/color-core-compacts" },
       ],
     },
     {
@@ -495,8 +495,8 @@ const HeaderCopy = () => {
                           //   setHoveredSubSubmenuItem(null)
                           // }
                           >
-                            {/* <Link
-                              href="#"
+                            <Link
+                              href="/color-core-compacts"
                               className="SubmenuClass"
                               onClick={() => {
                                 setHoveredItem(null); // Close the main menu
@@ -505,7 +505,7 @@ const HeaderCopy = () => {
                               }}
                             >
                               Color Core
-                            </Link> */}
+                            </Link>
                           </li>
                         </ul>
                       
