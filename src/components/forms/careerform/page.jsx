@@ -51,7 +51,7 @@ const CareerForm = () => {
     },
   });
   return (
-    <div className="form-container">
+    <div className="form-container" >
       <div className="SecondFormContainer">
         <h2 className="CareerHeader">About You</h2>
         <form onSubmit={handleSubmit} className="CareerForm">

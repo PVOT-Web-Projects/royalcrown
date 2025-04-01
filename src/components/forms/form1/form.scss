@@ -24,6 +24,7 @@
   @media (max-width : 575px) {
     font-size: 18px;
     width: 100%;
+    margin-bottom: 30px;
   }
 }
 
@@ -31,7 +32,7 @@
   display: flex;
   justify-content: space-between;
   gap: 4rem;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   @media screen and (max-width:575px) {
     flex-direction: column;
     gap: 0rem;
@@ -106,6 +107,7 @@ input:-webkit-autofill:active {
 .error {
   color: red;
   font-size: 12px;
+  margin-top: 3px;
   @media screen and (max-width:575px) {
     margin:5px 0px;
   }

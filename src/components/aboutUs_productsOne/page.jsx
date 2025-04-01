@@ -196,7 +196,7 @@ const Page = () => {
   useEffect(() => {
     if (searchTerm) {
       const filtered = products.filter((product) => {
-        return product.attributes[8]?.terms[0]?.name
+        return product.attributes[7]?.terms[0]?.name
           ?.toLowerCase()
           .includes(searchTerm.toLowerCase()); // Match design code attribute
       });
