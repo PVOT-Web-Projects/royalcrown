@@ -5,6 +5,9 @@
     align-items: center;
     gap: 0rem;
     padding: 100px 0;
+    @media(max-width: 575px){
+      padding: 100px 0 50px;
+    }
     .ContactUsHearText {
       font-size: 30px;
       text-align: center;
