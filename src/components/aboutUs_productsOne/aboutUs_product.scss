@@ -183,6 +183,9 @@
   font-family: "made_mirage_regular";
   font-size: 15px;
   color: #5b3524;
+  @media(max-width: 1024px){
+    padding-bottom: 10px;
+  }
 }
 .noMatchFound {
   width: 100%;
@@ -546,6 +549,9 @@
   @media (max-width: 1056px) {
     // top: 165px;
     width: 30%;
+  }
+  @media(max-width: 1024px){
+    align-items: center;
   }
 
   @media (max-width: 575px) {
