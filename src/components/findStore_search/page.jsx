@@ -219,6 +219,12 @@ function FindStoreSearch() {
   };
 
   const toggleDropdown2 = () => {
+   // Check if state is selected before allowing to open the city dropdown
+  //  if (!selectedOption1) {
+  //   alert("Please select a state first");
+  //   event.stopPropagation(); // Prevent event propagation
+  //   return; // Don't proceed with opening the city dropdown if state is not selected
+  // }
     setIsOpen2(!isOpen2);
     if (isOpen1) setIsOpen1(false);
   };
