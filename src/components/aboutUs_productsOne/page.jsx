@@ -577,7 +577,7 @@ const Page = () => {
                       : "";
 
                   // Get Design Code, default to "No Data Found" if not available
-                  const designCode = product.attributes[7]?.terms[0].name || "";
+                  const designCode = product.attributes[8]?.terms[0].name || "";
                   const defaultImage =
                     "http://vanras.humbeestudio.xyz/wp-content/uploads/2025/03/default_image.png";
                   return (
