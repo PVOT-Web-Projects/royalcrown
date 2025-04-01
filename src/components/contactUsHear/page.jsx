@@ -80,7 +80,7 @@ const ContactUsHear = () => {
           </Link>
         </div>
       </div>
-      <div>
+      <div className="MapFrameOuter">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7343.565444953944!2d72.46514944495584!3d23.03174869031674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b9e585cfc57%3A0x833b59aeb8ec9afe!2sCrown%20Decor%20Private%20Limited!5e0!3m2!1sen!2sin!4v1726645230117!5m2!1sen!2sin"
           className="MapFrame"
