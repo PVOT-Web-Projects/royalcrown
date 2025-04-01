@@ -162,7 +162,8 @@ input:-webkit-autofill:active {
         }
         .ApplyBtn .yello_btn {
           @media(max-width: 475px){
-            padding: 0 2rem;
+            padding: 0 1rem;
+            height: 2.5rem;
           }
         }
         .ApplyBtn .yello_btn .button-content {
