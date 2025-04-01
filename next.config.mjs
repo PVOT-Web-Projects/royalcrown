@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-        domains: ["vanras.humbeestudio.xyz"],
-      },
+  images: {
+    domains: ["vanras.humbeestudio.xyz", "rcadmin.humbeestudio.xyz"],
+  },
 };
 // module.exports = nextConfig;
 // module.exports = {

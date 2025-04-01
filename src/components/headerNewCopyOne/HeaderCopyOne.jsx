@@ -33,7 +33,7 @@ const HeaderCopyOne = () => {
   const [activeCategory, setActiveCategory] = useState(null);
   const [isNavbarVisible, setIsNavbarVisible] = useState(true); // State to control navbar visibility
   const [lastScrollY, setLastScrollY] = useState(0); // Track last scroll position
-  const [isOpen, setIsOpen] =useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   // Data for each subcategory and its items
   const categoryData = [
     {
@@ -127,46 +127,44 @@ const HeaderCopyOne = () => {
   //     window.removeEventListener("scroll", handleScroll);
   //   };
   // }, [isMenuOpen]);
-  
+
   useEffect(() => {
     // Set the initial value of isHome based on the current pathname
     const pathname = window.location.pathname;
     setIsHome(pathname === "/");
     // let lastScrollY = window.scrollY; // Track the last scroll position
     // Define the scroll handler function
-      // Define the scroll handler function
-      const handleScroll = () => {
-        const scrollY = window.scrollY;
-        const isScrolledBeyond40vh = scrollY > window.innerHeight * 0.2; // 40% of viewport height
-  
-        if (!isScrolledBeyond40vh) {
-          // If we are within the first 40vh, the navbar must remain visible
+    // Define the scroll handler function
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const isScrolledBeyond40vh = scrollY > window.innerHeight * 0.2; // 40% of viewport height
+
+      if (!isScrolledBeyond40vh) {
+        // If we are within the first 40vh, the navbar must remain visible
+        setIsNavbarVisible(true);
+      } else {
+        // Otherwise, toggle visibility based on scroll direction
+        if (scrollY > lastScrollY) {
+          // Scrolling down, hide the navbar
+          setIsNavbarVisible(false);
+        } else if (scrollY < lastScrollY) {
+          // Scrolling up, show the navbar
           setIsNavbarVisible(true);
-        } else {
-          // Otherwise, toggle visibility based on scroll direction
-          if (scrollY > lastScrollY) {
-            // Scrolling down, hide the navbar
-            setIsNavbarVisible(false);
-          } else if (scrollY < lastScrollY) {
-            // Scrolling up, show the navbar
-            setIsNavbarVisible(true);
-          }
         }
-  
-        // Update the last scroll position to detect scroll direction
-        setLastScrollY(scrollY);
-      };
-  
+      }
+
+      // Update the last scroll position to detect scroll direction
+      setLastScrollY(scrollY);
+    };
+
     // Attach the scroll event listener
     window.addEventListener("scroll", handleScroll);
-  
+
     // Cleanup on component unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [lastScrollY, isMenuOpen]);
-  
-
+  }, [lastScrollY]);
 
   const getSubmenuImage = () => {
     switch (hoveredSubmenuItem) {
@@ -249,7 +247,10 @@ const HeaderCopyOne = () => {
   };
 
   return (
-    <header className={isNavbarVisible ? "navbar-visible" : "navbar-hidden"}>
+    <header
+      style={{ position: "sticky !important", background: "#FFEEE2" }}
+      className={isNavbarVisible ? "navbar-visible" : "navbar-hidden"}
+    >
       <nav>
         <ul className="lightOne">
           <motion.li
@@ -290,20 +291,23 @@ const HeaderCopyOne = () => {
                 transition={{ duration: 0.5 }}
                 // className="ProductsLi"
               >
-
                 <div className="ProductLiOne">
-                <motion.ul id="ProductsOne" className="Prd">
-                  <div className="PrdOne">
-                  <li
-                  className="PrdctsLi"
-                    onMouseEnter={() => setHoveredSubmenuItem("submenu1")}
-                    // onMouseLeave={() => setHoveredSubmenuItem(null)}
-                  >
-                    <Link className="prdtsFonts" href="#" onClick={(e) => e.preventDefault()}>
-                      HPL LAMINATE
-                    </Link>
-                    {/* <span className={`arrow ${isOpen ? "up" : "down"}`}></span> */}
-                    {/* <svg
+                  <motion.ul id="ProductsOne" className="Prd">
+                    <div className="PrdOne">
+                      <li
+                        className="PrdctsLi"
+                        onMouseEnter={() => setHoveredSubmenuItem("submenu1")}
+                        // onMouseLeave={() => setHoveredSubmenuItem(null)}
+                      >
+                        <Link
+                          className="prdtsFonts"
+                          href="#"
+                          onClick={(e) => e.preventDefault()}
+                        >
+                          HPL LAMINATE
+                        </Link>
+                        {/* <span className={`arrow ${isOpen ? "up" : "down"}`}></span> */}
+                        {/* <svg
                       width="24"
                       height="24"
                       xmlns="http://www.w3.org/2000/svg"
@@ -313,84 +317,88 @@ const HeaderCopyOne = () => {
                       <path d="M4 .755l14.374 11.245-14.374 11.219.619.781 15.381-12-15.391-12-.609.755z" />
                     </svg> */}
 
-                    {/* {hoveredSubmenuItem === "submenu1" && ( */}
-                      <motion.div
-                        className="ProductsLi1"
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        <ul>
-                          <li
-                          // onMouseEnter={() =>
-                          //   setHoveredSubSubmenuItem("sub-submenu1")
-                          // }
-                          // onMouseLeave={() =>
-                          //   setHoveredSubSubmenuItem(null)
-                          // }
-                          >
-                            <Link
-                              href="/decorative-laminates"
-                              className="SubmenuClass"
-                              onClick={() => {
-                                setHoveredItem(null); // Close the main menu
-                                setHoveredSubmenuItem(null); // Close the submenu
-                                setHoveredSubSubmenuItem(null); // Close the sub-submenu
-                              }}
-                            >
-                              Decorative Laminate
-                            </Link>
-                          </li>
-                          <li
-                          // onMouseEnter={() =>
-                          //   setHoveredSubSubmenuItem("sub-submenu2")
-                          // }
-                          // onMouseLeave={() =>
-                          //   setHoveredSubSubmenuItem(null)
-                          // }
-                          >
-                            <Link
-                              href="/postforming-laminates"
-                              className="SubmenuClass"
-                              onClick={() => {
-                                setHoveredItem(null); // Close the main menu
-                                setHoveredSubmenuItem(null); // Close the submenu
-                                setHoveredSubSubmenuItem(null); // Close the sub-submenu
-                              }}
-                            >
-                              Postforming Laminate
-                            </Link>
-                          </li>
-                        </ul>
+                        {/* {hoveredSubmenuItem === "submenu1" && ( */}
                         <motion.div
-                          className="sub-submenu-image"
-                          // initial={{ opacity: 0 }}
-                          // animate={{ opacity: 1 }}
-                          // exit={{ opacity: 0 }}
-                          // transition={{ duration: 0.3 }}
+                          className="ProductsLi1"
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.5 }}
                         >
-                          {/* <Image
+                          <ul>
+                            <li
+                            // onMouseEnter={() =>
+                            //   setHoveredSubSubmenuItem("sub-submenu1")
+                            // }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                            >
+                              <Link
+                                href="/decorative-laminates"
+                                className="SubmenuClass"
+                                onClick={() => {
+                                  setHoveredItem(null); // Close the main menu
+                                  setHoveredSubmenuItem(null); // Close the submenu
+                                  setHoveredSubSubmenuItem(null); // Close the sub-submenu
+                                }}
+                              >
+                                Decorative Laminate
+                              </Link>
+                            </li>
+                            <li
+                            // onMouseEnter={() =>
+                            //   setHoveredSubSubmenuItem("sub-submenu2")
+                            // }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                            >
+                              <Link
+                                href="/postforming-laminates"
+                                className="SubmenuClass"
+                                onClick={() => {
+                                  setHoveredItem(null); // Close the main menu
+                                  setHoveredSubmenuItem(null); // Close the submenu
+                                  setHoveredSubSubmenuItem(null); // Close the sub-submenu
+                                }}
+                              >
+                                Postforming Laminate
+                              </Link>
+                            </li>
+                          </ul>
+                          <motion.div
+                            className="sub-submenu-image"
+                            // initial={{ opacity: 0 }}
+                            // animate={{ opacity: 1 }}
+                            // exit={{ opacity: 0 }}
+                            // transition={{ duration: 0.3 }}
+                          >
+                            {/* <Image
                             src={getSubSubmenuImage()}
                             alt="Submenu Image"
                           /> */}
+                          </motion.div>
                         </motion.div>
-                      </motion.div>
-                    {/* )} */}
-                  </li>
-                  </div>
-                  {/*  */}
-                  <div className="PrdOne">
-                  <li
-                  className="PrdctsLi"
-                    onMouseEnter={() => setHoveredSubmenuItem("submenu2")}
-                    // onMouseLeave={() => setHoveredSubmenuItem(null)}
-                  >
-                    <Link className="prdtsFonts" href="#" onClick={(e) => e.preventDefault()}>
-                      COMPACT LAMINATE
-                    </Link>
-                    {/* <span className={`arrow ${isOpen ? "up" : "down"}`}></span> */}
-                    {/* <svg
+                        {/* )} */}
+                      </li>
+                    </div>
+                    {/*  */}
+                    <div className="PrdOne">
+                      <li
+                        className="PrdctsLi"
+                        onMouseEnter={() => setHoveredSubmenuItem("submenu2")}
+                        // onMouseLeave={() => setHoveredSubmenuItem(null)}
+                      >
+                        <Link
+                          className="prdtsFonts"
+                          href="#"
+                          onClick={(e) => e.preventDefault()}
+                        >
+                          COMPACT LAMINATE
+                        </Link>
+                        {/* <span className={`arrow ${isOpen ? "up" : "down"}`}></span> */}
+                        {/* <svg
                       width="24"
                       height="24"
                       xmlns="http://www.w3.org/2000/svg"
@@ -400,102 +408,104 @@ const HeaderCopyOne = () => {
                       <path d="M4 .755l14.374 11.245-14.374 11.219.619.781 15.381-12-15.391-12-.609.755z" />
                     </svg> */}
 
-                    {/* {hoveredSubmenuItem === "submenu2" && ( */}
-                      <motion.div
-                        className="ProductsLi1"
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        <ul>
-                          <li
-                            onMouseEnter={() =>
-                              setHoveredSubSubmenuItem("sub-submenu1")
-                            }
-                            onMouseLeave={() => setHoveredSubSubmenuItem(null)}
-                          >
-                            <Link
-                              href="/standard-grade-laminates"
-                              className="SubmenuClass"
-                              onClick={() => {
-                                setHoveredItem(null); // Close the main menu
-                                setHoveredSubmenuItem(null); // Close the submenu
-                                setHoveredSubSubmenuItem(null); // Close the sub-submenu
-                              }}
+                        {/* {hoveredSubmenuItem === "submenu2" && ( */}
+                        <motion.div
+                          className="ProductsLi1"
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.5 }}
+                        >
+                          <ul>
+                            <li
+                              onMouseEnter={() =>
+                                setHoveredSubSubmenuItem("sub-submenu1")
+                              }
+                              onMouseLeave={() =>
+                                setHoveredSubSubmenuItem(null)
+                              }
                             >
-                              Standard Grade (Qbiss)
-                            </Link>
-                          </li>
-                          <li
-                          // onMouseEnter={() =>
-                          //   setHoveredSubSubmenuItem("sub-submenu2")
-                          // }
-                          // onMouseLeave={() =>
-                          //   setHoveredSubSubmenuItem(null)
-                          // }
-                          >
-                            <Link
-                              href="/exterior-cladding-laminates"
-                              className="SubmenuClass"
-                              onClick={() => {
-                                setHoveredItem(null); // Close the main menu
-                                setHoveredSubmenuItem(null); // Close the submenu
-                                setHoveredSubSubmenuItem(null); // Close the sub-submenu
-                              }}
+                              <Link
+                                href="/standard-grade-laminates"
+                                className="SubmenuClass"
+                                onClick={() => {
+                                  setHoveredItem(null); // Close the main menu
+                                  setHoveredSubmenuItem(null); // Close the submenu
+                                  setHoveredSubSubmenuItem(null); // Close the sub-submenu
+                                }}
+                              >
+                                Standard Grade (Qbiss)
+                              </Link>
+                            </li>
+                            <li
+                            // onMouseEnter={() =>
+                            //   setHoveredSubSubmenuItem("sub-submenu2")
+                            // }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
                             >
-                              Exterior Cladding (XCL)
-                            </Link>
-                          </li>
-                          <li
-                          // onMouseEnter={() =>
-                          //   setHoveredSubSubmenuItem("sub-submenu3")
-                          // }
-                          // onMouseLeave={() =>
-                          //   setHoveredSubSubmenuItem(null)
-                          // }
-                          >
-                            <Link
-                              href="/interior-cladding-laminates"
-                              className="SubmenuClass"
-                              onClick={() => {
-                                setHoveredItem(null); // Close the main menu
-                                setHoveredSubmenuItem(null); // Close the submenu
-                                setHoveredSubSubmenuItem(null); // Close the sub-submenu
-                              }}
+                              <Link
+                                href="/exterior-cladding-laminates"
+                                className="SubmenuClass"
+                                onClick={() => {
+                                  setHoveredItem(null); // Close the main menu
+                                  setHoveredSubmenuItem(null); // Close the submenu
+                                  setHoveredSubSubmenuItem(null); // Close the sub-submenu
+                                }}
+                              >
+                                Exterior Cladding (XCL)
+                              </Link>
+                            </li>
+                            <li
+                            // onMouseEnter={() =>
+                            //   setHoveredSubSubmenuItem("sub-submenu3")
+                            // }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
                             >
-                              Interior Cladding
-                            </Link>
-                          </li>
-                          <li
-                          // onMouseEnter={() =>
-                          //   setHoveredSubSubmenuItem("sub-submenu4")
-                          // }
-                          // onMouseLeave={() =>
-                          //   setHoveredSubSubmenuItem(null)
-                          // }
-                          >
-                            <Link
-                              href="/fire-retardant-laminates"
-                              className="SubmenuClass"
-                              onClick={() => {
-                                setHoveredItem(null); // Close the main menu
-                                setHoveredSubmenuItem(null); // Close the submenu
-                                setHoveredSubSubmenuItem(null); // Close the sub-submenu
-                              }}
+                              <Link
+                                href="/interior-cladding-laminates"
+                                className="SubmenuClass"
+                                onClick={() => {
+                                  setHoveredItem(null); // Close the main menu
+                                  setHoveredSubmenuItem(null); // Close the submenu
+                                  setHoveredSubSubmenuItem(null); // Close the sub-submenu
+                                }}
+                              >
+                                Interior Cladding
+                              </Link>
+                            </li>
+                            <li
+                            // onMouseEnter={() =>
+                            //   setHoveredSubSubmenuItem("sub-submenu4")
+                            // }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
                             >
-                              Fire Retardant
-                            </Link>
-                          </li>
-                          <li
-                          // onMouseEnter={() =>
-                          //   setHoveredSubSubmenuItem("sub-submenu5")
-                          // }
-                          // onMouseLeave={() =>
-                          //   setHoveredSubSubmenuItem(null)
-                          // }
-                          >
-                            {/* <Link
+                              <Link
+                                href="/fire-retardant-laminates"
+                                className="SubmenuClass"
+                                onClick={() => {
+                                  setHoveredItem(null); // Close the main menu
+                                  setHoveredSubmenuItem(null); // Close the submenu
+                                  setHoveredSubSubmenuItem(null); // Close the sub-submenu
+                                }}
+                              >
+                                Fire Retardant
+                              </Link>
+                            </li>
+                            <li
+                            // onMouseEnter={() =>
+                            //   setHoveredSubSubmenuItem("sub-submenu5")
+                            // }
+                            // onMouseLeave={() =>
+                            //   setHoveredSubSubmenuItem(null)
+                            // }
+                            >
+                              {/* <Link
                               href="#"
                               className="SubmenuClass"
                               onClick={() => {
@@ -506,29 +516,31 @@ const HeaderCopyOne = () => {
                             >
                               Color Core
                             </Link> */}
-                          </li>
-                        </ul>
-                      
-                      </motion.div>
-                    {/* )} */}
-                  </li>
-                  </div>
-                  {/*  */}
-                  
-                </motion.ul>
+                            </li>
+                          </ul>
+                        </motion.div>
+                        {/* )} */}
+                      </li>
+                    </div>
+                    {/*  */}
+                  </motion.ul>
                 </div>
                 <ul>
-                <div className="PrdOne">
-                  <li
-                  className="PrdctsLi"
-                    onMouseEnter={() => setHoveredSubmenuItem("submenu3")}
-                    // onMouseLeave={() => setHoveredSubmenuItem(null)}
-                  >
-                    <Link className="prdtsFonts" href="#" onClick={(e) => e.preventDefault()}>
-                      SPECIALITY LAMINATE
-                    </Link>
-                    {/* <span className={`arrow ${isOpen ? "up" : "down"}`}></span> */}
-                    {/* <svg
+                  <div className="PrdOne">
+                    <li
+                      className="PrdctsLi"
+                      onMouseEnter={() => setHoveredSubmenuItem("submenu3")}
+                      // onMouseLeave={() => setHoveredSubmenuItem(null)}
+                    >
+                      <Link
+                        className="prdtsFonts"
+                        href="#"
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        SPECIALITY LAMINATE
+                      </Link>
+                      {/* <span className={`arrow ${isOpen ? "up" : "down"}`}></span> */}
+                      {/* <svg
                       width="24"
                       height="24"
                       xmlns="http://www.w3.org/2000/svg"
@@ -538,7 +550,7 @@ const HeaderCopyOne = () => {
                       <path d="M4 .755l14.374 11.245-14.374 11.219.619.781 15.381-12-15.391-12-.609.755z" />
                     </svg> */}
 
-                    {/* {hoveredSubmenuItem === "submenu3" && ( */}
+                      {/* {hoveredSubmenuItem === "submenu3" && ( */}
                       <motion.div
                         className="ProductsLi1"
                         initial={{ opacity: 0, y: -10 }}
@@ -701,24 +713,27 @@ const HeaderCopyOne = () => {
                           /> */}
                         </motion.div>
                       </motion.div>
-                    {/* )} */}
-                  </li>
+                      {/* )} */}
+                    </li>
                   </div>
                   {/*  */}
-                  
                 </ul>
                 <div className="PrdOne">
                   <ul>
-                  <li
-                  className="PrdctsLi"
-                    onMouseEnter={() => setHoveredSubmenuItem("submenu4")}
-                    // onMouseLeave={() => setHoveredSubmenuItem(null)}
-                  >
-                    <Link className="prdtsFonts" href="#" onClick={(e) => e.preventDefault()}>
-                      TECHNICAL GRADE LAMINATE
-                    </Link>
-                    {/* <span className={`arrow ${isOpen ? "up" : "down"}`}></span> */}
-                    {/* <svg
+                    <li
+                      className="PrdctsLi"
+                      onMouseEnter={() => setHoveredSubmenuItem("submenu4")}
+                      // onMouseLeave={() => setHoveredSubmenuItem(null)}
+                    >
+                      <Link
+                        className="prdtsFonts"
+                        href="#"
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        TECHNICAL GRADE LAMINATE
+                      </Link>
+                      {/* <span className={`arrow ${isOpen ? "up" : "down"}`}></span> */}
+                      {/* <svg
                       width="24"
                       height="24"
                       xmlns="http://www.w3.org/2000/svg"
@@ -728,7 +743,7 @@ const HeaderCopyOne = () => {
                       <path d="M4 .755l14.374 11.245-14.374 11.219.619.781 15.381-12-15.391-12-.609.755z" />
                     </svg> */}
 
-                    {/* {hoveredSubmenuItem === "submenu4" && ( */}
+                      {/* {hoveredSubmenuItem === "submenu4" && ( */}
                       <motion.div
                         className="ProductsLi1"
                         initial={{ opacity: 0, y: -10 }}
@@ -811,24 +826,21 @@ const HeaderCopyOne = () => {
                           /> */}
                         </motion.div>
                       </motion.div>
-                    {/* )} */}
-                  </li>
+                      {/* )} */}
+                    </li>
                   </ul>
-                  </div>
-                  <motion.div
-                          className="sub-submenu-image"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <Image
-                            src={getSubSubmenuImage1()}
-                            alt="Submenu Image"
-                          />
-                        </motion.div>
+                </div>
+                <motion.div
+                  className="sub-submenu-image"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Image src={getSubSubmenuImage1()} alt="Submenu Image" />
+                </motion.div>
               </motion.div>
-              )} 
+            )}
           </motion.li>
           <motion.li
             initial={{
@@ -898,7 +910,7 @@ const HeaderCopyOne = () => {
         </motion.div>
         <ul className="lightOne">
           <motion.li
-           className="lightOne"
+            className="lightOne"
             initial={{
               opacity: 0,
             }}
@@ -945,16 +957,22 @@ const HeaderCopyOne = () => {
           {/* </div> */}
         </ul>
 
-{/*  */}
+        {/*  */}
         {/* Mobile menu toggle button */}
         <div
           className="mobile-menu-icon"
           // onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           onClick={toggleMenu}
         >
-          <div className={`hamburger-lineOne ${isMenuOpen ? "open" : ""}`}></div>
-          <div className={`hamburger-lineOne ${isMenuOpen ? "open" : ""}`}></div>
-          <div className={`hamburger-lineOne ${isMenuOpen ? "open" : ""}`}></div>
+          <div
+            className={`hamburger-lineOne ${isMenuOpen ? "open" : ""}`}
+          ></div>
+          <div
+            className={`hamburger-lineOne ${isMenuOpen ? "open" : ""}`}
+          ></div>
+          <div
+            className={`hamburger-lineOne ${isMenuOpen ? "open" : ""}`}
+          ></div>
           {/* <svg
             width="24"
             height="24"
@@ -982,54 +1000,43 @@ const HeaderCopyOne = () => {
               }}
               transition={{ type: "spring", stiffness: 50 }} // Smooth spring animation
             >
-              <div 
-              id="MainMobile"
-               className="lightOne">
+              <div id="MainMobile" className="lightOne">
                 <div className="ToggleMainName">
-                <motion.li
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
-                  viewport={{ once: true }}
-                  onClick={toggleMenu}
-                  className="ToggleMainText"
-                >
-                  <Link
-                  className="CategorySubClass"
-                    href={"/"}
+                  <motion.li
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
+                    viewport={{ once: true }}
+                    onClick={toggleMenu}
+                    className="ToggleMainText"
                   >
-                    Home
+                    <Link className="CategorySubClass" href={"/"}>
+                      Home
                     </Link>
-                </motion.li>
-                <motion.li
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1, transition: { duration: 1.2 } }}
-                  viewport={{ once: true }}
-                  onClick={toggleMenu}
-                  className="ToggleMainText"
-                >
-                  <Link
-                  className="CategorySubClass"
-                    href={"/about-us"}
+                  </motion.li>
+                  <motion.li
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1, transition: { duration: 1.2 } }}
+                    viewport={{ once: true }}
+                    onClick={toggleMenu}
+                    className="ToggleMainText"
                   >
-                    About Us
+                    <Link className="CategorySubClass" href={"/about-us"}>
+                      About Us
                     </Link>
-                </motion.li>
-                <motion.li
-                className="ToggleMainText"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1, transition: { duration: 1.6 } }}
-                  viewport={{ once: true }}
-                  onClick={toggleMenu}
-                >
-                  <Link
-                  className="CategorySubClass"
-                    href={"/product"}
+                  </motion.li>
+                  <motion.li
+                    className="ToggleMainText"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1, transition: { duration: 1.6 } }}
+                    viewport={{ once: true }}
+                    onClick={toggleMenu}
                   >
-                  Products
-                  </Link>
-                </motion.li>
-                <motion.li className={`category ToggleMainText`} >
-                  {/* <div className="CategoryToggleInner" onClick={toggleCategoryMenu}>
+                    <Link className="CategorySubClass" href={"/product"}>
+                      Products
+                    </Link>
+                  </motion.li>
+                  <motion.li className={`category ToggleMainText`}>
+                    {/* <div className="CategoryToggleInner" onClick={toggleCategoryMenu}>
                   <Link
                     className="CategorySubClass"
                     href={"/"}
@@ -1040,127 +1047,142 @@ const HeaderCopyOne = () => {
                   <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M23.245 4l-11.245 14.374-11.219-14.374-.781.619 12 15.381 12-15.391-.755-.609z"/></svg>
                 
                   </div> */}
-                  <div
-                    className="CategoryToggleInner"
-                    onClick={toggleCategoryMenu}
-                  >
-                    <Link className="CategorySubClass" href={"/"} onClick={(e) => e.preventDefault()}>
-                      Category
-                    </Link>
-                    {/* Downward pointing triangle */}
-                    <svg
-                      className={`category-icon ${
-                        isCategoryOpen ? "rotated" : ""
-                      }`} // Add rotation when category is open
-                      width="15"
-                      height="15"
-                      viewBox="0 0 10 10"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
+                    <div
+                      className="CategoryToggleInner"
+                      onClick={toggleCategoryMenu}
                     >
-                      <path d="M0 2L5 7L10 2H0Z" fill="currentColor" />
-                    </svg>
-                  </div>
-
-                  {isCategoryOpen && (
-                    <div className="category-dropdown">
-                      <div>
-                        {categoryData.map((category, categoryIndex) => (
-                          <li key={categoryIndex} className="subcategory">
-                            <Link
-                              className="SubcategoryName"
-                              href="#"
-                              onClick={(e) => {
-                                e.preventDefault(); // Prevent the link from navigating to #
-                                toggleSubCategoryMenu(categoryIndex); // Call your function to toggle subcategory
-                              }}
-                              // onClick={() =>
-                              //   toggleSubCategoryMenu(categoryIndex)
-                              // }
-                            >
-                              {category.name}
-                            </Link>
-
-                            {/* Subcategory Dropdown */}
-                            {activeCategory === categoryIndex && (
-                              <div className="subcategory-dropdown">
-                                <div className="subcategoryInner">
-                                  {category.items.map((item, itemIndex) => (
-                                    <motion.li
-                                      initial={{ opacity: 0 }}
-                                      whileInView={{
-                                        opacity: 1,
-                                        transition: { duration: 0.8 },
-                                      }}
-                                      viewport={{ once: true }}
-                                      key={itemIndex}
-                                    >
-                                      <Link
-                                        href={item.url}
-                                        onClick={toggleMenu}
-                                        className="subcategoryInnertext"
-                                      >
-                                        {item.name}{" "}
-                                      </Link>
-                                    </motion.li>
-                                  ))}
-                                </div>
-                              </div>
-                            )}
-                          </li>
-                        ))}
-                      </div>
+                      <Link
+                        className="CategorySubClass"
+                        href={"/"}
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        Category
+                      </Link>
+                      {/* Downward pointing triangle */}
+                      <svg
+                        className={`category-icon ${
+                          isCategoryOpen ? "rotated" : ""
+                        }`} // Add rotation when category is open
+                        width="15"
+                        height="15"
+                        viewBox="0 0 10 10"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M0 2L5 7L10 2H0Z" fill="currentColor" />
+                      </svg>
                     </div>
-                  )}
-                </motion.li>
-                <motion.li
-                className="ToggleMainText"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1, transition: { duration: 2 } }}
-                  viewport={{ once: true }}
-                  onClick={toggleMenu}
-                >
-                  <Link
-                  className="CategorySubClass"
-                    href={"/contact-us"}
-                    // text={"Contact Us"}
-                    // fontSize={"18px"}
-                    // isHomePage={isHome}
+
+                    {isCategoryOpen && (
+                      <div className="category-dropdown">
+                        <div>
+                          {categoryData.map((category, categoryIndex) => (
+                            <li key={categoryIndex} className="subcategory">
+                              <Link
+                                className="SubcategoryName"
+                                href="#"
+                                onClick={(e) => {
+                                  e.preventDefault(); // Prevent the link from navigating to #
+                                  toggleSubCategoryMenu(categoryIndex); // Call your function to toggle subcategory
+                                }}
+                                // onClick={() =>
+                                //   toggleSubCategoryMenu(categoryIndex)
+                                // }
+                              >
+                                {category.name}
+                              </Link>
+
+                              {/* Subcategory Dropdown */}
+                              {activeCategory === categoryIndex && (
+                                <div className="subcategory-dropdown">
+                                  <div className="subcategoryInner">
+                                    {category.items.map((item, itemIndex) => (
+                                      <motion.li
+                                        initial={{ opacity: 0 }}
+                                        whileInView={{
+                                          opacity: 1,
+                                          transition: { duration: 0.8 },
+                                        }}
+                                        viewport={{ once: true }}
+                                        key={itemIndex}
+                                      >
+                                        <Link
+                                          href={item.url}
+                                          onClick={toggleMenu}
+                                          className="subcategoryInnertext"
+                                        >
+                                          {item.name}{" "}
+                                        </Link>
+                                      </motion.li>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
+                            </li>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </motion.li>
+                  <motion.li
+                    className="ToggleMainText"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1, transition: { duration: 2 } }}
+                    viewport={{ once: true }}
+                    onClick={toggleMenu}
                   >
-                  Contact Us
-                  </Link>
-                </motion.li>
+                    <Link
+                      className="CategorySubClass"
+                      href={"/contact-us"}
+                      // text={"Contact Us"}
+                      // fontSize={"18px"}
+                      // isHomePage={isHome}
+                    >
+                      Contact Us
+                    </Link>
+                  </motion.li>
                 </div>
                 <div className="SocialIconss">
-                <div className="bottom">
-              <div className="SocialIconsNav">
-                <li>
-                  <Link href={"https://www.facebook.com/royalcrownlaminates/"} target="_blank">
-                    <Image src={fb} alt="fb" />
-                  </Link>
-                </li>
-                <li>
-                  <Link href={"https://www.instagram.com/royalcrownlaminates/"} target="_blank">
-                    <Image src={ig} alt="ig" />
-                  </Link>
-                </li>
-                <li>
-                  <Link href={"https://www.youtube.com/"} target="_blank">
-                    <Image src={yt} alt="yt" /> 
-                  </Link>
-                </li>
-                <li>
-                  <Link href={"https://in.linkedin.com/"} target="_blank">
-                    <Image src={li} alt="li" />
-                     </Link>
-                </li>
-                <li>
-                  <Link href={"https://www.whatsapp.com/"} target="_blank">
-                    <Image src={wa} alt="wa"/> 
-                  </Link>
-                </li>
-              </div>
-            </div>
+                  <div className="bottom">
+                    <div className="SocialIconsNav">
+                      <li>
+                        <Link
+                          href={"https://www.facebook.com/royalcrownlaminates/"}
+                          target="_blank"
+                        >
+                          <Image src={fb} alt="fb" />
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href={
+                            "https://www.instagram.com/royalcrownlaminates/"
+                          }
+                          target="_blank"
+                        >
+                          <Image src={ig} alt="ig" />
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href={"https://www.youtube.com/"} target="_blank">
+                          <Image src={yt} alt="yt" />
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href={"https://in.linkedin.com/"} target="_blank">
+                          <Image src={li} alt="li" />
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href={"https://www.whatsapp.com/"}
+                          target="_blank"
+                        >
+                          <Image src={wa} alt="wa" />
+                        </Link>
+                      </li>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>

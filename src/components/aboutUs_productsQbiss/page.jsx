@@ -33,10 +33,10 @@ const Page = () => {
   const [activeTab, setActiveTab] = useState("");
   const [products, setProducts] = useState([]);
   const [currentData, setCurrentData] = useState([]);
-  const [isMobileOne, setIsMobileOne] = useState(false);  // State for mobile detection
-    const [lastScrollTop, setLastScrollTop] = useState(0); // Track the last scroll position
-    const stickyRef = useRef(null); // Ref for the sticky element
-    
+  const [isMobileOne, setIsMobileOne] = useState(false); // State for mobile detection
+  const [lastScrollTop, setLastScrollTop] = useState(0); // Track the last scroll position
+  const stickyRef = useRef(null); // Ref for the sticky element
+
   // Adding a loading state
   const [loading, setLoading] = useState(true); // Initially, set loading to t
   const router = useRouter();
@@ -226,7 +226,9 @@ const Page = () => {
         (category) => category.name.toLowerCase() === "qbliss"
       );
       const brandMatch =
-        selectedBrand === "all" || selectedBrand === null || product.category === selectedBrand;
+        selectedBrand === "all" ||
+        selectedBrand === null ||
+        product.category === selectedBrand;
       const categoryMatch =
         selectedCategory.length === 0 ||
         selectedCategory.some((selectedCat) =>
@@ -309,11 +311,11 @@ const Page = () => {
     setSelectedThickness("all");
     setSelectedColor("all");
     setSelectedType("all");
-      // Reset the URL to /product without the hash
-  // router.push("/product", undefined, { shallow: true });
+    // Reset the URL to /product without the hash
+    // router.push("/product", undefined, { shallow: true });
   };
-       //  pagination finall logic
-    // Calculate total pages dynamically based on filtered products
+  //  pagination finall logic
+  // Calculate total pages dynamically based on filtered products
   const totalPages = Math.ceil(filteredProducts1.length / itemsPerPage);
   // Ensure the current page is within the valid range
   const currentPage = Math.min(pageNumber, totalPages);
@@ -332,16 +334,18 @@ const Page = () => {
   useEffect(() => {
     setPageNumber(1); // Reset to the first page when filtered products change
   }, [filteredProducts1]);
-  // 
+  //
   useEffect(() => {
     if (selectedTag === "all") {
       setFilteredProducts(products);
-    }
-    else if (selectedTag === "QBliss") { // Highlighted: Check for QBliss explicitly
-      const filtered = products.filter((product) => product.category === "QBliss"); // Highlighted: Filter by category QBliss
+    } else if (selectedTag === "QBliss") {
+      // Highlighted: Check for QBliss explicitly
+      const filtered = products.filter(
+        (product) => product.category === "QBliss"
+      ); // Highlighted: Filter by category QBliss
       console.log("Filtered Products for QBliss:", filtered); // Log the filtered result
       setFilteredProducts(filtered);
-    }  else {
+    } else {
       const filtered = products.filter((product) => {
         console.log("Checking product:", product); // Log each product
         return (
@@ -390,62 +394,62 @@ const Page = () => {
   //   }
   // };
 
-  
-    // Detect if the screen is mobile
-    useEffect(() => {
-      const handleResize = () => {
-        setIsMobileOne(window.innerWidth < 1025); // Update isMobile state
-      };
-      
-      window.addEventListener("resize", handleResize);
-      handleResize(); // Check initial size
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
-    }, []);
-     // Scroll event listener to hide/show the sticky element
-     useEffect(() => {
-      if (isMobileOne) {
-        const handleScroll = () => {
-          const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-          // If the user is scrolling down
-          if (currentScrollTop > lastScrollTop) {
-            // Hide the sticky element
-            if (stickyRef.current) {
-              stickyRef.current.style.transform = "translateY(-100%)";  // Move it up
-              stickyRef.current.style.zIndex = -1;  // Set z-index to -1 when hidden
-            }
-          } else {
-            // If scrolling up, show the sticky element
-            if (stickyRef.current) {
-              stickyRef.current.style.transform = "translateY(0)";  // Move it down
-              stickyRef.current.style.zIndex = 1;  // Set z-index to 1 when visible
-            }
+  // Detect if the screen is mobile
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileOne(window.innerWidth < 1025); // Update isMobile state
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Check initial size
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+  // Scroll event listener to hide/show the sticky element
+  useEffect(() => {
+    if (isMobileOne) {
+      const handleScroll = () => {
+        const currentScrollTop =
+          window.pageYOffset || document.documentElement.scrollTop;
+
+        // If the user is scrolling down
+        if (currentScrollTop > lastScrollTop) {
+          // Hide the sticky element
+          if (stickyRef.current) {
+            stickyRef.current.style.transform = "translateY(-100%)"; // Move it up
+            stickyRef.current.style.zIndex = -1; // Set z-index to -1 when hidden
           }
-    
-          setLastScrollTop(currentScrollTop <= 0 ? 0 : currentScrollTop); // Update the scroll position
-        };
-    
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-          window.removeEventListener("scroll", handleScroll);
-        };
-      }
-    }, [isMobileOne, lastScrollTop]);
+        } else {
+          // If scrolling up, show the sticky element
+          if (stickyRef.current) {
+            stickyRef.current.style.transform = "translateY(0)"; // Move it down
+            stickyRef.current.style.zIndex = 1; // Set z-index to 1 when visible
+          }
+        }
+
+        setLastScrollTop(currentScrollTop <= 0 ? 0 : currentScrollTop); // Update the scroll position
+      };
+
+      window.addEventListener("scroll", handleScroll);
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
+  }, [isMobileOne, lastScrollTop]);
   return (
     <>
       <div className="productMainContainer">
         <div className="productMain">
           <div className="productNumber">
             <motion.p
-                         initial={{ x: 100, opacity: 0 }}
-                         whileInView={{ x: 0, opacity: 1 }}
-                         transition={{ duration: 1 }}
-                         viewport={{ once: true }}
-                       >
-                         05
-                       </motion.p>
+              initial={{ x: 100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+            >
+              05
+            </motion.p>
           </div>
           <div className="productDescription">
             <motion.div
@@ -458,10 +462,11 @@ const Page = () => {
             <div className="productDescriptionHeader">Qbiss</div>
             <div className="productDescriptionContent">
               <motion.p
-               initial={{ y: 100, opacity: 0 }}
-               whileInView={{ y: 0, opacity: 1 }}
-               transition={{ duration: 1 }}
-               viewport={{ once: true }}>
+                initial={{ y: 100, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1 }}
+                viewport={{ once: true }}
+              >
                 Qbiss is a high-pressure structural laminate made from multiple
                 layers of kraft papers, with a thickness range from 2mm to 25mm.
                 Its decorative face on both sides makes it suitable for interior
@@ -475,35 +480,35 @@ const Page = () => {
         </div>
       </div>
       <div className="first_top">
-      <motion.div
+        <motion.div
           className="exploreCollection"
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-          >
-            Explore Collection
-          </motion.div>
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          Explore Collection
+        </motion.div>
         <div id="sticky_top" className="products_name1">
-          
           <div className="products-tabs" id="sticky_top">
-              <div
-                scroll={false}
-                className="tab-item"
-              >
-                <div className="tab-content-inner">Qbiss</div>
-              </div>
+            <div scroll={false} className="tab-item">
+              <div className="tab-content-inner">Qbiss</div>
+            </div>
           </div>
         </div>
 
         <div className="supply">
-          
-          <div id="sticky"
-          //  ref={stickyRef} style={{ transition: "transform 0.3s ease" }}
-           >
+          <div
+            id="sticky"
+            //  ref={stickyRef} style={{ transition: "transform 0.3s ease" }}
+          >
             {/* reset filter */}
             <div className="resetFilters">
-              <button className="resetButton" onClick={resetFiltersDrop} scroll={false}>
+              <button
+                className="resetButton"
+                onClick={resetFiltersDrop}
+                scroll={false}
+              >
                 <span className="resetButton-content">reset</span>
                 {/* Reset Filters */}
               </button>
@@ -672,11 +677,19 @@ const Page = () => {
                       )
                     ? "tall"
                     : "";
+                // Get Design Code, default to "No Data Found" if not available
+                const designCode = product.attributes[7]?.terms[0].name || "";
+                const defaultImage =
+                  "http://vanras.humbeestudio.xyz/wp-content/uploads/2025/03/default_image.png";
 
                 return (
                   <div key={index} className={`AboutUs_product ${className}`}>
                     <Image
-                      src={product.images[0].src}
+                      src={
+                        product.images?.length > 0
+                          ? product.images[0].src
+                          : defaultImage
+                      }
                       alt={product.name}
                       className="ProductImage"
                       width={500}
@@ -709,6 +722,10 @@ const Page = () => {
                       >
                         Know More
                       </div>
+                    </div>
+                    {/* Design Code Container */}
+                    <div className="designCodeContainer">
+                      <p className="designCode">{designCode}</p>
                     </div>
                   </div>
                 );
