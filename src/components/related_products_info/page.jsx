@@ -121,7 +121,8 @@ const RelatedProductInfo = () => {
         {relatedProducts.map((product, index) => (
           <SwiperSlide key={product.id} className="RelatedProductCard">
             <Image
-              src={product.images[0]?.src || "/placeholder.png"}
+            src={product.images[0]?.src}
+              // src={product.images[0]?.src || "/placeholder.png"}
               // src={item.ProductImage}
               alt="Related Product"
               className="ImageProductImg"
