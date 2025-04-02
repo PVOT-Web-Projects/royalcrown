@@ -236,7 +236,7 @@ export default function ProductInfoSlider() {
                     } // Track active slide index
                   >
                     {slide.images.map((image, idx) => (
-                      <SwiperSlide key={idx}>
+                      <SwiperSlide key={idx} className="swiper-slide-product-custom">
                         <Image
                           src={image.src}
                           alt={`carousel_image_${idx}`}
