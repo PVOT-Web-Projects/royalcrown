@@ -296,7 +296,7 @@ const Page = () => {
           product.attributes.some(
             (attr) =>
               attr.name === "type" &&
-              attr.terms.some((term) => term.slug === selectedCat)
+              attr.terms.some((term) => term.name === selectedCat)
           )
         );
       const finishMatch =
