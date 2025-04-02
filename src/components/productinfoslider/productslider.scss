@@ -331,9 +331,9 @@
     height: 600px !important;
     width: 100% !important;
     display: flex;
-
     margin-right: 10px;
     flex-direction: column;
+    justify-content: flex-end;
   }
 
   /* Modal Styles */

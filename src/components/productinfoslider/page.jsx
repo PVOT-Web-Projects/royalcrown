@@ -236,7 +236,10 @@ export default function ProductInfoSlider() {
                     } // Track active slide index
                   >
                     {slide.images.map((image, idx) => (
-                      <SwiperSlide key={idx} className="swiper-slide-product-custom">
+                      <SwiperSlide
+                        key={idx}
+                        className="swiper-slide-product-custom"
+                      >
                         <Image
                           src={image.src}
                           alt={`carousel_image_${idx}`}
@@ -246,7 +249,7 @@ export default function ProductInfoSlider() {
                           onClick={() => openModal(image.src)}
                         />
                         <div className="imageSizeLabel">
-                          {image.src.includes("A4") ? "A4" : "FullSheet"}
+                          {image.src.includes("a4") ? "A4" : "FullSheet"}
                         </div>{" "}
                       </SwiperSlide>
                     ))}
