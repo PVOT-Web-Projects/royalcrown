@@ -13,12 +13,12 @@ import Link from "next/link";
 function FindStoreSearch() {
   const defaultCityData = [
     {
-      content1:
-        "HEAD OFFICE",
+      content1: "HEAD OFFICE",
       supplierName: " ",
       mapLocation: "Ahmedabad, Gujarat",
       phone: "+91 (79) 4001 7979",
-      Address: "One 42, 401 North Tower, Near Jayantilal Park BRTS, Ambli Bopal Road",
+      Address:
+        "One 42, 401 North Tower, Near Jayantilal Park BRTS, Ambli Bopal Road",
       // extraPhone: "fdfdfdfdfd",
       emailId: "marketing@royalcrown.com",
     },
@@ -27,7 +27,8 @@ function FindStoreSearch() {
       supplierName: " ",
       mapLocation: "Ahmedabad, Gujarat",
       phone: " +91 9537949494",
-      Address: "Crown Decor Pvt. Ltd. Survey no. 419/1,Radhe Industrial Estate,Tajpur Road, Changodar-382 213",
+      Address:
+        "Crown Decor Pvt. Ltd. Survey no. 419/1,Radhe Industrial Estate,Tajpur Road, Changodar-382 213",
       extraPhone: "+91 7878252343",
       emailId: "marketing@royalcrown.com",
     },
@@ -82,21 +83,13 @@ function FindStoreSearch() {
     "NEPAL",
     "CHHATTISGARH",
     "CHANDIGARH",
-    
   ];
   const [sortedStates] = useState(options1.sort());
 
   const stateDistricts = [
     {
       state: "GUJARAT",
-      districts: [
-        "AHMEDABAD",
-        "SURAT",
-        "BARODA",
-        "ANAND",
-        "BHUJ",
-        "RAJKOT",
-      ],
+      districts: ["AHMEDABAD", "SURAT", "BARODA", "ANAND", "BHUJ", "RAJKOT"],
     },
     {
       state: "TELANGANA",
@@ -104,51 +97,34 @@ function FindStoreSearch() {
     },
     {
       state: "KARNATAKA",
-      districts: [
-        "BANGALORE",
-        "HUBALI",
-      ],
+      districts: ["BANGALORE", "HUBALI"],
     },
     {
       state: "MADHYAPRADESH",
-      districts: [
-        "BHOPAL",
-        "INDORE",
-      ],
+      districts: ["BHOPAL", "INDORE"],
     },
     {
       state: "WESTBENGAL",
-      districts: [
-        "KOLKATA",
-      ],
+      districts: ["KOLKATA"],
     },
     {
       state: "BIHAR",
-      districts: ["PATNA",],
+      districts: ["PATNA"],
     },
 
-    { state: "HARYANA", districts: ["KAITHAL","PANIPATH","HISSAR"] },
+    { state: "HARYANA", districts: ["KAITHAL", "PANIPATH", "HISSAR"] },
     {
       state: "MAHARASHTRA",
-      districts: [
-        "MUMBAI",
-        "DHULE",
-        "NASIK",
-        "THANE",
-        "PUNE",
-        "NAGPUR",
-      ],
+      districts: ["MUMBAI", "DHULE", "NASIK", "THANE", "PUNE", "NAGPUR"],
     },
     {
       state: "TAMILNADU",
       districts: ["CHENNAI"],
     },
-    { state: "UTTARPRADESH", districts: ["LUCKNOW","ALIGARH"] },
+    { state: "UTTARPRADESH", districts: ["LUCKNOW", "ALIGARH"] },
     {
       state: "NEWDELHI",
-      districts: [
-        "DELHI",
-      ],
+      districts: ["DELHI"],
     },
     { state: "JHARKHAND", districts: ["RACHI"] },
     { state: "ODISHA", districts: ["BHUBANESHWAR"] },
@@ -158,10 +134,7 @@ function FindStoreSearch() {
     },
     {
       state: "ANDHRAPRADESH",
-      districts: [
-        "VIJAYWADA",
-        "VISAKHAPATNAM",
-      ],
+      districts: ["VIJAYWADA", "VISAKHAPATNAM"],
     },
     { state: "ASSAM", districts: ["GUWAHATI"] },
     { state: "PUNJAB", districts: ["LUDHIANA", "AMRITSAR", "MANSA"] },
@@ -171,9 +144,7 @@ function FindStoreSearch() {
     },
     {
       state: "CHHATTISGARH",
-      districts: [
-        "RAIPUR",
-      ],
+      districts: ["RAIPUR"],
     },
     {
       state: "CHANDIGARH",
@@ -219,6 +190,12 @@ function FindStoreSearch() {
   };
 
   const toggleDropdown2 = () => {
+    // Check if state is selected before allowing to open the city dropdown
+    //  if (!selectedOption1) {
+    //   alert("Please select a state first");
+    //   event.stopPropagation(); // Prevent event propagation
+    //   return; // Don't proceed with opening the city dropdown if state is not selected
+    // }
     setIsOpen2(!isOpen2);
     if (isOpen1) setIsOpen1(false);
   };
@@ -270,12 +247,19 @@ function FindStoreSearch() {
         <div className={styles.Map_Section_Iframe_Outer}>
           <div className={styles.content70}>
             <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.781100742337!2d72.46760667591222!3d23.031808215982352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b00368c8a37%3A0x58730efbf1381c3c!2sOne%2042%20building%2C%20north%20tower!5e0!3m2!1sen!2sin!4v1743504597734!5m2!1sen!2sin"
+              className={styles.map_frame}
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+            {/* <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3673.0578930659026!2d72.49071127591135!3d22.984898517731924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9aeb23c7e7e7%3A0xd34044573492f3c0!2sRoyal%20Art%20Laminates!5e0!3m2!1sen!2sin!4v1720691503627!5m2!1sen!2sin"
               allowfullscreen=""
               className={styles.map_frame}
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
+            ></iframe> */}
           </div>
         </div>
         {/* Selection Section */}
@@ -406,7 +390,9 @@ function FindStoreSearch() {
                           </div>
                           <div className={styles.content1}>
                             <div className={styles.address}>
-                            <Link href={`tel:${location.phone}`}>{location.phone}</Link>
+                              <Link href={`tel:${location.phone}`}>
+                                {location.phone}
+                              </Link>
                               {/* {location.phone} */}
                             </div>
                           </div>
@@ -414,7 +400,9 @@ function FindStoreSearch() {
                           {location.extraPhone && (
                             <div className={styles.content}>
                               <div className={styles.address}>
-                                <Link href={`tel:${location.extraPhone}`}>{location.extraPhone}</Link>
+                                <Link href={`tel:${location.extraPhone}`}>
+                                  {location.extraPhone}
+                                </Link>
                               </div>
                             </div>
                           )}

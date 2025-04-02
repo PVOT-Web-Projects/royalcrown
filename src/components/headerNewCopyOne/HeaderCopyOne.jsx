@@ -51,6 +51,7 @@ const HeaderCopyOne = () => {
         { name: "Interior Cladding", url: "/interior-cladding-laminates" },
         { name: "Fire Retardant", url: "/fire-retardant-laminates" },
         // { name: "Color Core", url: "/" },
+        { name: "Color Core", url: "/color-core-compacts" },
       ],
     },
     {
@@ -505,8 +506,8 @@ const HeaderCopyOne = () => {
                             //   setHoveredSubSubmenuItem(null)
                             // }
                             >
-                              {/* <Link
-                              href="#"
+                              <Link
+                              href="/color-core-compacts"
                               className="SubmenuClass"
                               onClick={() => {
                                 setHoveredItem(null); // Close the main menu
@@ -515,7 +516,7 @@ const HeaderCopyOne = () => {
                               }}
                             >
                               Color Core
-                            </Link> */}
+                            </Link>
                             </li>
                           </ul>
                         </motion.div>
@@ -725,13 +726,14 @@ const HeaderCopyOne = () => {
                       onMouseEnter={() => setHoveredSubmenuItem("submenu4")}
                       // onMouseLeave={() => setHoveredSubmenuItem(null)}
                     >
-                      <Link
+                      {/* <Link
                         className="prdtsFonts"
                         href="#"
                         onClick={(e) => e.preventDefault()}
                       >
                         TECHNICAL GRADE LAMINATE
-                      </Link>
+                      </Link> */}
+                      
                       {/* <span className={`arrow ${isOpen ? "up" : "down"}`}></span> */}
                       {/* <svg
                       width="24"

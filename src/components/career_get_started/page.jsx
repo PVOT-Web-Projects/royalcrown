@@ -26,7 +26,7 @@ const CareerGetStarted = () => {
           industry.
         </p>
       </div>
-      <div className="YellowTextOuter">
+      <div className="YellowTextOuter" id="CareerForm">
         <p className="YellowTextInner">
           Locking for Flexible Work ? Get Started Here{" > "}
         </p>
