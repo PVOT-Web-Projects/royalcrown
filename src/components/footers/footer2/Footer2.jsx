@@ -187,14 +187,14 @@ const Footer2 = ({ bgColor }) => {
               </div>
               <div className="col col4">
                 <div className="box">
-                  <Link href={"tel:9904990400"}>
-                    <Image src={telIcon} alt="" /> <span>+91 9904990400</span>
+                  <Link href={"tel:9537949494"}>
+                    <Image src={telIcon} alt="" /> <span>+91 9537949494</span>
                   </Link>
                 </div>
                 <div className="box">
-                  <Link href={"mailto:info@royalcrown.com"}>
+                  <Link href={"mailto:support@royalcrown.in"}>
                     <Image src={mailIcon} alt="" />{" "}
-                    <span>info@royalcrown.com</span>
+                    <span>support@royalcrown.in</span>
                   </Link>
                 </div>
                 {/* <div className="box"> */}
