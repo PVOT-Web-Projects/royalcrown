@@ -196,7 +196,7 @@ const Page = () => {
   useEffect(() => {
     if (searchTerm) {
       const filtered = products.filter((product) => {
-        return product.attributes[7]?.terms[0]?.name
+        return product.attributes[6]?.terms[0]?.name
           ?.toLowerCase()
           .includes(searchTerm.toLowerCase()); // Match design code attribute
       });
@@ -577,7 +577,7 @@ const Page = () => {
                       : "";
 
                   // Get Design Code, default to "No Data Found" if not available
-                  const designCode = product.attributes[8]?.terms[0].name || "";
+                  const designCode = product.attributes[6]?.terms[0].name || "";
                   const defaultImage =
                     "http://vanras.humbeestudio.xyz/wp-content/uploads/2025/03/default_image.png";
                   return (
