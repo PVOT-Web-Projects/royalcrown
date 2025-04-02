@@ -25,6 +25,7 @@ const Page = () => {
   const [isMobile, setIsMobile] = useState(0);
   const [tab, setTab] = useState("");
   const pathName = usePathname();
+  const [searchTerm, setSearchTerm] = useState(""); // State for search term
   const [shortTitle, setShortTitle] = useState("");
   const [selectedTag, setSelectedTag] = useState("all"); // Initially no tag selected
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -43,23 +44,53 @@ const Page = () => {
   // Create a ref to the element you want to scroll to
   const projectsRef = useRef(null);
   console.log(currentData);
-  useEffect(() => {
-    fetch(
-      "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100"
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setLoading(false); // Set loading to false once data is fetched
-        console.log("API Response:", data); // Log the response for debugging
-        setProducts(data);
-        setFilteredProducts(data); // Initially show all products
-      })
-      .catch((error) => {
-        setLoading(false); // Set loading to false once data is fetched
-        console.error("Failed to fetch data:", error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(
+  //     "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100"
+  //   )
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setLoading(false); // Set loading to false once data is fetched
+  //       console.log("API Response:", data); // Log the response for debugging
+  //       setProducts(data);
+  //       setFilteredProducts(data); // Initially show all products
+  //     })
+  //     .catch((error) => {
+  //       setLoading(false); // Set loading to false once data is fetched
+  //       console.error("Failed to fetch data:", error);
+  //     });
+  // }, []);
+useEffect(() => {
+    const fetchAllProducts = async () => {
+      try {
+        // The API URL structure
+        const apiUrl = "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100&page=";
 
+        // Fetching all pages (1 to 9 in this case)
+        const pageNumbers = Array.from({ length: 6 }, (_, index) => index + 1);
+
+        // Fetch all pages in parallel using Promise.all
+        const fetchPromises = pageNumbers.map((page) =>
+          fetch(`${apiUrl}${page}`).then((res) => res.json())
+        );
+
+        // Wait for all API calls to complete
+        const allProducts = await Promise.all(fetchPromises);
+
+        // Combine all the fetched data into one array
+        const combinedProducts = allProducts.flat();
+
+        // Set the combined data into state
+        setProducts(combinedProducts);
+        setLoading(false);
+      } catch (error) {
+        console.error("Failed to fetch data:", error);
+        setLoading(false); // Stop loading even if there's an error
+      }
+    };
+
+    fetchAllProducts();
+  }, []); // Only run once when the component is mounted
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
     // const fullPath = pathName + hash;
@@ -312,6 +343,10 @@ const Page = () => {
       });
     }
   };
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
 
   const resetFiltersDrop = () => {
     setSelectedBrand("all");
@@ -321,9 +356,26 @@ const Page = () => {
     setSelectedThickness("all");
     setSelectedColor("all");
     setSelectedType("all");
+    setSearchTerm(""); // Reset the search term
+    setFilteredProducts(products); 
     // Reset the URL to /product without the hash
     // router.push("/product", undefined, { shallow: true });
   };
+
+
+  // Filter products based on search term
+    useEffect(() => {
+      if (searchTerm) {
+        const filtered = products.filter((product) => {
+          return product.attributes[6]?.terms[0]?.name
+            ?.toLowerCase()
+            .includes(searchTerm.toLowerCase()); // Match design code attribute
+        });
+        setFilteredProducts(filtered);
+      } else {
+        setFilteredProducts(products); // If no search term, show all products
+      }
+    }, [searchTerm, products]);
 
   // Detect if the screen is mobile
   useEffect(() => {
@@ -443,6 +495,17 @@ const Page = () => {
               </button>
             </div>
             {/* reset filter ends */}
+             {/* Search Input */}
+             <div className="searchContainer">
+              <input
+                type="text"
+                placeholder="Search"
+                value={searchTerm}
+                onChange={handleSearchChange}
+                className="searchInput"
+              />
+            </div>
+
             <div className="dropdown1">
               <div className="dropdown-label">
                 <label className="colorSelectDropdown" htmlFor="type-select">
@@ -576,7 +639,6 @@ const Page = () => {
           </div>
           {/* Skeleton Loader */}
           {loading ? (
-            // <div className="skeleton-loader">
             <Grid container spacing={2}>
               {/* Render exactly 25 skeletons in the grid */}
               {Array.from({ length: 25 }).map((_, index) => (
@@ -586,14 +648,12 @@ const Page = () => {
               ))}
             </Grid>
           ) : (
-            // </div>
-            // <div className="skeleton-loader">
-            //   <div className="skeleton-item"></div>
-            //   <div className="skeleton-item"></div>
-            //   <div className="skeleton-item"></div>
-            // </div>
             <div className="product_container" ref={projectsRef}>
-              {displayedData.map((product, index) => {
+              {displayedData.length === 0 ? (
+                // Display this message if no products are found
+                <div className="noMatchFound">No match found</div>
+              ) : (
+              displayedData.map((product, index) => {
                 console.log(displayedData);
                 // const isTabActive = !!activeTab;
                 const className =
@@ -606,7 +666,7 @@ const Page = () => {
                       )
                     ? "tall"
                     : "";
-                const designCode = product.attributes[8]?.terms[0].name || "";
+                const designCode = product.attributes[6]?.terms[0].name || "";
                 const defaultImage =
                   "http://vanras.humbeestudio.xyz/wp-content/uploads/2025/03/default_image.png";
 
@@ -657,7 +717,8 @@ const Page = () => {
                     </div>
                   </div>
                 );
-              })}
+              })
+              )}
             </div>
           )}
         </div>
