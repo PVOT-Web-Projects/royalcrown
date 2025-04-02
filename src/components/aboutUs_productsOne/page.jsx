@@ -102,6 +102,7 @@ const Page = () => {
       setCurrentData(products);
     }
   }, [pathName, products]);
+
   const handlePageChange = (event, value) => {
     setPageNumber(value);
     projectsRef.current.scrollIntoView({
