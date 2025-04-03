@@ -496,7 +496,7 @@ useEffect(() => {
             </div>
             {/* reset filter ends */}
              {/* Search Input */}
-             <div className="searchContainer">
+             {/* <div className="searchContainer">
               <input
                 type="text"
                 placeholder="Search"
@@ -504,7 +504,7 @@ useEffect(() => {
                 onChange={handleSearchChange}
                 className="searchInput"
               />
-            </div>
+            </div> */}
 
             <div className="dropdown1">
               <div className="dropdown-label">
@@ -666,7 +666,15 @@ useEffect(() => {
                       )
                     ? "tall"
                     : "";
-                const designCode = product.attributes[6]?.terms[0].name || "";
+                // const designCode = product.attributes[6]?.terms[0].name || "";
+                const designCodeAttr = product.attributes.find(
+                  (attr) => attr.name.toLowerCase() === "design code"
+                );
+                const designCode =
+                  designCodeAttr && designCodeAttr.terms.length > 0
+                    ? designCodeAttr.terms[0].name
+                    : "No design code available"; // Fallback if no design code is found
+               
                 const defaultImage =
                   "http://vanras.humbeestudio.xyz/wp-content/uploads/2025/03/default_image.png";
 

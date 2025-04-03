@@ -59,7 +59,8 @@ const Page = () => {
     const fetchAllProducts = async () => {
       try {
         // The API URL structure
-        const apiUrl = "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100&page=";
+        const apiUrl =
+          "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100&page=";
 
         // Fetching all pages (1 to 9 in this case)
         const pageNumbers = Array.from({ length: 9 }, (_, index) => index + 1);
@@ -101,6 +102,7 @@ const Page = () => {
       setCurrentData(products);
     }
   }, [pathName, products]);
+
   const handlePageChange = (event, value) => {
     setPageNumber(value);
     projectsRef.current.scrollIntoView({
@@ -296,7 +298,7 @@ const Page = () => {
           product.attributes.some(
             (attr) =>
               attr.name === "type" &&
-              attr.terms.some((term) => term.slug === selectedCat)
+              attr.terms.some((term) => term.name === selectedCat)
           )
         );
       const finishMatch =
@@ -608,7 +610,14 @@ const Page = () => {
                       : "";
 
                   // Get Design Code, default to "No Data Found" if not available
-                  const designCode = product.attributes[6]?.terms[0].name || "";
+                  // const designCode = product.attributes[6]?.terms[0].name || "";
+                  const designCodeAttr = product.attributes.find(
+                    (attr) => attr.name.toLowerCase() === "design code"
+                  );
+                  const designCode =
+                    designCodeAttr && designCodeAttr.terms.length > 0
+                      ? designCodeAttr.terms[0].name
+                      : "No design code available"; // Fallback if no design code is found
                   const defaultImage =
                     "http://vanras.humbeestudio.xyz/wp-content/uploads/2025/03/default_image.png";
                   return (
