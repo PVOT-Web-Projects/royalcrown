@@ -718,48 +718,49 @@ const Page = () => {
                 sx={{
                   "& .MuiPaginationItem-root": {
                     backgroundColor: "transparent",
-                    border: "1px solid #5b3524",
-                    color: "#5b3524",
-                    margin: "0 5px",
-                    padding: "15px 20px",
-                    fontSize: "16px",
+                    border: "1px solid #5B3524",
+                    color: "#5B3524",
+                    margin: "0 10px",
+                    padding: "12px 1px",
+                    fontSize: "15px",
+                    minWidth: "26px",
+                    height: "20px",
                     borderRadius: "0px",
-                    minWidth: "auto",
-                    transition: "all 0.3s ease",
-
-                    "&:hover": {
-                      backgroundColor: "#5b3524",
-                      color: "white",
-                      border: "1px solid #5b3524",
-                    },
-
+                    lineHeight: "0.5",
+                    transition: "background-color 0.3s, color 0.3s",
                     "@media (max-width: 768px)": {
-                      margin: "0 4px",
-                      padding: "12px 16px",
-                      fontSize: "14px",
+                      margin: "0 9px",
+                      padding: "12px 8px",
+                      fontSize: "15px",
                     },
-
-                    "@media (max-width: 480px)": {
-                      margin: "0 3px",
-                      padding: "10px 14px",
-                      fontSize: "13px",
+                    "@media (max-width: 425px)": {
+                      margin: "0 8px",
+                      padding: "12px 8px",
+                      fontSize: "12px",
                     },
-
                     "&.Mui-selected": {
-                      backgroundColor: "#5b3524",
+                      backgroundColor: "#5B3524",
+                      margin: "0 10px",
+                      padding: "14px 10px",
+                      fontSize: "16px",
                       color: "white",
-                      border: "1px solid #5b3524",
-
-                      "&:hover": {
-                        backgroundColor: "#5b3524",
-                        color: "white",
+                      border: "none",
+                      "@media (max-width: 768px)": {
+                        margin: "0 9px",
+                        padding: "12px 10px",
+                        fontSize: "15px",
+                      },
+                      "@media (max-width: 425px)": {
+                        margin: "0 8px",
+                        padding: "12px 10px",
+                        fontSize: "12px",
                       },
                     },
-                  },
-
-                  "& .MuiPagination-ul": {
-                    justifyContent: "center",
-                    gap: "4px",
+                    "&.Mui-selected:hover": {
+                      backgroundColor: "#5B3524",
+                      color: "white",
+                      border: "none",
+                    },
                   },
                 }}
               />

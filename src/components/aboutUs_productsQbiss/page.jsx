@@ -36,6 +36,7 @@ const Page = () => {
   const [isMobileOne, setIsMobileOne] = useState(false); // State for mobile detection
   const [lastScrollTop, setLastScrollTop] = useState(0); // Track the last scroll position
   const stickyRef = useRef(null); // Ref for the sticky element
+  const [searchTerm, setSearchTerm] = useState("");
 
   // Adding a loading state
   const [loading, setLoading] = useState(true); // Initially, set loading to t
@@ -158,6 +159,12 @@ const Page = () => {
   }, [color]);
   const handleTypeChange = (e) => {
     setSelectedType(e.value);
+    setSelectedCategory([]); // Reset category when type changes
+    setPageNumber(1); // Reset to first page when type changes
+  };
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+    setPageNumber(1); // Reset to first page when search term changes
   };
   const handleCategoryChange = (event) => {
     const { value, checked } = event.target;
@@ -251,7 +258,12 @@ const Page = () => {
         (attr) => attr.name.toLowerCase() === "color"
       );
 
-      // Type filter
+      // Find the design code attribute
+      const designCodeAttribute = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "design code"
+      );
+
+      // Type filter - updated to handle both "all" and specific type selection
       const typeMatch = selectedType === "all" || 
         (typeAttribute && typeAttribute.terms.some(
           term => term.name.toLowerCase() === selectedType.toLowerCase()
@@ -283,13 +295,20 @@ const Page = () => {
           term => term.name.toLowerCase() === selectedColor.toLowerCase()
         ));
 
+      // Search filter by design code
+      const searchMatch = !searchTerm || 
+        (designCodeAttribute && designCodeAttribute.terms.some(
+          term => term.name.toLowerCase().includes(searchTerm.toLowerCase())
+        ));
+
       return (
         isQBlissCategory &&
         typeMatch &&
         categoryMatch &&
         sizeMatch &&
         thicknessMatch &&
-        colorMatch
+        colorMatch &&
+        searchMatch
       );
     });
   }, [
@@ -298,7 +317,8 @@ const Page = () => {
     selectedCategory,
     selectedSize,
     selectedThickness,
-    selectedColor
+    selectedColor,
+    searchTerm
   ]);
   // const lastIndex = pageNumber * itemsPerPage;
   // const firstIndex = lastIndex - itemsPerPage;
@@ -314,8 +334,8 @@ const Page = () => {
     setSelectedThickness("all");
     setSelectedColor("all");
     setSelectedType("all");
-    // Reset the URL to /product without the hash
-    // router.push("/product", undefined, { shallow: true });
+    setSearchTerm(""); // Reset the search term
+    setPageNumber(1); // Reset to first page when filters are reset
   };
   //  pagination finall logic
   // Calculate total pages dynamically based on filtered products
@@ -517,6 +537,15 @@ const Page = () => {
               </button>
             </div>
             {/* reset filter ends */}
+            <div className="searchContainer">
+              <input
+                type="text"
+                placeholder="Search"
+                value={searchTerm}
+                onChange={handleSearchChange}
+                className="searchInput"
+              />
+            </div>
             <div className="dropdown1">
               <div className="dropdown-label">
                 <label className="colorSelectDropdown" htmlFor="type-select">
@@ -763,48 +792,49 @@ const Page = () => {
                 sx={{
                   "& .MuiPaginationItem-root": {
                     backgroundColor: "transparent",
-                    border: "1px solid #5b3524",
-                    color: "#5b3524",
-                    margin: "0 5px",
-                    padding: "15px 20px",
-                    fontSize: "16px",
+                    border: "1px solid #5B3524",
+                    color: "#5B3524",
+                    margin: "0 10px",
+                    padding: "12px 1px",
+                    fontSize: "15px",
+                    minWidth: "26px",
+                    height: "20px",
                     borderRadius: "0px",
-                    minWidth: "auto",
-                    transition: "all 0.3s ease",
-
-                    "&:hover": {
-                      backgroundColor: "#5b3524",
-                      color: "white",
-                      border: "1px solid #5b3524",
-                    },
-
+                    lineHeight: "0.5",
+                    transition: "background-color 0.3s, color 0.3s",
                     "@media (max-width: 768px)": {
-                      margin: "0 4px",
-                      padding: "12px 16px",
-                      fontSize: "14px",
+                      margin: "0 9px",
+                      padding: "12px 8px",
+                      fontSize: "15px",
                     },
-
-                    "@media (max-width: 480px)": {
-                      margin: "0 3px",
-                      padding: "10px 14px",
-                      fontSize: "13px",
+                    "@media (max-width: 425px)": {
+                      margin: "0 8px",
+                      padding: "12px 8px",
+                      fontSize: "12px",
                     },
-
                     "&.Mui-selected": {
-                      backgroundColor: "#5b3524",
+                      backgroundColor: "#5B3524",
+                      margin: "0 10px",
+                      padding: "14px 10px",
+                      fontSize: "16px",
                       color: "white",
-                      border: "1px solid #5b3524",
-
-                      "&:hover": {
-                        backgroundColor: "#5b3524",
-                        color: "white",
+                      border: "none",
+                      "@media (max-width: 768px)": {
+                        margin: "0 9px",
+                        padding: "12px 10px",
+                        fontSize: "15px",
+                      },
+                      "@media (max-width: 425px)": {
+                        margin: "0 8px",
+                        padding: "12px 10px",
+                        fontSize: "12px",
                       },
                     },
-                  },
-
-                  "& .MuiPagination-ul": {
-                    justifyContent: "center",
-                    gap: "4px",
+                    "&.Mui-selected:hover": {
+                      backgroundColor: "#5B3524",
+                      color: "white",
+                      border: "none",
+                    },
                   },
                 }}
               />
