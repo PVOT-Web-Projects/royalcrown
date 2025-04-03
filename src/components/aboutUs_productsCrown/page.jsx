@@ -189,12 +189,12 @@ useEffect(() => {
   }, [color]);
   const handleTypeChange = (e) => {
     setSelectedType(e.value);
+    setSelectedCategory([]); // Reset category when type changes
   };
   const handleCategoryChange = (event) => {
     const { value, checked } = event.target;
     setSelectedCategory((prevSelectedCategory) => {
       if (checked) {
-        console.log("Category Selected:", value); // Log the selected category
         return [...prevSelectedCategory, value];
       } else {
         return prevSelectedCategory.filter((category) => category !== value);
@@ -235,34 +235,42 @@ useEffect(() => {
       const isCrownCategory = product.categories.some(
         (category) => category.name.toLowerCase() === "crown"
       );
-      const brandMatch =
-        selectedBrand === "all" || product.category === selectedBrand;
+
+      // Type filtering
+      const typeAttr = product.attributes.find(attr => attr.name.toLowerCase() === "type");
+      const typeMatch = selectedType === "all" || 
+        typeAttr?.terms.some(term => term.name === selectedType);
+
+      // Category filtering
       const categoryMatch =
         selectedCategory.length === 0 ||
         selectedCategory.some((selectedCat) =>
           product.attributes.some(
             (attr) =>
-              attr.name === "type" &&
-              attr.terms.some((term) => term.slug === selectedCat)
+              attr.name.toLowerCase() === "type" &&
+              attr.terms.some((term) => term.name === selectedCat)
           )
         );
-      const finishMatch =
-        selectedFinish === "all" ||
-        product.categories[1].slug === selectedFinish;
+
+      // Size filtering
+      const sizeAttr = product.attributes.find(attr => attr.name.toLowerCase() === "size");
       const sizeMatch =
         selectedSize === "all" ||
-        product.attributes[1].terms[0].name === selectedSize;
+        sizeAttr?.terms[0]?.name === selectedSize;
+
+      // Thickness filtering
+      const thicknessAttr = product.attributes.find(attr => attr.name.toLowerCase() === "thickness");
       const thicknessMatch =
         selectedThickness === "all" ||
-        product.attributes[2].terms[0].name === selectedThickness;
+        thicknessAttr?.terms[0]?.name === selectedThickness;
+
+      // Color filtering
+      const colorAttr = product.attributes.find(attr => attr.name.toLowerCase() === "color");
       const colorMatch =
         selectedColor === "all" ||
-        product.attributes[4].terms[0].name === selectedColor;
-      const typeMatch =
-        selectedType === "all" ||
-        product.attributes[3].terms[0].name === selectedType;
+        colorAttr?.terms[0]?.name === selectedColor;
 
-      // Search only by design code
+      // Search by design code
       const designCodeAttr = product.attributes.find(
         (attr) => attr.name.toLowerCase() === "design code"
       );
@@ -271,25 +279,21 @@ useEffect(() => {
 
       return (
         isCrownCategory &&
-        brandMatch &&
+        typeMatch &&
         categoryMatch &&
-        finishMatch &&
         sizeMatch &&
         thicknessMatch &&
         colorMatch &&
-        typeMatch &&
         searchMatch
       );
     });
   }, [
     products,
-    selectedBrand,
+    selectedType,
     selectedCategory,
-    selectedFinish,
     selectedSize,
     selectedThickness,
     selectedColor,
-    selectedType,
     searchTerm,
   ]);
 
