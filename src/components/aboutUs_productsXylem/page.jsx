@@ -629,6 +629,15 @@ const Page = () => {
               </button>
             </div>
             {/* reset filter ends */}
+            <div className="searchContainer">
+              <input
+                type="text"
+                placeholder="Search"
+                value={searchTerm}
+                onChange={handleSearchChange}
+                className="searchInput"
+              />
+            </div>
             <div className="dropdown1">
               <div className="dropdown-label">
                 <label className="colorSelectDropdown" htmlFor="type-select">
@@ -779,7 +788,11 @@ const Page = () => {
             //   <div className="skeleton-item"></div>
             // </div>
             <div className="product_container" ref={projectsRef}>
-              {displayedData.map((product, index) => {
+               {displayedData.length === 0 ? (
+                // Display this message if no products are found
+                <div className="noMatchFound">No match found</div>
+              ) : (
+              displayedData.map((product, index) => {
                 console.log(displayedData);
                 // const isTabActive = !!activeTab;
                 const className =
@@ -852,7 +865,8 @@ const Page = () => {
                     </div>
                   </div>
                 );
-              })}
+              })
+            )}
             </div>
           )}
         </div>
