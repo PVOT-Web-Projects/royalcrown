@@ -14,10 +14,11 @@ import { Skeleton, Grid } from "@mui/material";
 
 const Page = () => {
   const itemsPerPage = 25;
-  const [isMobileOne, setIsMobileOne] = useState(false);  // State for mobile detection
-    const [lastScrollTop, setLastScrollTop] = useState(0); // Track the last scroll position
-    const stickyRef = useRef(null); // Ref for the sticky element
+  const [isMobileOne, setIsMobileOne] = useState(false); // State for mobile detection
+  const [lastScrollTop, setLastScrollTop] = useState(0); // Track the last scroll position
+  const stickyRef = useRef(null); // Ref for the sticky element
   const [pageNumber, setPageNumber] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
   const [selectedBrand, setSelectedBrand] = useState("all");
   const [selectedType, setSelectedType] = useState("all");
   const [selectedCategory, setSelectedCategory] = useState([]);
@@ -58,7 +59,7 @@ const Page = () => {
   //       console.error("Failed to fetch data:", error);
   //     });
   // }, []);
- useEffect(() => {
+  useEffect(() => {
     const fetchAllProducts = async () => {
       try {
         // The API URL structure
@@ -189,6 +190,9 @@ const Page = () => {
   const handleTypeChange = (e) => {
     setSelectedType(e.value);
   };
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
   const handleCategoryChange = (event) => {
     const { value, checked } = event.target;
     setSelectedCategory((prevSelectedCategory) => {
@@ -204,7 +208,16 @@ const Page = () => {
     setSelectedSize(e.value);
   };
   const handleSizeClick = (sizeValue) => {
-    setSelectedSize((prevSize) => (prevSize === sizeValue ? "" : sizeValue));
+    setSelectedSize((prevSelectedSize) => {
+      // If the size is already selected, deselect it (set to null or "")
+      if (prevSelectedSize === sizeValue) {
+        console.log("Size Deselected:", sizeValue);
+        return null; // Deselect the size to show all products
+      } else {
+        console.log("Size Selected:", sizeValue);
+        return sizeValue; // Select the new size
+      }
+    });
     const exploreCollectionElement = document.querySelector("#sticky_top");
     if (exploreCollectionElement) {
       exploreCollectionElement.scrollIntoView({
@@ -246,20 +259,29 @@ const Page = () => {
           )
         );
       const finishMatch =
-        selectedFinish === "all" ||
+        selectedFinish === "all" || selectedFinish === null ||
         product.categories[1].slug === selectedFinish;
       const sizeMatch =
-        selectedSize === "all" ||
+        selectedSize === "all" || selectedSize === null ||
         product.attributes[1].terms[0].name === selectedSize;
       const thicknessMatch =
-        selectedThickness === "all" ||
+        selectedThickness === "all" || selectedThickness === null ||
         product.attributes[2].terms[0].name === selectedThickness;
       const colorMatch =
-        selectedColor === "all" ||
+        selectedColor === "all" ||selectedColor === null ||
         product.attributes[4].terms[0].name === selectedColor;
       const typeMatch =
-        selectedType === "all" ||
+        selectedType === "all" ||selectedType === null ||
         product.attributes[3].terms[0].name === selectedType;
+      // Search by design code
+      const designCodeAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "design code"
+      );
+      const searchMatch =
+        !searchTerm ||
+        (designCodeAttr?.terms[0]?.name?.toLowerCase() || "").includes(
+          searchTerm.toLowerCase()
+        );
       console.log("Checking Product:", product); // Log each product being checked
       console.log(
         "Matches Filters:",
@@ -286,7 +308,8 @@ const Page = () => {
         sizeMatch &&
         thicknessMatch &&
         colorMatch &&
-        typeMatch
+        typeMatch &&
+        searchMatch
       );
     });
   }, [
@@ -297,23 +320,50 @@ const Page = () => {
     selectedSize,
     selectedThickness,
     selectedColor,
+    searchTerm,
     selectedType, // Added selectedType to the dependencies of useMemo
   ]);
-  const lastIndex = pageNumber * itemsPerPage;
+
+  // Calculate total pages dynamically based on filtered products
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredProducts1.length / itemsPerPage)
+  );
+  // Ensure the current page is within the valid range
+  const currentPage = Math.min(pageNumber, totalPages);
+  // Calculate indices for the current page
+  const lastIndex = currentPage * itemsPerPage;
   const firstIndex = lastIndex - itemsPerPage;
-  const displayedData =
-    filteredProducts1.length > 0
-      ? filteredProducts1.slice(firstIndex, lastIndex)
-      : [];
+  // Slice the filtered products to display only the current page's items
+  const displayedData = filteredProducts1.slice(firstIndex, lastIndex);
+  // Render only valid pagination buttons
+  useEffect(() => {
+    if (currentPage > totalPages && totalPages > 0) {
+      setPageNumber(totalPages); // Redirect to the last valid page
+    }
+  }, [currentPage, totalPages]);
+  // Reset to the first page if filters change
+  useEffect(() => {
+    setPageNumber(1); // Reset to the first page when filtered products change
+  }, [filteredProducts1]);
+
+  // const lastIndex = pageNumber * itemsPerPage;
+  // const firstIndex = lastIndex - itemsPerPage;
+  // const displayedData =
+  //   filteredProducts1.length > 0
+  //     ? filteredProducts1.slice(firstIndex, lastIndex)
+  //     : [];
   useEffect(() => {
     if (selectedTag === "all") {
       setFilteredProducts(products);
-    }else if (selectedTag === "Royal Crown") { // Highlighted: Check for Royal Crown explicitly
-      const filtered = products.filter((product) => product.category === "Xylem"); // Highlighted: Filter by category Royal Crown
+    } else if (selectedTag === "Royal Crown") {
+      // Highlighted: Check for Royal Crown explicitly
+      const filtered = products.filter(
+        (product) => product.category === "Xylem"
+      ); // Highlighted: Filter by category Royal Crown
       console.log("Filtered Products for Royal Crown:", filtered); // Log the filtered result
       setFilteredProducts(filtered);
-    }  
-    else {
+    } else {
       const filtered = products.filter((product) => {
         console.log("Checking product:", product); // Log each product
         return (
@@ -329,9 +379,15 @@ const Page = () => {
     }
   }, [selectedTag, products]);
   const handleThicknessClick = (thicknessValue) => {
-    setSelectedThickness((prevThickness) =>
-      prevThickness === thicknessValue ? "" : thicknessValue
-    );
+    setSelectedThickness((prevSelectedThickness) => {
+      if (prevSelectedThickness === thicknessValue) {
+        console.log("Thickness Deselected:", thicknessValue);
+        return null; // Deselect the thickness to show all products
+      } else {
+        console.log("Thickness Selected:", thicknessValue);
+        return thicknessValue; // Select the new thickness
+      }
+    });
     const exploreCollectionElement = document.querySelector("#sticky_top");
     if (exploreCollectionElement) {
       exploreCollectionElement.scrollIntoView({
@@ -341,6 +397,30 @@ const Page = () => {
     }
   };
 
+  useEffect(() => {
+    if (searchTerm) {
+      const filtered = products.filter((product) => {
+        const designCodeAttr = product.attributes.find(
+          (attr) => attr.name.toLowerCase() === "design code"
+        );
+        const designCode =
+          designCodeAttr && designCodeAttr.terms.length > 0
+            ? designCodeAttr.terms[0].name
+            : "";
+
+        return designCode.toLowerCase().includes(searchTerm.toLowerCase());
+      });
+      // const filtered = products.filter((product) => {
+      //   return product.attributes[6]?.terms[0]?.name
+      //     ?.toLowerCase()
+      //     .includes(searchTerm.toLowerCase()); // Match design code attribute
+      // });
+      setFilteredProducts(filtered);
+    } else {
+      setFilteredProducts(products); // If no search term, show all products
+    }
+  }, [searchTerm, products]);
+
   const resetFiltersDrop = () => {
     setSelectedBrand("all");
     setSelectedCategory([]);
@@ -349,54 +429,74 @@ const Page = () => {
     setSelectedThickness("all");
     setSelectedColor("all");
     setSelectedType("all");
-      // Reset the URL to /product without the hash
-  // router.push("/product", undefined, { shallow: true });
+    setSearchTerm(""); // Reset the search term
+    setFilteredProducts(products);
+    // Reset the URL to /product without the hash
+    // router.push("/product", undefined, { shallow: true });
   };
+  // Filter products based on search term
+  useEffect(() => {
+    if (searchTerm) {
+      const filtered = products.filter((product) => {
+        const designCodeAttr = product.attributes.find(
+          (attr) => attr.name.toLowerCase() === "design code"
+        );
+        const designCode =
+          designCodeAttr && designCodeAttr.terms.length > 0
+            ? designCodeAttr.terms[0].name
+            : "";
 
+        return designCode.toLowerCase().includes(searchTerm.toLowerCase());
+      });
+      setFilteredProducts(filtered);
+    } else {
+      setFilteredProducts(products); // If no search term, show all products
+    }
+  }, [searchTerm, products]);
 
   // Detect if the screen is mobile
-    useEffect(() => {
-      const handleResize = () => {
-        setIsMobileOne(window.innerWidth < 1025); // Update isMobile state
-      };
-      
-      window.addEventListener("resize", handleResize);
-      handleResize(); // Check initial size
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
-    }, []);
-     // Scroll event listener to hide/show the sticky element
-     useEffect(() => {
-      if (isMobileOne) {
-        const handleScroll = () => {
-          const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-          // If the user is scrolling down
-          if (currentScrollTop > lastScrollTop) {
-            // Hide the sticky element
-            if (stickyRef.current) {
-              stickyRef.current.style.transform = "translateY(-100%)";  // Move it up
-              stickyRef.current.style.zIndex = -1;  // Set z-index to -1 when hidden
-            }
-          } else {
-            // If scrolling up, show the sticky element
-            if (stickyRef.current) {
-              stickyRef.current.style.transform = "translateY(0)";  // Move it down
-              stickyRef.current.style.zIndex = 1;  // Set z-index to 1 when visible
-            }
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileOne(window.innerWidth < 1025); // Update isMobile state
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Check initial size
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+  // Scroll event listener to hide/show the sticky element
+  useEffect(() => {
+    if (isMobileOne) {
+      const handleScroll = () => {
+        const currentScrollTop =
+          window.pageYOffset || document.documentElement.scrollTop;
+
+        // If the user is scrolling down
+        if (currentScrollTop > lastScrollTop) {
+          // Hide the sticky element
+          if (stickyRef.current) {
+            stickyRef.current.style.transform = "translateY(-100%)"; // Move it up
+            stickyRef.current.style.zIndex = -1; // Set z-index to -1 when hidden
           }
-    
-          setLastScrollTop(currentScrollTop <= 0 ? 0 : currentScrollTop); // Update the scroll position
-        };
-    
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-          window.removeEventListener("scroll", handleScroll);
-        };
-      }
-    }, [isMobileOne, lastScrollTop]);
-    
+        } else {
+          // If scrolling up, show the sticky element
+          if (stickyRef.current) {
+            stickyRef.current.style.transform = "translateY(0)"; // Move it down
+            stickyRef.current.style.zIndex = 1; // Set z-index to 1 when visible
+          }
+        }
+
+        setLastScrollTop(currentScrollTop <= 0 ? 0 : currentScrollTop); // Update the scroll position
+      };
+
+      window.addEventListener("scroll", handleScroll);
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
+  }, [isMobileOne, lastScrollTop]);
 
   return (
     <>
@@ -404,13 +504,13 @@ const Page = () => {
         <div className="productMain">
           <div className="productNumber">
             <motion.p
-                         initial={{ x: 100, opacity: 0 }}
-                         whileInView={{ x: 0, opacity: 1 }}
-                         transition={{ duration: 1 }}
-                         viewport={{ once: true }}
-                       >
-                         02
-                       </motion.p>
+              initial={{ x: 100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+            >
+              02
+            </motion.p>
           </div>
           <div className="productDescription">
             <motion.div
@@ -423,10 +523,11 @@ const Page = () => {
             <div className="productDescriptionHeader">royal crown</div>
             <div className="productDescriptionContent">
               <motion.p
-               initial={{ y: 100, opacity: 0 }}
-               whileInView={{ y: 0, opacity: 1 }}
-               transition={{ duration: 1 }}
-               viewport={{ once: true }}>
+                initial={{ y: 100, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1 }}
+                viewport={{ once: true }}
+              >
                 Royal Crown Laminates takes pride in its rich legacy of
                 innovation, cutting-edge technology, and expertise, offering
                 over 450 trendsetting surface designs. Our collection of modern
@@ -439,17 +540,16 @@ const Page = () => {
         </div>
       </div>
       <div className="first_top">
-      <motion.div
+        <motion.div
           className="exploreCollection"
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-          >
-            Explore Collection
-          </motion.div>
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          Explore Collection
+        </motion.div>
         <div id="sticky_top" className="products_name1">
-          
           <div className="products-tabs" id="sticky_top">
             <div scroll={false} className="tab-item">
               <div className="tab-content-inner">royal crown</div>
@@ -458,17 +558,31 @@ const Page = () => {
         </div>
 
         <div className="supply">
-          <div id="sticky" 
-          // ref={stickyRef} style={{ transition: "transform 0.3s ease" }}
+          <div
+            id="sticky"
+            // ref={stickyRef} style={{ transition: "transform 0.3s ease" }}
           >
-          {/* reset filter */}
-          <div className="resetFilters">
-              <button className="resetButton" onClick={resetFiltersDrop} scroll={false}>
+            {/* reset filter */}
+            <div className="resetFilters">
+              <button
+                className="resetButton"
+                onClick={resetFiltersDrop}
+                scroll={false}
+              >
                 <span className="resetButton-content">reset</span>
                 {/* Reset Filters */}
               </button>
             </div>
             {/* reset filter ends */}
+            <div className="searchContainer">
+              <input
+                type="text"
+                placeholder="Search"
+                value={searchTerm}
+                onChange={handleSearchChange}
+                className="searchInput"
+              />
+            </div>
             <div className="dropdown1">
               <div className="dropdown-label">
                 <label className="colorSelectDropdown" htmlFor="type-select">
@@ -552,6 +666,7 @@ const Page = () => {
                       className={`SizeProduct ${
                         selectedSize === sizeOption.value ? "selected" : ""
                       }`}
+                      scroll={false}
                       onClick={() => handleSizeClick(sizeOption.value)}
                     >
                       <p>{sizeOption.label}</p>
@@ -619,79 +734,85 @@ const Page = () => {
             //   <div className="skeleton-item"></div>
             // </div>
             <div className="product_container" ref={projectsRef}>
-              {displayedData.map((product, index) => {
-                console.log(displayedData);
-                // const isTabActive = !!activeTab;
-                const className =
-                  // ? "" // Normal size for tab view
-                  // :
-                  index === 9
-                    ? "big"
-                    : [0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21].includes(
-                        index
-                      )
-                    ? "tall"
-                    : "";
+              {displayedData.length === 0 ? (
+                // Display this message if no products are found
+                <div className="noMatchFound">No match found</div>
+              ) : (
+                displayedData.map((product, index) => {
+                  console.log(displayedData);
+                  // const isTabActive = !!activeTab;
+                  const className =
+                    // ? "" // Normal size for tab view
+                    // :
+                    index === 9
+                      ? "big"
+                      : [
+                          0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21,
+                        ].includes(index)
+                      ? "tall"
+                      : "";
                   // Get Design Code, default to "No Data Found" if not available
                   // const designCode = product.attributes[8]?.terms[0].name || "";
-                   const designCodeAttr = product.attributes.find(
+                  const designCodeAttr = product.attributes.find(
                     (attr) => attr.name.toLowerCase() === "design code"
                   );
                   const designCode =
                     designCodeAttr && designCodeAttr.terms.length > 0
                       ? designCodeAttr.terms[0].name
                       : "No design code available"; // Fallback if no design code is found
-                  
+
                   const defaultImage =
                     "http://vanras.humbeestudio.xyz/wp-content/uploads/2025/03/default_image.png";
 
-                return (
-                  <div key={index} className={`AboutUs_product ${className}`}>
-                    <Image
-                      src={                          product.images?.length > 0
-                        ? product.images[0].src
-                        : defaultImage
-}
-                      alt={product.name}
-                      className="ProductImage"
-                      width={500}
-                      height={600}
-                      onClick={() => {
-                        console.log("Product ID:", product.id);
-                        router.push(`/product-information#${product.id}`);
-                      }}
-                    />
-                    <div className="overlay">
-                      <div>
-                        <svg
-                          width="40"
-                          height="40"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          fill="white"
-                          className="aboutUsProductSvg"
-                        >
-                          <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
-                        </svg>
-                      </div>
-                      <div
-                        className="AnchorTag"
+                  return (
+                    <div key={index} className={`AboutUs_product ${className}`}>
+                      <Image
+                        src={
+                          product.images?.length > 0
+                            ? product.images[0].src
+                            : defaultImage
+                        }
+                        alt={product.name}
+                        className="ProductImage"
+                        width={500}
+                        height={600}
                         onClick={() => {
                           console.log("Product ID:", product.id);
                           router.push(`/product-information#${product.id}`);
                         }}
-                      >
-                        Know More
+                      />
+                      <div className="overlay">
+                        <div>
+                          <svg
+                            width="40"
+                            height="40"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            fill="white"
+                            className="aboutUsProductSvg"
+                          >
+                            <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
+                          </svg>
+                        </div>
+                        <div
+                          className="AnchorTag"
+                          onClick={() => {
+                            console.log("Product ID:", product.id);
+                            router.push(`/product-information#${product.id}`);
+                          }}
+                        >
+                          Know More
+                        </div>
                       </div>
-                    </div>
                       {/* Design Code Container */}
                       <div className="designCodeContainer">
                         <p className="designCode">{designCode}</p>
                       </div>
-                  </div>
-                );
-              })}
+                    </div>
+                  );
+                })
+              )}
             </div>
           )}
         </div>
@@ -699,24 +820,31 @@ const Page = () => {
           <div>
             <Stack spacing={2} justifyContent="center">
               <Pagination
-                count={Math.ceil(currentData.length / itemsPerPage)}
+                count={totalPages}
+                page={currentPage}
+                // count={Math.ceil(currentData.length / itemsPerPage)}
                 color="primary"
                 shape="rounded"
-                page={pageNumber}
+                // page={pageNumber}
                 size="small"
                 variant="outlined"
                 onChange={handlePageChange}
                 hidePrevButton
                 hideNextButton
+                siblingCount={1}
+                boundaryCount={1}
                 sx={{
                   "& .MuiPaginationItem-root": {
                     backgroundColor: "transparent",
                     border: "1px solid #5b3524",
                     color: "#5b3524",
                     margin: "0 10px",
-                    padding: "13px 10px",
+                    padding: "8px 1px",
+                    minWidth: "26px",
+                    height: "26px",
                     fontSize: "15px",
                     borderRadius: "0px",
+                    lineHeight: "0.5",
                     transition: "background-color 0.3s, color 0.3s",
 
                     "@media (max-width: 768px)": {
@@ -753,8 +881,8 @@ const Page = () => {
                     },
 
                     "&.Mui-selected:hover": {
-                      backgroundColor: "#c1c0c0",
-                      color: "black",
+                      backgroundColor: "#5b3524",
+                      color: "white",
                       border: "none",
                     },
                   },

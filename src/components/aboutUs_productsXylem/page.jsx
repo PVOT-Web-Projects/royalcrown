@@ -349,15 +349,9 @@ const Page = () => {
     setSelectedColor("all");
     setSelectedType("all");
     setSearchTerm(""); // Reset the search term
+    setFilteredProducts(products);
     // Reset the URL to /product without the hash
     // router.push("/product", undefined, { shallow: true });
-  };
-  const categoryMap = {
-    "/products#xylem": "xylem",
-    "/products#royal-crown": "Royal Crown",
-    "/products#crown": "Crown",
-    "/products#Qbiss": "QBliss",
-    "/products#Crown_Xcl": "Crown XCL",
   };
 
   const handleTabClick = (newTab, category) => {
