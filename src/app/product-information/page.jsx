@@ -15,7 +15,9 @@ const ProductInformationPage = lazy(() =>
 const ProductInformation = () => {
   const [isLoaded, setIsLoaded] = useState(false); // Track if the page is fully loaded
   const [isLoading, setIsLoading] = useState(true); // Track the loading state for the page
-
+  useEffect(() => {
+    document.title = "Product Information | Royal Crown";
+  });
  
   // Set the page to loaded once the Suspense child component has finished loading
   const handlePageLoad = () => {
