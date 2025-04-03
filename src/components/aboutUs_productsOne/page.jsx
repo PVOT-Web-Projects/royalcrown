@@ -229,10 +229,21 @@ const Page = () => {
   useEffect(() => {
     if (searchTerm) {
       const filtered = products.filter((product) => {
-        return product.attributes[6]?.terms[0]?.name
-          ?.toLowerCase()
-          .includes(searchTerm.toLowerCase()); // Match design code attribute
+        const designCodeAttr = product.attributes.find(
+          (attr) => attr.name.toLowerCase() === "design code"
+        );
+        const designCode =
+          designCodeAttr && designCodeAttr.terms.length > 0
+            ? designCodeAttr.terms[0].name
+            : "No design code available";
+  
+        return designCode.toLowerCase().includes(searchTerm.toLowerCase());
       });
+      // const filtered = products.filter((product) => {
+      //   return product.attributes[6]?.terms[0]?.name
+      //     ?.toLowerCase()
+      //     .includes(searchTerm.toLowerCase()); // Match design code attribute
+      // });
       setFilteredProducts(filtered);
     } else {
       setFilteredProducts(products); // If no search term, show all products
