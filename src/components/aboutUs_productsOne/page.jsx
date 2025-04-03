@@ -235,7 +235,7 @@ const Page = () => {
         const designCode =
           designCodeAttr && designCodeAttr.terms.length > 0
             ? designCodeAttr.terms[0].name
-            : "No design code available";
+            : "";
   
         return designCode.toLowerCase().includes(searchTerm.toLowerCase());
       });
