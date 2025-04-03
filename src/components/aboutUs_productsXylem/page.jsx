@@ -26,6 +26,7 @@ const Page = () => {
   const [selectedThickness, setSelectedThickness] = useState("all");
   const [selectedColor, setSelectedColor] = useState("all");
   const [isMobile, setIsMobile] = useState(0);
+  const [searchTerm, setSearchTerm] = useState(""); 
   const [tab, setTab] = useState("");
   const pathName = usePathname();
   const [shortTitle, setShortTitle] = useState("");
@@ -190,6 +191,7 @@ const Page = () => {
     return color.map((c) => ({ ...c, className: "myOptionClassName" }));
   }, [color]);
   const handleTypeChange = (e) => {
+    setSelectedCategory([]); // Reset category when type changes
     setSelectedType(e.value);
   };
   const handleCategoryChange = (event) => {
@@ -232,78 +234,84 @@ const Page = () => {
   };
 
   const filteredProducts1 = useMemo(() => {
-    return products.filter((product) => {
-      // Check if the product belongs to the "Xylem" category
-      const isXylemCategory = product.categories.some(
-        (category) => category.name.toLowerCase() === "xylem"
-      );
-      const brandMatch =
-        selectedBrand === "all" || product.category === selectedBrand;
-      const categoryMatch =
-        selectedCategory.length === 0 ||
-        selectedCategory.some((selectedCat) =>
-          product.attributes.some(
-            (attr) =>
-              attr.name === "type" &&
-              attr.terms.some((term) => term.slug === selectedCat)
-          )
+      return products.filter((product) => {
+        // Check if the product belongs to the "Crown" category
+        const isXylemCategory = product.categories.some(
+          (category) => category.name.toLowerCase() === "xylem"
         );
-      const finishMatch =
-        selectedFinish === "all" ||
-        product.categories[1].slug === selectedFinish;
-      const sizeMatch =
-        selectedSize === "all" ||
-        product.attributes[1].terms[0].name === selectedSize;
-      const thicknessMatch =
-        selectedThickness === "all" ||
-        product.attributes[2].terms[0].name === selectedThickness;
-      const colorMatch =
-        selectedColor === "all" ||
-        product.attributes[4].terms[0].name === selectedColor;
-      const typeMatch =
-        selectedType === "all" ||
-        product.attributes[3].terms[0].name === selectedType;
-      console.log("Checking Product:", product); // Log each product being checked
-      console.log(
-        "Matches Filters:",
-        isXylemCategory,
-        brandMatch,
-        "CategoryMatch",
-        categoryMatch,
-        "finish data",
-        finishMatch,
-        "size data",
-        sizeMatch,
-        "thickness data",
-        thicknessMatch,
-        "color match",
-        colorMatch,
-        typeMatch
-      );
-
-      return (
-        isXylemCategory &&
-        brandMatch &&
-        categoryMatch &&
-        finishMatch &&
-        sizeMatch &&
-        thicknessMatch &&
-        colorMatch &&
-        typeMatch
-      );
-    });
-  }, [
-    products,
-    selectedBrand,
-    selectedCategory,
-    selectedFinish,
-    selectedSize,
-    selectedThickness,
-    selectedColor,
-    selectedType, // Added selectedType to the dependencies of useMemo
-  ]);
+  
+        // Type filtering
+        const typeAttr = product.attributes.find(
+          (attr) => attr.name.toLowerCase() === "type"
+        );
+        const typeMatch =
+          selectedType === "all" ||
+          typeAttr?.terms.some((term) => term.name === selectedType);
+  
+        // Category filtering
+        const categoryMatch =
+          selectedCategory.length === 0 ||
+          selectedCategory.some((selectedCat) =>
+            product.attributes.some(
+              (attr) =>
+                attr.name.toLowerCase() === "type" &&
+                attr.terms.some((term) => term.name === selectedCat)
+            )
+          );
+  
+        // Size filtering
+        const sizeAttr = product.attributes.find(
+          (attr) => attr.name.toLowerCase() === "size"
+        );
+        const sizeMatch =
+          selectedSize === "all" ||selectedSize === null || sizeAttr?.terms[0]?.name === selectedSize;
+  
+        // Thickness filtering
+        const thicknessAttr = product.attributes.find(
+          (attr) => attr.name.toLowerCase() === "thickness"
+        );
+        const thicknessMatch =
+          selectedThickness === "all" ||selectedThickness === null ||
+          thicknessAttr?.terms[0]?.name === selectedThickness;
+  
+        // Color filtering
+        const colorAttr = product.attributes.find(
+          (attr) => attr.name.toLowerCase() === "color"
+        );
+        const colorMatch =
+          selectedColor === "all" || selectedColor === null || colorAttr?.terms[0]?.name === selectedColor;
+  
+        // Search by design code
+        const designCodeAttr = product.attributes.find(
+          (attr) => attr.name.toLowerCase() === "design code"
+        );
+        const searchMatch =
+          !searchTerm ||
+          (designCodeAttr?.terms[0]?.name?.toLowerCase() || "").includes(
+            searchTerm.toLowerCase()
+          );
+  
+        return (
+          isXylemCategory &&
+          typeMatch &&
+          categoryMatch &&
+          sizeMatch &&
+          thicknessMatch &&
+          colorMatch &&
+          searchMatch
+        );
+      });
+    }, [
+      products,
+      selectedType,
+      selectedCategory,
+      selectedSize,
+      selectedThickness,
+      selectedColor,
+      searchTerm,
+    ]);
   // Calculate total pages dynamically based on filtered products
-  const totalPages = Math.ceil(filteredProducts1.length / itemsPerPage);
+  const totalPages = Math.max(1, Math.ceil(filteredProducts1.length / itemsPerPage));
   // Ensure the current page is within the valid range
   const currentPage = Math.min(pageNumber, totalPages);
   // Calculate indices for the current page
@@ -328,6 +336,10 @@ const Page = () => {
   //   filteredProducts1.length > 0
   //     ? filteredProducts1.slice(firstIndex, lastIndex)
   //     : [];
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
   const resetFiltersDrop = () => {
     setSelectedBrand("all");
     setSelectedCategory([]);
@@ -336,6 +348,7 @@ const Page = () => {
     setSelectedThickness("all");
     setSelectedColor("all");
     setSelectedType("all");
+    setSearchTerm(""); // Reset the search term
     // Reset the URL to /product without the hash
     // router.push("/product", undefined, { shallow: true });
   };
@@ -357,6 +370,30 @@ const Page = () => {
     setShortTitle(title);
     setShortDescription(description);
   };
+
+  useEffect(() => {
+      if (searchTerm) {
+        const filtered = products.filter((product) => {
+          const designCodeAttr = product.attributes.find(
+            (attr) => attr.name.toLowerCase() === "design code"
+          );
+          const designCode =
+            designCodeAttr && designCodeAttr.terms.length > 0
+              ? designCodeAttr.terms[0].name
+              : "";
+    
+          return designCode.toLowerCase().includes(searchTerm.toLowerCase());
+        });
+        // const filtered = products.filter((product) => {
+        //   return product.attributes[6]?.terms[0]?.name
+        //     ?.toLowerCase()
+        //     .includes(searchTerm.toLowerCase()); // Match design code attribute
+        // });
+        setFilteredProducts(filtered);
+      } else {
+        setFilteredProducts(products); // If no search term, show all products
+      }
+    }, [searchTerm, products]);
   const getShortDescription = (category) => {
     switch (category) {
       case "Royal Crown":
@@ -440,9 +477,15 @@ const Page = () => {
     }
   }, [selectedTag, products]);
   const handleThicknessClick = (thicknessValue) => {
-    setSelectedThickness((prevThickness) =>
-      prevThickness === thicknessValue ? "" : thicknessValue
-    );
+    setSelectedThickness((prevSelectedThickness) => {
+      if (prevSelectedThickness === thicknessValue) {
+        console.log("Thickness Deselected:", thicknessValue);
+        return null; // Deselect the thickness to show all products
+      } else {
+        console.log("Thickness Selected:", thicknessValue);
+        return thicknessValue; // Select the new thickness
+      }
+    });
     const exploreCollectionElement = document.querySelector("#sticky_top");
     if (exploreCollectionElement) {
       exploreCollectionElement.scrollIntoView({
@@ -814,73 +857,80 @@ const Page = () => {
           )}
         </div>
         {currentData.length > 0 && (
-          <div>
-            <Stack spacing={2} justifyContent="center">
-              <Pagination
-                count={Math.ceil(currentData.length / itemsPerPage)}
-                color="primary"
-                shape="rounded"
-                page={pageNumber}
-                size="small"
-                variant="outlined"
-                onChange={handlePageChange}
-                hidePrevButton
-                hideNextButton
-                sx={{
-                  "& .MuiPaginationItem-root": {
-                    backgroundColor: "transparent",
-                    border: "1px solid #5b3524",
-                    color: "#5b3524",
-                    margin: "0 10px",
-                    padding: "13px 10px",
-                    fontSize: "15px",
-                    borderRadius: "0px",
-                    transition: "background-color 0.3s, color 0.3s",
-
-                    "@media (max-width: 768px)": {
-                      margin: "0 9px",
-                      padding: "12px 8px",
-                      fontSize: "15px",
-                    },
-
-                    "@media (max-width: 425px)": {
-                      margin: "0 8px",
-                      padding: "12px 8px",
-                      fontSize: "12px",
-                    },
-
-                    "&.Mui-selected": {
-                      backgroundColor: "#5b3524",
-                      margin: "0 10px",
-                      padding: "14px 10px",
-                      fontSize: "16px",
-                      color: "white",
-                      border: "none",
-
-                      "@media (max-width: 768px)": {
-                        margin: "0 9px",
-                        padding: "12px 10px",
-                        fontSize: "15px",
-                      },
-
-                      "@media (max-width: 425px)": {
-                        margin: "0 8px",
-                        padding: "12px 10px",
-                        fontSize: "12px",
-                      },
-                    },
-
-                    "&.Mui-selected:hover": {
-                      backgroundColor: "#c1c0c0",
-                      color: "black",
-                      border: "none",
-                    },
-                  },
-                }}
-              />
-            </Stack>
-          </div>
-        )}
+                  <div>
+                    <Stack spacing={2} justifyContent="center">
+                      <Pagination
+                       count={totalPages}
+                       page={currentPage}
+                        // count={Math.ceil(currentData.length / itemsPerPage)}
+                        color="primary"
+                        shape="rounded"
+                        // page={pageNumber}
+                        size="small"
+                        variant="outlined"
+                        onChange={handlePageChange}
+                        hidePrevButton
+                        hideNextButton
+                        siblingCount={1}
+                        boundaryCount={1}
+                        sx={{
+                          "& .MuiPaginationItem-root": {
+                            backgroundColor: "transparent",
+                            border: "1px solid #5b3524",
+                            color: "#5b3524",
+                            margin: "0 10px",
+                            padding: "8px 1px",
+                            minWidth: "26px",
+                            height: "26px",
+                            fontSize: "15px",
+                            borderRadius: "0px",
+                            lineHeight: "0.5",
+                            transition: "background-color 0.3s, color 0.3s",
+        
+                            "@media (max-width: 768px)": {
+                              margin: "0 9px",
+                              padding: "12px 8px",
+                              fontSize: "15px",
+                            },
+        
+                            "@media (max-width: 425px)": {
+                              margin: "0 8px",
+                              padding: "12px 8px",
+                              fontSize: "12px",
+                            },
+        
+                            "&.Mui-selected": {
+                              backgroundColor: "#5b3524",
+                              margin: "0 10px",
+                              padding: "14px 10px",
+                              fontSize: "16px",
+                              color: "white",
+                              border: "none",
+        
+                              "@media (max-width: 768px)": {
+                                margin: "0 9px",
+                                padding: "12px 10px",
+                                fontSize: "15px",
+                              },
+        
+                              "@media (max-width: 425px)": {
+                                margin: "0 8px",
+                                padding: "12px 10px",
+                                fontSize: "12px",
+                              },
+                            },
+        
+                            "&.Mui-selected:hover": {
+                              backgroundColor: "#5b3524",
+                              color: "white",
+                              border: "none",
+                            },
+                          },
+                        }}
+                      />
+                    </Stack>
+                  </div>
+                )}
       </div>
     </>
   );
