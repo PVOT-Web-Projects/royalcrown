@@ -225,77 +225,80 @@ const Page = () => {
       const isQBlissCategory = product.categories.some(
         (category) => category.name.toLowerCase() === "qbliss"
       );
-      const brandMatch =
-        selectedBrand === "all" ||
-        selectedBrand === null ||
-        product.category === selectedBrand;
-      const categoryMatch =
-        selectedCategory.length === 0 ||
-        selectedCategory.some((selectedCat) =>
-          product.attributes.some(
-            (attr) =>
-              attr.name === "type" &&
-              attr.terms.some((term) => term.slug === selectedCat)
-          )
-        );
-      const finishMatch =
-        selectedFinish === "all" ||
-        selectedFinish === null ||
-        product.categories[1].slug === selectedFinish;
-      const sizeMatch =
-        selectedSize === "all" ||
-        selectedSize === null ||
-        product.attributes[1].terms[0].name === selectedSize;
-      const thicknessMatch =
-        selectedThickness === "all" ||
-        selectedThickness === null ||
-        product.attributes[2].terms[0].name === selectedThickness;
-      const colorMatch =
-        selectedColor === "all" ||
-        selectedColor === null ||
-        product.attributes[4].terms[0].name === selectedColor;
-      const typeMatch =
-        selectedType === "all" ||
-        selectedType === null ||
-        product.attributes[3].terms[0].name === selectedType;
-      console.log("Checking Product:", product); // Log each product being checked
-      console.log(
-        "Matches Filters:",
-        isQBlissCategory,
-        brandMatch,
-        "CategoryMatch",
-        categoryMatch,
-        "finish data",
-        finishMatch,
-        "size data",
-        sizeMatch,
-        "thickness data",
-        thicknessMatch,
-        "color match",
-        colorMatch,
-        typeMatch
+
+      // Find the type attribute
+      const typeAttribute = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "type"
       );
+
+      // Find the category attribute
+      const categoryAttribute = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "category"
+      );
+
+      // Find the size attribute
+      const sizeAttribute = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "size"
+      );
+
+      // Find the thickness attribute
+      const thicknessAttribute = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "thickness"
+      );
+
+      // Find the color attribute
+      const colorAttribute = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "color"
+      );
+
+      // Type filter
+      const typeMatch = selectedType === "all" || 
+        (typeAttribute && typeAttribute.terms.some(
+          term => term.name.toLowerCase() === selectedType.toLowerCase()
+        ));
+
+      // Category filter
+      const categoryMatch = selectedCategory.length === 0 ||
+        (categoryAttribute && selectedCategory.some(
+          selectedCat => categoryAttribute.terms.some(
+            term => term.name.toLowerCase() === selectedCat.toLowerCase()
+          )
+        ));
+
+      // Size filter
+      const sizeMatch = selectedSize === "all" ||
+        (sizeAttribute && sizeAttribute.terms.some(
+          term => term.name.toLowerCase() === selectedSize.toLowerCase()
+        ));
+
+      // Thickness filter
+      const thicknessMatch = selectedThickness === "all" ||
+        (thicknessAttribute && thicknessAttribute.terms.some(
+          term => term.name.toLowerCase() === selectedThickness.toLowerCase()
+        ));
+
+      // Color filter
+      const colorMatch = selectedColor === "all" ||
+        (colorAttribute && colorAttribute.terms.some(
+          term => term.name.toLowerCase() === selectedColor.toLowerCase()
+        ));
 
       return (
         isQBlissCategory &&
-        brandMatch &&
+        typeMatch &&
         categoryMatch &&
-        finishMatch &&
         sizeMatch &&
         thicknessMatch &&
-        colorMatch &&
-        typeMatch
+        colorMatch
       );
     });
   }, [
     products,
-    selectedBrand,
+    selectedType,
     selectedCategory,
-    selectedFinish,
     selectedSize,
     selectedThickness,
-    selectedColor,
-    selectedType, // Added selectedType to the dependencies of useMemo
+    selectedColor
   ]);
   // const lastIndex = pageNumber * itemsPerPage;
   // const firstIndex = lastIndex - itemsPerPage;
@@ -743,68 +746,65 @@ const Page = () => {
             </div>
           )}
         </div>
-        {currentData.length > 0 && (
-          <div>
-            <Stack spacing={2} justifyContent="center">
+        {filteredProducts1.length > 0 && (
+          <div className="pagination-container">
+            <Stack spacing={2} justifyContent="center" className="pagination-stack">
               <Pagination
-                count={Math.ceil(currentData.length / itemsPerPage)}
-                color="primary"
-                shape="rounded"
+                count={totalPages}
                 page={pageNumber}
-                size="small"
-                variant="outlined"
                 onChange={handlePageChange}
+                size="large"
+                variant="outlined"
+                shape="rounded"
                 hidePrevButton
                 hideNextButton
+                siblingCount={1}
+                boundaryCount={1}
                 sx={{
                   "& .MuiPaginationItem-root": {
                     backgroundColor: "transparent",
                     border: "1px solid #5b3524",
                     color: "#5b3524",
-                    margin: "0 10px",
-                    padding: "13px 10px",
-                    fontSize: "15px",
+                    margin: "0 5px",
+                    padding: "15px 20px",
+                    fontSize: "16px",
                     borderRadius: "0px",
-                    transition: "background-color 0.3s, color 0.3s",
+                    minWidth: "auto",
+                    transition: "all 0.3s ease",
 
-                    "@media (max-width: 768px)": {
-                      margin: "0 9px",
-                      padding: "12px 8px",
-                      fontSize: "15px",
+                    "&:hover": {
+                      backgroundColor: "#5b3524",
+                      color: "white",
+                      border: "1px solid #5b3524",
                     },
 
-                    "@media (max-width: 425px)": {
-                      margin: "0 8px",
-                      padding: "12px 8px",
-                      fontSize: "12px",
+                    "@media (max-width: 768px)": {
+                      margin: "0 4px",
+                      padding: "12px 16px",
+                      fontSize: "14px",
+                    },
+
+                    "@media (max-width: 480px)": {
+                      margin: "0 3px",
+                      padding: "10px 14px",
+                      fontSize: "13px",
                     },
 
                     "&.Mui-selected": {
                       backgroundColor: "#5b3524",
-                      margin: "0 10px",
-                      padding: "14px 10px",
-                      fontSize: "16px",
                       color: "white",
-                      border: "none",
+                      border: "1px solid #5b3524",
 
-                      "@media (max-width: 768px)": {
-                        margin: "0 9px",
-                        padding: "12px 10px",
-                        fontSize: "15px",
-                      },
-
-                      "@media (max-width: 425px)": {
-                        margin: "0 8px",
-                        padding: "12px 10px",
-                        fontSize: "12px",
+                      "&:hover": {
+                        backgroundColor: "#5b3524",
+                        color: "white",
                       },
                     },
+                  },
 
-                    "&.Mui-selected:hover": {
-                      backgroundColor: "#c1c0c0",
-                      color: "black",
-                      border: "none",
-                    },
+                  "& .MuiPagination-ul": {
+                    justifyContent: "center",
+                    gap: "4px",
                   },
                 }}
               />

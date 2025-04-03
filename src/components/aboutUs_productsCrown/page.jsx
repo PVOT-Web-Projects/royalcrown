@@ -189,12 +189,12 @@ useEffect(() => {
   }, [color]);
   const handleTypeChange = (e) => {
     setSelectedType(e.value);
+    setSelectedCategory([]); // Reset category when type changes
   };
   const handleCategoryChange = (event) => {
     const { value, checked } = event.target;
     setSelectedCategory((prevSelectedCategory) => {
       if (checked) {
-        console.log("Category Selected:", value); // Log the selected category
         return [...prevSelectedCategory, value];
       } else {
         return prevSelectedCategory.filter((category) => category !== value);
@@ -235,102 +235,83 @@ useEffect(() => {
       const isCrownCategory = product.categories.some(
         (category) => category.name.toLowerCase() === "crown"
       );
-      const brandMatch =
-        selectedBrand === "all" || product.category === selectedBrand;
+
+      // Type filtering
+      const typeAttr = product.attributes.find(attr => attr.name.toLowerCase() === "type");
+      const typeMatch = selectedType === "all" || 
+        typeAttr?.terms.some(term => term.name === selectedType);
+
+      // Category filtering
       const categoryMatch =
         selectedCategory.length === 0 ||
         selectedCategory.some((selectedCat) =>
           product.attributes.some(
             (attr) =>
-              attr.name === "type" &&
-              attr.terms.some((term) => term.slug === selectedCat)
+              attr.name.toLowerCase() === "type" &&
+              attr.terms.some((term) => term.name === selectedCat)
           )
         );
-      const finishMatch =
-        selectedFinish === "all" ||
-        product.categories[1].slug === selectedFinish;
+
+      // Size filtering
+      const sizeAttr = product.attributes.find(attr => attr.name.toLowerCase() === "size");
       const sizeMatch =
         selectedSize === "all" ||
-        product.attributes[1].terms[0].name === selectedSize;
+        sizeAttr?.terms[0]?.name === selectedSize;
+
+      // Thickness filtering
+      const thicknessAttr = product.attributes.find(attr => attr.name.toLowerCase() === "thickness");
       const thicknessMatch =
         selectedThickness === "all" ||
-        product.attributes[2].terms[0].name === selectedThickness;
+        thicknessAttr?.terms[0]?.name === selectedThickness;
+
+      // Color filtering
+      const colorAttr = product.attributes.find(attr => attr.name.toLowerCase() === "color");
       const colorMatch =
         selectedColor === "all" ||
-        product.attributes[4].terms[0].name === selectedColor;
-      const typeMatch =
-        selectedType === "all" ||
-        product.attributes[3].terms[0].name === selectedType;
-      console.log("Checking Product:", product); // Log each product being checked
-      console.log(
-        "Matches Filters:",
-        isCrownCategory,
-        brandMatch,
-        "CategoryMatch",
-        categoryMatch,
-        "finish data",
-        finishMatch,
-        "size data",
-        sizeMatch,
-        "thickness data",
-        thicknessMatch,
-        "color match",
-        colorMatch,
-        typeMatch
+        colorAttr?.terms[0]?.name === selectedColor;
+
+      // Search by design code
+      const designCodeAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "design code"
       );
+      const searchMatch = !searchTerm || 
+        (designCodeAttr?.terms[0]?.name?.toLowerCase() || "").includes(searchTerm.toLowerCase());
 
       return (
         isCrownCategory &&
-        brandMatch &&
+        typeMatch &&
         categoryMatch &&
-        finishMatch &&
         sizeMatch &&
         thicknessMatch &&
         colorMatch &&
-        typeMatch
+        searchMatch
       );
     });
   }, [
     products,
-    selectedBrand,
+    selectedType,
     selectedCategory,
-    selectedFinish,
     selectedSize,
     selectedThickness,
     selectedColor,
-    selectedType, // Added selectedType to the dependencies of useMemo
+    searchTerm,
   ]);
-  const lastIndex = pageNumber * itemsPerPage;
-  const firstIndex = lastIndex - itemsPerPage;
-  const displayedData =
-    filteredProducts1.length > 0
-      ? filteredProducts1.slice(firstIndex, lastIndex)
-      : [];
-  useEffect(() => {
-    if (selectedTag === "all") {
-      setFilteredProducts(products);
-    } else if (selectedTag === "Crown") {
-      // Highlighted: Check for Crown explicitly
-      const filtered = products.filter(
-        (product) => product.category === "Crown"
-      ); // Highlighted: Filter by category Crown
-      console.log("Filtered Products for Crown:", filtered); // Log the filtered result
-      setFilteredProducts(filtered);
-    } else {
-      const filtered = products.filter((product) => {
-        console.log("Checking product:", product); // Log each product
-        return (
-          product.type &&
-          product.type.some((tag) => {
-            console.log("Checking tag:", tag.slug, selectedTag); // Log each tag
-            return tag.slug === selectedTag;
-          })
-        );
-      });
-      console.log("Filtered Products:", filtered); // Log the filtered result
-      setFilteredProducts(filtered);
-    }
-  }, [selectedTag, products]);
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const resetFiltersDrop = () => {
+    setSelectedBrand("all");
+    setSelectedCategory([]);
+    setSelectedFinish("all");
+    setSelectedSize("all");
+    setSelectedThickness("all");
+    setSelectedColor("all");
+    setSelectedType("all");
+    setSearchTerm(""); // Reset the search term
+  };
+
   const handleThicknessClick = (thicknessValue) => {
     setSelectedThickness((prevThickness) =>
       prevThickness === thicknessValue ? "" : thicknessValue
@@ -343,39 +324,22 @@ useEffect(() => {
       });
     }
   };
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
 
+  const totalPages = Math.max(1, Math.ceil(filteredProducts1.length / itemsPerPage));
+  const currentPage = Math.min(pageNumber, totalPages);
+  const lastIndex = currentPage * itemsPerPage;
+  const firstIndex = lastIndex - itemsPerPage;
+  const displayedData = filteredProducts1.slice(firstIndex, lastIndex);
 
-  const resetFiltersDrop = () => {
-    setSelectedBrand("all");
-    setSelectedCategory([]);
-    setSelectedFinish("all");
-    setSelectedSize("all");
-    setSelectedThickness("all");
-    setSelectedColor("all");
-    setSelectedType("all");
-    setSearchTerm(""); // Reset the search term
-    setFilteredProducts(products); 
-    // Reset the URL to /product without the hash
-    // router.push("/product", undefined, { shallow: true });
-  };
+  useEffect(() => {
+    if (currentPage > totalPages && totalPages > 0) {
+      setPageNumber(totalPages);
+    }
+  }, [currentPage, totalPages]);
 
-
-  // Filter products based on search term
-    useEffect(() => {
-      if (searchTerm) {
-        const filtered = products.filter((product) => {
-          return product.attributes[6]?.terms[0]?.name
-            ?.toLowerCase()
-            .includes(searchTerm.toLowerCase()); // Match design code attribute
-        });
-        setFilteredProducts(filtered);
-      } else {
-        setFilteredProducts(products); // If no search term, show all products
-      }
-    }, [searchTerm, products]);
+  useEffect(() => {
+    setPageNumber(1);
+  }, [filteredProducts1]);
 
   // Detect if the screen is mobile
   useEffect(() => {
@@ -496,7 +460,7 @@ useEffect(() => {
             </div>
             {/* reset filter ends */}
              {/* Search Input */}
-             {/* <div className="searchContainer">
+             <div className="searchContainer">
               <input
                 type="text"
                 placeholder="Search"
@@ -504,7 +468,7 @@ useEffect(() => {
                 onChange={handleSearchChange}
                 className="searchInput"
               />
-            </div> */}
+            </div>
 
             <div className="dropdown1">
               <div className="dropdown-label">
@@ -731,67 +695,64 @@ useEffect(() => {
           )}
         </div>
         {currentData.length > 0 && (
-          <div>
-            <Stack spacing={2} justifyContent="center">
+          <div className="pagination-container">
+            <Stack spacing={2} justifyContent="center" className="pagination-stack">
               <Pagination
-                count={Math.ceil(currentData.length / itemsPerPage)}
-                color="primary"
-                shape="rounded"
-                page={pageNumber}
-                size="small"
-                variant="outlined"
+                count={totalPages}
+                page={currentPage}
                 onChange={handlePageChange}
+                size="large"
+                variant="outlined"
+                shape="rounded"
                 hidePrevButton
                 hideNextButton
+                siblingCount={1}
+                boundaryCount={1}
                 sx={{
                   "& .MuiPaginationItem-root": {
                     backgroundColor: "transparent",
                     border: "1px solid #5b3524",
                     color: "#5b3524",
-                    margin: "0 10px",
-                    padding: "13px 10px",
-                    fontSize: "15px",
+                    margin: "0 5px",
+                    padding: "15px 20px",
+                    fontSize: "16px",
                     borderRadius: "0px",
-                    transition: "background-color 0.3s, color 0.3s",
+                    minWidth: "auto",
+                    transition: "all 0.3s ease",
 
-                    "@media (max-width: 768px)": {
-                      margin: "0 9px",
-                      padding: "12px 8px",
-                      fontSize: "15px",
+                    "&:hover": {
+                      backgroundColor: "#5b3524",
+                      color: "white",
+                      border: "1px solid #5b3524",
                     },
 
-                    "@media (max-width: 425px)": {
-                      margin: "0 8px",
-                      padding: "12px 8px",
-                      fontSize: "12px",
+                    "@media (max-width: 768px)": {
+                      margin: "0 4px",
+                      padding: "12px 16px",
+                      fontSize: "14px",
+                    },
+
+                    "@media (max-width: 480px)": {
+                      margin: "0 3px",
+                      padding: "10px 14px",
+                      fontSize: "13px",
                     },
 
                     "&.Mui-selected": {
                       backgroundColor: "#5b3524",
-                      margin: "0 10px",
-                      padding: "14px 10px",
-                      fontSize: "16px",
                       color: "white",
-                      border: "none",
+                      border: "1px solid #5b3524",
 
-                      "@media (max-width: 768px)": {
-                        margin: "0 9px",
-                        padding: "12px 10px",
-                        fontSize: "15px",
-                      },
-
-                      "@media (max-width: 425px)": {
-                        margin: "0 8px",
-                        padding: "12px 10px",
-                        fontSize: "12px",
+                      "&:hover": {
+                        backgroundColor: "#5b3524",
+                        color: "white",
                       },
                     },
+                  },
 
-                    "&.Mui-selected:hover": {
-                      backgroundColor: "#c1c0c0",
-                      color: "black",
-                      border: "none",
-                    },
+                  "& .MuiPagination-ul": {
+                    justifyContent: "center",
+                    gap: "4px",
                   },
                 }}
               />
