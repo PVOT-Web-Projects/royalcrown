@@ -60,11 +60,12 @@ const Page = () => {
   //       console.error("Failed to fetch data:", error);
   //     });
   // }, []);
-useEffect(() => {
+  useEffect(() => {
     const fetchAllProducts = async () => {
       try {
         // The API URL structure
-        const apiUrl = "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100&page=";
+        const apiUrl =
+          "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100&page=";
 
         // Fetching all pages (1 to 9 in this case)
         const pageNumbers = Array.from({ length: 6 }, (_, index) => index + 1);
@@ -189,12 +190,12 @@ useEffect(() => {
   }, [color]);
   const handleTypeChange = (e) => {
     setSelectedType(e.value);
+    setSelectedCategory([]); // Reset category when type changes
   };
   const handleCategoryChange = (event) => {
     const { value, checked } = event.target;
     setSelectedCategory((prevSelectedCategory) => {
       if (checked) {
-        console.log("Category Selected:", value); // Log the selected category
         return [...prevSelectedCategory, value];
       } else {
         return prevSelectedCategory.filter((category) => category !== value);
@@ -235,102 +236,93 @@ useEffect(() => {
       const isCrownCategory = product.categories.some(
         (category) => category.name.toLowerCase() === "crown"
       );
-      const brandMatch =
-        selectedBrand === "all" || product.category === selectedBrand;
+
+      // Type filtering
+      const typeAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "type"
+      );
+      const typeMatch =
+        selectedType === "all" ||
+        typeAttr?.terms.some((term) => term.name === selectedType);
+
+      // Category filtering
       const categoryMatch =
         selectedCategory.length === 0 ||
         selectedCategory.some((selectedCat) =>
           product.attributes.some(
             (attr) =>
-              attr.name === "type" &&
-              attr.terms.some((term) => term.slug === selectedCat)
+              attr.name.toLowerCase() === "type" &&
+              attr.terms.some((term) => term.name === selectedCat)
           )
         );
-      const finishMatch =
-        selectedFinish === "all" ||
-        product.categories[1].slug === selectedFinish;
+
+      // Size filtering
+      const sizeAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "size"
+      );
       const sizeMatch =
-        selectedSize === "all" ||
-        product.attributes[1].terms[0].name === selectedSize;
+        selectedSize === "all" || sizeAttr?.terms[0]?.name === selectedSize;
+
+      // Thickness filtering
+      const thicknessAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "thickness"
+      );
       const thicknessMatch =
         selectedThickness === "all" ||
-        product.attributes[2].terms[0].name === selectedThickness;
-      const colorMatch =
-        selectedColor === "all" ||
-        product.attributes[4].terms[0].name === selectedColor;
-      const typeMatch =
-        selectedType === "all" ||
-        product.attributes[3].terms[0].name === selectedType;
-      console.log("Checking Product:", product); // Log each product being checked
-      console.log(
-        "Matches Filters:",
-        isCrownCategory,
-        brandMatch,
-        "CategoryMatch",
-        categoryMatch,
-        "finish data",
-        finishMatch,
-        "size data",
-        sizeMatch,
-        "thickness data",
-        thicknessMatch,
-        "color match",
-        colorMatch,
-        typeMatch
+        thicknessAttr?.terms[0]?.name === selectedThickness;
+
+      // Color filtering
+      const colorAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "color"
       );
+      const colorMatch =
+        selectedColor === "all" || colorAttr?.terms[0]?.name === selectedColor;
+
+      // Search by design code
+      const designCodeAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "design code"
+      );
+      const searchMatch =
+        !searchTerm ||
+        (designCodeAttr?.terms[0]?.name?.toLowerCase() || "").includes(
+          searchTerm.toLowerCase()
+        );
 
       return (
         isCrownCategory &&
-        brandMatch &&
+        typeMatch &&
         categoryMatch &&
-        finishMatch &&
         sizeMatch &&
         thicknessMatch &&
         colorMatch &&
-        typeMatch
+        searchMatch
       );
     });
   }, [
     products,
-    selectedBrand,
+    selectedType,
     selectedCategory,
-    selectedFinish,
     selectedSize,
     selectedThickness,
     selectedColor,
-    selectedType, // Added selectedType to the dependencies of useMemo
+    searchTerm,
   ]);
-  const lastIndex = pageNumber * itemsPerPage;
-  const firstIndex = lastIndex - itemsPerPage;
-  const displayedData =
-    filteredProducts1.length > 0
-      ? filteredProducts1.slice(firstIndex, lastIndex)
-      : [];
-  useEffect(() => {
-    if (selectedTag === "all") {
-      setFilteredProducts(products);
-    } else if (selectedTag === "Crown") {
-      // Highlighted: Check for Crown explicitly
-      const filtered = products.filter(
-        (product) => product.category === "Crown"
-      ); // Highlighted: Filter by category Crown
-      console.log("Filtered Products for Crown:", filtered); // Log the filtered result
-      setFilteredProducts(filtered);
-    } else {
-      const filtered = products.filter((product) => {
-        console.log("Checking product:", product); // Log each product
-        return (
-          product.type &&
-          product.type.some((tag) => {
-            console.log("Checking tag:", tag.slug, selectedTag); // Log each tag
-            return tag.slug === selectedTag;
-          })
-        );
-      });
-      console.log("Filtered Products:", filtered); // Log the filtered result
-      setFilteredProducts(filtered);
-    }
-  }, [selectedTag, products]);
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const resetFiltersDrop = () => {
+    setSelectedBrand("all");
+    setSelectedCategory([]);
+    setSelectedFinish("all");
+    setSelectedSize("all");
+    setSelectedThickness("all");
+    setSelectedColor("all");
+    setSelectedType("all");
+    setSearchTerm(""); // Reset the search term
+  };
+
   const handleThicknessClick = (thicknessValue) => {
     setSelectedThickness((prevThickness) =>
       prevThickness === thicknessValue ? "" : thicknessValue
@@ -343,39 +335,25 @@ useEffect(() => {
       });
     }
   };
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
 
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredProducts1.length / itemsPerPage)
+  );
+  const currentPage = Math.min(pageNumber, totalPages);
+  const lastIndex = currentPage * itemsPerPage;
+  const firstIndex = lastIndex - itemsPerPage;
+  const displayedData = filteredProducts1.slice(firstIndex, lastIndex);
 
-  const resetFiltersDrop = () => {
-    setSelectedBrand("all");
-    setSelectedCategory([]);
-    setSelectedFinish("all");
-    setSelectedSize("all");
-    setSelectedThickness("all");
-    setSelectedColor("all");
-    setSelectedType("all");
-    setSearchTerm(""); // Reset the search term
-    setFilteredProducts(products); 
-    // Reset the URL to /product without the hash
-    // router.push("/product", undefined, { shallow: true });
-  };
+  useEffect(() => {
+    if (currentPage > totalPages && totalPages > 0) {
+      setPageNumber(totalPages);
+    }
+  }, [currentPage, totalPages]);
 
-
-  // Filter products based on search term
-    useEffect(() => {
-      if (searchTerm) {
-        const filtered = products.filter((product) => {
-          return product.attributes[6]?.terms[0]?.name
-            ?.toLowerCase()
-            .includes(searchTerm.toLowerCase()); // Match design code attribute
-        });
-        setFilteredProducts(filtered);
-      } else {
-        setFilteredProducts(products); // If no search term, show all products
-      }
-    }, [searchTerm, products]);
+  useEffect(() => {
+    setPageNumber(1);
+  }, [filteredProducts1]);
 
   // Detect if the screen is mobile
   useEffect(() => {
@@ -495,8 +473,8 @@ useEffect(() => {
               </button>
             </div>
             {/* reset filter ends */}
-             {/* Search Input */}
-             {/* <div className="searchContainer">
+            {/* Search Input */}
+            <div className="searchContainer">
               <input
                 type="text"
                 placeholder="Search"
@@ -504,7 +482,7 @@ useEffect(() => {
                 onChange={handleSearchChange}
                 className="searchInput"
               />
-            </div> */}
+            </div>
 
             <div className="dropdown1">
               <div className="dropdown-label">
@@ -653,79 +631,79 @@ useEffect(() => {
                 // Display this message if no products are found
                 <div className="noMatchFound">No match found</div>
               ) : (
-              displayedData.map((product, index) => {
-                console.log(displayedData);
-                // const isTabActive = !!activeTab;
-                const className =
-                  // ? "" // Normal size for tab view
-                  // :
-                  index === 9
-                    ? "big"
-                    : [0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21].includes(
-                        index
-                      )
-                    ? "tall"
-                    : "";
-                // const designCode = product.attributes[6]?.terms[0].name || "";
-                const designCodeAttr = product.attributes.find(
-                  (attr) => attr.name.toLowerCase() === "design code"
-                );
-                const designCode =
-                  designCodeAttr && designCodeAttr.terms.length > 0
-                    ? designCodeAttr.terms[0].name
-                    : "No design code available"; // Fallback if no design code is found
-               
-                const defaultImage =
-                  "http://vanras.humbeestudio.xyz/wp-content/uploads/2025/03/default_image.png";
+                displayedData.map((product, index) => {
+                  console.log(displayedData);
+                  // const isTabActive = !!activeTab;
+                  const className =
+                    // ? "" // Normal size for tab view
+                    // :
+                    index === 9
+                      ? "big"
+                      : [
+                          0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21,
+                        ].includes(index)
+                      ? "tall"
+                      : "";
+                  // const designCode = product.attributes[6]?.terms[0].name || "";
+                  const designCodeAttr = product.attributes.find(
+                    (attr) => attr.name.toLowerCase() === "design code"
+                  );
+                  const designCode =
+                    designCodeAttr && designCodeAttr.terms.length > 0
+                      ? designCodeAttr.terms[0].name
+                      : "No design code available"; // Fallback if no design code is found
 
-                return (
-                  <div key={index} className={`AboutUs_product ${className}`}>
-                    <Image
-                      src={
-                        product.images?.length > 0
-                          ? product.images[0].src
-                          : defaultImage
-                      }
-                      alt={product.name}
-                      className="ProductImage"
-                      width={500}
-                      height={600}
-                      onClick={() => {
-                        console.log("Product ID:", product.id);
-                        router.push(`/product-information#${product.id}`);
-                      }}
-                    />
-                    <div className="overlay">
-                      <div>
-                        <svg
-                          width="40"
-                          height="40"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          fill="white"
-                          className="aboutUsProductSvg"
-                        >
-                          <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
-                        </svg>
-                      </div>
-                      <div
-                        className="AnchorTag"
+                  const defaultImage =
+                    "http://vanras.humbeestudio.xyz/wp-content/uploads/2025/03/default_image.png";
+
+                  return (
+                    <div key={index} className={`AboutUs_product ${className}`}>
+                      <Image
+                        src={
+                          product.images?.length > 0
+                            ? product.images[0].src
+                            : defaultImage
+                        }
+                        alt={product.name}
+                        className="ProductImage"
+                        width={500}
+                        height={600}
                         onClick={() => {
                           console.log("Product ID:", product.id);
                           router.push(`/product-information#${product.id}`);
                         }}
-                      >
-                        Know More
+                      />
+                      <div className="overlay">
+                        <div>
+                          <svg
+                            width="40"
+                            height="40"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            fill="white"
+                            className="aboutUsProductSvg"
+                          >
+                            <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
+                          </svg>
+                        </div>
+                        <div
+                          className="AnchorTag"
+                          onClick={() => {
+                            console.log("Product ID:", product.id);
+                            router.push(`/product-information#${product.id}`);
+                          }}
+                        >
+                          Know More
+                        </div>
+                      </div>
+                      {/* Design Code Container */}
+                      <div className="designCodeContainer">
+                        <p className="designCode">{designCode}</p>
                       </div>
                     </div>
-                    {/* Design Code Container */}
-                    <div className="designCodeContainer">
-                      <p className="designCode">{designCode}</p>
-                    </div>
-                  </div>
-                );
-              })
+                  );
+                })
               )}
             </div>
           )}
@@ -734,24 +712,28 @@ useEffect(() => {
           <div>
             <Stack spacing={2} justifyContent="center">
               <Pagination
-                count={Math.ceil(currentData.length / itemsPerPage)}
-                color="primary"
-                shape="rounded"
-                page={pageNumber}
-                size="small"
-                variant="outlined"
+                count={totalPages}
+                page={currentPage}
                 onChange={handlePageChange}
+                size="large"
+                variant="outlined"
+                shape="rounded"
                 hidePrevButton
                 hideNextButton
+                siblingCount={1}
+                boundaryCount={1}
                 sx={{
                   "& .MuiPaginationItem-root": {
                     backgroundColor: "transparent",
                     border: "1px solid #5b3524",
                     color: "#5b3524",
                     margin: "0 10px",
-                    padding: "13px 10px",
+                    padding: "12px 1px",
                     fontSize: "15px",
+                    minWidth: "26px",
+                    height: "20px",
                     borderRadius: "0px",
+                    lineHeight: "0.5",
                     transition: "background-color 0.3s, color 0.3s",
 
                     "@media (max-width: 768px)": {
@@ -788,8 +770,8 @@ useEffect(() => {
                     },
 
                     "&.Mui-selected:hover": {
-                      backgroundColor: "#c1c0c0",
-                      color: "black",
+                      backgroundColor: "#5b3524",
+                      color: "white",
                       border: "none",
                     },
                   },

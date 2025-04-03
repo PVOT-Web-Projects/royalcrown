@@ -254,7 +254,30 @@
     }
   }
 }
-
+.searchInput{
+  border: none;
+  outline: none;
+  background: transparent;
+  border-bottom: 1px solid #5b3524;
+  font-family: "made_mirage_regular";
+  font-size: 15px;
+  color: #5b3524;
+  @media(max-width: 1024px){
+    padding-bottom: 10px;
+  }
+}
+.noMatchFound {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 18px;
+  color: #5b3524;
+  margin-top: 20px;
+  padding: 20px;
+}
 .products-tabs .tab-item.active {
   background-color: $white;
   color: white !important;

@@ -23,8 +23,6 @@ const RelatedProductInfo = () => {
   const router = useRouter();
 
   useEffect(() => {
-
-
     const fetchRelatedProducts = async () => {
       try {
         const response = await fetch(
@@ -41,13 +39,43 @@ const RelatedProductInfo = () => {
         setLoading(false);
       }
     };
-
-
-
-
-    
     fetchRelatedProducts();
   }, []);
+
+  // useEffect(() => {
+  //   const fetchRelatedProducts = async () => {
+  //     try {
+  //       // API URL for related products
+  //       const apiUrl =
+  //         "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100&page=";
+  
+  //       // Assuming you want to fetch multiple pages, like in the original code
+  //       const pageNumbers = Array.from({ length: 9 }, (_, index) => index + 1);
+  
+  //       // Fetch all pages in parallel
+  //       const fetchPromises = pageNumbers.map((page) =>
+  //         fetch(`${apiUrl}${page}`).then((res) => res.json())
+  //       );
+  
+  //       // Wait for all API calls to complete
+  //       const allProducts = await Promise.all(fetchPromises);
+  
+  //       // Combine all the fetched data into one array
+  //       const combinedProducts = allProducts.flat();
+  
+  //       // Set the combined data into state
+  //       setRelatedProducts(combinedProducts);
+  //     } catch (err) {
+  //       console.error("Failed to fetch related products:", err);
+  //       setError(err.message);
+  //     } finally {
+  //       setLoading(false); // Stop loading after fetching
+  //     }
+  //   };
+  
+  //   fetchRelatedProducts();
+  // }, []); // Runs once when the component is mounted
+  
 
   const toggleLike = (index) => {
     const newLiked = [...liked];
@@ -121,7 +149,12 @@ const RelatedProductInfo = () => {
         {relatedProducts.map((product, index) => (
           <SwiperSlide key={product.id} className="RelatedProductCard">
             <Image
-            src={product.images[0]?.src}
+            //  src={
+            //   product.images?.length > 0
+            //     ? product.images[0].src
+            //     : "https://vanras.humbeestudio.xyz/wp-content/uploads/2025/04/8923CE-a4-royalcrown-scaled.jpg"
+            // }
+            src={product.images[0]?.src || "https://vanras.humbeestudio.xyz/wp-content/uploads/2025/04/8923CE-a4-royalcrown-scaled.jpg"}
               // src={product.images[0]?.src || "/placeholder.png"}
               // src={item.ProductImage}
               alt="Related Product"

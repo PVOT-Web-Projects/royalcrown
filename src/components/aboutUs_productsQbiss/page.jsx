@@ -36,6 +36,7 @@ const Page = () => {
   const [isMobileOne, setIsMobileOne] = useState(false); // State for mobile detection
   const [lastScrollTop, setLastScrollTop] = useState(0); // Track the last scroll position
   const stickyRef = useRef(null); // Ref for the sticky element
+  const [searchTerm, setSearchTerm] = useState("");
 
   // Adding a loading state
   const [loading, setLoading] = useState(true); // Initially, set loading to t
@@ -158,6 +159,12 @@ const Page = () => {
   }, [color]);
   const handleTypeChange = (e) => {
     setSelectedType(e.value);
+    setSelectedCategory([]); // Reset category when type changes
+    setPageNumber(1); // Reset to first page when type changes
+  };
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+    setPageNumber(1); // Reset to first page when search term changes
   };
   const handleCategoryChange = (event) => {
     const { value, checked } = event.target;
@@ -225,77 +232,94 @@ const Page = () => {
       const isQBlissCategory = product.categories.some(
         (category) => category.name.toLowerCase() === "qbliss"
       );
-      const brandMatch =
-        selectedBrand === "all" ||
-        selectedBrand === null ||
-        product.category === selectedBrand;
-      const categoryMatch =
-        selectedCategory.length === 0 ||
-        selectedCategory.some((selectedCat) =>
-          product.attributes.some(
-            (attr) =>
-              attr.name === "type" &&
-              attr.terms.some((term) => term.slug === selectedCat)
-          )
-        );
-      const finishMatch =
-        selectedFinish === "all" ||
-        selectedFinish === null ||
-        product.categories[1].slug === selectedFinish;
-      const sizeMatch =
-        selectedSize === "all" ||
-        selectedSize === null ||
-        product.attributes[1].terms[0].name === selectedSize;
-      const thicknessMatch =
-        selectedThickness === "all" ||
-        selectedThickness === null ||
-        product.attributes[2].terms[0].name === selectedThickness;
-      const colorMatch =
-        selectedColor === "all" ||
-        selectedColor === null ||
-        product.attributes[4].terms[0].name === selectedColor;
-      const typeMatch =
-        selectedType === "all" ||
-        selectedType === null ||
-        product.attributes[3].terms[0].name === selectedType;
-      console.log("Checking Product:", product); // Log each product being checked
-      console.log(
-        "Matches Filters:",
-        isQBlissCategory,
-        brandMatch,
-        "CategoryMatch",
-        categoryMatch,
-        "finish data",
-        finishMatch,
-        "size data",
-        sizeMatch,
-        "thickness data",
-        thicknessMatch,
-        "color match",
-        colorMatch,
-        typeMatch
+
+      // Find the type attribute
+      const typeAttribute = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "type"
       );
+
+      // Find the category attribute
+      const categoryAttribute = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "category"
+      );
+
+      // Find the size attribute
+      const sizeAttribute = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "size"
+      );
+
+      // Find the thickness attribute
+      const thicknessAttribute = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "thickness"
+      );
+
+      // Find the color attribute
+      const colorAttribute = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "color"
+      );
+
+      // Find the design code attribute
+      const designCodeAttribute = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "design code"
+      );
+
+      const typeMatch =
+      selectedType === "all" ||
+      typeAttr?.terms.some((term) => term.name === selectedType);
+
+    // Category filtering
+    const categoryMatch =
+      selectedCategory.length === 0 ||
+      selectedCategory.some((selectedCat) =>
+        product.attributes.some(
+          (attr) =>
+            attr.name.toLowerCase() === "type" &&
+            attr.terms.some((term) => term.name === selectedCat)
+        )
+      );
+
+      // Size filter
+      const sizeMatch = selectedSize === "all" ||
+        (sizeAttribute && sizeAttribute.terms.some(
+          term => term.name.toLowerCase() === selectedSize.toLowerCase()
+        ));
+
+      // Thickness filter
+      const thicknessMatch = selectedThickness === "all" ||
+        (thicknessAttribute && thicknessAttribute.terms.some(
+          term => term.name.toLowerCase() === selectedThickness.toLowerCase()
+        ));
+
+      // Color filter
+      const colorMatch = selectedColor === "all" ||
+        (colorAttribute && colorAttribute.terms.some(
+          term => term.name.toLowerCase() === selectedColor.toLowerCase()
+        ));
+
+      // Search filter by design code
+      const searchMatch = !searchTerm || 
+        (designCodeAttribute && designCodeAttribute.terms.some(
+          term => term.name.toLowerCase().includes(searchTerm.toLowerCase())
+        ));
 
       return (
         isQBlissCategory &&
-        brandMatch &&
+        typeMatch &&
         categoryMatch &&
-        finishMatch &&
         sizeMatch &&
         thicknessMatch &&
         colorMatch &&
-        typeMatch
+        searchMatch
       );
     });
   }, [
     products,
-    selectedBrand,
+    selectedType,
     selectedCategory,
-    selectedFinish,
     selectedSize,
     selectedThickness,
     selectedColor,
-    selectedType, // Added selectedType to the dependencies of useMemo
+    searchTerm
   ]);
   // const lastIndex = pageNumber * itemsPerPage;
   // const firstIndex = lastIndex - itemsPerPage;
@@ -311,8 +335,8 @@ const Page = () => {
     setSelectedThickness("all");
     setSelectedColor("all");
     setSelectedType("all");
-    // Reset the URL to /product without the hash
-    // router.push("/product", undefined, { shallow: true });
+    setSearchTerm(""); // Reset the search term
+    setPageNumber(1); // Reset to first page when filters are reset
   };
   //  pagination finall logic
   // Calculate total pages dynamically based on filtered products
@@ -514,6 +538,15 @@ const Page = () => {
               </button>
             </div>
             {/* reset filter ends */}
+            <div className="searchContainer">
+              <input
+                type="text"
+                placeholder="Search"
+                value={searchTerm}
+                onChange={handleSearchChange}
+                className="searchInput"
+              />
+            </div>
             <div className="dropdown1">
               <div className="dropdown-label">
                 <label className="colorSelectDropdown" htmlFor="type-select">
@@ -664,7 +697,11 @@ const Page = () => {
             //   <div className="skeleton-item"></div>
             // </div>
             <div className="product_container" ref={projectsRef}>
-              {displayedData.map((product, index) => {
+               {displayedData.length === 0 ? (
+                // Display this message if no products are found
+                <div className="noMatchFound">No match found</div>
+              ) : (
+              displayedData.map((product, index) => {
                 console.log(displayedData);
                 // const isTabActive = !!activeTab;
                 const className =
@@ -739,70 +776,69 @@ const Page = () => {
                     </div>
                   </div>
                 );
-              })}
+              })
+            )}
             </div>
           )}
         </div>
-        {currentData.length > 0 && (
-          <div>
-            <Stack spacing={2} justifyContent="center">
+        {filteredProducts1.length > 0 && (
+          <div className="pagination-container">
+            <Stack spacing={2} justifyContent="center" className="pagination-stack">
               <Pagination
-                count={Math.ceil(currentData.length / itemsPerPage)}
-                color="primary"
-                shape="rounded"
+                count={totalPages}
                 page={pageNumber}
-                size="small"
-                variant="outlined"
                 onChange={handlePageChange}
+                size="large"
+                variant="outlined"
+                shape="rounded"
                 hidePrevButton
                 hideNextButton
+                siblingCount={1}
+                boundaryCount={1}
                 sx={{
                   "& .MuiPaginationItem-root": {
                     backgroundColor: "transparent",
-                    border: "1px solid #5b3524",
-                    color: "#5b3524",
+                    border: "1px solid #5B3524",
+                    color: "#5B3524",
                     margin: "0 10px",
-                    padding: "13px 10px",
+                    padding: "12px 1px",
                     fontSize: "15px",
+                    minWidth: "26px",
+                    height: "20px",
                     borderRadius: "0px",
+                    lineHeight: "0.5",
                     transition: "background-color 0.3s, color 0.3s",
-
                     "@media (max-width: 768px)": {
                       margin: "0 9px",
                       padding: "12px 8px",
                       fontSize: "15px",
                     },
-
                     "@media (max-width: 425px)": {
                       margin: "0 8px",
                       padding: "12px 8px",
                       fontSize: "12px",
                     },
-
                     "&.Mui-selected": {
-                      backgroundColor: "#5b3524",
+                      backgroundColor: "#5B3524",
                       margin: "0 10px",
                       padding: "14px 10px",
                       fontSize: "16px",
                       color: "white",
                       border: "none",
-
                       "@media (max-width: 768px)": {
                         margin: "0 9px",
                         padding: "12px 10px",
                         fontSize: "15px",
                       },
-
                       "@media (max-width: 425px)": {
                         margin: "0 8px",
                         padding: "12px 10px",
                         fontSize: "12px",
                       },
                     },
-
                     "&.Mui-selected:hover": {
-                      backgroundColor: "#c1c0c0",
-                      color: "black",
+                      backgroundColor: "#5B3524",
+                      color: "white",
                       border: "none",
                     },
                   },
