@@ -60,11 +60,12 @@ const Page = () => {
   //       console.error("Failed to fetch data:", error);
   //     });
   // }, []);
-useEffect(() => {
+  useEffect(() => {
     const fetchAllProducts = async () => {
       try {
         // The API URL structure
-        const apiUrl = "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100&page=";
+        const apiUrl =
+          "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100&page=";
 
         // Fetching all pages (1 to 9 in this case)
         const pageNumbers = Array.from({ length: 6 }, (_, index) => index + 1);
@@ -237,9 +238,12 @@ useEffect(() => {
       );
 
       // Type filtering
-      const typeAttr = product.attributes.find(attr => attr.name.toLowerCase() === "type");
-      const typeMatch = selectedType === "all" || 
-        typeAttr?.terms.some(term => term.name === selectedType);
+      const typeAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "type"
+      );
+      const typeMatch =
+        selectedType === "all" ||
+        typeAttr?.terms.some((term) => term.name === selectedType);
 
       // Category filtering
       const categoryMatch =
@@ -253,29 +257,36 @@ useEffect(() => {
         );
 
       // Size filtering
-      const sizeAttr = product.attributes.find(attr => attr.name.toLowerCase() === "size");
+      const sizeAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "size"
+      );
       const sizeMatch =
-        selectedSize === "all" ||
-        sizeAttr?.terms[0]?.name === selectedSize;
+        selectedSize === "all" || sizeAttr?.terms[0]?.name === selectedSize;
 
       // Thickness filtering
-      const thicknessAttr = product.attributes.find(attr => attr.name.toLowerCase() === "thickness");
+      const thicknessAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "thickness"
+      );
       const thicknessMatch =
         selectedThickness === "all" ||
         thicknessAttr?.terms[0]?.name === selectedThickness;
 
       // Color filtering
-      const colorAttr = product.attributes.find(attr => attr.name.toLowerCase() === "color");
+      const colorAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "color"
+      );
       const colorMatch =
-        selectedColor === "all" ||
-        colorAttr?.terms[0]?.name === selectedColor;
+        selectedColor === "all" || colorAttr?.terms[0]?.name === selectedColor;
 
       // Search by design code
       const designCodeAttr = product.attributes.find(
         (attr) => attr.name.toLowerCase() === "design code"
       );
-      const searchMatch = !searchTerm || 
-        (designCodeAttr?.terms[0]?.name?.toLowerCase() || "").includes(searchTerm.toLowerCase());
+      const searchMatch =
+        !searchTerm ||
+        (designCodeAttr?.terms[0]?.name?.toLowerCase() || "").includes(
+          searchTerm.toLowerCase()
+        );
 
       return (
         isCrownCategory &&
@@ -325,7 +336,10 @@ useEffect(() => {
     }
   };
 
-  const totalPages = Math.max(1, Math.ceil(filteredProducts1.length / itemsPerPage));
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredProducts1.length / itemsPerPage)
+  );
   const currentPage = Math.min(pageNumber, totalPages);
   const lastIndex = currentPage * itemsPerPage;
   const firstIndex = lastIndex - itemsPerPage;
@@ -459,8 +473,8 @@ useEffect(() => {
               </button>
             </div>
             {/* reset filter ends */}
-             {/* Search Input */}
-             <div className="searchContainer">
+            {/* Search Input */}
+            <div className="searchContainer">
               <input
                 type="text"
                 placeholder="Search"
@@ -617,79 +631,79 @@ useEffect(() => {
                 // Display this message if no products are found
                 <div className="noMatchFound">No match found</div>
               ) : (
-              displayedData.map((product, index) => {
-                console.log(displayedData);
-                // const isTabActive = !!activeTab;
-                const className =
-                  // ? "" // Normal size for tab view
-                  // :
-                  index === 9
-                    ? "big"
-                    : [0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21].includes(
-                        index
-                      )
-                    ? "tall"
-                    : "";
-                // const designCode = product.attributes[6]?.terms[0].name || "";
-                const designCodeAttr = product.attributes.find(
-                  (attr) => attr.name.toLowerCase() === "design code"
-                );
-                const designCode =
-                  designCodeAttr && designCodeAttr.terms.length > 0
-                    ? designCodeAttr.terms[0].name
-                    : "No design code available"; // Fallback if no design code is found
-               
-                const defaultImage =
-                  "http://vanras.humbeestudio.xyz/wp-content/uploads/2025/03/default_image.png";
+                displayedData.map((product, index) => {
+                  console.log(displayedData);
+                  // const isTabActive = !!activeTab;
+                  const className =
+                    // ? "" // Normal size for tab view
+                    // :
+                    index === 9
+                      ? "big"
+                      : [
+                          0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21,
+                        ].includes(index)
+                      ? "tall"
+                      : "";
+                  // const designCode = product.attributes[6]?.terms[0].name || "";
+                  const designCodeAttr = product.attributes.find(
+                    (attr) => attr.name.toLowerCase() === "design code"
+                  );
+                  const designCode =
+                    designCodeAttr && designCodeAttr.terms.length > 0
+                      ? designCodeAttr.terms[0].name
+                      : "No design code available"; // Fallback if no design code is found
 
-                return (
-                  <div key={index} className={`AboutUs_product ${className}`}>
-                    <Image
-                      src={
-                        product.images?.length > 0
-                          ? product.images[0].src
-                          : defaultImage
-                      }
-                      alt={product.name}
-                      className="ProductImage"
-                      width={500}
-                      height={600}
-                      onClick={() => {
-                        console.log("Product ID:", product.id);
-                        router.push(`/product-information#${product.id}`);
-                      }}
-                    />
-                    <div className="overlay">
-                      <div>
-                        <svg
-                          width="40"
-                          height="40"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          fill="white"
-                          className="aboutUsProductSvg"
-                        >
-                          <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
-                        </svg>
-                      </div>
-                      <div
-                        className="AnchorTag"
+                  const defaultImage =
+                    "http://vanras.humbeestudio.xyz/wp-content/uploads/2025/03/default_image.png";
+
+                  return (
+                    <div key={index} className={`AboutUs_product ${className}`}>
+                      <Image
+                        src={
+                          product.images?.length > 0
+                            ? product.images[0].src
+                            : defaultImage
+                        }
+                        alt={product.name}
+                        className="ProductImage"
+                        width={500}
+                        height={600}
                         onClick={() => {
                           console.log("Product ID:", product.id);
                           router.push(`/product-information#${product.id}`);
                         }}
-                      >
-                        Know More
+                      />
+                      <div className="overlay">
+                        <div>
+                          <svg
+                            width="40"
+                            height="40"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            fill="white"
+                            className="aboutUsProductSvg"
+                          >
+                            <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
+                          </svg>
+                        </div>
+                        <div
+                          className="AnchorTag"
+                          onClick={() => {
+                            console.log("Product ID:", product.id);
+                            router.push(`/product-information#${product.id}`);
+                          }}
+                        >
+                          Know More
+                        </div>
+                      </div>
+                      {/* Design Code Container */}
+                      <div className="designCodeContainer">
+                        <p className="designCode">{designCode}</p>
                       </div>
                     </div>
-                    {/* Design Code Container */}
-                    <div className="designCodeContainer">
-                      <p className="designCode">{designCode}</p>
-                    </div>
-                  </div>
-                );
-              })
+                  );
+                })
               )}
             </div>
           )}

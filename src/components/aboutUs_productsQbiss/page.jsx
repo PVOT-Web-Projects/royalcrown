@@ -263,19 +263,20 @@ const Page = () => {
         (attr) => attr.name.toLowerCase() === "design code"
       );
 
-      // Type filter - updated to handle both "all" and specific type selection
-      const typeMatch = selectedType === "all" || 
-        (typeAttribute && typeAttribute.terms.some(
-          term => term.name.toLowerCase() === selectedType.toLowerCase()
-        ));
+      const typeMatch =
+      selectedType === "all" ||
+      typeAttr?.terms.some((term) => term.name === selectedType);
 
-      // Category filter
-      const categoryMatch = selectedCategory.length === 0 ||
-        (categoryAttribute && selectedCategory.some(
-          selectedCat => categoryAttribute.terms.some(
-            term => term.name.toLowerCase() === selectedCat.toLowerCase()
-          )
-        ));
+    // Category filtering
+    const categoryMatch =
+      selectedCategory.length === 0 ||
+      selectedCategory.some((selectedCat) =>
+        product.attributes.some(
+          (attr) =>
+            attr.name.toLowerCase() === "type" &&
+            attr.terms.some((term) => term.name === selectedCat)
+        )
+      );
 
       // Size filter
       const sizeMatch = selectedSize === "all" ||
@@ -696,7 +697,11 @@ const Page = () => {
             //   <div className="skeleton-item"></div>
             // </div>
             <div className="product_container" ref={projectsRef}>
-              {displayedData.map((product, index) => {
+               {displayedData.length === 0 ? (
+                // Display this message if no products are found
+                <div className="noMatchFound">No match found</div>
+              ) : (
+              displayedData.map((product, index) => {
                 console.log(displayedData);
                 // const isTabActive = !!activeTab;
                 const className =
@@ -771,7 +776,8 @@ const Page = () => {
                     </div>
                   </div>
                 );
-              })}
+              })
+            )}
             </div>
           )}
         </div>
