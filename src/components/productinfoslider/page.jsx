@@ -22,7 +22,9 @@ const SlidesContent = ({ slide }) => (
       </p>
       <div className="TextButtonoUTER">
         <p className="TextInnerCollection">
-          {slide.attributes[3].terms[0].name}
+          {/* {slide.attributes[3].terms[0].name} */}
+          {slide.attributes.find((attr) => attr.name.toLowerCase() === "type")
+            ?.terms[0]?.name || ""}
         </p>
         <div className="submit_btn">
           <Link href={"/contact-us"}>
@@ -38,8 +40,10 @@ const SlidesContent = ({ slide }) => (
         <div className="ProductCategoryText">
           <p className="ProductCategoryText1">design code</p>
           <p className="ProductCategoryText2">
-            {/* {slide.attributes[8].terms[0].name} */}
-            {slide.attributes[7]?.terms[0]?.name || ""}
+            {/* {slide.attributes[7]?.terms[0]?.name || ""} */}
+            {slide.attributes.find(
+              (attr) => attr.name.toLowerCase() === "design code"
+            )?.terms[0]?.name || ""}
           </p>
         </div>
       </div>
@@ -47,7 +51,11 @@ const SlidesContent = ({ slide }) => (
         <div className="ProductCategoryText">
           <p className="ProductCategoryText1">product code</p>
           <p className="ProductCategoryText2">
-            {slide.attributes[0].terms[0].name}
+            {/* {slide.attributes[0].terms[0].name} */}
+            {slide.attributes.find((attr) => attr.name.toLowerCase() === "sku")
+              ?.terms[0]?.name ||
+              slide.sku ||
+              ""}
           </p>
         </div>
       </div>
@@ -55,7 +63,10 @@ const SlidesContent = ({ slide }) => (
         <div className="ProductCategoryText">
           <p className="ProductCategoryText1">product category</p>
           <p className="ProductCategoryText2">
-            {slide.attributes[5].terms[0].name}
+            {/* {slide.attributes[5].terms[0].name} */}
+            {slide.attributes.find(
+              (attr) => attr.name.toLowerCase() === "product category"
+            )?.terms[0]?.name || ""}
           </p>
         </div>
       </div>
@@ -63,7 +74,9 @@ const SlidesContent = ({ slide }) => (
         <div className="ProductCategoryText">
           <p className="ProductCategoryText1">Product Size</p>
           <p className="ProductCategoryText2">
-            {slide.attributes[1].terms[0].name}
+            {/* {slide.attributes[1].terms[0].name} */}
+            {slide.attributes.find((attr) => attr.name.toLowerCase() === "size")
+              ?.terms[0]?.name || ""}
           </p>
         </div>
       </div>
@@ -71,7 +84,9 @@ const SlidesContent = ({ slide }) => (
         <div className="ProductCategoryText">
           <p className="ProductCategoryText1">product type</p>
           <p className="ProductCategoryText2">
-            {slide.attributes[3].terms[0].name}
+            {/* {slide.attributes[3].terms[0].name} */}
+            {slide.attributes.find((attr) => attr.name.toLowerCase() === "type")
+              ?.terms[0]?.name || ""}
           </p>
         </div>
       </div>
@@ -79,7 +94,10 @@ const SlidesContent = ({ slide }) => (
         <div className="ProductCategoryText">
           <p className="ProductCategoryText1">Thickness (MM)</p>
           <p className="ProductCategoryText2">
-            {slide.attributes[2].terms[0].name}
+            {/* {slide.attributes[2].terms[0].name} */}
+            {slide.attributes.find(
+              (attr) => attr.name.toLowerCase() === "thickness"
+            )?.terms[0]?.name || ""}
           </p>
         </div>
       </div>
@@ -87,7 +105,10 @@ const SlidesContent = ({ slide }) => (
         <div className="ProductCategoryText">
           <p className="ProductCategoryText1">Color</p>
           <p className="ProductCategoryText2">
-            {slide.attributes[4].terms[0].name}
+            {/* {slide.attributes[4].terms[0].name} */}
+            {slide.attributes.find(
+              (attr) => attr.name.toLowerCase() === "color"
+            )?.terms[0]?.name || ""}
           </p>
         </div>
       </div>
@@ -101,7 +122,10 @@ const SlidesContent = ({ slide }) => (
         <div className="ProductCategoryText">
           <p className="ProductCategoryText1">Theme / mood</p>
           <p className="ProductCategoryText2">
-            {slide.attributes[6].terms[0].name}
+            {/* {slide.attributes[6].terms[0].name} */}
+            {slide.attributes.find(
+              (attr) => attr.name.toLowerCase() === "theme"
+            )?.terms[0]?.name || ""}
           </p>
         </div>
       </div>

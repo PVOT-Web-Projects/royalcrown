@@ -229,16 +229,27 @@ const Page = () => {
   useEffect(() => {
     if (searchTerm) {
       const filtered = products.filter((product) => {
-        return product.attributes[6]?.terms[0]?.name
-          ?.toLowerCase()
-          .includes(searchTerm.toLowerCase()); // Match design code attribute
+        const designCodeAttr = product.attributes.find(
+          (attr) => attr.name.toLowerCase() === "design code"
+        );
+        const designCode =
+          designCodeAttr && designCodeAttr.terms.length > 0
+            ? designCodeAttr.terms[0].name
+            : "";
+  
+        return designCode.toLowerCase().includes(searchTerm.toLowerCase());
       });
+      // const filtered = products.filter((product) => {
+      //   return product.attributes[6]?.terms[0]?.name
+      //     ?.toLowerCase()
+      //     .includes(searchTerm.toLowerCase()); // Match design code attribute
+      // });
       setFilteredProducts(filtered);
     } else {
       setFilteredProducts(products); // If no search term, show all products
     }
   }, [searchTerm, products]);
-  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+  const totalPages = Math.max(1, Math.ceil(filteredProducts.length / itemsPerPage));
   const currentPage = Math.min(pageNumber, totalPages);
   const lastIndex = currentPage * itemsPerPage;
   const firstIndex = lastIndex - itemsPerPage;
@@ -669,24 +680,31 @@ const Page = () => {
           <div>
             <Stack spacing={2} justifyContent="center">
               <Pagination
-                count={Math.ceil(currentData.length / itemsPerPage)}
+               count={totalPages}
+               page={currentPage}
+                // count={Math.ceil(currentData.length / itemsPerPage)}
                 color="primary"
                 shape="rounded"
-                page={pageNumber}
+                // page={pageNumber}
                 size="small"
                 variant="outlined"
                 onChange={handlePageChange}
                 hidePrevButton
                 hideNextButton
+                siblingCount={1}
+                boundaryCount={1}
                 sx={{
                   "& .MuiPaginationItem-root": {
                     backgroundColor: "transparent",
                     border: "1px solid #5b3524",
                     color: "#5b3524",
                     margin: "0 10px",
-                    padding: "13px 10px",
+                    padding: "8px 1px",
+                    minWidth: "26px",
+                    height: "26px",
                     fontSize: "15px",
                     borderRadius: "0px",
+                    lineHeight: "0.5",
                     transition: "background-color 0.3s, color 0.3s",
 
                     "@media (max-width: 768px)": {
@@ -723,8 +741,8 @@ const Page = () => {
                     },
 
                     "&.Mui-selected:hover": {
-                      backgroundColor: "#c1c0c0",
-                      color: "black",
+                      backgroundColor: "#5b3524",
+                      color: "white",
                       border: "none",
                     },
                   },
