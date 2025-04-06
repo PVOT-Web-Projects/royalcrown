@@ -229,14 +229,25 @@ const Page = () => {
   useEffect(() => {
     if (searchTerm) {
       const filtered = products.filter((product) => {
+        // Get Design Code, default to "No Data Found" if not available
+        // const designCode = product.attributes[6]?.terms[0].name || "";
         const designCodeAttr = product.attributes.find(
           (attr) => attr.name.toLowerCase() === "design code"
         );
+        const productCodeAttr = product.attributes.find(
+          (attr) => attr.name.toLowerCase() === "product code"
+        );
+        //Handle the null case for productCodeAttr
+
+        const productCode =
+          productCodeAttr && productCodeAttr.terms.length > 0
+            ? productCodeAttr.terms[0].name
+            : ""; // Fallback if no product code is found
+
         const designCode =
           designCodeAttr && designCodeAttr.terms.length > 0
-            ? designCodeAttr.terms[0].name
-            : "";
-  
+            ? designCodeAttr.terms[0].name + productCode
+            : ""; // Fallback if no design code is found
         return designCode.toLowerCase().includes(searchTerm.toLowerCase());
       });
       // const filtered = products.filter((product) => {
@@ -249,7 +260,10 @@ const Page = () => {
       setFilteredProducts(products); // If no search term, show all products
     }
   }, [searchTerm, products]);
-  const totalPages = Math.max(1, Math.ceil(filteredProducts.length / itemsPerPage));
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredProducts.length / itemsPerPage)
+  );
   const currentPage = Math.min(pageNumber, totalPages);
   const lastIndex = currentPage * itemsPerPage;
   const firstIndex = lastIndex - itemsPerPage;
@@ -625,10 +639,21 @@ const Page = () => {
                   const designCodeAttr = product.attributes.find(
                     (attr) => attr.name.toLowerCase() === "design code"
                   );
+                  const productCodeAttr = product.attributes.find(
+                    (attr) => attr.name.toLowerCase() === "product code"
+                  );
+                  //Handle the null case for productCodeAttr
+
+                  const productCode =
+                    productCodeAttr && productCodeAttr.terms.length > 0
+                      ? productCodeAttr.terms[0].name
+                      : ""; // Fallback if no product code is found
+
                   const designCode =
                     designCodeAttr && designCodeAttr.terms.length > 0
-                      ? designCodeAttr.terms[0].name
-                      : "No design code available"; // Fallback if no design code is found
+                      ? designCodeAttr.terms[0].name + productCode
+                      : ""; // Fallback if no design code is found
+
                   const defaultImage =
                     "http://vanras.humbeestudio.xyz/wp-content/uploads/2025/03/default_image.png";
                   return (
@@ -680,8 +705,8 @@ const Page = () => {
           <div>
             <Stack spacing={2} justifyContent="center">
               <Pagination
-               count={totalPages}
-               page={currentPage}
+                count={totalPages}
+                page={currentPage}
                 // count={Math.ceil(currentData.length / itemsPerPage)}
                 color="primary"
                 shape="rounded"
