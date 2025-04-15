@@ -29,7 +29,7 @@ const Page = () => {
   const stickyRef = useRef(null); // Ref for the sticky element
 
   const pathName = usePathname();
-  const [searchTerm, setSearchTerm] = useState(""); // State for search term 
+  const [searchTerm, setSearchTerm] = useState(""); // State for search term
   const [shortTitle, setShortTitle] = useState("");
   const [selectedTag, setSelectedTag] = useState("all"); // Initially no tag selected
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -207,9 +207,12 @@ const Page = () => {
       );
 
       // Type filtering
-      const typeAttr = product.attributes.find(attr => attr.name.toLowerCase() === "type");
-      const typeMatch = selectedType === "all" || 
-        typeAttr?.terms.some(term => term.name === selectedType);
+      const typeAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "type"
+      );
+      const typeMatch =
+        selectedType === "all" ||
+        typeAttr?.terms.some((term) => term.name === selectedType);
 
       // Category filtering
       const categoryMatch =
@@ -223,29 +226,48 @@ const Page = () => {
         );
 
       // Size filtering
-      const sizeAttr = product.attributes.find(attr => attr.name.toLowerCase() === "size");
+      const sizeAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "size"
+      );
       const sizeMatch =
-        selectedSize === "all" ||
-        sizeAttr?.terms[0]?.name === selectedSize;
+        selectedSize === "all" || sizeAttr?.terms[0]?.name === selectedSize;
 
       // Thickness filtering
-      const thicknessAttr = product.attributes.find(attr => attr.name.toLowerCase() === "thickness");
+      const thicknessAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "thickness"
+      );
       const thicknessMatch =
         selectedThickness === "all" ||
         thicknessAttr?.terms[0]?.name === selectedThickness;
 
       // Color filtering
-      const colorAttr = product.attributes.find(attr => attr.name.toLowerCase() === "color");
+      const colorAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "color"
+      );
       const colorMatch =
-        selectedColor === "all" ||
-        colorAttr?.terms[0]?.name === selectedColor;
-
-      // Search by design code
+        selectedColor === "all" || colorAttr?.terms[0]?.name === selectedColor;
+      // Get Design Code, default to "No Data Found" if not available
+      // const designCode = product.attributes[6]?.terms[0].name || "";
       const designCodeAttr = product.attributes.find(
         (attr) => attr.name.toLowerCase() === "design code"
       );
-      const searchMatch = !searchTerm || 
-        (designCodeAttr?.terms[0]?.name?.toLowerCase() || "").includes(searchTerm.toLowerCase());
+      const productCodeAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "product code"
+      );
+      //Handle the null case for productCodeAttr
+
+      const productCode =
+        productCodeAttr && productCodeAttr.terms.length > 0
+          ? productCodeAttr.terms[0].name
+          : ""; // Fallback if no product code is found
+
+      const designCode =
+        designCodeAttr && designCodeAttr.terms.length > 0
+          ? designCodeAttr.terms[0].name + productCode
+          : ""; // Fallback if no design code is found
+      const searchMatch =
+        !searchTerm ||
+        (designCode.toLowerCase() || "").includes(searchTerm.toLowerCase());
 
       return (
         isCrownXclCategory &&
@@ -268,7 +290,10 @@ const Page = () => {
   ]);
 
   // Calculate total pages based on filtered products
-  const totalPages = Math.max(1, Math.ceil(filteredProducts1.length / itemsPerPage));
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredProducts1.length / itemsPerPage)
+  );
 
   // Ensure current page doesn't exceed total pages
   useEffect(() => {
@@ -280,7 +305,14 @@ const Page = () => {
   // Reset page number when filters change
   useEffect(() => {
     setPageNumber(1);
-  }, [selectedType, selectedCategory, selectedSize, selectedThickness, selectedColor, searchTerm]);
+  }, [
+    selectedType,
+    selectedCategory,
+    selectedSize,
+    selectedThickness,
+    selectedColor,
+    searchTerm,
+  ]);
 
   // Calculate indices for current page
   const lastIndex = pageNumber * itemsPerPage;
@@ -337,7 +369,7 @@ const Page = () => {
     setSelectedThickness("all");
     setSelectedColor("all");
     setSelectedType("all");
-    setSearchTerm(""); 
+    setSearchTerm("");
     // Reset the URL to /product without the hash
     // router.push("/product", undefined, { shallow: true });
   };
@@ -435,7 +467,7 @@ const Page = () => {
         </motion.div>
         <div id="sticky_top" className="products_name1">
           <div className="products-tabs" id="sticky_top">
-            <div scroll={false} className="tab-item">
+            <div scroll={false} className="tab-item" style={{background: "#5b3524"}}>
               <div className="tab-content-inner">crown xcl</div>
             </div>
           </div>
@@ -458,7 +490,7 @@ const Page = () => {
               </button>
             </div>
             {/* reset filter ends */}
-            
+
             {/* Search Input */}
             <div className="searchContainer">
               <input
@@ -620,90 +652,109 @@ const Page = () => {
             //   <div className="skeleton-item"></div>
             // </div>
             <div className="product_container" ref={projectsRef}>
-                          {displayedData.length === 0 ? (
-                            // Display this message if no products are found
-                            <div className="noMatchFound">No match found</div>
-                          ) : (
-                          displayedData.map((product, index) => {
-                            console.log(displayedData);
-                            // const isTabActive = !!activeTab;
-                            const className =
-                              // ? "" // Normal size for tab view
-                              // :
-                              index === 9
-                                ? "big"
-                                : [0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21].includes(
-                                    index
-                                  )
-                                ? "tall"
-                                : "";
-                            // const designCode = product.attributes[6]?.terms[0].name || "";
-                            const designCodeAttr = product.attributes.find(
-                              (attr) => attr.name.toLowerCase() === "design code"
-                            );
-                            const designCode =
-                              designCodeAttr && designCodeAttr.terms.length > 0
-                                ? designCodeAttr.terms[0].name
-                                : "No design code available"; // Fallback if no design code is found
-                           
-                            const defaultImage =
-                              "http://vanras.humbeestudio.xyz/wp-content/uploads/2025/03/default_image.png";
-            
-                            return (
-                              <div key={index} className={`AboutUs_product ${className}`}>
-                                <Image
-                                  src={
-                                    product.images?.length > 0
-                                      ? product.images[0].src
-                                      : defaultImage
-                                  }
-                                  alt={product.name}
-                                  className="ProductImage"
-                                  width={500}
-                                  height={600}
-                                  onClick={() => {
-                                    console.log("Product ID:", product.id);
-                                    router.push(`/product-information#${product.id}`);
-                                  }}
-                                />
-                                <div className="overlay">
-                                  <div>
-                                    <svg
-                                      width="40"
-                                      height="40"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      fill-rule="evenodd"
-                                      clip-rule="evenodd"
-                                      fill="white"
-                                      className="aboutUsProductSvg"
-                                    >
-                                      <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
-                                    </svg>
-                                  </div>
-                                  <div
-                                    className="AnchorTag"
-                                    onClick={() => {
-                                      console.log("Product ID:", product.id);
-                                      router.push(`/product-information#${product.id}`);
-                                    }}
-                                  >
-                                    Know More
-                                  </div>
-                                </div>
-                                {/* Design Code Container */}
-                                <div className="designCodeContainer">
-                                  <p className="designCode">{designCode}</p>
-                                </div>
-                              </div>
-                            );
-                          })
-                          )}
+              {displayedData.length === 0 ? (
+                // Display this message if no products are found
+                <div className="noMatchFound">No match found</div>
+              ) : (
+                displayedData.map((product, index) => {
+                  console.log(displayedData);
+                  // const isTabActive = !!activeTab;
+                  const className =
+                    // ? "" // Normal size for tab view
+                    // :
+                    index === 9
+                      ? "big"
+                      : [
+                          0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21,
+                        ].includes(index)
+                      ? "tall"
+                      : "";
+                  // const designCode = product.attributes[6]?.terms[0].name || "";
+                  const designCodeAttr = product.attributes.find(
+                    (attr) => attr.name.toLowerCase() === "design code"
+                  );
+                  const productCodeAttr = product.attributes.find(
+                    (attr) => attr.name.toLowerCase() === "product code"
+                  );
+
+                  const productCode =
+                  productCodeAttr && productCodeAttr.terms.length > 0
+                    ? productCodeAttr.terms[0].name
+                    : ""; // Fallback if no product code is found
+                  const designCode =
+                    designCodeAttr && designCodeAttr.terms.length > 0
+                      ? designCodeAttr.terms[0].name +productCode
+                      // +
+                      //   productCodeAttr.terms[0].name
+                      : ""; // Fallback if no design code is found
+                  // const designCode =
+                  //   designCodeAttr && designCodeAttr.terms.length > 0
+                  //     ? designCodeAttr.terms[0].name +
+                  //       productCodeAttr.terms[0].name
+                  //     : ""; // Fallback if no design code is found
+
+                  const defaultImage =
+                    "http://vanras.humbeestudio.xyz/wp-content/uploads/2025/03/default_image.png";
+
+                  return (
+                    <div key={index} className={`AboutUs_product ${className}`}>
+                      <Image
+                        src={
+                          product.images?.length > 0
+                            ? product.images[0].src
+                            : defaultImage
+                        }
+                        alt={product.name}
+                        className="ProductImage"
+                        width={500}
+                        height={600}
+                        onClick={() => {
+                          console.log("Product ID:", product.id);
+                          router.push(`/product-information#${product.id}`);
+                        }}
+                      />
+                      <div className="overlay">
+                        <div>
+                          <svg
+                            width="40"
+                            height="40"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            fill="white"
+                            className="aboutUsProductSvg"
+                          >
+                            <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
+                          </svg>
                         </div>
+                        <div
+                          className="AnchorTag"
+                          onClick={() => {
+                            console.log("Product ID:", product.id);
+                            router.push(`/product-information#${product.id}`);
+                          }}
+                        >
+                          Know More
+                        </div>
+                      </div>
+                      {/* Design Code Container */}
+                      <div className="designCodeContainer">
+                        <p className="designCode">{designCode}</p>
+                      </div>
+                    </div>
+                  );
+                })
+              )}
+            </div>
           )}
         </div>
         {filteredProducts1.length > 0 && (
           <div className="pagination-container">
-            <Stack spacing={2} justifyContent="center" className="pagination-stack">
+            <Stack
+              spacing={2}
+              justifyContent="center"
+              className="pagination-stack"
+            >
               <Pagination
                 count={totalPages}
                 page={pageNumber}

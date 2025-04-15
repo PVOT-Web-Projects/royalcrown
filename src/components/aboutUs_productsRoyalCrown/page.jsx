@@ -259,29 +259,51 @@ const Page = () => {
           )
         );
       const finishMatch =
-        selectedFinish === "all" || selectedFinish === null ||
+        selectedFinish === "all" ||
+        selectedFinish === null ||
         product.categories[1].slug === selectedFinish;
       const sizeMatch =
-        selectedSize === "all" || selectedSize === null ||
+        selectedSize === "all" ||
+        selectedSize === null ||
         product.attributes[1].terms[0].name === selectedSize;
       const thicknessMatch =
-        selectedThickness === "all" || selectedThickness === null ||
+        selectedThickness === "all" ||
+        selectedThickness === null ||
         product.attributes[2].terms[0].name === selectedThickness;
       const colorMatch =
-        selectedColor === "all" ||selectedColor === null ||
+        selectedColor === "all" ||
+        selectedColor === null ||
         product.attributes[4].terms[0].name === selectedColor;
       const typeMatch =
-        selectedType === "all" ||selectedType === null ||
+        selectedType === "all" ||
+        selectedType === null ||
         product.attributes[3].terms[0].name === selectedType;
       // Search by design code
+
+      // Get Design Code, default to "No Data Found" if not available
+      // const designCode = product.attributes[6]?.terms[0].name || "";
       const designCodeAttr = product.attributes.find(
         (attr) => attr.name.toLowerCase() === "design code"
       );
+      const productCodeAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "product code"
+      );
+      //Handle the null case for productCodeAttr
+
+      const productCode =
+        productCodeAttr && productCodeAttr.terms.length > 0
+          ? productCodeAttr.terms[0].name
+          : ""; // Fallback if no product code is found
+
+      const designCode =
+        designCodeAttr && designCodeAttr.terms.length > 0
+          ? designCodeAttr.terms[0].name
+           + productCode
+          : ""; // Fallback if no design code is found
       const searchMatch =
         !searchTerm ||
-        (designCodeAttr?.terms[0]?.name?.toLowerCase() || "").includes(
-          searchTerm.toLowerCase()
-        );
+        (designCode.toLowerCase() || "").includes(searchTerm.toLowerCase());
+
       console.log("Checking Product:", product); // Log each product being checked
       console.log(
         "Matches Filters:",
@@ -551,7 +573,7 @@ const Page = () => {
         </motion.div>
         <div id="sticky_top" className="products_name1">
           <div className="products-tabs" id="sticky_top">
-            <div scroll={false} className="tab-item">
+            <div scroll={false} className="tab-item" style={{background: "#5b3524"}}>
               <div className="tab-content-inner">royal crown</div>
             </div>
           </div>
@@ -756,10 +778,19 @@ const Page = () => {
                   const designCodeAttr = product.attributes.find(
                     (attr) => attr.name.toLowerCase() === "design code"
                   );
+                  const productCodeAttr = product.attributes.find(
+                    (attr) => attr.name.toLowerCase() === "product code"
+                  );
+                  const productCode =
+                  productCodeAttr && productCodeAttr.terms.length > 0
+                    ? productCodeAttr.terms[0].name
+                    : ""; // Fallback if no product code is found
                   const designCode =
                     designCodeAttr && designCodeAttr.terms.length > 0
-                      ? designCodeAttr.terms[0].name
-                      : "No design code available"; // Fallback if no design code is found
+                      ? designCodeAttr.terms[0].name +productCode
+                      // +
+                      //   productCodeAttr.terms[0].name
+                      : ""; // Fallback if no design code is found
 
                   const defaultImage =
                     "http://vanras.humbeestudio.xyz/wp-content/uploads/2025/03/default_image.png";
