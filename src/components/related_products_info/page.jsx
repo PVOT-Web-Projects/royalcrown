@@ -26,7 +26,8 @@ const RelatedProductInfo = () => {
     const fetchRelatedProducts = async () => {
       try {
         const response = await fetch(
-          "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100"
+          // "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100"
+          "https://admin.royalcrownlaminates.com/wp-json/wc/store/products/?per_page=100"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch related products.");

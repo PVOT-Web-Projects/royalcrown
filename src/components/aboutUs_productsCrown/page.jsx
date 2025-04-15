@@ -65,7 +65,8 @@ const Page = () => {
       try {
         // The API URL structure
         const apiUrl =
-          "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100&page=";
+          // "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100&page=";
+          "https://admin.royalcrownlaminates.com/wp-json/wc/store/products/?per_page=100&page=";
 
         // Fetching all pages (1 to 9 in this case)
         const pageNumbers = Array.from({ length: 6 }, (_, index) => index + 1);
