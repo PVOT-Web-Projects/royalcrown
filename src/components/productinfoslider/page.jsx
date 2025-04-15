@@ -18,8 +18,9 @@ const SlidesContent = ({ slide }) => (
         {slide.categories[0].name} /{" "}
         {slide.categories[1].name === "Qbliss"
           ? "Qbiss"
-          : slide.categories[1].name}
+          : slide.categories[1].name.replace(/.*(&gt;|>)\s*/, "")}
       </p>
+
       <div className="TextButtonoUTER">
         <p className="TextInnerCollection">
           {/* {slide.attributes[3].terms[0].name} */}
@@ -264,16 +265,25 @@ export default function ProductInfoSlider() {
                         key={idx}
                         className="swiper-slide-product-custom"
                       >
-                        <Image
-                          src={image.src}
-                          alt={`carousel_image_${idx}`}
-                          className="third_section_image1"
-                          width={300}
-                          height={1362}
-                          onClick={() => openModal(image.src)}
-                        />
+                        <div
+                          className="swiper-image-container"
+                          style={{
+                            aspectRatio: image.src.includes("a4")
+                              ? "1/1.414"
+                              : "1/2",
+                          }}
+                        >
+                          <Image
+                            src={image.src}
+                            alt={`carousel_image_${idx}`}
+                            className="third_section_image1"
+                            width={300}
+                            height={1362}
+                            onClick={() => openModal(image.src)}
+                          />
+                        </div>
                         <div className="imageSizeLabel">
-                          {image.src.includes("A4") ? "A4" : "FullSheet"}
+                          {image.src.includes("a4") ? "A4" : "Full Sheet"}
                         </div>{" "}
                       </SwiperSlide>
                     ))}

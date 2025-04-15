@@ -278,15 +278,29 @@ const Page = () => {
       const colorMatch =
         selectedColor === "all" || colorAttr?.terms[0]?.name === selectedColor;
 
-      // Search by design code
+      // Get Design Code, default to "No Data Found" if not available
+      // const designCode = product.attributes[6]?.terms[0].name || "";
       const designCodeAttr = product.attributes.find(
         (attr) => attr.name.toLowerCase() === "design code"
       );
+      const productCodeAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "product code"
+      );
+      //Handle the null case for productCodeAttr
+
+      const productCode =
+        productCodeAttr && productCodeAttr.terms.length > 0
+          ? productCodeAttr.terms[0].name
+          : ""; // Fallback if no product code is found
+
+      const designCode =
+        designCodeAttr && designCodeAttr.terms.length > 0
+          ? designCodeAttr.terms[0].name + productCode
+          : ""; // Fallback if no design code is found
+
       const searchMatch =
         !searchTerm ||
-        (designCodeAttr?.terms[0]?.name?.toLowerCase() || "").includes(
-          searchTerm.toLowerCase()
-        );
+        (designCode.toLowerCase() || "").includes(searchTerm.toLowerCase());
 
       return (
         isCrownCategory &&
@@ -648,10 +662,14 @@ const Page = () => {
                   const designCodeAttr = product.attributes.find(
                     (attr) => attr.name.toLowerCase() === "design code"
                   );
+                  const productCodeAttr = product.attributes.find(
+                    (attr) => attr.name.toLowerCase() === "product code"
+                  );
                   const designCode =
                     designCodeAttr && designCodeAttr.terms.length > 0
-                      ? designCodeAttr.terms[0].name
-                      : "No design code available"; // Fallback if no design code is found
+                      ? designCodeAttr.terms[0].name +
+                        productCodeAttr.terms[0].name
+                      : ""; // Fallback if no design code is found
 
                   const defaultImage =
                     "http://vanras.humbeestudio.xyz/wp-content/uploads/2025/03/default_image.png";

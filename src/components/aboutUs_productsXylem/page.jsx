@@ -26,7 +26,7 @@ const Page = () => {
   const [selectedThickness, setSelectedThickness] = useState("all");
   const [selectedColor, setSelectedColor] = useState("all");
   const [isMobile, setIsMobile] = useState(0);
-  const [searchTerm, setSearchTerm] = useState(""); 
+  const [searchTerm, setSearchTerm] = useState("");
   const [tab, setTab] = useState("");
   const pathName = usePathname();
   const [shortTitle, setShortTitle] = useState("");
@@ -59,7 +59,7 @@ const Page = () => {
   //       console.error("Failed to fetch data:", error);
   //     });
   // }, []);
- useEffect(() => {
+  useEffect(() => {
     const fetchAllProducts = async () => {
       try {
         // The API URL structure
@@ -91,7 +91,7 @@ const Page = () => {
 
     fetchAllProducts();
   }, []); // Only run once when the component is mounted
-  
+
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
     const fullPath = pathName + hash;
@@ -234,84 +234,98 @@ const Page = () => {
   };
 
   const filteredProducts1 = useMemo(() => {
-      return products.filter((product) => {
-        // Check if the product belongs to the "Crown" category
-        const isXylemCategory = product.categories.some(
-          (category) => category.name.toLowerCase() === "xylem"
+    return products.filter((product) => {
+      // Check if the product belongs to the "Crown" category
+      const isXylemCategory = product.categories.some(
+        (category) => category.name.toLowerCase() === "xylem"
+      );
+
+      // Type filtering
+      const typeAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "type"
+      );
+      const typeMatch =
+        selectedType === "all" ||
+        typeAttr?.terms.some((term) => term.name === selectedType);
+
+      // Category filtering
+      const categoryMatch =
+        selectedCategory.length === 0 ||
+        selectedCategory.some((selectedCat) =>
+          product.attributes.some(
+            (attr) =>
+              attr.name.toLowerCase() === "type" &&
+              attr.terms.some((term) => term.name === selectedCat)
+          )
         );
-  
-        // Type filtering
-        const typeAttr = product.attributes.find(
-          (attr) => attr.name.toLowerCase() === "type"
-        );
-        const typeMatch =
-          selectedType === "all" ||
-          typeAttr?.terms.some((term) => term.name === selectedType);
-  
-        // Category filtering
-        const categoryMatch =
-          selectedCategory.length === 0 ||
-          selectedCategory.some((selectedCat) =>
-            product.attributes.some(
-              (attr) =>
-                attr.name.toLowerCase() === "type" &&
-                attr.terms.some((term) => term.name === selectedCat)
-            )
-          );
-  
-        // Size filtering
-        const sizeAttr = product.attributes.find(
-          (attr) => attr.name.toLowerCase() === "size"
-        );
-        const sizeMatch =
-          selectedSize === "all" ||selectedSize === null || sizeAttr?.terms[0]?.name === selectedSize;
-  
-        // Thickness filtering
-        const thicknessAttr = product.attributes.find(
-          (attr) => attr.name.toLowerCase() === "thickness"
-        );
-        const thicknessMatch =
-          selectedThickness === "all" ||selectedThickness === null ||
-          thicknessAttr?.terms[0]?.name === selectedThickness;
-  
-        // Color filtering
-        const colorAttr = product.attributes.find(
-          (attr) => attr.name.toLowerCase() === "color"
-        );
-        const colorMatch =
-          selectedColor === "all" || selectedColor === null || colorAttr?.terms[0]?.name === selectedColor;
-  
-        // Search by design code
-        const designCodeAttr = product.attributes.find(
-          (attr) => attr.name.toLowerCase() === "design code"
-        );
-        const searchMatch =
-          !searchTerm ||
-          (designCodeAttr?.terms[0]?.name?.toLowerCase() || "").includes(
-            searchTerm.toLowerCase()
-          );
-  
-        return (
-          isXylemCategory &&
-          typeMatch &&
-          categoryMatch &&
-          sizeMatch &&
-          thicknessMatch &&
-          colorMatch &&
-          searchMatch
-        );
-      });
-    }, [
-      products,
-      selectedType,
-      selectedCategory,
-      selectedSize,
-      selectedThickness,
-      selectedColor,
-      searchTerm,
-    ]);
+
+      // Size filtering
+      const sizeAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "size"
+      );
+      const sizeMatch =
+        selectedSize === "all" ||
+        selectedSize === null ||
+        sizeAttr?.terms[0]?.name === selectedSize;
+
+      // Thickness filtering
+      const thicknessAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "thickness"
+      );
+      const thicknessMatch =
+        selectedThickness === "all" ||
+        selectedThickness === null ||
+        thicknessAttr?.terms[0]?.name === selectedThickness;
+
+      // Color filtering
+      const colorAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "color"
+      );
+      const colorMatch =
+        selectedColor === "all" ||
+        selectedColor === null ||
+        colorAttr?.terms[0]?.name === selectedColor;
+
+      // Search by design code
+      const designCodeAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "design code"
+      );
+      const productCodeAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "product code"
+      );
+      const designCode =
+        designCodeAttr && designCodeAttr.terms.length > 0
+          ? designCodeAttr.terms[0].name + productCodeAttr.terms[0].name
+          : ""; // Fallback if no design code is found
+
+      const searchMatch =
+        !searchTerm ||
+        (designCode.toLowerCase() || "").includes(searchTerm.toLowerCase());
+
+      return (
+        isXylemCategory &&
+        typeMatch &&
+        categoryMatch &&
+        sizeMatch &&
+        thicknessMatch &&
+        colorMatch &&
+        searchMatch
+      );
+    });
+  }, [
+    products,
+    selectedType,
+    selectedCategory,
+    selectedSize,
+    selectedThickness,
+    selectedColor,
+    searchTerm,
+  ]);
   // Calculate total pages dynamically based on filtered products
-  const totalPages = Math.max(1, Math.ceil(filteredProducts1.length / itemsPerPage));
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredProducts1.length / itemsPerPage)
+  );
   // Ensure the current page is within the valid range
   const currentPage = Math.min(pageNumber, totalPages);
   // Calculate indices for the current page
@@ -366,28 +380,39 @@ const Page = () => {
   };
 
   useEffect(() => {
-      if (searchTerm) {
-        const filtered = products.filter((product) => {
-          const designCodeAttr = product.attributes.find(
-            (attr) => attr.name.toLowerCase() === "design code"
-          );
-          const designCode =
-            designCodeAttr && designCodeAttr.terms.length > 0
-              ? designCodeAttr.terms[0].name
-              : "";
-    
-          return designCode.toLowerCase().includes(searchTerm.toLowerCase());
-        });
-        // const filtered = products.filter((product) => {
-        //   return product.attributes[6]?.terms[0]?.name
-        //     ?.toLowerCase()
-        //     .includes(searchTerm.toLowerCase()); // Match design code attribute
-        // });
-        setFilteredProducts(filtered);
-      } else {
-        setFilteredProducts(products); // If no search term, show all products
-      }
-    }, [searchTerm, products]);
+    if (searchTerm) {
+      const filtered = products.filter((product) => {
+        // Get Design Code, default to "No Data Found" if not available
+        // const designCode = product.attributes[6]?.terms[0].name || "";
+        const designCodeAttr = product.attributes.find(
+          (attr) => attr.name.toLowerCase() === "design code"
+        );
+        const productCodeAttr = product.attributes.find(
+          (attr) => attr.name.toLowerCase() === "product code"
+        );
+        //Handle the null case for productCodeAttr
+
+        const productCode =
+          productCodeAttr && productCodeAttr.terms.length > 0
+            ? productCodeAttr.terms[0].name
+            : ""; // Fallback if no product code is found
+
+        const designCode =
+          designCodeAttr && designCodeAttr.terms.length > 0
+            ? designCodeAttr.terms[0].name + productCode
+            : ""; // Fallback if no design code is found
+        return designCode.toLowerCase().includes(searchTerm.toLowerCase());
+      });
+      // const filtered = products.filter((product) => {
+      //   return product.attributes[6]?.terms[0]?.name
+      //     ?.toLowerCase()
+      //     .includes(searchTerm.toLowerCase()); // Match design code attribute
+      // });
+      setFilteredProducts(filtered);
+    } else {
+      setFilteredProducts(products); // If no search term, show all products
+    }
+  }, [searchTerm, products]);
   const getShortDescription = (category) => {
     switch (category) {
       case "Royal Crown":
@@ -782,163 +807,167 @@ const Page = () => {
             //   <div className="skeleton-item"></div>
             // </div>
             <div className="product_container" ref={projectsRef}>
-               {displayedData.length === 0 ? (
+              {displayedData.length === 0 ? (
                 // Display this message if no products are found
                 <div className="noMatchFound">No match found</div>
               ) : (
-              displayedData.map((product, index) => {
-                console.log(displayedData);
-                // const isTabActive = !!activeTab;
-                const className =
-                  // ? "" // Normal size for tab view
-                  // :
-                  index === 9
-                    ? "big"
-                    : [0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21].includes(
-                        index
-                      )
-                    ? "tall"
-                    : "";
-                // Get Design Code, default to "No Data Found" if not available
-                // const designCode = product.attributes[8]?.terms[0].name || "";
-                 const designCodeAttr = product.attributes.find(
-                  (attr) => attr.name.toLowerCase() === "design code"
-                );
-                const designCode =
-                  designCodeAttr && designCodeAttr.terms.length > 0
-                    ? designCodeAttr.terms[0].name
-                    : "No design code available"; // Fallback if no design code is found
-                
-                const defaultImage =
-                  "http://vanras.humbeestudio.xyz/wp-content/uploads/2025/03/default_image.png";
+                displayedData.map((product, index) => {
+                  console.log(displayedData);
+                  // const isTabActive = !!activeTab;
+                  const className =
+                    // ? "" // Normal size for tab view
+                    // :
+                    index === 9
+                      ? "big"
+                      : [
+                          0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21,
+                        ].includes(index)
+                      ? "tall"
+                      : "";
+                  // Get Design Code, default to "No Data Found" if not available
+                  // const designCode = product.attributes[8]?.terms[0].name || "";
+                  const designCodeAttr = product.attributes.find(
+                    (attr) => attr.name.toLowerCase() === "design code"
+                  );
+                  const productCodeAttr = product.attributes.find(
+                    (attr) => attr.name.toLowerCase() === "product code"
+                  );
+                  const designCode =
+                    designCodeAttr && designCodeAttr.terms.length > 0
+                      ? designCodeAttr.terms[0].name +
+                        productCodeAttr.terms[0].name
+                      : ""; // Fallback if no design code is found
 
-                return (
-                  <div key={index} className={`AboutUs_product ${className}`}>
-                    <Image
-                      src={
-                        product.images?.length > 0
-                          ? product.images[0].src
-                          : defaultImage
-                      }
-                      alt={product.name}
-                      className="ProductImage"
-                      width={500}
-                      height={600}
-                      onClick={() => {
-                        console.log("Product ID:", product.id);
-                        router.push(`/product-information#${product.id}`);
-                      }}
-                    />
-                    <div className="overlay">
-                      <div>
-                        <svg
-                          width="40"
-                          height="40"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          fill="white"
-                          className="aboutUsProductSvg"
-                        >
-                          <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
-                        </svg>
-                      </div>
-                      <div
-                        className="AnchorTag"
+                  const defaultImage =
+                    "http://vanras.humbeestudio.xyz/wp-content/uploads/2025/03/default_image.png";
+
+                  return (
+                    <div key={index} className={`AboutUs_product ${className}`}>
+                      <Image
+                        src={
+                          product.images?.length > 0
+                            ? product.images[0].src
+                            : defaultImage
+                        }
+                        alt={product.name}
+                        className="ProductImage"
+                        width={500}
+                        height={600}
                         onClick={() => {
                           console.log("Product ID:", product.id);
                           router.push(`/product-information#${product.id}`);
                         }}
-                      >
-                        Know More
+                      />
+                      <div className="overlay">
+                        <div>
+                          <svg
+                            width="40"
+                            height="40"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            fill="white"
+                            className="aboutUsProductSvg"
+                          >
+                            <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z" />
+                          </svg>
+                        </div>
+                        <div
+                          className="AnchorTag"
+                          onClick={() => {
+                            console.log("Product ID:", product.id);
+                            router.push(`/product-information#${product.id}`);
+                          }}
+                        >
+                          Know More
+                        </div>
+                      </div>
+                      {/* Design Code Container */}
+                      <div className="designCodeContainer">
+                        <p className="designCode">{designCode}</p>
                       </div>
                     </div>
-                    {/* Design Code Container */}
-                    <div className="designCodeContainer">
-                      <p className="designCode">{designCode}</p>
-                    </div>
-                  </div>
-                );
-              })
-            )}
+                  );
+                })
+              )}
             </div>
           )}
         </div>
         {currentData.length > 0 && (
-                  <div>
-                    <Stack spacing={2} justifyContent="center">
-                      <Pagination
-                       count={totalPages}
-                       page={currentPage}
-                        // count={Math.ceil(currentData.length / itemsPerPage)}
-                        color="primary"
-                        shape="rounded"
-                        // page={pageNumber}
-                        size="small"
-                        variant="outlined"
-                        onChange={handlePageChange}
-                        hidePrevButton
-                        hideNextButton
-                        siblingCount={1}
-                        boundaryCount={1}
-                        sx={{
-                          "& .MuiPaginationItem-root": {
-                            backgroundColor: "transparent",
-                            border: "1px solid #5b3524",
-                            color: "#5b3524",
-                            margin: "0 10px",
-                            padding: "8px 1px",
-                            minWidth: "26px",
-                            height: "26px",
-                            fontSize: "15px",
-                            borderRadius: "0px",
-                            lineHeight: "0.5",
-                            transition: "background-color 0.3s, color 0.3s",
-        
-                            "@media (max-width: 768px)": {
-                              margin: "0 9px",
-                              padding: "12px 8px",
-                              fontSize: "15px",
-                            },
-        
-                            "@media (max-width: 425px)": {
-                              margin: "0 8px",
-                              padding: "12px 8px",
-                              fontSize: "12px",
-                            },
-        
-                            "&.Mui-selected": {
-                              backgroundColor: "#5b3524",
-                              margin: "0 10px",
-                              padding: "14px 10px",
-                              fontSize: "16px",
-                              color: "white",
-                              border: "none",
-        
-                              "@media (max-width: 768px)": {
-                                margin: "0 9px",
-                                padding: "12px 10px",
-                                fontSize: "15px",
-                              },
-        
-                              "@media (max-width: 425px)": {
-                                margin: "0 8px",
-                                padding: "12px 10px",
-                                fontSize: "12px",
-                              },
-                            },
-        
-                            "&.Mui-selected:hover": {
-                              backgroundColor: "#5b3524",
-                              color: "white",
-                              border: "none",
-                            },
-                          },
-                        }}
-                      />
-                    </Stack>
-                  </div>
-                )}
+          <div>
+            <Stack spacing={2} justifyContent="center">
+              <Pagination
+                count={totalPages}
+                page={currentPage}
+                // count={Math.ceil(currentData.length / itemsPerPage)}
+                color="primary"
+                shape="rounded"
+                // page={pageNumber}
+                size="small"
+                variant="outlined"
+                onChange={handlePageChange}
+                hidePrevButton
+                hideNextButton
+                siblingCount={1}
+                boundaryCount={1}
+                sx={{
+                  "& .MuiPaginationItem-root": {
+                    backgroundColor: "transparent",
+                    border: "1px solid #5b3524",
+                    color: "#5b3524",
+                    margin: "0 10px",
+                    padding: "8px 1px",
+                    minWidth: "26px",
+                    height: "26px",
+                    fontSize: "15px",
+                    borderRadius: "0px",
+                    lineHeight: "0.5",
+                    transition: "background-color 0.3s, color 0.3s",
+
+                    "@media (max-width: 768px)": {
+                      margin: "0 9px",
+                      padding: "12px 8px",
+                      fontSize: "15px",
+                    },
+
+                    "@media (max-width: 425px)": {
+                      margin: "0 8px",
+                      padding: "12px 8px",
+                      fontSize: "12px",
+                    },
+
+                    "&.Mui-selected": {
+                      backgroundColor: "#5b3524",
+                      margin: "0 10px",
+                      padding: "14px 10px",
+                      fontSize: "16px",
+                      color: "white",
+                      border: "none",
+
+                      "@media (max-width: 768px)": {
+                        margin: "0 9px",
+                        padding: "12px 10px",
+                        fontSize: "15px",
+                      },
+
+                      "@media (max-width: 425px)": {
+                        margin: "0 8px",
+                        padding: "12px 10px",
+                        fontSize: "12px",
+                      },
+                    },
+
+                    "&.Mui-selected:hover": {
+                      backgroundColor: "#5b3524",
+                      color: "white",
+                      border: "none",
+                    },
+                  },
+                }}
+              />
+            </Stack>
+          </div>
+        )}
       </div>
     </>
   );
