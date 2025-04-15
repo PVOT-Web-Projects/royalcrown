@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["vanras.humbeestudio.xyz", "rcadmin.humbeestudio.xyz"],
+    domains: ["vanras.humbeestudio.xyz", 
+      // "rcadmin.humbeestudio.xyz" 
+      "admin.royalcrownlaminates.com"],
   },
 };
 // module.exports = nextConfig;
