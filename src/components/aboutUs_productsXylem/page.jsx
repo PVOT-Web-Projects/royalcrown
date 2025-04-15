@@ -629,6 +629,7 @@ const Page = () => {
                 // href={"#"}
                 scroll={false}
                 className="tab-item"
+                style={{background: "#5b3524"}}
                 // onClick={() =>
                 //   handleTabClick(
                 //     `/products#${label.replace(" ", "-").toLowerCase()}`,
