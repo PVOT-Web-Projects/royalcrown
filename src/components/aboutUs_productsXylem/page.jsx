@@ -64,8 +64,8 @@ const Page = () => {
       try {
         // The API URL structure
         const apiUrl =
-          "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100&page=";
-
+          // "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100&page=";
+          "https://admin.royalcrownlaminates.com/wp-json/wc/store/products/?per_page=100&page=";
         // Fetching all pages (1 to 9 in this case)
         const pageNumbers = Array.from({ length: 9 }, (_, index) => index + 1);
 
@@ -293,10 +293,21 @@ const Page = () => {
       const productCodeAttr = product.attributes.find(
         (attr) => attr.name.toLowerCase() === "product code"
       );
+
+      const productCode =
+        productCodeAttr && productCodeAttr.terms.length > 0
+          ? productCodeAttr.terms[0].name
+          : ""; // Fallback if no product code is found
       const designCode =
         designCodeAttr && designCodeAttr.terms.length > 0
-          ? designCodeAttr.terms[0].name + productCodeAttr.terms[0].name
-          : ""; // Fallback if no design code is found
+          ? designCodeAttr.terms[0].name + productCode
+          : // +
+            //   productCodeAttr.terms[0].name
+            ""; // Fallback if no design code is found
+      // const designCode =
+      //   designCodeAttr && designCodeAttr.terms.length > 0
+      //     ? designCodeAttr.terms[0].name + productCodeAttr.terms[0].name
+      //     : ""; // Fallback if no design code is found
 
       const searchMatch =
         !searchTerm ||
@@ -618,6 +629,7 @@ const Page = () => {
                 // href={"#"}
                 scroll={false}
                 className="tab-item"
+                style={{ background: "#5b3524" }}
                 // onClick={() =>
                 //   handleTabClick(
                 //     `/products#${label.replace(" ", "-").toLowerCase()}`,
@@ -832,11 +844,17 @@ const Page = () => {
                   const productCodeAttr = product.attributes.find(
                     (attr) => attr.name.toLowerCase() === "product code"
                   );
+
+                  const productCode =
+                    productCodeAttr && productCodeAttr.terms.length > 0
+                      ? productCodeAttr.terms[0].name
+                      : ""; // Fallback if no product code is found
                   const designCode =
                     designCodeAttr && designCodeAttr.terms.length > 0
-                      ? designCodeAttr.terms[0].name +
-                        productCodeAttr.terms[0].name
-                      : ""; // Fallback if no design code is found
+                      ? designCodeAttr.terms[0].name + productCode
+                      : // +
+                        //   productCodeAttr.terms[0].name
+                        ""; // Fallback if no design code is found
 
                   const defaultImage =
                     "http://vanras.humbeestudio.xyz/wp-content/uploads/2025/03/default_image.png";

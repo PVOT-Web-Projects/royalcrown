@@ -540,7 +540,7 @@ const Page = () => {
         </motion.div>
         <div id="sticky_top" className="products_name1">
           <div className="products-tabs" id="sticky_top">
-            <div scroll={false} className="tab-item">
+            <div scroll={false} className="tab-item" style={{background: "#5b3524"}}>
               <div className="tab-content-inner">Qbiss</div>
             </div>
           </div>
@@ -749,10 +749,15 @@ const Page = () => {
                   const productCodeAttr = product.attributes.find(
                     (attr) => attr.name.toLowerCase() === "product code"
                   );
+                  const productCode =
+                  productCodeAttr && productCodeAttr.terms.length > 0
+                    ? productCodeAttr.terms[0].name
+                    : ""; // Fallback if no product code is found
                   const designCode =
                     designCodeAttr && designCodeAttr.terms.length > 0
-                      ? designCodeAttr.terms[0].name +
-                        productCodeAttr.terms[0].name
+                      ? designCodeAttr.terms[0].name +productCode
+                      // +
+                      //   productCodeAttr.terms[0].name
                       : ""; // Fallback if no design code is found
 
                   const defaultImage =

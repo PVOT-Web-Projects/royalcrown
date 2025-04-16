@@ -44,7 +44,8 @@ const Page = () => {
   console.log(currentData);
   useEffect(() => {
     fetch(
-      "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100"
+      // "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100"
+      "https://admin.royalcrownlaminates.com/wp-json/wc/store/products/?per_page=100"
     )
       .then((res) => res.json())
       .then((data) => {

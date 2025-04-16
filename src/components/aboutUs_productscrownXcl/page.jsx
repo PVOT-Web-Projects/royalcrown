@@ -44,23 +44,55 @@ const Page = () => {
   // Create a ref to the element you want to scroll to
   const projectsRef = useRef(null);
   console.log(currentData);
-  useEffect(() => {
-    fetch(
-      "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100"
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setLoading(false); // Set loading to false once data is fetched
-        console.log("API Response:", data); // Log the response for debugging
-        setProducts(data);
-        setFilteredProducts(data); // Initially show all products
-      })
-      .catch((error) => {
-        setLoading(false); // Set loading to false once data is fetched
-        console.error("Failed to fetch data:", error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(
+  //     "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100"
+  //   )
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setLoading(false); // Set loading to false once data is fetched
+  //       console.log("API Response:", data); // Log the response for debugging
+  //       setProducts(data);
+  //       setFilteredProducts(data); // Initially show all products
+  //     })
+  //     .catch((error) => {
+  //       setLoading(false); // Set loading to false once data is fetched
+  //       console.error("Failed to fetch data:", error);
+  //     });
+  // }, []);
+useEffect(() => {
+    const fetchAllProducts = async () => {
+      try {
+        // The API URL structure
+        const apiUrl =
+          // "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100&page=";
+          "https://admin.royalcrownlaminates.com/wp-json/wc/store/products/?per_page=100&page=";
 
+        // Fetching all pages (1 to 9 in this case)
+        const pageNumbers = Array.from({ length: 6 }, (_, index) => index + 1);
+
+        // Fetch all pages in parallel using Promise.all
+        const fetchPromises = pageNumbers.map((page) =>
+          fetch(`${apiUrl}${page}`).then((res) => res.json())
+        );
+
+        // Wait for all API calls to complete
+        const allProducts = await Promise.all(fetchPromises);
+
+        // Combine all the fetched data into one array
+        const combinedProducts = allProducts.flat();
+
+        // Set the combined data into state
+        setProducts(combinedProducts);
+        setLoading(false);
+      } catch (error) {
+        console.error("Failed to fetch data:", error);
+        setLoading(false); // Stop loading even if there's an error
+      }
+    };
+
+    fetchAllProducts();
+  }, []); // Only run once when the component is mounted
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
     // const fullPath = pathName + hash;
@@ -467,7 +499,7 @@ const Page = () => {
         </motion.div>
         <div id="sticky_top" className="products_name1">
           <div className="products-tabs" id="sticky_top">
-            <div scroll={false} className="tab-item">
+            <div scroll={false} className="tab-item" style={{background: "#5b3524"}}>
               <div className="tab-content-inner">crown xcl</div>
             </div>
           </div>
@@ -676,11 +708,22 @@ const Page = () => {
                   const productCodeAttr = product.attributes.find(
                     (attr) => attr.name.toLowerCase() === "product code"
                   );
+
+                  const productCode =
+                  productCodeAttr && productCodeAttr.terms.length > 0
+                    ? productCodeAttr.terms[0].name
+                    : ""; // Fallback if no product code is found
                   const designCode =
                     designCodeAttr && designCodeAttr.terms.length > 0
-                      ? designCodeAttr.terms[0].name +
-                        productCodeAttr.terms[0].name
+                      ? designCodeAttr.terms[0].name +productCode
+                      // +
+                      //   productCodeAttr.terms[0].name
                       : ""; // Fallback if no design code is found
+                  // const designCode =
+                  //   designCodeAttr && designCodeAttr.terms.length > 0
+                  //     ? designCodeAttr.terms[0].name +
+                  //       productCodeAttr.terms[0].name
+                  //     : ""; // Fallback if no design code is found
 
                   const defaultImage =
                     "http://vanras.humbeestudio.xyz/wp-content/uploads/2025/03/default_image.png";
