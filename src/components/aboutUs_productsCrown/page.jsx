@@ -207,7 +207,16 @@ const Page = () => {
     setSelectedSize(e.value);
   };
   const handleSizeClick = (sizeValue) => {
-    setSelectedSize((prevSize) => (prevSize === sizeValue ? "" : sizeValue));
+    setSelectedSize((prevSelectedSize) => {
+      // If the size is already selected, deselect it (set to null or "")
+      if (prevSelectedSize === sizeValue) {
+        console.log("Size Deselected:", sizeValue);
+        return null; // Deselect the size to show all products
+      } else {
+        console.log("Size Selected:", sizeValue);
+        return sizeValue; // Select the new size
+      }
+    });
     const exploreCollectionElement = document.querySelector("#sticky_top");
     if (exploreCollectionElement) {
       exploreCollectionElement.scrollIntoView({
@@ -216,6 +225,16 @@ const Page = () => {
       });
     }
   };
+  // const handleSizeClick = (sizeValue) => {
+  //   setSelectedSize((prevSize) => (prevSize === sizeValue ? "" : sizeValue));
+  //   const exploreCollectionElement = document.querySelector("#sticky_top");
+  //   if (exploreCollectionElement) {
+  //     exploreCollectionElement.scrollIntoView({
+  //       behavior: "smooth",
+  //       block: "start",
+  //     });
+  //   }
+  // };
   const handleThicknessChange = (e) => {
     setSelectedThickness(e.value);
   };
@@ -262,14 +281,14 @@ const Page = () => {
         (attr) => attr.name.toLowerCase() === "size"
       );
       const sizeMatch =
-        selectedSize === "all" || sizeAttr?.terms[0]?.name === selectedSize;
+        selectedSize === "all" || selectedSize === null || sizeAttr?.terms[0]?.name === selectedSize;
 
       // Thickness filtering
       const thicknessAttr = product.attributes.find(
         (attr) => attr.name.toLowerCase() === "thickness"
       );
       const thicknessMatch =
-        selectedThickness === "all" ||
+        selectedThickness === "all" ||selectedThickness === null ||
         thicknessAttr?.terms[0]?.name === selectedThickness;
 
       // Color filtering
@@ -338,10 +357,31 @@ const Page = () => {
     setSearchTerm(""); // Reset the search term
   };
 
+  // const handleThicknessClick = (thicknessValue) => {
+  //   setSelectedThickness((prevThickness) =>
+  //     prevThickness === thicknessValue ? "" : thicknessValue
+  //   );
+  //   const exploreCollectionElement = document.querySelector("#sticky_top");
+  //   if (exploreCollectionElement) {
+  //     exploreCollectionElement.scrollIntoView({
+  //       behavior: "smooth",
+  //       block: "start",
+  //     });
+  //   }
+  // };
+
   const handleThicknessClick = (thicknessValue) => {
-    setSelectedThickness((prevThickness) =>
-      prevThickness === thicknessValue ? "" : thicknessValue
-    );
+    setSelectedThickness((prevSelectedThickness) => {
+      // If the thickness is already selected, deselect it (set to null or "")
+      if (prevSelectedThickness === thicknessValue) {
+        console.log("Thickness Deselected:", thicknessValue);
+        return null; // Deselect the thickness to show all products
+      } else {
+        console.log("Thickness Selected:", thicknessValue);
+        return thicknessValue; // Select the new thickness
+      }
+    });
+    // Scroll to the top of the page (or a specific element) smoothly
     const exploreCollectionElement = document.querySelector("#sticky_top");
     if (exploreCollectionElement) {
       exploreCollectionElement.scrollIntoView({
@@ -350,7 +390,6 @@ const Page = () => {
       });
     }
   };
-
   const totalPages = Math.max(
     1,
     Math.ceil(filteredProducts1.length / itemsPerPage)
