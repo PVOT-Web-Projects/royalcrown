@@ -355,13 +355,22 @@ const Page = () => {
         selectedSize === null ||
         sizeAttr?.terms[0]?.name === selectedSize;
       // Thickness filter
+      // const thicknessMatch =
+      //   selectedThickness === "all" ||
+      //   (thicknessAttribute &&
+      //     thicknessAttribute.terms.some(
+      //       (term) =>
+      //         term.name.toLowerCase() === selectedThickness.toLowerCase()
+      //     ));
+
+       // Thickness filtering
+       const thicknessAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "thickness"
+      );
       const thicknessMatch =
         selectedThickness === "all" ||
-        (thicknessAttribute &&
-          thicknessAttribute.terms.some(
-            (term) =>
-              term.name.toLowerCase() === selectedThickness.toLowerCase()
-          ));
+        selectedThickness === null ||
+        thicknessAttr?.terms[0]?.name === selectedThickness;
       // Color filtering
       const colorAttr = product.attributes.find(
         (attr) => attr.name.toLowerCase() === "color"
