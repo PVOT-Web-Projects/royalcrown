@@ -42,11 +42,11 @@ const ScrollAnimationMobile = () => {
   //   "https://vanras.humbeestudio.xyz/images/kitchen_Des.png",
   // ];
   const images = [
-    "https://vanras.humbeestudio.xyz/images/OutdoorNeww.png",
-    "https://vanras.humbeestudio.xyz/images/KitchenNeww.png", // Image 2 URL
-    "https://vanras.humbeestudio.xyz/images/LivingroomNeww.png",
-    "https://vanras.humbeestudio.xyz/images/BathroomNeww.png",
-    "https://vanras.humbeestudio.xyz/images/BedroomSpaceNeww.png",
+    "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/OutdoorNeww.png",
+    "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/KitchenNeww.png", // Image 2 URL
+    "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/LivingroomNeww.png",
+    "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/BathroomNeww.png",
+    "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/BedroomSpaceNeww.png",
   ];
   const handleCardClick = (url) => setVideoUrl(url);
   const closeModal = () => setVideoUrl(null);
@@ -60,11 +60,11 @@ const ScrollAnimationMobile = () => {
     // "https://vanras.humbeestudio.xyz/videos/Living%20Space.mp4",
     // "https://vanras.humbeestudio.xyz/videos/Bathroom.mp4",
     // "https://vanras.humbeestudio.xyz/videos/Bedroom.mp4",
-    "https://vanras.humbeestudio.xyz/videos/OutdoorOne.mp4",
-    "https://vanras.humbeestudio.xyz/videos/Kitchen.mp4",
-    "https://vanras.humbeestudio.xyz/videos/Living%20Space.mp4",
-    "https://vanras.humbeestudio.xyz/videos/Bathroom.mp4",
-    "https://vanras.humbeestudio.xyz/videos/Bedroom.mp4",
+    "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/Outdoor.mp4",
+    "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/Kitchen.mp4",
+    "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/Living-Space.mp4",
+    "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/Bathroom.mp4",
+    "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/Bedroom.mp4",
   ];
 
   const handleMouseEnter = () => {
