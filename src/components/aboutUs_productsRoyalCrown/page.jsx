@@ -162,7 +162,7 @@ const Page = () => {
     { label: "10 x 4.25", value: "8*9" },
     { label: "12 x 6", value: "3*2" },
     { label: "14 x 6", value: "6*6" },
-    { label: "3 x 6", value: "3*6" },
+    { label: "3 x 6", value: "3*6" }, 
     { label: "6 x 3", value: "6*3" },
   ];
   const thickness = [
@@ -266,14 +266,31 @@ const Page = () => {
         selectedSize === "all" ||
         selectedSize === null ||
         product.attributes[1].terms[0].name === selectedSize;
+         // Thickness filtering
+      const thicknessAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "thickness"
+      );
       const thicknessMatch =
         selectedThickness === "all" ||
         selectedThickness === null ||
-        product.attributes[2].terms[0].name === selectedThickness;
+        thicknessAttr?.terms[0]?.name === selectedThickness;
+      // const thicknessMatch =
+      //   selectedThickness === "all" ||
+      //   selectedThickness === null ||
+      //   product.attributes[2].terms[0].name === selectedThickness;
+      
+      // Color filtering
+      const colorAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "color"
+      );
       const colorMatch =
         selectedColor === "all" ||
         selectedColor === null ||
-        product.attributes[4].terms[0].name === selectedColor;
+        colorAttr?.terms[0]?.name === selectedColor;
+      // const colorMatch =
+      //   selectedColor === "all" ||
+      //   selectedColor === null ||
+      //   product.attributes[4].terms[0].name === selectedColor;
       const typeMatch =
         selectedType === "all" ||
         selectedType === null ||
