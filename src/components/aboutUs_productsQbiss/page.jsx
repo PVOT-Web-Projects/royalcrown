@@ -161,7 +161,7 @@ const Page = () => {
   const size = [
     { label: "8 x 4", value: "8*4" },
     { label: "10 x 4.25", value: "8*9" },
-    { label: "12 x 6", value: "3*2" },
+    { label: "12 x 6", value: "12*6" },
     { label: "14 x 6", value: "6*6" },
     { label: "3 x 6", value: "3*6" },
     { label: "6 x 3", value: "6*3" },
@@ -211,6 +211,37 @@ const Page = () => {
   const handleSizeChange = (e) => {
     setSelectedSize(e.value);
   };
+  // const handleSizeClick = (sizeValue) => {
+  //   setSelectedSize((prevSelectedSize) => {
+  //     // If the size is already selected, deselect it (set to null or "")
+  //     if (prevSelectedSize === sizeValue) {
+  //       console.log("Size Deselected:", sizeValue);
+  //       return null; // Deselect the size to show all products
+  //     } else {
+  //       console.log("Size Selected:", sizeValue);
+  //       return sizeValue; // Select the new size
+  //     }
+  //   });
+  //   // Scroll to the top of the page (or a specific element) smoothly
+  //   const exploreCollectionElement = document.querySelector("#sticky_top");
+  //   if (exploreCollectionElement) {
+  //     exploreCollectionElement.scrollIntoView({
+  //       behavior: "smooth",
+  //       block: "start",
+  //     });
+  //   }
+  // };
+  // const handleSizeClick = (sizeValue) => {
+  //   setSelectedSize((prevSize) => (prevSize === sizeValue ? "" : sizeValue));
+  //   const exploreCollectionElement = document.querySelector("#sticky_top");
+  //   if (exploreCollectionElement) {
+  //     exploreCollectionElement.scrollIntoView({
+  //       behavior: "smooth",
+  //       block: "start",
+  //     });
+  //   }
+  // };
+  
   const handleSizeClick = (sizeValue) => {
     setSelectedSize((prevSelectedSize) => {
       // If the size is already selected, deselect it (set to null or "")
@@ -222,7 +253,6 @@ const Page = () => {
         return sizeValue; // Select the new size
       }
     });
-    // Scroll to the top of the page (or a specific element) smoothly
     const exploreCollectionElement = document.querySelector("#sticky_top");
     if (exploreCollectionElement) {
       exploreCollectionElement.scrollIntoView({
@@ -238,24 +268,24 @@ const Page = () => {
   const handleColorChange1 = (e) => {
     setSelectedColor(e.value);
   };
-  // const handleColorChange = (color) => {
-  //   if (selectedColor === color) {
-  //     setSelectedColor(null); // Clear the selection
-  //   } else {
-  //     setSelectedColor(color); // Set the selected color
-  //   }
-  // };
   const handleColorChange = (color) => {
-    setSelectedColor((prevSelectedColor) => {
-      if (prevSelectedColor === color) {
-        console.log("Color Deselected:", color);
-        return null; // Deselect the color to show all products
-      } else {
-        console.log("Color Selected:", color);
-        return color; // Filter products by this color
-      }
-    });
+    if (selectedColor === color) {
+      setSelectedColor(null); // Clear the selection
+    } else {
+      setSelectedColor(color); // Set the selected color
+    }
   };
+  // const handleColorChange = (color) => {
+  //   setSelectedColor((prevSelectedColor) => {
+  //     if (prevSelectedColor === color) {
+  //       console.log("Color Deselected:", color);
+  //       return null; // Deselect the color to show all products
+  //     } else {
+  //       console.log("Color Selected:", color);
+  //       return color; // Filter products by this color
+  //     }
+  //   });
+  // };
 
   const filteredProducts1 = useMemo(() => {
     return products.filter((product) => {
@@ -310,13 +340,20 @@ const Page = () => {
         );
 
       // Size filter
+      // const sizeMatch =
+      //   selectedSize === "all" ||
+      //   (sizeAttribute &&
+      //     sizeAttribute.terms.some(
+      //       (term) => term.name.toLowerCase() === selectedSize.toLowerCase()
+      //     ));
+      // Size filtering
+      const sizeAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "size"
+      );
       const sizeMatch =
         selectedSize === "all" ||
-        (sizeAttribute &&
-          sizeAttribute.terms.some(
-            (term) => term.name.toLowerCase() === selectedSize.toLowerCase()
-          ));
-
+        selectedSize === null ||
+        sizeAttr?.terms[0]?.name === selectedSize;
       // Thickness filter
       const thicknessMatch =
         selectedThickness === "all" ||
@@ -325,14 +362,21 @@ const Page = () => {
             (term) =>
               term.name.toLowerCase() === selectedThickness.toLowerCase()
           ));
-
-      // Color filter
+      // Color filtering
+      const colorAttr = product.attributes.find(
+        (attr) => attr.name.toLowerCase() === "color"
+      );
       const colorMatch =
         selectedColor === "all" ||
-        (colorAttribute &&
-          colorAttribute.terms.some(
-            (term) => term.name.toLowerCase() === selectedColor.toLowerCase()
-          ));
+        selectedColor === null ||
+        colorAttr?.terms[0]?.name === selectedColor;
+      // Color filter
+      // const colorMatch =
+      //   selectedColor === "all" ||
+      //   (colorAttribute &&
+      //     colorAttribute.terms.some(
+      //       (term) => term.name.toLowerCase() === selectedColor.toLowerCase()
+      //     ));
 
       // Get Design Code, default to "No Data Found" if not available
       // const designCode = product.attributes[6]?.terms[0].name || "";
@@ -571,7 +615,11 @@ const Page = () => {
         </motion.div>
         <div id="sticky_top" className="products_name1">
           <div className="products-tabs" id="sticky_top">
-            <div scroll={false} className="tab-item" style={{background: "#5b3524"}}>
+            <div
+              scroll={false}
+              className="tab-item"
+              style={{ background: "#5b3524" }}
+            >
               <div className="tab-content-inner">Qbiss</div>
             </div>
           </div>
@@ -781,15 +829,15 @@ const Page = () => {
                     (attr) => attr.name.toLowerCase() === "product code"
                   );
                   const productCode =
-                  productCodeAttr && productCodeAttr.terms.length > 0
-                    ? productCodeAttr.terms[0].name
-                    : ""; // Fallback if no product code is found
+                    productCodeAttr && productCodeAttr.terms.length > 0
+                      ? productCodeAttr.terms[0].name
+                      : ""; // Fallback if no product code is found
                   const designCode =
                     designCodeAttr && designCodeAttr.terms.length > 0
-                      ? designCodeAttr.terms[0].name +productCode
-                      // +
-                      //   productCodeAttr.terms[0].name
-                      : ""; // Fallback if no design code is found
+                      ? designCodeAttr.terms[0].name + productCode
+                      : // +
+                        //   productCodeAttr.terms[0].name
+                        ""; // Fallback if no design code is found
 
                   const defaultImage =
                     "http://vanras.humbeestudio.xyz/wp-content/uploads/2025/03/default_image.png";
