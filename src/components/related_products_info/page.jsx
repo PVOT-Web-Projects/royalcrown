@@ -155,7 +155,7 @@ const RelatedProductInfo = () => {
             //     ? product.images[0].src
             //     : "https://vanras.humbeestudio.xyz/wp-content/uploads/2025/04/8923CE-a4-royalcrown-scaled.jpg"
             // }
-            src={product.images[0]?.src || "https://vanras.humbeestudio.xyz/wp-content/uploads/2025/04/8923CE-a4-royalcrown-scaled.jpg"}
+            src={product.images[0]?.src || "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/594VV-a4-crown-scaled.jpg"}
               // src={product.images[0]?.src || "/placeholder.png"}
               // src={item.ProductImage}
               alt="Related Product"

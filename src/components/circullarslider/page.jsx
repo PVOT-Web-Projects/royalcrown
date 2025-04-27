@@ -163,27 +163,47 @@ import { gsap } from "gsap";
 import "./circularSlider.scss";
 import { AnimatePresence, motion } from "framer-motion";
 
+// const slides = [
+//   { image: "https://vanras.humbeestudio.xyz/images/OutdoorNeww.png", text: "Outdoor Space" },
+//   { image: "https://vanras.humbeestudio.xyz/images/KitchenNeww.png", text: "Modern Kitchen" },
+//   { image: "https://vanras.humbeestudio.xyz/images/LivingroomNeww.png", text: "Cozy Living Room" },
+//   { image: "https://vanras.humbeestudio.xyz/images/BathroomNeww.png", text: "Luxury Bathroom" },
+//   { image: "https://vanras.humbeestudio.xyz/images/BedroomSpaceNeww.png", text: "Comfortable Bedroom" },
+//   { image: "https://vanras.humbeestudio.xyz/images/OutdoorNeww.png", text: "Outdoor Lounge" },
+//   { image: "https://vanras.humbeestudio.xyz/images/LivingroomNeww.png", text: "Spacious Living Area" },
+//   { image: "https://vanras.humbeestudio.xyz/images/BathroomNeww.png", text: "Elegant Bath" },
+// ];
 const slides = [
-  { image: "https://vanras.humbeestudio.xyz/images/OutdoorNeww.png", text: "Outdoor Space" },
-  { image: "https://vanras.humbeestudio.xyz/images/KitchenNeww.png", text: "Modern Kitchen" },
-  { image: "https://vanras.humbeestudio.xyz/images/LivingroomNeww.png", text: "Cozy Living Room" },
-  { image: "https://vanras.humbeestudio.xyz/images/BathroomNeww.png", text: "Luxury Bathroom" },
-  { image: "https://vanras.humbeestudio.xyz/images/BedroomSpaceNeww.png", text: "Comfortable Bedroom" },
-  { image: "https://vanras.humbeestudio.xyz/images/OutdoorNeww.png", text: "Outdoor Lounge" },
-  { image: "https://vanras.humbeestudio.xyz/images/LivingroomNeww.png", text: "Spacious Living Area" },
-  { image: "https://vanras.humbeestudio.xyz/images/BathroomNeww.png", text: "Elegant Bath" },
+  { image: "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/OutdoorNeww.png", text: "Outdoor Space" },
+  { image: "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/KitchenNeww.png", text: "Modern Kitchen" },
+  { image: "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/LivingroomNeww.png", text: "Cozy Living Room" },
+  { image: "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/BathroomNeww.png", text: "Luxury Bathroom" },
+  { image: "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/BedroomSpaceNeww.png", text: "Comfortable Bedroom" },
+  { image: "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/OutdoorNeww.png", text: "Outdoor Lounge" },
+  { image: "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/LivingroomNeww.png", text: "Spacious Living Area" },
+  { image: "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/BathroomNeww.png", text: "Elegant Bath" },
 ];
-
 // Mapping text to video URLs
+// const videoUrls = {
+//   "Outdoor Space": "https://vanras.humbeestudio.xyz/videos/Outdoor.mp4",
+//   "Modern Kitchen": "https://vanras.humbeestudio.xyz/videos/Kitchen.mp4",
+//   "Cozy Living Room": "https://vanras.humbeestudio.xyz/videos/Living%20Space.mp4",
+//   "Luxury Bathroom": "https://vanras.humbeestudio.xyz/videos/Bathroom.mp4",
+//   "Comfortable Bedroom": "https://vanras.humbeestudio.xyz/videos/Bedroom.mp4",
+//   "Outdoor Lounge": "https://vanras.humbeestudio.xyz/videos/Outdoor.mp4",
+//   "Spacious Living Area": "https://vanras.humbeestudio.xyz/videos/Living%20Space.mp4",
+//   "Elegant Bath": "https://vanras.humbeestudio.xyz/videos/Bathroom.mp4",
+// };
+
 const videoUrls = {
-  "Outdoor Space": "https://vanras.humbeestudio.xyz/videos/Outdoor.mp4",
-  "Modern Kitchen": "https://vanras.humbeestudio.xyz/videos/Kitchen.mp4",
-  "Cozy Living Room": "https://vanras.humbeestudio.xyz/videos/Living%20Space.mp4",
-  "Luxury Bathroom": "https://vanras.humbeestudio.xyz/videos/Bathroom.mp4",
-  "Comfortable Bedroom": "https://vanras.humbeestudio.xyz/videos/Bedroom.mp4",
-  "Outdoor Lounge": "https://vanras.humbeestudio.xyz/videos/Outdoor.mp4",
-  "Spacious Living Area": "https://vanras.humbeestudio.xyz/videos/Living%20Space.mp4",
-  "Elegant Bath": "https://vanras.humbeestudio.xyz/videos/Bathroom.mp4",
+  "Outdoor Space": "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/Outdoor.mp4",
+  "Modern Kitchen": "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/Kitchen.mp4",
+  "Cozy Living Room": "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/Living-Space.mp4",
+  "Luxury Bathroom": "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/Bathroom.mp4",
+  "Comfortable Bedroom": "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/Bedroom.mp4",
+  "Outdoor Lounge": "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/Outdoor.mp4",
+  "Spacious Living Area": "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/Living-Space.mp4",
+  "Elegant Bath": "https://admin.royalcrownlaminates.com/wp-content/uploads/2025/04/Bathroom.mp4",
 };
 
 const CircularCarouselSlider = () => {

@@ -208,8 +208,28 @@ const Page = () => {
   const handleSizeChange = (e) => {
     setSelectedSize(e.value);
   };
+  // const handleSizeClick = (sizeValue) => {
+  //   setSelectedSize((prevSize) => (prevSize === sizeValue ? "" : sizeValue));
+  //   const exploreCollectionElement = document.querySelector("#sticky_top");
+  //   if (exploreCollectionElement) {
+  //     exploreCollectionElement.scrollIntoView({
+  //       behavior: "smooth",
+  //       block: "start",
+  //     });
+  //   }
+  // };
+
   const handleSizeClick = (sizeValue) => {
-    setSelectedSize((prevSize) => (prevSize === sizeValue ? "" : sizeValue));
+    setSelectedSize((prevSelectedSize) => {
+      // If the size is already selected, deselect it (set to null or "")
+      if (prevSelectedSize === sizeValue) {
+        console.log("Size Deselected:", sizeValue);
+        return null; // Deselect the size to show all products
+      } else {
+        console.log("Size Selected:", sizeValue);
+        return sizeValue; // Select the new size
+      }
+    });
     const exploreCollectionElement = document.querySelector("#sticky_top");
     if (exploreCollectionElement) {
       exploreCollectionElement.scrollIntoView({
