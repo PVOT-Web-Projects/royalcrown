@@ -80,6 +80,22 @@ const Page = () => {
         // Set the combined data into state
         setProducts(combinedProducts);
         setLoading(false);
+
+        // const savedFilters = JSON.parse(localStorage.getItem("filters"));
+        
+        // if (savedFilters) {
+        //   setSelectedBrand(savedFilters.brand || "all");
+        //   setSelectedType(savedFilters.type || "all");
+        //   setSelectedCategory(savedFilters.category || []);
+        //   setSelectedFinish(savedFilters.finish || "all");
+        //   setSelectedSize(savedFilters.size || "all");
+        //   setSelectedThickness(savedFilters.thickness || "all");
+        //   setSelectedColor(savedFilters.color || "all");
+        // }
+
+
+
+
       } catch (error) {
         console.error("Failed to fetch data:", error);
         setLoading(false); // Stop loading even if there's an error
@@ -88,6 +104,27 @@ const Page = () => {
 
     fetchAllProducts();
   }, []); // Only run once when the component is mounted
+  useEffect(() => {
+    const savedFilters = JSON.parse(localStorage.getItem("filters"));
+    const savedTab = localStorage.getItem("activeTab");
+  
+    if (savedFilters) {
+      setSelectedBrand(savedFilters.brand || "all");
+      setSelectedType(savedFilters.type || "all");
+      setSelectedCategory(savedFilters.category || []);
+      setSelectedFinish(savedFilters.finish || "all");
+      setSelectedSize(savedFilters.size || "all");
+      setSelectedThickness(savedFilters.thickness || "all");
+      setSelectedColor(savedFilters.color || "all");
+    }
+  
+    if (savedTab) {
+      handleTabClick(
+        savedTab); // Set the active tab from local storage
+      // setActiveTab(savedTab);
+      // setSelectedTag(savedTab.toLowerCase());
+    }
+  }, []);
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
     const categorySlug = hash ? hash.replace("#", "") : "";
@@ -161,9 +198,12 @@ const Page = () => {
     return color.map((c) => ({ ...c, className: "myOptionClassName" }));
   }, [color]);
   const handleTypeChange = (e) => {
+    event.preventDefault(); // Prevent default behavior
+
     setSelectedType(e.value);
   };
   const handleCategoryChange = (event) => {
+    event.preventDefault(); // Prevent default behavior
     const { value, checked } = event.target;
     setSelectedCategory((prevSelectedCategory) => {
       if (checked) {
@@ -175,11 +215,14 @@ const Page = () => {
     });
   };
   const handleSizeChange = (e) => {
+    event.preventDefault(); // Prevent default behavior
+
     setSelectedSize(e.value);
   };
   const handleSizeClick = (sizeValue) => {
+    event.preventDefault(); // Prevent default behavior
+
     setSelectedSize((prevSelectedSize) => {
-      // If the size is already selected, deselect it (set to null or "")
       if (prevSelectedSize === sizeValue) {
         console.log("Size Deselected:", sizeValue);
         return null; // Deselect the size to show all products
@@ -197,17 +240,24 @@ const Page = () => {
     }
   };
   const handleSearchChange = (event) => {
+    event.preventDefault(); // Prevent default behavior
     setSearchTerm(event.target.value);
   };
 
   const handleThicknessChange = (e) => {
+    event.preventDefault(); // Prevent default behavior
+
     setSelectedThickness(e.value);
   };
 
   const handleColorChange1 = (e) => {
+    event.preventDefault(); // Prevent default behavior
+
     setSelectedColor(e.value);
   };
   const handleColorChange = (color) => {
+    event.preventDefault(); // Prevent default behavior
+
     if (selectedColor === color) {
       setSelectedColor(null); // Clear the selection
     } else {
@@ -216,6 +266,7 @@ const Page = () => {
   };
 
   const resetFiltersDrop = () => {
+    
     setSelectedBrand("all");
     setSelectedCategory([]);
     setSelectedFinish("all");
@@ -286,8 +337,36 @@ const Page = () => {
     "/product#Crown_Xcl": "Crown XCL",
   };
   const handleTabClick = (tab) => {
-    setSelectedTag(tab.toLowerCase());
+     setSelectedTag(tab.toLowerCase());
+     // Set the selected tag to lowercase
+     
+        // router.push(`?tab=${tab}&brand=${selectedBrand}&type=${selectedType}&category=${selectedCategory.join(",")}&finish=${selectedFinish}&size=${selectedSize}&thickness=${selectedThickness}&color=${selectedColor}`);
+        setActiveTab(tab);
+        localStorage.setItem("activeTab", tab);
+
   };
+  // Save filters to local storage whenever they change
+  useEffect(() => {
+    const filters = {
+      brand: selectedBrand,
+      type: selectedType,
+      category: selectedCategory,
+      finish: selectedFinish,
+      size: selectedSize,
+      thickness: selectedThickness,
+      color: selectedColor,
+    };
+    localStorage.setItem("filters", JSON.stringify(filters));
+  }, [
+    selectedBrand,
+    selectedType,
+    selectedCategory,
+    selectedFinish,
+    selectedSize,
+    selectedThickness,
+    selectedColor,
+  ]);
+
   const visibleTabs = [
     "Royal Crown",
     "Crown XCL",
@@ -503,7 +582,7 @@ const Page = () => {
                         checked={selectedCategory.includes(category.value)}
                         onChange={handleCategoryChange}
                       />
-                      <span class="checkmark"></span>
+                      <span className="checkmark"></span>
                       {category.label}
                     </label>
                   ))}
