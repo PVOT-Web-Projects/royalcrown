@@ -2,9 +2,8 @@
 import React, { useState, useMemo, useEffect, useRef } from "react";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-
 import "./aboutUs_product.scss";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 // import products from "./productData.js";
 import { Dropdown } from "primereact/dropdown";
@@ -38,7 +37,6 @@ const Page = () => {
   const [products, setProducts] = useState([]);
   const [currentData, setCurrentData] = useState([]);
   const router = useRouter();
-  const searchParams = useSearchParams();
   const projectsRef = useRef(null);
   console.log(currentData);
   // useEffect(() => {
@@ -57,69 +55,6 @@ const Page = () => {
   //       console.error("Failed to fetch data:", error);
   //     });
   // }, []);
-  useEffect(() => {
-    const brand = searchParams.get("brand") || "all";
-    const type = searchParams.get("type") || "all";
-    const category = searchParams.get("category")?.split(",") || [];
-    const finish = searchParams.get("finish") || "all";
-    const size = searchParams.get("size") || "all";
-    const thickness = searchParams.get("thickness") || "all";
-    const color = searchParams.get("color") || "all";
-    const tag = searchParams.get("tag") || "all";
-    const page = parseInt(searchParams.get("page")) || 1;
-
-    setSelectedBrand(brand);
-    setSelectedType(type);
-    setSelectedCategory(category);
-    setSelectedFinish(finish);
-    setSelectedSize(size);
-    setSelectedThickness(thickness);
-    setSelectedColor(color);
-    setSelectedTag(tag);
-    setPageNumber(page);
-  }, []);
-
-  const updateQueryParams = () => {
-    const params = new URLSearchParams();
-
-    if (selectedBrand !== "all") params.set("brand", selectedBrand);
-    if (selectedType !== "all") params.set("type", selectedType);
-    if (selectedCategory.length > 0) params.set("category", selectedCategory.join(","));
-    if (selectedFinish !== "all") params.set("finish", selectedFinish);
-    if (selectedSize !== "all") params.set("size", selectedSize);
-    if (selectedThickness !== "all") params.set("thickness", selectedThickness);
-    if (selectedColor !== "all") params.set("color", selectedColor);
-    if (selectedTag !== "all") params.set("tag", selectedTag);
-    if (pageNumber !== 1) params.set("page", pageNumber);
-
-    router.push(`?${params.toString()}`, { scroll: false });
-  };
-  useEffect(() => {
-    updateQueryParams();
-  }, [
-    selectedBrand,
-    selectedType,
-    selectedCategory,
-    selectedFinish,
-    selectedSize,
-    selectedThickness,
-    selectedColor,
-    selectedTag,
-    pageNumber,
-  ]);
-  useEffect(() => {
-    const fromDetailPage = sessionStorage.getItem("fromDetailPage");
-    const returnURL = sessionStorage.getItem("returnToProductURL");
-
-    if (fromDetailPage && returnURL) {
-      sessionStorage.removeItem("fromDetailPage");
-      sessionStorage.removeItem("returnToProductURL");
-
-      // Replace the URL so query string is restored (without page reload)
-      window.history.replaceState(null, "", returnURL);
-    }
-  }, []);
-
   useEffect(() => {
     const fetchAllProducts = async () => {
       try {
@@ -147,7 +82,7 @@ const Page = () => {
         setLoading(false);
 
         // const savedFilters = JSON.parse(localStorage.getItem("filters"));
-
+        
         // if (savedFilters) {
         //   setSelectedBrand(savedFilters.brand || "all");
         //   setSelectedType(savedFilters.type || "all");
@@ -172,7 +107,7 @@ const Page = () => {
   useEffect(() => {
     const savedFilters = JSON.parse(localStorage.getItem("filters"));
     const savedTab = localStorage.getItem("activeTab");
-
+  
     if (savedFilters) {
       setSelectedBrand(savedFilters.brand || "all");
       setSelectedType(savedFilters.type || "all");
@@ -182,7 +117,7 @@ const Page = () => {
       setSelectedThickness(savedFilters.thickness || "all");
       setSelectedColor(savedFilters.color || "all");
     }
-
+  
     if (savedTab) {
       handleTabClick(
         savedTab); // Set the active tab from local storage
@@ -331,7 +266,7 @@ const Page = () => {
   };
 
   const resetFiltersDrop = () => {
-
+    
     setSelectedBrand("all");
     setSelectedCategory([]);
     setSelectedFinish("all");
@@ -341,8 +276,6 @@ const Page = () => {
     setSelectedType("all");
     setSearchTerm(""); // Reset the search term
     setFilteredProducts(products); // Reset the product list to show all
-    setPageNumber(1);
-    router.push("/product", { scroll: false });
   };
   // Filter products based on search term
   useEffect(() => {
@@ -404,12 +337,12 @@ const Page = () => {
     "/product#Crown_Xcl": "Crown XCL",
   };
   const handleTabClick = (tab) => {
-    setSelectedTag(tab.toLowerCase());
-    // Set the selected tag to lowercase
-
-    // router.push(`?tab=${tab}&brand=${selectedBrand}&type=${selectedType}&category=${selectedCategory.join(",")}&finish=${selectedFinish}&size=${selectedSize}&thickness=${selectedThickness}&color=${selectedColor}`);
-    setActiveTab(tab);
-    localStorage.setItem("activeTab", tab);
+     setSelectedTag(tab.toLowerCase());
+     // Set the selected tag to lowercase
+     
+        // router.push(`?tab=${tab}&brand=${selectedBrand}&type=${selectedType}&category=${selectedCategory.join(",")}&finish=${selectedFinish}&size=${selectedSize}&thickness=${selectedThickness}&color=${selectedColor}`);
+        setActiveTab(tab);
+        localStorage.setItem("activeTab", tab);
 
   };
   // Save filters to local storage whenever they change
@@ -576,11 +509,12 @@ const Page = () => {
                   key={label}
                   href={`/product#${label.replace(" ", "-").toLowerCase()}`}
                   scroll={false}
-                  className={`tab-item ${activeTab ===
+                  className={`tab-item ${
+                    activeTab ===
                     `/product#${label.replace(" ", "-").toLowerCase()}`
-                    ? "active"
-                    : ""
-                    }`}
+                      ? "active"
+                      : ""
+                  }`}
                   onClick={() =>
                     handleTabClick(
                       `/product#${label.replace(" ", "-").toLowerCase()}`,
@@ -703,8 +637,9 @@ const Page = () => {
                   {size.map((sizeOption) => (
                     <div
                       key={sizeOption.value}
-                      className={`SizeProduct ${selectedSize === sizeOption.value ? "selected" : ""
-                        }`}
+                      className={`SizeProduct ${
+                        selectedSize === sizeOption.value ? "selected" : ""
+                      }`}
                       onClick={() => handleSizeClick(sizeOption.value)}
                       scroll={false}
                     >
@@ -738,10 +673,11 @@ const Page = () => {
                   {thickness.map((thicknessOption) => (
                     <div
                       key={thicknessOption.value}
-                      className={`ThicknessProduct ${selectedThickness === thicknessOption.value
-                        ? "selected"
-                        : ""
-                        }`}
+                      className={`ThicknessProduct ${
+                        selectedThickness === thicknessOption.value
+                          ? "selected"
+                          : ""
+                      }`}
                       onClick={() =>
                         handleThicknessClick(thicknessOption.value)
                       } // Add click functionality
@@ -773,10 +709,10 @@ const Page = () => {
                     index === 9
                       ? "big"
                       : [
-                        0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21,
-                      ].includes(index)
-                        ? "tall"
-                        : "";
+                          0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21,
+                        ].includes(index)
+                      ? "tall"
+                      : "";
 
                   // Get Design Code, default to "No Data Found" if not available
                   // const designCode = product.attributes[6]?.terms[0].name || "";
@@ -813,17 +749,9 @@ const Page = () => {
                         width={500}
                         height={600}
                         onClick={() => {
-                          const currentQuery = window.location.search; // e.g. ?brand=Royal&page=5...
-                          // sessionStorage.setItem("fromDetailPage", "true");
-                          // Save current full URL with query params in session
-                          sessionStorage.setItem("fromDetailPage", "true");
-                          sessionStorage.setItem("returnToProductURL", window.location.href);
-                          router.push(`/product-information${currentQuery}#${product.id}`);
+                          console.log("Product ID:", product.id);
+                          router.push(`/product-information#${product.id}`);
                         }}
-                      // onClick={() => {
-                      //   console.log("Product ID:", product.id);
-                      //   router.push(`/product-information#${product.id}`);
-                      // }}
                       />
                       <div className="overlay">
                         <div>
