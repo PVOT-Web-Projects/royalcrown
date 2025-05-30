@@ -69,7 +69,7 @@ const Page = () => {
           "https://admin.royalcrownlaminates.com/wp-json/wc/store/products/?per_page=100&page=";
 
         // Fetching all pages (1 to 9 in this case)
-        const pageNumbers = Array.from({ length: 6 }, (_, index) => index + 1);
+        const pageNumbers = Array.from({ length: 12 }, (_, index) => index + 1);
 
         // Fetch all pages in parallel using Promise.all
         const fetchPromises = pageNumbers.map((page) =>

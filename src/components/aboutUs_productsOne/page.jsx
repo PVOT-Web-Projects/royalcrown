@@ -2,8 +2,9 @@
 import React, { useState, useMemo, useEffect, useRef } from "react";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+
 import "./aboutUs_product.scss";
-import { useRouter } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
 // import products from "./productData.js";
 import { Dropdown } from "primereact/dropdown";
@@ -37,6 +38,7 @@ const Page = () => {
   const [products, setProducts] = useState([]);
   const [currentData, setCurrentData] = useState([]);
   const router = useRouter();
+  const searchParams = useSearchParams();
   const projectsRef = useRef(null);
   console.log(currentData);
   // useEffect(() => {
@@ -56,6 +58,69 @@ const Page = () => {
   //     });
   // }, []);
   useEffect(() => {
+    const brand = searchParams.get("brand") || "all";
+    const type = searchParams.get("type") || "all";
+    const category = searchParams.get("category")?.split(",") || [];
+    const finish = searchParams.get("finish") || "all";
+    const size = searchParams.get("size") || "all";
+    const thickness = searchParams.get("thickness") || "all";
+    const color = searchParams.get("color") || "all";
+    const tag = searchParams.get("tag") || "all";
+    const page = parseInt(searchParams.get("page")) || 1;
+
+    setSelectedBrand(brand);
+    setSelectedType(type);
+    setSelectedCategory(category);
+    setSelectedFinish(finish);
+    setSelectedSize(size);
+    setSelectedThickness(thickness);
+    setSelectedColor(color);
+    setSelectedTag(tag);
+    setPageNumber(page);
+  }, []);
+
+  const updateQueryParams = () => {
+    const params = new URLSearchParams();
+
+    if (selectedBrand !== "all") params.set("brand", selectedBrand);
+    if (selectedType !== "all") params.set("type", selectedType);
+    if (selectedCategory.length > 0) params.set("category", selectedCategory.join(","));
+    if (selectedFinish !== "all") params.set("finish", selectedFinish);
+    if (selectedSize !== "all") params.set("size", selectedSize);
+    if (selectedThickness !== "all") params.set("thickness", selectedThickness);
+    if (selectedColor !== "all") params.set("color", selectedColor);
+    if (selectedTag !== "all") params.set("tag", selectedTag);
+    if (pageNumber !== 1) params.set("page", pageNumber);
+
+    router.push(`?${params.toString()}`, { scroll: false });
+  };
+  useEffect(() => {
+    updateQueryParams();
+  }, [
+    selectedBrand,
+    selectedType,
+    selectedCategory,
+    selectedFinish,
+    selectedSize,
+    selectedThickness,
+    selectedColor,
+    selectedTag,
+    pageNumber,
+  ]);
+  useEffect(() => {
+    const fromDetailPage = sessionStorage.getItem("fromDetailPage");
+    const returnURL = sessionStorage.getItem("returnToProductURL");
+
+    if (fromDetailPage && returnURL) {
+      sessionStorage.removeItem("fromDetailPage");
+      sessionStorage.removeItem("returnToProductURL");
+
+      // Replace the URL so query string is restored (without page reload)
+      window.history.replaceState(null, "", returnURL);
+    }
+  }, []);
+
+  useEffect(() => {
     const fetchAllProducts = async () => {
       try {
         // The API URL structure
@@ -64,7 +129,7 @@ const Page = () => {
           "https://admin.royalcrownlaminates.com/wp-json/wc/store/products/?per_page=100&page=";
 
         // Fetching all pages (1 to 9 in this case)
-        const pageNumbers = Array.from({ length: 9 }, (_, index) => index + 1);
+        const pageNumbers = Array.from({ length: 12 }, (_, index) => index + 1);
 
         // Fetch all pages in parallel using Promise.all
         const fetchPromises = pageNumbers.map((page) =>
@@ -80,6 +145,22 @@ const Page = () => {
         // Set the combined data into state
         setProducts(combinedProducts);
         setLoading(false);
+
+        // const savedFilters = JSON.parse(localStorage.getItem("filters"));
+
+        // if (savedFilters) {
+        //   setSelectedBrand(savedFilters.brand || "all");
+        //   setSelectedType(savedFilters.type || "all");
+        //   setSelectedCategory(savedFilters.category || []);
+        //   setSelectedFinish(savedFilters.finish || "all");
+        //   setSelectedSize(savedFilters.size || "all");
+        //   setSelectedThickness(savedFilters.thickness || "all");
+        //   setSelectedColor(savedFilters.color || "all");
+        // }
+
+
+
+
       } catch (error) {
         console.error("Failed to fetch data:", error);
         setLoading(false); // Stop loading even if there's an error
@@ -88,6 +169,27 @@ const Page = () => {
 
     fetchAllProducts();
   }, []); // Only run once when the component is mounted
+  useEffect(() => {
+    const savedFilters = JSON.parse(localStorage.getItem("filters"));
+    const savedTab = localStorage.getItem("activeTab");
+
+    if (savedFilters) {
+      setSelectedBrand(savedFilters.brand || "all");
+      setSelectedType(savedFilters.type || "all");
+      setSelectedCategory(savedFilters.category || []);
+      setSelectedFinish(savedFilters.finish || "all");
+      setSelectedSize(savedFilters.size || "all");
+      setSelectedThickness(savedFilters.thickness || "all");
+      setSelectedColor(savedFilters.color || "all");
+    }
+
+    if (savedTab) {
+      handleTabClick(
+        savedTab); // Set the active tab from local storage
+      // setActiveTab(savedTab);
+      // setSelectedTag(savedTab.toLowerCase());
+    }
+  }, []);
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
     const categorySlug = hash ? hash.replace("#", "") : "";
@@ -120,6 +222,38 @@ const Page = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  useEffect(() => {
+  const isBack = sessionStorage.getItem("backFromProduct");
+
+  if (isBack) {
+    const savedFilters = JSON.parse(sessionStorage.getItem("productFilters"));
+
+    if (savedFilters) {
+      setSelectedBrand(savedFilters.brand || "all");
+      setSelectedType(savedFilters.type || "all");
+      setSelectedCategory(savedFilters.category || []);
+      setSelectedFinish(savedFilters.finish || "all");
+      setSelectedSize(savedFilters.size || "all");
+      setSelectedThickness(savedFilters.thickness || "all");
+      setSelectedColor(savedFilters.color || "all");
+      setSelectedTag(savedFilters.tag || "all");
+      setSearchTerm(savedFilters.search || "");
+      setPageNumber(savedFilters.page || 1);
+      setActiveTab(savedFilters.tab || "");
+    }
+
+    sessionStorage.removeItem("backFromProduct"); // Only use once
+  }
+}, []);
+useEffect(() => {
+  if (performance.navigation.type === 1) {
+    // Page was refreshed
+    sessionStorage.removeItem("productFilters");
+    sessionStorage.removeItem("backFromProduct");
+  }
+}, []);
+
   const categories = [
     { label: "Plain Colour", value: "Plain Colour" },
     { label: "Abstract", value: "Abstracts" },
@@ -161,9 +295,12 @@ const Page = () => {
     return color.map((c) => ({ ...c, className: "myOptionClassName" }));
   }, [color]);
   const handleTypeChange = (e) => {
+    event.preventDefault(); // Prevent default behavior
+
     setSelectedType(e.value);
   };
   const handleCategoryChange = (event) => {
+    event.preventDefault(); // Prevent default behavior
     const { value, checked } = event.target;
     setSelectedCategory((prevSelectedCategory) => {
       if (checked) {
@@ -175,11 +312,14 @@ const Page = () => {
     });
   };
   const handleSizeChange = (e) => {
+    event.preventDefault(); // Prevent default behavior
+
     setSelectedSize(e.value);
   };
   const handleSizeClick = (sizeValue) => {
+    event.preventDefault(); // Prevent default behavior
+
     setSelectedSize((prevSelectedSize) => {
-      // If the size is already selected, deselect it (set to null or "")
       if (prevSelectedSize === sizeValue) {
         console.log("Size Deselected:", sizeValue);
         return null; // Deselect the size to show all products
@@ -197,17 +337,24 @@ const Page = () => {
     }
   };
   const handleSearchChange = (event) => {
+    event.preventDefault(); // Prevent default behavior
     setSearchTerm(event.target.value);
   };
 
   const handleThicknessChange = (e) => {
+    event.preventDefault(); // Prevent default behavior
+
     setSelectedThickness(e.value);
   };
 
   const handleColorChange1 = (e) => {
+    event.preventDefault(); // Prevent default behavior
+
     setSelectedColor(e.value);
   };
   const handleColorChange = (color) => {
+    event.preventDefault(); // Prevent default behavior
+
     if (selectedColor === color) {
       setSelectedColor(null); // Clear the selection
     } else {
@@ -216,6 +363,7 @@ const Page = () => {
   };
 
   const resetFiltersDrop = () => {
+
     setSelectedBrand("all");
     setSelectedCategory([]);
     setSelectedFinish("all");
@@ -225,6 +373,8 @@ const Page = () => {
     setSelectedType("all");
     setSearchTerm(""); // Reset the search term
     setFilteredProducts(products); // Reset the product list to show all
+    setPageNumber(1);
+    router.push("/product", { scroll: false });
   };
   // Filter products based on search term
   useEffect(() => {
@@ -287,7 +437,35 @@ const Page = () => {
   };
   const handleTabClick = (tab) => {
     setSelectedTag(tab.toLowerCase());
+    // Set the selected tag to lowercase
+
+    // router.push(`?tab=${tab}&brand=${selectedBrand}&type=${selectedType}&category=${selectedCategory.join(",")}&finish=${selectedFinish}&size=${selectedSize}&thickness=${selectedThickness}&color=${selectedColor}`);
+    setActiveTab(tab);
+    localStorage.setItem("activeTab", tab);
+
   };
+  // Save filters to local storage whenever they change
+  useEffect(() => {
+    const filters = {
+      brand: selectedBrand,
+      type: selectedType,
+      category: selectedCategory,
+      finish: selectedFinish,
+      size: selectedSize,
+      thickness: selectedThickness,
+      color: selectedColor,
+    };
+    localStorage.setItem("filters", JSON.stringify(filters));
+  }, [
+    selectedBrand,
+    selectedType,
+    selectedCategory,
+    selectedFinish,
+    selectedSize,
+    selectedThickness,
+    selectedColor,
+  ]);
+
   const visibleTabs = [
     "Royal Crown",
     "Crown XCL",
@@ -430,12 +608,11 @@ const Page = () => {
                   key={label}
                   href={`/product#${label.replace(" ", "-").toLowerCase()}`}
                   scroll={false}
-                  className={`tab-item ${
-                    activeTab ===
+                  className={`tab-item ${activeTab ===
                     `/product#${label.replace(" ", "-").toLowerCase()}`
-                      ? "active"
-                      : ""
-                  }`}
+                    ? "active"
+                    : ""
+                    }`}
                   onClick={() =>
                     handleTabClick(
                       `/product#${label.replace(" ", "-").toLowerCase()}`,
@@ -503,7 +680,7 @@ const Page = () => {
                         checked={selectedCategory.includes(category.value)}
                         onChange={handleCategoryChange}
                       />
-                      <span class="checkmark"></span>
+                      <span className="checkmark"></span>
                       {category.label}
                     </label>
                   ))}
@@ -558,9 +735,8 @@ const Page = () => {
                   {size.map((sizeOption) => (
                     <div
                       key={sizeOption.value}
-                      className={`SizeProduct ${
-                        selectedSize === sizeOption.value ? "selected" : ""
-                      }`}
+                      className={`SizeProduct ${selectedSize === sizeOption.value ? "selected" : ""
+                        }`}
                       onClick={() => handleSizeClick(sizeOption.value)}
                       scroll={false}
                     >
@@ -594,11 +770,10 @@ const Page = () => {
                   {thickness.map((thicknessOption) => (
                     <div
                       key={thicknessOption.value}
-                      className={`ThicknessProduct ${
-                        selectedThickness === thicknessOption.value
-                          ? "selected"
-                          : ""
-                      }`}
+                      className={`ThicknessProduct ${selectedThickness === thicknessOption.value
+                        ? "selected"
+                        : ""
+                        }`}
                       onClick={() =>
                         handleThicknessClick(thicknessOption.value)
                       } // Add click functionality
@@ -630,10 +805,10 @@ const Page = () => {
                     index === 9
                       ? "big"
                       : [
-                          0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21,
-                        ].includes(index)
-                      ? "tall"
-                      : "";
+                        0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21,
+                      ].includes(index)
+                        ? "tall"
+                        : "";
 
                   // Get Design Code, default to "No Data Found" if not available
                   // const designCode = product.attributes[6]?.terms[0].name || "";
@@ -669,10 +844,34 @@ const Page = () => {
                         className="ProductImage"
                         width={500}
                         height={600}
-                        onClick={() => {
-                          console.log("Product ID:", product.id);
-                          router.push(`/product-information#${product.id}`);
-                        }}
+                       
+                      // onClick={() => {
+                      //   console.log("Product ID:", product.id);
+                      //   router.push(`/product-information#${product.id}`);
+                      // }}
+                      onClick={() => {
+  // Save current state
+  const currentFilters = {
+    brand: selectedBrand,
+    type: selectedType,
+    category: selectedCategory,
+    finish: selectedFinish,
+    size: selectedSize,
+    thickness: selectedThickness,
+    color: selectedColor,
+    tag: selectedTag,
+    tab: activeTab,
+    page: pageNumber,
+    search: searchTerm,
+  };
+
+  sessionStorage.setItem("productFilters", JSON.stringify(currentFilters));
+  sessionStorage.setItem("backFromProduct", "true");
+
+  // Navigate to product info
+  router.push(`/product-information#${product.id}`);
+}}
+
                       />
                       <div className="overlay">
                         <div>
