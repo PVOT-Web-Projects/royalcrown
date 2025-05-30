@@ -2,6 +2,7 @@
 import React, { useState, useMemo, useEffect, useRef } from "react";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+
 import "./aboutUs_product.scss";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
