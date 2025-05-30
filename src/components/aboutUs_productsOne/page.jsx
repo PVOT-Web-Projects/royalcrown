@@ -107,6 +107,8 @@ const Page = () => {
   useEffect(() => {
     const savedFilters = JSON.parse(localStorage.getItem("filters"));
     const savedTab = localStorage.getItem("activeTab");
+    
+    const savedPageNumber = localStorage.getItem("pageNumber");
   
     if (savedFilters) {
       setSelectedBrand(savedFilters.brand || "all");
@@ -123,6 +125,9 @@ const Page = () => {
         savedTab); // Set the active tab from local storage
       // setActiveTab(savedTab);
       // setSelectedTag(savedTab.toLowerCase());
+    }
+     if (savedPageNumber) {
+      setPageNumber(parseInt(savedPageNumber, 10));
     }
   }, []);
   useEffect(() => {
@@ -275,6 +280,8 @@ const Page = () => {
     setSelectedColor("all");
     setSelectedType("all");
     setSearchTerm(""); // Reset the search term
+    setPageNumber(1);
+    localStorage.removeItem("pageNumber"); // Remove saved page number
     setFilteredProducts(products); // Reset the product list to show all
   };
   // Filter products based on search term
@@ -469,6 +476,10 @@ const Page = () => {
       });
     }
   };
+   // Save page number to local storage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("pageNumber", pageNumber.toString());
+  }, [pageNumber]);
   return (
     <>
       <div className="productMainContainer">
