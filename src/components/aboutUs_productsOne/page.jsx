@@ -92,7 +92,9 @@ const Page = () => {
     if (selectedTag !== "all") params.set("tag", selectedTag);
     if (pageNumber !== 1) params.set("page", pageNumber);
 
-    router.push(`?${params.toString()}`, { scroll: false });
+    router.push(`?${params.toString()}`,
+    //  { scroll: false }
+  );
   };
   useEffect(() => {
     updateQueryParams();
@@ -336,6 +338,9 @@ useEffect(() => {
       });
     }
   };
+
+
+  
   const handleSearchChange = (event) => {
     event.preventDefault(); // Prevent default behavior
     setSearchTerm(event.target.value);
