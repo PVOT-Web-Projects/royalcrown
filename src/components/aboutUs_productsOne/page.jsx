@@ -38,7 +38,22 @@ const Page = () => {
   const [currentData, setCurrentData] = useState([]);
   const router = useRouter();
   const projectsRef = useRef(null);
+    const isBackNavigation = React.useRef(false)
+
   console.log(currentData);
+  // Use this effect to detect back navigation
+  useEffect(() => {
+    // Check if this is a back navigation
+    const handlePopState = () => {
+      isBackNavigation.current = true
+    }
+
+    window.addEventListener("popstate", handlePopState)
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState)
+    }
+  }, [])
   // useEffect(() => {
   //   fetch(
   //     "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100"
@@ -327,15 +342,30 @@ const Page = () => {
   const lastIndex = currentPage * itemsPerPage;
   const firstIndex = lastIndex - itemsPerPage;
   const displayedData = filteredProducts.slice(firstIndex, lastIndex);
+  const isInitialLoad = React.useRef(true)
   useEffect(() => {
     if (currentPage > totalPages && totalPages > 0) {
       setPageNumber(totalPages);
     }
   }, [currentPage, totalPages]);
-  useEffect(() => {
-    setPageNumber(1);
-  }, [filteredProducts]);
+  // useEffect(() => {
+  //   setPageNumber(1);
+  // }, [filteredProducts]);
   //
+  useEffect(() => {
+    // Only reset page number when filters change, not when coming back from product page
+    if (isInitialLoad.current) {
+      isInitialLoad.current = false
+      // On initial load, try to get page from localStorage
+      const savedPageNumber = localStorage.getItem("pageNumber")
+      if (savedPageNumber) {
+        setPageNumber(Number.parseInt(savedPageNumber, 10))
+      }
+    } else {
+      // Only reset page number when filters actually change
+      setPageNumber(1)
+    }
+  }, [filteredProducts])
   const categoryMap = {
     "/product#xylem": "Xylem",
     "/product#royal-crown": "Royal Crown",
@@ -364,6 +394,7 @@ const Page = () => {
       color: selectedColor,
     };
     localStorage.setItem("filters", JSON.stringify(filters));
+    localStorage.setItem("pageNumber", pageNumber.toString())
   }, [
     selectedBrand,
     selectedType,
@@ -372,6 +403,7 @@ const Page = () => {
     selectedSize,
     selectedThickness,
     selectedColor,
+    pageNumber,  
   ]);
 
   const visibleTabs = [
@@ -761,6 +793,8 @@ const Page = () => {
                         height={600}
                         onClick={() => {
                           console.log("Product ID:", product.id);
+                          // Save current page before navigating
+                          localStorage.setItem("pageNumber", pageNumber.toString())
                           router.push(`/product-information#${product.id}`);
                         }}
                       />
