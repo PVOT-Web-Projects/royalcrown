@@ -1,182 +1,230 @@
-"use client";
-import React, { useState, useMemo, useEffect, useRef } from "react";
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
-import "./aboutUs_product.scss";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
-// import products from "./productData.js";
-import { Dropdown } from "primereact/dropdown";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
-import { Skeleton, Grid } from "@mui/material";
-const Page = () => {
-  const itemsPerPage = 25;
-  const [pageNumber, setPageNumber] = useState(1);
-  const [selectedTab, setSelectedTab] = useState(""); // Store active tab
-  const [selectedBrand, setSelectedBrand] = useState("all");
-  const [selectedType, setSelectedType] = useState("all");
-  const [selectedCategory, setSelectedCategory] = useState([]);
-  const [selectedFinish, setSelectedFinish] = useState("all");
-  const [selectedSize, setSelectedSize] = useState("all");
-  const [selectedThickness, setSelectedThickness] = useState("all");
-  const [selectedColor, setSelectedColor] = useState("all");
-  const [isMobile, setIsMobile] = useState(0);
-  const [tab, setTab] = useState(""); // Adding a loading state
-  const [loading, setLoading] = useState(true); // Initially, set loading to t
-  const pathName = usePathname();
-  const [shortTitle, setShortTitle] = useState("");
-  const [selectedTag, setSelectedTag] = useState("all"); // Initially no tag selected
-  const [filteredProducts, setFilteredProducts] = useState([]);
-  const [shortNumber, setShortNumber] = useState("");
-  const [shortDescription, setShortDescription] = useState("");
-  const [activeTab, setActiveTab] = useState("");
-  const [activeTabOne, setActiveTabOne] = useState(0);
-  const [searchTerm, setSearchTerm] = useState(""); // State for search term
-  const [products, setProducts] = useState([]);
-  const [currentData, setCurrentData] = useState([]);
-  const router = useRouter();
-  const projectsRef = useRef(null);
-    const isBackNavigation = React.useRef(false)
+"use client"
+import { useState, useMemo, useEffect, useRef } from "react"
+import Pagination from "@mui/material/Pagination"
+import Stack from "@mui/material/Stack"
+import "./aboutUs_product.scss"
+import { useRouter } from "next/navigation"
+import Image from "next/image"
+import { Dropdown } from "primereact/dropdown"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { motion } from "framer-motion"
+import { Skeleton, Grid } from "@mui/material"
 
-  console.log(currentData);
-  // Use this effect to detect back navigation
+const Page = () => {
+  const itemsPerPage = 25
+  const [pageNumber, setPageNumber] = useState(1)
+  const [selectedTab, setSelectedTab] = useState("")
+  const [selectedBrand, setSelectedBrand] = useState("all")
+  const [selectedType, setSelectedType] = useState("all")
+  const [selectedCategory, setSelectedCategory] = useState([])
+  const [selectedFinish, setSelectedFinish] = useState("all")
+  const [selectedSize, setSelectedSize] = useState("all")
+  const [selectedThickness, setSelectedThickness] = useState("all")
+  const [selectedColor, setSelectedColor] = useState("all")
+  const [isMobile, setIsMobile] = useState(0)
+  const [tab, setTab] = useState("")
+  const [loading, setLoading] = useState(true)
+  const pathName = usePathname()
+  const [shortTitle, setShortTitle] = useState("")
+  const [selectedTag, setSelectedTag] = useState("all")
+  const [filteredProducts, setFilteredProducts] = useState([])
+  const [shortNumber, setShortNumber] = useState("")
+  const [shortDescription, setShortDescription] = useState("")
+  const [activeTab, setActiveTab] = useState("")
+  const [activeTabOne, setActiveTabOne] = useState(0)
+  const [searchTerm, setSearchTerm] = useState("")
+  const [products, setProducts] = useState([])
+  const [currentData, setCurrentData] = useState([])
+
+  // Enhanced refs for better navigation tracking
+  const isInitialLoad = useRef(true)
+  const isBackNavigation = useRef(false)
+  const isFilterChange = useRef(false)
+  const previousFilters = useRef({})
+  const hasLoadedFromStorage = useRef(false)
+
+  // Detect back navigation
   useEffect(() => {
-    // Check if this is a back navigation
     const handlePopState = () => {
+      console.log("Back navigation detected")
       isBackNavigation.current = true
     }
 
     window.addEventListener("popstate", handlePopState)
-
     return () => {
       window.removeEventListener("popstate", handlePopState)
     }
   }, [])
-  // useEffect(() => {
-  //   fetch(
-  //     "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100"
-  //   )
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setLoading(false); // Set loading to false once data is fetched
-  //       console.log("API Response:", data); // Log the response for debugging
-  //       setProducts(data);
-  //       setFilteredProducts(data); // Initially show all products
-  //     })
-  //     .catch((error) => {
-  //       setLoading(false); // Set loading to false once data is fetched
-  //       console.error("Failed to fetch data:", error);
-  //     });
-  // }, []);
+
+  // Load saved page number from localStorage on mount ONLY
+  useEffect(() => {
+    if (!hasLoadedFromStorage.current) {
+      const savedPage = localStorage.getItem("pageNumber")
+      if (savedPage) {
+        console.log("Loading saved page:", savedPage)
+        setPageNumber(Number.parseInt(savedPage, 10))
+      }
+      hasLoadedFromStorage.current = true
+    }
+  }, [])
+
+  const router = useRouter()
+  const projectsRef = useRef(null)
+
+  // Fetch products
   useEffect(() => {
     const fetchAllProducts = async () => {
       try {
-        // The API URL structure
-        const apiUrl =
-          // "https://vanras.humbeestudio.xyz/wp-json/wc/store/products/?per_page=100&page=";
-          "https://admin.royalcrownlaminates.com/wp-json/wc/store/products/?per_page=100&page=";
-
-        // Fetching all pages (1 to 9 in this case)
-        const pageNumbers = Array.from({ length: 12 }, (_, index) => index + 1);
-
-        // Fetch all pages in parallel using Promise.all
-        const fetchPromises = pageNumbers.map((page) =>
-          fetch(`${apiUrl}${page}`).then((res) => res.json())
-        );
-
-        // Wait for all API calls to complete
-        const allProducts = await Promise.all(fetchPromises);
-
-        // Combine all the fetched data into one array
-        const combinedProducts = allProducts.flat();
-
-        // Set the combined data into state
-        setProducts(combinedProducts);
-        setLoading(false);
-
-        // const savedFilters = JSON.parse(localStorage.getItem("filters"));
-        
-        // if (savedFilters) {
-        //   setSelectedBrand(savedFilters.brand || "all");
-        //   setSelectedType(savedFilters.type || "all");
-        //   setSelectedCategory(savedFilters.category || []);
-        //   setSelectedFinish(savedFilters.finish || "all");
-        //   setSelectedSize(savedFilters.size || "all");
-        //   setSelectedThickness(savedFilters.thickness || "all");
-        //   setSelectedColor(savedFilters.color || "all");
-        // }
-
-
-
-
+        const apiUrl = "https://admin.royalcrownlaminates.com/wp-json/wc/store/products/?per_page=100&page="
+        const pageNumbers = Array.from({ length: 12 }, (_, index) => index + 1)
+        const fetchPromises = pageNumbers.map((page) => fetch(`${apiUrl}${page}`).then((res) => res.json()))
+        const allProducts = await Promise.all(fetchPromises)
+        const combinedProducts = allProducts.flat()
+        setProducts(combinedProducts)
+        setLoading(false)
       } catch (error) {
-        console.error("Failed to fetch data:", error);
-        setLoading(false); // Stop loading even if there's an error
+        console.error("Failed to fetch data:", error)
+        setLoading(false)
       }
-    };
+    }
 
-    fetchAllProducts();
-  }, []); // Only run once when the component is mounted
-  useEffect(() => {
-    const savedFilters = JSON.parse(localStorage.getItem("filters"));
-    const savedTab = localStorage.getItem("activeTab");
-    
-    const savedPageNumber = localStorage.getItem("pageNumber");
-  
-    if (savedFilters) {
-      setSelectedBrand(savedFilters.brand || "all");
-      setSelectedType(savedFilters.type || "all");
-      setSelectedCategory(savedFilters.category || []);
-      setSelectedFinish(savedFilters.finish || "all");
-      setSelectedSize(savedFilters.size || "all");
-      setSelectedThickness(savedFilters.thickness || "all");
-      setSelectedColor(savedFilters.color || "all");
-    }
-  
-    if (savedTab) {
-      handleTabClick(
-        savedTab); // Set the active tab from local storage
-      // setActiveTab(savedTab);
-      // setSelectedTag(savedTab.toLowerCase());
-    }
-     if (savedPageNumber) {
-      setPageNumber(parseInt(savedPageNumber, 10));
-    }
-  }, []);
-  useEffect(() => {
-    const hash = typeof window !== "undefined" ? window.location.hash : "";
-    const categorySlug = hash ? hash.replace("#", "") : "";
-    if (categorySlug) {
-      setActiveTab(categorySlug);
-      const filteredData = products.filter((product) =>
-        product.categories.some(
-          (categoryItem) => categoryItem.slug === categorySlug
-        )
-      );
-      setCurrentData(filteredData);
-    } else {
-      setCurrentData(products);
-    }
-  }, [pathName, products]);
+    fetchAllProducts()
+  }, [])
 
+  // Only save page number when user manually changes it or when filters change
   const handlePageChange = (event, value) => {
-    setPageNumber(value);
-    projectsRef.current.scrollIntoView({
+    console.log("Page changed to:", value)
+    setPageNumber(value)
+    localStorage.setItem("pageNumber", value.toString())
+
+    projectsRef.current?.scrollIntoView({
       behavior: "smooth",
-    });
-  };
+    })
+  }
+
+  // Detect filter changes more accurately
+  useEffect(() => {
+    // Skip on initial load
+    if (isInitialLoad.current) {
+      return
+    }
+
+    const currentFilters = {
+      brand: selectedBrand,
+      type: selectedType,
+      category: JSON.stringify(selectedCategory),
+      finish: selectedFinish,
+      size: selectedSize,
+      thickness: selectedThickness,
+      color: selectedColor,
+      searchTerm: searchTerm,
+      tag: selectedTag,
+    }
+
+    const prevFilters = previousFilters.current
+
+    // Check if any filter actually changed
+    const hasFilterChanged = Object.keys(currentFilters).some((key) => prevFilters[key] !== currentFilters[key])
+
+    if (hasFilterChanged) {
+      console.log("Filter changed, will reset page")
+      isFilterChange.current = true
+      previousFilters.current = { ...currentFilters }
+    }
+  }, [
+    selectedBrand,
+    selectedType,
+    selectedCategory,
+    selectedFinish,
+    selectedSize,
+    selectedThickness,
+    selectedColor,
+    searchTerm,
+    selectedTag,
+  ])
+
+  // Enhanced page number management - only reset when filters actually change
+  useEffect(() => {
+    // Skip on initial load
+    if (isInitialLoad.current) {
+      isInitialLoad.current = false
+      // Set initial filters
+      previousFilters.current = {
+        brand: selectedBrand,
+        type: selectedType,
+        category: JSON.stringify(selectedCategory),
+        finish: selectedFinish,
+        size: selectedSize,
+        thickness: selectedThickness,
+        color: selectedColor,
+        searchTerm: searchTerm,
+        tag: selectedTag,
+      }
+      return
+    }
+
+    // If coming back from product page, preserve page number
+    if (isBackNavigation.current) {
+      console.log("Back navigation - preserving page number")
+      isBackNavigation.current = false
+      return
+    }
+
+    // Only reset page if filters actually changed
+    if (isFilterChange.current) {
+      console.log("Filters changed - resetting to page 1")
+      setPageNumber(1)
+      localStorage.setItem("pageNumber", "1")
+      isFilterChange.current = false
+    }
+  }, [filteredProducts])
+
+  // Load saved filters and tab
+  useEffect(() => {
+    const savedFilters = JSON.parse(localStorage.getItem("filters"))
+    const savedTab = localStorage.getItem("activeTab")
+
+    if (savedFilters) {
+      setSelectedBrand(savedFilters.brand || "all")
+      setSelectedType(savedFilters.type || "all")
+      setSelectedCategory(savedFilters.category || [])
+      setSelectedFinish(savedFilters.finish || "all")
+      setSelectedSize(savedFilters.size || "all")
+      setSelectedThickness(savedFilters.thickness || "all")
+      setSelectedColor(savedFilters.color || "all")
+    }
+
+    if (savedTab) {
+      handleTabClick(savedTab)
+    }
+  }, [])
+
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 1025);
-    };
-    window.addEventListener("resize", handleResize);
-    handleResize(); // Check initial size
+      setIsMobile(window.innerWidth < 1025)
+    }
+    window.addEventListener("resize", handleResize)
+    handleResize()
     return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [])
+
+  useEffect(() => {
+    const hash = typeof window !== "undefined" ? window.location.hash : ""
+    const categorySlug = hash ? hash.replace("#", "") : ""
+    if (categorySlug) {
+      setActiveTab(categorySlug)
+      const filteredData = products.filter((product) =>
+        product.categories.some((categoryItem) => categoryItem.slug === categorySlug),
+      )
+      setCurrentData(filteredData)
+    } else {
+      setCurrentData(products)
+    }
+  }, [pathName, products])
+
   const categories = [
     { label: "Plain Colour", value: "Plain Colour" },
     { label: "Abstract", value: "Abstracts" },
@@ -186,7 +234,8 @@ const Page = () => {
     { label: "Textile", value: "Textile" },
     { label: "Mirrors", value: "Mirrors" },
     { label: "Woodgrain", value: "Woodgrain" },
-  ];
+  ]
+
   const size = [
     { label: "8 x 4", value: "8*4" },
     { label: "10 x 4.25", value: "8*9" },
@@ -194,7 +243,8 @@ const Page = () => {
     { label: "14 x 6", value: "6*6" },
     { label: "3 x 6", value: "3*6" },
     { label: "6 x 3", value: "6*3" },
-  ];
+  ]
+
   const thickness = [
     { label: "0.8 mm", value: "0.8 mm" },
     { label: "1.00 mm", value: "1.00 mm" },
@@ -202,7 +252,7 @@ const Page = () => {
     { label: "8 mm", value: "8 mm" },
     { label: "12 mm", value: "12 mm" },
     { label: "13 mm", value: "13 mm" },
-  ];
+  ]
 
   const color = [
     { label: "Red", value: "Red" },
@@ -213,176 +263,126 @@ const Page = () => {
     { label: "Pink", value: "Pink" },
     { label: "Yellow", value: "Yellow" },
     { label: "White", value: "White" },
-  ];
-  const mappedColor = useMemo(() => {
-    return color.map((c) => ({ ...c, className: "myOptionClassName" }));
-  }, [color]);
-  const handleTypeChange = (e) => {
-    event.preventDefault(); // Prevent default behavior
+  ]
 
-    setSelectedType(e.value);
-  };
+  const mappedColor = useMemo(() => {
+    return color.map((c) => ({ ...c, className: "myOptionClassName" }))
+  }, [color])
+
+  const handleTypeChange = (e) => {
+    event.preventDefault()
+    setSelectedType(e.value)
+  }
+
   const handleCategoryChange = (event) => {
-    event.preventDefault(); // Prevent default behavior
-    const { value, checked } = event.target;
+    event.preventDefault()
+    const { value, checked } = event.target
     setSelectedCategory((prevSelectedCategory) => {
       if (checked) {
-        console.log("Category Selected:", value); // Log the selected category
-        return [...prevSelectedCategory, value];
+        return [...prevSelectedCategory, value]
       } else {
-        return prevSelectedCategory.filter((category) => category !== value);
+        return prevSelectedCategory.filter((category) => category !== value)
       }
-    });
-  };
+    })
+  }
+
   const handleSizeChange = (e) => {
-    event.preventDefault(); // Prevent default behavior
+    event.preventDefault()
+    setSelectedSize(e.value)
+  }
 
-    setSelectedSize(e.value);
-  };
   const handleSizeClick = (sizeValue) => {
-    event.preventDefault(); // Prevent default behavior
-
+    event.preventDefault()
     setSelectedSize((prevSelectedSize) => {
       if (prevSelectedSize === sizeValue) {
-        console.log("Size Deselected:", sizeValue);
-        return null; // Deselect the size to show all products
+        return null
       } else {
-        console.log("Size Selected:", sizeValue);
-        return sizeValue; // Select the new size
+        return sizeValue
       }
-    });
-    const exploreCollectionElement = document.querySelector("#sticky_top");
+    })
+    const exploreCollectionElement = document.querySelector("#sticky_top")
     if (exploreCollectionElement) {
       exploreCollectionElement.scrollIntoView({
         behavior: "smooth",
         block: "start",
-      });
+      })
     }
-  };
+  }
+
   const handleSearchChange = (event) => {
-    event.preventDefault(); // Prevent default behavior
-    setSearchTerm(event.target.value);
-  };
+    event.preventDefault()
+    setSearchTerm(event.target.value)
+  }
 
   const handleThicknessChange = (e) => {
-    event.preventDefault(); // Prevent default behavior
-
-    setSelectedThickness(e.value);
-  };
+    event.preventDefault()
+    setSelectedThickness(e.value)
+  }
 
   const handleColorChange1 = (e) => {
-    event.preventDefault(); // Prevent default behavior
+    event.preventDefault()
+    setSelectedColor(e.value)
+  }
 
-    setSelectedColor(e.value);
-  };
   const handleColorChange = (color) => {
-    event.preventDefault(); // Prevent default behavior
-
+    event.preventDefault()
     if (selectedColor === color) {
-      setSelectedColor(null); // Clear the selection
+      setSelectedColor(null)
     } else {
-      setSelectedColor(color); // Set the selected color
+      setSelectedColor(color)
     }
-  };
+  }
 
   const resetFiltersDrop = () => {
-    
-    setSelectedBrand("all");
-    setSelectedCategory([]);
-    setSelectedFinish("all");
-    setSelectedSize("all");
-    setSelectedThickness("all");
-    setSelectedColor("all");
-    setSelectedType("all");
-    setSearchTerm(""); // Reset the search term
-    setPageNumber(1);
-    localStorage.removeItem("pageNumber"); // Remove saved page number
-    setFilteredProducts(products); // Reset the product list to show all
-  };
-  // Filter products based on search term
+    setSelectedBrand("all")
+    setSelectedCategory([])
+    setSelectedFinish("all")
+    setSelectedSize("all")
+    setSelectedThickness("all")
+    setSelectedColor("all")
+    setSelectedType("all")
+    setSearchTerm("")
+    setPageNumber(1)
+    localStorage.setItem("pageNumber", "1")
+    setFilteredProducts(products)
+  }
+
   useEffect(() => {
     if (searchTerm) {
       const filtered = products.filter((product) => {
-        // Get Design Code, default to "No Data Found" if not available
-        // const designCode = product.attributes[6]?.terms[0].name || "";
-        const designCodeAttr = product.attributes.find(
-          (attr) => attr.name.toLowerCase() === "design code"
-        );
-        const productCodeAttr = product.attributes.find(
-          (attr) => attr.name.toLowerCase() === "product code"
-        );
-        //Handle the null case for productCodeAttr
+        const designCodeAttr = product.attributes.find((attr) => attr.name.toLowerCase() === "design code")
+        const productCodeAttr = product.attributes.find((attr) => attr.name.toLowerCase() === "product code")
 
-        const productCode =
-          productCodeAttr && productCodeAttr.terms.length > 0
-            ? productCodeAttr.terms[0].name
-            : ""; // Fallback if no product code is found
+        const productCode = productCodeAttr && productCodeAttr.terms.length > 0 ? productCodeAttr.terms[0].name : ""
 
         const designCode =
-          designCodeAttr && designCodeAttr.terms.length > 0
-            ? designCodeAttr.terms[0].name + productCode
-            : ""; // Fallback if no design code is found
-        return designCode.toLowerCase().includes(searchTerm.toLowerCase());
-      });
-      // const filtered = products.filter((product) => {
-      //   return product.attributes[6]?.terms[0]?.name
-      //     ?.toLowerCase()
-      //     .includes(searchTerm.toLowerCase()); // Match design code attribute
-      // });
-      setFilteredProducts(filtered);
+          designCodeAttr && designCodeAttr.terms.length > 0 ? designCodeAttr.terms[0].name + productCode : ""
+        return designCode.toLowerCase().includes(searchTerm.toLowerCase())
+      })
+      setFilteredProducts(filtered)
     } else {
-      setFilteredProducts(products); // If no search term, show all products
+      setFilteredProducts(products)
     }
-  }, [searchTerm, products]);
-  const totalPages = Math.max(
-    1,
-    Math.ceil(filteredProducts.length / itemsPerPage)
-  );
-  const currentPage = Math.min(pageNumber, totalPages);
-  const lastIndex = currentPage * itemsPerPage;
-  const firstIndex = lastIndex - itemsPerPage;
-  const displayedData = filteredProducts.slice(firstIndex, lastIndex);
-  const isInitialLoad = React.useRef(true)
+  }, [searchTerm, products])
+
+  const totalPages = Math.max(1, Math.ceil(filteredProducts.length / itemsPerPage))
+  const currentPage = Math.min(pageNumber, totalPages)
+  const lastIndex = currentPage * itemsPerPage
+  const firstIndex = lastIndex - itemsPerPage
+  const displayedData = filteredProducts.slice(firstIndex, lastIndex)
+
   useEffect(() => {
     if (currentPage > totalPages && totalPages > 0) {
-      setPageNumber(totalPages);
+      setPageNumber(totalPages)
     }
-  }, [currentPage, totalPages]);
-  // useEffect(() => {
-  //   setPageNumber(1);
-  // }, [filteredProducts]);
-  //
-  useEffect(() => {
-    // Only reset page number when filters change, not when coming back from product page
-    if (isInitialLoad.current) {
-      isInitialLoad.current = false
-      // On initial load, try to get page from localStorage
-      const savedPageNumber = localStorage.getItem("pageNumber")
-      if (savedPageNumber) {
-        setPageNumber(Number.parseInt(savedPageNumber, 10))
-      }
-    } else {
-      // Only reset page number when filters actually change
-      setPageNumber(1)
-    }
-  }, [filteredProducts])
-  const categoryMap = {
-    "/product#xylem": "Xylem",
-    "/product#royal-crown": "Royal Crown",
-    "/product#crown": "crown",
-    "/product#qbliss": "qbliss",
-    "/product#Crown_Xcl": "Crown XCL",
-  };
-  const handleTabClick = (tab) => {
-     setSelectedTag(tab.toLowerCase());
-     // Set the selected tag to lowercase
-     
-        // router.push(`?tab=${tab}&brand=${selectedBrand}&type=${selectedType}&category=${selectedCategory.join(",")}&finish=${selectedFinish}&size=${selectedSize}&thickness=${selectedThickness}&color=${selectedColor}`);
-        setActiveTab(tab);
-        localStorage.setItem("activeTab", tab);
+  }, [currentPage, totalPages])
 
-  };
-  // Save filters to local storage whenever they change
+  const handleTabClick = (tab) => {
+    setSelectedTag(tab.toLowerCase())
+    setActiveTab(tab)
+    localStorage.setItem("activeTab", tab)
+  }
+
   useEffect(() => {
     const filters = {
       brand: selectedBrand,
@@ -392,93 +392,50 @@ const Page = () => {
       size: selectedSize,
       thickness: selectedThickness,
       color: selectedColor,
-    };
-    localStorage.setItem("filters", JSON.stringify(filters));
-    localStorage.setItem("pageNumber", pageNumber.toString())
-  }, [
-    selectedBrand,
-    selectedType,
-    selectedCategory,
-    selectedFinish,
-    selectedSize,
-    selectedThickness,
-    selectedColor,
-    pageNumber,  
-  ]);
+    }
+    localStorage.setItem("filters", JSON.stringify(filters))
+  }, [selectedBrand, selectedType, selectedCategory, selectedFinish, selectedSize, selectedThickness, selectedColor])
 
-  const visibleTabs = [
-    "Royal Crown",
-    "Crown XCL",
-    "qbliss",
-    "Xylem",
-    "crown",
-  ].filter(
-    (category) =>
-      activeTab === "" ||
-      activeTab === `/product#${category.replace(" ", "-").toLowerCase()}`
-  );
   useEffect(() => {
-    console.log("Selected Tag:", selectedTag);
-    console.log("Products Data:", products);
-    let filtered = products;
+    let filtered = products
     if (selectedTag !== "all") {
-      const actualTag = selectedTag.split("#")[1];
+      const actualTag = selectedTag.split("#")[1]
       filtered = filtered.filter((product) => {
         if (Array.isArray(product.categories)) {
           return product.categories.some((category) => {
-            return category.slug.toLowerCase() === actualTag.toLowerCase();
-          });
+            return category.slug.toLowerCase() === actualTag.toLowerCase()
+          })
         }
-        return false;
-      });
+        return false
+      })
     }
-    console.log("Filtered by selectedTag:", filtered);
+
     filtered = filtered.filter((product) => {
-      const brandMatch =
-        selectedBrand === "all" || product.category === selectedBrand;
+      const brandMatch = selectedBrand === "all" || product.category === selectedBrand
       const categoryMatch =
         selectedCategory.length === 0 ||
         selectedCategory.some((selectedCat) =>
           product.attributes.some(
-            (attr) =>
-              attr.name === "type" &&
-              attr.terms.some((term) => term.name === selectedCat)
-          )
-        );
+            (attr) => attr.name === "type" && attr.terms.some((term) => term.name === selectedCat),
+          ),
+        )
       const finishMatch =
-        selectedFinish === "all" ||
-        selectedFinish === null ||
-        product.categories[1].slug === selectedFinish;
+        selectedFinish === "all" || selectedFinish === null || product.categories[1].slug === selectedFinish
       const sizeMatch =
-        selectedSize === "all" ||
-        selectedSize === null ||
-        product.attributes[1].terms[0].name === selectedSize;
+        selectedSize === "all" || selectedSize === null || product.attributes[1].terms[0].name === selectedSize
       const thicknessMatch =
         selectedThickness === "all" ||
         selectedThickness === null ||
-        product.attributes[2].terms[0].name === selectedThickness;
+        product.attributes[2].terms[0].name === selectedThickness
       const colorMatch =
-        selectedColor === "all" ||
-        selectedColor === null ||
-        product.attributes[4].terms[0].name === selectedColor;
+        selectedColor === "all" || selectedColor === null || product.attributes[4].terms[0].name === selectedColor
       const typeMatch =
-        selectedType === "all" ||
-        selectedType === null ||
-        product.attributes[3].terms[0].name === selectedType;
-      // Add more filters as necessary
-      return (
-        brandMatch &&
-        categoryMatch &&
-        finishMatch &&
-        sizeMatch &&
-        thicknessMatch &&
-        colorMatch &&
-        typeMatch
-      );
-    });
-    console.log("Final Filtered Products:", filtered);
-    // Update the state with filtered products
-    setFilteredProducts(filtered);
+        selectedType === "all" || selectedType === null || product.attributes[3].terms[0].name === selectedType
+
+      return brandMatch && categoryMatch && finishMatch && sizeMatch && thicknessMatch && colorMatch && typeMatch
+    })
+
+    setFilteredProducts(filtered)
   }, [
     selectedTag,
     products,
@@ -488,30 +445,26 @@ const Page = () => {
     selectedSize,
     selectedThickness,
     selectedColor,
-    selectedType, // Add other filter states as needed
-  ]);
+    selectedType,
+  ])
+
   const handleThicknessClick = (thicknessValue) => {
     setSelectedThickness((prevSelectedThickness) => {
       if (prevSelectedThickness === thicknessValue) {
-        console.log("Thickness Deselected:", thicknessValue);
-        return null; // Deselect the thickness to show all products
+        return null
       } else {
-        console.log("Thickness Selected:", thicknessValue);
-        return thicknessValue; // Select the new thickness
+        return thicknessValue
       }
-    });
-    const exploreCollectionElement = document.querySelector("#sticky_top");
+    })
+    const exploreCollectionElement = document.querySelector("#sticky_top")
     if (exploreCollectionElement) {
       exploreCollectionElement.scrollIntoView({
         behavior: "smooth",
         block: "start",
-      });
+      })
     }
-  };
-   // Save page number to local storage whenever it changes
-  useEffect(() => {
-    localStorage.setItem("pageNumber", pageNumber.toString());
-  }, [pageNumber]);
+  }
+
   return (
     <>
       <div className="productMainContainer">
@@ -523,7 +476,7 @@ const Page = () => {
             <motion.div
               className="productDescriptionBorder"
               initial={{ width: "0%" }}
-              whileInView={{ width: "100%" }} // Adjust this width to fit your design
+              whileInView={{ width: "100%" }}
               transition={{ duration: 1, ease: "easeOut" }}
               viewport={{ once: true }}
             />
@@ -546,48 +499,30 @@ const Page = () => {
         </motion.div>
         <div id="sticky_top" className="products_name">
           <div className="products-tabs" id="sticky_top">
-            {["Royal Crown", "Crown XCL", "qbliss", "Xylem", "crown"].map(
-              (label) => (
-                <Link
-                  key={label}
-                  href={`/product#${label.replace(" ", "-").toLowerCase()}`}
-                  scroll={false}
-                  className={`tab-item ${
-                    activeTab ===
-                    `/product#${label.replace(" ", "-").toLowerCase()}`
-                      ? "active"
-                      : ""
-                  }`}
-                  onClick={() =>
-                    handleTabClick(
-                      `/product#${label.replace(" ", "-").toLowerCase()}`,
-                      label
-                    )
-                  }
-                >
-                  <div className="tab-content-inner">
-                    {label === "qbliss" ? "qbiss" : label}
-                  </div>
-                </Link>
-              )
-            )}
+            {["Royal Crown", "Crown XCL", "qbliss", "Xylem", "crown"].map((label) => (
+              <Link
+                key={label}
+                href={`/product#${label.replace(" ", "-").toLowerCase()}`}
+                scroll={false}
+                className={`tab-item ${
+                  activeTab === `/product#${label.replace(" ", "-").toLowerCase()}` ? "active" : ""
+                }`}
+                onClick={() => handleTabClick(`/product#${label.replace(" ", "-").toLowerCase()}`, label)}
+              >
+                <div className="tab-content-inner">{label === "qbliss" ? "qbiss" : label}</div>
+              </Link>
+            ))}
           </div>
         </div>
 
         <div className="supply">
           <div id="sticky">
             <div className="resetFilters">
-              <button
-                className="resetButton"
-                onClick={resetFiltersDrop}
-                scroll={false}
-              >
+              <button className="resetButton" onClick={resetFiltersDrop} scroll={false}>
                 <span className="resetButton-content">reset</span>
-                {/* Reset Filters */}
               </button>
             </div>
-            {/* reset filter ends */}
-            {/* Search Input */}
+
             <div className="searchContainer">
               <input
                 type="text"
@@ -632,6 +567,7 @@ const Page = () => {
                 </div>
               )}
             </div>
+
             <div className="dropdown1">
               <div className="dropdown-label">
                 <label htmlFor="color-select" className="colorSelectDropdown">
@@ -652,14 +588,14 @@ const Page = () => {
                     <div
                       key={index}
                       className={`color-box color${index + 1}`}
-                      // style={{ backgroundColor: colorItem.value }}
-                      onClick={() => handleColorChange(colorItem.value)} // Add color change functionality
+                      onClick={() => handleColorChange(colorItem.value)}
                       scroll={false}
                     ></div>
                   ))}
                 </div>
               )}
             </div>
+
             <div className="dropdown1">
               <div className="dropdown-label">
                 <label htmlFor="size-select" className="colorSelectDropdown">
@@ -680,9 +616,7 @@ const Page = () => {
                   {size.map((sizeOption) => (
                     <div
                       key={sizeOption.value}
-                      className={`SizeProduct ${
-                        selectedSize === sizeOption.value ? "selected" : ""
-                      }`}
+                      className={`SizeProduct ${selectedSize === sizeOption.value ? "selected" : ""}`}
                       onClick={() => handleSizeClick(sizeOption.value)}
                       scroll={false}
                     >
@@ -695,10 +629,7 @@ const Page = () => {
 
             <div className="dropdown1">
               <div className="dropdown-label">
-                <label
-                  htmlFor="thickness-select"
-                  className="colorSelectDropdown"
-                >
+                <label htmlFor="thickness-select" className="colorSelectDropdown">
                   SELECT THICKNESS
                 </label>
               </div>
@@ -716,14 +647,8 @@ const Page = () => {
                   {thickness.map((thicknessOption) => (
                     <div
                       key={thicknessOption.value}
-                      className={`ThicknessProduct ${
-                        selectedThickness === thicknessOption.value
-                          ? "selected"
-                          : ""
-                      }`}
-                      onClick={() =>
-                        handleThicknessClick(thicknessOption.value)
-                      } // Add click functionality
+                      className={`ThicknessProduct ${selectedThickness === thicknessOption.value ? "selected" : ""}`}
+                      onClick={() => handleThicknessClick(thicknessOption.value)}
                       scroll={false}
                     >
                       <p>{thicknessOption.label}</p>
@@ -733,6 +658,7 @@ const Page = () => {
               )}
             </div>
           </div>
+
           {loading ? (
             <Grid container spacing={2}>
               {Array.from({ length: 25 }).map((_, index) => (
@@ -744,58 +670,36 @@ const Page = () => {
           ) : (
             <div className="product_container" ref={projectsRef}>
               {displayedData.length === 0 ? (
-                // Display this message if no products are found
                 <div className="noMatchFound">No match found</div>
               ) : (
                 displayedData.map((product, index) => {
                   const className =
-                    index === 9
-                      ? "big"
-                      : [
-                          0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21,
-                        ].includes(index)
-                      ? "tall"
-                      : "";
+                    index === 9 ? "big" : [0, 2, 3, 8, 9, 10, 12, 13, 14, 17, 18, 20, 21].includes(index) ? "tall" : ""
 
-                  // Get Design Code, default to "No Data Found" if not available
-                  // const designCode = product.attributes[6]?.terms[0].name || "";
-                  const designCodeAttr = product.attributes.find(
-                    (attr) => attr.name.toLowerCase() === "design code"
-                  );
-                  const productCodeAttr = product.attributes.find(
-                    (attr) => attr.name.toLowerCase() === "product code"
-                  );
-                  //Handle the null case for productCodeAttr
+                  const designCodeAttr = product.attributes.find((attr) => attr.name.toLowerCase() === "design code")
+                  const productCodeAttr = product.attributes.find((attr) => attr.name.toLowerCase() === "product code")
 
                   const productCode =
-                    productCodeAttr && productCodeAttr.terms.length > 0
-                      ? productCodeAttr.terms[0].name
-                      : ""; // Fallback if no product code is found
+                    productCodeAttr && productCodeAttr.terms.length > 0 ? productCodeAttr.terms[0].name : ""
 
                   const designCode =
-                    designCodeAttr && designCodeAttr.terms.length > 0
-                      ? designCodeAttr.terms[0].name + productCode
-                      : ""; // Fallback if no design code is found
+                    designCodeAttr && designCodeAttr.terms.length > 0 ? designCodeAttr.terms[0].name + productCode : ""
 
-                  const defaultImage =
-                    "http://vanras.humbeestudio.xyz/wp-content/uploads/2025/03/default_image.png";
+                  const defaultImage = "http://vanras.humbeestudio.xyz/wp-content/uploads/2025/03/default_image.png"
+
                   return (
                     <div key={index} className={`AboutUs_product ${className}`}>
                       <Image
-                        src={
-                          product.images?.length > 0
-                            ? product.images[0].src
-                            : defaultImage
-                        }
+                        src={product.images?.length > 0 ? product.images[0].src : defaultImage}
                         alt={product.name}
                         className="ProductImage"
                         width={500}
                         height={600}
                         onClick={() => {
-                          console.log("Product ID:", product.id);
-                          // Save current page before navigating
+                          console.log("Navigating to product, saving page:", pageNumber)
+                          // Ensure page is saved before navigation
                           localStorage.setItem("pageNumber", pageNumber.toString())
-                          router.push(`/product-information#${product.id}`);
+                          router.push(`/product-information#${product.id}`)
                         }}
                       />
                       <div className="overlay">
@@ -804,8 +708,8 @@ const Page = () => {
                             width="40"
                             height="40"
                             xmlns="http://www.w3.org/2000/svg"
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
+                            fillRule="evenodd"
+                            clipRule="evenodd"
                             fill="white"
                             className="aboutUsProductSvg"
                           >
@@ -814,12 +718,11 @@ const Page = () => {
                         </div>
                         <div className="AnchorTag">Know More</div>
                       </div>
-                      {/* Design Code Container */}
                       <div className="designCodeContainer">
                         <p className="designCode">{designCode}</p>
                       </div>
                     </div>
-                  );
+                  )
                 })
               )}
             </div>
@@ -832,10 +735,8 @@ const Page = () => {
               <Pagination
                 count={totalPages}
                 page={currentPage}
-                // count={Math.ceil(currentData.length / itemsPerPage)}
                 color="primary"
                 shape="rounded"
-                // page={pageNumber}
                 size="small"
                 variant="outlined"
                 onChange={handlePageChange}
@@ -903,6 +804,7 @@ const Page = () => {
         )}
       </div>
     </>
-  );
-};
-export default Page;
+  )
+}
+
+export default Page
