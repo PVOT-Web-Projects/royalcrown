@@ -1,0 +1,335 @@
+.circular-slider-container {
+  isolation: isolate;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #ffede1;
+
+
+  .slider-background {
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+    .slider-half-1 {
+      width: 50%;
+      height: 100%;
+      background-color: rgb(33, 33, 33);
+    }
+
+    .slider-half-2 {
+      width: 50%;
+      height: 100%;
+      background-color: rgb(33, 33, 33);
+
+    }
+  }
+
+  .text-svg {
+    position: absolute;
+    top: -20%;
+    left: 22%;
+    width: 55%;
+    height: 100%;
+    z-index: 9999;
+
+    @media (max-width: 1024px) {
+      width: 80%;
+      left: 10%;
+    }
+
+    @media (max-width: 768px) {
+      width: 120%;
+      left: -10%;
+      top: -25%;
+    }
+
+  }
+
+  .circular-carousel-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 9999;
+
+
+    .rotate {
+      width: 200%;
+      height: 200%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .slide-item {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        z-index: 9999999999;
+        will-change: transform;
+
+
+        .card {
+          width: 19.5vw;
+          height: 51vh;
+          transition: all 0.3s ease;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          @media (max-width: 1024px) {
+            width: 35vw;
+            height: 35vh;
+          }
+
+          @media (max-width: 768px) {
+            width: 60vw;
+            height: 45vh;
+          }
+
+
+          img {
+            width: 100%;
+            height: 90%;
+            object-fit: cover;
+            cursor: pointer;
+          }
+
+          .slide-text {
+            font-family: "made_mirage_regular";
+            font-size: 26px;
+            color: #5B3524;
+            text-align: center;
+            width: 100%;
+            padding: 5px 10px;
+            opacity: 0;
+
+
+            @media (max-width: 768px) {
+              font-size: 18px;
+            }
+          }
+
+
+        }
+      }
+    }
+
+  }
+
+
+  .circular-carousel-slider-2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    svg {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: 148%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      @media (max-width: 1024px) {
+        top: 122.6%;
+      }
+      @media (max-width: 768px) {
+        width: 400%;
+        height: 400%;
+        top: calc((100% - 51vh) * 2.999999);
+        scroll-behavior: smooth;
+      }
+    }
+
+    .rotate-2 {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transform-origin: 50% 100%;
+
+      @media (max-width: 1024px) {
+        transform-origin: 50% 85%;
+      }
+
+      @media (max-width: 768px) {
+        height: 100%;
+        width: 100%;
+        transform-origin: 50% 148%;
+      }
+
+      .slide-item-2 {
+        position: absolute;
+        top: 35%;
+        left: 40%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        will-change: transform;
+
+
+        .card-2 {
+          width: 19.5vw;
+          height: 51vh;
+          transition: all 0.3s ease;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          position: relative;
+
+
+          @media (max-width: 1024px) {
+            width: 35vw;
+            height: 35vh;
+          }
+
+          @media (max-width: 768px) {
+            width: 60vw;
+            height: 45vh;
+          }
+
+          img {
+            width: 100%;
+            height: 90%;
+            object-fit: cover;
+            cursor: pointer;
+            position: relative;
+          }
+
+          .slide-text-2 {
+            font-family: "made_mirage_regular";
+            font-size: 26px;
+            color: #5B3524;
+            text-align: center;
+            width: 100%;
+            padding: 5px 10px;
+            opacity: 0;
+
+
+            @media (max-width: 1024px) {
+              font-size: 18px;
+            }
+
+          }
+
+          .activeText {
+            opacity: 1;
+          }
+
+          &:hover {
+            transform: translateY(-10px);
+
+            .slide-text-2 {
+              opacity: 1;
+            }
+
+            @media (max-width: 768px) {
+              transform: translateY(-5px);
+            }
+          }
+        }
+      }
+    }
+
+
+    .navigation {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 85%;
+      left: 0;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      overflow: hidden;
+
+      button {
+        width: fit-content;
+        height: fit-content;
+        position: relative;
+        padding: 18px 20px;
+        border: none;
+        background-color: #fff;
+        color: #000;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        border-radius: 50px;
+        font-size: 20px;
+
+        @media (max-width: 768px) {
+          padding: 10px 20px;
+        }
+      }
+
+    }
+
+  }
+
+  .video-modal {
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .video-content {
+      width: 100%;
+      height: 100%;
+      animation: videoOpenFade 0.6s ease forwards;
+
+      video {
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+        transform: scale(0.8);
+        animation: videoOpenFade 0.9s ease forwards;
+      }
+
+
+      .close-btn {
+        position: absolute;
+        top: -40px;
+        right: -40px;
+        background: white;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+      }
+    }
+
+  }
+}

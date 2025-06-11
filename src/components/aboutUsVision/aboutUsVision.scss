@@ -1,0 +1,132 @@
+@import "../../app/variables.scss";
+@import "../../fonts/fonts.scss";
+.aboutVisionWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 80px;
+  background-color: #fff5ed;
+  color: #5b3524;
+  overflow-x: hidden;
+  @media(max-width: 575px){
+    padding: 10px 25px;
+  }
+
+
+  .aboutVisionContainer {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+
+    @media (max-width: 767px) {
+      align-items: center;
+      padding: 0;
+    }
+    .visionHeader {
+      text-transform: uppercase;
+      font-size: 24px;
+      font-family: "safira_march";
+      font-weight: 400;
+      // border-bottom: 1px solid #5b3524;
+      max-width: max-content;
+      padding: 40px 0 20px;
+      // margin-bottom: 2rem;
+
+      @media (max-width: 767px) {
+        text-align: center;
+      }
+      @media(max-width: 375px){
+        font-size: 20px;
+      }
+      div{
+        
+      font-family: "safira_march";
+      }
+    }
+    .visionImage {
+      max-width: 100%;
+      // height: auto;
+      margin: 0 auto;
+      display: block;
+      height: 55vh;
+      // width: 100%;
+      object-fit: cover;
+      width: 100%;
+      @media (max-width: 1199px) {
+        height: 31vh;
+      }
+      @media (max-width: 575px) {
+        height: auto;
+      }
+    }
+    .visionDescription {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+
+      @media (max-width: 425px) {
+        padding: 20px 0;
+      }
+
+      .description_left {
+        font-size: 21px;
+        font-family: "futura_thin";
+        width: 50%;
+
+        @media (max-width: 767px) {
+          width: 100%;
+        }
+
+        @media (max-width: 425px) {
+          font-size: 20px;
+        }
+      }
+      .description_right {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        justify-content: center;
+        width: 30%;
+
+        @media (max-width: 767px) {
+          width: 100%;
+        }
+
+        .description_right_box {
+          border: 1px solid #5b3524;
+          text-align: center;
+          padding: 6px 10px;
+          display: inline-flex;
+
+          @media (max-width: 425px) {
+            padding: 0 10px;
+          }
+
+          .right_box_number {
+            font-size: 80px;
+            font-family: "made_mirage_regular";
+
+            @media (max-width: 425px) {
+              font-size: 65px;
+            }
+          }
+        }
+        .description_right_text {
+          font-size: 35px;
+          font-family: "futura_thin";
+          font-weight: 500;
+
+          @media (max-width: 425px) {
+            font-size: 25px;
+          }
+        }
+      }
+
+      @media (max-width: 767px) {
+        flex-direction: column;
+        gap: 2rem;
+      }
+    }
+  }
+}
