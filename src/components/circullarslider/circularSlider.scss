@@ -153,6 +153,7 @@
       @media (max-width: 1024px) {
         top: 122.6%;
       }
+
       @media (max-width: 768px) {
         width: 400%;
         height: 400%;
@@ -230,7 +231,7 @@
 
 
             @media (max-width: 1024px) {
-              font-size: 18px;
+              font-size: calc(14px + 1.5vh);
             }
 
           }
