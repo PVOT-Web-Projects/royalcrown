@@ -44,6 +44,60 @@ const Page = () => {
   const previousFilters = useRef({})
   const hasLoadedFromStorage = useRef(false)
 
+ // Detect page refresh vs back navigation
+  // useEffect(() => {
+  //   const handleBeforeUnload = () => {
+  //     // Mark that we're about to unload the page
+  //     sessionStorage.setItem('isRefresh', 'true')
+  //   }
+
+  //   const handleLoad = () => {
+  //     // Check if this is a refresh
+  //     const isRefresh = sessionStorage.getItem('isRefresh')
+  //     if (isRefresh) {
+  //       // Clear all stored data on refresh
+  //       localStorage.removeItem('pageNumber')
+  //       localStorage.removeItem('filters')
+  //       localStorage.removeItem('activeTab')
+  //       sessionStorage.removeItem('scrollPosition')
+  //       sessionStorage.removeItem('isRefresh')
+        
+  //       // Reset all states to default
+  //       setPageNumber(1)
+  //       setSelectedBrand("all")
+  //       setSelectedType("all")
+  //       setSelectedCategory([])
+  //       setSelectedFinish("all")
+  //       setSelectedSize("all")
+  //       setSelectedThickness("all")
+  //       setSelectedColor("all")
+  //       setSearchTerm("")
+  //       setSelectedTag("all")
+  //       setActiveTab("")
+        
+  //       console.log("Page refreshed - all filters and pagination reset")
+  //     }
+  //   }
+
+  //   window.addEventListener('beforeunload', handleBeforeUnload)
+  //   window.addEventListener('load', handleLoad)
+    
+  //   // Check on component mount if it's a refresh
+  //   const isRefresh = sessionStorage.getItem('isRefresh')
+  //   if (isRefresh) {
+  //     localStorage.removeItem('pageNumber')
+  //     localStorage.removeItem('filters')
+  //     localStorage.removeItem('activeTab')
+  //     sessionStorage.removeItem('scrollPosition')
+  //     sessionStorage.removeItem('isRefresh')
+  //   }
+
+  //   return () => {
+  //     window.removeEventListener('beforeunload', handleBeforeUnload)
+  //     window.removeEventListener('load', handleLoad)
+  //   }
+  // }, [])
+  
   useEffect(() => {
     const handlePopState = () => {
       console.log("Back navigation detected")
