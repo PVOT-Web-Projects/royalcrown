@@ -284,7 +284,7 @@ const Page = () => {
   const categories = [
     { label: "Plain Colour", value: "Plain Colour" },
     { label: "Abstract", value: "Abstracts" },
-    { label: "Classic Wood Grains", value: "Classic Wood Grains" },
+    // { label: "Classic Wood Grains", value: "Classic Wood Grains" },
     { label: "Stones", value: "Stones" },
     { label: "Solid Colors", value: "Solid Colors" },
     { label: "Textile", value: "Textile" },
