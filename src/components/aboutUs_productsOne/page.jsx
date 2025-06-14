@@ -44,11 +44,15 @@ const Page = () => {
   const previousFilters = useRef({})
   const hasLoadedFromStorage = useRef(false)
 
-  // Detect back navigation
   useEffect(() => {
     const handlePopState = () => {
       console.log("Back navigation detected")
       isBackNavigation.current = true
+      // Immediately restore page number on back navigation
+      const savedPage = localStorage.getItem("pageNumber")
+      if (savedPage) {
+        setPageNumber(Number.parseInt(savedPage, 10))
+      }
     }
 
     window.addEventListener("popstate", handlePopState)
@@ -171,13 +175,13 @@ const Page = () => {
       return
     }
 
-    // Only reset page if filters actually changed
-    if (isFilterChange.current) {
-      console.log("Filters changed - resetting to page 1")
-      setPageNumber(1)
-      localStorage.setItem("pageNumber", "1")
-      isFilterChange.current = false
-    }
+    // Only reset page if filters actually changed (not on back navigation)
+    // if (isFilterChange.current && !isBackNavigation.current) {
+    //   console.log("Filters changed - resetting to page 1")
+    //   setPageNumber(1)
+    //   localStorage.setItem("pageNumber", "1")
+    //   isFilterChange.current = false
+    // }
   }, [filteredProducts])
 
   // Load saved filters and tab
@@ -398,17 +402,17 @@ const Page = () => {
 
   useEffect(() => {
     let filtered = products
-    if (selectedTag !== "all") {
-      const actualTag = selectedTag.split("#")[1]
-      filtered = filtered.filter((product) => {
-        if (Array.isArray(product.categories)) {
-          return product.categories.some((category) => {
-            return category.slug.toLowerCase() === actualTag.toLowerCase()
-          })
-        }
-        return false
-      })
-    }
+    // if (selectedTag !== "all") {
+    //   const actualTag = selectedTag.split("#")[1]
+    //   filtered = filtered.filter((product) => {
+    //     if (Array.isArray(product.categories)) {
+    //       return product.categories.some((category) => {
+    //         return category.slug.toLowerCase() === actualTag.toLowerCase()
+    //       })
+    //     }
+    //     return false
+    //   })
+    // }
 
     filtered = filtered.filter((product) => {
       const brandMatch = selectedBrand === "all" || product.category === selectedBrand
@@ -464,7 +468,18 @@ const Page = () => {
       })
     }
   }
-
+// Restore scroll position on back navigation
+  useEffect(() => {
+    if (isBackNavigation.current) {
+      const savedScrollPosition = sessionStorage.getItem("scrollPosition")
+      if (savedScrollPosition) {
+        setTimeout(() => {
+          window.scrollTo(0, parseInt(savedScrollPosition, 10))
+          sessionStorage.removeItem("scrollPosition")
+        }, 100)
+      }
+    }
+  }, [pageNumber])
   return (
     <>
       <div className="productMainContainer">
@@ -699,6 +714,7 @@ const Page = () => {
                           console.log("Navigating to product, saving page:", pageNumber)
                           // Ensure page is saved before navigation
                           localStorage.setItem("pageNumber", pageNumber.toString())
+                          sessionStorage.setItem("scrollPosition", window.pageYOffset.toString())
                           router.push(`/product-information#${product.id}`)
                         }}
                       />
