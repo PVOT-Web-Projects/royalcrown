@@ -43,7 +43,6 @@ const Page = () => {
   const isFilterChange = useRef(false)
   const previousFilters = useRef({})
   const hasLoadedFromStorage = useRef(false)
-
  // Detect page refresh vs back navigation
   // useEffect(() => {
   //   const handleBeforeUnload = () => {
@@ -97,7 +96,6 @@ const Page = () => {
   //     window.removeEventListener('load', handleLoad)
   //   }
   // }, [])
-  
   useEffect(() => {
     const handlePopState = () => {
       console.log("Back navigation detected")
