@@ -286,7 +286,7 @@ const Page = () => {
     { label: "Abstract", value: "Abstracts" },
     // { label: "Classic Wood Grains", value: "Classic Wood Grains" },
     { label: "Stones", value: "Stones" },
-    { label: "Solid Colors", value: "Solid Colors" },
+    // { label: "Solid Colors", value: "Solid Colors" },
     { label: "Textile", value: "Textile" },
     { label: "Mirrors", value: "Mirrors" },
     { label: "Woodgrain", value: "Woodgrain" },
