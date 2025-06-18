@@ -380,7 +380,7 @@ const Page = () => {
   // router.push("/product", undefined, { shallow: true })
   // Reset URL to `/product` without hash
   if (typeof window !== "undefined") {
-    window.history.pushState({}, "", "/product");
+    window.history.replaceState({}, "", "/product");
   }
     localStorage.setItem("pageNumber", "1")
     setFilteredProducts(products)
