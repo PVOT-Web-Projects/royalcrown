@@ -278,8 +278,13 @@ const Page = () => {
       } else {
         return prevSelectedCategory.filter((category) => category !== value)
       }
-    })
+    });
+     // Reset page number to 1 when category changes
+  setPageNumber(1);
+  localStorage.setItem("pageNumber", "1");
   }
+
+
 
   const handleSizeChange = (e) => {
     event.preventDefault()
@@ -329,6 +334,31 @@ const Page = () => {
       setSelectedColor(color)
     }
   }
+// this comment helps on refresh product page all filters should be reset
+//   useEffect(() => {
+//   // Clear stored filters on page load (refresh)
+//   localStorage.removeItem("filters");
+//   localStorage.removeItem("activeTab");
+//   localStorage.removeItem("pageNumber");
+
+//   // Reset all states to default
+//   setSelectedBrand("all");
+//   setSelectedCategory([]);
+//   setSelectedFinish("all");
+//   setSelectedSize("all");
+//   setSelectedThickness("all");
+//   setSelectedColor("all");
+//   setSelectedType("all");
+//   setSearchTerm("");
+//   setSelectedTag("all");
+//   setActiveTab("");
+//   setPageNumber(1);
+
+//   // Force-clean the URL (remove hash)
+//   if (typeof window !== "undefined") {
+//     window.history.replaceState({}, "", "/product");
+//   }
+// }, []); // Empty dependency array ensures this runs only on mount
 
   const resetFiltersDrop = () => {
     setSelectedBrand("all")
@@ -343,6 +373,10 @@ const Page = () => {
     setPageNumber(1)
     setSelectedTag("all") // Add this to reset the tag filter
     // Update the URL to just '/product' without hash
+    // Clear localStorage
+  localStorage.removeItem("filters");
+  localStorage.removeItem("activeTab");
+  localStorage.removeItem("pageNumber");
   // router.push("/product", undefined, { shallow: true })
   // Reset URL to `/product` without hash
   if (typeof window !== "undefined") {
