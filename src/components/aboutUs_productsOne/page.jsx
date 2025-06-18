@@ -339,7 +339,15 @@ const Page = () => {
     setSelectedColor("all")
     setSelectedType("all")
     setSearchTerm("")
+    setActiveTab("") // Reset the active tab
     setPageNumber(1)
+    setSelectedTag("all") // Add this to reset the tag filter
+    // Update the URL to just '/product' without hash
+  // router.push("/product", undefined, { shallow: true })
+  // Reset URL to `/product` without hash
+  if (typeof window !== "undefined") {
+    window.history.pushState({}, "", "/product");
+  }
     localStorage.setItem("pageNumber", "1")
     setFilteredProducts(products)
   }
@@ -373,6 +381,12 @@ const Page = () => {
       setPageNumber(totalPages)
     }
   }, [currentPage, totalPages])
+
+
+  //  useEffect(() => {
+  //     setPageNumber(1);
+  //   }, [filteredProducts]);
+
 const categoryMap = {
     "/product#xylem": "Xylem",
     "/product#royal-crown": "Royal Crown",
@@ -382,8 +396,9 @@ const categoryMap = {
   };
   const handleTabClick = (tab) => {
     setSelectedTag(tab.toLowerCase())
-    setActiveTab(tab)
+    setActiveTab(tab) 
     localStorage.setItem("activeTab", tab)
+    
   }
 
   useEffect(() => {
