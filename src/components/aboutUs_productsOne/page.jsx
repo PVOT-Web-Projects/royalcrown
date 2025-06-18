@@ -552,6 +552,10 @@ const categoryMap = {
       }
     }
   }, [pageNumber])
+
+//   const handleColorClick = (colorValue) => {
+//   setSelectedColor(prevColor => prevColor === colorValue ? null : colorValue);
+// };
   return (
     <>
       <div className="productMainContainer">
@@ -674,6 +678,9 @@ const categoryMap = {
                   {color.map((colorItem, index) => (
                     <div
                       key={index}
+          //              className={`color-box color${index + 1} ${
+          //   selectedColor === colorItem.value ? "selected" : ""
+          // }`}
                       className={`color-box color${index + 1}`}
                       onClick={() => handleColorChange(colorItem.value)}
                       scroll={false}
