@@ -37,65 +37,11 @@ const Page = () => {
   const [products, setProducts] = useState([])
   const [currentData, setCurrentData] = useState([])
 
-  // Enhanced refs for better navigation tracking
   const isInitialLoad = useRef(true)
   const isBackNavigation = useRef(false)
   const isFilterChange = useRef(false)
   const previousFilters = useRef({})
   const hasLoadedFromStorage = useRef(false)
- // Detect page refresh vs back navigation
-  // useEffect(() => {
-  //   const handleBeforeUnload = () => {
-  //     // Mark that we're about to unload the page
-  //     sessionStorage.setItem('isRefresh', 'true')
-  //   }
-
-  //   const handleLoad = () => {
-  //     // Check if this is a refresh
-  //     const isRefresh = sessionStorage.getItem('isRefresh')
-  //     if (isRefresh) {
-  //       // Clear all stored data on refresh
-  //       localStorage.removeItem('pageNumber')
-  //       localStorage.removeItem('filters')
-  //       localStorage.removeItem('activeTab')
-  //       sessionStorage.removeItem('scrollPosition')
-  //       sessionStorage.removeItem('isRefresh')
-        
-  //       // Reset all states to default
-  //       setPageNumber(1)
-  //       setSelectedBrand("all")
-  //       setSelectedType("all")
-  //       setSelectedCategory([])
-  //       setSelectedFinish("all")
-  //       setSelectedSize("all")
-  //       setSelectedThickness("all")
-  //       setSelectedColor("all")
-  //       setSearchTerm("")
-  //       setSelectedTag("all")
-  //       setActiveTab("")
-        
-  //       console.log("Page refreshed - all filters and pagination reset")
-  //     }
-  //   }
-
-  //   window.addEventListener('beforeunload', handleBeforeUnload)
-  //   window.addEventListener('load', handleLoad)
-    
-  //   // Check on component mount if it's a refresh
-  //   const isRefresh = sessionStorage.getItem('isRefresh')
-  //   if (isRefresh) {
-  //     localStorage.removeItem('pageNumber')
-  //     localStorage.removeItem('filters')
-  //     localStorage.removeItem('activeTab')
-  //     sessionStorage.removeItem('scrollPosition')
-  //     sessionStorage.removeItem('isRefresh')
-  //   }
-
-  //   return () => {
-  //     window.removeEventListener('beforeunload', handleBeforeUnload)
-  //     window.removeEventListener('load', handleLoad)
-  //   }
-  // }, [])
   useEffect(() => {
     const handlePopState = () => {
       console.log("Back navigation detected")
@@ -127,7 +73,7 @@ const Page = () => {
 
   const router = useRouter()
   const projectsRef = useRef(null)
-
+  console.log(currentData);
   // Fetch products
   useEffect(() => {
     const fetchAllProducts = async () => {
@@ -226,14 +172,6 @@ const Page = () => {
       isBackNavigation.current = false
       return
     }
-
-    // Only reset page if filters actually changed (not on back navigation)
-    // if (isFilterChange.current && !isBackNavigation.current) {
-    //   console.log("Filters changed - resetting to page 1")
-    //   setPageNumber(1)
-    //   localStorage.setItem("pageNumber", "1")
-    //   isFilterChange.current = false
-    // }
   }, [filteredProducts])
 
   // Load saved filters and tab
@@ -335,6 +273,7 @@ const Page = () => {
     const { value, checked } = event.target
     setSelectedCategory((prevSelectedCategory) => {
       if (checked) {
+        console.log("Category Selected:", value);
         return [...prevSelectedCategory, value]
       } else {
         return prevSelectedCategory.filter((category) => category !== value)
@@ -351,8 +290,10 @@ const Page = () => {
     event.preventDefault()
     setSelectedSize((prevSelectedSize) => {
       if (prevSelectedSize === sizeValue) {
+        console.log("Size Deselected:", sizeValue);
         return null
       } else {
+        console.log("Size Selected:", sizeValue);
         return sizeValue
       }
     })
@@ -432,7 +373,13 @@ const Page = () => {
       setPageNumber(totalPages)
     }
   }, [currentPage, totalPages])
-
+const categoryMap = {
+    "/product#xylem": "Xylem",
+    "/product#royal-crown": "Royal Crown",
+    "/product#crown": "crown",
+    "/product#qbliss": "qbliss",
+    "/product#Crown_Xcl": "Crown XCL",
+  };
   const handleTabClick = (tab) => {
     setSelectedTag(tab.toLowerCase())
     setActiveTab(tab)
@@ -452,63 +399,87 @@ const Page = () => {
     localStorage.setItem("filters", JSON.stringify(filters))
   }, [selectedBrand, selectedType, selectedCategory, selectedFinish, selectedSize, selectedThickness, selectedColor])
 
-  useEffect(() => {
-    let filtered = products
-    // if (selectedTag !== "all") {
-    //   const actualTag = selectedTag.split("#")[1]
-    //   filtered = filtered.filter((product) => {
-    //     if (Array.isArray(product.categories)) {
-    //       return product.categories.some((category) => {
-    //         return category.slug.toLowerCase() === actualTag.toLowerCase()
-    //       })
-    //     }
-    //     return false
-    //   })
-    // }
-
-    filtered = filtered.filter((product) => {
-      const brandMatch = selectedBrand === "all" || product.category === selectedBrand
-      const categoryMatch =
-        selectedCategory.length === 0 ||
-        selectedCategory.some((selectedCat) =>
-          product.attributes.some(
-            (attr) => attr.name === "type" && attr.terms.some((term) => term.name === selectedCat),
-          ),
-        )
-      const finishMatch =
-        selectedFinish === "all" || selectedFinish === null || product.categories[1].slug === selectedFinish
-      const sizeMatch =
-        selectedSize === "all" || selectedSize === null || product.attributes[1].terms[0].name === selectedSize
-      const thicknessMatch =
-        selectedThickness === "all" ||
-        selectedThickness === null ||
-        product.attributes[2].terms[0].name === selectedThickness
-      const colorMatch =
-        selectedColor === "all" || selectedColor === null || product.attributes[4].terms[0].name === selectedColor
-      const typeMatch =
-        selectedType === "all" || selectedType === null || product.attributes[3].terms[0].name === selectedType
-
-      return brandMatch && categoryMatch && finishMatch && sizeMatch && thicknessMatch && colorMatch && typeMatch
-    })
-
-    setFilteredProducts(filtered)
-  }, [
-    selectedTag,
-    products,
-    selectedBrand,
-    selectedCategory,
-    selectedFinish,
-    selectedSize,
-    selectedThickness,
-    selectedColor,
-    selectedType,
-  ])
+ useEffect(() => {
+     console.log("Selected Tag:", selectedTag);
+     console.log("Products Data:", products);
+     let filtered = products;
+     if (selectedTag !== "all") {
+       const actualTag = selectedTag.split("#")[1];
+       filtered = filtered.filter((product) => {
+         if (Array.isArray(product.categories)) {
+           return product.categories.some((category) => {
+             return category.slug.toLowerCase() === actualTag.toLowerCase();
+           });
+         }
+         return false;
+       });
+     }
+     console.log("Filtered by selectedTag:", filtered);
+     filtered = filtered.filter((product) => {
+       const brandMatch =
+         selectedBrand === "all" || product.category === selectedBrand;
+       const categoryMatch =
+         selectedCategory.length === 0 ||
+         selectedCategory.some((selectedCat) =>
+           product.attributes.some(
+             (attr) =>
+               attr.name === "type" &&
+               attr.terms.some((term) => term.name === selectedCat)
+           )
+         );
+       const finishMatch =
+         selectedFinish === "all" ||
+         selectedFinish === null ||
+         product.categories[1].slug === selectedFinish;
+       const sizeMatch =
+         selectedSize === "all" ||
+         selectedSize === null ||
+         product.attributes[1].terms[0].name === selectedSize;
+       const thicknessMatch =
+         selectedThickness === "all" ||
+         selectedThickness === null ||
+         product.attributes[2].terms[0].name === selectedThickness;
+       const colorMatch =
+         selectedColor === "all" ||
+         selectedColor === null ||
+         product.attributes[4].terms[0].name === selectedColor;
+       const typeMatch =
+         selectedType === "all" ||
+         selectedType === null ||
+         product.attributes[3].terms[0].name === selectedType;
+       // Add more filters as necessary
+       return (
+         brandMatch &&
+         categoryMatch &&
+         finishMatch &&
+         sizeMatch &&
+         thicknessMatch &&
+         colorMatch &&
+         typeMatch
+       );
+     });
+     console.log("Final Filtered Products:", filtered);
+     // Update the state with filtered products
+     setFilteredProducts(filtered);
+   }, [
+     selectedTag,
+     products,
+     selectedBrand,
+     selectedCategory,
+     selectedFinish,
+     selectedSize,
+     selectedThickness,
+     selectedColor,
+     selectedType, // Add other filter states as needed
+   ]);
 
   const handleThicknessClick = (thicknessValue) => {
     setSelectedThickness((prevSelectedThickness) => {
       if (prevSelectedThickness === thicknessValue) {
+        console.log("Thickness Deselected:", thicknessValue);
         return null
       } else {
+         console.log("Thickness Selected:", thicknessValue);
         return thicknessValue
       }
     })
