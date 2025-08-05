@@ -1,0 +1,215 @@
+@import "../../app/variables.scss";
+@import "../../fonts/fonts.scss";
+
+.ExploreSection {
+  .ExploreSectionFlex {
+    position: relative;
+    display: flex;
+    // height: 100vh;
+    padding: 40px 50px;
+    align-items: center;
+    justify-content: space-between;
+    @media(min-width: 1600px){
+      padding: 40px 100px;
+    }
+    @media(max-width: 1024px){
+      flex-direction: column;
+    }
+    @media(max-width: 475px){
+      padding: 30px 20px 60px;
+    }
+
+    .HeaderTextInner {
+      padding-top: 8rem;
+      letter-spacing: 2px;
+      font-weight: 550;
+      // font-family: "made_mirage_regular";
+      font-family: "safira_march";
+      color: #5b3524;
+      @media(max-width: 991px){
+        padding-top: 4rem;
+      }
+
+      p {
+        text-transform: uppercase;
+        font-size: 25px;
+        @media(max-width: 1024px){
+          text-align: center;
+        }
+        @media(max-width: 575px) {
+          font-size: 22px;
+
+          @media(max-width: 325px) {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+
+    .TextSectionInnerFirst {
+      font-family: "futura_thin";
+      font-weight: 550;
+      padding: 50px 0;
+      width: 65%;
+      color: #5b3524;
+      font-size: 20px;
+
+      @media(min-width: 1600px) {
+        width: 45%;
+      }
+      @media(max-width: 1199px){
+        width: 100%;
+      }
+      @media(max-width: 991px) {
+        width: 100%;
+      }
+      @media(max-width: 575px){
+        padding: 20px 0 50px;
+      }
+
+      .text-section-inner-footer {
+        font-family: "futura_thin";
+        font-weight: 550;
+        padding-top: 2rem;
+        font-size: 25px;
+        color: #5b3524;
+        text-transform: uppercase;
+        // border-bottom: 1px solid white;
+        display: inline-block;
+        cursor: pointer;
+        transition: all .5s ease-in-out;
+        position: relative; // This is required for the pseudo-element to be positioned relative to this element.
+
+        @media(max-width: 991px) {
+          padding-top: 1rem;
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0;
+          height: 1px; // Thickness of the underline
+          background-color: #5b3524; // Color of the underline
+          transition: width 0.3s ease; // Underline draw animation
+        }
+
+        &:hover::after {
+          width: 100%; // Underline will expand to full width when hovered
+        }
+      }
+    }
+  }
+
+  .ImageDiv {
+    // @media(max-width: 1024px){
+    //   width: 10%;
+    // }
+    @media(max-width: 1199px){
+      margin-left: 335px;
+    }
+    @media(max-width: 1024px){
+      margin-left: 270px;
+    }
+    @media(max-width: 575px){
+      margin-left: 200px;
+    }
+    @media(max-width: 475px){
+      margin-left: 160px;
+    }
+   
+    // .ImageDisplay{
+    //   @media(max-width: 768px){
+    //     display: none;
+    //   }
+    // }
+    // height: 100vh;
+    .ImageOne {
+      .ImageSectionOne {
+        // width: 100%;
+        // height: 100%;
+        height: auto;
+        object-fit: cover;
+        display: block;
+        @media(max-width: 1199px){
+          width: 280px;
+        }
+        @media(max-width: 575px){
+          width: 190px;
+        }
+        @media(max-width: 475px){
+          width: 160px;
+        }
+      }
+      
+    }
+
+    .ImageTwo {
+      position: absolute;
+      transform: translate(-95px, -400px) !important;
+      @media(max-width: 1199px){
+        transform: translate(-95px, -310px) !important;
+      }
+      @media(max-width: 575px){
+        transform: translate(-70px, -210px) !important;
+      }
+      @media(max-width: 475px){
+        transform: translate(-63px, -175px) !important;
+      }
+      .ImageSectionTwo {
+        width: 100%;
+        // height: 100%;
+        display: block;
+        @media(max-width: 1199px){
+          width: auto;
+        }
+        @media(max-width: 575px){
+          width: 125px;
+          height: auto;
+        }
+        @media(max-width: 475px){
+          width: 110px;
+        }
+      }
+    }
+
+    .ImageThree {
+      position: absolute;
+      transform: translate(-485px, -600px) !important;
+      z-index: -1;
+      @media(max-width: 1199px){
+        transform: translate(-380px, -442px) !important;
+      }
+      @media(max-width: 575px){
+        transform: translate(-290px, -340px) !important;
+      }
+      @media(max-width: 475px){
+        transform: translate(-250px, -268px) !important;
+      }
+      .ImageSectionThree {
+        // width: 100%;
+        // height: 100%;
+        display: block;
+        @media(max-width: 1199px){
+          width: 500px;
+          height: auto;
+        }
+        @media(max-width: 575px){
+          width: 400px;
+        }
+        @media(max-width: 475px){
+          width: 340px;
+        }
+      }
+    }
+  }
+  // .EleganceContainerOne{
+  //   display: none;
+  //   @media(max-width: 768px){
+  //     display: block;
+  //   }
+  // }
+
+
+}

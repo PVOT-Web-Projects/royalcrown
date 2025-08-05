@@ -1,0 +1,496 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+
+// Hero Section styles
+.HeroSection {
+  color: white;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  gap: 0px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    margin: 0px;
+    padding: 0px;
+    font-size: 190px;
+    font-weight: 200;
+  }
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+// .swiper-slide {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: auto; // Allow slides to have width based on content
+//   cursor: grab; // Shows grab cursor for drag functionality
+// }
+
+// .swiper-slide:active {
+//   cursor: grabbing;
+// }
+
+// ScrollTextSection
+.ScrollTextSection {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  background-color: black;
+  @media(max-width: 1000px){
+    height: auto;
+  }
+ .svgCircular{
+  margin-top: -150px;
+ }
+ .svgCurve{
+  margin-top: -310px;
+ }
+  .card-container {
+    font-size: 24px;
+    font-family: "safira_march";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px auto;
+    margin-top: -310px;
+    position: relative;
+    @media(max-width: 1000px){
+      display: none;
+    }
+    @media(max-height: 760px){
+      margin-top: -400px;
+      @media(max-height: 650px){
+        margin-top: -435px;
+      }
+    }
+    // @media(max-width: 1480px){
+    //   margin-top: -100px;
+    // }
+    // @media(max-width: 1350px){
+    //   margin-top: -50px;
+    // }
+
+    .cardAll {
+      height: 330px;
+      width: 250px;
+      cursor: pointer;
+      border: 1px solid black;
+      border-radius: 12px;
+      background-color: white;
+      position: absolute;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    @media(max-width: 1480px){
+      height: 350px;
+      width: 250px;
+    }
+    @media(max-width: 1350px){
+      height: 340px;
+        width: 230px;
+    }
+    @media(max-height: 650px){
+      height: 285px;
+    }
+      /* Image container for the zoom effect */
+      .image-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 12px;
+          transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        }
+    
+        /* Apply the zoom effect when hovering */
+        &:hover img.zoom-effect {
+          transform: scale(1.1); /* Zoom in */
+          // opacity: 0; /* Fade out during zoom */
+        }
+      }
+    
+      /* Hover text styles */
+      .hover-text {
+        position: absolute;
+        bottom:-21%;
+        left: 0%;
+        transform: translateX(-50%); /* Center text horizontally */
+        padding: 10px 0;
+        font-size: 30px;
+        text-align: center;
+        color: white;
+        font-weight: 300;
+        width: 100%;
+        opacity: 0; /* Initially hidden */
+        transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
+        transform: translateY(50%); /* Start with text below the image */
+      }
+    
+      /* Show hover text when card is hovered */
+      &:hover .hover-text {
+        opacity: 1; /* Make text visible */
+        transform: translateY(10%);
+         /* Move text into view */
+         @media(min-width: 1500px){
+          transform: translateY(50%);
+         }
+      @media(max-width: 1480px){
+        transform: translateY(40%);
+      }
+      }
+    
+      /* Card-specific styles */
+      &.card1 {
+        background-image: url("https://vanras.humbeestudio.xyz/images/outdoor1.png");
+        z-index: 11;
+        // height: 500px;
+        // width: 400px;
+        margin-top: 410px;
+
+      }
+    
+      &.card2 {
+        background-image: url("https://vanras.humbeestudio.xyz/images/kitchen1.png");
+        z-index: 13;
+        // height: 500px;
+        // width: 400px;
+        margin-top: 410px;
+
+      }
+    
+      &.card3 {
+        background-image: url("https://vanras.humbeestudio.xyz/images/living_room.png");
+        z-index: 100;
+        // height: 520px;
+        // width: 410px;
+        margin-top: 410px;
+
+      }
+    
+      &.card4 {
+        background-image: url("https://vanras.humbeestudio.xyz/images/modern_washroom.png");
+        z-index: 14;
+        // height: 500px;
+        // width: 400px;
+        margin-top: 410px;
+
+      }
+    
+      &.card5 {
+        background-image: url("https://vanras.humbeestudio.xyz/images/kitchen_Des.png");
+        z-index: 13;
+        // height: 500px;
+        // width: 400px;
+        margin-top: 410px;
+      }
+    }
+    
+  }
+}
+
+// New styles integrated from earlier SCSS code (containerText, card-containerOne, etc.)
+.containerText {
+  text-align: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  margin-bottom: -15px;
+  @media (max-width: 1380px) {
+    height: auto;
+  }
+
+  .page-container {
+    &.hidden {
+      display: none;
+    }
+  }
+
+  .card-containerOne {
+    background-color: #212121;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 100px;
+    margin-top: -555px;
+    @media (min-width: 1550px) {
+      margin-top: -600px;
+    }
+    @media (max-width: 1480px) {
+      margin-top: -420px;
+    }
+    @media (max-width: 1370px) {
+      margin-top: -455px;
+      padding-bottom: 60px;
+    }
+    @media (max-width: 1199px) {
+      margin-top: -370px;
+    }
+    @media (max-width: 768px) {
+      margin-top: -220px;
+    }
+    @media (max-width: 575px) {
+      margin-top: -215px;
+    }
+
+    transition: all 0.1s ease-in-out;
+
+    &.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .parent-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cardOOne {
+      position: relative;
+      width: 350px;
+      height: 420px;
+      background: #fff;
+      border-radius: 28px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      @media (max-width: 475px) {
+        width: 300px;
+        height: 375px;
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 75%;
+        height: 75%;
+        border-radius: 28px;
+        background: #fff;
+        background-image: url(https://interiormaataassets.humbeestudio.xyz/livingroomthumb.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        transition: 0.5s ease-in-out;
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 80%;
+        height: 80%;
+        border-radius: 28px;
+        background: #fff;
+        background-image: url(https://interiormaataassets.humbeestudio.xyz/interior-outdoor.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        transition: 0.5s ease-in-out;
+      }
+
+      &:hover {
+        &:before {
+          transform: rotate(20deg);
+          left: 200px;
+          top: 38px;
+        }
+
+        &:after {
+          transform: rotate(-30deg);
+          left: -150px;
+          top: 60px;
+        }
+      }
+
+      .imgBx {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        bottom: 0px;
+        right: 0px;
+        transition: 0.5s;
+        z-index: 1;
+
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 28px;
+        }
+      }
+
+      .details {
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        height: 60px;
+        cursor: pointer;
+        text-align: center;
+
+        p {
+          margin: 0;
+          padding: 0;
+          font-weight: 600;
+          font-size: 20px;
+          color: #5b3524;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}
+
+
+/* Video Modal Transition Animation */
+@keyframes videoOpenFade {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Video Modal Styling */
+.video-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
+  z-index: 1000;
+  opacity: 0;
+  animation: videoOpenFade 0.1s ease forwards;
+}
+
+.video-content {
+  position: relative;
+  width: 100%;
+  // max-width: 900px;
+  animation: videoOpenFade 0.6s ease forwards;
+
+  video {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    transform: scale(0.8);
+      animation: videoOpenFade 0.9s ease forwards;
+  }
+
+
+  .close-btn {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    background: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+}
+
+/* Custom Video Styling */
+.VideoOneContainer {
+  .VideoInnerContainer {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .closeButton {
+    position: absolute;
+    top: 31px;
+    left: 95%;
+    // right: -465px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10; /* Ensures it stays on top of the video */
+    @media (max-width: 1024px) {
+      left: 94%;
+    }
+    @media (max-width: 768px) {
+      left: 92%;
+    }
+    @media (max-width: 425px) {
+      left: 87%;
+    }
+   
+
+  }
+  
+  .closeButton:hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  // .videoOneVid {
+  //   height: 100vh;
+  //   width: 300vh;
+  //   object-fit: cover;
+  // }
+
+  .videoOneVid {
+    position: absolute;
+    top: 0;
+    // left: -520px;
+    min-width: 100vw;
+    min-height: 100vh;
+    object-fit: cover;
+  }
+  
+
+  .VideoInnerContainerText {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-size: 2em;
+    width: 100%;
+  }
+}
+
