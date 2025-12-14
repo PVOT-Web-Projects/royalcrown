@@ -27,8 +27,8 @@ export async function POST(request) {
       port: 587,
       secure: false,
       auth: {
-        user: "jaykalariya.humbee@gmail.com",
-        pass: "hguj xcok qzpx maca",
+        user: "marketing@royalcrownlaminates.com",
+        pass: "jqdp dfgh jdrf yzxf",
         // pmwzlpxmpwclboag
       },
     });
@@ -36,8 +36,8 @@ export async function POST(request) {
     console.log("Logo Path:", logoPath);
 
     const mailOption = {
-      from: "jaykalariya.humbee@gmail.com",
-      to: "jaykalariya.humbee@gmail.com",
+      from: "marketing@royalcrownlaminates.com",
+      to: "marketing@royalcrownlaminates.com",
       subject: subject, // Use the dynamic subject based on the form type
       html: `
       <div style="border: 1px dashed #ccc; padding: 20px;">

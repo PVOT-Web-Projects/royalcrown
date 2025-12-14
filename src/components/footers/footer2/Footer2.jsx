@@ -85,6 +85,17 @@ const Footer2 = ({ bgColor }) => {
                       HoverBtn={"#5b3524"}
                     />
                   </li>
+                  <li>
+                    <LinkHover
+                      url={"/ec-compliance-report.pdf"}
+                      text={"EC Compliance Report"}
+                      color={"#000"}
+                      borderColor={"white"}
+                      fontSize={"18px"}
+                      textTransform={"capitalize"}
+                      HoverBtn={"#5b3524"}
+                    />
+                  </li>
                 </ul>
               </div>
               <div className="col col2">

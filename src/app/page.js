@@ -95,7 +95,7 @@ export default function Home() {
 
       
       <main className="main">
-        <HeroBanner />
+        <HeroBanner isLoading={isLoading} />
         {/* <HomeHeroSection /> */}
         {/* <SliderNew /> */}
         {/* <NewThreeDSlider /> */}
